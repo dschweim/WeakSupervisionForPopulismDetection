@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_060003.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 20.09.13
+
+Manuela Schwesig: Eine gesetzliche Frauenquote ist bitter notwendig
+-------------------------------------------------------------------
+
+NA
+Zur der heute vorgestellten Studie über den Anteil von Frauen in Aufsichtsräten und Vorständen, dem sogenannten Woman-on-Board-Index, erklärt Manuela Schwesig, stellvertretende SPD-Vorsitzende und Mitglied im Kompetenzteam von Peer Steinbrück:
+ Eine gesetzliche Frauenquote ist bitter notwendig: Gerade einmal 11,7 Prozent der Mitglieder von Aufsichtsräten und Vorständen der aktuell im DAX, MDAX, SDAX und TecDAX notierten Unternehmen sind Frauen. In den Vorständen allein sind es gerade einmal 6,1 Prozent. Vom Anspruch der Chancengleichheit sind die führenden deutschen Unternehmen noch meilenweit entfernt. Die schwarz-gelbe Bundesregierung ist mit ihrer Absicht gescheitert, bei der Chancengleichheit von Männern und Frauen auf freiwillige und unverbindliche Zusagen der Wirtschaft zu setzen. Die Bundesregierung blockiert aus ideologischen Gründen eine moderne Frauen- und auch Unternehmenspolitik.
+Die SPD steht für eine entschlossene Förderung von Frauen in der Wirtschaft und für die Einführung einer verbindlichen Quote für Frauen in Aufsichtsräten und Vorständen. Eine Frauenquote ist sowohl für mehr Gleichstellung als auch für die Wettbewerbsfähigkeit unserer Wirtschaft notwendig.
+Gerade der Blick in andere europäische Länder zeigt, wie es richtig gemacht wird. Hier haben verbindliche Mindestquoten erreicht, dass deutlich mehr Frauen in Vorständen und Aufsichtsräten vertreten sind. 
+

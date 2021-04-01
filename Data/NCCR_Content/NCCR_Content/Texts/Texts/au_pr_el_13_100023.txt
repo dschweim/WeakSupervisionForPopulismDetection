@@ -1,0 +1,31 @@
+Text-ID: at_pr_el_13_100023.txt
+
+Press Release from Party: NEOS
+
+country      = at
+partylabel   = neos
+partytype    = partei
+date         = 19.09.13
+
+NEOS bei ÖHV-Wahlumfrage zweitstärkste Kraft in Österreich
+----------------------------------------------------------
+
+Strolz: "Hoteliers zählen auf unsere Wirtschafts- und
+      Steuerkompetenz"
+Wien (OTS) - Große Zustimmung für NEOS gibt es bei einer Umfrage der
+Österreichischen Hoteliervereinigung (ÖHV) unter ihren Mitgliedern.
+Neun Prozent gaben an, bei der kommenden Nationalratswahl NEOS ihre
+Stimme zu geben. Das liegt deutlich über dem österreichweiten Trend,
+der NEOS derzeit bei vier Prozent sieht. Die ÖVP müsste hingegen mit
+einem enormen Stimmenverlust rechnen, sie kommt bei der Befragung auf
+36 Prozent, 2008 kam sie noch auf 48 Prozent."Österreich ist ein Tourismusland und es ist ein Jammer, dass die
+aktuellen politischen Kräfte diese Branche nicht ausreichend ernst
+nimmt. Mich wundert es überhaupt nicht, dass die ÖVP in dieser
+Berufsgruppe abstinkt und Stimmen zu NEOS wandern. Das zeigt uns,
+dass wir mit unseren Forderungen zur Stärkung der Klein- und
+Mittel-Unternehmen goldrichtig liegen. Eine Senkung der
+Lohnnebenkosten würde den österreichischen Hoteliers rasch spürbare
+Erleichterungen bringen", so NEOS Spitzenkandidat Matthias Strolz.Die Aussendung der ÖHV zur Wahlumfrage finden Sie unter:
+http://www.ots.at/presseaussendung/OTS_20130919_OTS0098/oehv-wahlumfr
+age-zeigt-hoteliers-waehlen-wirtschaftlich-wer-belastet-verliert
+

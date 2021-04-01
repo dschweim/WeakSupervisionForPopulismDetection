@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040022.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 07.08.13
+
+Klimawandel schreitet ungebremst voran
+--------------------------------------
+
+Zur Studie zur globalen Klimaerwärmung der Nationalen Ozeanischen und Atmosphärischen Behörde NOAA der USA erklärt Claudia Roth, Bundesvorsitzende von BÜNDNIS 90/DIE GRÜNEN:
+"Die jüngsten Forschungsergebnisse zum ungebremsten Fortschreiten des Klimawandels machen dessen Monstrosität erneut sichtbar. Ungeachtet der traurigen Rekorde, die die Folgen des Klimawandels Jahr für Jahr brechen, spielt das Thema weder auf der politischen Agenda der Bundesregierung noch der EU eine Rolle. Ganz im Gegenteil, Schwarz-Gelb hat die Bekämpfung des Klimawandels als Kernaufgabe der Politik abgesagt. Auf europäischer Ebene bremst Schwarz-Gelb neue Grenzwerte für den CO2-Ausstoß von PKWs aus und verhindert einen wirkungsvollen Emissionshandel. Auf nationaler Ebene fährt die Bundesregierung die Energiewende an die Wand und lässt die Strompreise trotz niedriger Kosten für die Erneuerbaren steigen. Sogar ein nur kleiner Schritt zur Eindämmung der auch klimaschädlichen Massentierhaltung wird von Union und FDP als Untergang des Abendlandes beschrien.
+Doch immer stärker steigende Meeresspiegel, Schneeschmelzen, Wärmebildungen in den Ozeanen, schmelzendes Eis in den arktischen Meeren sowie zunehmende Dürren und Flutkatastrophen zeigen, dass der Klimawandel nicht auf wirkungsvolle Maßnahmen wartet, die ihn bremsen und begrenzen. Wenn wir nicht handeln, werden Flut- und Unwetterkatastrophen auch bei uns weiter zunehmen. Zudem vergrößern wir die Not der Menschen in den Regionen der Erde, die nur wenig zum Klimawandel beitragen. 
+Deshalb müssen wir auf internationaler Ebene unaufhörlich weiter an einem Kyoto-Folgeabkommen arbeiten und die Klimapolitik zu einem Schwerpunkt unserer Außen- und Entwicklungspolitik machen. Dafür müssen Deutschland und die EU allerdings als glaubwürdige Vorreiter vorangehen. Wer wie diese schwarz-gelbe Bundesregierung beim Klimaschutz hierzulande und in Brüssel den Rückwärtsgang einlegt, der wird auch auf internationaler Ebene nichts bewegen können."
+

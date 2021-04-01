@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_040007.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 11.09.13
+
+Verfassungsbeschwerde gegen Erfassung der Verbindungsdaten in Dresden
+---------------------------------------------------------------------
+
+Katrin Göring-Eckardt, Spitzenkandidatin von BÜNDNIS 90/DIE GRÜNEN, hat Verfassungsbeschwerde beim Bundesverfassungsgericht in Karlsruhe gegen die Erhebung und Auswertung ihrer Telefonverbindungsdaten am 19. Februar 2011 in Dresden eingelegt.  Dazu erklärt sie:
+Am 19. Februar 2011 habe ich in Dresden gegen Neonazis und deren Missbrauch des Dresdner Gedenktags an die Zerstörung der Stadt im 2. Weltkrieg protestiert. Dabei wurden im Rahmen einer massenhaften Funkzellenabfrage meine Verbindungsdaten erfasst. Diese Funkzellenabfrage dürfte die bisher größte zu Strafermittlungszwecken in Deutschland gewesen sein. Nachdem nun der Rechtsweg erschöpft ist, bleibt mir nur noch die Verfassungsbeschwerde, um das Vorgehen der Dresdner Strafverfolgungsbehörden und die Entscheidungen der sächsischen Justiz überprüfen zu lassen.
+Die Verfassungsbeschwerde habe ich eingereicht, um klären zu lassen, ob eine massenhafte Erfassung und Auswertung von Kommunikationsverbindungsdaten Unverdächtiger samt anschließender Identifizierung mit den Prinzipien eines freiheitlichen Rechtsstaats vereinbar ist. Diese Frage möchte ich stellvertretend für viele, die erfasst worden sind, klären lassen. Nach meiner Überzeugung verstößt die massenhafte Abfrage und Auswertung der Daten Unverdächtiger gegen elementare Grundrechte und ist völlig unverhältnismäßig. Außerdem hat die massenhafte Funkzellenabfrage durch die Dresdner Polizei einen erheblichen Einschüchterungseffekt. Sie greift ein in die Vertraulichkeit der Kommunikation und macht die Wahrnehmung der Versammlungs- und Religionsfreiheit ohne staatliche Überwachung und Registrierung unmöglich. In einer offenen Gesellschaft ist es aber unerlässlich, dass die Bürgerinnen und Bürger ihre demokratischen Rechte ungehindert ausüben können. 
+

@@ -1,0 +1,29 @@
+Text-ID: at_pr_el_13_040177.txt
+
+Press Release from Party: Grüne
+
+country      = at
+partylabel   = grüne
+partytype    = partei
+date         = 03.09.13
+
+Grüne: ÖVP verbreitet absurde Unterstellungen
+---------------------------------------------
+
+NA
+Wien (OTS) - Die in der morgigen Ausgabe der Tageszeitung "Die
+Presse" verbreiteten Unterstellungen in Richtung Grüne stammen aus
+der ÖVP-Giftküche Johannes Rauchs und sind absurd und schlichtweg
+falsch. Millioneneingänge - weder in Schilling noch in Euro - hat es
+in der Geschichte der Grünen im Unterschied zu allen anderen Parteien
+nie gegeben, auch nicht vor 20 Jahren.
+Stefan Wallner, Bundesgeschäftsführer der Grünen: "Es ist für eine
+angeblich staatstragende Regierungspartei wie die ÖVP beschämend,
+dass ihr angesichts eines Wahlkampfs der Pleiten und Pannen und ihrer
+tiefen Verstrickung in Korruptionsfälle über die letzten zehn Jahre
+nichts anderes einfällt, als jene mit falschen Vorwürfen anpatzen zu
+wollen, die für die Aufklärung aktueller Korruptionsfälle sorgen. Es
+wird einmal mehr nicht gelingen, von den ungeklärten Geldflüssen in
+Millionenhöhe an die ÖVP abzulenken."
+
+

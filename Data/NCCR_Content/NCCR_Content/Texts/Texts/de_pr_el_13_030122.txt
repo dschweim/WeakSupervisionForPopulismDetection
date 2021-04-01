@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_030122.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 23.08.13
+
+REINEMUND: Kommunen brauchen echte Strukturreformen - Bund-Länder-Finanzbeziehungen neu ordnen
+----------------------------------------------------------------------------------------------
+
+NA
+BERLIN. Zum kommunalen Finanzreport der Bertelsmann-Stiftung erklärt die kommunalpolitische Sprecherin der FDP-Bundestagsfraktion Birgit REINEMUND:
+
+Trotz Rekordeinnahmen und Überschuss bei den Kommunen, bundesweit gesehen, trotz Entlastungen durch den Bund z.B. durch Übernahme der Grundsicherung im Alter und bei Erwerbsminderung, bleibt die Finanzlage mancher Kommunen dramatisch. Die Verschuldung ist deutlich gestiegen, die Kassenkredite sind explodiert. Das zeigt der jüngste kommunale Finanzreport der Bertelsmann Stiftung. Schaut man etwas genauer hin, wird deutlich, dass die aufschreckenden Schlagzeilen hauptsächlich Städte und Gemeinden in Nordrheinwestfalen, Rheinland-Pfalz und dem Saarland betreffen - und selbst dort sehr unterschiedlich - während z.B. Baden-Württembergs Kommunen so gut dastehen wie in kaum einem anderen Bundesland. 
+Wir brauchen echte Strukturreformen bei der kommunalen Finanzausstattung, beim kommunalen Finanzausgleich der einzelnen Länder und beim Länderfinanzausgleich, um dauerhaft stabile und besser planbare Einnahmen für die Kommunen zu gewährleisten. Noch so gut gemachte Einzelmaßnahmen wie die Verlagerung von Sozialkosten auf andere Ebenen können nur Notmaßnahmen sein. Für eine dauerhafte Lösung der Probleme müssen alle schleunigst an einen Tisch: Bund, Länder und kommunale Spitzenverbände.
+Die FDP-Bundestagsfraktion fordert eine  Föderalismusreform III. Die Finanzbeziehungen zwischen allen staatlichen Ebenen inklusive der Struktur der Kommunalfinanzen müssen ohne Scheuklappen und ohne Vorbedingungen auf den Prüfstand.
+632-reinemund-kommunen_strukturreform.pdf
+

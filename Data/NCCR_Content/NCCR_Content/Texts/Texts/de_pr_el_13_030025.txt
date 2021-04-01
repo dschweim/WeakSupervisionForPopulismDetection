@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_030025.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 13.09.13
+
+BÖGEL-HOYER: EU muss bei Verordnungsentwurf hinsichtlich der Netzneutralität nachbessern
+----------------------------------------------------------------------------------------
+
+NA
+BERLIN. Anlässlich der heutigen Vorstellung des EU-Verordnungsentwurfs zur Vollendung des Digitalen Binnenmarkts durch die EU-Kommissarin für Informationsgesellschaft und Medien erklärt die Beauftragte für IT-Kommunikation der FDP-Bundestagsfraktion Claudia BÖGEL-HOYER:
+Die von EU-Kommissarin Neelie Kroes heute vorgelegte Fassung des Vorschlags der EU-Verordnung zur Vollendung des Digitalen Binnenmarktes wurde - im Vergleich zu den vorhergehenden Entwürfen  in die richtige Richtung weiterentwickelt. 
+Nichtsdestotrotz gibt es noch Verbesserungspotenzial, das in den kommenden Verhandlungen unbedingt in den Entwurf aufgenommen werden muss  besonders im Hinblick auf die Sicherung der Netzneutralität.
+So erlaubt es der Verordnungsentwurf in seiner gegenwärtigen Form Netzbetreibern zukünftig, unter bestimmten Bedingungen Verträge mit Inhalteanbietern zur schnelleren Durchleitung von deren Daten abzuschließen. 
+Die FDP-Bundestagsfraktion ist jedoch der Meinung, dass es auch in Zukunft keine Überholspur im Internet geben darf, sondern nach wie vor alle Daten unabhängig von der Zahlungsbereitschaft des Absenders gleich behandelt werden müssen.
+Wir werden uns dafür einsetzen, dass im offenen Internet auch zukünftig alle gleich behandelt werden. Das Best-Effort-Internet in seiner heutigen Form muss geschützt und erhalten bleiben.      
+683-bogel-hoyer-digitaler_binnenmarkt.pdf
+

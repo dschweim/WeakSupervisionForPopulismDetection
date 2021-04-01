@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_090008.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 29.08.13
+
+Griechenland benötigt 77,7 Milliarden Euro
+------------------------------------------
+
+NA
+AfD: Finanzierung am Kapitalmarkt ist für Griechenland ausgeschlossen
+ Berlin  Zu glauben, dass sich Griechenland ab Ende des nächsten Jahres selbst an den Finanzmärkten versorgen werde können, zeugt von großer ökonomischer Naivität, so kommentiert Bernd Lucke, Sprecher der Alternative für Deutschland, Überlegungen des Bundesfinanzministeriums. Dieses rechnet für die Jahre 2014 und 2015 mit einer Finanzierungslücke von mehr als 10 Milliarden Euro. Hierfür werde ein drittes Hilfspaket benötigt. Insgesamt habe das Mittelmeerland bis 2020 jedoch einen Bruttofinanzierungsbedarf von rund 78 Milliarden Euro. Diesen soll Athen allerdings weitgehend über die selbstständige Aufnahme von frischem Geld an den Kapitalmärkten decken. Bundesfinanzminister Schäuble warf seinen Kritikern in diesem Zusammenhang vor, nicht zwischen Brutto und Netto unterscheiden zu können.
+Die Bundesregierung versuche mittels sprachlicher Verrenkungen weiterhin, den Bürgern Tatsachen vorzuenthalten und sie im Unklaren darüber zu lassen, wie hoch die Kosten am Ende tatsächlich sein werden, so Lucke weiter. Angesichts eines Schuldenstands von mehr als 170 Prozent des Bruttoinlandsprodukts, ist es nahezu ausgeschlossen, dass sich Athen in irgendeiner Weise am Kapitalmarkt frisches Geld besorgen wird können. Anders als die Bundesregierung werden die privaten Investoren nicht bereit sein, schlechtem Geld gutes hinterherzuwerfen.
+

@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_050004.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 04.09.13
+
+Hartz IV ist und bleibt Armut per Gesetz
+----------------------------------------
+
+Zu der von der Bundesregierung geplanten Regelsatzerhöhung bei Hartz IV um neun Euro erklärt die Parteivorsitzende der Partei DIE LINKE Katja Kipping:
+Es ist zynisch, wenn man einem Menschen, der Durst hat, einen Tropfen Wasser anbietet. Die Ankündigung einer Regelsatzerhöhung von neun Euro bei den Grundsicherungen kurz vor der Bundestagswahl ist ein durchsichtiges Manöver. Die Betroffenen sollen mit einem Almosen abgespeist werden.
+Wir brauchen endlich eine Mindestsicherung, die Armut wirklich verhindert. Deswegen wird DIE LINKE eine Konzeption einbringen, in dem keine Mindestsicherung mehr unter 1.050 Euro liegt. Kurzfristig müssen die Hartz-IV-Regelsätze auf 500 Euro erhöht und die Sanktionen endlich abgeschafft werden.
+

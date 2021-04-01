@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090018.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 19.09.11
+
+Gesamtblick statt Flickwerk: SP macht sich stark für Schweizer Arbeitsplätze
+----------------------------------------------------------------------------
+
+Im Rahmen der von der SP initiierten ausserordentlichen Session des Nationalrats zur wirtschaftlichen und sozialen Situation wird sich die SP-Fraktion heute für eine nachhaltige Förderung der Realwirtschaft und für sichere Arbeitsplätze einsetzen. Zwar hat die Schweizerische Nationalbank SNB einen minimalen Franken/Euro-Wechselkurs festgelegt und damit die Situation etwas entschärft, dennoch ist der Schweizer Franken nach wie vor auf einem zu hohen Niveau und die Exportwirtschaft leidet. Als Konsequenz wird für die Schweizer Wirtschaft ein deutlicher Wachstumsrückgang prognostiziert; pro Kopf ist sogar ein Nullwachstum zu erwarten. Dies ist Gift für den Arbeitsmarkt. Die SP appelliert an alle Parteien, den Gesamtblick für die Volkswirtschaft zu bewahren und mit gezielten Unterstützungen nicht zuzuwarten bis es zu spät ist.
+Auch wenn die SNB Massnahmen getroffen hat: Der Franken ist im Vergleich zum Euro weiterhin zu stark und ein US-Dollar kostet derzeit so viel wie einst die D-Mark, warnt SP-Nationalrätin Hildegard Fässler. Der Frankenkurs muss weiter sinken, denn eine steigende Zahl von Firmen reagiert mit Lohnkürzungen und längeren Arbeitszeiten auf den überhöhten Wechselkurs. Mitunter wird mit Produktionsverlagerungen ins Ausland gedroht. Die Politik muss diese Gefahr ernst nehmen: Es darf nicht sein, dass die Frankenhausse zu Lasten der Angestellten bekämpft wird.
+

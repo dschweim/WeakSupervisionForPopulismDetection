@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090032.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 12.10.11
+
+SP-Präsidium fordert Vorbereitung auf mögliche Bankencrashs
+-----------------------------------------------------------
+
+Das Präsidium der SP Schweiz hat gestern Abend aus aktuellem Anlass die momentanen Verwerfungen an den Finanzmärkten diskutiert. SP-Präsident Christian Levrat zeigt sich besorgt: Der aktuelle Fall der belgisch-französischen Bank Dexia erinnert stark an den Beginn der letzten Bankenkrise. Tatsächlich fühlt man sich diese Tage erneut in den Herbst 2008 zurückversetzt, als die amerikanische Finanzkrise die Schweiz und ihre systemrelevanten Grossbanken erfasste und in ernsthafte Schwierigkeiten brachte. Wenn auch derzeit noch nicht konkrete Anzeichen vorliegen, so muss die Schweiz sich doch auf ein allfälliges Überschwappen der europäischen Bankenkrise insbesondere auf die beiden global vernetzten Schweizer Grossbanken vorbereiten. Sollte dereinst auch in der Schweiz eine erneute Banken-Rettung notwendig werden, so muss aus den Fehlern von 2008 gelernt werden, fordert Christian Levrat. 
+ 
+

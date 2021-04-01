@@ -1,0 +1,45 @@
+Text ID:
+de_fb_db_15107_00008.txt
+
+
+Facebook-Post by user: Heiko Maas
+Full Name: Maas, Heiko , Germany
+Published on: 27.05.2015, 09:11:42
+
+Type: Link to external Website
+
+Description of the content:
+--------------
+Das Bundeskabinett hat am 27. Mai 2015 den von Heiko Maas vorgelegten Gesetzentwurf zur Einführung einer Speicherpflicht und einer Höchstpeicherfrist für Verkehrsdaten beschlossen.
+
+Text of the posting:
+-------------
+Wir haben heute klare und transparente Regeln zu Höchstspeicherfristen von Verkehrsdaten beschlossen. Damit wahren wir die Balance zwischen Freiheit und Sicherheit in der Digitalen Welt.
+
+Den Sicherheitsbehörden geben wir bei schweren Straftaten ein zusätzliches Instrument. Die Privatsphäre schützen wir: Eine Speicherung darf nur in äußerst engen Grenzen erfolgen. Inhalte werden nicht gespeichert. Das Recht auf unbeobachtete Kommunikation erhalten wir. Bewegungsprofile dürfen nicht erstellt werden. Emails werden nicht erfasst. Die Speicherfristen sind weit kürzer, der Zugriff auf die Daten deutlich schwerer als zuvor.
+
+Die rechtsstaatlichen Vorgaben des Bundesverfassungsgerichts und des Europäischen Gerichtshofes halten wir ein. Wir legen ein besonderes Augenmerk darauf, Freiheitsrechte und Datenschutz zu sichern.
+
+Der politische Streit über die Speicherung von Verkehrsdaten ist viele Jahre sehr erbittert geführt worden. Und: Ich kann die Skepsis einiger Netzpolitiker durchaus nachvollziehen. Ganz klar ist aber: Was wir jetzt beschließen, ist nicht die alte Vorratsdatenspeicherung, wie sie sich viele Sicherheitspolitiker gewünscht haben.
+
+Wir können sehr zufrieden damit sein, dass wir innerhalb der Bundesregierung diesen vernünftigen Kompromiss gefunden haben.
+
+
+Im Einzelnen:
+
+Die Speicherfrist ist auf nur zehn Wochen beschränkt. Es handelt sich hierbei um eine Höchstspeicherfrist: Die Daten müssen unmittelbar nach Ablauf der Speicherfrist gelöscht werden. Kommt der Provider der Löschverpflichtung nicht nach, wird dies mit einer Geldbuße belegt.
+
+Standortdaten dürfen nur vier Wochen gespeichert werden. Denn: Die Speicherung von Standortdaten ist ein besonders intensiver Eingriff.
+
+Die Provider müssen bei der Speicherung die höchstmögliche Sicherheit der Daten gewährleisten. Die Speicherung muss im Inland erfolgen. Die Anbieter müssen die Daten gegen unbefugte Kenntnisnahme und Verwendung schützen.
+
+Für den Zugriff auf die gespeicherten Daten bestehen hohe Hürden: Ein Abruf der Daten darf nur bei einzeln aufgelisteten schweren Straftaten und nur nach vorheriger Genehmigung durch einen Richter erfolgen.
+
+Der Abruf der Daten ist transparent. Wenn Daten abgerufen werden, müssen die Betroffenen grundsätzlich darüber informiert werden.
+
+Den Missbrauch von Daten wollen wir vermeiden. Den Handel mit gestohlenen Daten werden wir unter Strafe stellen. Wir schaffen einen neuen Straftatbestand der „Datenhehlerei“: Damit schließen wir eine Strafbarkeitslücke.
+
+Hier geht es zu den wichtigsten Fragen & Antworten:
+
+http://www.bmjv.de/SharedDocs/Kurzmeldungen/DE/2015/20150527_Hoechstspeicherfrist_Kabinett.html
+

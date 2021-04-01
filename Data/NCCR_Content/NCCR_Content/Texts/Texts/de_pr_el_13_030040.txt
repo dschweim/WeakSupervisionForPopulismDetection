@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030040.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 11.09.13
+
+PILTZ: Wir schulden den Opfern den Kampf für die Freiheit
+---------------------------------------------------------
+
+NA
+BERLIN. Zum 12. Jahrestag der schrecklichen Anschläge auf das World-Trade-Center am 11. September 2001 erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Die furchtbaren Terroranschläge auf das World-Trade-Center in New York haben auch 12 Jahre später ihren Schrecken nicht verloren. Die Opfer des islamistischen Terrors sind nicht vergessen. Der kaltblütige Mord an über 3.000 Menschen mahnt uns, Terrorismus konsequent zu bekämpfen und unsere Werte zu verteidigen.
+Es gilt deshalb gerade nach den schrecklichen Anschlägen: Die Freiheit verteidigt man nicht, indem man sie aufgibt. 12 Jahre nach den Anschlägen ist es an der Zeit, überbordende Sicherheitsgesetze grundlegend zu überarbeiten. Die Freiheit, die unsere Gesellschaft ausmacht, darf nicht vorsorglich geopfert werden. Es war daher richtig, dass die Bundesregierung eine Kommission für eine Gesamtschau auf die Sicherheitsgesetze, die seit 2001 eingeführt oder geändert wurden, eingesetzt hatte. Der Abschlussbericht der Kommission muss das Hausaufgabenheft für die nächste Wahlperiode sein. Es kann sich niemand der Einsicht verschließen, dass Gesetze, die wenig für die Sicherheit, aber immer tiefere Einschnitte in die Freiheit mit sich bringen, aus dem Ruder gelaufen sind. Sicherheitsarchitektur und Befugnisse der Sicherheitsbehörden müssen im Sinne der Grundrechte generalüberholt werden. 
+Wir dürfen den Rechtsstaat und die Grundrechte nicht aufs Spiel setzen, wenn wir genau diese gegen Terroristen verteidigen wollen. Wir schulden es den Opfern von Al-Qaida, für unsere Freiheit zu kämpfen, nicht nur, indem wir Terroristen konsequent verfolgen, sondern vor allem, indem wir alle weiter als freie Bürger leben können.
+

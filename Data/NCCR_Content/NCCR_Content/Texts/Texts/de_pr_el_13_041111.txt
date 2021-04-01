@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041111.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 04.09.13
+
+Kindergrundsicherung statt Familiensplitting
+--------------------------------------------
+
+
+Anlässlich der Kritik des Deutschen Instituts für Wirtschaftsforschung (DIW) an den Plänen der Union zur Einführung eines Familiensplittings erklärt Katja Dörner, Sprecherin für Kinder- und Familienpolitik:
+Ein Familiensplitting ist ungerecht und unausgewogen, weil es nur Familien mit hohem Einkommen begünstigt. Es lässt unverheiratete Eltern komplett außen vor. Zudem behält es die Fehlanreize des heutigen Ehegatten-Splittings mit Blick auf die Erwerbsbeteiligung von Frauen bei. Deshalb ist der Vorschlag der Union ein Irrweg.
+Die DIW-Studie bestätigt einmal mehr, was wir spätestens seit der von der Bundesregierung selbst in Auftrag gegebenen Evaluation der ehe- und familienpolitischen Leistungen wissen: Es gibt eine Schieflage in der deutschen Familienförderung. Schon heute profitieren Familien mit sehr hohem Einkommen über die Kinderfreibeträge mehr von der staatlichen Unterstützung als Familien, die Kindergeld beziehen. Die Union will diese Schieflage verschärfen. Die Bekämpfung der Kinderarmut hat sie offensichtlich nicht mehr auf der Agenda.
+Wir wollen das Ungleichgewicht in der Familienbesteuerung beseitigen und uns daher von der steuerlichen Förderung verabschieden. Die Kinder müssen endlich in den Mittelpunkt der Familienförderung gestellt werden, nicht das Einkommen der Eltern oder deren Trauschein. Wir fordern eine gerechte Familienförderung aufbauend auf einer Individualbesteuerung mit übertragbarem Freibetrag für Verheiratete und Verpartnerte in Verbindung mit einer Kindergrundsicherung. Jedes Kind muss dem Staat gleich viel wert sein. Ziel muss es sein, die Kinderregelsätze, den Kinderzuschlag und die steuerlichen Kinderfreibeträge vollständig in einer Kindergrundsicherung aufgehen zu lassen.
+

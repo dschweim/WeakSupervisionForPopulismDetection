@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090010.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 09.09.11
+
+Über 70000 Unterschriften: Initiative für eine öffentliche Krankenkasse gut auf Kurs
+-------------------------------------------------------------------------------------
+
+Die Initiative für eine öffentliche Krankenkasse entspricht offensichtlich einem breiten Bedürfnis: Innerhalb eines halben Jahres haben über 70000 Personen das Volksbegehren unterschrieben. Dieser Erfolg belegt klar, dass die Zeit reif ist für eine öffentliche Krankenkasse. Der unsägliche Wettbewerb unter den Kassen, die ewige Jagd auf junge Versicherte und günstige Risiken wird von der Bevölkerung nicht mehr akzeptiert. Sie verlangt zu Recht, dass die Versicherungsprämien für Versicherungsleistungen eingesetzt werden und nicht in teuren TV-Spots versickern. 
+Auch der Krankenkassenverband santésuisse musste diese Tage nach einer repräsentativen Umfrage feststellen, dass ihre Kunden den Versicherungsdschungel satt haben: Zwei Drittel der Befragten gaben an, eine öffentliche Krankenkasse zu befürworten. Nur 29 Prozent sehen im heutigen System noch eine Zukunft.
+

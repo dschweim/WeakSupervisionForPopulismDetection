@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040018.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 14.08.13
+
+Ägypten muss Weg zum Frieden zurückfinden
+-----------------------------------------
+
+Zum gewaltsamen Vorgehen des ägyptischen Militärs gegen Demonstranten erklärt Claudia Roth, Bundesvorsitzende von BÜNDNIS 90/DIE GRÜNEN:
+Die entgrenzte Gewalt der Armee und der Sicherheitskräfte in Ägypten gegenüber den Mursi-Anhängern macht uns große Sorgen und schockiert uns. Die vergangenen Wochen hatten noch Anlass zur Hoffnung auf eine Beruhigung der Lage geboten, doch nun sind die Chancen auf eine friedliche Entwicklung in weite Ferne gerückt.
+Mit der Entscheidung der neuen ägyptischen Führung zum gewaltsamen Durchgreifen gegen die Anhänger Mursis und der Stürmung ihrer Protestlager werden am Ende nicht nur viele Opfer zu beklagen sein, es besteht auch die Gefahr, dass jede Perspektive hin zu einer demokratischen und pluralistischen Entwicklung des Landes zu Grabe getragen wird. Jeder einzelne Tote auf Seiten der Mursi-Anhänger kann von den Islamisten als Märtyrer im Propaganda-Krieg gegen eine freiheitliche Gesellschaft verwendet werden. Es besteht die große Gefahr, dass die Muslimbrüder mit diesem Vorgehen wieder in die Illegalität und in den Untergrund getrieben werden und die Einbeziehung aller politischen Kräfte in den Neuaufbau des Landes damit unmöglich wird. Ägypten droht, wieder in autoritäre Verhältnisse wie unter Mubarak zurückzufallen 
+Doch trotz des letztendlichen Scheiterns der internationalen Vermittlungsbemühungen vor allem aus der EU und den USA in den vergangenen Wochen darf sich die internationale Gemeinschaft nun nicht zurückziehen. Es muss weiter alles getan werden, um die Führung in Ägypten zum sofortigen Gewaltverzicht zu bewegen und friedliche Demonstrationen wieder zu ermöglichen. Ägypten muss auf den Weg zu einem friedlichen, politischen Prozess unter Einbeziehung aller Kräfte zurückfinden. Ansonsten drohen dem Land algerische Verhältnisse und der Region ein weiterer Stellvertreterkonflikt befeuert von Kräften aus Saudi-Arabien und Katar."
+

@@ -1,0 +1,52 @@
+Text-ID: at_pr_el_13_010218.txt
+
+Press Release from Party: SPÖ
+
+country      = at
+partylabel   = spö
+partytype    = all
+date         = 11.09.13
+
+Weidenholzer fordert Kroes auf, endlich Netzneutralität zu verankern
+--------------------------------------------------------------------
+
+SPÖ-Europaabgeordneter: "Es darf kein Zwei-Klassen-Internet
+      geben"
+Wien (OTS/SK) - Als "schlechten Witz" bezeichnet SPÖ-EU-Abgeordneter
+Josef Weidenholzer den Vorschlag von EU-Kommissarin Neelie Kroes für
+die Regulierung des europäischen Telekommunikationsmarktes. "Anstatt
+sich - wie schon mehrmals versprochen - für die Netzneutralität stark
+zu machen, hat die EU-Kommission die Gleichbehandlung der Inhalte im
+Netz nun offensichtlich endgültig aufgegeben", kritisiert der
+SPÖ-Europaabgeordnete, Mitglied im Ausschuss für bürgerliche
+Freiheiten, Justiz und Inneres und Verbraucherschutz. Der Entwurf
+begünstige große Telekommunikationskonzerne, indem er es ihnen
+erlaubt, von Kunden Zusatzgebühren für bestimmte Internetdienste zu
+verlangen. Kroes würde mit dem Vorschlag ein "Zwei-Klassen-Internet"
+etablieren, bei dem einige wenige Netzbetreiber darüber entscheiden,
+welche Inhalte wann beim Nutzer ankommen. IT-Giganten zu erlauben,
+für "Expressdaten" extra Geld zu verlangen, sei kundenfeindlich,
+hemme Innovation und stelle einen schweren Anschlag auf das Internet
+dar. "Diese sogenannte Überholspur im Internet ist eine
+Einbahnstraße, von der lediglich Telekommunikationsgiganten
+profitieren werden." ****
+Für Weidenholzer steht fest, dass nur durch eine gesetzliche
+Verankerung von Netzneutralität die nötige Voraussetzung für einen
+florierenden digitalen Binnenmarkt zu schaffen ist. "Es ist deshalb
+Zeit, dass Frau Kroes das verwirklicht, was wir seit mehr als zwei
+Jahren offensiv im Europäischen Parlament fordern und sie schon
+mehrmals angekündigt hat, nämlich einen Vorschlag zur Verankerung von
+Netzneutralität auf EU-Ebene vorzulegen", so Weidenholzer. Konkret
+würde das ein gesetzliches Diskriminierungsverbot bedeuten, das
+sicherstellt, dass alle Daten und Inhalte im Netz gleich behandelt
+werden und Internetanbietern untersagt, gewisse Dienste zu
+blockieren. Frau Kroes müsste wissen, dass das funktioniert,
+schließlich komme sie aus den Niederlanden, in denen die
+Netzneutralität schon gesetzlich vorgeschrieben und die künstliche
+Verlangsamung von Datenflüssen explizit untersagt ist. (Schluss)
+bj/mp
+Rückfragehinweis: Mag. Markus Wolschlager, SPÖ-Delegation im
+Europäischen Parlament, Tel.: +32 (484) 127 331, E-Mail:
+markus.wolschlager@europarl.europa.eu 
+
+

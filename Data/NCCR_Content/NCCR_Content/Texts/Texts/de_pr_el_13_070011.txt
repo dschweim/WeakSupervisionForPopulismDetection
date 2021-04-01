@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_070011.txt
+
+Press Release from Party: NPD
+
+country      = de
+partylabel   = npd
+partytype    = all
+date         = 21.08.13
+
+NPD-Fraktion: Land soll beim Flughafen Rostock-Laage einsteigen
+---------------------------------------------------------------
+
+NA
+Die NPD-Fraktion im Schweriner Landtag fordert eine Landesbeteiligung am Flughafen Rostock-Laage.
+Einen entsprechenden Antrag haben die Nationalen heute eingereicht, um die Flughafenbeteiligung bei der nächsten Landtagssitzung zum Thema zu machen. Anstatt wie bisher den Regionalflughafen mit einem jährlichen Zuschuss in Höhe von 500 Tausend Euro aus Landesmitteln zu unterstützen, sollte das Land Mecklenburg-Vorpommern lieber direkt als Gesellschafter in die Flughafen GmbH einsteigen und sich so auch ein entsprechendes Mitspracherecht sichern.
+Der NPD-Antrag beinhaltet auch die Forderung nach einer Mehrheitsbeteiligung von mindestens 51 Prozent der Gesellschaftsanteile, um somit auch konkret Einfluss auf das operative Geschäft der Betreibergesellschaft nehmen zu können. Auch in anderen Bundesländern sind direkte Beteiligungen an Flughafengesellschaften durchaus üblich. An der Flughafen Hamburg GmbH hält die Hansestadt Hamburg 51 Prozent, das Land Niedersachsen ist am Flughafen Hannover-Langenhagen mit 35 Prozent beteiligt und das Land Bremen ist sogar alleiniger Gesellschafter der Flughafen Bremen GmbH.
+Der NPD-Fraktionsvorsitzende im Landtag, Udo Pastörs, mahnte die Landesbeteiligung am Flughafen heute nachdrücklich an:
+Auch das Land Mecklenburg-Vorpommern benötigt einen modernen Regionalflughafen im Rahmen einer gesunden Infrastruktur. Es gibt vor diesem Hintergrund keine vernünftigen Argumente gegen eine Landesbeteiligung an der Betreibergesellschaft. Es ist unsinnig, den Flughafen jährlich wie selbstverständlich mit einer halben Million Euro zu bezuschussen, aber im Gegenzug keinen Einfluss auf die Geschäftspolitik zu haben. Eine Landesbeteiligung ist auch in anderen Bundesländern üblich, es wird Zeit, auch in Mecklenburg-Vorpommern Nägel mit Köpfen zu machen.
+

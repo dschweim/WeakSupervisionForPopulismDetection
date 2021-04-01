@@ -1,0 +1,34 @@
+Text-ID: at_pr_el_13_050209.txt
+
+Press Release from Party: FPÖ
+
+country      = at
+partylabel   = fpö
+partytype    = partei
+date         = 28.08.13
+
+FPÖ-Hofer: Ausgerechnet Agrochemie-Konzern beklagt 'unvollständige Prüfung'!
+----------------------------------------------------------------------------
+
+Neonicotinoid-Verbot erster richtiger Schritt zum Bienenschutz
+Wien (OTS) - Amüsiert zeigt sich FPÖ-Umweltsprecher NAbg. NorbertHofer über die Begründung, mit welcher der Agrochemie-Konzern
+Syngenta nunmehr gegen das teilweise Neonicotinoid-Verbot der EU
+vorgehen will. "Sich auf eine ungenaue und unvollständige Prüfung zu
+berufen klingt aus dem Munde eines auch im Bereich Agrogentechnik
+aktiven Unternehmens nach einer Erkenntnis, die der Blick in den
+Spiegel gebracht hat. Immerhin lebt diese Natur manipulierende und
+patentierende Industrie von mangelnden Untersuchungen, in deren Folge
+Produkte zugelassen werden, die oft längst nicht ausreichend auf
+mögliche Gesundheits- und Umweltrisiken überprüft wurden. Die FPÖ ist
+über das Verbot auf EU-Ebene und das etwas weiter führende in
+Österreich sehr erfreut. Wohl wissend, dass dies nur ein erster
+Schritt zu einem nachhaltigen Schutz der Bienen sein kann, die eben
+nur unter anderem durch die nun vorübergehend verbotenen Pestizide
+gefährdet sind. Die immer wieder von der Agrochemie-Industrie
+verlautbarten Hinweise, ihre Produkte seien schon lange auf dem
+Markt, dürfen nicht darüber hinwegtäuschen, dass die wenigsten der
+rund 100.000 im europäischen Handel befindlichen Chemikalien
+tatsächlich ausreichend befundet wurden, was Gesundheits- und
+Umweltverträglichkeit anlangt."
+
+

@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_060045.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 05.09.13
+
+Karakaolu: Zweite Chance auf dem Ausbildungsmarkt ermöglichen
+---------------------------------------------------------------
+
+NA
+Zum heute vorgestellten Ausbildungsreport des DGB erklärt Yasemin Karakaolu, Mitglied im Kompetenzteam von Peer Steinbrück für Bildung und Wissenschaft:
+Die Ergebnisse des Ausbildungsreportes zeigen: Wir brauchen eine Kultur der zweiten oder vielleicht auch dritten Chance. 1,4 Millionen Jugendliche ohne Ausbildung oder Abschluss machen deutlich, dass wir von einem gerechten Bildungssystem noch immer weit entfernt sind.
+Die Bundesregierung verschließt die Augen vor den Problemen  auch hier regiert der Stillstand. Auf dem Ausbildungsmarkt muss gelten: Niemand darf zurückgelassen werden. Der Ausbildungsreport belegt: Wer Probleme in der Schule hatte, droht dauerhaft ohne Ausbildung zu bleiben. Jugendliche mit Migrationshintergrund haben überdurchschnittlich häufig einen Hauptschulabschluss und sind davon besonders betroffen. Statt sich auf kleinen Erfolgen auszuruhen, wie das die Bundesregierung macht, müssen wir auch hier endlich anpacken. Deshalb müssen wir mit einer Berufsausbildungsgarantie und branchenbezogenen Ausbildungsfonds jungen Menschen echte Perspektiven geben. Vor dem Hintergrund des Fachkräftemangels ist das nicht nur sozial gerecht, sondern auch ökonomisch sinnvoll.
+Auch die Unternehmen stehen in der Pflicht: Während die Wirtschaft klagt, dass tausende Ausbildungsplätze nicht besetzt werden können, haben im letzten Ausbildungsjahr mehr als 70.000 junge Menschen keinen Ausbildungsplatz bekommen. Nur noch 21,7 Prozent der Betriebe bilden aus. Das ist ein historischer Tiefststand. Wer wirtschaftlichen Erfolg dauerhaft sichern will, darf nicht immer nur klagen, sondern muss auch bereit sein, in Bildung und Ausbildung zu investieren. Ein erster notwendiger Schritt wäre es, den Anteil der ausbildenden Betriebe auf mindestens 30 Prozent zu erhöhen.
+Ein Ausbildungsplatz alleine ist aber nicht entscheidend. Auch die Ausbildungsqualität muss stimmen. Gemeinsam mit den Tarifpartnern werden wir eine Qualitätsoffensive für die betriebliche Ausbildung auf den Weg bringen. Mit einer Beratungsgarantie vor der Ausbildung wollen wir dafür sorgen, dass Mädchen und Jungen gleichermaßen gut beraten in den Beruf starten. 
+

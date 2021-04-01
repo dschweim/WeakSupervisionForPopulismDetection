@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090001.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 30.08.11
+
+Schritt Richtung Atomausstieg - aber mit Wermutstropfen
+-------------------------------------------------------
+
+Die Umweltkommission des Ständerats hat heute den Kurs von Bundesrat und Nationalrat im Grundsatz bestätigt und einen weiteren Schritt hin zum Atomausstieg gemacht. Dies ist zunächst ein Erfolg für die SP und die Grünen, welche seit Jahren auf die Gefahren der atomaren Energiegewinnung hinweisen. Andererseits belegt der Ausstiegswille, dass sich auch die bürgerlichen Parteien dem vollständigen Umstieg auf die Erneuerbaren nicht länger verschliessen können  eine Tatsache, wie sie noch vor einem halben Jahr undenkbar gewesen wäre. Grosser Wermutstropfen in der momentanen Vorlage bleibt die Hintertüre, welche die Kommission offen lassen möchte, um dereinst Atomreaktoren zukünftiger Generationen in Betrieb zu nehmen. Die SP Schweiz hofft, dass der Ständerat in seiner Plenumsdiskussion auf diesen Entscheid zurück kommt und den Atomausstieg endgültig beschliesst.
+
+

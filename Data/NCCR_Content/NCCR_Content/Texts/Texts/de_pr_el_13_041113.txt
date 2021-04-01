@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041113.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 04.09.13
+
+Damit aus Armut nicht Not wird: Neuberechnung der ALG II-Regelsätze bleibt notwendig
+------------------------------------------------------------------------------------
+
+
+Anlässlich des Kabinettsbeschlusses, die Regelsätze der Grundsicherung (ALG II) um 2,3 Prozent zu erhöhen, erklärt Markus Kurth, Sprecher für Sozialpolitik:
+Trotz der leichten Erhöhung der Grundsicherung bleibt das Existenzminimum zu niedrig, weil es unzulänglich berechnet ist. Die jetzt wieder erfolgende, regelmäßige Anpassung der Regelsätze zum Inflationsausgleich ersetzt nicht die längst überfällige Neuberechnung. Die Bundesregierung hält an ihrem teils willkürlich festgesetzten Verfahren fest. So sind beispielsweise Verkehrsausgaben und Ausgaben für Strom strukturell zu niedrig angesetzt.
+Kommen zusätzliche Preissteigerungen, wie jüngst diejenigen für Lebensmittel hinzu, ist die Not endgültig bei den Armutshaushalten angekommen. Bei einem Preisanstieg der Nahrungsmittel um fünf Prozent helfen die 2,3 Prozent Inflationsausgleich im Supermarkt nicht weiter. Nach Angaben des Bundesverbands Tafel e.V. sind inzwischen 1,5 Millionen Menschen auf Lebensmittelspenden angewiesen, darunter ein Drittel Kinder und Jugendliche.
+Wir fordern seit Jahren eine verfassungskonforme Bestimmung der Regelsätze und eine Anhebung auf mindestens 420 Euro.
+

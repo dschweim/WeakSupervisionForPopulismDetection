@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_040002.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 18.09.13
+
+NSA-Affäre: Wie wäre es mal mit der Wahrheit, Frau Merkel?
+----------------------------------------------------------
+
+Zur heutigen Übergabe des Offenen Briefes von Juli Zeh und weiteren Schriftstellerinnen und Schriftstellern an Bundeskanzlerin Angela Merkel mit der Forderung nach einer angemessenen Reaktion auf die NSA-Affäre, erklären Claudia Roth, Bundesvorsitzende, und Malte Spitz, Mitglied des Bundesvorstandes von BÜNDNIS 90/DIE GRÜNEN:
+"Wir begrüßen diesen offenen Brief an Bundeskanzlerin Angela Merkel ausdrücklich. Die Unterzeichnung von über 67.000 Menschen zeigt, dass die Unzufriedenheit mit den Reaktionen der schwarz-gelben Bundesregierung auf die Enthüllungen Edward Snowdens breit geteilt werden. Für die Bürgerinnen und Bürger ist die Debatte nicht beendet, vielmehr müssen die Vertuschungen und Beschwichtigungen der Bundesregierung ein Ende haben.Der offene Brief bringt die heutige Situation auf den Punkt. Die allumfassende Überwachung durch Geheimdienste haben uns alle zu ,gläsernen Menschen gemacht und es gibt dagegen keine Möglichkeiten, sich zur Wehr zu setzen oder überhaupt auch nur Informationen über die Überwachung zu erhalten. Wir teilen die Schlussfolgerung der Initiatoren, dass die damit verbundene Umkehrung der Unschuldsvermutung in einen Generalverdacht gegen jeden Menschen ein schwerer Angriff gegen unseren demokratischen Rechtsstaat ist.Und es ist richtig, dass die Bundesregierung und an ihrer Spitze Bundeskanzlerin Angela Merkel eine grundgesetzliche Verpflichtung hat, Schaden von den in Deutschland lebenden Menschen abzuwenden. Aber Angela Merkel lässt mit ihrer Tatenlosigkeit erkennen, dass sie eine solche Verpflichtung nicht verspürt. Ein erster Schritt wäre die Erfüllung der Forderung der Schriftstellerinnen und Schriftsteller, einfach die volle Wahrheit über die Spähangriffe zu sagen. Es braucht jetzt Transparenz und Aufklärung sowie einen starken Datenschutz in Deutschland und in Europa."
+

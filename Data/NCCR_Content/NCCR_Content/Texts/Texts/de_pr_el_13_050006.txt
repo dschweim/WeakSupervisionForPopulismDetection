@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_050006.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 30.08.13
+
+Enough is enough
+----------------
+
+Die Partei DIE LINKE unterstützt konkrete Solidarität mit russischen Lesben, Schwulen, Trans* und Intersexuellen vor Olympia 2014 in Sotschi. Klaus Lederer, Mitglied des Parteivorstandes und Berliner LINKE-Landesvorsitzender, erklärt:
+Am kommenden Sonnabend ruft die Initiative "Enough is enough" in Berlin zu einer großen Demonstration auf, um vor den XXII. Olympischen Winterspielen in Sotschi, die am 7. Februar 2014 eröffnet werden, Druck auf das IOC und die Olympiasponsoren auszuüben - für eine Abschaffung des menschenrechtswidrigen Gesetzes gegen sogenannte Homosexuellenpropaganda.DIE LINKE steht an der Seite der Betroffenen, die inzwischen massiver Diskriminierung, Verfolgung und auch Folter ausgesetzt sind. Wir fordern die Rücknahme des Gesetzes. Deshalb rufen wir auf, an der Demonstration teilzunehmen. Treffpunkt ist Sonnabend, 12 Uhr, am Kurfürstendamm, Ecke Bleibtreustraße.Wir werden auf der Demonstration mit unseren HOMO-PROPAGANDA-Shirts ganz klar Farbe bekennen und werben dort auch für die konkrete Unterstützung von Projekten, die sich der Solidarität mit den russischen Lesben, Schwulen, Trans* und Intersexuellen verschrieben haben.
+

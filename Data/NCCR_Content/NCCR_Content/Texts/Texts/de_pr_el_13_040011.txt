@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_040011.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 04.09.13
+
+G20-Staaten müssen politische Lösung für Syrien finden
+------------------------------------------------------
+
+Claudia Roth, Bundesvorsitzende von BÜNDNIS 90/DIE GRÜNEN, erklärt zum morgigen G20-Treffen in St. Petersburg:
+"Wenn sich morgen die 20 mächtigsten Staats- und Regierungschefs der Welt in St. Petersburg zusammenfinden, muss das Leiden und Sterben in Syrien das Topthema auf der Agenda sein. Die Weltgemeinschaft darf nicht länger zusehen, wie bei diesem Bürgerkrieg, der längst zu einem Stellvertreterkrieg geworden ist, massenhaft Menschen getötet und vertrieben werden und wie durch die größte Flüchtlingskatastrophe des noch jungen Jahrhunderts alle Nachbarländer und eine ganze Region ins Wanken geraten. Alle diplomatischen Register müssen gezogen werden, um Russland und China zum gemeinsamen politischen Handeln gegenüber Syrien zu drängen. So müssen neue und scharfe Sanktionen, Handels- und Reisebeschränkungen gegen das Assad-Regime, eine mögliche Anklage vor dem Internationalen Strafgerichtshof sowie eine massive Ausweitung der humanitären Hilfen für Syrien, Jordanien, den Libanon und den Irak beraten und auch beschlossen werden.
+Es gibt keine Zwangsläufigkeit für ein militärisches Eingreifen in Syrien, wie es derzeit die amerikanische und auch die französische Regierung darstellen. Die diplomatischen Bemühungen stehen erst am Anfang. Angesichts der Schrecken des Syrienkrieges erwarten die Menschen vor Ort, aber auch überall sonst in der Welt, dass die G20-Staaten alles daran setzen, eine politische Lösung unter Einbeziehung aller Akteure und Kräfte zu ermöglichen. Ich erwarte, dass der G20-Gipfel erst beendet ist, wenn eine harte zivile Reaktion auf  die mutmaßlichen Giftgasanschläge des Assad-Regimes gefunden wurde und der Weg zu einer friedlichen Perspektive nicht weiter blockiert wird.  Das ist jetzt die Verantwortung der mächtigsten Frauen und Männer, der  sie sich durch nichts entziehen können. Syrien braucht keine neuen  Bomben, keine weiteren Toten, sondern eine politisch-humanitäre  Offensive."
+

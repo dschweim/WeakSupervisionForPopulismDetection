@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041179.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 19.09.13
+
+CDU will den Weg für neue AKW freimachen
+----------------------------------------
+
+
+Zu Berichten, wonach der EU-Energiekommissar, Günther Oettinger, sich für den Neubau von AKW in der EU einsetzt, erklärt Jürgen Trittin, Fraktionsvorsitzender:
+Was jetzt über die Pläne von Merkels EU-Kommissar Oettinger bekannt geworden ist, ist ein Skandal erster Güte. Die CDU will in Europa den Weg für neue AKW freimachen und darüber hinaus dafür sorgen, dass künftig wieder die europäischen Steuerzahler das Risiko für den Neubau der ansonsten unrentablen Meiler tragen. Weitere Milliarden-Subventionen für Kohle und Atom, während die Erneuerbaren über hochgetriebene Strompreise diskreditiert werden - das ist schwarz-gelbe Energiepolitik im nuklear-fossilen Ping-Pong zwischen Berlin und Brüssel.  Der BDI fordert gleichzeitig in Berlin unmittelbar vor der Bundestagswahl, dass die Förderung der Erneuerbaren gestoppt wird und der Steuerzahler die Fehlinvestitionen in neue Kohlekraftwerke unterstützt. Damit setzen Oettinger und der BDI den Takt für die Zerstörung der Energiewende im angedrohten 100-Tage-Programm der Kanzlerin. Für fossile und nukleare Energien trägt die Gemeinschaft die Risiken und Schäden, die Profite fließen in die Taschen der Konzerne.
+Wir fordern stattdessen die Energiewende in Bürgerhand und die Hälfte des Stroms erneuerbar bis 2020. Der 22. September wird zum Endspiel um die deutsche Energiewende.
+

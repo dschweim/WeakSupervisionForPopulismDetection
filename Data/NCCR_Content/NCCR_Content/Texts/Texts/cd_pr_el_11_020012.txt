@@ -1,0 +1,16 @@
+Text-ID: cd_pr_el_11_020012.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 13.09.11
+
+Siedlungsentwicklung steuern 
+-----------------------------
+
+NA
+Die CVP-EVP-glp Fraktion hat an ihrer heutigen Sitzung die Revision des Raumplanungsgesetzes beraten. Die Fraktion unterstützt die klaren Vorgaben an die Richtpläne zur besseren Steuerung der Siedlungsentwicklung. 
+Die Grundanliegen der Landschaftsinitiative sind durchaus berechtigt. Mit dem indirekten Gegenvorschlag werden zielführende Massnahmen gegen die Zersiedelung und den Kulturlandverlust eingeführt. Die Fraktion unterstützt den Vorschlag der Kommission, wonach die Kantone bei einer neuen Überweisung des Bodens in eine Bauzone die Wahl zwischen der Einführung einer Mehrwertabgabe oder einer Pflicht zu einem Flächenausgleich haben.
+
+

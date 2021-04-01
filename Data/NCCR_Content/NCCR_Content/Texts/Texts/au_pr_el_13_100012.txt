@@ -1,0 +1,33 @@
+Text-ID: at_pr_el_13_100012.txt
+
+Press Release from Party: NEOS
+
+country      = at
+partylabel   = neos
+partytype    = partei
+date         = 23.09.13
+
+ORF kann nun Mut beweisen: NEOS füllt gern die leeren Sessel!
+-------------------------------------------------------------
+
+Strolz: "Stell dir vor, es ist TV-Diskussion, und keiner geht
+      hin"
+Wien (OTS) - "Es ist eine Sache, sich nicht allen TV-Diskussionen zu
+stellen. Wenn aber die seit Monaten geplante Gesprächsrunde der
+Parlamentsparteien im öffentlich-rechtlichen Fernsehen von fast allen
+Eingeladenen geschwänzt wird, ist Feuer am Dach der Demokratie", so
+NEOS Spitzenkandidat Matthias Strolz.
+"Die ÖVP ist offensichtlich nicht bereit, um den zweiten Platz zu
+kämpfen. Anders ist es nicht zu verstehen, dass sie die Teilnahme bei
+der abschließenden Diskussion der Spitzenkandidat_innen verweigert.
+Stronach wird vor den Wähler_innen versteckt. Das ist doch alles nur
+noch absurd!", so NEOS Spitzenkandidatin und LIF Vorsitzende AngelikaMlinar.
+Strolz wendet sich im Namen von NEOS mit einem freundlichen Appell an
+den ORF: "Geben Sie jenen Parteien, die sich für einen bundesweiten
+Antritt qualifiziert haben, eine Möglichkeit, gesehen und gehört zu
+werden. Verwandeln Sie die Diskussionsverweigerung der Altparteien in
+eine Chance für neue politische Kräfte aus der Mitte der
+Gesellschaft. Als kleines Zeichen für eine lebendige Demokratie und
+als Angebot an die interessierte Öffentlichkeit."
+
+

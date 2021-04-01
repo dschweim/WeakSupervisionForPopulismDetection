@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_060020.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 15.09.13
+
+Schwesig: Schröders Flexi-Quote ist gescheitert!
+------------------------------------------------
+
+NA
+Zum Bericht über den Flop des Frauen-Karriere-Indexes (FKI) erklärt Manuela Schwesig, stellvertretende SPD-Vorsitzende und Mitglied im Kompetenzteam von Peer Steinbrück:
+Die Flexi-Frauenquote von Kristina Schröder ist gescheitert, wie auch die vernichtende Bilanz des Frauen-Karriere-Indexes zeigt. Ganze 32 von drei Millionen Unternehmen in Deutschland haben sich daran beteiligt, das sind gerade einmal 0,001 Prozent. So gering wie diese Zahl, so gering ist auch der Effekt von Schröders Frauenförderung, die auf reiner Freiwilligkeit basiert. Eine gesetzliche Frauenquote von 40 Prozent für Aufsichtsräte und Vorstände ist überfällig, denn immer noch sind gerade einmal 4 Prozent der Vorstände in den 200 größten deutschen Unternehmen Frauen. Auf Flexi-Frauenförderung à la Schröder zu hoffen, ist naiv. Das zeigt der Flop des Frauen-Karriere-Indexes.
+Am 22.09. ist das Abwarten und Aussitzen auch in der Frauenpolitik vorbei. Mit einer rot-grünen Bundesregierung und einem Bundeskanzler Peer Steinbrück wird der Stillstand abgewählt. 
+

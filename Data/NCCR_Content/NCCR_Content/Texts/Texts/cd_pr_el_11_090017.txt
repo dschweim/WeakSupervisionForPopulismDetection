@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090017.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 17.09.11
+
+Das SP-KMU-Netzwerk fordert eine Politik mit mehr gesellschaftlicher Verantwortung      
+----------------------------------------------------------------------------------------
+
+Am jährlichen Treffen des KMU-Netzwerks der SP Schweiz bestand ein breiter Konsens darüber, dass eine verantwortungsbewusste Unternehmenstätigkeit nicht losgelöst von Gesellschaftspolitik möglich ist. Und schon gar nicht losgelöst von den grossen gesellschaftlichen Herausforderungen wie beispielsweise dem ökologischen Umbau der Wirtschaft. Aus dieser Erkenntnis abgeleitet, haben die Teilnehmenden des Jahrestreffens des SP-KMU-Netzwerks eine Resolution zu den Wahlen 2011 verabschiedet. Diese fordert unter anderem mehr Investitionen für den ökologischen Umbau, eine Wirtschaftspolitik, die nicht nur auf der Senkung von Steuern beruht sowie eine grundsätzliche Stärkung der Realwirtschaft. Gerade angesichts der neuesten Enthüllungen um die Milliardenpleite der UBS ist diese Forderung von besonderer Bedeutung. Mit der Resolution fordert das SP-KMU-Netzwerk die Bevölkerung auf, ihre Stimme am 23. Oktober einer nachhaltigen Wirtschaftspolitik zu geben.
+ 
+

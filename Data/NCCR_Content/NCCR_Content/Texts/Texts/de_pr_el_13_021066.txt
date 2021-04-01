@@ -1,0 +1,41 @@
+Text-ID: de_pr_el_13_021066.txt
+
+Press Release from Party: CDU
+
+country      = de
+partylabel   = cdu
+partytype    = fraktion
+date         = 03.09.13
+
+Heil: Klartext statt Finanzkauderwelsch
+---------------------------------------
+
+NA
+Berlin (ots) - Experten der Finanzbranche, der 
+Verbraucherverbände, der Finanzaufsicht und der Bundesregierung haben
+beschlossen, dass Produktinformationsblätter für Wertpapiere 
+verständlicher gestaltet werden sollen. Dazu erklärt die 
+Verbraucherschutzbeauftragte der CDU/CSU-Bundestagsfraktion, 
+Mechthild Heil:
+
+   "Die Einführung der Produktinformationsblätter für Wertpapiere war
+ein guter erster Schritt, doch die Weiterentwicklung ist ebenso 
+wichtig. Eine Arbeitsgruppe unter Beteiligung des 
+Verbraucherministeriums hat die Produktinformationsblätter nun 
+sprachlich überarbeitet und verständlicher gestaltet - nach dem Motto
+'Klartext statt Finanzkauderwelsch'. So können Kunden sich künftig 
+noch leichter über die Eigenschaften eines Finanzprodukts informieren
+und die einzelnen Produkte miteinander vergleichen. Die 
+Produktinformationsblätter für Wertpapiere sollen spätestens ab 1. 
+Dezember 2013 den Empfehlungen entsprechen."
+
+
+
+Pressekontakt:
+CDU/CSU - Bundestagsfraktion
+Pressestelle
+Telefon:  (030) 227-52360
+Fax:      (030) 227-56660
+Internet: http://www.cducsu.de
+Email: pressestelle@cducsu.de
+

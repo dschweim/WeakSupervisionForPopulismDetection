@@ -1,0 +1,61 @@
+Text-ID: at_pr_el_13_111082.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = fraktion
+date         = 28.08.13
+
+Datenmissbrauch-Skandal:  Lugar fordert sofortige Stellungnahme der Apothekerkammer
+-----------------------------------------------------------------------------------
+
+Hinweisen auf Vorfälle im Apotheken-Bereich muss umgehend
+      nachgegangen werden
+Wien (OTS) - Team-Stronach-Klubobmann Ing. Robert Lugar fordert die
+Österreichische Apothekerkammer und die Pharmazeutische Gehaltskasse
+auf, folgende Fragen umgehend zu beantworten: 
+Sehr geehrter Herr Präsident Mag. Max Wellan,
+sehr geehrter Herr Obmann Mag. Gottfried Bahr!
+Die Vorgänge rund um das Unternehmen IMS Health und andere
+Datensammler aus dem Gesundheitsbereich alarmieren die
+österreichische Bevölkerung. Die Menschen haben große Sorge, dass
+Missbrauch mit ihren Daten betrieben wird und diese für
+Geschäftemacherei verwendet werden. In den letzten Tagen standen
+Fälle, wo Ärzte gegen Entgelt Patientendaten bzw.
+Verschreibungsgewohnheiten verkauft haben, im Mittelpunkt. Seit
+Auffliegen des Skandals erreichen uns vermehrt Hinweise aus der
+Bevölkerung, dass auch im Bereich der Apotheken ein problematischer
+Umgang mit Patientendaten an der Tagesordnung stehen dürfte. Es
+liegen uns Aussagen vor, die bestätigen, dass Apotheken
+Verschreibungs- und Rezeptdaten direkt IMS Health zur Verfügung
+stellen. Diese werden über eine Software an IMS Health automatisiert
+geliefert. In diesem Zusammenhang stelle ich Ihnen folgende Fragen:
+1. Ist Ihnen bekannt, dass Apotheken IMS Health oder anderen
+Datensammlern Rezept-, Verschreibungs- und/oder Patientendaten zur
+Verfügung stellen?
+2. Welche Vorkehrungen wurden getroffen, damit IMS Health
+ausschließlich anonymisierte Daten übermittelt werden? Ist es
+technisch möglich, Zugriff auf die Patientendaten aus der an IMS
+Health übermittelten Datei zu bekommen?
+3. Stellt die Pharmazeutische Gehaltskasse Rezept-, Verschreibungs-
+und/oder Patientendaten anderen als den Krankenkassen zur Verfügung,
+welche Daten und warum?
+4. Wie können Apothekerkammer und Pharmazeutische Gehaltskasse
+garantieren, dass die Daten anonymisiert übermittelt werden.
+5. Welchen Sinn hat es für Apothekerkammer und Pharmazeutische
+Gehaltskasse, Daten zu übermitteln, mit denen Geschäftemacherei
+betrieben werden?
+6. Gibt es Zuwendungen bzw. Gegenleistungen von IMS Health und
+anderen Datensammlern an die Apothekerkammer und die Pharmazeutische
+Gehaltskasse?
+7. Ist Ihnen bekannt, dass viele Apotheken günstige oder kostenlose
+Software-Lösungen von pharmazeutischen Großhandelsbetrieben zur
+Verfügung gestellt bekommen, und sind sich die Apotheker darüber im
+Klaren, welche Daten durch diese Software-Lösungen abgesogen werden?
+Ich sehe Ihrer geschätzten Antwort im eigenen und vor allem im
+Interesse der Öffentlichkeit mit Spannung entgegen.
+Ing. Robert Lugar
+Klubobmann des Team Stronach zum Nationalrat
+
+

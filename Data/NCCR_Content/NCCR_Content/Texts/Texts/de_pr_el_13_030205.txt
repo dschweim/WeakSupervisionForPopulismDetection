@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_030205.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 01.08.13
+
+PILTZ:  Einsatz von XKeyscore verfassungsrechtlich nicht vorstellbar
+--------------------------------------------------------------------
+
+NA
+BERLIN. Zu den Medienberichten über die Überwachungsmöglichkeiten des Programms XKeyscore erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+Es ist ganz und gar unvorstellbar, dass ein Einsatz von XKeyscore durch deutsche Behörden mit dem Grundgesetz vereinbar sein könnte, weil es eine Rundumüberwachung ermöglicht und keine Datei oder Kommunikation dem Zugriff dieses Programms vorenthalten zu sein scheint. Das Bundesverfassungsgericht hat erst vor wenigen Jahren das Grundrecht auf Gewährleistung der Vertraulichkeit und Integrität informationstechnischer Systeme (IT-Grundrecht) aus unserer Verfassung abgeleitet. Diese Ausprägung des allgemeinen Persönlichkeitsrechts ist heute wichtiger denn je. Wir müssen auf europäischer Ebene und weltweit für diese Errungenschaften kämpfen und deutlich machen, dass man die Freiheit nicht verteidigen kann, indem man sie einschränkt. Dafür ist die UN-Initiative von Bundesaußenminister Guido Westerwelle und Bundesjustizministerin Sabine Leutheusser-Schnarrenberger für ein internationales Übereinkommen auf UN-Ebene, das ein Zusatzprotokoll in den Art. 17 des UN Paktes für politische und bürgerliche Rechte einfügt, ein wichtiger Schritt.
+587-piltz-xkeyscore.pdf
+

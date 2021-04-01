@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030059.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 06.09.13
+
+PILTZ: Rückenwind für die liberalen Initiativen gegen Datenausspähung
+---------------------------------------------------------------------
+
+NA
+BERLIN. Zur Debatte um die Ausspähung von Daten im Internet durch US-amerikanische und britische Nachrichtendienste erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Die Forderungen der Datenschutzbeauftragten von Bund und Ländern bekräftigen die Haltung der FDP-Fraktion, dass die Aufklärung kraftvoll vorangetrieben werden muss und zudem auf europäischer und internationaler Ebene zügiges Handeln erforderlich ist. Mit den schon erfolgten Vorstößen der Bundesjustizministerin und des Bundesaußenministers für ein Zusatzabkommen zum UN-Pakt über die bürgerlichen Freiheiten wie auch die deutsch-französische Initiative für eine Meldepflicht für Unternehmen, die Daten an Nachrichtendienste weitergeben, sind die ersten, wichtigen Schritte bereits unternommen worden. Dass die Übermittlung von Fluggastdaten wie auch der Zugriff auf europäische Bankdaten durch US-Behörden auf den Prüfstand gehören, hat die FDP-Fraktion stets gefordert. Die Bundesjustizministerin hat sich entsprechend in der EU eingesetzt, wie auch die liberale Fraktion im Europaparlament. Auch die Forderungen des FDP-Fraktionsvorsitzenden Rainer Brüderle und des Bundeswirtschaftsministers Philipp Rösler, die Daten der Bürgerinnen und Bürger wie auch der Unternehmen dadurch besser zu schützen, dass auf einen starken europäischen IT-Standort gesetzt wird, werden durch die Datenschutzbeauftragten bestätigt. Mit eigenen Cloud-Lösungen und Servern in der EU wie auch einer leistungsstarken Hard- und Software-Industrie, die dem EU-Datenschutzrecht unterliegt und von keinem ausländischen Geheimdienst gezwungen werden kann, Hintertüren in Router oder Verschlüsselungstechnologie einzubauen, werden Daten geschützt und Spionage wie auch Überwachung verhindert. Es ist gut, dass die Datenschutzbeauftragen die Initiativen der liberalen Minister aufgreifen und unterstützen.
+Gerade die neuesten Enthüllungen, wonach sich die NSA im Zusammenwirken u.a. mit den britischen Nachrichtendiensten Zugriff auf verschlüsselte Daten verschafft, zeigen, dass es von höchster Bedeutung ist, die Datensicherheit zu verstärken. Unternehmen in Deutschland und der EU, die eigene sichere Verschlüsselung anbieten oder auch eigene Softwarelösungen entwickeln, die dem Zugriff US-amerikanischer Behörden entzogen sind, stärken nicht nur den Datenschutz, sondern auch den IT-Standort Europa.
+

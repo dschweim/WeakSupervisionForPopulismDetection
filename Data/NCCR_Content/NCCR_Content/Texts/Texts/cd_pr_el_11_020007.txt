@@ -1,0 +1,17 @@
+Text-ID: cd_pr_el_11_020007.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 06.09.11
+
+Unabhängigkeit der Schweizerischen Nationalbank respektiert
+-----------------------------------------------------------
+
+NA
+Die CVP respektiert die Unabhängigkeit der Nationalbank und unterstützt ihren heutigen Entscheid. 
+Die Festlegung eines Mindestkurses ist eine effiziente Massnahme, um Spekulanten abzuschrecken. Die Stabilität des Kurses wird die Problematik des starken Frankens für die Schweizer Exportwirtschaft etwas entschärfen. Der Wechselkurs mit 1.20 Franken ist jedoch nach wie vor hochbewertet.
+Die weltweit hohe Glaubwürdigkeit der SNB darf nicht durch politische Angriffe und Parteiengezänk unterminiert werden, sagt Nationalrat Pirmin Bischof. Die CVP ruft deswegen die anderen Parteien dazu auf, die Unabhängigkeit der Schweizerischen Nationalbank zu stützen und die Entscheide der SNB mitzutragen.
+
+

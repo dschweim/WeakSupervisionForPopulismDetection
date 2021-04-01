@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_030081.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 02.09.13
+
+KNOPEK: FDP sieht Vollzugs- statt Gesetzesdefizite in der Anti-Doping-Politik 
+------------------------------------------------------------------------------
+
+NA
+Berlin. Zur Sondersitzung des Sportausschusses über die Doping-Studie der Universitäten Münster und Berlin erklärt der Obmann der FDP-Fraktion im Sportausschuss Lutz KNOPEK:
+
+Es wurde heute bestätigt, was wir seit Jahren anhand der Forschungslage wussten: Es gab Doping-Inseln im westdeutschen Hochleistungssport. Das Schlimme ist: Es handelt sich hier größtenteils um steuerfinanziertes Doping. Für die FDP gilt: Nur ein sauberer Sport ist förderfähig. Die Hintergründe müssen umfassend, lückenlos und ohne Rücksicht auf Personen aufgeklärt werden. Auch deshalb hatte die FDP diese Sondersitzung des Sportausschusses beantragt. Eine Gleichsetzung der Doping-Inseln im Westen mit dem DDR-Staatsdoping verbietet sich jedoch nach den bisherigen Erkenntnissen. 
+Wir brauchen eine Intensivierung der Forschung, insbesondere für die Zeit ab 1990. Ich begrüße die Position des Bundesinnenministers, der sich im Ausschuss gegenüber einer Folgestudie über die unbearbeitete Phase III (1990 bis heute) offen zeigte.
+Von den 18 Punkten, die die Forscher im Kampf gegen Doping vorschlagen, sind viele sinnvoll. Die FDP begrüßt den Einsatz von Schwerpunkt-Staatsanwaltschaften der Länder zur Aufdeckung von Dopingnetzwerken, den Ausbau der Präventionsarbeit und die Einsetzung von Ombudsfrauen und -männern für Dopingfragen innerhalb der Verbände. Für ein Anti-Doping-Gesetz bringen die Forscher keine hinreichenden Argumente. In der Sportausschusssitzung wurde vielmehr klar, dass eher Vollzugs- als ein Gesetzesdefizite vorliegen. Die bestehenden gesetzlichen Möglichkeiten des Arzneimittel- und Strafrechts sowie der Berufsständeordnungen müssen stärker genutzt werden. Zivilrechtliche Sanktionen können besser in den Athleten- und Sponsorenverträgen als durch ein neues Anti-Doping-Gesetz durchgesetzt werden. Einen entsprechenden Antrag der Grünen hat der Ausschuss deshalb mit den Stimmen von Union und FDP abgelehnt. Auch SPD und Linke wollten den Vorschlägen der Grünen nicht folgen. 
+Im Fokus stand heute aber nicht nur das Resultat, sondern auch die wissenschaftliche Qualität der Doping-Studie. Der Wissenschaftliche Beirat des Bundesinstituts für Sportwissenschaft hat den Berliner Forschern ein vernichtendes Urteil von methodischen Mängel bis zur eigenmächtigen Veränderung des Forschungsauftrags ausgestellt. Konstruktive Hinweise auf die Mängel wurden im Laufe der Studie nur begrenzt berücksichtigt. Am schwersten wiegt der Vorwurf, beim Berliner Teil der Untersuchung sei das Ergebnis bereits vorgefasst gewesen. Der Bund muss bei einer aus Steuermitteln finanzierten Studie eine Qualität erwarten können, die den Grundsätzen wissenschaftlichen Arbeitens entspricht.
+

@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_090021.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 15.09.13
+
+Studie belegt Vorwurf der Falschbilanzierung
+--------------------------------------------
+
+NA
+AfD sieht sich in ihrer Haltung bestätigt
+Stuttgart  Vor fünf Jahren waren es verantwortungslose Banker, die Risiken in Milliardenhöhe in den Bankbilanzen verschleiert haben. Hier und heute werden jedoch in der Bilanz der Europäischen Finanzstabilisierungsfazilität (EFSF), deren größter Gesellschafter Deutschland ist, zehnmal größere Risiken falsch bilanziert, so Bernd Kölmel, Vorstandssprecher der AfD in Baden-Württemberg und Ministerialdirigent beim Landesrechnungshof. Die Alternative für Deutschland hatte auf diesen Umstand mittels einer Pressemitteilung am 6. September hingewiesen und war dafür scharf kritisiert worden.
+Die Ansicht der Alternative für Deutschland, dass die EFSF falsch bilanziere, wird durch eine Studie der Europäischen Wertpapier- und Marktaufsichtsbehörde (ESMA) bestätigt. Die 42 wichtigsten Banken und Versicherungen in Europa, die im Zuge der Studie geprüft wurden, hatten gemäß den Bilanzierungsregeln die Kreditansprüche gegen Griechenland bereits im Geschäftsjahr 2011 als nicht mehr voll werthaltig angesehen und deshalb zumindest zum Teil abgeschrieben. Besonders die hohe Übereinstimmung der Institute bei der Bilanzierung der griechischen Staatsanleihen hob die ESMA positiv hervor.
+Umso verwunderlicher ist es, dass die EFSF das Rechtsverständnis der in Europa führenden Banken und Versicherungen nicht teilt und die Ansprüche gegen Griechenland immer noch mit 100 Prozent Wertigkeit in ihren Büchern führt. Zumal sich die Situation in Griechenland im Geschäftsjahr 2012 trotz des Schuldenschnitts gegenüber dem Vorgängerjahr im Bezug auf Arbeitslosigkeit und Steueraufkommen noch verschlechtert hat. Dass die EFSF die Anleihen bis zu ihrer Endfälligkeit halte (held to maturity) und sich daher um eine Wertminderung (impairment) nicht sorgen müsse, wie einige Parlamentarier anführten, sei kein schlagendes Argument. Denn die untersuchten Finanzinstitute hatten ebenfalls Teile ihrer Griechenland-Anleihen in der Kategorie held to maturity eingebucht. In dieser Kategorie war der Abschreibungsbedarf nur geringfügig kleiner.
+Dr. Jan B. Rittaler, Schatzmeister des AfD-Landesverbands Baden-Württemberg, verwies dabei auf die mangelnde Sachkenntnis vieler Bundestagsabgeordneter: Die Falschbilanzierung der EFSF durchschauen viele Bundestagsabgeordnete nicht. Daher ist es wünschenswert, wenn die AfD Abgeordnete in den Bundestag bringt, die auf Grund ihrer guten Vorbildung und beruflichen Erfahrung für eine effektive parlamentarische Kontrolle sorgen können und werden.
+Den ESMA-Report stellen wir auf Anfrage gerne zur Verfügung
+
+

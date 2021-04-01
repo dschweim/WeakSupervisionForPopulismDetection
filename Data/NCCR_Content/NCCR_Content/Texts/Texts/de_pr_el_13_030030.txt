@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_030030.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 12.09.13
+
+PILTZ/BUSCHMANN: Strafbarkeitslücken beim Schutz persönlicher Daten schließen
+-----------------------------------------------------------------------------
+
+NA
+BERLIN. Zu einem kriminellen Angriff auf einen Vodafone-Server, bei dem zwei Millionen Kundenstammdaten einschließlich sensibler Bankdaten entwendet wurden, erklären die stellvertretende Vorsitzende und innenpolitische Sprecherin Gisela PILTZ und der rechtspolitische Sprecher der FDP-Bundestagsfraktion Marco BUSCHMANN:
+
+PILTZ: 
+Der kriminelle Angriff auf Vodafone zeigt, dass Datensicherheit von Unternehmen mit höchster Priorität behandelt werden muss. Datensicherheit ist die Grundlage für Datenschutz. Die zwei Millionen Vodafone-Kunden, deren Bankdaten und andere sensible persönliche Daten jetzt in den Händen Krimineller sind, müssen sich Sorgen um die unbefugte Nutzung ihrer Daten, um Identitätsdiebstahl und Phishing machen. Der Vorfall zeigt, dass die Initiativen der Bundesregierung für mehr Datensicherheit und Schutz vor Angriffen auf IT-Systeme notwendig sind. Datensicherheit auf höchstem Niveau muss in der Wirtschaft zur Selbstverständlichkeit werden. Daher muss auch mit der EU-Datenschutz-Verordnung zügig ein starker Rechtsrahmen für den Schutz personenbezogener Daten in der Informationsgesellschaft geschaffen werden, in dem Datensicherheit großgeschrieben wird. 
+BUSCHMANN:
+Der oder die Täter müssen zur Rechenschaft gezogen werden. Wir benötigen aber auch dringend einen Straftatbestand für Datenhehlerei, um die strafrechtlich zur Rechenschaft ziehen zu können, die die gestohlenen Daten aufkaufen und zu kriminellen Zwecken weiterverbreiten. Wer mit illegal erworbenen Daten ein Geschäft macht, begeht kein Kavaliersdelikt. Denn hinter all diesen Daten steht ein Mensch, dessen persönliche Freiheit durch die illegale Entwendung und den Missbrauch seiner Daten empfindlich eingeschränkt wird.
+682-piltz-buschmann-datenschutz.pdf
+

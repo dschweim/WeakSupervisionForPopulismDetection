@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030061.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 05.09.13
+
+KAUCH: EEG-Reform für Bezahlbarkeit und Netzstabilität 
+-------------------------------------------------------
+
+NA
+BERLIN. Zum Sondergutachten der Monopolkommission sowie zur DIHK-Umfrage zum Ausbau der erneuerbaren Energien erklärt der umweltpolitische Sprecher der FDP-Bundestagsfraktion Michael KAUCH:
+
+Energie muss bezahlbar und sicher bleiben. Die Experten der Monopolkommission und die Umfrage unter 2.400 Betrieben bestätigen die Notwendigkeit, das Erneuerbare-Energien-Gesetz grundlegend zu reformieren. Für die nächste Wahlperiode will die FDP-Bundestagsfraktion alle neuen Anlagen von Öko-Strom verpflichten, ihren Strom direkt zu vermarkten. Statt Mindestpreisen soll es für neue Anlagen nur noch einen festen Zuschlag zu den Markterlösen geben. Die FDP unterstützt langfristig ein europäisches Mengenmodell für Öko-Strom.
+Wenn die Förderung auf Direktvermarktung plus Marktzuschlag umgestellt wird, müssen sich Anlagenbetreiber zunächst einmal einen Kunden suchen. 
+Strom, den keiner braucht, macht keinen Sinn. Außerdem gibt dieses Fördermodell einen Anreiz, dann zu produzieren, wenn der Strom knapp ist. Und mit dem Marktzuschlag wird die EEG-Umlage planbarer und unabhängiger von den Schwankungen des Börsenpreises.
+

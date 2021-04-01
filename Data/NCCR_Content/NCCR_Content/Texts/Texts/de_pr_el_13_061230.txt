@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_061230.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 27.08.13
+
+Lobbypolitik in Reinkultur
+--------------------------
+
+
+Zu den Plänen der FDP, die private Krankenversicherung für alle zu öffnen, erklärt der gesundheitspolitische Sprecher der SPD-Bundestagsfraktion Karl Lauterbach:
+Bahrs Vorschlag ist ein Wahlgeschenk an die private Krankenversicherung zu Lasten der Bürgerinnen und Bürger. Die private Krankenversicherung ist schon jetzt für Versicherte mit höheren Einkommen oft nicht mehr bezahlbar. Für Geringverdiener und mittlere Einkommen wäre sie ein großes Armutsrisiko und oft wäre die Prämie im Alter höher als die gesamte Rente. Einkommensschwache würden der Risikoselektion und der Vorkasse ausgesetzt. Könnten sie nicht mehr zahlen, müsste der Steuerzahler einspringen. Was die Menschen statt dessen brauchen, ist die solidarische Bürgerversicherung, die für alle bezahlbar ist.
+

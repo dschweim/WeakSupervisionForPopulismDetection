@@ -1,0 +1,35 @@
+Text-ID: at_pr_el_13_041092.txt
+
+Press Release from Party: Grüne
+
+country      = at
+partylabel   = grüne
+partytype    = fraktion
+date         = 29.08.13
+
+Brunner: Solarstrom wird dann produziert, wenn Strom am teuersten ist
+---------------------------------------------------------------------
+
+Grüne wollen eine Million Solardächer bis 2020
+Wien (OTS) - "Solarstrom wird immer dann produziert, wenn der
+Stromverbrauch am höchsten ist, nämlich zur Mittagszeit. Dadurch
+sinkt der Großhandelspreis für Strom tagsüber drastisch", sagt die
+Grüne Umweltsprecherin Christiane Brunner. 
+Sie widerspricht damit Walter Boltz, dem Chef der Regulierungsbehörde
+E-Control. Boltz hatte in einem Interview mit der Tiroler
+Tageszeitung gesagt, dass Solarstrom nur "die Netze belasten" würde.
+"Herr Boltz spricht im Interesse der großen Konzerne, die große
+fossile Kraftwerken betreiben. Sie fürchten die Konkurrenz von immer
+mehr kleinen Solaranlagen. Wer sich umweltfreundlich verhält und in
+eine Solaranlage investiert, soll dafür am Ende nicht auch noch Geld
+bezahlen müssen", meint Brunner.
+In ihrem Wahlprogramm sprechen sich die Grünen für das "1 Million
+Solardächer-Programm" aus. Bis 2020 sollen drei Mal so viele Gebäude
+wie bisher mit Solaranlagen zur Stromerzeugung oder solaren
+Heizungsanlagen ausgerüstet werden. Die Kosten für
+Photovoltaikanlagen sind in den letzten fünf Jahren um 80 Prozent
+gesunken. Bei einem weiteren Kostenrückrang geht Brunner davon aus,
+"dass der Eigenverbrauch bald günstiger sein wird, als den Strom aus
+der Steckdose zu kaufen".
+
+

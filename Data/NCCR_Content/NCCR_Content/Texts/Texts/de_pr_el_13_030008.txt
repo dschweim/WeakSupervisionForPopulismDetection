@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030008.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 18.09.13
+
+VOGEL: Tarifliche Lohnuntergrenzen funktionieren  Erfolgsmodell beibehalten und fortsetzen
+-------------------------------------------------------------------------------------------
+
+NA
+BERLIN. Zur aktuellen Berichterstattung über neue tarifliche Mindestlöhne in der Zeitarbeitsbranche, im Steinmetz- und Steinbildhauerhandwerk, für Gebäudereiniger sowie im Baugewerbe erklärt der arbeitsmarktpolitische Sprecher der FDP-Bundestagsfraktion Johannes VOGEL:
+
+Die jüngsten Abschlüsse der Tarifpartner in der Zeitarbeit sowie die heutigen Kabinettsbeschlüsse zeigen: Unser Modell für Lohnuntergrenzen funktioniert. Es differenziert nach Branchen, ist dezentral angelegt und steht im Einklang mit der bewährten deutschen Tarifautonomie. Die Höhe von Lohnuntergrenzen sollte auch in Zukunft von den Tarifpartnern beschlossen werden - und nicht von Parteitagsfunktionären oder einer Zentralkommission, wie es vor allem SPD, Grüne und Linkspartei wollen. Geschadet hat das dem Arbeitsmarkt nämlich nicht. Das zeigt auch: Die Tarifpartner finden im Gegensatz zur Politik ökonomisch sinnvolle und gleichzeitig faire Löhne. Wohin stattdessen ein flächendeckender politischer Einheitsmindestlohn führt, müssen wir am Beispiel Frankreich feststellen. Die Jugendarbeitslosigkeit ist dort mit knapp 23 Prozent dreimal so hoch wie in Deutschland. Der Einheitsmindestlohn würde auch dem deutschen Arbeitsmarkt schaden und es insbesondere Arbeitslosen, gering Qualifizierten und Berufseinsteigern schwer machen. 
+Wir wollen auf Instrumenten aufbauen, die schon längst im Bundesgesetzblatt stehen. Sie sind in der vergangenen Legislaturperiode bereits in immer mehr Branchen  etwa dem Bau, der Pflege oder der Gebäudereinigung  erfolgreich zur Anwendung gekommen. So hat die schwarz-gelbe Bundesregierung für weit über zwei Millionen Beschäftigte Tarifverträge und ihre Lohnuntergrenzen neu für allgemeinverbindlich erklärt. Das wollen wir auf alle Branchen ausdehnen und so Lohnuntergrenzen überall dort, wo nötig, ermöglichen.
+

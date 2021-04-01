@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030211.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 31.07.13
+
+VOGEL: Einstieg und Aufstieg ermöglichen statt Perspektiven verbauen
+--------------------------------------------------------------------
+
+NA
+BERLIN. Zu den aktuellen Arbeitslosenzahlen erklärt der arbeitsmarktpolitische Sprecher der FDP-Bundestagsfraktion Johannes VOGEL:
+Die Arbeitslosenquote ist in diesem Monat entsprechend der Jahreszeit leicht gestiegen, die Arbeitslosenzahl bleibt aber weiter stabil unter der Marke von drei Millionen. Dass im Juli entgegen den Erwartungen saisonbereinigt sogar 7.000 Menschen weniger arbeitslos sind, verdeutlicht den guten Zustand unseres Arbeitsmarkts. Auch die Zahl der Bezieher von Arbeitslosengeld II in der Grundsicherung geht im Vorjahresvergleich weiter zurück. Der Blick auf den wieder steigenden BA-Stellenindex stimmt ebenfalls optimistisch. Danach dürften die Betriebe im Laufe des Jahres zusätzliche Arbeitskräfte nachfragen.
+Jetzt heißt es: Keine Risiken eingehen. Die Pläne der Opposition sind hochgefährlich. Rot-Grün will die Agenda 2010 rückabwickeln, wieder hohe Mauern um den Arbeitsmarkt ziehen und würde mit den Steuererhöhungsplänen die mittelständischen Unternehmen an ihrer Substanz treffen. Die Konsequenzen einer solchen Politik müssen wir in Frankreich feststellen. Dort ist die Arbeitslosenquote im Vergleich zu Deutschland mittlerweile mehr als doppelt so hoch. Die schwarz-gelbe Koalition hat auf dem Arbeitsmarkt stattdessen Missbrauch abgestellt, Einstiegschancen bewahrt und die Förderung von Qualifikation und Weiterbildung ausgeweitet. Diesen Weg wollen wir als FDP-Bundestagsfraktion weiter gehen. Wenn wir dabei die guten wirtschaftlichen Rahmenbedingungen erhalten und Herausforderungen wie den Fachkräftemangel meistern, können wir noch mehr Menschen Einstiegs- und Aufstiegschancen geben. 
+583-vogel-aktuelle_arbeitslosenzahlen.pdf
+

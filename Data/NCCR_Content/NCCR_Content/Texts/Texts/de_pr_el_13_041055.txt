@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_041055.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 08.08.13
+
+Sich eintrübende Lage auf dem Ausbildungsmarkt ist Quittung für Wankas Siesta
+-----------------------------------------------------------------------------
+
+
+Zu den aktuellen Ausbildungszahlen erklärt Kai Gehring, Sprecher für Bildungspolitik:   Anstatt die duale Berufsausbildung unabhängiger von Konjunktur und Demografie zu machen, hat sich Bildungsministerin Wanka in den vordergründig guten Zahlen des letzten Jahres gesonnt. Die Quittung ihrer Siesta bekommt sie jetzt: Die Lage auf dem Ausbildungsmarkt trübt sich wieder ein, das ist schlecht für Jugendliche und Wirtschaft. Deutlich mehr Bewerber als Ausbildungsplätze sowie wachsende regionale und branchenspezifische Ungleichgewichte müssen die Bundesregierung in Alarmstimmung versetzen und Wanka endlich zum Handeln bewegen. Sie muss endlich auf Länder, Sozialpartner und Kammern zugehen, um das duale System krisenfester und attraktiver zu machen.   Seit Jahren sieht die Bundesregierung tatenlos zu, wie Fachkräftepotenzial ungenutzt bleibt: Noch immer landen zu viele Jugendliche nach der Schule in einer Übergangsmaßnahme statt in einer Berufsausbildung. Jugendliche brauchen keine Warteschleifen, sondern eine Übersicht über vielfältige Qualifizierungswege und unmittelbare Übergänge in gute Ausbildung. Das gelingt durch eine systematische und flächendeckende Berufsorientierung in Schulen schon ab der 7. Jahrgangsstufe. Auch müssen die Attraktivität und Qualität der beruflichen Bildung steigen, damit die Vertragslösungs- und Abbruchquoten sinken.   Anstatt einseitig auf fehlende Ausbildungsreife zu verweisen, sollen Ausbildungsbetriebe auch benachteiligten Jugendlichen Chancen eröffnen und in ihre Qualifizierung investieren. Das wird zu ihrem Vorteil sein, denn soziale und kulturelle Vielfalt in Betrieben bringt mehr Gerechtigkeit und Kreativität, was sich für Wirtschaft und Gesellschaft insgesamt auszahlt. Was wir uns dagegen nicht länger leisten können, sind verschärfter Fachkräftemangel und die rund 2,2 Millionen Menschen zwischen 20 und 35 Jahren, die keinen Ausbildungs- oder Schulabschluss haben.
+

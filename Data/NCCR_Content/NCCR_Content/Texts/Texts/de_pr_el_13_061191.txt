@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_061191.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 10.09.13
+
+SPD will Marktwächter gegen Lebensmittellügen
+---------------------------------------------
+
+
+Anlässlich der Vorstellung des Ratgebers Lebensmittellügen der Verbraucherzentralen erklärt die verbraucherpolitische Sprecherin der SPD-Fraktion Elvira Drobinski-Weiß:
+Wenn es um Lebensmittel geht, klaffen Erwartung und Realität oft weit auseinander. Wo ungerechtfertigt Frische oder Regionalität von Lebensmitteln suggeriert und Inhaltsstoffe wie Zucker oder Geschmacksverstärker verschleiert werden, da muss gehandelt werden. Die Überprüfung des geltenden Rechts darf dabei kein Tabu sein. Denn dass Zedernöl als natürliches Aroma für Himbeerjoghurt bezeichnet werden darf, ändert nichts daran, dass Verbraucher eigentlich Himbeeren als Zutat erwarten.
+Wir wollen den Marktwächter für Lebensmittel einführen. Er soll helfen, das verlorene Vertrauen der Verbraucher in die Lebensmittel wiederzugewinnen. Denn laut einer Umfrage des Verbraucherzentrale-Bundesverbands vzbv sehen sich 62 Prozent durch Missstände getäuscht oder sogar geschädigt. Das liegt nicht allein an Skandalen wie Gammelfleisch, Ehec, Dioxin oder Pferdefleisch  sondern auch an Lebensmitteln, die nicht halten, was sie versprechen.Auch im Interesse der Lebensmittelwirtschaft muss das Vertrauen der Verbraucher zurückgewonnen werden.
+Der Marktwächter soll genau beobachten, wo der Markt den Menschen Probleme macht: Wenn auf Produkten nicht drauf steht, was drin ist oder umgekehrt und wenn die Produktinformation nicht verständlich ist.
+Er soll Fehlentwicklungen ausmachen und Lösungsvorschläge entwickeln: Wo müssen sich Produktbezeichnungen und -beschreibungen stärker an den Erwartungen der Verbraucherinnen und Verbraucher ausrichten? Und wo müssen Verbraucher besser aufgeklärt werden?
+Schwarz-Gelb hat nichts unternommen, um mehr Transparenz, Sicherheit und Vertrauen im Lebensmittelbereich zu schaffen. Im Gegenteil: Die Nährwertampel wurde verhindert  zugunsten des verschleiernden Kennzeichnungsmodells der Industrie. Die Information der Verbraucher wurde durch unklare Rechtsbestimmungen so erschwert, dass sich niemand mehr traut, Missstände in Restaurants zu veröffentlichen. Eine bundesweite Rahmenregelung für ein Hygienebarometer fehlt bis heute  ebenso eine klare, eindeutige Herkunftskennzeichnung. Und die Fortführung des Internetportals lebensmittelklarheit.de stand auf Druck der Lebensmittelindustrie lange in Frage.
+

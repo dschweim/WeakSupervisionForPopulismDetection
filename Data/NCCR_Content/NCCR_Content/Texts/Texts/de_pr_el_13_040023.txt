@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040023.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 06.08.13
+
+Hiroshima mahnt: Keine Atomtechnologie exportieren
+--------------------------------------------------
+
+Zum 68. Jahrestag des Atombombenabwurfs über Hiroshima erklären Katrin Göring-Eckardt und Jürgen Trittin, Spitzenkandidaten von BÜNDNIS 90/DIE GRÜNEN:
+"Am 6. August 1945 zerstörte die erste Atombombe die japanische Stadt Hiroshima. Drei Tage später traf die zweite Atombombe Nagasaki. Hunderttausende starben einen grausamen Tod, Zehntausende leiden noch nach Jahrzehnten an den Folgeschäden der atomaren Verseuchung. Hiroshima und Nagasaki sind Symbole der apokalyptischen Vernichtungskraft von Atomwaffen.
+Wir gedenken der Opfer und ihrer Angehörigen. Der 6. August ist ein Tag, der in besonderer Weise zur nuklearen Abrüstung auffordert. Nichts rechtfertigt den Einsatz von Atomwaffen. Die Atomwaffenstaaten, insbesondere die USA und Russland, sind in der Pflicht, ihr Waffenarsenal weiter deutlich und unumkehrbar zu reduzieren. Eine internationale Nuklearwaffenkonvention zur Ächtung von Atomwaffen muss das Ziel einer konsequenten Abrüstungspolitik sein. US-Präsident Obama hat sich in seiner Rede in Berlin am 19. Juni zum Ziel einer atomwaffenfreien Welt bekannt.
+Hierzu zählt auch, dass die in Deutschland stationierten taktischen US-Atomwaffen vollständig abgezogen und unschädlich gemacht werden. Außenminister Westerwelle hat großen Ankündigungen diesbezüglich keine Taten folgen lassen. Stattdessen fördert Deutschland die Verbreitung der Nukleartechnologie an Schwellenländer - durch Hermes-Bürgschaften für Atomkraftwerke und das Deutsch-Brasilianische Atomabkommen. Hiroshima mahnt: Wer eine atomwaffenfreie Welt will, darf keine Atomtechnologie exportieren."
+

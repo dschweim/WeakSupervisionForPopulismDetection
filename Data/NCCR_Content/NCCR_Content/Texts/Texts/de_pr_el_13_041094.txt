@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_041094.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 30.08.13
+
+Mit Schwarz-Gelb ist eine Mietpreisbremse nicht zu machen
+---------------------------------------------------------
+
+
+Zu den Forderungen des Deutschen Städtetages, ein Mietpreisbremse einzuführen, erklärt Daniela Wagner, Sprecherin für Bauen und Wohnen: Wir unterstützen die Forderungen des Deutschen Städtetages. Mit einer schwarz-gelben Bundesregierung ist eine Mietpreisbremse nicht umsetzbar. In der vergangenen Sitzungswoche des Bundestags haben CDU/CSU und FDP geschlossen gegen die Mietpreisbremse aus dem CDU-Wahlprogramm gestimmt. Wir brauchen fundierte mietrechtliche Erleichterungen. Doch diese wurden durch Schwarz-Gelb bei der vergangenen Mietrechtsnovelle systematisch verhindert. Auch beim Wohngeld bleibt es nur bei Lippenbekenntnissen. Ramsauer kündigt Erhöhungen immer mal wieder an, tatsächlich ist im schwarz-gelben Haushaltsentwurf für 2014 davon nichts zu sehen.  Wir setzen uns konsequent für mietrechtliche Erleichterungen und eine bezahlbare Umsetzung der Energiewende im Gebäudebereich ein. Letzteres erreichen wir auch mit einem verlässlichen und zielgruppengerechten Investitionspaket.
+

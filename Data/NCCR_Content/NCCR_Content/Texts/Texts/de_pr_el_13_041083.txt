@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041083.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 22.08.13
+
+Hauptschüler ausbilden, anstatt links liegen lassen
+---------------------------------------------------
+
+
+Zu den heute erschienenen Empfehlungen der Vodafone Stiftung Deutschland, das Potenzial von Jugendlichen mit Hauptschulabschluss nicht zu vernachlässigen, erklärt Kai Gehring, Sprecher für Bildungspolitik:
+Das Paradox aus sich verschärfendem Fachkräftemangel bei gleichzeitig 2,2 Millionen jungen Menschen ohne Ausbildungs- oder Schulabschluss muss endlich aufgelöst werden. Den Verlust an persönlichen Teilhabechancen und Fachkräftepotenzial können wir uns nicht länger erlauben. Politik, Betriebe und Sozialpartner müssen gemeinsam Wege aufzeigen, diese potenziellen Talente endlich zu heben.
+Anstatt Hauptschülerinnen und Hauptschülern den Stempel nicht ausbildungsreif aufzudrücken, sollten die Betriebe ihnen die Chance auf eine Berufsausbildung bieten. Von Chancen für alle profitieren Wirtschaft und Gesellschaft gleichermaßen. Soziale und kulturelle Vielfalt in Betrieben bringt mehr Gerechtigkeit und Kreativität.
+Selbst den Fachkräftenachwuchs sicherzustellen, muss im ureigenen Interesse der Betriebe liegen. Dass nur noch jeder fünfte Betrieb ausbildet, ist ein Alarmzeichen, das auch die Bundesregierung endlich hören sollte. Das duale System muss endlich mit einer Strukturreform gestärkt werden. Wir wollen insbesondere kleine Betriebe für die Ausbildung begeistern, indem Kooperationsmöglichkeiten mit Berufsschulen und überbetrieblichen Lernorten etabliert werden. Um Jugendliche schon in der Schule fit für eine Ausbildung zu machen, brauchen wir eine flächendeckende Berufsorientierung ab der 7. Klasse. Darüber hinaus wollen wir Produktionsschulen und -klassen, in denen Fragestellungen und Lerninhalte unmittelbar aus der Praxis abgeleitet werden.
+

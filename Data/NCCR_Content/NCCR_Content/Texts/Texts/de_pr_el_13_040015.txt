@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040015.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 21.08.13
+
+Computerspiele endlich ernst nehmen
+-----------------------------------
+
+Zur Eröffnung der diesjährigen gamescom in Köln erklärt Malte Spitz, Mitglied im Bundesvorstand von BÜNDNIS 90/DIE GRÜNEN:
+Spielekultur ist in Deutschland weit verbreitet und Computerspiele ein allgemein anerkanntes Kulturgut. Wirtschaftlich baut sich hier eine etablierte Branche auf, politisch herrscht aber seit Jahren Stillstand in Deutschland. Die schwarz-gelbe Bundesregierung betreibt reine Feigenblattpolitik, wie den Deutschen Computerspielepreis. Und selbst dieser macht nur durch versuchte politische Einflussnahme von sich reden. 
+Im Bereich der Spielekultur gibt es politisch noch einiges zu tun: Wirtschaftspolitisch, da viele Start Ups und kleine und mittelständische Unternehmen entstehen die unterstützt werden müssen. Verbraucherpolitisch, weil Spielerinnen und Spieler oftmals nicht alle ihre Rechte wahrnehmen können, sei es beim Weiterverkauf von Spielen oder beim Schutz persönlicher Daten. Medienpolitisch, weil Computerspiele stärker in die Medienförderung integriert und die Medienkompetenz weiter ausgebaut werden muss. Bildungspolitisch, weil Computerspiele mit dem Ziel der Lernkompetenzförderung immer häufiger Teil des Unterrichts sein können. Auch die Ausbildungsmöglichkeiten in diesem Sektor müssen im staatlichen System mehr Verankerung finden, man darf sie nicht auf private Bildungsleiter ausgliedern.
+Wir Grüne treten für einen gesamtpolitischen Blick auf das Thema Computerspiele ein, denn Gaming ist keinesfalls ein Randphänomen: Computer-, Browser-, Handy- und Konsolenspiele sind in allen Altersgruppen gesellschaftlich verankert.
+

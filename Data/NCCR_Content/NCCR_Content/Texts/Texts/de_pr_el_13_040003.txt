@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_040003.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 18.09.13
+
+100-Tage-Programm: Merkel will Energiewende abbrechen und Schulden aufbauen
+---------------------------------------------------------------------------
+
+Zum 100-Tage-Programm von Angela Merkel erklärt Jürgen Trittin,
+Spitzenkandidat von BÜNDNIS 90/DIE GRÜNEN:
+"Angela Merkel kündigt an, innerhalb von 100 Tagen über die kalte Progression 24 Milliarden neue Merkel-Schulden für die nächste Legislaturperiode zu produzieren. Merkel macht Steuersenkungen für Besserverdienende auf Pump, während wir 90 Prozent der Steuerzahler entlasten und das mit maßvollen Steuererhöhungen für hohe Einkommen gegenfinanzieren.Merkel will jedes Jahr ein Loch von sechs bis acht Milliarden Euro in die Rentenkasse reißen, das schon bald mit weiteren Merkel-Schulden gestopft werden muss. Dieses Geld muss später über das Kaputtsparen der Kommunen und des Bildungssystems wieder reingeholt werden.Merkel kündigt an, innerhalb von 100 Tagen die Energiewende abzubrechen und die deutschen Klimaschutzziele aufzuheben. Darum und um nichts anders geht es am Sonntag. Diese Politik ist abwählbar. 93 Prozent der Deutschen unterstützen den weiteren Ausbau der Ökoenergie. Für sie heißt es Zweitstimme grün."
+

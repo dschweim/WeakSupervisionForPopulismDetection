@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041127.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 09.09.13
+
+Grüne fordern echten Tierschutz
+-------------------------------
+
+
+Zur Tierwohl-Initiative von Handel, Branchenverbänden und Fleischindustrie, die morgen auf dem Veredelungstag des Deutschen Bauernverbandes in Senden vorgestellt werden wird, erklärt Friedrich Ostendorff, Sprecher für Agrarpolitik:
+Handel, Fleischindustrie und Landwirtschaft haben erkannt, dass beim Tierwohl in der Nutztierhaltung vieles im Argen liegt und wollen etwas dagegen tun. Das ist grundsätzlich lobenswert. Eine Branchenvereinbarung kann aber keinesfalls staatliche Regeln oder eine Marktdifferenzierung durch eine Tierschutzkennzeichnung ersetzen. Zudem darf die Vereinbarung nicht nur als Feigenblatt dienen. Die Verbesserungen im Stall müssen deutlich ausfallen. Als Mindestkriterien müssen erheblich mehr Platz, eine Strukturierung der Funktionsbereiche des Stalls und etwa bei Ferkeln das Beenden des Abschneiden der Ringelschwänze, sowie am besten auch Auslauf für die Tiere gelten. Für Verbraucherinnen und Verbraucher muss am Produkt klar erkennbar sein, wofür sie ihr Geld ausgeben, das ist bislang nicht vorgesehen.
+Die für alle Betriebe geltenden Standards sind nach dem bislang bekannt gewordenen Konzept der Tierwohl-Initiative so niedrig, dass sie fast den Nichtanforderungen der QS-Betriebe entsprechen. Das kann nicht Ziel einer großangelegten Branchenvereinbarung sein. Hier muss nachgebessert werden. Das geht nur unter Mitarbeit der Tierschutzverbände.
+Wir setzen uns ein für eine grundsätzliche Verbesserung der Tierschutzstandards sowie eine verpflichtende Kennzeichnung der Haltungsform auf den Produkten.
+

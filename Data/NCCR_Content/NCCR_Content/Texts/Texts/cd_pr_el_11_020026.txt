@@ -1,0 +1,20 @@
+Text-ID: cd_pr_el_11_020026.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 04.10.11
+
+Für eine moderne Städtepolitik
+------------------------------
+
+NA
+Drei von vier Einwohnern leben heute in der Schweiz in Stadtregionen und der Trend zur Verstädterung setzt sich fort. Die CVP ist zu einem wichtigen Akteur in den Verwaltungen der 152 Städte geworden. Ausserdem hält die CVP heute mehr als 17,3 Prozent der Sitze in den Exekutiven. Anlässlich einer Pressekonferenz haben Nationalrätin Viola Amherd, Stadtpräsidentin von Brig-Glis und Nationalrat Dominique de Buman, alt-Ammann der Stadt Freiburg, den Massnahmenplan der CVP Schweiz für eine zukunftsorientierte Städtepolitik vorgestellt. 
+Städte bilden das Herz der verschiedenen Regionen unseres Landes. Ausserdem sind sie das wirtschaftliche und kulturelle Zugpferd der Schweiz. Sie bergen ein grosses Innovations- und Entwicklungspotential, insbesondere im Bereich der Infrastruktur (Transport, Energie usw.), der Raumplanung (unter anderem Wohnungswesen) und der Kulturförderung. So haben sie seit jeher zum Erfolg der Schweiz beigetragen, sagt Nationalrat Dominique de Buman. Städte müssen sich aber gleichzeitig stets auf neue Herausforderungen einstellen, betont Nationalrätin Viola Amherd: Dazu gehören die zunehmende Mobilität, Erwartungen der verschiedenen kulturellen und religiösen Gemeinschaften, der Wohnraummangel und demographischer Wandel. Für Teile der Bevölkerung entstehen auch Probleme aufgrund der sozialen Durchmischung und der Anonymität der Gesellschaft. Die Menschen fühlen sich unsicher, isoliert und ausgegrenzt. Armut und Gewalt entsteht.
+Gewalttätige Ereignisse in mehreren Schweizer Städten haben das latente Gefühl von Unsicherheit noch verstärkt. Die CVP duldet keine rechtsfreien Räume und keine Gewalt. Eine konsequente Strafverfolgung, die Anwendung des geltenden Strafgesetzes und die Erhöhung des Polizeipersonalbestandes sind zentral. Die CVP setzt auf präventive und repressive Massnahmen, um die Sicherheit in der Schweiz zu bewahren  denn: Sich in seiner Stadt wohl fühlen, heisst sich sicher fühlen. 
+In ihrem heute veröffentlichen Positionspapier präsentiert die CVP Schweiz konstruktive und realistische Lösungen, die besonders auf den städtischen Kontext zugeschnitten sind. Dies in folgenden Bereichen: Raumentwicklung und Stadtplanung, Umwelt und Energie, Verkehr und Mobilität, Wirtschaft und Finanzen, Kulturpolitik, Gesellschaftspolitik, und Sicherheit.
+Positionspapier "Schweizer Städtepolitik - In der Stadt geboren werden, aufwachsen, leben, sich entfalten und alt werden"
+Positionspapier "Schweizer Städtepolitik - Die Sicherheit im Alltag in den schweizerischen Städten"
+
+

@@ -1,0 +1,40 @@
+Text-ID: at_pr_el_13_041067.txt
+
+Press Release from Party: Grüne
+
+country      = at
+partylabel   = grüne
+partytype    = fraktion
+date         = 04.09.13
+
+Kogler zu Hypo: Regierung maximiert wegen Budgetlüge den Hypo-Schaden
+---------------------------------------------------------------------
+
+Grüne bereit für Verhandlungen zu Schadensminimierung bei Hypo
+Wien (OTS) - "Jeder Tag der Verschleppung, der Budgetlüge und der
+einhergehenden Tatenlosigkeit der Bundesregierung kostet die
+Steuerzahler weiteres Geld", stellt Werner Kogler, stv.
+Bundessprecher und Finanzsprecher der Grünen, angesichts der
+Entscheidung der EU-Kommission zum Hypo-Plan fest. "Die Vorgänge rund
+um die in dieser Form unnotwendige und völlig falsch organisierte
+"Notverstaatlichung" und die anschließenden Versäumnisse und
+Vertuschungen der ursprünglich blauen Skandalbank ist ein leuchtendes
+Beispiel für die ÖVP-Wirtschaftskompetenz."
+"Die ÖVP-Finanzminister haben es verabsäumt, eine
+schadensminimierende Restrukturierung der Bank zuzulassen. Längst
+schon hätte über eine intelligente Abwicklungskonstruktion der
+vorläufige Eigenkapitalbedarf um gut eine Milliarde Euro verringert
+werden können. Die Grünen haben sich dazu immer für konstruktive
+Verhandlungen, etwa zu allfälligen notwendigen Gesetzesänderungen für
+solche sinnvollen Abwicklungskonstruktionen, angeboten.
+Finanzministerin Fekter und mit ihr im Schlepptau
+unverständlicherweise Kanzler Faymann und Vizekanzler Spindelegger
+haben das wegen vorübergehend optischer Budgettricks verweigert -
+denn rein buchhalterisch würde dadurch die Schuldenquote steigen.
+Dieses Schminken der Kellerleichen kostet uns aber weitere hunderte
+Millionen Euro. Die Lage ist zu ernst für wahltaktische Tricks. Wir
+verlangen daher sofortige offene Verhandlungen für
+schadensminimierende Lösungen, nachdem Rot-Schwarz ohnehin bereits
+dabei ist, eine  Mehrheit zu verspielen."
+
+

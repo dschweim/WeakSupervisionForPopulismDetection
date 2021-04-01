@@ -1,0 +1,28 @@
+Text-ID: at_pr_el_13_020304.txt
+
+Press Release from Party: ÖVP
+
+country      = at
+partylabel   = övp
+partytype    = all
+date         = 02.09.13
+
+Marek: Bildungsministerin soll Vereinbartes akzeptieren
+-------------------------------------------------------
+
+ÖVP-Bildungssprecherin erinnert Claudia Schmied an gemeinsame
+      Beschlüsse
+Wien (OTS/ÖVP-PK) - Auch wenn Bildungsministerin Claudia Schmied es
+offenbar nicht wahrhaben will: Wir haben in dieser Legislaturperiode
+gemeinsam die Neue Mittelschule - bei gleichzeitiger Beibehaltung der
+Gymnasien - beschlossen. Gemeinsam haben wir in dieser Koalition das
+differenzierte Schulsystem, das in der Verfassung abgesichert ist,
+bestätigt. Die Realität ist anzuerkennen, sagte
+ÖVP-Bildungssprecherin Abg. Christine Marek heute, Montag.
+"Darüber hinaus haben wir auch den massiven Ausbau der ganztägigen
+Schulformen beschlossen. Diesen Weg werden wir weitergehen", betonte
+Marek in einer Reaktion auf die Aussagen der Ministerin im
+Burgenland.
+(Schluss)
+
+

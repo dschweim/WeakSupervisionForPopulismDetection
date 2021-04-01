@@ -1,0 +1,39 @@
+Text-ID: at_pr_el_13_041044.txt
+
+Press Release from Party: Grüne
+
+country      = at
+partylabel   = grüne
+partytype    = fraktion
+date         = 12.09.13
+
+Grüne fordern österreichisches Gesetz zur Netzneutralität
+---------------------------------------------------------
+
+Schreuder: Nach Scheitern auf EU-Ebene Slowenien und
+      Niederlande als Vorbild nehmen
+Wien (OTS) - EU-Kommissarin Neelie Kroes erlaubt mit der neuen
+Verordnung über den Telekommunikationsmarkt, dass Provider bestimmten
+Diensten eine bevorzugte Behandlung geben, und somit andere Dienste
+diskriminieren dürfen. "Kroes hat mit dieser Verordnung leider die
+Netzneutralität ausgehebelt", sagt Bundesrat Marco Schreuder,
+netzpolitischer Sprecher der Grünen, zum EU-Vorstoß. "Damit erlaubt
+die EU-Kommission das, was eigentlich abgeschafft gehört. Mit dieser
+Verordnung wird die Ungleichbehandlung von Datenpaketen im Internet
+einzementiert."
+Dass Dienste gleichwertig im Internet behandelt werden und
+Netzanbieter diese nicht ungleich behandeln dürfen, ist unbedingt
+notwendig. Schreuder: "Denn dadurch können etwa Mobilfunkbetreiber
+Musikstreaming-Dienste eines Anbieters schneller transportieren als
+die eines anderen. Das hemmt Innovation, gibt KonsumentInnen keine
+Freiheit und widerspricht den Grundregeln der Netzneutralität, die
+seit Jahren von vielen Seiten gefordert wird."
+Schreuder fordert daher ein österreichisches Gesetz zur
+Netzneutralität: "In unserem Wahlprogramm steht, dass eine
+gesamteuropäische Lösung anzustreben ist. Diese ist leider gerade
+fulminant gescheitert. Daher brauchen wir ab sofort eine
+österreichische Lösung. Slowenien und die Niederlande haben bereits
+ein Gesetz zur Netzneutralität. Das wollen wir auch in Österreich",
+meint Schreuder abschließend.
+
+

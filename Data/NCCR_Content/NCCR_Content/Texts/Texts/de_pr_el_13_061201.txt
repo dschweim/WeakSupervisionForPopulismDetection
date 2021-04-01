@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061201.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 06.09.13
+
+Schwarz-Gelb schaut der Spaltung des Ausbildungsmarktes tatenlos zu
+-------------------------------------------------------------------
+
+
+Zur Vorstellung des DGB Ausbildungsreports 2013 erklären die stellvertretende arbeits- und sozialpolitische Sprecherin Katja Mast und der zuständige Berichterstatter für berufliche Bildung der SPD-Bundestagsfraktion Willi Brase:
+Die Lage auf dem Ausbildungsmarkt ist alles andere als rosig. Die permanente Schönfärberei der schwarz-gelben Bundesregierung ist ein Hohn für all die Jugendlichen und jungen Erwachsenen, die noch immer keinen Ausbildungsplatz gefunden haben oder in den Warteschleifen des viel zu teuren und ineffektiven Übergangsbereichs ausharren. 266.000 Jugendliche waren es allein 2012, 76.000 Jugendliche blieben unversorgt und noch immer haben 1,5 Millionen junge Erwachsene zwischen 25 und 35 Jahren gar keinen Berufsabschluss. Eine dramatische Situation, vor der die Bundesregierung die Augen verschließt.
+Der aktuelle DGB Ausbildungsreport ist ein weiteres Alarmsignal. Unser Ausbildungsmarkt ist tief gespalten. Die Chancen zwischen den Bewerberinnen und Bewerbern sind ungleich verteilt, der Wunschberuf rückt für viele Absolventen ohne Traumnote in immer weitere Ferne.
+Aussitzen reicht uns nicht, wir Sozialdemokraten wollen anpacken. Mit einer Ausbildungsplatzgarantie wollen wir dafür sorgen, dass kein Jugendlicher ohne Ausbildung bleibt. Wir wollen das wieder mehr Betriebe ausbilden und ein Sofortprogramm 2. Chance auf Berufsausbildung auflegen, mit dem junge Erwachsene ohne Berufsabschluss eine zweite oder dritte Chance auf Ausbildung bekommen.
+

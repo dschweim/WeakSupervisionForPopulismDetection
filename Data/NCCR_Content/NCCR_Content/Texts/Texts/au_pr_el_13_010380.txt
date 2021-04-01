@@ -1,0 +1,35 @@
+Text-ID: at_pr_el_13_010380.txt
+
+Press Release from Party: SPÖ
+
+country      = at
+partylabel   = spö
+partytype    = all
+date         = 22.08.13
+
+Oberhauser zu Patientendaten: Bestehende Datenschutzregeln konsequent exekutieren
+---------------------------------------------------------------------------------
+
+Durch ELGA wird Datenverwendung strenger geregelt
+Wien (OTS/SK) - SPÖ-Gesundheitssprecherin Sabine Oberhauser hat heute
+klargestellt, dass die Weitergabe von personenbezogenen
+Gesundheitsdaten bereits jetzt ein strafrechtlicher Tatbestand ist
+und im Strafgesetz, im Datenschutzrecht und auch in sämtlichen
+Berufsgesetzen aller Gesundheitsberufe geregelt ist. Es ist nun die
+Justiz und die Ärztekammer im Disziplinarbereich gefordert, Verstöße
+dagegen entschieden zu verfolgen. Das Gesundheitsministerium ist seit
+Bekanntwerden des möglichen Datenmissbrauchs mit den entscheidenden
+Gruppen wie Ärztekammer, Apothekerkammer, Hauptverband und
+Datenschutzkommission in Kontakt, um für eine lückenlose Aufklärung
+zu sorgen. ****
+In Sachen ELGA, die SPÖ und ÖVP gemeinsam beschlossen haben, wies
+Oberhauser darauf hin, dass damit die Datenverwendung wesentlich
+strenger geregelt werde als derzeit. Jeder Zugriff auf die Daten wird
+automatisch protokolliert und kann nachvollzogen werden - auch vom
+betroffenen Patienten. Gesetzeswidriger Datenmissbrauch sei so leicht
+aufzudecken, was ihn schon im Vorfeld verhindere, so Oberhauser, die
+abschließend die ÖVP kritisierte, "die billiges Wahlkampfkleingeld
+wechselt und Patientenverunsicherung dabei in Kauf nimmt". (Schluss)
+ah/up
+
+

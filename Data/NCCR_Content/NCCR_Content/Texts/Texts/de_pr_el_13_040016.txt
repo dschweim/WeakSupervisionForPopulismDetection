@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_040016.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 20.08.13
+
+Ab heute ökologisch im Minus
+----------------------------
+
+Zum Earth Overshoot Day erklärt Katrin Göring-Eckardt, Spitzenkandidatin von BÜNDNIS 90/DIE GRÜNEN:
+Seit heute geht es weltweit beim Ressourcenverbrauch ins Minus. Für den  Rest des Jahres machen wir Schulden bei der Erde und unseren Nachkommen.  Der Earth Overshoot Day markiert jedes Jahr den Tag, an dem wir so viele  natürliche Ressourcen verbraucht haben, wie die Erde in einem Jahr regenerieren kann. 1987 fiel der Earth Overshoot Day noch auf  den 19. Dezember, 2011 schon in den September und jetzt ist es der 20.  August. Vor allem die Industrieländer gehen verschwenderisch mit ihren  natürlichen Ressourcen um. Europäer bräuchten drei Erden, um ihren  Bedarf zu decken, Amerikaner sogar fünf. Wir leben immer mehr über  unsere Verhältnisse und gefährden damit unsere eigenen Lebensgrundlagen und insbesondere auch die unserer Nachkommen. Schon jetzt treffen die  Folgen des Klimawandels besonders die bereits in großer Armut und Hunger  lebenden Menschen in vielen Regionen dieser Welt, die in immer größerem  Ausmaß von Dürre und Naturkatastrophen heimgesucht werden. Die westlichen Industrieländer haben eine besondere Verantwortung, als  Vorreiter darauf hinzuwirken, dass Wachstum endlich von  Ressourcenverbrauch und Umweltverschmutzung entkoppelt wird. Unser  bisheriges Wirtschaftsmodell mit seinem enormen Energie- und Rohstoffhunger hat ausgedient. Genau daran wollen Bundeskanzlerin Merkel  und ihr Wirtschaftsminister Rösler aber auf Biegen und Brechen  festhalten. Sie setzen auf Wachstum à la 60er Jahre, verhindern  Klimaschutz, fördern Kohlestrom und wollen Fracking in Deutschland möglich machen. Wir brauchen aber schleunigst einen grünen Wandel, der klar die  Menschen, die Umwelt und das Klima in den Mittelpunkt stellt.  Regenerative Energien, regenerative Materialien, Recycling, eine bessere  Reparaturfähigkeit von Produkten und nachhaltige Ressourcennutzung sind  die  Grundlagen der ökologischen Transformation. Gerade Deutschland  könnte hier mit seinem technologischen Potential als weltweiter  Vorreiter vorangehen und hierzulande zukunftsfeste Jobs schaffen. Das verantwortungslose Weiter So von Schwarz-Gelb muss am 22.  September ein Ende haben." 
+

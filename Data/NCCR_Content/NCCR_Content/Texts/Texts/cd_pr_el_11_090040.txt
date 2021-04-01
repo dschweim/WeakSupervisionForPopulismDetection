@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090040.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 20.10.11
+
+Über 100000 wollen eine öffentliche Krankenkasse
+-------------------------------------------------
+
+Die Initiative für eine öffentliche Krankenkasse wird definitiv zustande kommen. Nach knapp der Hälfte der ordentlichen Sammelfrist sind bereits 100000 Unterschriften beisammen. Dies ist ein bedeutender Meilenstein und belegt eindrücklich die Notwendigkeit eines Systemwechsels: Der Scheinwettbewerb unter den Krankenkassen und die jährlichen Prämienschocks können ein für alle Mal beendet werden, wenn endlich eine einzige öffentliche Krankenkasse mit kantonalen Agenturen das Grundversicherungsgeschäft übernimmt. In den nächsten Wochen wird der Trägerverein noch eine Sicherheitsmarge sammeln und die Unterschriften beglaubigen lassen. Bereits diesen Winter wird dann die Initiative bei der Bundeskanzlei eingereicht.
+Die Volksinitiative will die Schaffung einer öffentlichen Krankenkasse. Diese nationale Einrichtung verfügt über kantonale oder interkantonale Agenturen, welche die Prämien festlegen und einziehen. Ausserdem richten sie die Zahlungen für die Leistungen aus. Für jeden Kanton wird eine einheitliche Prämie festgelegt, die aufgrund der Kosten der sozialen Krankenversicherung berechnet werden.
+

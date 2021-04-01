@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041027.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 06.08.13
+
+Derivate-Manipulation der Banken das Handwerk legen
+---------------------------------------------------
+
+
+Zu dem Verdacht, mehrere internationale Großbanken hätten den Derivate-Referenzwert ISDAfix manipuliert, erklärt Dr. Gerhard Schick, Sprecher für Finanzpolitik:
+ Nachdem 2012 die Manipulation des Zins-Referenzwerts Libor bekannt wurde, stehen die internationalen Großbanken schon wieder mit einem Bein in einem handfesten Skandal. Man sollte nichts beschönigen: Wenn Referenzwerte manipuliert werden, um sich dumm und dämlich zu verdienen, steckt dahinter kriminelle Energie. Dem müssen wir durchgreifende Regulierung entgegensetzen.
+Möglich ist die Manipulation, weil nur wenige Banken das Derivategeschäft unter sich aufgeteilt haben. So entfallen auf die weltweit zehn größten Banken allein zwei Drittel der Derivategeschäfte. Noch beunruhigender sind Konzentrationstendenzen im Bereich der Kreditausfallversicherungen: Die sechs höchstplatzierten Organisationen vereinigen unglaubliche 99,6 Prozent der gesamten ausstehenden Beträge auf sich  der Anteil der Investmentbank JP Morgan Chase allein beträgt um die 50 Prozent. Der Preis in der Händlerszene wird also nur von einigen ganz wenigen Leuten bewegt. So können Absprachen nicht ausgeschlossen werden, es ist für die Banken und beteiligte Clearinghäuser einfach zu verlockend. Es ist vorstellbar, dass ein Großteil der Preisbewegungen bei Kreditausfallversicherungen darauf zurückzuführen ist, dass Händler den Preis ändern, ohne dass irgendjemand Kreditausfallversicherungen gekauft hat. Das ist das Gegenteil von Marktwirtschaft.
+Wenn jemand am Derivatemarkt durch Manipulation verdient, dann gibt es auch jemanden, der durch Manipulation verliert. Das sind zunächst die vielen Unternehmen und kleineren Händler, die sich für ihr Geschäft beispielsweise gegen ein Zinsänderungsrisiko absichern wollen. Es waren aber auch Kämmerer deutscher Kommunen, die sich von Falschberatern der Investmentbanken desaströse Zinswetten haben aufschwatzen lassen, die viele finanzschwache Kommunen an den finanziellen Abgrund manövriert haben.
+Sollte sich der Verdacht bestätigen, ist die Bankenaufsicht jetzt gefordert, diesem Treiben das Handwerk zu legen. In Deutschland ist die BaFin in der Pflicht, jetzt systematisch die verschiedenen Bereiche zu prüfen, in denen es Manipulationsmöglichkeiten gibt. Auch Sammel-Schadensersatzklagen sollten den Banken ein Zeichen setzen, das weh tut. Anders als die Bundesregierung sind wir der Meinung, dass die Finanzmarktreformen noch längst nicht vollendet sind. Das Spielbrett der Investmentbanker ist noch voller Jetons.
+

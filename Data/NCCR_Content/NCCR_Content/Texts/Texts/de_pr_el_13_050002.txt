@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_050002.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 11.09.13
+
+Erinnerung und Mahnung
+----------------------
+
+Anlässlich des heutigen 40. Jahrestages des Militärputsches gegen die demokratisch gewählte Regierung der Unidad Popular in Chile erklären die Vorsitzenden der Partei DIE LINKE, Katja Kipping und Bernd Riexinger:
+Im Jahr 1969 gewann die Unidad Popular die Wahlen in Chile. Große Hoffnungen waren mit der Regierung Allende verbunden, die entschlossen gesellschaftliche Veränderungen anging. Chile begab sich mit der Unterstützung der Bevölkerungsmehrheit auf einen sozialen und demokratischen Reformpfad. Der von vielen erwirtschaftete Reichtum des Landes wurde gerechter verteilt. Aus den Gewinnen der Kupferminen wurde Milch kostenlos an Chiles Kinder ausgegeben.
+Von Anfang an stand der neue Weg in Chile unter gewaltigem Druck. Diejenigen, die vorher die Reichtümer des Landes allein besaßen, waren nicht bereit, der Teilung ohne Widerstand zuzustimmen. Aus einer demokratischen Auseinandersetzung um die Zukunft des Landes wurde innerhalb weniger Jahre eine explosive Mischung, an deren Ende die Armee unter Führung von General Pinochet, mit der Billigung der Reichen und der Unterstützung der US-Geheimdienste, beschloss, das Land "in Blut zu baden", wie Pinochet offen zugab.
+Die Regierung Allende wurde in einem Putsch gestürzt und Präsident Salvador Allende eines der ersten Opfer des Putsches. Ihm folgten Zehntausende, die eingesperrt, gefoltert und getötet wurden. Chile wurde zum ersten Land, das auf nationaler Ebene einer neoliberalen Schocktherapie ausgesetzt wurde. Sozialabbau, Lohnraub, Privatisierung und Deregulierung brachten in atemberaubendem Tempo Millionen um ihre Jobs, ihre soziale Sicherheit und ihre Zukunftschancen.
+Heute, 40 Jahre nach dem Sturm der Putschisten auf die Moneda, feiert der Neoliberalismus weltweit seinen Triumph. Regierungen unterwerfen sich freiwillig der Logik der Märkte und opfern die Zukunftschancen ihrer Bürgerinnen und Bürger. Aber heute sehen wir auch die ersten grünen Zweige eines neuen globalen Aufbruchs für mehr Gerechtigkeit, mehr soziale Sicherheit und für einen nachhaltigeren Umgang mit den natürlichen Ressourcen. Heute ist Südamerika der Kontinent, auf dem viele Länder den Versuch unternehmen, auf demokratischem Weg die Macht der Banken und Konzerne zurückzudrängen, die Reichtümer gerecht zu verteilen und die Umwelt zu schonen. Der 40. Jahrestag des chilenischen Putsches ist für uns Anlass zur Mahnung und Erinnerung.
+Wir gedenken heute der Opfer, wir verneigen uns vor denen, die vor 40 Jahren für einen neuen sozialen Aufbruch litten und starben. Und wir stellen uns in eine Reihe mit ihren Kämpfen. Die ersten Reformen der Unidad Popular - Mindestlohn, Mietenstopp, gesundes Essen für alle Kinder - sind so aktuell wie vor 40 Jahren. Heute ist ein neuer Aufbruch nötiger denn je. Wir streiten dafür.
+

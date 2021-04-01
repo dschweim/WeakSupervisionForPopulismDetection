@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_090004.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 30.07.13
+
+Umgang der USA mit Edward Snowden skandalös
+-------------------------------------------
+
+NA
+Faires Verfahren und Verzicht auf Folter sind Menschenrechte  kein Entgegenkommen des Staates
+Konrad Adam, Sprecher der Alternative für Deutschland, zum Schreiben des amerikanischen  Justizministers: Bisher haben sich die Deutschen mit ihrem Widerspruch gegen die amerikanische Lust am Ausspähen und Abfischen von Daten hervorgetan. Jetzt sind es die Amerikaner selbst, die durch ihr unsensibles Verhalten im Falle Snowden bei ihren europäischen Bündnispartnern für Unruhe und Enttäuschung sorgen. Die Zusage des amerikanischen Justizministers Eric Holder, der in Moskau festsitzende Snowden habe bei seiner Rückkehr in die USA weder Folter noch Todesstrafe zu befürchten, er werde einen fairen Prozess vor einem ordentlichen Gericht erhalten, ist zutiefst beunruhigend. Denn sie bekräftigt ja nur, was sich in einem Rechtssaat wie den USA von selbst verstehen sollte: dass jedermann Anspruch auf rechtliches Gehör und ein gesetzmäßiges Verfahren hat. Und dass die Folter gegen Menschrecht verstößt.
+

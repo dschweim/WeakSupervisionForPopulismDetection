@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_050008.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 21.08.13
+
+Willkommenskultur statt bundespolitischem Krawalltourismus
+----------------------------------------------------------
+
+Zur Forderung des Vorsitzenden des Innenausschusses des Bundestages, Wolfgang Bosbach (CDU), nach einem Krisentreffen von Bund, Ländern und kommunalen Spitzenverbänden, erklärt Katina Schubert, Mitglied des Geschäftsführenden Parteivorstandes der LINKEN:
+Wir brauchen kein Krisentreffen, wir brauchen eine andere Asyl- und Flüchtlingspolitik. Es ist die CDU-geführte Bundesregierung, die noch immer am zutiefst diskriminierenden Asylbewerberleistungsgesetz festhält, die über das Asylverfahrensgesetz die Unterbringung von Flüchtlingen in Sammelunterkünften für die ersten drei Monate zwingend vorschreibt. Sie lässt die Kommunen so ausbluten, dass diese immer mehr Schwierigkeiten haben, menschenwürdige Unterbringungen bereitzustellen.Die geflüchteten Menschen suchen hier Schutz und Aufnahme. Es ist Aufgabe der Bundesregierung, der Landesregierungen und der kommunalen VerantwortungsträgerInnen genauso wie der Zivilgesellschaft, ihnen diesen Schutz zu garantieren. Stattdessen werden immer wieder gerade von der Union neue Diskussionen um vermeintlichen Asylmissbrauch vom Zaun gebrochen. Das sind Debatten, die Rechtspopulisten und Neofaschisten begierig aufgreifen und zu popularisieren versuchen, wie es gerade in Berlin-Hellersdorf und an anderen Orten der Republik geschieht.Es ist die demokratische Zivilgesellschaft, die das nicht zulässt, die Widerstand gegen den rechtsextremen Mob und gegen die Bedrohung der Flüchtlinge organisiert und die Flüchtlinge hier Willkommen heißt. Die gilt es jetzt zu stärken. Deshalb fordern wir, dass das Gerede von Krisentreffen sofort aufhört. Die Bundesrepublik muss sich zu ihrer internationalen Verantwortung für den Flüchtlingsschutz bekennen und endlich die gesetzlichen und finanziellen Voraussetzungen für dezentrale Unterbringungen schaffen.
+

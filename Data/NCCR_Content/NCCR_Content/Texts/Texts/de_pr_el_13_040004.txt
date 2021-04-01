@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_040004.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 14.09.13
+
+FDP startet Generalattacke auf Energiewende
+-------------------------------------------
+
+Zu Plänen der FDP, die eine Kehrtwende bei der Energiepolitik vorsehen, und dem heutigen Grünen Aktionstag Energiewende erklärt Jürgen Trittin, Spitzenkandidat von BÜNDNIS 90/DIE GRÜNEN:
+"Die FDP startet eine Generalattacke auf die Energiewende. Nachdem es für Photovoltaik bereits einen Deckel gibt, soll jetzt die Windkraft abgewürgt werden. In Sachsen, Bayern und nun auch in Hessen will Schwarz-Gelb mit einer neuen Abstandsregel Windkraft im Land verbieten. Mit dem Wirtschaftsminister soll der Bock zum alleinigen Gärtner der Energiewende gemacht werden. So wird die Energiewende eingehen.Es wird immer klarer, was Angela Merkel und Philipp Rössler nach der Wahl planen: das Abwürgen des Erneuerbaren-Booms. Die großen Energiekonzerne sollen weiter Rendite mit der Kohle machen. Dafür wird die Akzeptanz der Energiewende untergraben. Schwarz-Gelb treibt die Strompreise durch ungerechtfertigte Ausnahmen für immer mehr Betriebe in die Höhe. Die Rechnung bezahlen die Privatkunden.Wir Grüne wollen rund vier Milliarden Euro dieser Ausnahmen streichen. Damit entlasten wir eine Durchschnittsfamilie bei den Stromkosten um rund 50 Euro im Jahr. Wir Grüne wollen die Energiewende retten und 100 Prozent sichere, saubere und bezahlbare Energie.Am 22. September geht es um das Schicksal der Energiewende. Eine konsequente Energiewende zu sicherem, sauberem und bezahlbarem Strom gibt es nur mit starken Grünen - und ohne Schwarz-Gelb."
+

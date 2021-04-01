@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_030186.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 07.08.13
+
+DÖRING: Armutszeugnis für die SPD
+---------------------------------
+
+NA
+Der stellvertretende FDP-Sprecher NILS DROSTE teilt mit:
+Berlin. Zum "Memorandum of Agreement" zwischen BND und NSA erklärt der FDP-Generalsekretär und stellvertretende Vorsitzende der FDP-Bundestagsfraktion PATRICK DÖRING:
+"Dieses Dokument von 2002 ist bis heute Grundlage für die Zusammenarbeit der Geheimdienste. Es geht auf die Entscheidung des damaligen Chefs des Bundeskanzleramtes Frank-Walter Steinmeier zurück. Das lässt nur zwei Schlüsse zu: Entweder die SPD hat davon gewusst und die Bürgerinnen und Bürger gezielt an der Nase herumgeführt. Oder Steinmeier hat Steinbrück ins offene Messer laufen lassen. Beides wäre ein Armutszeugnis für die SPD."
+

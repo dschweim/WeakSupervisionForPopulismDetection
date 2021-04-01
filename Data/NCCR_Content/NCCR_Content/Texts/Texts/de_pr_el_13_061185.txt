@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_061185.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 11.09.13
+
+Gestalten statt Verwalten
+-------------------------
+
+
+Zur Wahl von Thomas Bach zum Präsidenten des Internationalen Olympischen Komitees (IOC) erklärt der sportpolitische Sprecher der SPD-Bundestagsfraktion Martin Gerster:
+Wir gratulieren Thomas Bach zur Wahl. IOC-Präsident zu sein bedeutet nicht nur Herz und Türen zu öffnen, sondern auch tatsächliche Verantwortung für den internationalen Sport zu übernehmen. Es gibt große Herausforderungen und wir wünschen Thomas Bach viel Kraft und einen langen Atem. Die internationale Glaubwürdigkeit und Wettbewerbsfähigkeit des Sports verlangen transparente Prozesse, einen effektiven Kampf gegen Doping und nachhaltige Konzepte für Sportgroßveranstaltungen. Daran muss sich der neue IOC-Präsident messen lassen.
+Toleranz, Vielfalt und Ethik im Sport sind international und auch in Deutschland wichtige Themen. Reformen sind dringend notwendig. Die SPD-Bundestagsfraktion liefert gerne durchdachte Vorschläge, um die Rahmenbedingungen des Sports nachhaltig zu verbessern.
+

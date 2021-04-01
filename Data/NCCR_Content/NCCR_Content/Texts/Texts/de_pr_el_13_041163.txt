@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041163.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 17.09.13
+
+Mindestlöhne: Soziale Leitplanken sind alternativlos
+----------------------------------------------------
+
+
+Zu der Behauptung von Arbeitsministerin von der Leyen, die Tarifparteien bräuchten keine Vorgaben der Politik in Form eines Gesetzlichen Mindestlohns oder Equal Pay in der Leiharbeit erklärt Beate Müller-Gemmeke, Sprecherin für Arbeitnehmerrechte:
+Den Hinweis, dass die Tarifpartner keine Vorgaben der Politik brauchen, hätte sich Frau von der Leyen sparen können. Noch immer arbeiten zwölf Prozent der Beschäftigten in tarifgebundenen Betrieben zu einem Niedriglohn. In nicht-tarifgebundenen Betrieben waren es laut der Hans-Böckler-Stiftung 2010 sogar 31 Prozent.
+Es gibt keine Alternative zum Mindestlohn und zu Equal Pay in der Leiharbeit, wenn wir die Menschen vor Armut und vor allem vor Altersarmut schützen wollen. Auch wenn sich die Arbeitsmarktlage in den vergangenen Jahren verbessert hat, sind dennoch soziale Leitplanken auf dem Arbeitsmarkt notwendig.
+Selbst die Gewerkschaften fordern seit langem einen Mindestlohn und gleichen Lohn für gleiche Arbeit in der Leiharbeit. Sie sind sich dessen bewusst, dass die Lohnfindung in manchen Branchen nicht zufriedenstellend funktioniert und die Tarifflucht immer mehr zunimmt. Von einer Bundesarbeitsministerin kann man erwarten, dass auch ihr diese Tatsache bewusst ist und sie Handlungsdruck verspürt.
+Die Beschäftigten im Niedriglohnsektor haben das Recht auf eine anständige Bezahlung und soziale Sicherheit.
+

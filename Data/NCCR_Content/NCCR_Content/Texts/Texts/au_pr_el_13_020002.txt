@@ -1,0 +1,41 @@
+Text-ID: at_pr_el_13_020002.txt
+
+Press Release from Party: ÖVP
+
+country      = at
+partylabel   = övp
+partytype    = all
+date         = 27.09.13
+
+Steindl: ÖVP steht für sorgsames Wirtschaften und stabile  Finanzpolitik
+------------------------------------------------------------------------
+
+Fekter hat bewiesen, dass Defizit gesenkt werden kann, ohne 
+      Steuern zu erhöhen  Kommenden Generationen keinen
+      Schuldenrucksack 
+      aufbürden  ÖVP ist Garant für ein starkes Österreich
+    Wien, 27. September 2013 (ÖVP-PD) "Die eiserne Disziplin und 
+der Sparkurs haben sich ausgezahlt. Finanzministerin Maria Fekter 
+hat bewiesen, dass man mit Budgetdisziplin, Strukturreformen und 
+Offensivmaßnahmen das Defizit senken und Österreich stabiler machen 
+kann", so der Vorsitzende des parlamentarischen 
+Wirtschaftsausschusses, Konrad Steindl, zum heute von der 
+Ratingagentur Fitch bestätigten Triple A für Österreich. "Die ÖVP 
+steht für sorgsames Wirtschaften. Die stabilitätsorientierte 
+Budget- und Finanzpolitik unserer Finanzministerin bescheren 
+unserem Land einen stabilen Ausblick. Damit ist klar: Österreich 
+steht weiterhin besser da, als die Nachbar- und viele EU-Länder." 
+Nun müssen Wahlgeschenke vermieden werden, ebenso wie 
+Steuererhöhungen oder Sparpakete, die das Wachstum bremsen, 
+Arbeitsplätze kosten und Österreich zurückwerfen würden, so 
+Steindl. "Zur Sanierung des Budgets braucht es keine neuen Steuern. 
+Mit einer Schuldenbremse kann das Defizit nachhaltig gesenkt 
+werden. Den Steuerzahlern muss nicht noch tiefer in die Taschen 
+gegriffen werden." Vielmehr muss der eingeschlagene 
+Konsolidierungskurs fortgesetzt werden, um "kommenden Generationen 
+keinen noch schwereren Schuldenrucksack aufzubürden. Der Reformpfad 
+muss fortgesetzt, das Nulldefizit 2016 weiter verfolgt werden. Die 
+ÖVP ist der Garant für diesen erfolgreichen Weg und ein starkes 
+Österreich." ****
+
+

@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_030076.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 03.09.13
+
+BREIL: 100-Tage-Programm der Grünen führt zur Deindustrialisierung
+------------------------------------------------------------------
+
+NA
+
+BERLIN. Zum 100-Tage-Programm von Bündnis 90/Die Grünen erklärt der energiepolitische Sprecher der FDP-Bundestagsfraktion Klaus BREIL: 
+
+Das Vorhaben wäre der erste Schritt zur massiven Deindustrialisierung Deutschlands. Damit ignorieren die Grünen offensichtlich völlig das Kostengefälle im globalen Wettbewerb. Das erste Glied in der Wertschöpfungskette der Industrie würde vertrieben und die folgenden Glieder würden allzu leicht danach zur Disposition gestellt. Durch diese Maßnahmen riskieren die Grünen einen massiven Wirtschaftseinbruch und auch viele Arbeitsplätze mit allen sozialen Folgen. 
+Ausnahmen von der EEG-Umlagebelastung für  energieintensive Unternehmen, die im globalen Wettbewerb stehen, sind zum Ausbau und zur Stabilisierung unserer Standorte notwendig. Damit sichern wir Arbeitsplätze, garantieren Wachstum und schützen den Industriestandort Deutschland. 
+Für uns ist das wichtigste Ziel die Kosten der Energie zu begrenzen, deswegen fordern wir eine grundsätzliche Reform des EEG.
+

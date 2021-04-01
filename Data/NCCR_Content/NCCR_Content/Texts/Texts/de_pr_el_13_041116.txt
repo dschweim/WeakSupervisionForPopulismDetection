@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041116.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 03.09.13
+
+Fukushima zeigt: Atom ist teuer und gefährlich
+----------------------------------------------
+
+
+Zum massiven Anstieg der Strahlenbelastung in der Atomruine Fukushima erklärt Jürgen Trittin, Fraktionsvorsitzender:
+Die Atomtechnologie ist nicht beherrschbar und birgt große Risiken. Daher war es richtig, vor zwei Jahren die acht unsichersten Reaktoren sofort stillzulegen und die anderen bis spätestens 2022 vom Netz zu nehmen. Wir mussten aber schon einmal erleben, wie der Atomausstieg in Deutschland rückgängig gemacht wurde. Angesichts der Sabotage der Energiewende durch Schwarz-Gelb ist diese Gefahr nicht gebannt.
+Fukushima zeigt deutlich, dass die Kosten der Atomtechnologie schon immer künstlich klein gerechnet wurden. Im Falle eines Unfalls muss der Staat die Kosten tragen. Aber auch sonst wurde die Atomenergie von 1970 bis heute mit mehr als 213 Milliarden Euro subventioniert. Der Strompreis aus einem Atomkraftwerk müsste also eigentlich bei 16,4 Cent pro Kilowattstunde liegen. Das entlarvt erneut die Mär von den teuren, übersubventionierten Erneuerbaren Energien.
+Für eine solche Katastrophentechnologie dürfen auch keine Steuergelder bereit gestellt werden, wie es die Merkel-Koalition tut, um den Neubau von Atomkraftwerken in Brasilien oder anderswo zu abzusichern.
+Der Austritt von radioaktivem Wasser aus einem Tank sowie der Strahlenhotspot an der Atomruine Fukushima zeigt, dass Tepco völlig überfordert ist und zu wenig für die Sicherheit der Bevölkerung unternimmt. Es ist unverantwortlich, dass Tepco immer noch kein Sanierungskonzept vorlegen kann und offensichtlich noch nicht einmal die Überwachung des Werksgeländes auf Radioaktivität im Griff hat. Dass nun wieder einmal der Staat eingreifen soll, zeigt nur die unheilige Verquickung von Staat und Atomindustrie, die wir auch aus Deutschland kennen.
+

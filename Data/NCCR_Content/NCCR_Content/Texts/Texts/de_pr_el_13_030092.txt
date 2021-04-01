@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030092.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 29.08.13
+
+VOGEL: Vier gute Jahre für den deutschen Arbeitsmarkt: Reguläre Beschäftigung gewachsen, atypische geschrumpft
+--------------------------------------------------------------------------------------------------------------
+
+NA
+BERLIN. Zu den aktuellen Arbeitslosenzahlen erklärt der arbeitsmarktpolitische Sprecher der FDP-Bundestagsfraktion Johannes VOGEL:
+Anders als bis noch vor wenigen Jahren üblich, ist die Zahl der Arbeitslosen in diesem August nur leicht angestiegen, die Arbeitslosenquote bleibt konstant auf 6,8 Prozent. Das ist eine gute Nachricht. Die nächsten Monate lassen zudem auf eine anhaltend positive Entwicklung schließen: Viele Schulabgänger werden im Herbst eine Ausbildung oder ein Studium beginnen. Und Auszubildende, die gerade ihre Berufsausbildung abgeschlossen haben, werden bald eine Stelle finden, denn viele Unternehmen sind auf der Suche nach qualifizierten Arbeitskräften. 
+Insgesamt hat sich der Arbeitsmarkt in den vergangenen vier Jahren sehr gut entwickelt und robust gezeigt. Darauf weisen auch die gestern vom Statistischen Bundesamt veröffentlichten Zahlen eindeutig hin: Es gibt immer mehr reguläre Arbeitsplätze, während atypische Beschäftigung zurückgeht. Allein im vergangenen Jahr sind über eine halbe Million zusätzliche reguläre Jobs entstanden. Schon die Behauptung der Opposition, atypische Beschäftigung sei einfach so mit prekärer Beschäftigung gleichzusetzen, hat mit der Realität nichts zu tun. Die Zahlen zeigen, dass zudem nicht einmal die seitens der Opposition immer wieder unterstellte Verdrängung regulärer Beschäftigung stattfindet. Die Äußerungen von SPD und Grünen entpuppen sich damit als Märchen. Diese weiter zu verbreiten ist nicht nur unseriös, sondern auch unredlich. 
+In der nächsten Legislaturperiode will die FDP-Bundestagsfraktion an die Arbeitsmarktpolitik der vergangenen Jahre anknüpfen und sich den Herausforderungen der Zukunft vor dem Hintergrund des Fachkräftemangels stellen. Zum einen müssen wir die Langzeitarbeitslosigkeit weiter entschieden bekämpfen und die Qualifizierung und Vermittlung Arbeitsloser weiter verbessern. Dazu werden wir unsere Weiterbildungsoffensive fortsetzen und uns für individuelle Anstrengungen zur Bildung in jedem Alter einsetzen. Auch die Kompetenz und Erfahrung von Senioren sollten durch die Möglichkeit flexiblerer Rentenübergänge besser genutzt werden. Zudem gilt es, die Maßnahmen zur Vereinbarkeit von Familie und Beruf fortzusetzen und Hürden zur Erwerbstätigkeit von Frauen weiter abzubauen. Nicht zuletzt geht es um mehr qualifizierte Einwanderung durch ein modernes Einwanderungsrecht mit einem echten Punktesystem und durch eine wirkliche Willkommenskultur.
+647-vogel-arbeitsmarkt.pdf
+

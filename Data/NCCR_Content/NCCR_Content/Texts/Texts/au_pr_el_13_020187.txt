@@ -1,0 +1,23 @@
+Text-ID: at_pr_el_13_020187.txt
+
+Press Release from Party: ÖVP
+
+country      = at
+partylabel   = övp
+partytype    = all
+date         = 12.09.13
+
+Rauch: Künstliche Aufregung um Gigaliner lenkt von SPÖ-Skandal auch  nicht ab
+-----------------------------------------------------------------------------
+
+ÖVP will keine Gigaliner auf Österreichs Straßen
+    Wien, 12. September 2013 (ÖVP-PD) "Für die ÖVP ist klar: Wir 
+wollen keine Gigaliner auf Österreichs Straßen", so ÖVP-
+Generalsekretär Hannes Rauch. "Auch die heutige, künstliche 
+Aufregung der SPÖ wird nicht vom SPÖ-Parteifinanzierungsskandal 
+ablenken können." Rauch abschließend: "Frau Bures wäre besser 
+beraten, sich um die Vignettenfrage in Kufstein zu kümmern. Aber 
+offenbar sind der SPÖ die Menschen im Tiroler Unterland komplett 
+egal." 
+
+

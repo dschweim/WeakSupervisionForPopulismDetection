@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_040001.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 19.09.13
+
+Für eine weitreichende Reform der Rüstungsexportkontrolle
+---------------------------------------------------------
+
+Zu Berichten über die Lieferung von Chemikalien an Syrien erklärt Claudia Roth, Bundesvorsitzende von BÜNDNIS 90/DIE GRÜNEN:
+"Die Berichte über die Lieferung von Chemikalien an Syrien zeigen, dass die Ausfuhrbestimmungen der EU für Dual-Use-Güter und das deutsche Rüstungsexportkontrollsystem dringend überarbeitet werden müssen. Es war und ist nicht akzeptabel, dass an menschenrechtsunterdrückende Regime Mittel geliefert werden, die potentiell auch für chemische Kampfstoffe missbraucht werden können.Schon beim Giftgasangriff auf Halabdscha vor 25 Jahren, als bis zu 5.000 Kurden vom irakischen Diktator Saddam Hussein getötet wurden, haben deutsche Firmen wesentliche Bestandteile für das C-Waffenprogramm des Irak geliefert. Deutsche Unternehmen waren auch am Bau von Gaddafis Giftgasfabrik in Rabta beteiligt. Wenn sich nun herausstellt, dass bis in die jüngste Vergangenheit Diktatoren beim Ausbau ihrer Massenvernichtungswaffen unterstützt wurden, dann ist das besonders bitter und ein Zeichen dafür, dass das deutsche Rüstungsexportkontrollsystem völlig versagt hat.Die Grünen fordern schon seit langem, dass das gegenwärtige System der Rüstungsexportkontrolle grundlegend reformiert wird. Dass das Wirtschaftsministerium und nicht das Auswärtige Amt für Rüstungsexporte zuständig ist, finden wir ebenso verkehrt wie die Praxis der Geheimhaltung und Nichteinbeziehung des Parlaments. Wir fordern, dass der Bundestag über beabsichtigte Lieferungen in Drittstaaten im Vorfeld der Entscheidungen unterrichtet wird und die Möglichkeit hat, Einwendungen zu erheben. Außerdem müssen die bisher nur politisch verbindlichen Rüstungsexportrichtlinien endlich Gesetzescharakter erhalten und darin mehr Transparenz und Kontrolle beim Einsatz von Dual-Use-Gütern festgeschrieben werden.Dass Bundeskanzlerin Angela Merkel nun aber behauptet, die unter Rot-Grün beschlossenen Rüstungsexportrichtlinien würde die schwarz-gelbe Regierung einhalten, ist hanebüchen. Seit vier Jahren liefert die schwarz-gelbe Bundesregierung ohne Scheu Waffen und Panzer made in Germany an Diktatoren und Menschenrechtsverletzer in der ganzen Welt und unterhöhlt damit genau diese Richtlinien. Die schwarz-gelbe Regierung hat auf EU-Ebene 2011 verhindert, dass die europäischen Regelungen für den Export von Dual-Use-Gütern verschärft wurden. Der Spitzenkandidat der FDP, der damalige Wirtschaftsminister Brüderle, hat sich in einem Brief an die deutschen EP-Abgeordneten mit Verweis auf die Interessen der Wirtschaft und Verfahrenserleichterungen gegen striktere Regeln ausgesprochen. Und die Verteidigungsexperten der Union fordern jetzt sogar, die Richtlinien noch weiter aufzuweichen, um Rüstungsexporte zu erleichtern."
+

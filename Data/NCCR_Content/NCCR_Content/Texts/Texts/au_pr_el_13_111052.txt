@@ -1,0 +1,31 @@
+Text-ID: at_pr_el_13_111052.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = fraktion
+date         = 11.09.13
+
+Stronach/Lugar: Trennung Klub-Partei muss bei jedem Inserat ersichtlich sein
+----------------------------------------------------------------------------
+
+Verschärfung des Transparenzgesetzes gefordert
+Wien (OTS) - Eine klare Trennung zwischen Inseraten einer Partei und
+eines Parlamentsklubs fordert Team Stronach Klubobmann Robert Lugar
+angesichts des SPÖ-Plakatskandals. "Zurzeit gibt es drei
+Parlamentsparteien, deren Parteichef bzw. -chefin auch Klubobmann
+oder Klubobfrau ist. Es ist bei Inseraten aber nicht ersichtlich, ob
+sie von der Partei oder dem Klub bezahlt wurden", kritisiert Lugar.
+Er fordert deshalb eine Verschärfung des Transparenzgesetzes, um
+verbotene Spenden zu verhindern.
+"Bei Faymann und dem SPÖ-Klub war das noch einfach aufzudecken. Bei
+Glawischnig, Strache und Bucher ist aber nicht ersichtlich, ob Klub
+oder Partei gezahlt haben", so Lugar. Dadurch sei es möglich, die
+Transparenzbestimmungen zu umgehen. "Gerade bei der Doppelfunktion
+Parteichef/Klubobmann muss bei jedem Inserat, bei jedem Plakat klar
+ersichtlich sein, wer gezahlt hat", verlangt Lugar, "denn das ist ein
+Schritt zu der Fairness und Transparenz, die das Team Stronach
+fordert!" 
+
+

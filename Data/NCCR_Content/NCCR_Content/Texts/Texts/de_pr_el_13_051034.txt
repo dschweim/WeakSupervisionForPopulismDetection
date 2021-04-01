@@ -1,0 +1,60 @@
+Text-ID: de_pr_el_13_051034.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = fraktion
+date         = 12.09.13
+
+Jan Korte: Datenschutz wurde sträflich vernachlässigt
+-----------------------------------------------------
+
+NA
+Berlin (ots) - "Sowohl die Datensammelei der Geheimdienste, als 
+auch der nun bekannt gewordene Datenklau bei Vodafone durch 
+gewöhnliche Kriminelle sind ein Zeichen dafür, dass der Schutz 
+persönlicher Daten von den Bundesregierungen der letzten Jahre 
+sträflich vernachlässigt wurde. Man kann nur hoffen, dass die 
+zukünftige Regierung die Datensicherheit aus dem Nischendasein der 
+Digitalisierung befreit", erklärt Jan Korte, Mitglied im Vorstand der
+Fraktion DIE LINKE, zum Diebstahl von Kundendaten bei Vodafone. Korte
+weiter:
+
+   "Es ist auch nicht ansatzweise dafür gesorgt, dass die Sicherheit 
+von persönlichen Daten in Zukunft durchgesetzt wird. Stellung, 
+Ausstattung und technische Unterstützung betrieblicher und 
+öffentlicher Datenschützer stehen in keinem messbaren Verhältnis mehr
+zur Gefährdung persönlichster Daten. Es wird Zeit, dass mit der 
+Kommerzialisierung aller Daten Schluss gemacht wird. Denn wenn 
+persönliche Kundendaten für alle möglichen Zwecke in einem 
+Unternehmen gespeichert und verwendet werden, steigt auch das 
+Sicherheitsrisiko.
+
+   Wir brauchen nicht nur ein Datenschutzgesetz, welches auf diese 
+Entwicklungen eingeht. Es ist auch nötig, es durchzusetzen. Mit 
+höheren Mitteln für die öffentlichen Datenschutzbeauftragten, die in 
+die Lage versetzt werden müssen, intensiver präventiv tätig zu 
+werden.
+
+   Statt immer mehr Mittel für die eigene Datensammelei, für 
+bürgerrechtskritische Sicherheits- und Überwachungsprojekte 
+bereitzustellen, muss endlich damit begonnen werden, die Sicherheit 
+von Daten auf die Höhe der Zeit zu bringen - durch entsprechende 
+Forschung, durch entsprechende Förderung unabhängiger Unternehmen und
+Projekte. Die Bevölkerung hat ein Recht darauf, dass der Staat ihre 
+Privatsphäre nicht nur respektiert, sondern sie auch schützt: Vor 
+Überwachung durch Geheimdienste genauso wie vor Kriminellen."
+
+
+
+Pressekontakt:
+Hendrik Thalheim
+Pressesprecher
+Fraktion DIE LINKE. im Bundestag
+Platz der Republik 1
+11011 Berlin
+Telefon +4930/227-52800
+Telefax +4930/227-56801
+pressesprecher@linksfraktion.de
+

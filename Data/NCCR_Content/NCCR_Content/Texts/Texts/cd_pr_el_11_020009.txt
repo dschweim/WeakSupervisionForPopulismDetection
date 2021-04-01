@@ -1,0 +1,17 @@
+Text-ID: cd_pr_el_11_020009.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 09.09.11
+
+Grossoffensive für die erneuerbaren Energien
+--------------------------------------------
+
+NA
+Der Bundesrat hat heute die Motion Schwaller Schrittweiser Ausstieg aus der Atomenergie angenommen. Der Ständerat hat es anlässlich der Herbstsession in der Hand, diesen Entscheid zu bestätigen.
+Wir wollen Klarheit schaffen. Mit meiner Motion unterstütze ich den Weg des Bundesrates und des Nationalrates für einen schrittweisen Ausstieg aus der Atomenergie. Wir brauchen klare Aussagen und Voraussetzungen, damit die Investoren Planungssicherheit haben, und auf die erneuerbaren Energien setzen bekräftigt Ständerat Urs Schwaller. 
+Meine Motion ermöglicht die Diskussion über den schrittweisen Ausstieg. Einen Ausstieg ohne unklare Vorbehalte. Was wir heute brauchen, ist eine Grossoffensive für die erneuerbaren Energien und vorher klare Sachentscheide, ergänzt Ständerat Schwaller.
+
+

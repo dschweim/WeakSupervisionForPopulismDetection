@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_060004.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 20.09.13
+
+Manuela Schwesig: Kinderrechte ins Grundgesetz!
+-----------------------------------------------
+
+NA
+Zum Weltkindertag erklärt die stellvertretende SPD-Vorsitzende und Mitglied im Kompetenzteam von Peer Steinbrück, Manuela Schwesig:
+Der Weltkindertag steht in diesem Jahr unter dem Motto "Chancen für Kinder" - und ist damit ein Auftrag an die Politik in der nächsten Legislaturperiode. Denn noch immer ergeben in regelmäßigen Abständen alle größeren Studien nationaler und internationaler Institutionen, dass die Bildungschancen in Deutschland stärker als in anderen Ländern von der sozialen Herkunft abhängen.
+Es ist deshalb Zeit für einen Wechsel in der Familien- und Bildungspolitik. Die SPD wird für gleiche Chancen für alle Kinder und Jugendlichen sorgen und den falschen Kurs von CDU/CSU und FDP korrigieren.
+Die SPD wird massiv in die Qualität und den Ausbau der Kinderbetreuung investieren, die Durchlässigkeit im Bildungssystem verbessern und flächendeckend gute Ganztagsschulen ausbauen. 
+Neben allen nötigen Investitionen in eine bessere Infrastruktur für Bildung und Betreuung werden wir die Rechte von Kindern und Jugendlichen in unserer Gesellschaft stärken. Die SPD fordert schon seit langem, dass Kinder im Grundgesetz ausdrücklich als Träger von Grundrechten benannt werden und nicht nur im Rahmen der Elternrechte. CDU und CSU haben konkrete Initiativen zur Ergänzung des Grundgesetzes immer wieder blockiert. Am Weltkindertag, der weltweit auf die Bedeutung der Kinderrechte aufmerksam macht, bekräftigt die SPD ihr Vorhaben: Kinderrechte müssen ins Grundgesetz aufgenommen werden.
+

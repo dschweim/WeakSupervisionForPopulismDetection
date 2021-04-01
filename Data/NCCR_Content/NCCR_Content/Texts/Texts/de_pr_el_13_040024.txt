@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_040024.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 31.07.13
+
+Verfahren gegen Dogan Akhanli muss umgehend eingestellt werden
+--------------------------------------------------------------
+
+Zur Wiedereröffnung des Verfahrens gegen den türkischen Schriftsteller und Aktivisten Doan Akhanl erklärt Cem Özdemir, Bundesvorsitzender von BÜNDNIS 90/DIE GRÜNEN:
+
+"Der in Köln lebende Schriftsteller Doan Akhanl, der sich für eine offene Aufarbeitung des Völkermords an den Armeniern in der Türkei einsetzt, wird seit 1989 durch eine offensichtlich politisch motivierte türkische Justiz schikaniert. Trotz eines Freispruchs in einem früheren Prozess, in dem Doan Akhanl eines Raubmordes beschuldigt wurde, hat die türkische Staatsanwaltschaft das Verfahren heute wiedereröffnet. 
+Ich bin bestürzt darüber, dass das Gericht offensichtlich erwägt, einen internationalen Haftbefehl gegen Doan Akhanl zu erlassen. Das Verfahren gegen Doan Akhanl muss umgehend eingestellt werden und er muss in Zukunft ungehindert in die Türkei einreisen können.
+Leider ist der Prozess gegen Doan Akhanl nur einer von vielen fragwürdigen und politisch motivierten Verfahren gegen Journalisten, Anwälte, Intellektuelle und Studierende in der Türkei. 
+Ich fordere die Bundesregierung und ihre EU-Partner auf, ein eindeutiges Signal an den EU-Beitrittskandidaten Türkei zu senden, dass das schikanöse Vorgehen der türkischen Staatsanwaltschaft international nicht toleriert wird."
+

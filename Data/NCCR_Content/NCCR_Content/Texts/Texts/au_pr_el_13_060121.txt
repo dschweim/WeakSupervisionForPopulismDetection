@@ -1,0 +1,16 @@
+Text-ID: at_pr_el_13_060121.txt
+
+Press Release from Party: BZÖ
+
+country      = at
+partylabel   = bzö
+partytype    = all
+date         = 05.08.13
+
+Bucher: Wer die Große Koalition wählt, wählt das Ende des Bankgeheimnisses
+--------------------------------------------------------------------------
+
+
+BZÖ-Chef Klubobmann Josef Bucher spricht sich erneut klar gegen das von Teilen der SPÖ gewünschte vollständige Ende des Bankgeheimnisses aus. "Wer die Große Koalition wählt, wählt das Ende des Bankgeheimnisses in seiner sowieso schon ausgehöhlten Form. Das BZÖ tritt ganz klar für das Bankgeheimnis ein und befürwortet einen erneuten Ausbau des Datenschutzes bei Österreichs Sparern. Die SPÖ ist wenigstens so ehrlich und steht teilweise zur Abschaffung. Viel lächerlicherer ist der pseudoempörte Aufschrei der ÖVP, die bis jetzt noch jedem Versuch, das Bankgeheimnis aufzuweichen, größtmöglichen Widerstand entgegensetzen wollte, und dann umgefallen ist wie ein Blatt im Wind".
+
+

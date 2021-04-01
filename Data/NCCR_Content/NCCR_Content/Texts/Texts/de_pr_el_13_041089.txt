@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041089.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 02.09.13
+
+Greenpeace-Studie zeigt Nutzen der Erneuerbaren Energien
+--------------------------------------------------------
+
+
+Zur Greenpeace-Studie Wertschöpfung- und Beschäftigungseffekte durch den Ausbau der Erneuerbaren Energien in Deutschland für 2012 erklärt Oliver Krischer, Sprecher für Energiewirtschaft:
+Die Studie vom Institut für ökologische Wirtschaftsforschung im Auftrag von Greenpeace zeigt auf eindrucksvolle Weise, dass die Erneuerbaren Energien in den vergangenen zehn Jahren Deutschlands Konjunkturmotor waren. Die Wertschöpfung der Erneuerbaren Energien betrug allein im Jahr 2012 
+17 Milliarden Euro. Die Studie zeigt aber auch, dass die Auswirkungen der verfehlten Energiepolitik von Schwarz-Gelb bereits heute spürbar sind. Die Zahl der direkten Beschäftigten durch die Wertschöpfung der Erneuerbaren Energien ist allein im vergangenen Jahr um zehn Prozent gesunken.
+Union und FDP wollen die Erfolgsgeschichte des EEG abwürgen. Obwohl die schwarz-gelbe Koalition selbst über keinerlei Konzept zur Energiewende verfügt, soll der Ausbau der Erneuerbaren mit der Abschaffung des EEG abrupt beendet werden. Das von Rösler vorgeschlagene Quotenmodell ist eine teure Alibi-Energiewende. In allen Ländern, in denen ein Quotenmodell eingeführt wurde, ist der Ausbau der Erneuerbaren zum Erliegen gekommen. Schwarz-Gelb verkauft das Ende des EEG und seiner Umlage als Verbraucherschutzmaßnahme, doch in Wahrheit wollen sie damit nur die Interessen der Kohle- und Atomlobby schützen.
+Was wir brauchen, ist eine gerechte Energiewende, welche gesunkene Börsenstrompreise an die Verbraucher weitergibt und auch die Industrie einen fairen Beitrag zur Energiewende zahlen lässt.
+

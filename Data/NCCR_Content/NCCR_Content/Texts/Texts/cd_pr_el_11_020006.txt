@@ -1,0 +1,17 @@
+Text-ID: cd_pr_el_11_020006.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 02.09.11
+
+Atomausstieg bestätigt - Energieoffensive gefordert
+---------------------------------------------------
+
+NA
+Die CVP-EVP-glp Fraktion hat an ihrer heutigen Sitzung die Entscheide der UREK-S zum Anlass genommen, erneut über die Energiepolitik zu diskutieren. Die Fraktion bestätigt ihren Entscheid zum Ausstieg aus der Atomenergie. Im Weiteren unterstützt die Fraktion die vom Bundesrat vorgelegten Massnahmen und das gewählte zweistufige Vorgehen zur  Abfederung der Frankenstärke.
+Die CVP-EVP-glp Fraktion hat erneut über die Energiepolitik diskutiert. Die Fraktion bestätigt ihren Entscheid aus der Atomenergie auszusteigen. Wir befürworten den weiteren Betrieb der Atomkraftwerke, so lange diese sicher betrieben werden können. Zudem fordern wir einen verstärkten Ausbau der erneuerbaren Energien und der Energieeffizienz. Die Diskussion erfolgte in Anwesenheit von Bundesrätin Doris Leuthard.
+Die Fraktion ist besorgt über die Auswirkungen der Frankenstärke für die Tausenden von Arbeitsplätzen in der Exportwirtschaft, in den Zulieferdiensten und im Tourismussektor. Für die betroffenen Betriebe wird die Lage als schwierig eingeschätzt und es besteht Handlungsbedarf. Die Fraktion begrüsst das auf ein vernünftiges Mass zurückgestutzte Paket zur Abfederung der Frankenstärke und hat Vertrauen in das Handeln der Schweizerischen Nationalbank. 
+
+

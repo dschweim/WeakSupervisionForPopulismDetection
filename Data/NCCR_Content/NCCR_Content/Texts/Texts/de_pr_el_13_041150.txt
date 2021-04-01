@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041150.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 11.09.13
+
+Merkels Bärendienste für die deutsche Autoindustrie
+---------------------------------------------------
+
+
+Zur Eröffnung der Internationalen Automobil-Ausstellung (IAA) erklärt Renate Künast, Fraktionsvorsitzende:
+Auch sechs Jahre nach der grünen IAA hinken deutsche Hersteller bei alternativen Antrieben der Konkurrenz auf dem Weltmarkt hinterher. Während andere Hersteller Hybridmotoren auch in Kleinwagen anbieten, sind deutsche Hybrid-Modelle in der Kompaktklasse immer noch nicht im Angebot. 
+Statt aber den Vorsprung der Konkurrenz durch Innovation aufzuholen, verlässt sich die deutsche Autoindustrie lieber auf die Verhinderungsstrategie der Kanzlerin: So blockiert Frau Merkel beharrlich strengere CO2-Grenzwerte in der EU für Neuwagen ab 2025. Damit erweist sie der deutschen Autoindustrie einen Bärendienst und schadet zudem den Verbraucherinnen und Verbrauchern, die bei steigenden Spritpreisen die Zeche zahlen müssen. Zudem nimmt sie mit ihrer Verhinderungsstrategie der Industrie den Raum für langfristige Planungs- und Investitionssicherheit. Dies kann sich noch bitter rächen. Denn andere Weltregionen werden rascher schärfere Grenzwerte erreichen und den europäischen Herstellern davonlaufen.
+Steigende Ölpreise und der stetig voranschreitende Klimawandel müssen auch hierzulande zu einem tiefgreifenden Strategiewechsel in der Automobilbranche führen.
+

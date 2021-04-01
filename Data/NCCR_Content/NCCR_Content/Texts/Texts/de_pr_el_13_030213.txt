@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_030213.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 30.07.13
+
+SPATZ: Staatssekretär Beemelmans entlastet Minister 
+----------------------------------------------------
+
+NA
+BERLIN. Zu den Ergebnissen der Anhörung des für Rüstungsprojekte zuständigen Staatssekretär im Bundesministerium der Verteidigung, Stéphane Beemelmans, erklärt der Obmann der FDP-Bundestagsfraktion im Verteidigungsausschuss als 2. Untersuchungsausschuss Joachim SPATZ:
+
+Staatssekretär Beemelmans hat glaubhaft versichert, dass er Bundesverteidigungsminister Dr. Thomas de Maizère MdB einzig am 13. Mai 2013 mit den unlösbaren Problemen im Zusammenhang mit dem Projekt Euro Hawk befasst hat. Dies geschah, als feststand, dass das Projekt unter den beschlossenen Bedingungen nicht mehr realisierbar war. Dieses Vorgehen des Staatssekretärs steht im Einklang mit der Geschäftsordnung des Ministeriums und ist sachgerecht. Anderslautende Vorhalte der Opposition wurden damit wiederholt als vollkommen haltlos und unbegründet enttarnt.
+Nach dem Dresdner Erlass führen die Staatssekretäre die ihnen zugewiesenen Geschäftsbereiche im Verteidigungsministerium eigenverantwortlich. Daher ergibt sich auch in der Rückschau keine irgendwie geartete Holschuld des Ministers gegenüber den Fachabteilungen im Haus. Im Gegenteil: Der Staatssekretär lebt die neue Verantwortlichkeit, die durch die Bundeswehrreform initiiert wurde, vorbildlich. Anstatt den Minister in regelmäßigen Abständen mit Wasserstandsmeldungen zu Problemen zu bombardieren, wurde Minister de Maizière genau dann im Wege einer sorgfältig vorbereiteten Vorlage befasst, als die Risiken sauber ausgearbeitet, gegeneinander abgewogen und mit den Lösungsmöglichkeiten versehen wurden.
+Zudem hat die Anhörung erneut verdeutlicht, dass das Projekt Euro Hawk von Beginn an viel komplexer und risikobehafteter war, als dies die Initiatoren unter rot-grüner Regierungsverantwortung kommuniziert haben. 
+Mit dem Entschluss, für die Bundeswehr ein eigenes technisch hoch anspruchsvolles UAV (Unmanned Aircraft Vehicle") wie den Euro Hawk zu entwickeln, wurde in Deutschland technologisches und rechtliches Neuland betreten. Dies gilt vor allem für das Aufklärungssystem ISIS sowie dessen Integration und Verknüpfung mit der Trägerplattform Global Hawk sowie die sich daraus ergebenden Zulassungsrisiken. Daraus resultieren die bei diesem anspruchsvollen Entwicklungsprojekt immanenten Kostenrisiken, die bei Projektbeginn bereits bestanden und den rot-grünen Verantwortungsträgern bereits bekannt und bewusst waren.
+Die Zeugeneinvernahme von Herrn Staatssekretär Beemelmans hat ebenfalls deutlich gemacht, dass die Bereiche Rüstung und Beschaffung allgemein sowie speziell die gesamten Fragen der Zulassung unbemannter Systeme zeitnah überarbeitet werden müssen. Als FDP-Bundestagsfraktion erwarten wir entsprechende Initiativen des Bundesverteidigungsministeriums.
+

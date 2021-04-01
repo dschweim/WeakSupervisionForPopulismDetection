@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030097.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 28.08.13
+
+PILTZ: Balance von Freiheit und Sicherheit wieder herstellen
+------------------------------------------------------------
+
+NA
+BERLIN. Zur Vorstellung des Abschlussberichts der Regierungs-kommission zur Evaluierung der Sicherheitsgesetze in Deutschland erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Es ist an der Zeit, gegen eine Gesetzgebung mit Schlagseite in Richtung Sicherheit gegenzusteuern. Die längst überfällige Gesamtschau auf die Sicherheitsgesetzgebung hat bestätigt, dass die immer neuen Sicherheitsgesetze, die von Rot-Grün und Schwarz-Rot in den vergangenen Wahlperioden beschlossen wurden, die Freiheit und Sicherheit aus dem Lot gebracht haben. 
+Auch wenn es gut ist, dass auf stete Beharrlichkeit der FDP-Fraktion in dieser Wahlperiode nicht weiteres Stückwerk hinzugekommen ist, sondern sogar an ein paar Stellen aus Sicherheitsgesetzen wie dem Terrorismusbekämpfungsergänzungsgesetz Befugnisse gestrichen wurden, liegt noch viel Arbeit vor uns, um die Balance von Freiheit und Sicherheit wieder herzustellen. Die Expertenkommission hat das Hausaufgabenheft für die nächste Wahlperiode prall gefüllt. Die FDP-Bundestagsfraktion steht bereit, diese Aufgabe zu erfüllen.
+Gerade in der Informationsgesellschaft, in der technisch vieles machbar ist, muss der Staat die Grenzen, die die Verfassung setzt, aktiv zur Verwirklichung bringen. Zu weitgehende Befugnisse der einzelnen Sicherheitsbehörden wie des BKAs, eine überbordende Sicherheitsgesetzgebung auf EU-Ebene wie die Vorratsdatenspeicherung und die Vorverlagerung der Strafbarkeit ins Vorfeld konkreter Gefahren müssen eingedämmt werden. Die FDP-Fraktion sieht sich in ihrer Kritik bestätigt. Dieser Erkenntnis können sich nun auch andere Fraktionen im Deutschen Bundestag nicht mehr entziehen.
+

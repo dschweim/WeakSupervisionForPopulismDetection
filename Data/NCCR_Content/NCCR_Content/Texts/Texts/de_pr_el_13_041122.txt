@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041122.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 10.09.13
+
+Energiewende jetzt anpacken
+---------------------------
+
+
+Zur Vorstellung der Studie des Umweltbundesamtes (UBA) Modellierung einer vollständig auf Erneuerbaren Energien basierenden Stromerzeugung im Jahr 2050 in autarken, dezentralen Strukturen erklärt Hans-Josef Fell, Sprecher für Energiepolitik:
+Das UBA hält den Umbau unserer gesamten Energieversorgung bis 2050 für möglich. Mit offensiv verbesserten politischen Rahmenbedingungen wie wir sie vorschlagen, kann das auch schneller gehen.
+Die UBA-Studie zeigt auf, dass es energiepolitisch und wirtschaftlich richtig ist, die Vielfalt an erneuerbaren Energien lokal zu nutzen. Es braucht aber ebenso ein leistungsfähiges Transportnetz für den Ausgleich der schwankenden Wind- und Solarstromerzeugung. Neben neuer Stromtrassen zum überregionalen Stromtransport ist dafür auch der Umbau der regionalen Netze im Umkreis verbrauchsstarken Ballungszentren der richtige Weg. Solche Regionalverbünde, wie sie zum Beispiel im Raum Nürnberg gerade angegangen werden, stärken die ländlichen Räume mit Einkommen und wirtschaftlicher Entwicklung und helfen auch den städtischen Ballungszentren, ihren hohen Energiebedarf schnell und kostengünstig auf Erneuerbare Energien umzustellen.
+Statt wie Schwarz-Gelb den Ausbau der Erneuerbaren Energien auszubremsen, müssen endlich die Voraussetzungen für den Bau der erforderlichen Infrastruktur wie etwa intelligente Netze, Lastmanagement und Speicher geschaffen werden, damit die Umstellung auf erneuerbar erzeugten Strom kosteneffizient und zügig erfolgen kann. Es gilt jetzt anzupacken, statt zu lavieren. So kann Klimaschutz und Unabhängigkeit von steigenden Rohstoffpreisen in ganz Deutschland kostengünstig und schnell verwirklicht werden. Schwarz-Gelb hat gezeigt, dass sie dies weder kann noch will.
+

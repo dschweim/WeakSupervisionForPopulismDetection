@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041140.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 13.09.13
+
+Zeit für gerechte Familienförderung im Steuerrecht
+--------------------------------------------------
+
+
+Zur Forderung des Verbandes alleinerziehender Mütter und Väter nach mehr Steuergerechtigkeit für Alleinerziehende erklären Lisa Paus, Obfrau im Finanzausschuss, und Katja Dörner, Sprecherin für Familienpolitik:
+Individualbesteuerung und Kindergrundsicherung sind der Schlüssel zu mehr Gerechtigkeit. Wir brauchen einen echten Systemwechsel. Kinder brauchen staatliche Förderung unabhängig vom Einkommen ihrer Eltern. Wir müssen weg von einem System, das hohe Einkommen stärker fördert als niedrige. Die Steuervorteile aus Ehegattensplitting und Kinderfreibetrag wachsen, je höher und je ungleicher die Einkommen in Ehen und Lebenspartnerschaften verteilt sind. Es ist ungerecht, wenn Gutverdienende stärker gefördert werden als Normalverdiener. Zudem wird die Erwerbstätigkeit von Frauen dadurch massiv behindert.
+Die Union will dieses System auch noch verschärfen, indem sie den Kinderfreibetrag um über 1.000 Euro anheben und damit gerade die Einkommensstärksten noch höher fördern will. Für Alleinerziehende hat die schwarz-gelbe Bundesregierung dagegen nichts getan, selbst sinnvolle Vorschläge des Koalitionsvertrages wurden zugunsten des unsinnigen Betreuungsgeldes gekippt.
+Wir unterstützen die Forderungen von alleinerziehenden Müttern und Vätern nach einer grundsätzlichen Reform der staatlichen Familienförderung. Statt den Trauschein zu belohnen, wollen wir Kinder unabhängig vom Einkommen ihrer Eltern fördern. Jedes Kind sollte diesem Land gleich viel wert sein. Darum setzen wir uns für eine Individualbesteuerung mit übertagbarem Grundfreibetrag in Verbindung mit der Einführung einer Kindergrundsicherung ein. Wir müssen das Splitting reformieren und die mittelbare Diskriminierung von Frauen beenden. Und wir müssen endlich die Kinder ins Zentrum der Förderung stellen. Familienförderung darf nicht länger vom Trauschein oder dem Geldbeutel der Eltern abhängig sein.
+

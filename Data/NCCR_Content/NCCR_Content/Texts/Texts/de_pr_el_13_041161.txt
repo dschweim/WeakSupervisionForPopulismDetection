@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_041161.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 18.09.13
+
+Unglaubwürdiger FDP-Schwenk in der Rüstungsexportpolitik
+--------------------------------------------------------
+
+
+Zum koalitionsinternen Streit über die künftige Rüstungsexportsexportpolitik erklärt Katja Keul, Parlamentarische Geschäftsführerin:
+Der angebliche Widerstand von Außenminister Westerwelle gegen Pläne aus der CDU/CSU, die deutschen Richtlinien für Rüstungsexporte aufzuweichen, zeigt nur, wie blank die Nerven bei der FDP inzwischen liegen. Angesichts eines Papiers von Verteidigungspolitikern der CDU/CSU äußert sich Westerwelle nun aufgeregt, während er zum massiven Anstieg der Genehmigung von Rüstungsexporten in Spannungsgebiete, wie die Golfregion, durch die Regierung Merkel stets beredt geschwiegen hat. Diese Heuchelei ist kaum zu überbieten. Im Bundestag war es vor allem der FDP-Abgeordnete Martin Lindner, der sich stets vehement nicht nur gegen Reformvorschläge für mehr Transparenz und Parlamentsbeteiligung bei Rüstungsexporten ausgesprochen, sondern auch deutlich gemacht hat, wie wenig er und seine Fraktion vom restriktiven Wortlaut der Rüstungsexportrichtlinien der Bundesregierung hielt.
+

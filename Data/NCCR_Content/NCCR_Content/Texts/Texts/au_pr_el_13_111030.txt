@@ -1,0 +1,27 @@
+Text-ID: at_pr_el_13_111030.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = fraktion
+date         = 18.09.13
+
+Stronach/Schenk: Schlechte Schüler sind die Arbeitslosen von morgen
+-------------------------------------------------------------------
+
+Völlige Entpolitisierung der Schule ist gefordert
+wien (OTS) - "Die Parteibuchwirtschaft muss aus der Schule verbannt
+werden, denn schlechte Schüler sind die Arbeitslosen von morgen",
+fordert Team Stronach Abgeordnete Martina Schenk anlässlich der
+Einbringung des Antrags zum Lehrerdienstrecht im Nationalrat. Schenk
+zitierte dabei den Schulexperten Andreas Salcher, wonach Eltern
+gefährdeter Schüler in der Oberstufe bis zu 7000 Euro pro Jahr für
+Nachhilfe ausgeben würden. Mangelhafte Schulkenntnisse würden, so
+Schenk, dazu führen, dass etwa nur 20 Prozent der Kandidaten den
+Aufnahmetest bei der heimischen Polizei  bestehen. 
+Zu den Debattenbeiträgen der Redner aus Koalition und Opposition
+bemerkte Schenk abschließend lediglich: "Danke. Setzen!
+Nichtgenügend!" 
+
+

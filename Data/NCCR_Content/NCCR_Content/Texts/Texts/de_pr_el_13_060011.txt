@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_060011.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 18.09.13
+
+Karakaolu: BAföG weiterentwickeln  Chancengleichheit erhöhen
+---------------------------------------------------------------
+
+NA
+Zu den aktuellen Vorschlägen von DGB und Deutschem Studentenwerk zur Modernisierung des BAföG erklärt Yasemin Karakaolu, Mitglied im Kompetenzteam von Peer Steinbrück:
+Wie kaum ein anderes Instrument steht das BAföG für den Grundsatz, dass ein Studium nicht vom Geldbeutel der Eltern abhängig sein darf. Durch die rechtlich abgesicherte und verlässliche, staatliche Studienförderung konnten in den letzten 40 Jahren Millionen junge Erwachsene studieren, die sich ein Studium ohne BAföG nicht hätten leisten können. Statt die Chancengleichheit zu stärken, hat schwarz-gelb auf Elitenförderung gesetzt und das BAföG konsequent vernachlässigt. Die Ankündigung einer BAföG-Reform durch Bundesministerin Wanka hat sich erneut als heiße Luft erwiesen, denn bis 2017 sind keine zusätzlichen Mitteln im Haushalt für eine Erhöhung eingeplant.
+Die Vorschläge des DGB und des Deutschen Studentenwerkes zu einer Modernisierung des BAföG gehen in die richtige Richtung. Das BAföG sorgt dafür, dass finanzielle Hürden nicht weiter von einem Studium abhalten. Wir müssen es deshalb strukturell weiterentwickeln und endlich wieder an die Lebensrealität der jungen Menschen anpassen. Die Förderung eines Teilzeitstudiums, die Schließung der Lücke zwischen Bachelor und Master, die Anpassung der Altersgrenzen oder die automatische Anpassung an die Lebenshaltungskosten sind die richtigen Stichworte. Wir müssen aber auch Bedarfssätze und Freibeträge anpassen, damit wieder mehr Studierende von einer Förderung profitieren und auch ein späteres Studium nach einer Berufsausbildung möglich ist.
+Eine echte Weiterentwicklung des BAföG im Sinne der Studierenden wird es nur mit der SPD geben. Die Welt ist bunter als es das konservative Weltbild von Begabten einerseits und Benachteiligten andererseits vermittelt. Wir müssen auch den Blick öffnen für die begabten Benachteiligten. Deshalb wird die SPD das BAföG nach der Bundestagswahl zu einem zentralen Element ihrer Bildungs- und Wissenschaftspolitik machen. 
+

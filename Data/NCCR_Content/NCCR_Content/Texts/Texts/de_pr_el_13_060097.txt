@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_060097.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 22.08.13
+
+Gabriel: Die NSU-Morde sind eine Schande für Deutschland
+--------------------------------------------------------
+
+NA
+Zum Abschlussbericht des NSU-Untersuchungsausschusses erklärt der SPD-Parteivorsitzende Sigmar Gabriel:
+Die rechtsterroristische Mordserie des NSU nicht als solche erkannt zu haben, ist das größte Versagen der deutschen Sicherheitsbehörden der deutschen Nachkriegsgeschichte und eine Schande für Deutschland.
+Über die individuelle Schuld der Tatverdächtigen werden Gerichte entscheiden. Der NSU-Untersuchungsausschuss des Bundestages hat das getan, was seine Aufgabe war: Die organisatorischen Hintergründe für das Versagen staatlicher Behörden aufzudecken.
+Ich bin allen Mitgliedern des Ausschusses sehr dankbar dafür, dass sie diese schwierige Aufgabe mit enormem persönlichem Engagement, mit großer Ernsthaftigkeit und ohne falsche parteipolitische Hintergedanken erfüllt haben. Und dafür, dass sie mit Beharrlichkeit die Widerstände bei den verschiedenen Sicherheitsbehörden überwunden haben. Vor allem danke ich dem Vorsitzenden Sebastian Edathy, der mit großem Engagement, einer ungeheuren Sensibilität und Souveränität die Arbeit des Ausschusses geleitet hat.
+Auch wenn die im Bundestag vertretenen Parteien vieles unterscheidet: Uns eint das Eintreten für ein Land, in dem jeder ohne Angst verschieden sein kann. Ich hoffe, dass diese Einigkeit weiterbesteht, wenn es darum geht, die vom Untersuchungsausschuss aufgezeigten Konsequenzen auch in praktische Politik umzusetzen.
+Ich hoffe, dass die Arbeit des Untersuchungsausschuss dazu beiträgt, die Wunden, die bei den Angehörigen der Mordopfer geschlagen wurden, heilen zu lassen. Viele der Angehörigen wurden zu Unrecht verdächtigt, nicht Opfer, sondern Tatbeteiligte zu sein. Dafür, und für das Versagen der Sicherheitsbehörden, haben wir alle um Entschuldigung zu bitten.
+

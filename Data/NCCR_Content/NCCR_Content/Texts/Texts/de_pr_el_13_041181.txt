@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041181.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 19.09.13
+
+Helfen statt Wegschauen: Demenzkranke brauchen unsere Solidarität
+-----------------------------------------------------------------
+
+
+Anlässlich des Welt-Alzheimer-Tages am kommenden Samstag erklärt Elisabeth Scharfenberg, Sprecherin für Alten- und Pflegepolitik:
+Der große Durchbruch in der Erforschung der Ursachen sowie der Behandlung demenzieller  Erkrankungen ist noch nicht gelungen. Umso wichtiger ist es, das Leben mit Demenz lebenswert zu gestalten. Die auf Hilfe und Unterstützung angewiesenen Menschen gehören nicht an den Rand unserer Gesellschaft, sondern mitten hinein. Sie gehören nicht als Ausnahmetatbestand in die Pflegeversicherung, sondern müssen körperlich eingeschränkten Personen gleichgestellt werden.
+Viele der insgesamt 1,4 Millionen Demenzerkrankten in Deutschland werden von ihren Angehörigen zu Hause betreut  Tendenz steigend. Die pflegenden Angehörigen müssen deshalb stärker in den Fokus. Sie benötigen dringend Entlastungsangebote und gute niedrigschwellige Beratungsangebote.
+Zudem könnte sich die Zahl der Menschen, die an Alzheimer oder Demenz erkrankt sind, bis zum Jahr 2050 in etwa verdoppeln. Unser Pflege- und Gesundheitssystem ist darauf nicht ausreichend eingestellt. Die notwendigen Reformen hat Schwarz-Gelb sträflich vernachlässigt.
+Wir benötigen eine zielgenaue Reform des Begriffs der Pflegebedürftigkeit. Die Betroffenen brauchen mehr Wissen über die vorhandenen Unterstützungsangebote. Wir brauchen Pflegekoordinatoren, die diese Hilfen effektiv miteinander vernetzen. Unsere Kommunen müssen demenzgerecht werden und Raum schaffen für ein Leben mit der Erkrankung. Der Fachkräftemangel in der Pflege muss beherzt angegangen werden, etwa über die Investition in zusätzliche Ausbildung und über verbindliche Personalschlüssel. Und wir müssen in Anbetracht der steigenden Anzahl der Betroffenen auch die Pflegeversicherung zukunftsfest machen. Das ist nur durch eine grüne Pflege-Bürgerversicherung möglich.
+

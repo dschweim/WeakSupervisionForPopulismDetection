@@ -1,0 +1,16 @@
+Text-ID: cd_pr_el_11_020003.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 30.08.11
+
+Umfassende Energiestrategie ohne Atomkraft gefordert
+----------------------------------------------------
+
+NA
+Es sollen keine Rahmenbewilligungen für Atomkraftwerke der heutigen Generation mehr erteilt werden. Kernkraftwerke, die den Sicherheitsvorschriften nicht mehr entsprechen, sind unverzüglich abzustellen. Dies hat die ständerätliche Energiekommission heute auf der Basis der Motion Schmidt beschlossen.
+Der Entscheid war einstimmig sagt Ständerat René Imoberdorf. Ergänzt wurde die Motion mit der Forderung, Bildung, Lehre und Forschung in sämtlichen Energietechnologien weiterhin zu unterstützen. Weiter soll eine Strategie für eine zukünftige Energieversorgung ohne Atomenergie ausgearbeitet werden mit dem Ziel, eine möglichst vom Ausland unabhängige Stromversorgung sicherzustellen. 
+
+

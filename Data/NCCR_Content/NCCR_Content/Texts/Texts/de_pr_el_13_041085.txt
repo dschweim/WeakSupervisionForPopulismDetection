@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041085.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 21.08.13
+
+EU muss Pressefreiheit stärken - Bundesregierung äußert sich nur aus zweiter Reihe
+----------------------------------------------------------------------------------
+
+
+Zur Kritik Markus Lönings am Vorgehen der britischen Behörden gegen die Tageszeitung The Guardian erklärt Tabea Rößner, Sprecherin für Medienpolitik:
+Es reicht nicht aus, dass sich der Menschenrechtsbeauftragte der Bundesregierung Löning irritiert und erschüttert über das Vorgehen des britischen Geheimdienstes GCHQ zeigt. Die Bundesregierung sollte hier klarer Stellung beziehen, eine Stellungnahme des Außenministers ist anlässlich des Eindringens in die Redaktion, dem massiven Versuch der Einschüchterung durch das erzwungene Löschen von Informationen und Daten, Zerstören von Computern und Festplatten mehr als angezeigt. Es handelt sich um einen unglaublichen Vorgang, der in einem Rechtsstaat nicht geduldet werden darf. Damit verstößt der EU-Mitgliedsstaat Großbritannien gegen die europäische Grundrechtecharta. Die Bundesregierung und die Europäische Kommission müssen diesen schwerwiegenden Angriff auf die Pressefreiheit dringend thematisieren.
+Die Redakteure beim Guardian sind ihrer journalistischen Sorgfaltspflicht nachgekommen: Sie haben die Unterlagen, die sie erhalten haben, geprüft und veröffentlicht, was notwendig war, um die Öffentlichkeit über die immensen Eingriffe in ihre Grundrechte zu informieren. Sie haben sich umsichtig verhalten, um möglichst niemanden in Gefahr zu bringen.
+Wenn ein solch folgenschwerer Eingriff geduldet wird, wenn er gar zur Regel wird, ist die Pressefreiheit tatsächlich massiv gefährdet. Die Medien müssen ihrer Aufgabe gerecht werden können, nämlich die Öffentlichkeit über Missstände zu informieren. Es besteht ein großes öffentliches Interesse: So schwerwiegende Eingriffe in die Privatsphäre der Bürgerinnen und Bürger wie bei PRISM und Tempora müssen von Journalisten berichtet werden, wenn sie davon Kenntnis bekommen. Sonst können wir auch gleich zu staatlichen Nachrichtenagenturen und Verlautbarungs-Journalismus übergehen.
+

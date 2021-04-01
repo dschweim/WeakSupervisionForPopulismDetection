@@ -1,0 +1,31 @@
+Text-ID: at_pr_el_13_050052.txt
+
+Press Release from Party: FPÖ
+
+country      = at
+partylabel   = fpö
+partytype    = partei
+date         = 20.09.13
+
+FPÖ: Einsatz von Spionage-Software - Hofer verlangt von Bundesregierung Transparenz
+-----------------------------------------------------------------------------------
+
+NA
+Wien (OTS) - Der angebliche Einsatz von FBI Spionage-Software, die
+durch die Bundeswettbewerbsbehörde (BWB) bei einer Hausdurchsuchung
+des Handelskonzerns Spar eingesetzt worden sein soll, veranlasst den
+stellvertretenden Bundesparteiobmann der FPÖ, NAbg. Norbert Hofer, in
+dieser Angelegenheit eine Reihe von heiklen Fragen an die
+Bundesregierung zu stellen: "Wir wollen primär wissen, ob etwa auch
+bei anderen Behörden oder Dienststellen Software fremder
+Geheimdienste zum Einsatz kommt. Wir wissen nicht, ob es bei diesen
+Programmen Lücken gibt. Wir können nicht sicherstellen, dass Daten
+nicht an Dritte weitergegeben werden." 
+Hofer verweist darauf, dass auch bereits die Volksanwaltschaft hier
+prüfen will, ob im gegenständlichen Fall überhaupt alles rechtens vor
+sich gegangen sei. In heiklen Fragen des Datenschutzes dürfe die
+Bundesregierung nicht blocken. Bezüglich Art der eingesetzten
+Software und wo sie in Österreich Verwendung finde, sei höchste
+Transparenz angesagt.
+
+

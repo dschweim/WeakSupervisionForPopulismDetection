@@ -1,0 +1,24 @@
+Text-ID: de_pr_el_13_041147.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 12.09.13
+
+Bundesregierung verschläft Thema Datensicherheit
+------------------------------------------------
+
+
+Zum heute bekannt gewordenen Diebstahl der Stammdaten von Millionen Kunden bei Vodafone Deutschland erklären Dr. Konstantin von Notz, Sprecher für Innen- und Netzpolitik, und Malte Spitz, Mitglied des Bundesvorstandes:
+Wenn einem der größten europäischen Telekommunikationsunternehmen Bestands- und Bankverbindungsdaten von zwei Millionen Kunden gestohlen werden, handelt es sich um einen wahren Daten-GAU. Schon die schiere Menge eröffnet erhebliche Missbrauchsmöglichkeiten.
+Das Thema Datensicherheit in Unternehmen kann gar nicht groß genug geschrieben werden. Um ihm einen höheren Stellenwert einzuräumen, fordern wir seit langem die Einführung einer pauschalen Entschädigungsregelung für Kundinnen und Kunden, deren Daten von Unternehmensservern gestohlen wurden. Union und FDP haben keine übergreifende IT-Sicherheitsstrategie. Sie haben in dieser Legislaturperiode nichts unternommen, um Anreize zu schaffen, die Datensicherheit in Unternehmen zu erhöhen. Zahlreichen Datenskandalen hat Schwarz-Gelb nur achselzuckend zugeschaut.
+Die Enthüllungen Edward Snowdens zeigten, dass verschiedene Geheimdienste, allen voran die amerikanische National Security Agency (NSA), derzeit intensiv daran arbeiten, Computersysteme zu infiltrieren  oft in Kooperation mit Unternehmen. Sicherheitslücken werden bewusst nicht geschlossen oder selbst verbaut. Dieses Vorgehen der Geheimdienste ist alarmierend und verantwortungslos zugleich: Das Offenhalten von Hintertüren in der Software stellt immer auch ein Einfallstor für Kriminelle dar.
+Im Bereich der Datensicherheit gibt es großen Nachholbedarf. Hierzu gehört auch zu verhindern, dass Geheimdienste weiterhin Sicherheitslücken nicht schließen oder gar selbst verbauen. Zu dieser Frage muss sich neben der Bundesregierung auch die Wirtschaft klar verhalten.
+Zum heute bekannt gewordenen Diebstahl der Stammdaten von Millionen Kunden bei Vodafone Deutschland erklären Dr. Konstantin von Notz, Sprecher für Innen- und Netzpolitik, und Malte Spitz, Mitglied des Bundesvorstandes:
+Wenn einem der größten europäischen Telekommunikationsunternehmen Bestands- und Bankverbindungsdaten von zwei Millionen Kunden gestohlen werden, handelt es sich um einen wahren Daten-GAU. Schon die schiere Menge eröffnet erhebliche Missbrauchsmöglichkeiten.
+Das Thema Datensicherheit in Unternehmen kann gar nicht groß genug geschrieben werden. Um ihm einen höheren Stellenwert einzuräumen, fordern wir seit langem die Einführung einer pauschalen Entschädigungsregelung für Kundinnen und Kunden, deren Daten von Unternehmensservern gestohlen wurden. Union und FDP haben keine übergreifende IT-Sicherheitsstrategie. Sie haben in dieser Legislaturperiode nichts unternommen, um Anreize zu schaffen, die Datensicherheit in Unternehmen zu erhöhen. Zahlreichen Datenskandalen hat Schwarz-Gelb nur achselzuckend zugeschaut.
+Die Enthüllungen Edward Snowdens zeigten, dass verschiedene Geheimdienste, allen voran die amerikanische National Security Agency (NSA), derzeit intensiv daran arbeiten, Computersysteme zu infiltrieren  oft in Kooperation mit Unternehmen. Sicherheitslücken werden bewusst nicht geschlossen oder selbst verbaut. Dieses Vorgehen der Geheimdienste ist alarmierend und verantwortungslos zugleich: Das Offenhalten von Hintertüren in der Software stellt immer auch ein Einfallstor für Kriminelle dar.
+Im Bereich der Datensicherheit gibt es großen Nachholbedarf. Hierzu gehört auch zu verhindern, dass Geheimdienste weiterhin Sicherheitslücken nicht schließen oder gar selbst verbauen. Zu dieser Frage muss sich neben der Bundesregierung auch die Wirtschaft klar verhalten.
+

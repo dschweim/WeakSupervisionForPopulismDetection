@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061193.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 10.09.13
+
+Berater-Eldorado: Was ist los bei Frau Wanka?
+---------------------------------------------
+
+
+Anlässlich der Presseberichte zu Beraterhonoraren des Bundesministeriums für Bildung und Forschung erklärt der bildungs- und forschungspolitische Sprecher der SPD-Bundestagsfraktion, Dr. Ernst Dieter Rossmann:
+Es verblüfft, dass gerade das Bildungsministerium offenbar das Ressort in der Bundesrepublik ist, das am wenigsten von seinem Handwerk versteht und fast 500 Millionen Euro für externen Berater-Sachverstand ausgeben muss.
+Es drängt sich der Verdacht auf, dass unter der schwarz-gelben Koalition das Bildungsministerium mehr und mehr zu einem Berater-Eldorado wird. Wenn aber ein einziges Ministerium knapp die Hälfte aller Beratungsmittel der Regierung ausgibt, dann ist das nicht mehr mit besonderen Erfordernissen des Regierungshandelns in Bildung und Forschung zu erklären.
+Es ist daher nicht nur ein Misstrauensbeweis von Bildungsministerin Wanka an ihr eigenes Haus. Es ist für die SPD ganz klar ein Fall für eine Überprüfung durch den Bundesrechnungshof.
+

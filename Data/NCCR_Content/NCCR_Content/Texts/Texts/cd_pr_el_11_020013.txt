@@ -1,0 +1,19 @@
+Text-ID: cd_pr_el_11_020013.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 14.09.11
+
+Steigende Jugendverschuldung
+----------------------------
+
+NA
+Eine am Montag veröffentlichte Studie der Inkasso Firma Intrum Justitia zeigt, dass die Jugendverschuldung in der Schweiz sehr hoch ist. Jeder vierte junge Mensch im Alter zwischen 18 und 24 Jahren gibt mehr Geld aus als er einnimmt. Jeder Zehnte in dieser Altersgruppe hat Schulden von mehr als 2000 Franken. Und bei jeder siebten Person übersteigen die Schulden das Einkommen. Zudem belegt die Studie, dass wer bereits in jungen Jahren Schulden hat, aus diesen auch im Erwachsenenalter kaum rauskommt.
+Angesichts dieser Problematik ist es unverständlich, weshalb der Bundesrat einer Motion der CVP, welche das Problem anpacken will, eine Absage erteilt. Es müssen Massnahmen ergriffen werden. Die sogenannte Junge Säule soll es Jugendlichen und jungen Erwachsenen zwischen 18 und 35 Jahren ermöglichen, maximal 5000 Franken pro Jahr auf ein spezielles Sparkonto oder ein Sparprodukt (Säule 3b) einzuzahlen. Dieser Betrag wird ab dem 35. Altersjahr oder bei einer Familiengründung ausgezahlt.
+Sparen soll sich auch in jungen Jahren lohnen. Neben dem Vorteil des Steuerabzuges, hat eine solche Junge Säule den Nebeneffekt, dass das ökonomische Denken gefördert und die Jugendverschuldung gesenkt wird.
+Zur Site "Ideen für eine erfolgreiche Schweiz"
+ Factsheet "Die junge Säule - Sparanreize für junge Menschen als Familienvorsorge"
+
+

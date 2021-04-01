@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041114.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 03.09.13
+
+Ganztagsschule: Wanka wirft Nebelkerzen
+---------------------------------------
+
+
+Zu den Äußerungen von Bildungsministerin Wanka, der Bund solle sich an der Ganztagsbetreuung nach der Einschulung beteiligen, erklärt Kai Gehring, Sprecher für Bildungspolitik:
+Seit Tagen täuschen Unionspolitiker von Kauder bis Merkel die Öffentlichkeit, indem sie plötzlich mehr Kooperation im Bildungsbereich zulassen wollen. Tatsächlich haben genau diese Politiker das Kooperationsverbot selbst eingeführt und seitdem aktiv dessen Aufhebung verhindert. Frau Wanka setzt diese Vernebelungsstrategie mit unausgegorenen Vorschlägen fort. Der Ganztagsschulausbau ist jedoch zu wichtig, um ihn für unglaubwürdige Wahlkampfmanöver zu missbrauchen.
+Das Kooperationsverbot muss ohne Wenn und Aber aufgehoben werden, damit eine neue Bundesregierung den flächendeckenden Ausbau der Ganztagschulen unterstützen kann. Die Erfolge des Ganztagsschulprogramm der rot-grünen Bundesregierung, dessen Fortführung mit dem Kooperationsverbot verhindert wurde, sind eklatant: Der Anteil der Ganztagsschüler hat sich seit 2004 verdreifacht. Allerdings hat in Bayern nur jedes achte Kind die Chance auf einen Ganztagsschulplatz, in Nordrhein-Westfalen immerhin jedes Dritte.
+Unser Ziel ist es, dass jedes Kind in Zukunft die Chance hat, in Ganztagsschulen individuell optimal gefördert zu werden. Dies ist auch ein wichtiger Baustein, um benachteiligten Kindern und Jugendlichen bessere Chancen zu geben sowie die Vereinbarkeit von Familie und Beruf zu ermöglichen.
+

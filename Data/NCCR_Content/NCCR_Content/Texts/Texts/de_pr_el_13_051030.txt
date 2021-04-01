@@ -1,0 +1,42 @@
+Text-ID: de_pr_el_13_051030.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = fraktion
+date         = 15.09.13
+
+Petra Pau: Daten schützen oder Big Brother stärken
+--------------------------------------------------
+
+NA
+Berlin (ots) - Angesichts des Ausmaßes der NSA-Spionage droht nun 
+selbst die EU-Kommission mit einer Aussetzung des Swift-Abkommens. 
+Dazu erklärt Petra Pau, Mitglied im Vorstand der Fraktion DIE LINKE 
+und im Innenausschuss des Bundestages:
+
+   "Das Swift-Abkommen legitimiert, dass Daten über Finanzgeschäfte 
+in der EU an die USA übermittelt werden. Angeblich, um potentielle 
+Terroristen zu enttarnen. So die Mär.
+
+   Nun wird offenbar, dass US-Geheimdienste nahezu flächendeckend 
+Finanztransaktionen, zum Beispiel via VISA-Card, ausspähen und 
+erfassen. So werden Kunden gläsern.
+
+   DIE LINKE hat das Swift-Abkommen immer abgelehnt. Die 
+Bundesregierung war dafür. Nun muss sie sich entscheiden: Will sie 
+Daten schützen oder Big Brother stärken?!"
+
+
+
+Pressekontakt:
+Hendrik Thalheim
+Pressesprecher
+Fraktion DIE LINKE. im Bundestag
+Platz der Republik 1
+11011 Berlin
+Telefon +4930/227-52800
+Telefax +4930/227-56801
+pressesprecher@linksfraktion.de
+

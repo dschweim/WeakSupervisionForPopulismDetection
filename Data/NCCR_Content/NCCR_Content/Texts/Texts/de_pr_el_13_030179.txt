@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030179.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 09.08.13
+
+PILTZ: BND darf kein Subunternehmer der NSA sein
+------------------------------------------------
+
+NA
+BERLIN. Zur Zusammenarbeit zwischen Bundesnachrichtendienst und dem US-Nachrichtendienst NSA erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Der Einsatz der Software XKeyscore durch den BND verlängert die Liste von Fragen an die SPD: 2007, zu Zeiten der sog. Großen Koalition, an der auch die SPD beteiligt war, hat der BND nach eigener Aussage begonnen, die Software zu nutzen. Fremde Software in einem so sensiblen Bereich einzusetzen, ist aber immer heikel. 
+Die schwarz-gelbe Koalition hat für den polizeilichen Bereich die Konsequenzen gezogen und ein Kompetenzzentrum gegründet, in dem von eigenen Experten ermittlungsrelevante Software entwickelt wird. Die SPD muss jetzt erklären, warum sie gegen die Nutzung von NSA-Software durch den BND nichts einzuwenden hatte. Jetzt ist Schluss mit Salamitaktik. Alle Karten müssen auf den Tisch  von der Vereinbarung aus dem Jahre 2002 bis zu den Quellcodes der eingesetzten Software. 
+Der BND ist nicht die NSA. Das ist auch gut so. Der BND kann aber auch nicht Handlanger der NSA sein. Kooperation ist richtig, Auftragsarbeit nicht. 
+

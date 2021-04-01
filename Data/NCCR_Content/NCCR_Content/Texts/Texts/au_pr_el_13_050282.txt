@@ -1,0 +1,38 @@
+Text-ID: at_pr_el_13_050282.txt
+
+Press Release from Party: FPÖ
+
+country      = at
+partylabel   = fpö
+partytype    = partei
+date         = 19.08.13
+
+FPÖ: Strache: Unseren Pensionisten helfen statt Spekulanten retten!
+-------------------------------------------------------------------
+
+FPÖ-Obmann fordert Pensionsanpassung auf Basis des
+      Pensionistenpreisindex
+Wien (OTS) - Eine Pensionsanhebung von nur 1,6 Prozent für das Jahr
+2014 sei völlig unzureichend, erklärte heute FPÖ-Bundesparteiobmann
+HC Strache. Damit bekämen die Pensionisten in Wahrheit nicht einmal
+die Inflation abgegolten. Dies komme einem Realverlust gleich, da die
+Lebenserhaltungskosten ständig ansteigen würden.
+Seit die Statistik Austria einen eigenen Pensionistenpreisindex
+berechne, sei eindeutig belegt, dass das tägliche Leben der
+Pensionisten und Pensionistinnen einem völlig anderen Warenkorb
+unterliege als jener eines aktiv Erwerbstätigen, erläuterte Strache.
+Damit sei aber auch klar, dass die Politik den Bedürfnissen dieser
+Menschen entsprechen müsse und Pensionsanpassungen auf Basis des
+Pensionistenpreisindex berechnet werden müssten.
+Es gehe nicht an, dass die Masse der österreichischen Senioren immer
+weiter in die Armutsfalle getrieben werde, betonte Strache, der
+insbesondere auf die fatale Lage der zahlreichen Mindestpensionisten
+hinwies. Aber die derzeitige Bundesregierung stehe dem völlig
+tatenlos und desinteressiert gegenüber. Außer gelegentlichen
+Lippenbekenntnissen würden SPÖ und ÖVP nicht das Geringste für
+Österreichs Pensionisten unternehmen. Stattdessen würden Faymann und
+Spindelegger das österreichische Steuergeld lieber nach Griechenland
+und nach Brüssel schicken, um damit Pleitebanken und Spekulanten zu
+retten.
+
+

@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_030101.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 27.08.13
+
+DJIR-SARAI: Eine diplomatische Lösung weiter als Ziel verfolgen
+---------------------------------------------------------------
+
+NA
+BERLIN. Zu der Diskussion, ob der Westen eine militärische Aktion in Syrien anvisieren sollte, erklärt der Vorsitzende der Arbeitsgruppe Außen der FDP-Bundestagsfraktion Bijan DJIR-SARAI:
+Ein militärisches Eingreifen in Syrien könnte gravierende Auswirkungen auf die Entwicklung der Sicherheit im Nahen- und Mittleren Osten haben. Ein solches Eingreifen könnte nicht nur alle Nachbarstaaten, sondern die gesamte Region ins Chaos stürzen. Auch wenn weiterhin die Kriegsparteien in Syrien sich unversöhnlich gegenüber stehen, die internationale Gemeinschaft sollte eine diplomatische Lösung des Syrien-Konflikts weiterhin anstreben und alle Akteure des Syrien-Konflikts an einem politischen Prozess beteiligen. 
+643-djir-sarai-syrien.pdf
+

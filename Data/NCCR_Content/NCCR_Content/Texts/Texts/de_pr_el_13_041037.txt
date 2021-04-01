@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041037.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 30.07.13
+
+Hamburger Hafen: Prognosen sind schwierig, vor allem wenn sie die Zukunft betreffen
+-----------------------------------------------------------------------------------
+
+
+Zur Zukunft des Hamburger Hafens erklärt Dr. Valerie Wilms, Berichterstatterin für maritime Politik:
+Die jetzt vorab durch die Bundesregierung veröffentlichten prognostizierten Werte von 16,3 Millionen Containern (TEU) Umschlag im Jahr 2030 erscheinen eher realistisch als die durch den Hamburger Senat berechneten 25,3 Millionen TEU. Obwohl nicht klar ist, wie sich die Weltwirtschaft oder die weltweite Arbeitsteilung entwickeln werden, hält Bundesregierung an Prognosen fest, die später womöglich weiter nach unten korrigiert werden müssen.
+Dadurch besteht das Risiko, dass über Bedarf Hafenanlagen gebaut und Umwelteingriffe wie Flussvertiefungen vorgenommen werden. Realistischerweise müsste deutlich vorsichtiger als bisher in die Zukunft geblickt werden. Zielführend wäre eine besser organisierte Zusammenarbeit der drei großen deutschen Containerhäfen im Sinne einer echten Hafenkooperation.
+

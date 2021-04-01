@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_061182.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 12.09.13
+
+Vodafone: Datensicherheit muss im Fokus unternehmerischer Entscheidung stehen
+-----------------------------------------------------------------------------
+
+
+Anlässlich des aktuellen Datenschutzskandals über den Zugriff von zwei Millionen Kundendaten über die Server des Mobilfunkanbieters Vodafone erklärt der zuständige Berichterstatter der SPD-Bundestagsfraktion für den Datenschutz, Gerold Reichenbach:
+Der aktuell bei Vodafone erfolgte illegale Datenzugriff zeigt einmal mehr, welche große und zentrale Rolle das Thema Datensicherheit bei Unternehmen spielen muss. Rein kurzfristige, ökonomische Aspekte dürfen, wenn es um dieses Thema geht, nicht allein ausschlaggebend sein. Deshalb dürfen Unternehmen sich bei ihren wirtschaftlichen Entscheidungen, wie zum Beispiel Betriebsteile ins Ausland zu verlagern oder bestimmte Dienstleistungen auszugliedern, nicht nur von rein ökonomischen Argumenten leiten lassen. Vielmehr müssen Unternehmen, die entsprechend sensible Daten speichern und verarbeiten, danach entscheiden, wo und wie am besten eine höchstmögliche Datensicherheit gewährleistet werden kann.
+Auch die Betriebsräte bei Vodafone, unter anderem aus Eschborn, haben immer wieder aus Sicherheitsbedenken davor gewarnt, bestimmte Kernbereiche auszugliedern. So strich Vodafone erst im vergangenen Jahr viele Stellen und gliederte verschiedene Dienstleistungen aus.
+

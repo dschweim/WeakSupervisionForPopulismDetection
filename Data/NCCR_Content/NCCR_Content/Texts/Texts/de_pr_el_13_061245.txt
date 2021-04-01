@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_061245.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 20.08.13
+
+Dispozinsen per Gesetz deckeln
+------------------------------
+
+
+Zur Untersuchung von Banken und Sparkassen durch die Stiftung Warentest erklärt die verbraucherpolitische Sprecherin der SPD-Bundestagsfraktion Elvira Drobinski-Weiß:
+Der Dispozinssatz für vereinbarte Kontoüberziehungen muss auf maximal acht Prozentpunkte über dem Basiszinssatz festgeschrieben werden. Finanzschwache Verbraucherinnen und Verbraucher dürfen nicht weiter in die Schuldenfalle getrieben werden!
+Leider bestätigt die aktuelle Untersuchung von Stiftung Warentest wieder: Obwohl sich die Banken selbst das Geld sehr billig leihen können, zocken sie die Kunden mit ihren Dispozinsen ungeniert ab. Untersucht wurden 1538 Banken und Sparkassen zur Höhe des Dispozinses.
+Und wieder handelt die Bundesregierung nicht. Der Verbraucher kann ja die Bank wechseln, wenn er eine günstigere findet. Wenn  denn Transparenz wird weder bei der Bundesregierung noch bei den Banken groß geschrieben.
+Wir brauchen endlich ein gesetzgeberisches Gesamtkonzept für einen verbraucherfreundlichen Finanzmarkt. Kein Akteur, kein Produkt und kein Vertriebsweg soll künftig ohne Aufsicht sein.
+

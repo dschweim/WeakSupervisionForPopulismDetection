@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_030154.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 15.08.13
+
+BREIL: Steuermittel zur Energiepreissenkung lösen nicht das Problem
+-------------------------------------------------------------------
+
+NA
+BERLIN. Zum heute vorgestellten Maßnahmepaket von SPD-Kanzlerkandidat Peer Steinbrück erklärt der energiepolitische Sprecher der FDP-Bundestagsfraktion Klaus BREIL:
+
+Peer Steinbrück hat die Energiepolitik als Wahlkampfthema entdeckt, obwohl sie dafür denkbar ungeeignet ist. Schließlich hat seine Partei am steigenden Energiepreis einen wesentlichen Anteil, denn die SPD hat in den letzten Monaten die Verhandlungen im Bundesrat über eine Preisbremse beharrlich blockiert. Außerdem hat Rot-Grün von Anfang an weitere Maßnahmen zur energetischen Gebäudesanierung konsequent hintertrieben.
+Nun also beklagt Steinbrück einen Missstand, den er und seine Genossen selbst maßgeblich mit verursacht haben. Zur Lösung des Problems fällt der SPD nur ein, was ihr in solchen Fällen immer einfällt: eine teilweise Steuerfinanzierung der Energiekosten. Woher die Steuern dafür kommen sollen, sagt Herr Steinbrück leider nicht. Sie werden natürlich an anderer Stelle fehlen.
+Die FDP-Bundestagsfraktion ist der Meinung, dass nur durch eine grundsätzliche strukturelle Reform des EEG das Problem vom Tisch zu bekommen ist. Die Förderung für Erneuerbare Energien, die schon jetzt ohne Subventionen auskommen, muss schnellstens eingestellt werden. Das betrifft vor allem Photovoltaik und weite Teile von Onshore-Wind. Insgesamt geht es uns darum, wieder mehr Markt in alle Bereiche der Energiewirtschaft zu bringen. Die von Steinbrück angesprochene Senkung des Strompreises durch Reduzierung der Stromsteuer auf die erhöhte EEG-Umlage ist von uns bereits im Sommer vorigen Jahres vorgeschlagen worden.
+Was wir prinzipiell brauchen, ist die Marktintegration der Erneuerbaren Energien und keinen weiteren Subventionsausbau.
+615-breil-energiepreissenkung.pdf
+

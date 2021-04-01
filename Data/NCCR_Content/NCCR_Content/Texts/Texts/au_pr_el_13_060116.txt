@@ -1,0 +1,16 @@
+Text-ID: at_pr_el_13_060116.txt
+
+Press Release from Party: BZÖ
+
+country      = at
+partylabel   = bzö
+partytype    = all
+date         = 07.08.13
+
+Widmann: "ÖVP-Wirtschaftsprogramm ist schwarze Seifenblase"
+-----------------------------------------------------------
+
+
+Als "schwarze Seifenblase" sieht BZÖ-Bündnissprecher Abg. Rainer Widmann das heute vorgestellte sogenannte Wirtschaftsprogramm der ÖVP. "Die ÖVP hat als Wirtschaftspartei längst abgedankt. Vor jeder Wahl verspricht sie Entlastungen und belastet dann doch in trauter Einigkeit mit der SPÖ die Unternehmer und alle Arbeitnehmer. Gerade Wirtschaftsminister Mitterlehner ist ein echter Ankündigungsriese und Umsetzungszwerg. Österreichs Wirtschaft steht aufgrund des Fleißes von Unternehmern und Arbeitnehmern halbwegs gut da, verliert aber wegen dieser reformblockierenden Bundesregierung in jedem Wettbewerbsranking an Boden. Österreich braucht eine Reformoffensive und ein wirtschaftsfreundliche Rahmenbedingungen. Dafür steht nur das BZÖ mit Josef Bucher als Mann aus der Wirtschaft", so der BZÖ-Bündnissprecher.
+
+

@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041073.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 28.08.13
+
+Missglückter schwarz-gelber Wahlkampf im Kabinett
+-------------------------------------------------
+
+
+Zum Bericht zur finanziellen Lage des Bundes und der wirtschaftlichen Entwicklung in Deutschland heute im Bundeskabinett erklären Kerstin Andreae, stellvertretende Fraktionsvorsitzende, und Priska Hinz, Sprecherin für Haushaltspolitik:
+Schäuble und Rösler hat der kollektive Wahlkampfwahn erfasst: Die Politik von Schwarz-Gelb als Ausgabendisziplin zu bezeichnen, ist platte Wählertäuschung. Union und FDP haben unsinnige Ausgaben wie das Betreuungsgeld und neue Subventionen wie die Mövenpicksteuer eingeführt. Das belastet den Staat jedes Jahr mit Milliarden. Wolfgang Schäuble nutzt nicht einmal die konjunkturellen Mehreinnahmen, um Schulden abzubauen, geschweige denn eigene Sparmaßnahmen umzusetzen. Die Koalition hat trotz wirtschaftlichem Aufschwung 100 Milliarden Euro neue Schulden zu verantworten, das ist die bittere Wahrheit schwarz-gelber Haushaltspolitik.
+Dass Deutschland wirtschaftlich relativ gut dasteht, ist nicht Röslers Verdienst. Der Noch-Wirtschaftsminister hat unternehmerische Zukunftsmärkte wie die Energieeffizienz blockiert, die steuerliche Forschungsförderung nicht umgesetzt und statt Subventionen abzubauen mit immer neuen Ausnahmen beim EEG die Energiepreise nach oben getrieben. Ergebnis von Röslers Wirtschaftspolitik ist eine bedenkliche Investitionsschwäche in der deutschen Wirtschaft. Der Netzausbau kommt kaum voran und Straßen und Brücken verfallen weiter. Eine leistungsfähige Wirtschaft braucht eine leistungsfähige Infrastruktur von Straße und  Schiene, über schnelles Breitband bis hin zu guten Schulen und Hochschulen. In den nächsten vier Jahren braucht die deutsche Wirtschaft eine Investitionsoffensive. Mit diesem Wirtschaftsminister wird das nichts werden.
+

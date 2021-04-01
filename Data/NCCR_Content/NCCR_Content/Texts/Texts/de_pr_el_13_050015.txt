@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_050015.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 30.07.13
+
+Der Prozess gegen Inge Hannemann ist ein Politikum
+--------------------------------------------------
+
+Heute wurde am Hamburger Arbeitsgericht die Freistellung von Inge Hannemann, Mitarbeiterin des Jobcenters Hamburg, verhandelt. Inge Hannemann wurde dadurch bekannt, dass sie die Sanktionspraxis der Jobcenter offen kritisiert und sich klar für die Abschaffung der Hartz IV-Sanktionen ausspricht. Dazu erklärt die Vorsitzende der Partei DIE LINKE, Katja Kipping, die  beim Prozess in Hamburg anwesend war:
+Im vergangenen Jahr wurden 1.025 000 Sanktionen gegen Hartz IV-Beziehende verhängt. Das ist trauriger Rekord. Weit mehr als Zweidrittel aller Sanktionen - 69 Prozent - gehen auf Meldeversäumnisse zurück. Sanktionen meint, dass das ohnehin zu niedrige Arbeitslosengeld II gekürzt wird. Für die Betroffenen bedeutet das existenzielle Not, befördert Existenzangst.Inge Hannemann ist eine mutige Frau, eine Rebellin gegen Sanktionen des Hartz IV-Systems. Dafür soll sie nun selbst sanktioniert werden. Inge Hannemann bekam sowohl vor dem Gerichtsgebäude als auch im Verhandlungssaal enorme Solidarität von bundesweit angereisten Unterstützern.Wer glaubt, der Fall Hannemann sei ein rein arbeitsrechtliches Verfahren, der irrt. Verhandelt wird nicht nur ein Arbeitsrechtsprozess, öffentlich diskutiert wird hier auch das Sanktionssystem gegen Erwerbslose und insofern wird dieses Verfahren mehr und mehr zu einem Politikum.
+

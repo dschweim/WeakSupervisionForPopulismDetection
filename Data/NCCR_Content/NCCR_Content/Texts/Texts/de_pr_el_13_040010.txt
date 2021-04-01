@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040010.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 06.09.13
+
+Digitalkanäle: Nicht am falschen Ende sparen
+--------------------------------------------
+
+Zum Start der Internationalen Funkausstellung in Berlin und der Diskussion um die Zukunft der Digitalkanäle von ARD und ZDF erklärt Cem Özdemir, Bundesvorsitzender von BÜNDNIS 90/DIE GRÜNEN:
+"Die Ministerpräsidenten entscheiden demnächst über die Zukunft der Digitalkanäle von ARD und ZDF. Wir begrüßen, dass der öffentlich-rechtliche Rundfunk dabei weiter an der Verjüngung seines Publikums arbeitet.
+Dazu gehört einerseits ein erweitertes Online-Angebot - ohne die derzeit geltende 7-Tages-Frist, die dazu führt, dass wichtige Inhalte nur für eine Woche auf der jeweiligen Homepage abrufbar sind. Andererseits spielt der angedachte Jugendsender in diesem Prozess eine wichtige Rolle.
+Kritisch sehen wir jedoch die aus Kostengründen angedachte Einstellung von ZDFinfo. Nachrichten, Informationssendungen und Dokumentationen sind das Herzstück der öffentlich-rechtlichen Medienangebote. Damit übernehmen die Sender eine wichtige Rolle in unserer demokratischen Gesellschaft. Das darf nicht durch Sparzwänge gefährdet werden. Für ein zukunftsweisendes Digitalangebot von ARD und ZDF halten wir daher sowohl tagesschau24 als auch ZDFinfo für unverzichtbar."
+

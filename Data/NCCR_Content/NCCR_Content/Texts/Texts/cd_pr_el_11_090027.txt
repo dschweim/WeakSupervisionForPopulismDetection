@@ -1,0 +1,15 @@
+Text-ID: cd_pr_el_11_090027.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 30.09.11
+
+SP zieht mehrheitlich positive Bilanz nach letzter Session der Legislatur
+-------------------------------------------------------------------------
+
+Neben zahlreichen wichtigen Beschlüssen stehen für die SP zwei Vorlagen von grosser Tragweite im Zentrum der heute abgeschlossenen Herbstsession: Zunächst konnte die Too Big To Fail-Vorlage beschlossen werden. Damit werden die Kapital-Vorschriften für systemrelevante Grossbanken deutlich verschärft und das volkswirtschaftliche Risiko, welches von riskanten Geschäften ausgeht, deutlich gemindert. In diesem Bereich wird die SP jedoch weiter kämpfen. Ein Fernziel ist nach wie vor, dass das Investment-Banking bei Grossbanken dereinst von den übrigen Geschäftsfeldern abgetrennt wird. Im Zentrum jahrelanger Anstrengungen der SP stand weiter der Ausstieg aus der Atomenergie, der in der Herbstsession eine weitere wichtige Hürde genommen hat und der im Winter endlich beschlossen wird. In diesem Bereich wird die nächste wichtige Aufgabe die Planung des Umstiegs auf die Erneuerbaren sein. Die eingereichte Cleantech-Initiative der SP Schweiz legt die Leitplanken für den Atomausstieg fest und ermöglicht gleichzeitig die Schaffung von über 100000 Stellen im Cleantech-Sektor. 
+
+
+

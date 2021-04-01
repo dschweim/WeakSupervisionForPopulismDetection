@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_050013.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 31.07.13
+
+Keine Erholung am Arbeitsmarkt
+------------------------------
+
+Zur Situation auf dem deutschen Arbeitsmarkt im Monat Juli erklärt der Bundesgeschäftsführer der LINKEN, Matthias Höhn:
+Gutes Wetter, Ferienzeit: Hauptsaison für niedrigbezahlte Arbeitskräfte in der Tourismusbranche. Befristet und verliehen zu Minilöhnen, ohne Aussicht auf eine reguläre, sozialversicherungspflichtige Arbeit mit Perspektive. Auch im Rest des Jahres ist dies millionenfaches Schicksal - gleich nach Litauen hat Deutschland den größten Niedriglohnsektor in Europa, wie eine Studie der vergangenen Woche belegt. 
+Und auch sonst gibt es keine Erholung am Arbeitsmarkt, im Gegenteil: Trotz Saison stieg die Arbeitslosigkeit offiziell auf 2,914 Millionen. Ohne statistische Spielereien liegt die tatsächliche Arbeitslosigkeit sogar bei 3,766 Millionen, wie DIE LINKE auch in diesem Monat nachgerechnet hat.
+Steigende Arbeitslosigkeit und ein stetig weiter wachsender Niedriglohnsektor zwängen eigentlich zum Handeln. Eigentlich. Aber weder die unverändert hohe Arbeitslosigkeit noch das beschämende Zeugnis des Instituts für Arbeitsmarkt- und Berufsforschung (IAB), das die Studie zum Niedriglohn vorlegte, wecken die Regierung auf.
+Statt arbeitsmarktpolitischem Tiefschlaf sind gesetzliche Regelungen zu Verhinderung von Lohndumping nötig ebenso wie die Gleichstellung von Leiharbeiterinnen und Leiharbeitern mit der Stammbelegschaft. Ein gesetzlicher Mindestlohn von 10 Euro, wie von der LINKEN gefordert, würde neben einer besseren Entlohnung für geleistete Arbeit auch die Binnenkonjunktur ankurbeln und so neue existenzsichernde Arbeitsplätze schaffen.
+

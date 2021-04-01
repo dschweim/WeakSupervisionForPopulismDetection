@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_041129.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 06.09.13
+
+Das Staatsversagen beim Datenschutz muss ein Ende haben
+-------------------------------------------------------
+
+
+Zu der Demonstration Freiheit statt Angst am 7. September erklärt Renate Künast, Fraktionsvorsitzende:
+Wir unterstützen das Bündnis «Freiheit statt Angst» für Freiheitsrechte, für einen modernen Datenschutz, für ein freies Internet und gegen die ausufernde Überwachung. Das von Edward Snowden offengelegte System der weltweiten Ausspähung und Überwachung zeigt, dass unsere Bürgerrechte massiv gefährdet sind. Die Liste der Maßnahmen, mit denen Bürgerrechte eingeschränkt und ausgehöhlt werden, ist lang. PRISM, Tempora, Drohnen und Vorratsdatenspeicherung sind nur einige aktuelle Stichworte.
+Die schwarz-gelbe Bundesregierung versagt auf ganzer Linie bei der Aufgabe, uns vor diesen Entwicklungen zu schützen. Die Bundeskanzlerin steckt den Kopf in den Sand und verweigert Aufklärung und Schutz mit einem Verweis auf das angebliche Neuland Internet.
+Statt für einen Datenschutz auf hohem Niveau in der EU einzutreten, steht Frau Merkel dafür, Überwachungsbefugnisse auszuweiten und den Rechtsschutz einzuschränken. Statt seiner Schutzpflicht nachzukommen verweist der Bundesinnenminister die Bürger darauf, sich selber vor massiver Ausspähung ihrer digitalen Kommunikation zu schützen. Da jüngst bekannt wurde, dass die NSA die Fähigkeit besitzt, auch verschlüsselte Kommunikation mitzulesen, ist auch diese letzte Rückzugslinie der Bundesregierung in sich zusammengebrochen.
+Dieses Staatsversagen muss ein Ende haben, genauso wie Vertuschungsversuche. Wir stehen erst am Anfang der Aufklärung. Wir streiten für den Politikwechsel, hin zu einem modernen Datenschutz und einem klaren Kampf gegen Massenüberwachung.
+Weitere Informationen:
+Die Demonstration "Freiheit statt Angst" beginnt am 7.9.13 um 13 Uhr auf dem Alexanderplatz in Berlin. Teilnehmen werden neben Renate Künast u.a. auch die Abgeordneten Claudia Roth, Volker Beck, Konstantin von Notz, Wolfgang Wieland und Hans-Christian Ströbele sowie Jan-Philipp Albrecht (MdEP).
+

@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040009.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 06.09.13
+
+Aufruf zur "Freiheit statt Angst"-Demonstration in Berlin
+---------------------------------------------------------
+
+Zur Demonstration "Freiheit statt Angst" am Berliner Alexanderplatz erklären Claudia Roth, Bundesvorsitzende, und Malte Spitz, Mitglied des Bundesvorstandes von BÜNDNIS 90/DIE GRÜNEN:
+"Wir freuen uns auf zahlreiche Demonstrierende, die morgen in Berlin gegen Datenklau, Überwachungstechnologie, für Freiheitsrechte, einen modernen Datenschutz und ein freies Internet auf die Straße gehen. Wir Grüne unterstützen zum sechsten Mal das Bündnis "Freiheit statt Angst". Aber wahrscheinlich war ein starkes Zeichen für Bürgerrechte im Netz noch nie so wichtig wie heute. Die Enthüllungen von Edward Snowden haben noch einmal deutlich gemacht, dass unsere Bürgerrechte durch ein System digitaler Überwachung massiv verletzt werden. Programme wie PRISM, Tempora, Überwachungsdrohnen, oder eine Vorratsdatenspeicherung lassen die Science Fiction der Totalüberwachung nun Wirklichkeit werden. Freiheit und Anonymität im Netz sind damit zu einer Illusion geworden. Die Daten der Bürgerinnen und Bürger werden massenhaft gesammelt, gespeichert und ausgewertet. Und wie wir seit heute wissen, können wir uns nicht mal durch Verschlüsselung davor schützen.
+Doch wir wollen unser Ziel nicht aufgeben. Wir werden uns unser Recht auf freie, anonyme und geschützte Kommunikation zurück erkämpfen. Dafür gehen wir morgen auf die Straße, dafür erheben wir unsere Stimme.
+Wenn die schwarz-gelbe Bundesregierung versagt beim Schutz unserer Bürgerrechte völlig. Sie vertagt einen modernen Datenschutz und bekämpft ihn auf europäischer Ebene. Außerdem hat Schwarz-Gelb Überwachungsbefugnisse und Möglichkeiten der Datenabfrage massiv ausgeweitet und den Rechtsschutz eingeschränkt. Statt staatlichen Schutz zu gewähren hat Bundesinnenminister Friedrich nur den Rat übrig, sich selbst zu schützen. Und Ronald Pofalla, der Zuständige für die Geheimdienste, erklärt das Problem für beendet. Dieses massive Staatsversagen muss endlich ein Ende haben. Deshalb streiten wir für den Politikwechsel, hin zu einem modernen Datenschutz und gegen Massenüberwachung."
+

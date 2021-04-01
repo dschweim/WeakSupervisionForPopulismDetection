@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_060085.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 27.08.13
+
+Elke Ferner: Allensbach-Umfrage ist Ohrfeige für Merkel
+-------------------------------------------------------
+
+NA
+Anlässlich der heute in Berlin vorgestellten Allensbach-Meinungsumfrage im Auftrag der Zeitschrift EMMA erklärt die Bundesvorsitzende der SPD-Frauen, Elke Ferner, MdB:
+Nun hat Merkel es schwarz auf weiß: Die Mehrzahl der Frauen in Deutschland ist zu Recht unzufrieden mit der Gleichstellungspolitik der Bundesregierung.
+Vier Jahre Schwarz-Gelb unter Kanzlerin Merkel sind vier Jahre Stillstand in Sachen Frauenpolitik und Emanzipation.
+Leider macht eine Frau an der Spitze eben noch lange keine Politik für Frauen: Arbeit im Niedriglohnsektor, Teilzeit und Minijobs sind Frauensache. 22 Prozent Verdienstunterschied zwischen Frauen und Männern  oft sogar im gleichen Job  sind ein Skandal. Weniger als 10 Prozent Frauenanteil in Vorständen deutscher Unternehmen sprechen für sich. Statt moderner Familienpolitik, die auf echte partnerschaftliche Teilung von Erwerbs- und Sorgearbeit setzt, subventioniert Schwarz-Gelb mit dem Betreuungsgeld und dem Ehegattensplitting längst überholte Rollenbilder. Damit vertritt die Kanzlerin nicht die Interessen der Frauen. Das sieht auch die Mehrheit der Befragten so.
+Kein Wunder, dass 61 Prozent der Meinung sind, Frauen müssen sich zusammentun, um ihre Interessen besser durchzusetzen. Die SPD steht dabei an ihrer Seite. Nur mit uns in Regierungsverantwortung erhalten die Menschen einen flächendeckenden, gesetzlichen Mindestlohn. Nur unter Rot-Grün wird es Entgeltgleichheit per Gesetz und die lange überfällige Frauenquote in den Chefetagen der Unternehmen geben. Und nur mit der SPD wird das Betreuungsgeld wieder abgeschafft und stattdessen der Kita-Ausbau verstärkt. Wir werden dafür sorgen, dass Frauen und Männer partnerschaftlich die gleichen Lebens- und Karrierechancen haben.
+

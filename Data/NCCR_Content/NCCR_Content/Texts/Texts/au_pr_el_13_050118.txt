@@ -1,0 +1,45 @@
+Text-ID: at_pr_el_13_050118.txt
+
+Press Release from Party: FPÖ
+
+country      = at
+partylabel   = fpö
+partytype    = partei
+date         = 09.09.13
+
+FPÖ-Hofer: Pflegegeld hat massiv an Wert verloren
+-------------------------------------------------
+
+Sozialminister Hundstorfer rechnet an der Realität vorbei
+Wien (OTS) - "Entgegen der Behauptung von Sozialminister Hundstorfer
+hat das Pflegegeld natürlich an Wert verloren. Die beigefügte Tabelle
+(siehe unten) zeigt dies deutlich", sagte der freiheitliche
+Spitzenkandidat der FPÖ Burgenland NAbg. Norbert Hofer. "Gespart wird
+bei dieser Regierung nur am Rücken der Ärmsten der Armen."
+In den vergangenen Jahren habe es keine Inflationsanpassungen
+gegeben, so Hofer. Seit Einführung des Pflegegeldes im Jahr 1993 gebe
+es je nach Stufe Verluste zwischen 1.000 und mehr als 5.000 Euro pro
+Jahr, sagte Hofer. Dieses Geld fehle wirklich. Alle Anträge im
+Parlament, endlich die notwendigen Anpassungen seien aber abgelehnt
+worden. "Da habe ich kein Einsehen, dass man genau bei jenen spart,
+die sich am wenigsten helfen können, nämlich bei pflegebedürftigen
+Menschen in Österreich", so Hofer.
+               1993 öS   1993 Euro    2013 inflationsbereinigt (45%)
+Pflegestufe 1  2.500,- S   181,68    263,44
+Pflegestufe 2  3.500,- S   254,35    368,81
+Pflegestufe 3  5.400,- S   392,43    569,02
+Pflegestufe 4  8.100,- S   588,65    853,54
+Pflegestufe 5 11.000,- S   799,40  1.159,13
+Pflegestufe 6 15.000,- S 1.090,09  1.580,63
+Pflegestufe 7 20.000,- S 1.453,46  2.107,52
+Pflegegeld 2013 - aktuell:
+            2013        Verlust monatlich jährlich
+Pflegestufe 1 154,20            109,24    1.310,88
+Pflegestufe 2 284,30             84,51    1.014,12
+Pflegestufe 3 442,90            126,12    1.513,44
+Pflegestufe 4 664,30            189,24    2.270,88
+Pflegestufe 5 902,30            256,83    3.081,96
+Pflegestufe 6 1.260,00          320,63    3.847,56
+Pflegestufe 7 1.655,80          451,72    5.420,64
+
+

@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_041106.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 05.09.13
+
+Keine Überwachungssoftware für Diktatoren - Bundesregierung muss doppeltes Spiel beenden
+----------------------------------------------------------------------------------------
+
+
+Bezüglich neuer Enthüllungen um Verstrickungen deutscher Firmen in den weltweiten Markt der Überwachungs- und Zensursoftware, erklären Dr. Konstantin von Notz, Sprecher für Netzpolitik, und Katja Keul, Parlamentarische Geschäftsführerin:
+Dass deutsche Firmen in der Championsleague der Überwachung mitspielen, weltweit zur Unterdrückung von friedlichem Protest und Menschenrechten beitragen und es hier dringenden Handlungsbedarf gibt, darauf machen wir die Bundesregierung seit Jahren aufmerksam.
+Die Merkel-Regierung versucht weiterhin, die demokratisierende Wirkung der neuen Medien als ihren Verdienst zu verkaufen. Gleichzeitig drückt sie bei entsprechenden Exporten beide Augen zu. Geplante Verschärfungen der Exportbestimmungen auf EU-Ebene torpediert sie.
+Während FDP-Bundesaußenminister Westerwelle eine verbesserte Regulierung vor Monaten in Aussicht gestellt hat, unterstützt das FDP-geführte Bundeswirtschaftsministerium weiterhin diejenigen, die scheinbar keinerlei Skrupel haben, ihre Technik in Despotenhände zu geben.
+Unseren Antrag Export von Überwachungs- und Zensurtechnologie an autoritäre Staaten verhindern  Demokratischen Protest unterstützen haben Union und FDP vor Kurzem erst abgelehnt. In ihm haben wir konkrete Vorschläge unterbreitet, wie die entsprechenden Kontrollregime auf nationaler, europäischer und internationaler Ebene effektiviert werden könnten.
+Das zeigt: Innerhalb der schwarz-gelben Bundesregierung gelten gute Geschäfte mit Diktatoren scheinbar noch immer mehr als der Schutz von Menschenrechten. Union und FDP müssen ihr doppeltes Spiel endlich beenden. Eine effektive Exportkontrolle deutscher und europäischer Überwachungs- und Zensurtechnologie ist überfällig.
+

@@ -1,0 +1,15 @@
+Text-ID: cd_pr_el_11_090004.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 03.09.11
+
+SP-Fraktion diskutiert Armeebericht und bereitet Atomdebatte vor
+----------------------------------------------------------------
+
+Im Rahmen ihrer vorbereitenden Sitzung hat die SP-Fraktion heute eine vertiefte Diskussion über den Armeebericht geführt. Für die SP ist klar: die Armee soll weder auf einen Bestand von 100000 vergrössert werden und das Rüstungsbudget darf nicht auf 5 Milliarden Franken erhöht werden, wie dies die vorberatende Sicherheitskommission des Nationalrats plant. Solcherlei unrealistisch hohen Armeeausgaben sind weder finanz- noch sicherheitspolitisch zu rechtfertigen und würden in empfindlichen Kürzungen in anderen Bereichen münden. Ebenfalls wird sich die SP-Fraktion dagegen wehren, dass die Beschaffung neuer Kampfjets in das ordentliche Rüstungsprogramm integriert und so am Volk vorbeigeschleust wird. Die SP-Fraktion wird sich im Nationalrat für eine Obergrenze der Rüstungskosten auf jährlich höchstens 3.5 Milliarden Franken und eine für einen maximalen Personaletat von 60000 Armeeangehörigen einsetzen.
+
+Ferner hat die SP-Fraktion die Debatte des Ständerats über den Atomausstieg vorbereitet. Der momentane Vorschlag der Energiekommission des Ständerats sieht den Atomausstieg vor, will aber für künftige Reaktortechnologien eine Hintertür offen lassen. Die SP will weiterhin eine konsequente Atomausstiegs- und Umstiegsstrategie. Der Atomausstieg muss beschlossen werden und AKW haben in der Schweiz keine Zukunft mehr. Bis wirklich neue Atomtechnologien allenfalls absehbar sind, wird es ausserdem noch Jahrzehnte dauern und der Schweizer Energiebedarf wird bis dahin längst mit erneuerbaren Energien und Cleantech versorgt werden.
+

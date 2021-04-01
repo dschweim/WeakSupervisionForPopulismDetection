@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_030178.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 09.08.13
+
+HÖFERLIN: Verschlüsselte E-Mails sind der richtige Weg
+------------------------------------------------------
+
+NA
+
+BERLIN. Anlässlich des Vorstoßes zur Bildung des E-Mailverbunds E-Mail Made in Germany" erklärt der liberale Netzpolitiker der FDP-Bundestagsfraktion Manuel HÖFERLIN:
+
+Die Initiative hin zur Transportverschlüsselung in der E-Mailkommunikation zwischen Providern und Nutzern ist begrüßenswert. Dieses Grundniveau an Sicherung der digitalen Kommunikationswege ist fällig. 
+Gleichzeitig ist sie ein erster Schritt hin zu mehr Verschlüsselung bei E-Mails generell und zeigt klar, dass ein konkreter Bedarf an verschlüsselter E-Mailkommunikation in Deutschland besteht. 
+Jedoch ist es in einigen Fällen nicht mit bloßer Transportverschlüsselung nicht getan. Es wird auch einzelne Fälle geben, in denen eine Ende-zu-Ende Verschlüsselung notwendig sein wird. Sicher werden auch hier in Zukunft die Bürgerinnen und Bürger maßgeblich dafür verantwortlich sein, ihre digitale Kommunikation selbst abzusichern. Entsprechende Programme dafür sind kostenlos im Internet verfügbar. Jedoch könnten die deutschen E-Mail Provider hier beweisen, dass ihre Kunden zurecht auf sie vertrauen und ihnen bei der Einrichtung von Ende-zu-Ende verschlüsselter Kommunikation behilflich sein. 
+

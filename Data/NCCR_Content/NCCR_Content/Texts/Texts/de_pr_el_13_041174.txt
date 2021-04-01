@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_041174.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 19.09.13
+
+CDU für Weiter so statt Begrenzung von Rüstungsexporten
+---------------------------------------------------------
+
+
+Zur CDU-internen Auseinandersetzung über die künftige Rüstungsexportpolitik erklärt Katja Keul, Parlamentarische Geschäftsführerin:
+Die Abgrenzung der CDU-Fraktionsführung von den Vorstellungen der eigenen Verteidigungspolitiker zur Rüstungsexportpolitik ist nicht glaubwürdig. Die schwarz-gelbe Bundesregierung hat in den vergangenen vier Jahren die Rüstungsexportrichtlinien ausgehöhlt. Die Bundesregierung hat diese Grundsätze ein ums andere Mal verletzt, als sie Waffenlieferungen in Konfliktregionen und menschenrechtsverletzende Staaten wie Saudi-Arabien genehmigt hat. Wenn die CDU/CSU-Fraktion nun betont, an dieser Praxis festhalten zu wollen, bedeutet das, dass Deutschland bei einer CDU-geführten Regierung in den nächsten Jahren einen weiteren Anstieg der Rüstungsexporte aus Deutschland zu erwarten hat. Die Welt braucht aber restriktivere Regeln für den Waffenhandel. Deutschland sollte hier ein Vorbild sein. Daher setzen wir uns für ein Rüstungsexportgesetz ein, dass restriktive Regelungen für Rüstungsexporte rechtsverbindlich festlegt und durch eine stärkere Beteiligung des Deutschen Bundestages die Transparenz stärkt.
+

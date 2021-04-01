@@ -1,0 +1,37 @@
+Text-ID: at_pr_el_13_100004.txt
+
+Press Release from Party: NEOS
+
+country      = at
+partylabel   = neos
+partytype    = partei
+date         = 25.09.13
+
+Strolz: "NEOS freut sich über Rückenwind aus Oberösterreich"
+------------------------------------------------------------
+
+Erfolgreiche Mobilisierung und ausgezeichnete Umfragewerte -
+      optimale Basis für rasche Reformen in Bildung und Wirtschaft
+Wien (OTS) - "NEOS und das Liberale Forum sind gut unterwegs, die
+Mobilisierung läuft hier außerordentlich gut, die Umfragen sind
+vielversprechend", so NEOS Vorsitzender und Spitzenkandidat MatthiasStrolz bei einer Aktion am Linzer Taubenmarkt in Anwesenheit von NEOS
+Oberösterreich Spitzenkandidat Rainer Hable.
+"Das ist wichtig, um neben dem Einzug auch das zweite Wahlziel zu
+erreichen: Wir wollen die rot-schwarze Mehrheit brechen, um die
+Bildung zu beflügeln und der Wirtschaft neue Impulse zu geben", so
+Strolz weiter. "Unsere erste Mission ist selbstverständlich, rasch
+Verbesserungen im Bildungssystem umzusetzen."
+NEOS fordert echte Autonomie mit starken, unabhängigen Direktor_innen
+und eine Vielfalt an Konzepten, die zum gemeinsamen Ziel der
+Mittleren Reife führen. "Die Stärke, die uns die letzten Umfragen
+bescheinigen, brauchen wir auch im Parlament, um uns für
+Ein-Personen-Unternehmen sowie kleine und mittlere Firmen
+einzusetzen, die das Rückgrat der österreichischen Wirtschaft
+darstellen", so Strolz.
+NEOS fordert die Einrichtung eines Jungunternehmerfonds aus
+Privatisierungserlösen, der mit einer Milliarde starten und
+mittelfristig auf zwei Milliarden Euro aufgestockt werden soll.
+Strolz: "Das beflügelt nicht nur Start-ups, sondern den
+Wirtschaftsstandort Österreich!"
+
+

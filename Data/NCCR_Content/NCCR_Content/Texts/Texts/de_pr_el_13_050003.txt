@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_050003.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 06.09.13
+
+Geheimdienste abschaffen - Freiheit statt Angst!
+------------------------------------------------
+
+Angesichts aktueller Enthüllungen über die NSA erneuert das Mitglied im Parteivorstand der LINKEN, Halina Wawzyniak, die Forderung nach Abschaffung der Geheimdienste und ruft zur Beteiligung an der Demonstration "Freiheit statt Angst" auf. Sie erklärt:
+Immer wieder werden wir von Nachrichten über die NSA überrascht. Diesmal ist es die Nachricht, dass die NSA systemtisch Verschlüsselungen im Internet geknackt haben soll. Doch eigentlich verwundert diese Nachricht nicht wirklich. Geheimdienste - und insofern ist es nicht ein Problem allein der NSA -werden alle technischen Möglichkeiten nutzen um an Informationen zu kommen. Geheimdienste gehören abgeschafft, denn sie sind nicht kontrollierbar.Gegen Überwachungswahn, nicht nur staatlicher Stellen sondern auch privater Konzerne, wird morgen, 7. September 2013, um 13.00 Uhr am Alexanderplatz in Berlin demonstriert. Wie seit vielen Jahren wird sich DIE LINKE auch in diesem Jahr an der Demonstration "Freiheit statt Angst" beteiligen und ruft zur Teilnahme an der Demonstration auf. Die aktuellen Ereignisse sind ein Anlass mehr, gegen jede Art von Vorratsdatenspeicherung und Überwachung des Internets auf die Straße zu gehen.
+

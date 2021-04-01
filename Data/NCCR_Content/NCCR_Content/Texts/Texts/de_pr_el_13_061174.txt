@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061174.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 16.09.13
+
+SWIFT-Abkommen muss ausgesetzt werden
+-------------------------------------
+
+
+Zu aktuellen Informationen über den Zugriff des US-Geheimdienstes NSA auf Bankdaten aus dem Bankennetzwerk SWIFT erklärt der zuständige Berichterstatter der SPD-Bundestagsfraktion für den Datenschutz Gerold Reichenbach:
+Wieder einmal wird klar, dass befreundete Staaten unsere Vertrauensseligkeit ausnutzen. Die aktuelle Bundesregierung hält es nicht einmal für erforderlich, den erheblichen Grundrechtseingriffen mit Nachdruck nachzugehen beziehungsweise mit Nachdruck für Aufklärung zu sorgen. Seit Monaten hält sich die Bundeskanzlerin bedeckt, wenn es um die Überwachung oder den Zugriff auf Daten deutscher Bürgerinnen und Bürger durch US-amerikanische und britische Geheimdienste geht. Dabei wollte Frau Merkel doch das Thema Datenschutz und Datensicherheit zum Wahlkampfthema machen.
+Bereits bei Verabschiedung des SWIFT-Abkommens vor drei Jahren hat die SPD-Bundestagsfraktion gewarnt, ein Abkommen voreilig und ohne Datenschutzstandards sowie effiziente Kontroll- und Rechtsschutzmechanismen nach deutschem Vorbild abzuschließen. Nun werden einmal mehr unsere Befürchtungen bestätigt. Gleichzeitig hätte in dem Abkommen ein Verbot weitergehender Überwachung durch den US-amerikanischen Geheimdienst enthalten sein müssen. Das FDP-regierte Bundesjustizministerium hatte sich damals bei den Verhandlungen zum SWIFT-Abkommen herausgehalten und die im Abkommen enthaltenen Eingriffe in die Rechte der Bürgerinnen und Bürger hingenommen. Jetzt geriert sich Bundesjustizministerin Leutheusser-Schnarrenberger als Hüterin der Daten, dabei hatte sie es damals mit in der Hand, für mehr Datenschutz und Datensicherheit zu sorgen.
+Wir erwarten von einer deutschen Bundeskanzlerin, dass sie sich für die Rechte der deutschen Bürgerinnen und Bürger auf europäischer und internationaler Ebene persönlich einsetzt. Deshalb fordern wir von ihr, dass sie in Brüssel ein Aussetzen des SWIFT-Abkommens durchsetzt.
+

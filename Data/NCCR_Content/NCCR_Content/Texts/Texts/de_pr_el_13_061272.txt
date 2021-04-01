@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061272.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 07.08.13
+
+Interview mit Erzbischof Zollitsch liest sich wie ein Aufruf zur Abwahl Merkels
+-------------------------------------------------------------------------------
+
+
+Zu den heute veröffentlichten kritischen Bemerkungen des Vorsitzenden der katholischen Deutschen Bischofskonferenz, Erzbischof Robert Zollitschs, über die Armutsentwicklung in Deutschland erklärt der stellvertretende Vorsitzende der SPD-Bundestagsfraktion Joachim Poß:
+Aus vergangenen Jahrzehnten kennt man noch Wahlaufrufe der katholischen Kirche für konservative Parteien. Vor diesem Hintergrund wirkt Zollitschs Kritik an der sozialen Realität in Deutschland  und somit an der Regierungsbilanz Merkels  umso heftiger. Auch wenn der Erzbischof nur indirekt formuliert, so wird doch klar, wo er die Versäumnisse der Regierung Merkel sieht: Ein flächendeckender Mindestlohn und die Wiederherstellung von Ordnung auf dem Arbeitsmarkt sind in Verbindung mit moderaten Steuererhöhungen für Spitzenverdiener die naheliegenden Schlussfolgerungen, die sich aus seinen Wahlempfehlungen ziehen lassen.
+Doch die Bilanz der Regierung Merkel ist gerade in diesen Bereichen verheerend: Durch ihre Politik der Unterlassung verschärfte Schwarz-Gelb in den vergangenen Jahren die soziale Ungleichheit.
+Ein Blick in die Wahlprogramme von Union und FDP macht außerdem deutlich, dass mit dieser Regierung auch in Zukunft die Schere zwischen Arm und Reich weiter auseinander gehen würde. Zollitsch macht diese Frage aber zu einem für die Wahlentscheidung wichtigen Entscheidungsmaßstab in seinem Interview. Bei Kenntnis der Wahlprogramme lesen sich seine Bemerkungen daher wie ein Aufruf zur Abwahl Merkels.
+

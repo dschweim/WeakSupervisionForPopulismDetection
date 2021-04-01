@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041096.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 30.08.13
+
+Stopp Fracking
+--------------
+
+
+Anlässlich des bundesweiten Anti-Fracking-Tages am kommenden Samstag erklärt Oliver Krischer, Sprecher für Energiewirtschaft:
+Fracking zur Erdgasförderung ist eine Technologie, die wir in Deutschland nicht brauchen. Die Menschen, die im ganzen Land gegen Fracking protestieren, senden damit ein klares Signal an die schwarz-gelbe Bundesregierung und die Erdgaskonzerne: Stopp Fracking!
+Im ganzen Land haben sich Erdgaskonzerne bereits Aufsuchungslizenzen für Unkonventionelles Erdgas gesichert. Union und FDP unterstützen die Konzerne dabei, weil sie von sinkenden Gaspreisen durch Fracking träumen. Dabei handelt es sich jedoch um eine Fata Morgana der Erdgasindustrie. Alle Potenzialstudien belegen klar, dass es in Deutschland und Europa keinen Erdgasboom wie in den USA geben wird. Die Umweltrisiken sind dagegen beim Fracking sehr hoch und reichen von Trinkwasservergiftung über Erdbebengefahr bis hin zu einer schlechten Klimabilanz. Fracking ist eine nicht verantwortbare Risikotechnologie. Die USA führen uns außerdem vor Augen, wie Fracking den Ausbau der Erneuerbaren Energien zum Erliegen bringt. Das kann niemand wollen, der die Energiewende will.
+Trotzdem haben Union und FDP im Frühjahr versucht, für Fracking in Deutschland den Weg frei zu machen. Ihr Gesetzentwurf sah vor, Fracking in 86 Prozent der Landesfläche zu erlauben. Und das will Schwarz-Gelb nach wie vor. Wir setzen uns für eine gesetzliche Regelung ein, die den Einsatz dieser Risikotechnologie nicht zulässt.
+

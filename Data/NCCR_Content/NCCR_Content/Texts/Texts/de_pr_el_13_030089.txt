@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030089.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 30.08.13
+
+SOLMS: 100-Tage-Programm der SPD ohne Plan für die Energiewende
+---------------------------------------------------------------
+
+NA
+BERLIN. Zum 100-Tage-Programm der SPD erklärt der Vorsitzende des Arbeitskreises für Wirtschaft und Finanzen der FDP-Bundestagsfraktion Hermann Otto SOLMS: 
+Der Anstieg der Energiepreise ist eines der drängendsten Probleme in Deutschland. Peer Steinbrück macht in seinem 100-Tage-Programm jedoch keine Vorschläge für die dringend notwendige Reform der Förderung  der Erneuerbaren Energien. So riskiert die SPD die Deindustrialisierung in Deutschland und  den Verlust zahlloser Industriearbeitsplätze.
+Energie muss bezahlbar bleiben - für Bürger, Wirtschaft und Industrie. Für die FDP-Fraktion steht deshalb fest, dass wir unmittelbar nach der Bundestagswahl eine grundlegende Reform des Erneuerbare Energien Gesetz (EEG) benötigen. Die von Rot-Grün verordnete Überförderung der Erneuerbaren Energien muss beendet werden. Für Peer Steinbrück hingegen scheint das Thema Energiepolitik kein gewichtiges Anliegen zu sein. Die Steuerung der Energiewende taucht in seinem 100-Tage Programm überhaupt nicht auf. Offenbar hat die SPD eine zügige EEG-Reform gänzlich von ihrer Agenda gestrichen. Das hindert Steinbrück nicht, in seinem Programm vollmundig zu fordern Wir brauchen eine Bundesregierung, die Herausforderungen annimmt und in die Zukunft investiert". Im Gegensatz zur SPD sind wir Liberale jedoch darauf vorbereitet, dieser Forderung auch Taten folgen zu lassen. Dazu hat die FDP-Fraktion bereits im vergangenen Jahr ein Reformkonzept zur Förderung Erneuerbarer Energien vorgelegt. Wir fordern den Stopp der 20-jährigen Festvergütung neuer Anlagen und den Umstieg auf ein marktwirtschaftliches Mengenmodell. 
+650-solms-100-tage-programm_der_spd.pdf
+

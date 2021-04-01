@@ -1,0 +1,52 @@
+Text-ID: de_pr_el_13_011012.txt
+
+Press Release from Party: CSU
+
+country      = de
+partylabel   = csu
+partytype    = fraktion
+date         = 14.08.13
+
+Mayer: Bundesregierung hält Wort
+--------------------------------
+
+NA
+Berlin (ots) - Heute hat das Bundeskabinett den ersten 
+Fortschrittsbericht zum Acht-Punkte-Plan der Bundeskanzlerin 
+verabschiedet. Dazu erklärt der innen- und rechtspolitische Sprecher 
+der CSU-Landesgruppe im Deutschen Bundestag, Stephan Mayer:
+
+   "Die christlich-liberale Koalition arbeitet mit Nachdruck an der 
+Umsetzung des Acht-Punkte-Plans der Bundeskanzlerin und die Koalition
+setzt sich auch weiterhin für einen besonders hohen Schutz 
+personenbezogener Daten in Deutschland ein. Das zeigt der heute vom 
+Kabinett verabschiedete Fortschrittsbericht.
+
+   Nach den ersten Erfolgen auf internationaler Ebene und der 
+zugesagten Aufhebung von Verwaltungsabkommen mit den westlichen 
+Alliierten ist es jetzt besonders wichtig, die Verhandlungen zur 
+Datenschutzgrundverordnung auf europäischer Ebene weiter 
+voranzutreiben und abzuschließen. Der Vorschlag der Bundesregierung 
+für eine Benachrichtigungspflicht der betroffenen Bürger bei einer 
+Weitergabe ihrer personenbezogenen Daten an Drittstaaten wurde 
+schließlich bereits den anderen Mitgliedstaaten übermittelt und hat 
+von vielen anderen Mitgliedstaaten Zustimmung erfahren. Es liegt nun 
+an der EU-Kommission, die Verhandlungen zielführend zu einem raschen 
+Ende zu bringen.
+
+   Zudem führt kein Weg an gemeinsamen datenschutzrechtlichen 
+Standards für die europäischen Nachrichtendienste vorbei. Ich begrüße
+es daher ausdrücklich, dass der Bundesnachrichtendienst bereits 
+Vertreter der EU-Partnerdienste zu einer ersten Besprechung 
+eingeladen hat, um gemeinsam einen Vorschlag für solche Standards für
+die Zusammenarbeit zu erarbeiten."
+
+
+
+Pressekontakt:
+CSU-Landesgruppe im Deutschen Bundestag
+Pressestelle
+Telefon: 030 / 227 - 5 5012 / - 5 2427
+Fax: 030 / 227 - 5 60 23
+www.csu-landesgruppe.de
+

@@ -1,0 +1,27 @@
+Text-ID: at_pr_el_13_110129.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = partei
+date         = 26.09.13
+
+Stronach: "Wünsche dem Tiroler Team viel Erfolg"
+------------------------------------------------
+
+NA
+Wien (OTS) - Anlässlich der bevorstehenden Nationalratswahl sendet
+Frank Stronach heute Glückwünsche nach Tirol: "Ich wünsche auch dem
+Tiroler Team viel Erfolg für die letzten Tage vor der Wahl. Die
+Tiroler sind ein sehr freiheitsliebendes Volk und wollen nicht von
+Wien aus dominiert werden. Es gibt sehr viele engagierte Leute in
+Tirol, die sich im Laufe der Zeit in unterschiedlichster Art und
+Weise für die Werte des Team Stronach in Tirol eingesetzt haben.
+Besonders hervorheben möchte ich an dieser Stelle Alois
+Wechselberger, der sich sehr bemüht hat. Ich hatte immer einen guten
+Eindruck von Alois, glaube auch nicht, dass er in irgendeiner Art und
+Weise rechtsradikal ist. Auf mich hat er immer einen guten Eindruck
+gemacht und ich wünsche ihm alles Gute für die Zukunft."
+
+

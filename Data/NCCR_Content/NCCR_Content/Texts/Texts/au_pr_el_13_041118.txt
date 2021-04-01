@@ -1,0 +1,44 @@
+Text-ID: at_pr_el_13_041118.txt
+
+Press Release from Party: Grüne
+
+country      = at
+partylabel   = grüne
+partytype    = fraktion
+date         = 21.08.13
+
+Grünewald:  Absolute Transparenz und Aufklärung bei Datenweitergabe von Ärzten sofort notwendig
+-----------------------------------------------------------------------------------------------
+
+Grüne fordern offene und breite Diskussion mit Resultaten
+Wien (OTS) - "Dass gesundheitspolitische Entscheidungen oft ohne
+ausreichende und wissenschaftlich abgesicherte Datenlage gefällt
+werden, ist ein altbekanntes Problem",  kritisiert der Grüne
+Gesundheitssprecher Kurt Grünewald. 
+Es ist von hohem wissenschaftlichem Interesse welche Medikamente bei
+welchen Diagnosen und Altersgruppen zur Anwendung kommen. Derartige
+Daten lassen auch Rückschlüsse auf die Qualität einer Behandlung zu.
+Ganz anders verhält es sich aber bei der Datenweitergabe
+verschriebener Medikamente an Marktforschungsinstitute und damit wohl
+letztlich auch an Pharmafirmen gegen Bezahlung. Selbst bei
+ausreichend verschlüsselten und anonymisierten Daten muss hier die
+mangelnde Information von PatientInnen kritisiert und der
+gesundheitspolitische Nutzen stark in Zweifel gezogen werden.
+"Die Weitergabe von PatientInnendaten an Firmen ist bei ELGA
+gesetzlich untersagt und allein der Versuch eines diesbezüglichen
+Handels mit hohen Strafen belegt", analysiert Grünewald die
+derzeitige Situation. "Die genannten Summen,  die Ärztinnen für diese
+Datenweitergabe bekommen haben sollten, scheinen mir auch für diesen
+Aufwand deutlich zu niedrig.  Daher ist eine Untersuchung durch die
+Korruptionsstaatsanwaltschaft notwendig. Dass es immer wieder
+schwarze Schafe bei verschiedensten Berufsgruppen gibt, darf
+keinesfalls zur Bagatellisierung dieses Handelns führen. In diesem
+Bereich darf es kein einziges Schwarzes Schaf geben!"
+"Wenn Pharmafirmen einen Ehrenkodex verfasst haben,  ist der
+Datenschutz auch in diesem Kodex zu verankern. 
+Meinungsforschungsinstitute täten gut daran auch die Art und Weise
+Ihres Datenzugangs klar und transparent zu regeln. Hier sollte auch
+der notwendige politische Druck nicht lange auf sich warten lassen",
+schließt Grünewald.
+
+

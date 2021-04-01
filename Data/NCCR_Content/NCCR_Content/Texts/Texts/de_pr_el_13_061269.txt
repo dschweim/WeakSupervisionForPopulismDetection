@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061269.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 08.08.13
+
+Ausbildungsplätze: Wanka bleibt stumm
+-------------------------------------
+
+
+Anlässlich der aktuellen Zahlen zum Ausbildungsmarkt erklärt der bildungs- und forschungspolitische Sprecher der SPD-Bundestagsfraktion Ernst Dieter Rossmann:
+Viel zu früh hat die Schwarz-Gelbe Koalition Entwarnung auf dem Ausbildungsmarkt gegeben. Entgegen ihrer Erwartungen spannt sich die Lage wieder an. 2013 drohen mehr junge Menschen ohne Ausbildungsplatz zu bleiben, als in den letzten Jahren. Das Gerede von der Ausbildungsreife lenkt von dem Hauptproblem ab, dass es insgesamt eben nicht genug Ausbildungsplätze gibt. Bildungsministerin Wanka nimmt das stoisch hin. Trotz des Negativrekords bei der Zahl ausbildender Unternehmen hat sie keinen Finger gerührt. Sie redet lieber über den Export des Dualen Systems nach Europa und Elitenförderung, statt über die tatsächlichen Probleme im eigenen Land. Berufliche Bildung ist und bleibt für Wanka Neuland.
+Die Debatte über die Ausbildungsreife darf den Blick nicht verstellen für die Kernprobleme, und die sind nach wie vor fehlende Ausbildungsplätze und eine in einigen Branchen prekäre Ausbildungsqualität. Bereits letztes Jahr haben 76.000 ausbildungsreife junge Menschen keinen Ausbildungsplatz gefunden, dieses Jahr werden es sogar mehr sein. Die Wirtschaft muss endlich wieder ihre Verantwortung für den Fachkräftenachwuchs ernst nehmen. Das heißt auch zusätzliche Ausbildungsplätze anzubieten und sich dabei auch auf schwierige Zielgruppen einlassen. Mit einer Ausbildungsgarantie werden wir das Übergangssystem endlich austrocknen, damit junge Menschen die Fehler von Politik und Wirtschaft nicht länger mit ihrer Lebenszeit bezahlen müssen.
+Die Bundesregierung sieht hingegen trotz 200.000 jungen Menschen ohne Ausbildungsplatz keinen Grund zu handeln. Für die berufliche Bildung waren die letzten vier Jahre verlorene Jahre.
+

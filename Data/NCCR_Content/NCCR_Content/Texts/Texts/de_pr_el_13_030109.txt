@@ -1,0 +1,23 @@
+Text-ID: de_pr_el_13_030109.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 26.08.13
+
+PILTZ: Freunde bespitzelt man nicht
+-----------------------------------
+
+NA
+BERLIN. Zu Berichten,
+wonach die NSA Botschaften und UN-Einrichtungen abgehört haben sollen, erklärt
+die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion
+Gisela PILTZ:
+
+Die aktuelle Berichterstattung zeigt, dass noch viele Fragen ungeklärt sind. Die Botschaften von befreundeten Staaten zu bespitzeln, ist ein schwerer Vorwurf. Die USA müssen sich hierzu schnellstmöglich erklären. Auch muss sich die US-Regierung dazu erklären, ob in Frankfurt eine Überwachungsstation Daten in und aus Deutschland erhebt.  
+Gegenseitiges Vertrauen und die Zusammenarbeit zwischen den USA und Deutschland werden auf eine harte Probe gestellt, wenn die USA nicht schnellstmöglich glaubhaft darlegen können, dass derartige Bespitzelung weder heute noch künftig stattfindet. Die Ankündigung der USA, ein No-Spy-Abkommen mit Deutschland abschließen zu wollen, klingt hohl, wenn die nun bekannt gewordenen Vorwürfe nicht umfassend aufgeklärt werden. 
+Zugleich ist nach wie vor ungeklärt, welche Daten deutscher Bürger und Unternehmen, die bei US-amerikanischen Unternehmen gespeichert werden, von der NSA überwacht werden. Die jüngst bekannt gewordenen Erstattungen für die Bereitstellung von Überwachungsschnittstellen an US-Unternehmen bestätigen, dass hier noch dringender Aufklärungsbedarf besteht. Solange alle Deutschen, die Produkte von Apple, Google, Microsoft oder Facebook nutzen, von den USA umfassend überwacht werden können, gibt es auch keine Grundlage für den Abschluss eines Freihandelsabkommens.
+636-piltz-uberwachung.pdf
+

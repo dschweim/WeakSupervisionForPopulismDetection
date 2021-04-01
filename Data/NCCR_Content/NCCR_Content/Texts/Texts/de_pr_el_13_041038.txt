@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041038.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 30.07.13
+
+Antibiotikaeinsatz in der Tierhaltung höher als erwartet
+--------------------------------------------------------
+
+
+Zu den heute vom Bundesamt für Verbraucherschutz und Lebensmittelsicherheit (BVL) veröffentlichten Daten zur Antibiotikaabgabe in der Tiermedizin 2011 erklärt Friedrich Ostendorff, Sprecher für Agrarpolitik:
+Die erstmals vom BVL offiziell vorgelegten Zahlen zu den in der Tierhaltung eingesetzten Antibiotikamengen bestätigen, dass das Problem deutlich größer ist, als erwartet. Mit 1.706 Tonnen lag der tatsächliche Antibiotikaverbrauch doppelt so hoch, wie von der Bundesregierung angenommen. Doch auch nach der Veröffentlichung des BVL wissen wir nicht, welche Tierärzte Antibiotika sorglos verschreiben und auf welchen Betrieben sie eingesetzt werden. Sogenannte Autobahntierärzte, die bundesweit Antibiotika vertreiben, oft ohne die Tiere gesehen zu haben, sind vermutlich für große Mengen verantwortlich. Die Dokumentation nach den ersten beiden Postleitzahlen bringt hier keine Lösung. Die Bundesregierung hat verpasst, mit der Novelle des Arzneimittelgesetzes brauchbare Rahmenbedingungen für die Einschränkung der Antibiotikagaben zu schaffen.
+Bedenklich ist auch der Einsatz von über 13 Tonnen für den Menschen bedeutsamen Wirkstoffen, wie Fluorchinolone und Cephalosporine der dritten und vierten Generation, die schon in sehr geringen Dosen wirken. Sollten diese Stoffe durch Resistenzen unwirksam werden, verlieren wir wichtige Errungenschaften der Humanmedizin.
+Neben einem funktionierenden System zur Erfassung und Überwachung von Antibiotika in der Tierhaltung brauchen wir dringend eine Änderung der Haltungsbedingungen. Riesige Ställe mit einer halben Million Hühner auf engstem Raum sind Brutherde für Erkrankungen. Die Einzeltierbehandlung in solchen Ställen ist schlicht nicht möglich.
+Wir setzen uns ein für eine tiergerechte Haltung und vernünftige Stallgrößen. Nur so werden wir die Antibiotikagaben auf ein Minimum beschränken können.
+

@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041101.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 28.08.13
+
+Es ist Zeit für grüne Frauenpolitik
+-----------------------------------
+
+
+Anlässlich der 5. Bilanz der Vereinbarung zur Förderung der Chancengleichheit von Frauen und Männern in der Privatwirtschaft erklärt Monika Lazar, Sprecherin für Frauenpolitik: 
+Die Messlatte muss einfach nur niedrig genug angesetzt werden, um sie mühelos überspringen zu können. Es ist traurig, mit welchen Ergebnissen Ministerin Schröder die Wahlperiode abschließt. In Sachen Gleichstellung gibt es nach wie vor viel zu tun. Wir leben noch lange nicht in einer Gesellschaft, die frei ist von struktureller Benachteiligung und Diskriminierung.
+Freiwilligkeit bringt uns nicht weiter. Ohne gesetzliche Maßnahmen wird es auch zukünftig nicht gehen. Wir wollen nach der Wahl ein Entgeltgleichheitsgesetz, Regelungen für die Privatwirtschaft und eine Frauen-Quote für Aufsichtsräte und Vorstände auf den Weg bringen. Wir wollen die Arbeitszeiten so regeln, dass es neben dem Recht auf Teilzeit auch ein Recht auf Rückkehr zur Vollzeit gibt. Wir brauchen qualifizierte Angebote für Erwerbslose und Wiedereinsteigerinnen und Wiedereinsteiger nach einer Familienzeit. Das von Schwarz-Gelb beschlossene Betreuungsgeld setzt die falschen Anreize, denn es belohnt Familien, die ihre Kinder vom Bildungsort Kita fernhalten  wir wollen es daher zugunsten einer besseren Ausstattung der Kitas wieder abschaffen.
+Schwarz-Gelb hat vier Jahre vertan. Sackgasse Minijobs, Erwerbshindernis Ehegattensplitting, mangelnde Vereinbarkeit von Familie und Beruf, Altersarmut, gleicher Lohn oder Karrieremöglichkeiten für Frauen  nirgends hat diese Regierung etwas für die Gleichberechtigung getan. Kein Wunder, dass bei der gestern veröffentlichten Studie von Allensbach im Auftrag der Zeitschrift Emma mehr als jede zweite Frau (54 Prozent) Handlungsbedarf in Sachen Gleichberechtigung sieht. Frau Schröder gesteht allerdings mit ihrer heutigen Bilanz keinerlei Zweifel ein  auch das überrascht nicht.
+

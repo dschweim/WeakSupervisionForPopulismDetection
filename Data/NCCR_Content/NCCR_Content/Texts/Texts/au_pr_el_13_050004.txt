@@ -1,0 +1,38 @@
+Text-ID: at_pr_el_13_050004.txt
+
+Press Release from Party: FPÖ
+
+country      = at
+partylabel   = fpö
+partytype    = partei
+date         = 27.09.13
+
+Neuer Klimabericht - FPÖ warnt vor Renaissance der Kernkraft und CO2-Speicherung
+--------------------------------------------------------------------------------
+
+Hofer: Nutzung natürlicher und heimischer Ressourcen ist
+      wirksamster Beitrag für Mensch und Umwelt
+Wien (OTS) - FPÖ-Vizeparteiobmann Norbert Hofer warnt anlässlich der
+Veröffentlichung des neuen IPCC-Klimaberichts vor einer Renaissance
+der Kernkraft und der Umsetzung einer völlig sinnfreien
+CO2-Speicherung.
+Hofer: "Zweifellos wird unter dem Deckmantel des Klimaschutzes von
+alten Netzwerken versucht, Geld zu machen. Ich weise bei meinen
+Vorträgen zu diesem Thema immer wieder darauf hin, dass es
+letztendlich keinen Unterschied macht, ob jemand daran zweifelt, dass
+der Mensch der Hauptverursacher des Klimawandels ist oder auch nicht.
+Klar ist aber, dass fossile Ressourcen endlich sind und daher ohne
+wenn und aber erneuerbare Primärenergieträger genutzt werden müssen.
+Verknappende Ressourcen werden Öl und Gas in Zukunft weiter teurer
+machen. Wir haben in Österreich den großen Vorteil, auf einen großen
+Schatz an Erneuerbaren zugreifen zu können. Wasserkraft, Windkraft,
+Geothermie, Photovoltaik und Biomasse können im Zusammenwirken mit
+Energieeffizienzmaßnahmen dieses Land binnen einer vernünftigen Frist
+von Scheichs und Oligarchen unabhängig machen."
+Hofer setzt dabei auf steuerliche Maßnahmen und will Energie aus
+Erneuerbaren nur mehr mit dem halben Mehrwertsteuersatz belasten. Das
+entspräche auch der EU-Mehrwertsteuerrichtlinie. Bei der Photovoltaik
+möchte die FPÖ den Förderschwerpunkt in Richtung Spechertechnologien
+verschieben.
+
+

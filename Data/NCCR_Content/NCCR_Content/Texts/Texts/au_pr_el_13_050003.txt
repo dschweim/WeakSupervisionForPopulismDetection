@@ -1,0 +1,33 @@
+Text-ID: at_pr_el_13_050003.txt
+
+Press Release from Party: FPÖ
+
+country      = at
+partylabel   = fpö
+partytype    = partei
+date         = 27.09.13
+
+FPÖ-AVISO Wahltag: Medienzentrum ist Wahlzentrale
+-------------------------------------------------
+
+HC Strache wählt um 11.45 Uhr in der VS Hainburgerstraße
+Wien (OTS) - Die FPÖ hat für den Wahltag das Medienzentrum in der
+Reichsratsstraße als Wahlzentrale eingerichtet und lädt die
+Kolleginnen und Kollegen der Medien herzlich ein, gemeinsam mit den
+Spitzenrepräsentanten der Freiheitlichen, das Wahlergebnis zu
+beobachten:
+Sonntag, 29. September 2013, ab 16.00 Uhr
+Ort: FPÖ-Medienzentrum, Reichsratsstraße 7, 3. Stock 1010 Wien
+Termin: Bundesparteiobmann und Spitzenkandidat HC Strache wird am
+Sonntag seine Stimme um 11.45 Uhr in der Volksschule Hainburger
+Straße abgeben. 1030 Wien, Hainburger Str 40
+Ab 18.30 Uhr ist das FPÖ-Festzelt geöffnet, das sich am Rathausplatz
+7-8 befindet (Vis a vis Cafe Sluka).
+Es ist keine Akkreditierung erforderlich - Presseausweis reicht. 
+Wir weisen die Kolleginnen und Kollegen der Medien weiters
+ausdrücklich darauf hin, dass die FPÖ ihren traditionellen "Blauen
+Montag" einhalten wird und daher am 30. September sämtliche Büros
+geschlossen sind. Für Medienanfragen stehen wir erst wieder ab
+Dienstag, 1. Oktober zur Verfügung!
+
+

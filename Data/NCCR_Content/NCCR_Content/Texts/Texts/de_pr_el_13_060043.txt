@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_060043.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 06.09.13
+
+Florian Pronold: Union plant Investitionstopp bei der Bahn
+----------------------------------------------------------
+
+NA
+Anlässlich seines Besuchs des 5. Eisenbahnertags in Nürnberg erklärt Florian Pronold, Mitglied im Kompetenzteam von Peer Steinbrück, zur Bahnpolitik:
+CDU/CSU planen einen Investitionsstopp für neue Bahnprojekte. Dies wird deutlich, wenn man einen Blick in das Wahlprogramm der Union wirft. Ausschließlich die Mittel für den Straßenbau sollen aufgestockt werden, die Schiene geht leer aus. Dabei reichen die aktuell zur Verfügung stehenden Mittel nur dazu, bereits begonnene Projekte zu Ende zu führen. Mit ihren Plänen läutet die Union das Totenglöckchen für neue dringend benötigte Investitionsvorhaben bei der Bahn.
+Keine andere Bundesregierung hat die Bahn bisher so schlecht behandelt wie die noch amtierende schwarz-gelbe. Das Debakel von Mainz ist deshalb kein Wunder und war vorhersehbar. Schwarz-Gelb ist für die Zwangsdividende der Bahn verantwortlich, die der Bahn Jahr für Jahr 500 Millionen Euro entzieht. Davon ist kein Cent in die Bahn zurück investiert worden. Verkehrsminister Ramsauer muss die Frage beantworten, warum die Investitionen in die Schienenwege heute unter dem Niveau des Jahres 2010 liegen.
+Die SPD wird nach der Regierungsübernahme dafür sorgen, dass das Ausbluten bei der Bahn ein Ende hat. Wir werden Schluss damit machen, dass Geld aus der Bahn gezogen wird und wir werden darüber hinaus dauerhaft mehr Mittel für Zukunftsinvestitionen bei der Bahn bereitstellen. Wir wollen mehr Verkehr auf der Schiene. Pünktlichkeit und Zuverlässigkeit müssen wieder zu Markenzeichen der Bahn werden. Dazu braucht es mehr statt weniger Investitionen in die Schiene.
+

@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041105.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 05.09.13
+
+Schlechte Ausbildungschance mit Hauptschulabschluss -Bundesregierung sieht tatenlos zu
+--------------------------------------------------------------------------------------
+
+
+Anlässlich des heute veröffentlichten DGB-Ausbildungsreports erklärt Kai Gehring, Sprecher für Bildungspolitik:
+Die Chancen von Ausbildungsbewerberinnen und -bewerber sinken weiter, obwohl der Fachkräftebedarf steigt. Das ist die absurde Bilanz zum Beginn des Ausbildungsjahres. Die Kurzsichtigkeit der Betriebe und die Tatenlosigkeit der Bundesregierung rauben Tausenden jungen Menschen die Zukunftsperspektive.
+Sorgen bereiten muss uns die Strategie- und Wettbewerbsfähigkeit der deutschen Wirtschaft, da die Ausbildungsbeteiligung der Betriebe mit 21,7 Prozent auf einen historischen Tiefststand gesunken ist. Damit drohen Betriebe, sich das Wasser selbst abzugraben: Wer sich heute nicht um Nachwuchs bemüht, darf sich morgen nicht bei anderen über fehlende Fachkräfte beschweren. Selbst in Berufen, in denen die Bundesagentur für Arbeit einen steigenden Fachkräftebedarf vorhersagt, unterbreiten die Betriebe immer weniger Ausbildungsangebote.
+Hauptschulabgängerinnen und -abgänger haben selbst mit Abschluss noch immer kaum eine Chance auf einen Ausbildungsplatz. Das zeigen auch die Zahlen des Bundesinstituts für Berufsbildung aus dem letzten Jahr. Das muss sich wieder ändern. Die Unternehmen müssen endlich einsehen, dass sie jungen Menschen, die ihre Einstiegsanforderungen vielleicht nur zu 75 Prozent erfüllen, nicht von einer beruflichen Zukunft ausschließen dürfen.
+Während die Bundesregierung die Lage nur schönzureden versucht, bieten wir mit DualPlus einen Weg an, der die fehlende Brücke zwischen Betrieben und Jugendlichen baut: Durch individuelle Förderung werden Jugendliche mit Unterstützungsbedarf fit gemacht für die Ausbildung. Kleineren und spezialisierten Unternehmen wird die Ausbildung erleichtert, indem sie einzelne Ausbildungsbausteine anbieten können.
+

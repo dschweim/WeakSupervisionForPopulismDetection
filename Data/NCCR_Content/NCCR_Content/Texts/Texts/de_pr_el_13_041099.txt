@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_041099.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 29.08.13
+
+TEMPORA: Bundesregierung muss sich endlich für Vertragsverletzungsverfahren einsetzen
+-------------------------------------------------------------------------------------
+
+
+Zu den neuesten Informationen über flächendeckende Datenzugriffe Großbritanniens auf Kommunikationen in Deutschland erklärt Dr. Konstantin von Notz, Sprecher für Innen- und Netzpolitik:   Die Zeit des Wegduckens muss ein für allemal vorbei sein. Kanzlerin Merkel muss angesichts der neusten Enthüllungen jetzt handeln und muss auf die sofortige Einleitung eines Vertragsverletzungsverfahrens in Brüssel drängen. Klar ist: Die Briten betreiben eine Überwachungsmaschinerie gegen alle Bürgerinnen und Bürger Europas.  Die Bundesregierung trifft eine unmittelbare Pflicht, die Grundrechte der Bürgerinnen und Bürger mit Sofortmaßnahmen zu schützen. Bislang hat Frau Merkel die Öffentlichkeit mit Ankündigungen von in weiter Ferne liegenden Maßnahmen hingehalten. Die Zugriffe des britischen Geheimdienstes, der auch zur Wirtschaftsspionage ermächtigt ist, sind umgehend zu unterbinden. Die Kanzlerin muss jetzt sowohl innenpolitisch als auch außenpolitisch endlich tätig werden. Tut sie dies nicht, verletzt die Kanzlerin ihren Amtseid, der sie verpflichtet, Schaden von der Bevölkerung abzuwenden.  Ein zweiter Whistleblower bestätigt zudem, dass selbst innerdeutsche Kommunikationen "in der Regel" über internationale Kabel laufen. Man brauche keinen Direktzugriff auf deutschem Boden. Damit ist die Verteidigungslinie Merkels und Pofallas, es gehe ihr allein um deutsches Recht auf deutschem Boden, als Pseudoabwehr entlarvt. Dass der deutsche Verfassungsminister noch immer zu Protokoll gibt, er sähe keinerlei Probleme, spottet angesichts der bis heute nicht widerlegten Vorwürfe einfach jeder Beschreibung. Der sonst so auf Cyberabwehr pochende Minister gibt sich und sein Ministerium damit der Lächerlichkeit preis.  Die deutschen Strafverfolgungsbehörden müssen unverzüglich dem naheliegenden Verdacht nachgehen, dass britische Unternehmen massenhaft Informationen sowohl deutscher Bürgerinnen und Bürger als auch Unternehmen an den britischen Geheimdienst abführen. Es bleibt dabei: Der Skandal wird mit jedem Tag der schwarz-gelben Untätigkeit größer.
+

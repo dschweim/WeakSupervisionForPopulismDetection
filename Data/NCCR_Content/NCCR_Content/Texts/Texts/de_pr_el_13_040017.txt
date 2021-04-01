@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_040017.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 15.08.13
+
+Mehr Mut zur gerechten Finanzierung der Energiewende
+----------------------------------------------------
+
+Zum Energiekonzept von Peer Steinbrück und Matthias Machnig erklärt Jürgen Trittin, Spitzenkandidat von BÜNDNIS 90/DIE GRÜNEN:
+Schwarz-Gelb sabotiert den Ausbau Erneuerbarer Energien, um die Renditen der großen Energiekonzerne zu retten. SPD und Grüne stehen hingegen zur Energiewende.
+Das Konzept von Peer Steinbrück zeigt deutlich, dass es mit SPD und Grünen kein Ausbremsen der Erneuerbare Energien geben wird. Das EEG ist eine Erfolgsgeschichte, die dem Klima nützt, Arbeitsplätze schafft und für zusätzliche Exporte sorgt.
+Das SPD-Papier geht in die richtige Richtung und enthält viele positive Maßnahmen. So müssen die Verbraucher von den gesunkenen Börsenstrompreisen profitieren, wir brauchen ein neues Strommarktdesgin, die Energieeffizienz muss voran gebracht werden und der Netzausbau sollte unter staatlicher Beteiligung erfolgen.
+Wir teilen auch das Anliegen, die Kosten der Energiewende gerecht auf alle Schultern zu verteilen. Schwarz-Gelb hat dafür gesorgt, dass die Wirtschaft über den Strompreis und Steuer mit über 10 Milliarden Euro gefördert wird und die Belastung für die Bürger entsprechend steigt. Und dies, obwohl die Wettbewerbsfähigkeit der Wirtschaft massiv zugenommen hat und ein großer Teil der Wirtschaft nicht höhere sondern niedrigere Strompreise zahlt. Sehr viel zielführender als Entlastungen bei der Stromsteuer ist eine Rückführung dieser ausufernden Klientel-Subventionen. Hier bleibt die SPD allerdings zaghaft. Nach grünen Vorschlägen könnten hier die Verbraucher um 4 Mrd. Euro statt wie von der SPD vorgeschlagen nur 500 Millionen Euro entlastet werden."
+

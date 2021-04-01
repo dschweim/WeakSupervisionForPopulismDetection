@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_030134.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 21.08.13
+
+SPATZ: Vorgänge um das Entwicklungsvorhaben Euro Hawk sind aufgeklärt
+---------------------------------------------------------------------
+
+NA
+BERLIN. Anlässlich der Vorstellung des gemeinsamen Bewertungsteils der Fraktionen von CDU/CSU und FDP im Abschlussbericht des Verteidigungsausschusses als 2. Untersuchungsausschuss (Euro Hawk) erklärt der Obmann und Sprecher der FDP-Bundestagsfraktion im Untersuchungsausschuss Joachim SPATZ:Für die FDP-Bundestagsfraktion stand von Anfang an die Sachaufklärung bei diesem Untersuchungsausschuss im Vordergrund. Die Vorwürfe der Opposition waren nichts anderes als Wahlkampfgetöse. Nach umfassender Aktenauswertung und der Befragung von insgesamt 18 Zeugen muss man zum dem Schluss kommen, dass Bundesverteidigungsminister Thomas de Maizière von Anfang an die Wahrheit gesagt hat. Er wurde erstmals am 13. Mai 2013 im Rahmen einer sorgfältig vorbereiteten Vorlage mit unlösbaren Problemen beim Entwicklungsvorhaben Euro Hawk befasst. Der Bundesrechnungshof hat in seinem Prüfbericht festgestellt, dass die Leitung des Bundesverteidigungsministeriums gehandelt hat, sobald ihr die Probleme bekannt waren. Ein irgendwie geartetes Zögern ist nicht erkennbar. Die tieferen Gründe für die Probleme, davor verschließen die Fraktionen der SPD und Bündnis 90/Die Grünen gerne fortdauernd die Augen, liegen weit vor der Amtszeit von Bundesminister Thomas de Maizière. Das Entwicklungsprojekt Euro Hawk wurde unter rot-grüner Regierungsverantwortung mit großer Aufbruchsstimmung gestartet. Allerdings war es von Beginn an viel komplexer und risikobehafteter, als dies die Initiatoren kommuniziert haben. Insbesondere gilt dies für die mit einem anspruchsvollen Entwicklungsprojekt verbundenen Kostenrisiken und die Risiken der luftfahrtrechtlichen Zulassung.  Durch die Entscheidung von Bundesverteidigungsminister Thomas de Maizière, nicht in die Serienbeschaffung beim Projekt Euro Hawk einzusteigen, ist kein finanzieller Schaden entstanden, sondern größerer Schaden verhindert worden. Schaden wäre eingetreten, wenn mit der Entscheidung auch ein sofortiger Stopp der Erprobung des deutschen Signalerfassungssystems ISIS verbunden gewesen wäre. Die Tests mit ISIS werden nun voraussichtlich bis zum 30. September 2013 abgeschlossen. Sehr wichtig ist uns als FDP-Bundestagsfraktion, dass die Probleme im Beschaffungswesen der Bundeswehr nach diesem Untersuchungsausschuss zügig angegangen und behoben werden. Wir haben dazu in unserem Bewertungsteil umfassende Vorschläge gemacht. Diese reichen von der weitergehenden Einbindung externen rechtlichen Sachverstands vor Vertragsschluss, über eine deutliche Optimierung des Projektcontrollings bis hin zu europäischen Initiativen für die Harmonisierung von Zulassungsregelwerken. 
+

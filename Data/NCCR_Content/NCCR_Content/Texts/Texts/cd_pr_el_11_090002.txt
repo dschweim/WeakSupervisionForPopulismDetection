@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090002.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 31.08.11
+
+Starker Franken: SP Schweiz fordert noch griffigere Massnahmen für den Werkplatz Schweiz
+----------------------------------------------------------------------------------------
+
+Der Bundesrat bestätigt den dringend notwendigen Handlungsbedarf angesichts des nach wie vor überteuerten Frankens. Die SP Schweiz begrüsst die Stärkung des Instrumentes Kurzarbeit. Dies entspricht einer Forderung der SP. Jedoch trägt der Bundesrat SP der äusserst schwierigen Situation der Schweizer Exportwirtschaft noch deutlich zu wenig Rechnung. Die SP fordert gezielte Unterstützung zu Gunsten exportorientierter Unternehmen, damit aufgrund der Frankenhausse nicht noch mehr Arbeitsplätze gefährdet sind.
+Da immer mehr Firmen, nun mit Abwanderung drohen oder mit Lohnkürzungen und längeren Arbeitszeiten auf die Frankenhausse reagieren, braucht es weiter gehende Massnahmen für die betroffenen Unternehmungen. Diese sollen dann von Bundesbeiträgen profitieren können, wenn sie keine Stellen abbauen und keine Löhne kürzen, wie dies die SP bereits vergangene Woche in einem Aktionspapier gefordert hat. Es darf nicht sein, dass die Frankenhausse zu Lasten der Angestellten bekämpft wird.
+

@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041093.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 30.08.13
+
+Herzlichen Glückwunsch, Edward Snowden!
+---------------------------------------
+
+
+Zur Verleihung des Whistleblower-Preises an Edward Snowden erklärt Renate Künast, Fraktionsvorsitzende:
+Wir gratulieren Edward Snowden zu dieser Auszeichnung. Edward Snowden verdient unseren großen Respekt und unsere Anerkennung für seinen mutigen Schritt und sein uneigennütziges Handeln. Ohne ihn wäre dieser gigantische Ausspäh-Skandal nicht ans Licht gekommen. Den Bürgerrechten weltweit und in Deutschland hat er einen großen Dienst erwiesen. Nun geht es darum, die Herrschaft des Rechts - statt der Vorherrschaft der Geheimdienste - wiederherzustellen.
+Die Bundesregierung muss endlich aufhören seiner Leistung zu spotten und die immensen Bürgerrechtsverletzungen zu leugnen. Sie muss stattdessen auf ein restriktives Datenschutz-Abkommen mit den USA drängen und gegen Großbritannien ein Vertragsverletzungsverfahren anstrengen. Die Bundesregierung sollte Edward Snowden aus humanitären Gründen und zur Aufklärung des Skandals und der Wahrung politischer Interessen aufnehmen.
+Eine gesetzliche Regelung für den Schutz von Whistleblowern ist daher längst überfällig. Wir haben als erste Bundestagsfraktion hierzu einen Gesetzentwurf vorgelegt, der eine ausgewogene Lösung für alle Beteiligten bietet. Die schwarz-gelbe Regierung hat unseren Antrag abgelehnt und danach die Arbeit eingestellt  kein gutes Zeichen für alle Whistleblower.
+

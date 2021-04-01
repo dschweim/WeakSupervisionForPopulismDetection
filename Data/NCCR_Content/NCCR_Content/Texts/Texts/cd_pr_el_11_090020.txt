@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090020.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 20.09.11
+
+SP Schweiz steht ein für ein klares Bekenntnis zum Werkplatz Schweiz
+--------------------------------------------------------------------
+
+Die heutige Debatte des Nationalrats zeigte klar auf, wer sich im Bundeshaus für die Interessen der Realwirtschaft, des Werkplatzes und für die Arbeitsplätze einsetzt. Mit Engagement verteidigte die SP das Frankenpaket, wie es der Bundesrat vorgeschlagen hat. Die dringende Notwendigkeit einer Unterstützung des Werkplatzes Schweiz belegen auch die Konjunkturaussichten des Staatssekretariats für Wirtschaft Seco, welche von einer deutlichen Abkühlung der Wirtschaft in den nächsten Monaten ausgehen. Auch der positive Trend bei den Arbeitslosen ist gemäss den Seco-Prognosen gebrochen. In den nächsten Monaten ist eine steigende Arbeitslosigkeit absehbar. Die SP Schweiz fordert darum über das bundesrätliche Frankenpaket hinaus weitere Massnahmen zur Stützung der Realwirtschaft und gegen die negativen Auswirkungen der Frankenhausse auf die Arbeitsplätze.
+Die SP verlangt, dass die weiteren 1200 Millionen Franken des ursprünglich vom Bundesrat beschlossenen 2 Mrd.-Pakets, in einem Fonds für die Sicherung des Werkplatzes Schweiz reserviert werden. Dieser Fonds soll die Mittel für eine gezielte Arbeitsplatzsicherung bereitstellen. In ihrem Beschäftigungspakt schlägt die SP Beiträge von maximal 6000 Fr. pro 100%-Stelle (bzw. 6 Mio. Fr. pro Unternehmen) vor, sofern sich Unternehmungen verpflichten Arbeitsplätze in der Schweiz längerfristig zu garantieren. Zusätzlich braucht es eine dringliche Verschärfung des Kartellrechts, eine Erhöhung der Kurzarbeitsbezugsdauer sowie eine Garantie der Lohnauszahlung in Franken (Verbot von Eurolöhnen).
+

@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090012.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 13.09.11
+
+SP verlangt dringliche Renten-Debatte
+-------------------------------------
+
+Die SP befürchtet, dass die derzeitige Krise als Vorwand für einen neuerlichen Angriff auf die Renten missbraucht wird. Die jüngsten Entwicklungen an den globalen Finanzmärkten sowie die nach wie vor massive Frankenüberbewertung belasten auch die finanzielle Situation der Pensionskassen. Entsprechend neu entbrannt ist die Debatte um weitere Rentenkürzungen über den Umwandlungssatz und den Mindestzins. Ginge es nach der FDP und weiteren Wasserträgern der Versicherungskonzerne, sollten die Lohnempfängerinnen und Lohnempfänger einmal mehr für die Differenzen aufkommen. Dies obwohl im BVG-Geschäft weiterhin jedes Jahr rund 4 Milliarden Franken an diversen Verwaltungskosten wie Honoraren und Kickbacks versickern. Die SP will dieses Ansinnen frühzeitig stoppen. An ihrer Sitzung hat die SP-Bundeshausfraktion heute eine dringliche Interpellation diskutiert. Der Bundesrat und die einzelnen Parteien sollen noch vor den Wahlen Position beziehen müssen.
+Ausserdem hat die SP ihre Haltung zur Managed Care-Vorlage bekräftigt, wie sie morgen früh in der Einigungskonferenz der Räte behandelt wird. Die SP unterstützt diese Vorlage grundsätzlich, aber nur, wenn das Gesetz die PatientInnen nicht vor die Auswahl stellt, mehr zu bezahlen (Erhöhung des Selbstbehalts) oder eine schlechtere Leistung (Einschränkung der Arztwahl) zu akzeptieren.
+

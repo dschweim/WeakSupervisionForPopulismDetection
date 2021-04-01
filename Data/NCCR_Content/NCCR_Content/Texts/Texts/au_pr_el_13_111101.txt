@@ -1,0 +1,30 @@
+Text-ID: at_pr_el_13_111101.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = fraktion
+date         = 19.08.13
+
+Stronach/Schenk: Minister Stöger soll Patientendatenklau sofort unterbinden
+---------------------------------------------------------------------------
+
+Schwarze Schafe sollen bekanntgegeben werden
+wien (OTS) - "Das ist ein ungeheuerlicher Eingriff in den Datenschutz
+und die Schweigepflicht der Ärzteschaft. Die Weitergabe von
+Patientendaten an ein medizinisches Marktforschungsunternehmen ist
+absolut nicht zulässig", kritisiert Team Stronach
+Gesundheitssprecherin Martina Schenk die heute bekannt gewordene
+Praxis, wonach rund 350 heimische Ärzte ihre Patientendaten verkauft
+haben sollen. Sie verlangt, dass Gesundheitsminister Stöger gemeinsam
+mit der Ärztekammer gegen die betroffenen Ärzte vorgeht.
+"Nicht nur, dass Stögers Gesundheitsakte ELGA ein Flop ist, wird
+hinter seinem Rücken von Medizinern und Pharmakonzernen auch noch die
+Schweigepflicht umgangen", so Schenk. "Im Sinne der Transparenz ist
+der Ressortchef gefordert, jene schwarzen Schafe unter der
+Ärzteschaft, die sich einer solchen Praxis bedienen, bekannt zu
+geben." Schließlich habe jeder Patient das Recht auf die absolute
+Schweigepflicht des Mediziners seines Vertrauens.
+
+

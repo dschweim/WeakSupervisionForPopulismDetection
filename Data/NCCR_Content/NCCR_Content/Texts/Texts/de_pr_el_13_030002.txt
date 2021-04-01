@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_030002.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 20.09.13
+
+MEINHARDT: Rot-Rot-Grün zeigt dem Bildungssparen die rote Karte
+---------------------------------------------------------------
+
+NA
+BERLIN. Zu den Entscheidungen des rot-rot-grün dominierten Bundesrates beim Bildungssparen erklärt der bildungspolitische Sprecher der FDP-Bundestagsfraktion Patrick MEINHARDT:
+
+Rot-Rot-Grün zeigt sein wahres Gesicht im Bundesrat: Gemeinsam lässt man das Bildungssparen aus ideologischen Gründen scheitern. Deutschland hat mit diesem unseligen Trio weniger Bildungsgerechtigkeit zu erwarten. 
+Jedem Kind aus einer Hartz IV-Gemeinschaft, das nicht in einer Kindertagesstätte ist, werden jetzt mit einem Federstrich von dieser Bildungsverhinderungskoalition aus Rot-Rot-Grün 4000 Euro gekürzt. 
+Dieses Verhalten ist unverantwortlich, denn es trifft genau diejenigen, die jeden Cent für mehr Bildungschancen brauchen können. Erst vergisst Rot-Grün die Kinder bei ihrer Hartz IV-Reform und wir bringen ein umfassendes Bildungspaket auf den Weg. 
+Jetzt bietet sich die einzigartige Chance, den Einstieg in ein Bildungssparen über den Bildungsbonus zu erreichen. Und aus rein wahltaktischen Gründen zeigt Rot-Rot-Grün den 250.000 Kindern in Hartz IV-Gemeinschaften die rote Karte. 
+Die Begründung für die Ablehnung ist eine bodenlose Unverschämtheit: Die Kinder aus Familien ohne Betreuungsgeld hätten keine Möglichkeit für ein Bildungssparen. Rot-Rot-Grün ist in Sachen Bildungssparen eine dreifache Nullnummer und hat bisher keine einzige Initiative zum Bildungssparen gestartet. Dieses Verhalten ist ein bildungspolitisches Armutszeugnis.
+

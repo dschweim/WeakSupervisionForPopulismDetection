@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030164.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 13.08.13
+
+LUKSIC: Bahn muss aus Fehlern der Vergangenheit lernen
+------------------------------------------------------
+
+NA
+BERLIN. Zur Debatte um die Personalprobleme bei der Deutschen Bahn erklärt der verkehrspolitische Sprecher der FDP-Bundestagsfraktion Oliver LUKSIC:
+Die betrieblichen Engpässe sind Folge der unter dem früheren Bahnchef Mehdorn betriebenen Personalpolitik. Die damalige rot-grüne Bundesregierung wollte die Bahn mit Netz teilprivatisieren. Deshalb hat Mehdorn am Netz gespart, wo immer es ging. Das rächt sich jetzt. Die FDP war aus guten Gründen immer für eine Privatisierung ohne Netz. Seit Amtsantritt von Rüdiger Grube wurde in der Personalpolitik umgesteuert, aber die Erfolge sind noch nicht alle sichtbar. Es ist klar, dass die Schuld dafür nicht beim Bahnpersonal liegt. Der Aufruf, in der jetzigen Notlage aus dem Urlaub zurückzukehren, ist ein Appell an die Eisenbahnerehre. Klar ist aber auch: Wer - ohne dazu verpflichtet zu sein - den Urlaub abbricht, sollte dafür eine großzügige Anerkennung erhalten. 
+Wir fordern den Bahnvorstand auf, mit aller Kraft dafür zu sorgen, dass die Personalpolitik im Konzern an den betrieblichen Erfordernissen ausgerichtet wird.
+610-luksic-deutsche_bahn_personalprobleme.pdf
+

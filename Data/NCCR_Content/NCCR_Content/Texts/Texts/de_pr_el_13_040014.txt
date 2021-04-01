@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_040014.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 22.08.13
+
+Versagen beim NSU mahnt zu verantwortungsbewusster Asyl-Debatte
+---------------------------------------------------------------
+
+Zum NSU-Abschlussbericht des parlamentarischen Untersuchungsausschusses erklärt Katrin Göring-Eckardt, Spitzenkandidatin von BÜNDNIS 90/DIE GRÜNEN:
+Die Sicherheitsbehörden haben bei der NSU-Aufklärung komplett versagt, Innenminister in Bund und Ländern haben durch Ignoranz und Fehlentscheidungen dazu beigetragen. Dieser Befund ist erschreckend und in der Tat tief beschämend. Klar ist: Ein Verfassungsschutz, der erwiesenermaßen auf dem rechten Auge blind war, braucht einen Neuanfang, auch personell. Da sich die bisherigen Strukturen als nicht tragfähig erwiesen haben, müssen sie so aufgebaut werden, dass eine effiziente Koordination mit Landesbehörden gesichert ist. Der zwielichtige Einsatz von V-Leuten muss ein Ende haben, hier stehen magere und zweifelhafte Erkenntnisgewinne unverhältnismäßig großen rechtstaatlichen Risiken gegenüber.
+Das Versagen staatlicher Behörden bei den NSU-Morden mahnt zu einer besonderen Verantwortung, gerade auch jetzt im Umgang mit Rechtsextremismus in der aktuellen Asyl-Debatte: Wer im Zusammenhang mit Flüchtlingen reflexhaft von ,Krise' oder ,Überforderung' der deutschen Gesellschaft spricht und wer - wie Innenminister Friedrich - Ängste vor steigenden Flüchtlingszahlen schürt, muss wissen: Das sind die Vorlagen für die menschenverachtenden Parolen der Neonazis. Diese unheilvolle Dynamik der 90er Jahre darf sich nicht wiederholen, wir sind hilfesuchenden Flüchtlingen unsere bestmögliche Unterstützung schuldig. Staatliches Handeln reicht zur Bekämpfung des Rechtsextremismus aber nicht aus, besonders wichtig - dies zeigt sich derzeit in Berlin-Hellersdorf - sind zivilgesellschaftliche Initiativen gegen Rechts.
+

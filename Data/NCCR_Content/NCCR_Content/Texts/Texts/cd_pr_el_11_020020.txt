@@ -1,0 +1,17 @@
+Text-ID: cd_pr_el_11_020020.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 22.09.11
+
+Erfolg für die Managed Care-Vorlage
+-----------------------------------
+
+NA
+Nach dem Ständerat hat heute auch der Nationalrat der Managed Care-Vorlage zugestimmt. Damit wurde ein Erfolg auf dem Weg zu einem guten, kostenoptimierten Gesundheitswesen erzielt. Integrierte Versorgungsnetze (Managed Care) führen zu einer besseren Qualität der medizinischen Grundversorgung und helfen, das Kostenwachstum im Gesundheitswesen zu bremsen.
+Integrierte Versorgungsnetze gewährleisten eine ganzheitliche, von einer Hand gesteuerte Grundversorgung. Dadurch werden Mehrfachuntersuchungen, Falschbehandlungen sowie Übermedikation verhindert und die Ressourcenverschwendung gestoppt. Das führt dazu, dass die Patienten eine gute medizinische Versorgung erhalten und keine Prämiengelder mehr verschwendet werden.
+Dank der Verfeinerung des Risikoausgleichs zwischen den Kassen, können wir die Jagd der Versicherer auf gute Risiken verhindern, sagt Nationalrätin Ruth Humbel. Vor allem chronisch kranke Patienten werden durch die im Vergleich zu heute tiefere maximale Kostenbelastung besser gestellt., so Humbel.
+
+

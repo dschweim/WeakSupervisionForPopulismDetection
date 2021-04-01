@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_090030.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 18.08.13
+
+Schäubles Chefberater rechnet mit Eurozusammenbruch
+---------------------------------------------------
+
+NA
+Schäubles Chefberater rechnet mit Eurozusammenbruch
+Hamburg, 18. August 2013  Kai A. Konrad, Direktor des Max-Planck-Instituts für Steuerrecht und Öffentliche Finanzen in München und Chef des Wissenschaftlichen Beirats des Finanzministeriums, erklärte in einem Interview mit der Tageszeitung DIE WELT, dass die inneren Spannungen die Eurozone am Ende zerreißen werden. Deutschland könne den Euro nicht retten. Am Ende bliebe nur die Frage, wie teuer das Ende des Euro Deutschland kommen werde. Er selbst favorisiere ein Ausscheiden Deutschlands aus der Währungsunion statt des Ausschlusses der Südländer. Die Tageszeitung BILD zeigt sich unterdessen überzeugt, dass ein griechischer Schuldenschnitt nach der Wahl kommt.
+

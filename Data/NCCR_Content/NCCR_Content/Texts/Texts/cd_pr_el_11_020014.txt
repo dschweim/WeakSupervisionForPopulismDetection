@@ -1,0 +1,17 @@
+Text-ID: cd_pr_el_11_020014.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 16.09.11
+
+Masterplan für eine grünere Wirtschaft
+--------------------------------------
+
+NA
+Der Bundesrat hat heute den Masterplan Cleantech verabschiedet. Dieser stärkt gezielt die Innovationskraft von Schweizer Unternehmen, die im Bereich der grünen Technologien tätig sind. Die CVP Schweiz begrüsst diesen Massnahmenplan. Es erlaubt es, in Zukunft klima- und ressourcenschonende Technologien vermehrt zu fördern, insbesondere im Bereich erneuerbare Energien und Energieeffizienz. 
+Cleantech ist eine enorme Chance für den Innovations- und Werkplatz Schweiz. Es ist zwingend notwendig, dass die Schweiz sehr bald wieder eine Spitzenposition in diesem Bereich erringen kann. Der 'Masterplan Cleantech' bereitet uns auf die Märkte der Zukunft vor und hilft den Unternehmen, sich nachhaltigen Technologien zuzuwenden, sagt Nationalrat Christophe Darbellay, Parteipräsident der CVP Schweiz. 
+Die CVP als Wirtschaftspartei hat das Potential von Cleantech immer erkannt. Im diesem Bereich ist die Schweiz bisher leider im Verzug. In 10 Jahren müssen wir weltweit zur Nummer 1 werden bezüglich Nachhaltigkeit. Wir müssen saubere und innovative Technologien anwenden, auf erneuerbare Energien setzen, bezüglich Energieversorgung vom Ausland möglichst unabhängig sein, einen möglichst geringen Verbrauch von fossilen Energien aufweisen, die Energien so optimal wie möglich einsetzen und so wenig wie möglich verschwenden. Es ist daher an der Zeit, ein grünes und nachhaltiges Investitionsprogramm auf die Beine zu stellen, ein Programm im Sinne unserer Wirtschaft, unserer Bürger und unseres Landes, so Nationalrat und Parteipräsident Christophe Darbellay.
+
+

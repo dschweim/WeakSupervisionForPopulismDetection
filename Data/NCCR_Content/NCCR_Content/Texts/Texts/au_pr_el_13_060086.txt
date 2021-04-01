@@ -1,0 +1,22 @@
+Text-ID: at_pr_el_13_060086.txt
+
+Press Release from Party: BZÖ
+
+country      = at
+partylabel   = bzö
+partytype    = all
+date         = 22.08.13
+
+Patienten-Daten: Spadiut fordert sofortiges Berufsverbot für Ärzte
+------------------------------------------------------------------
+
+"Ärzte verstoßen gegen ärztliche Verschwiegenheitspflicht - ELGA macht den Patienten gläsern - Alle Daten auf E-Card speichern"
+Ein sofortiges Berufsverbot für jene 350 Ärzte, die mit Marktforschern im lukrativen Geschäft sind, forderte heute BZÖ-Gesundheitssprecher Abg. Dr. Wolfgang Spadiut."Wenn ein Arzt einen regen Datenhandel mit dem Marktforscher IMS eingeht, hat er kein Anrecht mehr den Beruf als Arzt auszuüben. Nun kann einmal auch die Ärztekammer beweisen, dass sie eine Daseinsberechtigung hat und über diese Ärzte ein sofortiges Berufsverbot verhängen, wenn sie das nicht macht, gehört dieser Verein ohnehin abgeschafft", so Spadiut weiter. 
+ 
+"Diese Ärzte verstoßen mit ihrer Art der Geschäftemacherei ganz klar gegen die ärztliche Verschwiegenheitspflicht, denn jegliche Weitergabe von Daten wäre nur mit Zustimmung des Patienten möglich. Da aber die Patienten von diesen Ärzten sicher nicht über diesen verbotenen Datentransfer unterrichtet wurden, ist die Sache eindeutig und klar", stellte Spadiut fest. 
+ 
+In diesem Zusammenhang übte der BZÖ-Gesundheitssprecher auch massive Kritik an der elektronischen Gesundheitsakte. "Das ELGA-System ist für eine integrierte Gesundheitsversorgung ungeeignet, verfolgt klar andere Ziele, was aus den willkürlich festgelegten Speicherfristen und automatisierten Löschungsverpflichtungen erkennbar ist", sagte Spadiut und weiter: "Da die Befunde trotz Opt-out in die Datenbank kommen, liegt der Verdacht nahe, dass die Daten zwar auf Patientenwunsch gelöscht werden, aber für wissenschaftliche Zwecke und Marktforschungen weiter Verwendung finden. ELGA ist somit ein schlecht durchdachtes und teures elektronisches System. Dieses System ist datenschutzrechtlich nicht ausreichend durchdacht - es macht den Patienten gläsern. Ich bin überzeugt, dass mit ELGA dem Missbrauch - insbesondere über Betriebe und Betriebsärzte, aber auch durch Versicherungen und Heime  - Tür und Tor geöffnet wird", stellte Spadiut fest. 
+ 
+"Alle Patientendaten sollen daher auf der E-Card gespeichert werden. Es genügt ein Lesegerät, auch eine österreichweite Vernetzung wäre nicht notwendig und die jährlichen Kosten von 60 Millionen Euro würden nicht anfallen. Da die E-Card durch einen E-Code gesichert wird, hat nur derjenige Zugriff auf die Daten, der die Erlaubnis vom Patienten bekommt, erklärte Spadiut und weiter: "Gesundheitsminister Stöger soll daher diesen BZÖ-Vorschlag aufgreifen und von seinem teuren und unsicheren Spielzeug "ELGA" Abstand nehmen".  
+
+

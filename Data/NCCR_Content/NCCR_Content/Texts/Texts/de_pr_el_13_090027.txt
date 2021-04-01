@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_090027.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 20.08.13
+
+AfD kontert bischöfliche Vorwürfe
+---------------------------------
+
+NA
+Der Euro bringt Menschen gegeneinander auf, nicht zusammen
+Lucke wies diese Behauptung als unsachlich und unbegründet zurück. Europa besteht aus Nationalstaaten, betonte er. Es ist ein Konsens aller Parteien, dass dies auch so bleiben soll. Aber gerade weil wir ein zukunftsfähiges Europa anstreben, dürfen wir nicht auf Zuruf Schulden übernehmen und den eigenen Steuerzahlern auflasten. Vielmehr bräuchten wir Änderungen an der Währungsunion, da es insbesondere den südlichen Ländern an Wettbewerbsfähigkeit mangele. In Griechenland, Portugal, Spanien oder auch Italien litten die Menschen extrem an der hohen Arbeitslosigkeit. 50 Prozent oder mehr der Jugendlichen dieser Länder seien ohne Arbeit. Ohne Arbeit zu sein, heiße für sie meist auch, ohne Zukunft zu sein. Innerhalb der Eurozone werde es vielen Staaten nicht möglich sein, die dramatisch hohen Arbeitslosenquoten zu senken, konstatiert der Ökonom Lucke. Diese Staaten mittels des Euro auf ein deutsches Modell zu zwingen, bringt die Völker nicht zusammen, sondern gegeneinander auf. Das ist sicherlich keine christliche Politik, so Bernd Lucke abschließend.
+

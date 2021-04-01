@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090034.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 14.10.11
+
+Sozialkommission will AHV-Alter für Frauen erhöhen 
+---------------------------------------------------
+
+Die nationalrätliche Gesundheits- und Sozialkommission macht den nächsten Schritt in Richtung Rentenabbau: Eine knappe Kommissionsmehrheit aus SVP, FDP, GLP und Teilen der CVP hat entschieden, das Frauenrentenalter auf 65 Jahre anzuheben. Ohne jegliche Kompensationen. Ohne Aussicht auf die Möglichkeit der frühzeitigen Pensionierung für kleine und mittlere Einkommen soll das Rentenalter 65/65 eingeführt werden. Die SP wird einen solchen Rentenabbau nicht mittragen und sich im Rahmen der Nationalratsdebatte für eine soziale Flexibilisierung des Rentenalters für alle engagieren. Die frühzeitige Pensionierung darf nicht ein Privileg einiger weniger Gutverdiendenden bleiben.
+
+

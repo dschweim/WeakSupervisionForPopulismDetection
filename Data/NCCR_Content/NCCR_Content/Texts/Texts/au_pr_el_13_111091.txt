@@ -1,0 +1,29 @@
+Text-ID: at_pr_el_13_111091.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = fraktion
+date         = 22.08.13
+
+Stronach/Hagen: Faymann solle sich herablassende Worte zu Berlusconi sparen
+---------------------------------------------------------------------------
+
+NA
+Wien (OTS) - Kritik an den herabblassenden Worten von
+SPÖ-Bundeskanzler Faymann zu Silvio Berlusconi übt der
+außenpolitische Sprecher des Team Stronach, Abg. Christoph Hagen.
+"Faymann ist bei seinem Italien-Besuch offenbar nichts Besseres
+eingefallen, als einen ehemaligen italienischen Ministerpräsidenten
+zu beleidigen. Dies zeigt die mangelnde außenpolitische Kompetenz des
+Bundeskanzlers, der bereits bei der blamablen Diskussion um den
+Golan-Abzug der UNO-Soldaten Österreich in ein schlechtes Licht
+gerückt hat."
+Hagen fordert Faymann auf, sich nicht in inneritalienische
+Angelegenheiten einzumischen. "Auch in Österreich beschwert man sich
+zu Recht, wenn aus dem Ausland gute Ratschläge erteilt werden. Die
+Bürger Italiens suchen sich ihre Politiker selbst aus und brauchen
+keine Kommentare des österreichischen Bundeskanzlers."         
+
+

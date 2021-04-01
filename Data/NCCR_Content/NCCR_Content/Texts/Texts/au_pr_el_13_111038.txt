@@ -1,0 +1,24 @@
+Text-ID: at_pr_el_13_111038.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = fraktion
+date         = 17.09.13
+
+Stronach/Lugar: Politiker wollen ihre Pfründe ohne Risiko
+---------------------------------------------------------
+
+NA
+Wien (OTS) - "Alle Parlamentsparteien reden zwar groß von
+Korruptionsbekämpfung, wenn es aber den Politikern an den Kragen
+gehen könnte, ist von diesem Willensbekenntnis nichts mehr zu sehen",
+kritisiert Team Stronach Klubobmann Robert Lugar das
+Abstimmungsverhalten zur "Politikerhaftung" - gefordert vom Team
+Stronach. "Politiker quer durch alle Couleurs wollen offensichtlich
+nur ihre Pfründe ohne jedes Risiko, für Fehler haften zu müssen. Denn
+niemand hat unserem Antrag zugestimmt. Das ist beschämend für 178
+gewählte Volksvertreter!", so Lugar.
+
+

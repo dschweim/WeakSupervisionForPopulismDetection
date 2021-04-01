@@ -1,0 +1,15 @@
+Text-ID: de_pr_el_13_090043.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 09.08.13
+
+Geheimdienstkooperation geht auf Rot-Grün zurück
+------------------------------------------------
+
+NA
+Angesichts der Erfahrungen im 3. Reich und in der DDR sei es schon sehr bedenklich, mit welcher Leichtigkeit die etablierten Parteien die Rechte der Bürger über Bord würfen, so Merz weiter. Das Argument vom Supergrundrecht Sicherheit, welches Bundesinnenminister Friedrich jüngst ins Feld führte, ließ Merz nicht gelten: Wer Freiheit gegen Sicherheit eintauscht, wird am Ende beides verlieren. Dies wusste Benjamin Franklin und wir sollten es tunlichst nicht vergessen, so die AfD-Beauftragte für Netzpolitik.
+

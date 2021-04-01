@@ -1,0 +1,62 @@
+Text-ID: de_pr_el_13_021120.txt
+
+Press Release from Party: CDU
+
+country      = de
+partylabel   = cdu
+partytype    = fraktion
+date         = 09.08.13
+
+Kretschmer: CDU/CSU begrüßt deutsche Initiative für mehr E-Mail-Sicherheit
+--------------------------------------------------------------------------
+
+NA
+Berlin (ots) - Von PRISM über Tempora bis hin zur 
+Industriespionage: Die Berichte über unberechtigte Zugriffe auf 
+Kommunikationsdaten haben die Menschen verunsichert. Am heutigen 
+Freitag haben die Deutsche Telekom, WEB.DE und GMX eine Initiative 
+"E-Mail made in Germany" gestartet. Dazu erklärt der Stellvertretende
+Vorsitzende der CDU/CSU-Bundestagsfraktion, Michael Kretschmer:
+
+   "Weder Privat- noch Wirtschaftsgeheimnisse sind hierzulande 
+schutzlos. Es gibt effektive Möglichkeiten, die Kommunikationswege 
+sicher zu gestalten und Informationen zu schützen. Diese müssen wir 
+als Standard in Deutschland und Europa durchsetzen. Die neue 
+Initiative "E-Mail made in Germany" zeigt, wie es geht: Daten gehören
+in sichere Rechenzentren in Deutschland, Provider müssen ihren 
+Nutzern praktikable Verschlüsselungsmöglichkeiten anbieten und 
+E-Mails müssen mit  Sicherheitsstandards gekennzeichnet werden. Das 
+ist ein richtiger und wichtiger Ansatz, dem alle deutschen Provider 
+folgen sollten. Die Initiative könnte auch eine positive Sogwirkung 
+für ausländische Unternehmen entfalten, die ihre Dienste deutschen 
+Kunden anbieten.
+
+   Ziel ist, die Kommunikationswege in Deutschland und perspektivisch
+auch in ganz Europa vor nicht rechtsstaatlichen Zugriffen zu 
+schützen. Wir haben großes Vertrauen in die IT-Sicherheits-Kompetenz 
+deutscher Unternehmen. Deutsche Standards der Daten- und 
+E-Mail-Sicherheit könnten zum Erfolgsmodell werden."
+
+   Hintergrund:
+
+   Die Initiative für sichere E-Mail-Kommunikation in Deutschland 
+bietet den Nutzern von GMX, T-Online.de und WEB.DE erstmals eine 
+automatische Verschlüsselung von Daten auf allen Übertragungswegen 
+und sichert ihnen zu, dass die Daten nur gemäß deutschem Datenschutz 
+verarbeitet werden. Die Speicherung aller Daten erfolgt in sicheren 
+Rechenzentren in Deutschland. Zudem wird eine Kennzeichnung für 
+E-Mail- Adressen eingeführt, so dass Nutzer vor dem Mail-Versand 
+erfahren, ob die ausgewählten Empfänger-Adressen den 
+Sicherheitsstandards des Mailverbundes entsprechen. Weitere 
+Informationen unter www.e-mail-made-in-germany.de.
+
+
+
+Pressekontakt:
+CDU/CSU - Bundestagsfraktion
+Pressestelle
+Telefon:  (030) 227-52360
+Fax:      (030) 227-56660
+Internet: http://www.cducsu.de
+Email: pressestelle@cducsu.de
+

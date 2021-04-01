@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041132.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 06.09.13
+
+Millionen für das Schienennetz sind Etikettenschwindel
+------------------------------------------------------
+
+
+Zur Vereinbarung zwischen Deutscher Bahn und Bundesregierung über Mittel für den Erhalt des Schienennetzes sagt Dr. Valerie Wilms, Sprecherin für Bahnpolitik:
+Leider handelt es sich bei den 500 Millionen Euro für das Schienennetz und die Bahnhöfe um einen Etikettenschwindel: Es sind keine zusätzlichen Mittel, sondern lediglich Umschichtungen, die dafür jetzt beim Neu- und Ausbau fehlen werden. Damit entfallen Finanzmittel, um die Netzkapazitäten auszuweiten und mehr Güter auf die Schiene zu verlagern.
+Zudem stellt sich die Frage, warum der Bund - nach einem Gewinn der Deutschen Bahn im ersten Halbjahr in Höhe von 554 Millionen Euro - sich in dieser Form beteiligen muss. Dazu plant die Bahn die eigenen Investitionen im Schienennetz von 970 Millionen Euro in diesem Jahr auf 830 Millionen Euro im Jahr 2017 zurück zu fahren und den Gewinn des Netzes von heute 890 Millionen Euro auf etwa 1,2 Milliarden Euro im Jahr 2017 zu steigern.
+Zusätzlich führt die Bahn eine Zwangsdividende von 525 Millionen Euro pro Jahr an den Bund ab, von der nur 25 Millionen wieder bei der Bahn landen. Wir wollen die Zwangsdividende beenden und dafür sorgen, dass alle Gewinne aus dem Netz auch dort wieder investiert werden.
+

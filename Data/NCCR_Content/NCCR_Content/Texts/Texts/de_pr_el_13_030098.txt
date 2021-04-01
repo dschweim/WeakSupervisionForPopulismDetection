@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030098.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 28.08.13
+
+NEUMANN: Seltene Erkrankungen besser erforschen - aus Verantwortung für die Patienten
+-------------------------------------------------------------------------------------
+
+NA
+BERLIN. Zu dem heute im Bundeskabinett verabschiedeten Nationalen Aktionsplan für Menschen mit Seltenen Erkrankungen, erklärt der forschungspolitische Sprecher der FDP-Bundestagsfraktion Martin NEUMANN:
+
+Seltene Erkrankungen - oder "Orphan Diseases" (verwaiste Krankheiten") - stehen bislang nicht im Mittelpunkt der Medizin oder der gesellschaftlichen Beachtung. Sie stellen eine große Herausforderung für den Grundpfeiler unseres Gesundheitssystems dar, jedem Menschen die bestmögliche Versorgung gewährleisten zu können. Mit dem Nationalen Aktionsplan wird die Koalition die Seltenen Erkrankungen aus dem Schatten der medizinischen Forschung holen und durch 52 Maßnahmen einen Schwerpunkt auf Forschung und Diagnose legen. 
+Damit setzen wir in dieser Legislaturperiode einen weiteren wichtigen Akzent in der Gesundheitsforschung. Ziel ist es, betroffenen Menschen eine frühzeitige Diagnose und bessere Therapie zu ermöglichen. Durch den Ausbau und die Bündelung medizinischer Kompetenz und Versorgungsstrukturen, soll eine verbesserte Information der Ärzte und Patienten gelingen. Durch den Fokus auf Forschung werden wir seltene Erkrankungen besser verstehen und hoffentlich zielgerichteter therapieren können. 
+Die Koalition hat in dieser Legislaturperiode die Gesundheitsforschung in den Mittelpunkt christlich-liberaler Politik gerückt. Mehr als 5,5 Mrd. Euro wurden von 2011 bis 2014 in die Gesundheitsforschung investiert. In diesem Rahmen haben wir uns drängenden Problemen in der Gesundheitsforschung und medizinischen Versorgung angenommen. Als Vorreiter werden wir nun die Erforschung der Seltenen Erkrankungen als weiteren Schwerpunkt gesetzt - aus Verantwortung für die Patienten.
+

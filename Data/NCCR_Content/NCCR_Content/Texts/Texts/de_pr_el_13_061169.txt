@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061169.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 18.09.13
+
+Ausbau der frühkindlichen Bildung muss unter Hochdruck weitergehen
+------------------------------------------------------------------
+
+
+Zur Veröffentlichung aktueller Statistiken zur frühkindlichen Bildung und Betreuung von Kindern unter drei Jahren erklärt die familienpolitische Sprecherin der SPD-Bundestagsfraktion Caren Marks:
+Die aktuell veröffentlichten Betreuungsquoten von Kindern unter drei Jahren sowie die Anzahl der geschaffenen Plätze in Kitas und in der Kindertagespflege zeigen eindrucksvoll, dass der Ausbau der frühkindlichen Bildung bundesweit eine hohe Priorität hat. Das ist auch gut so, denn zur besseren Förderung von Kindern sowie zur Vereinbarkeit von Familie und Beruf ist eine gute frühkindliche Bildung, Erziehung und Betreuung unerlässlich.
+Dennoch muss der Ausbau eines bedarfsgerechten und qualitativ hochwertigen Angebots für Familien unter Hochdruck weitergehen. Es ist ärgerlich, dass Bundesministerin Schröder jahrelang mit dem Finger auf Länder und Kommunen gezeigt hat, statt selbst die Ärmel hochzukrempeln. Jahrelang war sie untätig und hat jede Verantwortung von sich gewiesen. Entsprechende Anträge der SPD-Bundestagsfraktion zum Ausbau der frühkindlichen Bildung hat Schwarz-Gelb im Bundestag stets abgelehnt. Auch die Hilferufe von finanzschwachen Kommunen hat Schwarz-Gelb einfach ignoriert. Es waren die SPD-geführten Länder, die nach zähem Ringen mit Ministerin Schröder zu Beginn des Jahres 2013 eine Aufstockung der Bundesmittel durchsetzen konnten.
+Den Ausbau der frühkindlichen Bildung zu forcieren sowie Länder und Kommunen bei dieser Aufgabe zu unterstützen, ist für den Bund eine der größten Herausforderungen in der Zukunft. Dies wollen wir in Regierungsverantwortung durchsetzen.
+

@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030006.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 19.09.13
+
+KNOPEK: Alarmsignale der NADA: Länder in der Pflicht
+----------------------------------------------------
+
+NA
+Berlin. Zur den Finanzierungsengpässen der Stiftung Nationale Anti Doping Agentur (NADA) im kommenden Jahr erklärt der Obmann der FDP-Fraktion im Sportausschuss Lutz KNOPEK:
+Die Finanzierungsprobleme der NADA für 2014 und darüber hinaus müssen dringend gelöst werden. Im gemeinsamen Kampf gegen Doping brauchen wir mehr und bessere Kontrollen. Dazu brauchen wir eine starke und handlungsfähige Nationale Anti Doping Agentur. Der Bund hat unter Union und FDP seinen Anteil an der Finanzierung der Stiftung geleistet. 
+ Leider fehlen weiter Mittel aus der Privatwirtschaft und den Bundesländern. Dass auch in diesem Jahr wieder 13 Länder überhaupt keinen Beitrag zur Finanzierung der NADA geleistet haben, ist völlig inakzeptabel. Anstatt neue Gesetze im Anti-Doping-Kampf zu fordern, sollten die Länder erst einmal ihre Hausaufgaben machen und die NADA 2014 und darüber hinaus finanziell unterstützen. Andernfalls steht zu befürchten, dass die NADA ihre bisherigen Aufgaben nicht mehr in gekanntem Maße fortführen kann. Das wäre ein Armutszeugnis im Kampf gegen Doping. Insbesondere das rot-grüne Niedersachsen ist in der Pflicht, seinen großen Ankündigungen im Koalitionsvertrag Taten folgen zu lassen. Spätestens jetzt wäre die Gelegenheit da.
+691-knopek-nada.pdf
+

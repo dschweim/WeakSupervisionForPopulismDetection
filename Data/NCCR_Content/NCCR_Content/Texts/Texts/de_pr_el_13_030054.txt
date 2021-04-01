@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030054.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 08.09.13
+
+STINNER: Deutschland hat gemeinsame Europäische Position erreicht
+-----------------------------------------------------------------
+
+NA
+BERLIN. Zu dem Ergebnis von Vilnius zur Lage in Syrien erklärt der außenpolitische Sprecher der FDP-Bundestagsfraktion Rainer STINNER:
+
+Die Bundesregierung hat erreicht, was viele ständig gefordert haben: Eine gemeinsame europäische Position. Das ist für die nach wie vor angestrebte politische Lösung eine ganz wichtige Grundlage. Diese gemeinsame Position beinhaltet auch die Forderung, vor den Maßnahmen das Ergebnis der UN-Inspektion abzuwarten.
+Diese Ergebnisse waren nur zu erreichen, indem auch die kleineren europäischen Staaten, die nicht am G20-Gipfel teilgenommen haben einbezogen wurden. Das ist dem Außenminister in Vilnius gelungen.
+

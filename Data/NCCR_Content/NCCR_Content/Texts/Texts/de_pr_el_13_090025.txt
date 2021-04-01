@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_090025.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 21.08.13
+
+AfD: Staatliche Zwänge bedrohen den Rechtsstaat
+-----------------------------------------------
+
+NA
+Sixt klagt gegen Rundfunkabgabe
+ Es ist gut, dass sich die Menschen und auch die Unternehmen gegen die Zumutungen einer modernen Erziehungsdiktatur verteidigen. Mit diesen Worten begrüßt Alexander Gauland, stellvertretender Sprecher der Alternative für Deutschland, die Klage des Autovermieters Sixt AG gegen die im Januar 2013 eingeführte Rundfunkabgabe. Notfalls werde man bis zur höchsten Instanz gegen den Gebührenwahnsinn klagen, so der Vorstandsvorsitzende Erich Sixt. Die Drogeriekette Rossmann hatte bereits Anfang dieses Jahres mit einer sogenannten Popularklage vor dem Bayerischen Verfassungsgerichtshof gegen die Neuregelung geklagt. Zahlreiche Unternehmen sind durch die Gebührenreform des öffentlich-rechtlichen Rundfunks mit deutlich höheren Beiträgen konfrontiert.
+An der Rundfunkabgabe werde dies besonders deutlich, weshalb sich gegen diese mehr Menschen engagieren. Tatsächlich aber greife der Staat ohne Nutzen in zahllose Lebensbereiche ein und belaste so die Menschen, besonders die älteren. Die Neigung der Bürokratie sich in das Leben der Bürger zu drängen und sie mit Abgaben und ähnlichem zwangszubeglücken, bedroht den freiheitlichen Rechtsstaat in seinem Kern, so Gauland abschließend.
+

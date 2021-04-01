@@ -1,0 +1,16 @@
+Text-ID: cd_pr_el_11_020024.txt
+
+Press Release from Party: CVP
+
+country = ch
+party   = cvp
+date    = 28.09.11
+
+Eine neue Energiezukunft dank der CVP
+-------------------------------------
+
+NA
+Der Ständerat hat an der heutigen ausserordentlichen Session zur Energiepolitik den Entscheid zum etappenweisen Ausstieg aus der Kernenergie bestätigt. Kernkraftwerke, die den Sicherheitsvorschriften nicht mehr entsprechen, sind unverzüglich stillzulegen. Diese Beschlüsse entsprechen der Motion Schmidt und den Beschlüssen des Nationalrates.
+"Der klare Entscheid des Ständerates schafft Planungssicherheit und eröffnet den Weg für eine neue Energiepolitik in diesem Land. Wir werden alles daran setzen, in der neuen Energiepolitik eine sichere und ausreichende Energieversorgung zu konkurrenzfähigen Preisen zu gewährleisten. Damit sichern wir Arbeitsplätze und fördern auch die Schaffung von vielen neuen Arbeitsplätzen im Bereich der erneuerbaren Energien., erklärt Ständerat (FR) und Fraktionspräsident Urs Schwaller.
+
+

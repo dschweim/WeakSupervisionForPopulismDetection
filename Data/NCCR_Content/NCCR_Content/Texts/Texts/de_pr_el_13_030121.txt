@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_030121.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 23.08.13
+
+LUKSIC: FDP unterstützt ADAC-Forderung nach höheren Straßeninvestitionen
+------------------------------------------------------------------------
+
+NA
+BERLIN. Zur Forderung des ADAC, die Straßeninvestitionen zu erhöhen und auf eine Pkw-Maut zu verzichten, erklärt der verkehrspolitische Sprecher der FDP-Bundestagsfraktion Oliver LUKSIC:
+Die FDP unterstützt die Forderung des ADAC nach auskömmlichen Investitionen in das Straßennetz. Einen Anfang haben wir bereits gemacht: Seit 2010 werden jedes Jahr rund 500 Millionen Euro mehr in die Straßen investiert, als SPD-Verkehrsminister Tiefensee geplant hatte. Der Straßenverkehr zahlt jedes Jahr 53 Milliarden Euro an Steuern und Abgaben. Davon muss deutlich mehr als bisher zurück in die Straße fließen. Dafür wird sich die FDP einsetzen. Eine Pkw-Maut lehnen wir ab. Die Belastung der Autofahrer ist schon heute mehr als hoch genug. 
+

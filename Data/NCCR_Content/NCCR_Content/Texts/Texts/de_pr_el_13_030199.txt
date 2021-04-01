@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_030199.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 02.08.13
+
+PILTZ:  Bundesdatenschutzbeauftragter muss Aufklärung vorantreiben
+------------------------------------------------------------------
+
+NA
+
+BERLIN. Zu den Medienberichten über das Einschalten des Bundesdatenschutzbeauftragten in die Debatte um Spähprogramme ausländischer Nachrichtendienste erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Es ist richtig und wichtig, dass sich der Bundesbeauftragte für den Datenschutz und die Informationsfreiheit, Peter Schaar, jetzt in die Debatte einbringt. Er muss zusammen mit den Landesdatenschutzbeauftragten die Aufklärung vorantreiben, ob auch von deutschen Telekommunikationsunternehmen oder deren Tochterunternehmen ausländischen Nachrichtendiensten Daten zur Verfügung gestellt werden.
+Auch die deutschen Behörden müssen sich weiter erklären, was genau sie mit dem Testlauf von xKeyscore bezwecken wollen. Das soll auch bei den nächsten Sitzungen des Parlamentarischen Kontrollgremiums auf die Tagesordnung. Wir fordern ein Moratorium des Programms, bis alle offenen Punkte geklärt sind. Dass eine reale, vollwertige Nutzung von xKeyscore mit unserer Verfassung unvereinbar ist, muss dabei allen Beteiligten klar sein.
+Ebenso erwarten wir von Bundeskanzlerin Angela Merkel, die in ihrem 8-Punkte-Katalog vorgestellten Maßnahmen zügig voranzutreiben. Es muss endlich auf europäischer und internationaler Ebene verbindliche Standards beim Datenschutz geben um Bürgerinnen und Bürger sowie die Wirtschaft vor massenhafter Ausspähung zu schützen.
+590-piltz-datenschutz.pdf
+

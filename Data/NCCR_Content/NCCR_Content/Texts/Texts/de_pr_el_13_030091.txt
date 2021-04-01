@@ -1,0 +1,22 @@
+Text-ID: de_pr_el_13_030091.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 29.08.13
+
+SCHNURR: Kommission bestätigt Position der FDP-Bundestagsfraktion zur Auflösung des MAD
+---------------------------------------------------------------------------------------
+
+NA
+BERLIN. Zum Bericht der
+Regierungskommission zur Überprüfung der Sicherheitsgesetzgebung in Deutschland
+erklärt der Verteidigungsexperte der FDP-Bundestagsfraktion Christoph SCHNURR:
+
+Die FDP-Bundestagsfraktion unterstützt die mehrheitliche Empfehlung der Kommission, den Militärischen Abschirmdienst abzuschaffen. Für die Überführung der Aufgaben des MAD an andere Dienste hat sich die Fraktion bereits im März 2011 ausgesprochen.
+Es gibt keinen triftigen Grund, den MAD weiter als selbstständige Behörde mit beschränktem Aufgabenbereich zu erhalten. Das Verteidigungsministerium braucht keinen eigenen Nachrichtendienst. Die Aufgaben des MAD können auch vom Verfassungsschutz und dem Bundesnachrichtendienst übernommen werden. 
+In der nächsten Wahlperiode muss deshalb eine sinnvolle Reform der Sicherheitsarchitektur angegangen werden.
+648-schnurr-auflosung_mad.pdf
+

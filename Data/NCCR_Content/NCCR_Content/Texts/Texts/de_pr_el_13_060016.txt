@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_060016.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 17.09.13
+
+Karakaolu: Unterfinanzierung von Hochschulen beenden
+------------------------------------------------------
+
+NA
+Zu den aktuellen Zahlen des Statistischen Bundesamtes zu den Hochschulabsolventen 2012 erklärt Yasemin Karakaolu, Mitglied im Kompetenzteam von Peer Steinbrück:
+Die Hochschulen sind in der Mitte der Gesellschaft angekommen. Nicht nur die Zahlen bei den Studienanfängern steigen, sondern auch jene der Hochschulabsolventen. 2012 haben fast doppelt so viele junge Menschen einen Hochschulabschluss erreicht wie noch 2002. Dementsprechend müssen wir die Hochschulen in Zukunft angemessen und verlässlich ausstatten. Doch statt Zukunftskonzepten hat Schwarz-Gelb nur Stillstand geliefert und auch den Hochschulpakt erst auf Drängen der SPD-regierten Ländern den tatsächlichen Erfordernissen angepasst.
+Derzeit schließen nur etwa 75 Prozent der Studierenden ihr Studium auch erfolgreich ab, bei Jugendlichen mit Migrationshintergrund sind es noch weniger. Um hier mehr Erfolge zu erreichen, müssen wir die Unterfinanzierung der Hochschulen überwinden. Deshalb ist das Ziel der SPD richtig, jährlich zusätzlich 20 Milliarden Euro in Bildung zu investieren.
+Der Schlüssel für die Verbesserung der Qualität von Studium und Lehre ist die Stärkung der Grundfinanzierung der Hochschulen, für die Bund und Länder gemeinsam Verantwortung übernehmen müssen. Dazu zählt die Verbesserung der Betreuungsrelationen durch mehr Professoren und Lektoren ebenso wie ein Ausbau der Masterangebote und eine umfassende BAföG-Reform. Wir müssen auch die soziale Dimension des Studiums stärken und mit einem Hochschulsozialpakt in studentisches Wohnen, Kinderbetreuung und Beratungsangebote investieren. Schwarz-Gelb ruht sich auf vorgeblich guten Zahlen aus und verschließt die Augen vor diesem Handlungsbedarf.
+Das große Interesse junger Menschen an einer akademischen Ausbildung ist zunächst einmal nicht nur erfreulich sondern auch rational. Ein Studienabschluss eröffnet heute die besten Chancen für einen guten Berufseinstieg, geringe Arbeitslosigkeit und höhere Löhne. Allerdings besteht auch kein Zweifel, dass wir für die Sicherung von Wohlstand und gesellschaftlichen Zusammenhalt ebenso akademische wie beruflich ausgebildete Fachkräfte brauchen. Statt die akademische und berufliche Ausbildung gegeneinander auszuspielen, müssen wir über eine Berufsausbildungsgarantie jungen Menschen echte Perspektiven auch jenseits der akademischen Ausbildung bieten. 
+

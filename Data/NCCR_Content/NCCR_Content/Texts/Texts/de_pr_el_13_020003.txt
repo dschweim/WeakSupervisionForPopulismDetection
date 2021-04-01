@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_020003.txt
+
+Press Release from Party: CDU
+
+country      = de
+partylabel   = cdu
+partytype    = all
+date         = 01.09.13
+
+Angela Merkel entscheidet TV-Duell klar für sich
+------------------------------------------------
+
+NA
+Die Pressestelle der CDU Deutschlands teilt mit:
+Zum heutigen TV-Duell zwischen Bundeskanzlerin Dr. Angela Merkel und Kanzlerkandidat Peer Steinbrück erklärt der Generalsekretär der CDU Deutschlands, Hermann Gröhe:
+Mit viel Sachverstand, sympathisch im Auftritt, vor allem aber mit großer Glaubwürdigkeit hat Angela Merkel das TV-Duell geprägt und klar für sich entschieden. Sie hat einem Millionenpublikum unser klares Angebot für die nächsten vier Jahre vorgestellt: Arbeit für alle  sicher und gut bezahlt. Sie steht für eine erfolgreiche Wirtschaft, solide Finanzen, einen stabilen Euro genauso wie für eine Stärkung der Familien. Angela Merkel geht die Dinge an, die den Menschen wirklich am Herzen liegen. Damit hat sie auch noch mal deutlich die Unterschiede zum politischen Mitbewerber aufgezeigt.
+Für Peer Steinbrück und die SPD fällt das Fazit des heutigen Duells hingegen ernüchternd aus: Von Klartext-Peer war nichts zu spüren. Denn Peer Steinbrück hat nicht erklärt, warum er mit seinen Steuererhöhungsplänen hunderttausende Arbeitsplätze aufs Spiel setzen will. Er hat nicht erklärt, warum Rot-Grün Griechenland einst in die Währungsunion geholt hat und heute trotz Euro-Krise auf ein Europa der gemeinsamen Schulden setzt. Und er hat nicht erklärt, warum seine Partei trotz wachsweicher Dementi nicht aufhört, an einem rot-rot-grünen Bündnis zu schmieden. Stattdessen hat er immer wieder Fragen gestellt, ohne Antworten zu liefern.
+Am Ende unterstreicht das TV-Duell einmal mehr: Angela Merkel und die CDU sind die richtige Wahl, um Deutschland verlässlich und sicher durch unruhige Zeiten zu führen. Peer Steinbrück und die SPD setzen hingegen darauf, ein Zerrbild unserer Gesellschaft zu zeichnen und unser Land schlechtzureden. Das hat Deutschland, das haben die Millionen fleißigen Menschen, die Tag für Tag daran mitarbeiten, dass Deutschland auf Erfolgskurs bleibt, nicht verdient.
+

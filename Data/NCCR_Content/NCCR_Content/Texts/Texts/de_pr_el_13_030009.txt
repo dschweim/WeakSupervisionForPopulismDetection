@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030009.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 18.09.13
+
+STINNER: Restriktive Rüstungsexportpolitik ist verantwortliche Außenpolitik
+---------------------------------------------------------------------------
+
+NA
+BERLIN. Zur Forderung von Teilen der Union, Rüstungsexporte zu vereinfachen, erklärt der außenpolitische Sprecher der FDP-Bundestagsfraktion Rainer STINNER:
+
+Rüstungsexporte bedürfen in jedem Einzelfall einer sorgfältigen Abwägung. Dies stellen die Rüstungsexportrichtlinien der Bundesregierung sicher. Es ist völlig richtig, dass Außenminister Westerwelle hier jede Aufweichung ablehnt.
+Wir fordern im Gegenteil eine stärkere Kontrolle auch durch das Parlament. Das ist durch schnellere Berichte und einen Kontrollausschuss möglich, in dem auch vertrauliche Details behandelt werden können. 
+Die FDP-Bundestagsfraktion wird nicht zulassen, dass die bewährte und von der großen Mehrheit der Bevölkerung gewünschte restriktive Rüstungsexportpolitik aufgeweicht wird.
+

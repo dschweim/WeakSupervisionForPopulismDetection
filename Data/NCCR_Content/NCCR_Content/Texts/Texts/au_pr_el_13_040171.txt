@@ -1,0 +1,26 @@
+Text-ID: at_pr_el_13_040171.txt
+
+Press Release from Party: Grüne
+
+country      = at
+partylabel   = grüne
+partytype    = partei
+date         = 09.09.13
+
+Grüne: SPÖ als einzige Partei gegen U-Ausschuss als Minderheitsrecht
+--------------------------------------------------------------------
+
+NA
+Wien (OTS) - Die SPÖ ist - im Gegensatz zu den Ausführungen von BK
+Faymann - als einzige Partei dagegen, dass Kontrollrechte im
+Parlament gestärkt werden und die Einsetzung eines
+Untersuchungsausschusses künftig Minderheitsrecht wird. Im
+SPÖ-Wahlprogramm ist die Maßnahme nicht enthalten. Und auf der Seite
+politikkabine.at, einer Orientierungshilfe für WählerInnen, ist die
+SPÖ die einzige Partei die auf die Frage "Soll ein Drittel der
+Nationalratsabgeordneten einen Untersuchungsausschuss einsetzen
+können?" mit Nein antwortet.
+Quelle:
+http://www.politikkabine.at/wahlen/index.php?page=voter.Home&poll=13
+
+

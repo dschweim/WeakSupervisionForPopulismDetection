@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030032.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 12.09.13
+
+KAMP: Berufsbildung wird zum deutschen Exportschlager
+-----------------------------------------------------
+
+NA
+Berlin. Zur Gründung der Zentralstelle für internationale Berufsbildungskooperation erklärt der Berichterstatter für berufliche Bildung der FDP-Bundestagsfraktion Heiner KAMP:
+
+Mit der Gründung der Zentralstelle für internationale Berufsbildungskooperation wird ein weiteres wichtiges bildungspolitisches Vorhaben umgesetzt. Von der Bündelung der vorhandenen Expertise in der Zentralstelle profitiert nicht allein der rasant wachsende Bildungsmarkt. Viel wichtiger ist es, dass wir die enorme Nachfrage unserer europäischen Partnerländer nach Know-How über unser einmaliges System der Dualen Berufsausbildung befriedigen können. 
+Unsere Nachbarn erkennen in dem gelingenden Zusammenspiel von beruflicher und schulischer Ausbildung den Schlüssel zu geringerer Jugendarbeitslosigkeit und  Fachkräftesicherung. Doch der Weg zur Öffnung der verschulten Ausbildungssysteme und zum Aufbau von Alternativen zur akademischen Ausbildung ist steinig. Ein Systemwechsel lässt sich nicht ohne Mühen vollziehen. Ohne kompetente Beratung und entsprechende Hilfestellungen wird eine Neuausrichtung scheitern. Deswegen ist die Gründung der Zentralstelle nicht allein ein Gewinn für Deutschland  ganz Europa wird davon profitieren.
+680-kamp-berufsbildung.pdf
+

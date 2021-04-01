@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_041080.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 22.08.13
+
+Whistleblower verdienen Schutz
+------------------------------
+
+
+Anlässlich der Verurteilung des Wikileaks-Informanten Bradley Manning erklärt Ingrid Hönlinger, Sprecherin für Demokratiepolitik:
+Die gegen Bradley Manning verhängte Freiheitsstrafe von 35 Jahren ist unverhältnismäßig. Selbst wenn es Bradley Manning gelingen sollte, vorzeitig entlassen zu werden, zeigt das Strafmaß vor allem eines: Potentielle Whistleblower sollen abgeschreckt werden.
+Whistleblower gehören nicht an den Pranger. Ihr Mut bedarf der Anerkennung. Sie selbst verdienen den Schutz der Gesellschaft. Das Urteil gegen Bradley Manning zeigt, wie der Fall Snowden, dass wir dringend einen besseren Schutz für Whistleblower brauchen. Die Aufdeckung von Missständen in Unternehmen und Institutionen liegt im öffentlichen Interesse.
+Transparenz und Meinungsfreiheit sind Grundpfeiler der Demokratie. Auch Sicherheit ist ein hohes Gut. Sie darf aber nicht gegen demokratische Grundwerte, wie den Schutz der Freiheit, ausgespielt werden.
+Auch in Deutschland brauchen wir eine gesetzliche Regelung zum Schutz von Whisteblowern. Hierzu haben wir einen umfassenden Gesetzentwurf vorgelegt. Diesen Gesetzentwurf hat die schwarz-gelbe Regierung jedoch abgelehnt. Sie ist vier Jahre untätig geblieben. Das sind vier verlorene Jahre.
+Der Fall einer deutschen Whistleblowerin belegt den Regelungsbedarf bei uns: Kündigt ein Arbeitgeber seine Angestellten, wenn diese Missstände aufdecken, verstößt das gegen die Meinungsfreiheit - das hat der Europäische Gerichtshof für Menschenrechte entschieden.
+

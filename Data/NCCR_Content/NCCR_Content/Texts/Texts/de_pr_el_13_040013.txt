@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_040013.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 30.08.13
+
+Glückwunsch Edward Snowden!
+---------------------------
+
+Zur heutigen Verleihung des Whistleblower-Preises durch die Vereinigung Deutscher Wissenschaftler, der Deutschen Sektion von IALANA und Transparency Deutschland an Edward Snowden erklären Claudia Roth, Bundesvorsitzende, und Malte Spitz, Mitglied im Bundesvorstand von BÜNDNIS 90/DIE GRÜNEN:
+
+Der Preis zeichnet Edward Snowden zu Recht für seine Verdienste um  Freiheit, Menschenrechte und Transparenz aus. Er setzt damit ein Zeichen  der Solidarität nicht nur für Edward Snowden. Whistleblower sind  wichtige Unterstützer der Demokratie, um eklatante Missstände in  Regierungen, Unternehmen und eben auch Geheimdiensten aufzudecken. Oft  ist erst dadurch eine effektive Kontrolle dieser Institutionen möglich. Snowden hat eine gigantische Ausspähmaschinerie ans Licht gebracht,  dessen ganzes Ausmaß noch immer nicht vollständig abzusehen ist. Mit  seinen Enthüllungen über die Überwachung der Bürger in Deutschland und  weltweit hat er unserer Gesellschaft einen großen Dienst erwiesen. Dafür  gebühren ihm unser Dank und unsere Anerkennung. Es ist beschämend für  Deutschland und die gesamte Europäische Union, dass sich keine Regierung  bereit erklärt hat, Snowden Aufenthaltsrecht und den nötigen Schutz vor  Verfolgung zu gewähren. Stattdessen musste Snowden auf die zweifelhafte  Hilfe von Putins Russland zurückgreifen. 
+Die schwarz-gelbe Bundesregierung muss jetzt endlich ihre Blockade  aufgeben und den von Snowden ans Licht gebrachten Überwachungsskandal  lückenlos aufklären und nicht länger vertuschen. 
+

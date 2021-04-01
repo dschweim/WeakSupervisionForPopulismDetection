@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_060022.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 14.09.13
+
+Nahles: Warum erst jetzt, Frau Merkel?
+--------------------------------------
+
+NA
+Zu den heutigen Äußerungen von Angela Merkel zum Thema Leiharbeit erklärt die SPD-Generalsekretärin Andrea Nahles:
+Acht Jahre lang hat Angela Merkel nicht festgestellt, dass es beim Thema Leiharbeit Regelungsbedarf gibt. Da bedarf es am Ende einer Legislaturperiode einer Wahlsendung im Fernsehen und den Fragen eines Zuschauers, dass sie sich darüber Gedanken macht. Warum erst jetzt? Wer glaubwürdig wissen möchte, wie die Lebenswirklichkeit vieler Menschen in unserem Land aussieht, muss nicht nur über sondern mit den Menschen sprechen. Genau das macht Peer Steinbrück, und zwar nicht nur im Fernsehen sondern auch auf den Straßen und an den Haustüren der Menschen in unserem Land. So sieht Glaubwürdigkeit aus! 
+

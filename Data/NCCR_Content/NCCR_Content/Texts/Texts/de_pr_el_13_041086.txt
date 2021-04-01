@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041086.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 21.08.13
+
+Stallbauboom in der Hähnchenmast
+--------------------------------
+
+
+Zur heute vom BUND vorgestellten Studie zu den neuen Hähnchenmastställen in Deutschland zwischen 2009 und 2012 erklärt Friedrich Ostendorff, Sprecher für Agrarpolitik:
+60 Prozent mehr Hähnchenmastanlagen in Deutschland seit 2009 zeigen, dass die Expansion der Massentierhaltung voranschreitet. Das ist eine gefährliche Entwicklung. Der Boom der Tierfabriken führt nicht nur zu Umweltbelastungen und zu untragbaren Zuständen für die Tiere. Er ist vor allem durch die massenhaft in den Großställen verabreichten Antibiotika ein Risiko für die menschliche Gesundheit. Dieser massive Einsatz verstärkt Resistenzentwicklung. Das hat zur Folge, dass Antibiotika in der Humanmedizin nach und nach wirkungslos werden. An sich harmlose Krankheiten werden zunehmend zur Bedrohung von Leib und Leben.
+Angesichts dieser Entwicklung ist es verantwortungslos, dass Noch-Ministerin Aigner untätig bleibt - nach dem Motto: Nach mir die Sintflut. Diese Bundesregierung steht mit ihrer Bilanz für eine Politik der ungebremsten Agrarindustrialisierung im Zeichen des Fleischexportwahns. Dabei nimmt sie billigend in Kauf, dass Jahr für Jahr etwa 6000 bäuerliche Betriebe aufgeben müssen, weil sie diesen Wachstumspfad nicht mitgehen können. Wir wollen diese Entwicklung umkehren und stehen für einen grundlegenden Umbau der Tierhaltung.
+

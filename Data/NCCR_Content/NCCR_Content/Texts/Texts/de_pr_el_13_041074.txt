@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041074.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 28.08.13
+
+Anreize für Risikoselektion aufheben
+------------------------------------
+
+
+Zu den vom Bundesversicherungsamt benannten Fällen von Risikoselektion durch Krankenkassen erklärt Biggi Bender, Sprecherin für Gesundheitspolitik:
+Gesetzliche Krankenkassen dürfen sich nicht aufführen wie die privaten Krankenversicherungen. Es widerspricht dem Solidarprinzip, wenn die Kassen Versicherte mit hohem Einkommen oder gutem Gesundheitszustand bevorzugen und andere vergraulen. Alte und Kranke haben Anspruch auf den Schutz durch die Solidargemeinschaft. Es ist nicht Aufgabe der Krankenversicherung, nach einem möglichst hohen Überschuss zu streben. Der interne Finanzausgleich unter den Krankenkassen muss so geregelt werden, dass kein Anreiz zur Rosinenpickerei entsteht.
+Die Begrenzung des Risikostrukturausgleichs auf 80 Krankheiten ist daher willkürlich und nicht zielgerecht. Die hohen Behandlungskosten am Lebensende müssen  wie auch das Landessozialgericht Nordrhein-Westfalen entschieden hat - angemessen berücksichtigt werden. Auch Präventionsmaßnahmen sollten adäquat in diesen kassenübergreifenden Risikoausgleich einbezogen werden.
+

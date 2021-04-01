@@ -1,0 +1,20 @@
+Text-ID: de_pr_el_13_030196.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 04.08.13
+
+PILTZ: BND ist in Erklärungspflicht
+-----------------------------------
+
+NA
+BERLIN. Zu Medienberichten, wonach der Bundesnachrichtendienst massenhaft Telekommunikationsverbindungsdaten an die NSA weitergeben soll, erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+Die Berichte werfen erneut Fragen auf, die der Bundesnachrichtendienst und das Bundeskanzleramt beantworten müssen. Nicht nur stellt sich die Frage, wie es überhaupt zu einer solch großen Zahl von Daten in nur einem Monat kommen kann, sondern vor allem, wie es sein kann, dass diese unvorstellbare Datenmenge angeblich übermittelt wurde.  
+Sollten die Berichte sich als zutreffend herausstellen, besteht dringender Handlungsbedarf. Der BND darf nicht Handlanger der massenhaften NSA-Datenausspähung sein. Bis zur vollständigen Aufklärung der Datenausspähung müssen sofort alle Datenübermittlungen, die nicht konkret einzelfallbezogen sind, ausgesetzt werden. Auch die USA wären gut beraten, verloren gegangenes Vertrauen durch ein Moratorium bis zur umfassenden Klärung der offenen Fragen wiederherzustellen. 
+Der Bundesnachrichtendienst muss dem Parlamentarischen Kontrollgremium alle bestehenden Vereinbarungen mit US-Sicherheitsbehörden vorlegen. Wenn die Berichte stimmen, wonach die Übermittlung auf eine Vereinbarung von 2002 zurückgeht, muss der damalige Kanzleramtsminister der rot-grünen Regierung Schröder/Fischer, Frank-Walter Steinmeier, dies erklären. 
+Bislang hat der Bundesnachrichtendienst stets versichert, keinen Anteil an der massenhaften Datenausspähung der NSA zu haben. Dass nun im Raum steht, dass die NSA die Datenerhebung durch den BND sich quasi selbst zurechnet, wirft nicht nur die Frage auf, ob der BND wissentlich oder unwissentlich zu PRISM beiträgt, sondern auch, wie dies mit den Aussagen von Edward Snowden zusammenpasst, dass die NSA unmittelbaren Zugriff auf alle darin vorhandenen Daten haben soll.
+594-piltz-bnd.pdf
+

@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_030206.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 01.08.13
+
+GRUSS: Wo die SPD regiert, müssen Kita-Plätze eingeklagt werden
+---------------------------------------------------------------
+
+NA
+BERLIN. Anlässlich des ab dem 1. August geltenden Rechtsanspruchs für die Betreuung von unter 3-Jährigen erklärt die familienpolitische Sprecherin der FDP-Bundestagsfraktion Miriam GRUSS: 
+Mit 5,4 Milliarden Euro hat die schwarz-gelbe Bundesregierung so viel wie keine Regierung zuvor in den Ausbau der Kinderbetreuung in Deutschland investiert. Während unter der letzten SPD-geführten Bundesregierung Familienpolitik noch von höchster Stelle als 'Gedöns' diffamiert wurde, haben die Fraktionen von Union und FDP für viele Familien in Deutschland endlich die Vereinbarkeit von Familie und Beruf erreicht.
+Dennoch wird es auch ab jetzt nicht flächendeckend ein Betreuungsangebot für den Nachwuchs von unter drei Jahren geben. Insbesondere in den von den Sozialdemokraten regierten Großstädten sind Kita-Plätze für Kleinkinder trotz immenser Förderung des Bundes immer noch Mangelware. Die SPD gibt sich in Berlin gerne als Vorkämpferin für die Vereinbarkeit von Familie und Beruf. Wo sie jedoch regiert, sind nicht wenige Mütter und Väter ans Heim gebunden. Bei der SPD müssen Kita-Plätze offenbar erst eingeklagt werden.
+gruss-kinderbetreuung.pdf
+

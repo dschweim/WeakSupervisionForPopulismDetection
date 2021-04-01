@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_040008.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = all
+date         = 10.09.13
+
+Repressionen in der Türkei müssen ein Ende haben
+------------------------------------------------
+
+Zum Tod eines jungen Demonstranten in Antakya in der Türkei erklärt Claudia Roth, Bundesvorsitzende von BÜNDNIS 90/DIE GRÜNEN:
+"Angesichts des aktuellen Todesfalls bei laufenden Protesten in der Türkei teile ich den Schmerz der Angehörigen und der türkischen Zivilgesellschaft. Der junge Demonstrant ist Opfer einer rücksichtslosen und willkürlich agierenden Polizei, die im Auftrag der Regierung von Erdogan brutal gegen die eigene Bevölkerung vorgeht.
+Dass die Polizei auch nach der Eskalation der Gewalt in Istanbul in diesem Frühsommer weiterhin auf Tränengas, Wasserwerfer und gewaltsame Räumungen von Protest-Camps setzt, ist ein trauriger Beleg dafür, dass Erdogan weiter eine uneinsichtige und harte Linie verfolgt, statt sich mit den Anliegen der Protestierenden auseinanderzusetzen und auf ihre Forderungen nach mehr Partizipation einzugehen.
+Offensichtlich ist Ministerpräsident Erdogan fest entschlossen, dringende Probleme des Landes einfach auszusitzen, anstatt seinem Regierungsauftrag nachzukommen, den Weg der Türkei in Richtung Erneuerung und demokratische Reformen weiter zu gehen.
+Zu dieser Ideenlosigkeit und seinem autoritären Beharren passt auch, dass die Regierung den vereinbarten Friedensplan mit den kurdischen Parteien regelrecht gegen die Wand fährt. Es ist vor allem die besondere Pflicht der türkischen Regierung, für den sozialen Frieden in der Türkei zu sorgen, die Zusagen gegenüber den Kurden einzuhalten und den Versprechen endlich Taten folgen zu lassen.
+Meinungs- und Demonstrationsfreiheit sowie Minderheitenrechte sind für den weiteren demokratischen Weg der Türkei unerlässlich. Eine große Bewegung in der Türkei kämpft für diese Rechte. Darauf antwortet Erdogan nur mit Repressionen und verschärft die ohnehin angespannte Situation in der Türkei. Ein Kurswechsel der Regierung Erdogan ist überfällig."
+

@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_060010.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 18.09.13
+
+AG SPD 60 plus: Bundestagswahl ist Richtungsentscheidung für Ältere
+-------------------------------------------------------------------
+
+NA
+Anlässlich der Bundestagswahl am 22. September erklärt die Bundesvorsitzende der AG SPD 60 plus Angelika Graf:
+Diese Bundestagswahl ist eine Richtungsentscheidung für die Älteren in Deutschland. Die Wählerinnen und Wähler stimmen darüber ab, ob sie das SPD-Rentenkonzept mit wirksamen Maßnahmen gegen Altersarmut haben wollen, bessere Leistungen für Pflegebedürftige sowie bezahlbaren und altersgerechten Wohnraum. Oder ob sie lieber eine Senkung des Rentenniveaus und weitere Fotos der Bundeskanzlerin beim Opernbesuch oder Wandern haben wollen. Eine Stimme für die SPD ist eine Stimme für die Rentenangleichung Ost-West und für ein starkes soziales Sicherungssystem. Eine Stimme für Schwarz-Gelb ist eine Stimme für die Privatisierung der Lebensrisiken Gesundheit und Pflege.
+

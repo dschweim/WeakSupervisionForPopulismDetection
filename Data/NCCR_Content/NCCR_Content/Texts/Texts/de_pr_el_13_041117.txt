@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041117.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 03.09.13
+
+Abhängigkeit von Großbanken muss beendet werden
+-----------------------------------------------
+
+
+Zur Äußerung von Georg Fahrenschon (DSGV), die Deutsche Bank sei zu groß, erklärt Dr. Gerhard Schick, Sprecher für Finanzpolitik:
+Die Deutschen Sparkassen sind im Recht: Es kann nicht sein, dass der gesamte deutsche Finanzmarkt darauf hoffen muss, dass im Risikomangement der Deutschen Bank keine gravierenden Fehler gemacht werden. Wie viele andere Großbanken darf die Deutsche Bank ihren Eigenkapitalbedarf und damit das oberste Schutzschild von Sparern und Steuerzahlern selbst ermitteln. Verrechnet sich die Deutsche Bank in ihren für Dritte nicht nachvollziehbaren Rechnungen, hätte das dramatische Auswirkungen. Es kann nicht sein, dass die Steuerzahlerinnen und Steuerzahler nach über fünf Jahren Finanzkrise weiterhin auf Selbstkontrolle einer Branche hoffen müssen, die fast täglich neuen Betrugsvorwürfen ausgesetzt ist.
+Die USA haben das Problem aufgegriffen und verlangt von ihren systemrelevanten Großbanken nun sechs Prozent Eigenkapital  unabhängig von den Risikoeinschätzungen der Institute. Deutschland sollte sich den USA anschließen und endlich eine solche Schuldenbremse für Banken auf den Weg bringen. Systemrelevante Banken sollten dabei eine höhere Quote erfüllen müssen. Das würde dem Anreiz zu immer größeren und systemrelevanteren Banken entgegenwirken. Riesige und komplexe Banken wie die Deutsche Bank erhalten bereits heute nur noch Geld von den Gläubigern, weil diese am Ende eine Rettung durch die Steuerzahler annehmen  Wettbewerb gibt es nicht mehr um sicherere Geschäftsmodelle, sondern um die höhere Systemrelevanz. Doch anstatt dieses absurde System durch eine Schuldenbremse für Banken aus den Angeln zu heben, hat Schwarz-Gelb das Prinzip der sozialen Marktwirtschaft auf dem Scheiterhaufen geopfert, um Banklobbyisten kurzfristig höhere Gewinne zuzuschachern.
+

@@ -1,0 +1,24 @@
+Text-ID: de_pr_el_13_030078.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 03.09.13
+
+PILTZ: Heuchelei ist keine Aufklärung
+-------------------------------------
+
+NA
+BERLIN. Zur Debatte um die Überwachung durch den US-amerikanischen Nachrichtendienst NSA und den britischen Nachrichtendienst GCHQ erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Der untaugliche Versuch der Opposition, der Bundesregierung Untätigkeit vorzuwerfen, kann nicht verfangen. Die FDP war im Bundestag und vor der Bundesregierung von Beginn an die treibende Kraft für Aufklärung und das abseits von plumpem Wahlkampfgetöse. Die Liberalen haben immer gesagt, dass wir mitten in der Aufklärung sind und nicht am Ende. Wir werden weiter darauf drängen, wirksame Maßnahmen zu ergreifen, um die Privatsphäre der Menschen zu schützen. 
+SPD und GRÜNE können die Hände nicht in Unschuld waschen. Wer wie die SPD für Vorratsdatenspeicherung ist, wer wie die GRÜNEN der Übermittlung von Fluggastdaten an die USA zugestimmt hat, wer wie SPD und GRÜNE mit immer einschneidenderen Sicherheitsgesetzen die Axt an die Grundrechte gelegt und z.B. den Zugriff der Sicherheitsbehörden auf Bankkonten der Bürger eingeführt hat, ist nicht Anwalt der Bürgerrechte. Die längst notwendige Reform der parlamentarischen Kontrolle der Nachrichtendienste ist unter anderem an der SPD gescheitert. Die geheuchelte Aufregung ist an Scheinheiligkeit nicht zu überbieten. 
+Es darf trotz der weiter notwendigen Aufklärung nicht übersehen werden, dass die Bundesregierung bereits zahlreiche Maßnahmen ergriffen hat, um der ausufernden Überwachung durch britische und US-amerikanische Nachrichtendienste einen Riegel vorzuschieben: 
+Die Bundesjustizministerin hat gemeinsam mit der französischen Regierung eine Initiative in der EU angestoßen, in der künftigen EU-Datenschutzverordnung eine Verpflichtung aufzunehmen, wonach alle in der EU tätigen Unternehmen melden müssen, wenn Daten an Drittstaaten weitergegeben werden. 
+Die Bundesregierung setzt sich für ein Zusatzprotokoll der UN zu Artikel 17 des Pakts über bürgerliche Rechte ein. Die Bundesjustizministerin hat hierfür bereits bei den EU-Justizministern um Unterstützung geworben. 
+Die Bundesregierung setzt sich in der EU für gemeinsame Standards für Nachrichtendienste ein, damit künftig eine Überwachung wie durch den britischen Dienst GCHQ in die Schranken gewiesen wird.
+Der Bundesaußenminister hat einen Cyber-Beauftragten für die Außenpolitik ernannt, der die deutschen Interessen in der digitalen Welt noch stärker vertreten wird.
+Auf nationaler und internationaler Ebene unterstützt die Bundesregierung IT-Sicherheit und den IT-Standort Deutschland und Europa, damit Datenverarbeitung und IT-Systeme unter dem strengen Datenschutzregime der EU stehen.
+

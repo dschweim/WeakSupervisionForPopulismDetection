@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041121.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 10.09.13
+
+Lebensmittelkennzeichnung endlich transparenter und verständlicher machen
+-------------------------------------------------------------------------
+
+
+Anlässlich der Vorstellung des vzbv-Ratgebers Lebensmittel-Lügen  Wie die Foodbranche trickst und tarnt, mit der der Verbraucherzentrale Bundesverband über die Werbe- und Kennzeichnungstricks der Lebensmittelbranche informiert, erklärt Nicole Maisch, Sprecherin für Verbraucherpolitik:
+Mogelpackungen, Werbetricks und bewusste Irreführungen sind bei Lebensmitteln leider nach wie vor weit verbreitet. Das ist auch ein Armutszeugnis für die schwarz-gelbe Bundesregierung. Ilse Aigner hat es während ihrer kompletten fünf-jährigen Amtszeit als Verbraucherministerin nicht geschafft, einen sicheren und verlässlichen Rahmen für Verbraucherinnen und Verbraucher zu schaffen. Die notwendige Einführung transparenter und verständlicher Kennzeichnungssysteme hat sie trotz großer Versprechen nicht auf den Weg gebracht.
+Die Plattform Lebensmittelklarheit.de des vzbv ist ein wichtiges Instrument, um Verbraucherinnen und Verbraucher zu warnen und ihnen eine Stimme zu geben. Unerlässlich sind aber auch bessere Schutz- und Informationsrechte für Verbraucherinnen und Verbraucher. Wir fordern eine klar und einfach verständliche Information auf Lebensmitteln  und zwar in Form einer Ampelkennzeichnung und nicht in einer Schriftgröße von 1,2 Millimeter, die man nur mit Lupe entziffern kann. Außerdem brauchen wir eine stärkere verbraucherorientierte Marktbeobachtung und Forschung sowie verlässliche Lebensmittelkontrollen. Das alles hat Schwarz-Gelb versäumt.
+

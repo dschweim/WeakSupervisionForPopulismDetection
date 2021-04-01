@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090024.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 28.09.11
+
+Erfolg für die SP: Auch der Ständerat will die Energiewende
+-----------------------------------------------------------
+
+Der Ständerat hat heute einen wesentlichen Schritt in Richtung Atom-Ausstieg gemacht: Eine Mehrheit will keine neuen Atomkraftwerke. Dies ist ein historischer Beschluss und ein grosser Erfolg für die SP, welche sich seit Jahrzehnten für die Energiewende einsetzt und eine Abkehr von der Atomenergie fordert. Der Atomausstieg kann durch die Verbesserung der Energieeffizienz und die Förderung der Erneuerbaren ohne Komforteinbussen erreicht werden, wenn die Investitionen endlich in effiziente Technologien und erneuerbare Energien fliessen. Die entsprechenden förderlichen Rahmenbedingungen wie eine Entdeckelung der kostendeckenden Einspeisevergütung müssen konsequent umgesetzt werden. Durch den Atomausstieg wird der Grundstein für eine Politik zu Gunsten der kommenden Generationen gelegt. Jedoch darf die offene Formulierung bei der Technologieförderung nicht dazu führen, dass letztlich Geld für die Erneuerbaren und Energieeffizienz fehlt.
+Die SP Schweiz setzt nun umso mehr auf die Cleantech-Initiative, welche anfangs Monat mit über 106000 beglaubigten Unterschriften eingereicht wurde. Diese fordert den Atomausstieg und legt den Grundstein zur Schaffung von über 100000 Arbeitsplätzen in den Cleantech-Branchen. Bund und Kantone werden dazu aufgefordert, in Zusammenarbeit mit der Wirtschaft die Abhängigkeit von den fossilen Energiequellen zu beenden und die Energieversorgung der Schweiz mit erneuerbaren Energien sicherzustellen. Bis 2030 soll die gesamte Stromversorgung, sowie die Hälfte der Energieversorgung (Heizen, Verkehr usw.) in der Schweiz erneuerbar sein.
+

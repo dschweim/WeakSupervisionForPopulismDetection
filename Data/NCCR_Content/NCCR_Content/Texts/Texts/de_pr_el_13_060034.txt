@@ -1,0 +1,25 @@
+Text-ID: de_pr_el_13_060034.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 01.09.13
+
+Aufruf: Neue Impulse für Ostdeutschland
+---------------------------------------
+
+NA
+Die Menschen in Ostdeutschland haben in den vergangenen gut zwei Jahrzehnten einen tiefgreifenden wirtschaftlichen und sozialen Umbruch bewältigt. Sie haben nicht nur einen friedlichen Systemwechsel erzwungen, sondern mit viel Energie, mit neuen Ideen, mit Ausdauer und Zusammenhalt sich neue Existenzen aufgebaut und Perspektiven geschaffen. Dafür haben sie zu Recht die Solidarität der Menschen in ganz Deutschland erfahren.
+Den Erfolgen beim Aufbau Ost stehen immer noch große Herausforderungen gegenüber. Das Grundgesetz fordert die Gleichwertigkeit der Lebensverhältnisse in Deutschland. Der dafür notwendige Aufholprozess ist ins Stocken geraten.
+Peer Steinbrück und die SPD kämpfen:
+Für einen gesetzlichen Mindestlohn von 8,50 Euro einheitlich in Ost und West.
+Für die Angleichung der Rentensysteme in Ost und West bis zum Jahr 2020 und einen Härtefallfonds für die Menschen, die durch den Systemwechsel in der Rente besonders benachteiligt werden.
+Für eine Anschlussregelung zum Solidarpakt II, der alle strukturschwachen Regionen in ganz Deutschland berücksichtigt.
+Für wirtschaftspolitische Impulse, die sowohl den Fachkräftemangel durch die besondere demografische Entwicklung berücksichtigen als auch die notwendige Investitionsfähigkeit fördern.
+Für den Erhalt der Finanzkraft von Kommunen im Bereich der Kultur- und Stadtentwicklung und für die unmittelbare Daseinsvorsorge der Bürgerinnen und Bürger trotz Schuldenbremse und zurückgehender Mittel aus dem Solidarpakt II.
+Für eine bessere Bildung für alle Kinder und Jugendlichen und höhere Bildungsinvestitionen. Das erfordert neue Formen der Zusammenarbeit von Bund, Ländern und Kommunen durch die Abschaffung des Kooperationsverbotes im Bereich der Bildung.
+Ostdeutschland braucht neue Impulse und eine rot-grüne Bundesregierung, die diese Aufgaben entschlossen anpackt.
+Erstunterzeichner: Manuela Schwesig, Schwerin; Erwin Sellering, Schwerin, Matthias Platzeck, Potsdam, Klaus Ness, Potsdam, Ralf Holzschuher, Brandenburg, Christoph Matschie, Jena, Martin Dulig, Moritzburg; Katrin Budde, Magdeburg; Jan Stöß, Berlin; Wolfgang Tiefensee, Leipzig, Klaus Wowereit, Berlin, Iris Gleicke, Schleusingen, Reinhard Höppner, Magdeburg, Wolfgang Thierse, Berlin, Friedrich Schorlemmer, Lutherstadt Wittenberg, Jann Jakobs, Potsdam, Frank-Walter Steinmeier, Brandenburg 
+

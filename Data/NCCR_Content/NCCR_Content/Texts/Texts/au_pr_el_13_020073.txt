@@ -1,0 +1,44 @@
+Text-ID: at_pr_el_13_020073.txt
+
+Press Release from Party: ÖVP
+
+country      = at
+partylabel   = övp
+partytype    = all
+date         = 24.09.13
+
+Pirker: Europa braucht eigene Spionageabwehr
+--------------------------------------------
+
+SWIFT-Abkommen: ÖVP-Sicherheitssprecher will erst Aufklärung, 
+      dann Maßnahmen
+    Brüssel, 24. September 2013 (ÖVP-PD) "Erst Aufklärung, dann 
+Maßnahmen", fordert der ÖVP-Sicherheitssprecher im EU-Parlament, 
+Hubert Pirker, im Rahmen eines Expertenhearings zur Aufklärung der 
+Vorwürfe gegen die amerikanische National Security Agency (NSA) 
+unbefugt auf die Daten des Finanzdienstleisters SWIFT zuzugreifen, 
+der internationale Banküberweisungen durchführt. ****
+    Es gebe bisher "keinerlei Beweise für ein unrechtmäßiges 
+Absaugen oder Nutzen" von SWIFT-Daten, versicherten im Ausschuss 
+sowohl EU-Innenkommissarin Cecilia Malmström, als auch Europol-Chef 
+Rob Wainwright, als auch die SWIFT-Repräsentantin Blanche Petre. 
+Laut Pirker zeige das Hearing einmal mehr, dass die Europäische 
+Union die Kooperation mit den US-Behörden zum Zwecke der 
+Terrorismusabwehr und der Bekämpfung international organisierter 
+Verbrechen benötige. "Diese Kooperation ist auch erfolgreich. Ein 
+Aussetzen dieser Zusammenarbeit - noch dazu ohne jeglichen Beweis 
+einer Vertragsverletzung - hätte deutlich negative Auswirkungen auf 
+die Sicherheit in Europa", warnt Pirker. "Es ist ein 
+rechtsstaatliches Prinzip, dass man erst die Fakten klärt und dann 
+rechtliche Maßnahmen setzt. Wer anderes vorschlägt, setzt sich dem 
+Verdacht aus, mehr an Populismus als an Lösungen interessiert zu 
+sein. Das ist nicht seriös", so Pirker weiter.
+    Was Europa aber fehle, sei ein "Schutzmechanismus" vor dem 
+unbefugten Zugriff von außereuropäischen Geheimdiensten auf 
+wichtige Daten aus der Europäischen Union. "Zum Schutz vor 
+Wirtschaftsspionage brauchen wir eine eigene europäische 
+Spionageabwehr, konstruiert wie Europol, das heißt eine 
+Koordination und Kooperation der nationalen Dienste zum Schutz des 
+Wirtschaftsstandortes Europa", so Pirker abschließend.
+
+

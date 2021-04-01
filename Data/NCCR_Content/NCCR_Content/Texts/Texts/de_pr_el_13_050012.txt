@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_050012.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 01.08.13
+
+Recht auf Wohnen muss ins Grundgesetz
+-------------------------------------
+
+Zu den heute veröffentlichten Zahlen der Bundesarbeitsgemeinschaft Wohnungslosenhilfe (BAG W), wonach die Zahl der Wohnungslosen dramatisch angestiegen ist, erklärt die stellvertretende Parteivorsitzende und Mitglied im Spitzenteam der LINKEN zur Bundestagswahl 2013, Caren Lay:
+Es ist ein Skandal, dass die Zahl der Wohnungslosen in Deutschland zwischen 2010 und 2012 um rund 15 Prozent gestiegen ist. Die Ursachen dafür sind hausgemacht. Jede dritte Sozialwohnung ist in den vergangenen Jahren weggefallen. Bund und Länder haben den sozialen Wohnungsbau weit unter den tatsächlichen Bedarf geschrumpft. Ärmere Menschen und vor allem Familien haben das Nachsehen. Sie fallen wegen der hohen Mieten immer häufiger unter das Existenzminimum. DIE LINKE fordert dringend Investitionen in den sozialen Wohnungsbau. Wir brauchen mindestens 150.000 neue Sozialwohnungen.
+In unserem Wahlprogramm fordern wir, das Recht auf Wohnen im Grundgesetz zu verankern. Es ist höchste Zeit für eine effektive Mietpreisbremse. Kommunen sollen das Recht haben, Höchstmieten festzulegen. Mieterhöhungen wegen Neuvermietung wollen wir verbieten. Außerdem muss das Wohngeld aufgestockt werden. DIE LINKE unterstützt daher als einzige Partei die Forderungen der Bundesarbeitsgemeinschaft Wohnungslosenhilfe ausdrücklich.
+

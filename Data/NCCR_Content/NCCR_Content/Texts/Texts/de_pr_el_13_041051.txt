@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041051.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 12.08.13
+
+Schröders Kita-Vorschlag: Richtig, aber unglaubwürdig
+-----------------------------------------------------
+
+
+Anlässlich des Vorschlags von Familienministerin Schröder, bundeseinheitliche Standards für Kindertagesstätten einzuführen, erklärt Katja Dörner, Sprecherin für Kinder- und Familienpolitik:
+Bundeseinheitliche Qualitätsstandards für Kitas sind überfällig. Es ist schade und auch allzu durchsichtig, dass der Vorschlag Schröders erst jetzt kommt. Noch in der letzten Sitzungswoche des Bundestags vor der Sommerpause haben die Regierungsfraktionen und damit auch Ministerin Schröder selbst unseren Vorschlag, einen auf den Personalschlüssel bezogenen Mindeststandard im Bundesgesetz festzuschreiben, abgelehnt. Jahrelang hat Ministerin Schröder bei Fragen der Kita-Qualität die Hände in den Schoss gelegt und sinnvolle Forderungen zurückgewiesen. Vier Wochen vor der Bundestagswahl entdeckt sie nun ihr Herz für Qualitätsstandards. Das ist wenig glaubwürdig.
+Dabei ist sogar in den Berichten der Bundesregierung zum Kita-Ausbau seit Jahren dokumentiert, dass der Personalschlüssel vielerorts hohen pädagogischen Ansprüchen nicht genügt. Wenn die Kitas die zu Recht in sie gesetzten hohen Erwartungen entsprechen sollen, brauchen wir mehr Engagement seitens des Bundes. Der Bund ist auch finanziell in der Pflicht, sich an einer Qualitätsoffensive für die Kitas zu beteiligen. Hier lässt die Bundesregierung jede klare Zusage vermissen.
+

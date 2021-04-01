@@ -1,0 +1,16 @@
+Text-ID: cd_pr_el_11_090015.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 15.09.11
+
+Kein Laisser faire mehr für Grossbanken
+---------------------------------------
+
+Die heutigen Nachrichten von der Bahnhofstrasse belegen es: Die Banken müssen härter an die Kandare genommen werden. So lange ein einzelner Banker fast 2 Milliarden Franken betrügerisch in den Sand setzen kann, so lange funktioniert die Kontrolle offensichtlich nicht! Auch darum setzte sich die SP heute im Nationalrat mit viel Engagement für eine bessere Bankenaufsicht, für mehr Eigenmittel und für griffige Massnahmen gegen die Too Big To Fail-Problematik ein. Die unbeschränkte Banken-Subvention in Form einer faktischen Staatsgarantie und die Risikofreiheit für die Banken muss endlich abgeschafft werden. Die SP zieht ein positives Zwischenfazit nach dem ersten Teil der Debatte. Die Eskapaden der Banken sind unterdessen so ausgeartet, dass auch die bürgerlichen Parteien sich minimalen Einschränkungen und Regeln für systemrelevante Banken nicht mehr länger verschliessen können. Jedoch werden diese Massnahmen nur ein erster Schritt sein: Die heute bekannt gewordene 2 Milliarden-Pleite bei der UBS zeigt klar auf, dass es später weitergehen muss und eine Abtrennung des Investmentbusiness vom übrigen Bankgeschäft zentral bleibt.
+
+Die SP Schweiz hat dieses so genannte Trennbanken-System seit langem gefordert. Auch eine Studie des Instituts für schweizerisches Bankwesen an der Universität Zürich
+ kommt zum Schluss, dass das Trennbanken-System als Ultima Ratio zu erwägen ist.
+

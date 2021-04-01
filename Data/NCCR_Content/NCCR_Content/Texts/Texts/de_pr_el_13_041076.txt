@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041076.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 26.08.13
+
+Tierhaltung per Fernsteuerung ist verantwortungslos
+---------------------------------------------------
+
+
+Zu Meldungen, dass im Stall der Familie des westfälischen Bauernpräsidenten Johannes Röring in Borken 940 Schweine verendet sind, weil aufgrund der Hitze die Belüftung ausgefallen war erklärt Friedrich Ostendorff, Sprecher für Agrarpolitik:
+Jährlich ersticken bisher ungezählt viele Tiere in der Enge und Hitze von Großställen. Solche Vorfälle werden häufig vom verantwortlichen Betrieb aufgrund der zu erwartenden Negativschlagzeilen verschwiegen. Wir fordern daher ein bundesweites Störfallkataster und eine Meldepflicht, um endlich einen verbindlichen Überblick über die verendeten Tiere zu bekommen.
+Dass fast tausend Schweine aufgrund eines Lüftungsausfalls qualvoll verendet sind, zeigt die Grenzen einer Tierhaltung, in der nicht mehr der Kontakt des Halters zu seinem Tier im Zentrum steht. Ausgerechnet an den bekanntlich heißesten Tagen des Sommers wurden die Schweine sich selbst und dem Glauben an ein Lüftungssystem überlassen. Hier wurde die bäuerliche Aufsichtspflicht eindeutig verletzt. Einen Tierbestand kann man nicht per Handyfernsteuerung versorgen. Gerade an heißen Sommertagen braucht es regelmäßige Kontrollgänge und die persönliche Präsenz des Halters.
+Die Kosten dieses Skandals tragen wie immer die Bürgerinnen und Bürger: So zahlt der Kreis Borken insgesamt 1,2 Millionen Euro jährlich für die Tierkörperbeseitigung. Wir fordern, dass Großmäster wie Röring selbst für diese Kosten aufkommen müssen und wenigstens finanziell Verantwortung übernehmen für ihre Risikoanlagen.
+Wir fordern Herrn Röring auf am "Veredelungstag" des Bauernverbandes am 10.9. in Senden zu diesem Vorfall Stellung zu beziehen. Sein Referat "Perspektiven der Schweinehaltung in Deutschland aus Sicht des Berufsstandes" bietet dazu Gelegenheit.
+

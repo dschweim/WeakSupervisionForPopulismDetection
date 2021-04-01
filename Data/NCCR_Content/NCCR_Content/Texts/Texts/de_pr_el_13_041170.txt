@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041170.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 20.09.13
+
+Kostenexplosion bei Panzer-Beschaffung
+--------------------------------------
+
+
+Zu Berichten, dass es beim Schützenpanzer PUMA zu weiteren Kostensteigerungen in Milliardenhöhe kommt, erklärt Dr. Tobias Lindner, Berichterstatter für den Verteidigungshaushalt:
+Beim Schützenpanzer Puma kam es in den vergangenen Jahren immer wieder zu Problemen. Gewichtssteigerungen, Fahrwerksprobleme und Probleme mit der Waffenanlage tauchten allesamt in den letzten Sachstandsberichten auf. Die Folge waren Zeitverzögerungen und eine Kostenexplosion. Der Bundesrechnungshof warnte 2012 vor fundamentalen Problemen, die das Projekt in Gänze in Frage stellen. Das Verteidigungsministerium folgt auch bei diesem Projekt seiner üblichen Linie, Probleme kleinzureden und zu versichern, dass alles gelöst werde. Spätestens seit dem Eurohawk-Debakel ist jedoch klar, dass man diesen Aussagen nur bedingt glauben darf.
+Ende Oktober 2013 endet die Frist für die Nachweisführung des Puma. Es muss also alles funktionieren, ansonsten hat die Bundeswehr das Recht, von dem Vertrag zurückzutreten. Wenn weiterhin Probleme bestehen und es zu erneuten Verzögerungen und Kostensteigerungen kommt, muss die Bundeswehr von ihrem Rücktrittsrecht Gebrauch machen. Weitere Kostenexplosionen stellen den Sinn dieses Projektes in Frage. Noch höhere Kosten kann sich die Bundeswehr schlichtweg nicht leisten. Das Verteidigungsministerium muss nun schleunigst klar machen, wie es um den Puma steht. Wir warten seit Mitte Juli auf einen Bericht, den wir zu den Problemen mit dem Fahrwerk des Panzers angefordert hatten. Trotz mehrmaliger Nachfrage im Ministerium ist er auch heute noch nicht bei uns eingegangen.
+
+

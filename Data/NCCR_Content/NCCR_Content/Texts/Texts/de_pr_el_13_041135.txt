@@ -1,0 +1,21 @@
+Text-ID: de_pr_el_13_041135.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 06.09.13
+
+Abhöraffäre: Hauptverteidigungslinie der Bundesregierung bricht zusammen
+------------------------------------------------------------------------
+
+
+Zur Ausspähung verschlüsselter Kommunikation durch den US-Geheimdienst NSA erklärt Dr. Konstantin von Notz, Sprecher für Innen- und Netzpolitik:
+Jetzt bestätigt sich ein bereits seit Mitte Juli im Raum stehender Verdacht: Selbst verschlüsselte Kommunikation wird durch den US-Geheimdienst nahezu flächendeckend ausgespäht. Das bedeutet, dass die von den Unternehmen eingesetzte Verschlüsselung nicht vor Totalüberwachung schützt. Damit fällt eine Hauptverteidigungslinie der Bundesregierung in sich zusammen.
+Bis heute ist der Hinweis auf die Möglichkeiten des Selbstschutzes für Bürger und Unternehmen durch Verschlüsselung eine der Hauptverteidigungslinien der Bundesregierung, um ihre eigene Untätigkeit zu rechtfertigen. Die Argumente von Pofalla und Friedrich, es gäbe kein Problem und man möge sich selber schützen, sind nun als falsch und zynisch entlarvt. 
+Die Regierung Merkel glaubt, diese Abhöraffäre einfach aussitzen zu können  das ist skandalös. Union und FDP müssen endlich ihrer verfassungsrechtlich vorgegebenen Schutzpflicht gegenüber unseren Grundrechten nachkommen.
+Online-Banking und Online-Handel, Anwälte, Journalisten, Ärzte und die Wirtschaft  sie alle sind trotz Schutzmaßnahmen vor geheimdienstlicher Ausforschung, Überwachung und Spionage nicht gefeit. Der in unserer Verfassung garantierte Quellen-, Informanten-, Mandanten- und Patientenschutz ist damit online nicht mehr zu gewährleisten. Gleiches gilt auch für den Schutz vertraulicher Regierungs- und Wirtschaftskommunikation. Sämtliche Gesetzesnormen, die sich heute auf Verschlüsselungsstandards beziehen, müssen damit umgehend auf den Prüfstand.
+Hinzu kommt: Die Zusammenarbeit zwischen Privatwirtschaft und US-Geheimdiensten ist noch viel weitgehender als bislang ohnehin bereits belegt. Wir haben führende US-Internetunternehmen schriftlich aufgefordert darzulegen, weshalb sie sich bis heute nur zur Transparenz äußern und in keiner Weise gegen die US-Sicherheitsgesetzgebung und die Praxis der National Security Agency als solche protestieren. 
+Das Anschreiben an die US-Internetunternehmen finden Sie im Wortlaut auf www.von-notz.de zum Download bereitgestellt.
+

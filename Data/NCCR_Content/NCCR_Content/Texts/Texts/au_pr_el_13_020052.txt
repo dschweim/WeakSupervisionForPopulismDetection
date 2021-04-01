@@ -1,0 +1,23 @@
+Text-ID: at_pr_el_13_020052.txt
+
+Press Release from Party: ÖVP
+
+country      = at
+partylabel   = övp
+partytype    = all
+date         = 25.09.13
+
+Kopf betroffen über Ableben des ehemaligen NR-Abgeordneten Ferdinand Manndorff
+------------------------------------------------------------------------------
+
+NA
+Wien, 25. September 2013 (OTS/ÖVP-PK) - Der ehemalige Abgeordnete zum
+Nationalrat Ferdinand Manndorff ist im 91. Lebensjahr verstorben.
+Über das Ableben Manndorffs zeigte sich ÖVP-Klubobmann Karlheinz Kopf
+betroffen. Namens des ÖVP-Parlamentsklubs sprach Kopf der Familie und
+Angehörigen sein Beileid über den Schicksalsschlag aus. "Der
+Parlamentsklub wird Ferdinand Manndorff ein würdiges Andenken
+bewahren und sich immer an sein Wirken im Hohen Haus erinnern", so
+Kopf. (Schluss)
+
+

@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_041045.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 13.08.13
+
+Vielfalt in Bildungseinrichtungen fördern und wertschätzen
+----------------------------------------------------------
+
+
+Zur heute veröffentlichten Studie der Antidiskriminierungsstelle des Bundes zu Diskriminierungen im Bildungsbereich erklärt Kai Gehring, Sprecher für Bildungs- und Hochschulpolitik:
+Diskriminierungen in Bildungseinrichtungen blockieren Bildungs- und Teilhabechancen. Jede Form von Diskriminierung ist Gift für gesellschaftliche Offenheit, soziale Gerechtigkeit und Kreativität - das dürfen wir nicht zulassen.
+Wer diskriminiert, dem muss entschieden widersprochen werden  egal ob auf Schulhof, Campus oder Straße. Wer diskriminiert wurde, braucht Unterstützung und Ansprechpersonen. Nur eine Bürgerschaft mit Zivilcourage kann im Zusammenspiel mit einer emanzipativen Bildungs- und aktiven Antidiskriminierungspolitik gruppenbezogene Menschenfeindlichkeit im Denken und Handeln zurückdrängen.
+Um ihre Rolle als Dreh- und Angelpunkte einer modernen Wissensgesellschaft zu erfüllen, müssen Bildungseinrichtungen Diskriminierung systematisch vorbeugen und bekämpfen. Dazu gehören unter anderem flächendeckende Diversity-Strategien, Leitbilder wie Schulen und Hochschulen ohne Rassismus und Homophobie sowie die Aus- und Weiterbildung von Lehrkräften für den Umgang mit Heterogenität.
+Wirksames Mittel gegen Diskriminierung ist die Öffnung von Schulen und Universitäten für die gesamte Bandbreite gesellschaftlicher Vielfalt. Bildungs- und Wissenschaftseinrichtungen, die Vielfalt fördern und Diskriminierung zurückdrängen, sind gerechter, internationaler, kreativer und damit erfolgreicher. Das erfordert einen Perspektivenwechsel, der die Strukturen unseres Bildungssystems auf die Vielfalt der Menschen ausrichtet  nicht umgekehrt.
+

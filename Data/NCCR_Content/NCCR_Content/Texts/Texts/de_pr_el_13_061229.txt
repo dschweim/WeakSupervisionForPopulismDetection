@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_061229.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 27.08.13
+
+Das System der privaten Versicherungen hat ausgedient
+-----------------------------------------------------
+
+
+Zu den Plänen von Daniel Bahr, das Geschäft der privaten Krankenversicherung auszuweiten, erklärt die pflegepolitische Sprecherin der SPD-Bundestagsfraktion Hilde Mattheis:
+Die Pläne von Daniel Bahr mehr Bürgerinnen und Bürger in private Krankenkassen zu bringen, sind unsozial. Die privaten Krankversicherungen suchen sich ihre Kundinnen und Kunden nach Gesundheitszustand aus. Wird die Versicherungspflichtgrenze gekippt, bedeutet das, dass die privaten Krankenkassen noch mehr gesunde Menschen aufnehmen können. Währenddessen müssen die gesetzlichen Kassen alle Kosten für diejenigen tragen, die die privaten Versicherer wegen zu hoher Gesundheitskosten ablehnen.
+Statt den privaten Versicherern noch mehr Geld in den Rachen zu werfen, brauchen wir endlich eine Bürgerversicherung, die von der gesamten Bevölkerung solidarisch getragen wird. Die negativen Folgen des unsolidarischen privaten Versicherungssystems zeigen sich für viele Menschen im hohen Alter. Dann steigen die Versicherungsbeiträge nämlich extrem an. Das System der privaten Krankenversicherung hat ausgedient. Daniel Bahr darf nicht weiter Politik für seine Klientel betreiben.
+

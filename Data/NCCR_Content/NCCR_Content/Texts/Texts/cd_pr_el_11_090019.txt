@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090019.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 19.09.11
+
+Nationalrat beschliesst erste griffige Massnahmen gegen Too Big To Fail-Problem  weitere müssen folgen
+---------------------------------------------------------------------------------------------------------
+
+Die SP ist zufrieden, dass der Nationalrat heute die Revision des Bankengesetzes gutgeheissen hat. Damit ist der Weg frei für erste Massnahmen gegen das Too Big To Fail-Problem und die Voraussetzungen sind gut, dass diese Vorlage noch in der laufenden Session definitiv in beiden Räten beschlossen werden kann. Das Risiko der Grossbanken für die Volkswirtschaft ist jedoch noch immer zu gross. Die SP ist überzeugt, dass es weitergehende Lösungen mit höheren, ungewichteten Eigenmittelvorgaben braucht damit die öffentliche Hand nicht weiter die Risiken der Grossbanken tragen muss. Wichtig ist aber, dass nun ein erster Schritt in die richtige Richtung beschlossen worden ist.
+Wie das jüngste Milliardendebakel der UBS in London belegt, muss die Regulierung möglichst schnell weiter gehen. So muss für systemrelevante Banken insbesondere das Investmentbanking verboten und der Eigenhandel massiv eingeschränkt werden. Entlarvend war in diesem Zusammenhang das heutige Verhalten der SVP: Trotz der eigenen Forderungen in den Sonntags-Medien hat diese heute einen Antrag von SP-Nationalrätin Susanne Leutenegger Oberholzer für eine Verschärfung des Gesetzes im Bereich Investmentbanking nicht mitgetragen.
+

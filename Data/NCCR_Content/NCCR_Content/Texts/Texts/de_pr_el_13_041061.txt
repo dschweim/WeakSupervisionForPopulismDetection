@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_041061.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 20.08.13
+
+Kommunen steht das Wasser bis zum Hals: Bund und Länder in der Pflicht
+----------------------------------------------------------------------
+
+
+Zum Kommunalen Finanzreport 2013 der Bertelsmann Stiftung erklärt Britta Haßelmann, Sprecherin für Kommunalpolitik:
+Das Ergebnis des Kommunalen Finanzreports 2013 bestätigt: Die kommunale Familie entwickelt sich immer mehr zu einer Zweiklassengesellschaft. Große strukturelle Unterschiede zwischen den Bundesländern sind verantwortlich für die höchst ungleiche Verteilung der kommunalen Verschuldung von etwa 130 Milliarden Euro und des Investitionsstaus von 128 Milliarden Euro. Während reiche Kommunen sich konsolidieren, dreht sich für strukturschwache Kommunen die Verschuldungsspirale weiter. Die stetige Ausweitung der Kassenkredite ist deren Hilferuf. Wir brauchen eine nachhaltige finanzielle Entlastung und angemessene Finanzausstattung für die Kommunen. Bund und Länder stehen in der Verantwortung.
+Deshalb darf es keine weiteren Steuersenkungen auf Bundesebene geben. Im Gegenteil: Durch eine reformierte Einkommensbesteuerung können zusätzliche Finanzmittel für die Kommunen bereit gestellt werden. Die Kommunen müssen bei den sozialen Pflichtaufgaben entlastet werden. Der Bundesanteil bei den Kosten der Unterkunft soll von 25,1 Prozent auf 37,7 Prozent angehoben und die Eingliederungshilfe in ein Bundesteilhabegesetz überführt werden. Anstatt das unsinnige Betreuungsgeld mit über einer Milliarde Euro zu finanzieren, soll das Geld in den notwendigen Kita-Ausbau und die Qualität der Kinderbetreuung fließen. Kürzungen der Mittel für Städtebauförderung und Gebäudesanierung von Schwarz-Gelb müssen zurückgenommen werden.
+

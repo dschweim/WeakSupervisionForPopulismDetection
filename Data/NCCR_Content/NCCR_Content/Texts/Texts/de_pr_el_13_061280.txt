@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_061280.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 02.08.13
+
+Totalüberwachung sofort stoppen
+-------------------------------
+
+
+Anlässlich der weiteren Veröffentlichungen des Journalisten Glenn Greenwald zum Umfang des Überwachungsskandals erklärt der netzpolitische Sprecher der SPD-Bundestagsfraktion Lars Klingbeil:
+Die neuen Enthüllungen übertreffen alle Befürchtungen. Offenbar können amerikanische Nachrichtendienste das Netz und die elektronische Kommunikation flächendeckend und in Echtzeit überwachen  auch in Deutschland. Die Bundesregierung muss nun vollständig offenlegen, was sie über PRISM, TEMPORA, XKeyscore und andere Überwachungsinstrumente weiß.
+Zudem muss die Bundesregierung umgehend klären, wo und wie die amerikanischen Nachrichtendienste die Kommunikation in einem solchen Umfang abgreifen können. Die Unternehmen müssen offenlegen, ob und in welchem Umfang sie an dieser Totalüberwachung beteiligt sind. Es ist unglaubwürdig und inakzeptabel, dass die Bundesregierung bis heute behauptet, von diesen Vorgängen erst aus der Zeitung erfahren zu haben und immer nur stückchenweise das einräumt, was der Öffentlichkeit bereits bekannt ist.
+Die Bundesregierung muss zügig erklären, wozu und wie die deutschen Behörden Instrumente wie XKeyscore nutzen. Die SPD-Bundestagsfraktion hat eine Kleine Anfrage eingebracht, um diese offenen Fragen beantworten zu lassen.
+Flächendeckende Kommunikationsüberwachung ist mit dem Grundgesetz und den europäischen Grundwerten unvereinbar. Die Bundesregierung muss dafür Sorge tragen, dass diese Totalüberwachung von deutschen Bürgerinnen und Bürgern eingestellt wird und dass die USA sich in Deutschland an deutsches Recht halten.
+

@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_090010.txt
+
+Press Release from Party: AfD
+
+country      = de
+partylabel   = alternativefürdeutschland
+partytype    = all
+date         = 28.08.13
+
+Alexander Gauland: Kein Mandat für Militärschlag
+------------------------------------------------
+
+NA
+Berlin  Die Bundesregierung hat kein Mandat für irgendeine deutsche Beteiligung an einem amerikanischen Militärschlag, so kommentiert Alexander Gauland, stellvertretende Sprecher der Alternative für Deutschland, eine Umfrage des Nachrichtenmagazins Stern, der zufolge zwei Drittel der Bundesbürger einen Angriff auf Syrien ablehnen.
+Man solle erst einmal die UN-Beobachter arbeiten lassen und danach das Ergebnis im Weltsicherheitsrat präsentieren. Gerade die Vorgeschichte des zweiten Irakkrieges mache deutlich, dass man sich für eine objektive Beurteilung nicht auf amerikanische oder britische Geheimdienstquellen verlassen könne. Diese haben sich damals als Lug und Trug erwiesen. Daher müsse man höchst misstrauisch sein. Nur eine unabhängige Aufklärung kann eine Wahrheit ans Licht bringen, die nicht von vornherein durch machtpolitische Überlegungen verzerrt ist, so Gauland abschließend.
+
+

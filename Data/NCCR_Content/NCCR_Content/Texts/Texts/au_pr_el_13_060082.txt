@@ -1,0 +1,18 @@
+Text-ID: at_pr_el_13_060082.txt
+
+Press Release from Party: BZÖ
+
+country      = at
+partylabel   = bzö
+partytype    = all
+date         = 22.08.13
+
+Patchwork-Familien: Widmann: "Heinisch-Hosek lebt im politischen Paläozoikum"
+-----------------------------------------------------------------------------
+
+"Das BZÖ kümmert sich um Themen der Jetztzeit und ist familienfreundlich"
+"Die SPÖ lebt in ihren Ansichten noch immer im politischen Paläozoikum, da wirkt ja die ÖVP noch frischer und jünger - obschon auch im Tertiär lebend". Mit diesen Worten kommentierte heute BZÖ-Bündnissprecher Abg. Mag. Rainer Widmann die Aussage von Frauenministerin Heinisch-Hosek, BZÖ-Bündnisobmann Josef Bucher will mit seinem weitsichtigen Vorstoß für Patchwork-Familien die Frauen benachteiligen. 
+ 
+"Der Frauenministerin fehlt der politische Weitblick in dieser Frage. Das BZÖ will weder die Frauen benachteiligen, noch die Männer bevorteilen, sondern das BZÖ ist familienfreundlich. Hier geht es um 1,1 Millionen Menschen - übrigens Männer und Frauen gleichermaßen - denen es in ihrem gemeinsamen familiären Zusammenleben besser gehen soll. Dazu gehört es auch, dass Väter künftig 50 Prozent der Alimente steuerlich absetzen können. Es muss finanziell möglich sein, eine zweite Familie zu gründen und deshalb fordern wir diese steuerliche Absetzbarkeit von Unterhaltszahlungen. Das BZÖ kümmert sich um Themen der Jetztzeit, die SPÖ ignoriert eben diese und lebt brav weiter im familienpolitischen Paläozoikum", schloss Widmann.  
+
+

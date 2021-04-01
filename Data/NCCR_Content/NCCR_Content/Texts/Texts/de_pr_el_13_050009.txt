@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_050009.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 15.08.13
+
+Niedrigere Strompreise könnten längst Realität sein
+---------------------------------------------------
+
+Die SPD meldet sich im Wahlkampf mit einem Knall zur Strompreisexplosion. Das kann nicht darüber hinwegtäuschen, dass Rot und Grün genau wie Schwarz-Gelb der Entwicklung am Strommarkt viel zu lange tatenlos zugesehen haben", erklärt Caren Lay, stellvertretende Parteivorsitzende und Mitglied im Spitzenteam der LINKEN zur Bundestagswahl, zum heutigen Wahlkampfauftritt von Steinbrück und Machnig.
+Der Vorschlag der SPD, Stromkonzerne zur Senkung überteuerter Tarife zu zwingen, erscheint wie Hohn, hat sie doch selbst mit der Abschaffung der staatlichen Strompreisaufsicht 2007 das zentrale Instrument dafür aus der Hand gegeben. Seither sind die Strompreise um fast 40 Prozent gestiegen und die Energiekonzerne machten Milliardengewinne. Weitere Milliarden werden den Stromkunden durch teure Stromgeschenke an die Industrie aufgebürdet. Reichlich spät kommt er auch der Vorschlag der SPD, die Stromsteuer zu senken. Erst im März hat die SPD unseren Antrag dazu im Bundestag ablehnt.
+DIE LINKE fordert seit langem vehement, dass die Energiewende sozial gestaltet werden muss. Wir haben dazu mehrere Anträge im Bundestag und ein Konzept zur Entlastung der privaten Stromkunden und kleineren Unternehmen bei den Stromkosten vorgelegt. Seit langem fordern wir die Senkung der Stromsteuer und die Streichung der ungerechtfertigten Industrierabatte. Außerdem wollen wir die Willkür der Stromversorger bei der Preisbildung durch eine effektive Strompreisaufsicht beenden. All das hat die SPD im Bundestag mehrfach abgelehnt. Das macht ihr Wahlkampfgetöse jetzt nicht gerade glaubwürdig. Schade, dass man aus dem Wind, den die SPD jetzt produziert, keine Energie gewinnen kann.
+

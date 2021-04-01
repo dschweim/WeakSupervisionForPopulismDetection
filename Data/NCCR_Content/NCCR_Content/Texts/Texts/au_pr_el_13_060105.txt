@@ -1,0 +1,17 @@
+Text-ID: at_pr_el_13_060105.txt
+
+Press Release from Party: BZÖ
+
+country      = at
+partylabel   = bzö
+partytype    = all
+date         = 12.08.13
+
+NR-Wahl: BZÖ Oberösterreich geht mit starker Doppelspitze in den Wahlkampf
+--------------------------------------------------------------------------
+
+Haubner stolz auf Bundeslistennominierung Widmanns
+Erfreut zeigte sich heute die Landesobfrau des BZÖ Oberösterreich, Abg. Ursula Haubner über die prominente Platzierung des oberösterreichischen Spitzenkandidaten Rainer Widmann auf der von BZÖ-Obmann Josef Bucher präsentierten Bundesliste. "Rainer Widmann hat bereits in der Vergangenheit beweisen, dass er mit seiner Ehrlichkeit und seinem herausragendem Einsatz ein starker Vertreter oberösterreichischer Interessen im Nationalrat ist. Als Landesobfrau bin ich stolz auf die Nominierung unseres oberösterreichischen Spitzenkandidaten im Spitzenfeld der BZÖ-Bundesliste und ich freue mich darauf, auf Landesebene in Form einer starken Doppelspitze mit Rainer Widmann und mit der Unterstützung unserer hervorragenden oberösterreichischen Landesgruppe einen zentralen Beitrag dazu zu leisten, dass das BZÖ unter Josef Bucher wieder erfolgreich in den Nationalrat einziehen wird", so Haubner, die ihrerseits als Wahlkreisspitzenkandidatin für das Traunviertel, auf Platz 3 der Landesliste und auf Platz 15 der Bundesliste kandidiert.
+ 
+
+

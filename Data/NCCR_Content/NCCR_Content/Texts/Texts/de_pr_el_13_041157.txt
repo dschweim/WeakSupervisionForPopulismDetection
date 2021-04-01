@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_041157.txt
+
+Press Release from Party: Grüne
+
+country      = de
+partylabel   = grüne
+partytype    = fraktion
+date         = 18.09.13
+
+Kinderbetreuung: Schröder schmückt sich mit fremden Federn
+----------------------------------------------------------
+
+
+Anlässlich der aktuellen Zahlen zur Kindertagesbetreuung erklärt Katja Dörner, Sprecherin für Kinder- und Familienpolitik:
+Fünf Tage vor der Bundestagswahl rechnet Bundesfamilienministerin Schröder die Kita-Zahlen weiter schön. Der Kita-Ausbau hat dank der Länder und Kommunen Fahrt aufgenommen. Das ist erfreulich. Zur Verfügung gestellte Gelder für Plätze als tatsächlich bereitstehende Angebote zu verkaufen, ist aber ein Taschenspielertrick der Ministerin.
+Tatsache ist: Insbesondere in Großstädten und Ballungszentren ist die Nachfrage nach Kitaplätzen viel höher als tatsächlich Plätze zu Verfügung stehen. Unlängst hatte Ministerin Schröder eingestehen müssen, dass für rund 90.000 Plätze noch keine Betriebserlaubnis vorliegt. Statt die Ärmel hoch zu krempeln und ein Sofortprogramm für Kommunen mit besonders hohem Bedarf an U-3-Plätzen aufzulegen, schmückt die Ministerin sich mit fremden Federn, mit dem Kita-Ausbau, den Länder und Kommunen geleistet haben.
+Zudem fehlen tausende Erzieherinnen und Erzieher und die Qualität der Angebote ist mancherorts zweifelhaft. Deshalb brauchen wir eine Qualitätsoffensive für die Kitas, mit einem Rechtsanspruch auf einen Ganztagsplatz und guten, einheitlichen Personalstandards im Bundesgesetz. Hier lässt Ministerin Schröder jede ernstzunehmende Initiative vermissen.
+

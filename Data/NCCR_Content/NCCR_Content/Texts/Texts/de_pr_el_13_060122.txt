@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_060122.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 11.08.13
+
+Florian Pronold: Ramsauer ist wohnungspolitische Schlafbaustelle
+----------------------------------------------------------------
+
+NA
+Zu Äußerungen des Bundesbauministers Ramsauer erklärt Florian Pronold, Mitglied im Kompetenzteam von Peer Steinbrück:
+Minister Ramsauer geht mit ungedeckten Schecks in den Wahlkampf. Seit vier Jahren ist Ramsauer eine wohnungspolitische Schlafbaustelle und nun wacht er kurz vor der Bundestagswahl auf und bietet völlig untaugliche Lösungen ohne jede Gegenfinanzierung feil. Die Eigenheimzulage und die Sonder-AfA, das heißt steuerliche Abschreibungsmöglichkeiten für Bauunternehmen, sind unbezahlbare Instrumente aus der wohnungspolitischen Mottenkiste.
+Wir brauchen gezielten Wohnungsbau in den Ballungsgebieten und keine Förderung mit der Gießkanne. Dazu werden wir die Mittel für die energetische Gebäudesanierung auf 2 Milliarden Euro erhöhen und mit höherer Städtebauförderung den sozialen Zusammenhalt fördern.
+

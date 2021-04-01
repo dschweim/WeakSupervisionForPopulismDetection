@@ -1,0 +1,17 @@
+Text-ID: de_pr_el_13_060046.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 04.09.13
+
+Gabriel: Einen Neustart für Bayern gibt es nur mit Christian Ude
+----------------------------------------------------------------
+
+NA
+Nach dem TV-Duell zur Landtagswahl in Bayern erklärt der Vorsitzende der Sozialdemokratischen Partei Deutschlands Sigmar Gabriel:
+Spätestens seit dem heutigen Bayern-Duell sind die Alternativen für die Landtagswahl am 15. September klar: Christian Ude steht für Solidität, Verlässlichkeit und Glaubwürdigkeit. Horst Seehofer ist und bleibt das Irrlicht der deutschen Politik.
+Die Menschen in Bayern haben einen Ministerpräsidenten verdient, dem es um die Sache geht  und nicht nur um den Machterhalt. Einen Ministerpräsidenten, der Schluss macht mit Selbstbedienungsmentalität und Vetternwirtschaft. Einen Ministerpräsidenten, der den Freistaat wieder ins Gleichgewicht bringt. Christian Ude hat heute Abend gezeigt, dass er für Bayern brennt. Er wird ein Ministerpräsident ohne Skandale und Affären sein und den Freistaat mit Herzlichkeit, Menschlichkeit und Anstand regieren. Einen politischen Neustart in Bayern gibt es nur mit ihm.
+

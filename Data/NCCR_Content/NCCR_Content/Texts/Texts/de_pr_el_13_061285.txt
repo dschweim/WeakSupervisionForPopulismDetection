@@ -1,0 +1,18 @@
+Text-ID: de_pr_el_13_061285.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = fraktion
+date         = 30.07.13
+
+Nahost-Gespräche sind ein Zeichen der Hoffnung
+----------------------------------------------
+
+
+Anlässlich des Beginns der Nahost-Gespräche in Washington, erklärt der Vorsitzende der SPD-Bundestagsfraktion Frank-Walter Steinmeier:
+Der gesamte Nahe Osten befindet sich im Aufruhr. In einer Zeit, in der in dieser Region nichts sicher ist, ist die Tatsache, dass mit Israel und den Palästinensern zwei Konfliktparteien wieder an einem Tisch sitzen, ein Zeichen der Hoffnung.
+Dies ist vor allem dem amerikanischen Außenminister John Kerry zu verdanken, der seit Monaten dafür gearbeitet hat. Und es zeigt wie unverzichtbar ein starkes und selbstbewusstes Amerika ist, das seine Verantwortung und seinen Einfluss in der Außenpolitik kennt und wahrnimmt. Das verdient volle Unterstützung. Auch Deutschland könnte weit mehr leisten.
+Die Hürden sind gewaltig, die noch überwunden werden müssen. Doch der erste Schritt ist gemacht. Die Verantwortung, die beide Seiten dabei tragen, geht weit über die Grenzen Israels und Palästinas hinaus. Ein Signal der Annäherung in diesem Konflikt kann zur Stabilisierung der Region einen wichtigen Beitrag leisten.
+

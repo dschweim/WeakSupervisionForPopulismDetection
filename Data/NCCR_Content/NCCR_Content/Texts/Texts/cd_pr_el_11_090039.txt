@@ -1,0 +1,14 @@
+Text-ID: cd_pr_el_11_090039.txt
+
+Press Release from Party: SP
+
+country = ch
+party   = sp
+date    = 19.10.11
+
+Neue Enthüllungen im Fall UBS belegen Gefahr des Investmentbanking
+------------------------------------------------------------------
+
+Das 2,3-Milliarden-Dollar-Debakel des UBS-Händlers Kweku Adoboli ist nicht die Folge eines betrügerischen Einzeltäters, sondern wurde von verschiedenen Vorgesetzten offensichtlich autorisiert. Mit diesen Enthüllungen aus der internen Untersuchung der UBS widerlegt das Wirtschaftsmagazin Bilan die Theorie des zufälligen und nicht auszuschliessenden Einzelfalls, die von der Grossbank-Spitze und dem Finanzplatz nahestehenden bürgerlichen Politikern in den letzten Wochen kolportiert worden ist. Gemäss dem Wirtschaftsmagazin ergeben die internen Untersuchungen offenbar, dass die Führungsebene eindeutig von den Millionengeschäften Adobolis wissen musste. Angesichts solcher Systemfehler ist klar, dass die Öffentlichkeit derlei Risiken nicht mehr tragen kann und soll. Für die SP versteht es sich deshalb von selbst, dass für systemrelevante Banken das Investmentbanking verboten und der Eigenhandel auf das absolut geschäftsnotwendige Minimum zurückgefahren werden muss.
+Eine entsprechende Motion 11.3895 Grossbanken ohne Investmentbanking-Risiko hat die SP-Fraktion so auch in der letzten Session bereits eingereicht
+

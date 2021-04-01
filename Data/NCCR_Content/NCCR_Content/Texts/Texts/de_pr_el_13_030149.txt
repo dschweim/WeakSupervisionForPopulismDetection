@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030149.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 16.08.13
+
+PILTZ: Datenschutz ist ein Dauerbrenner
+---------------------------------------
+
+NA
+BERLIN. Zu den Äußerungen des Bundesinnenministers zum vermeintlichen Ende der Debatte um die massenhafte Überwachung durch die NSA erklärt die stellvertretende Vorsitzende und innenpolitische Sprecherin der FDP-Bundestagsfraktion Gisela PILTZ:
+
+Die massenhaften Datenbestände bei NSA oder GCHQ wurden weder von der US-amerikanischen noch von der britischen Regierung bestritten. Weite Teile der Internetkommunikation werden abgefangen und anlasslos gespeichert. Jede private oder geschäftliche E-Mail kann betroffen sein, erst recht jeder Eintrag bei Facebook, jede Suchanfrage bei Google, jedes Foto in Apples iCloud.
+Die Debatte, wie der Schutz privater Daten im Internet gewährleistet werden kann, hat gerade erst begonnen. Statt das Ende der Debatte auszurufen, muss der EU-Rechtsrahmen für den Datenschutz gestärkt werden, um die Daten europäischer Bürgerinnen und Bürger besser zu schützen. Zugleich muss der IT-Standort Deutschland gestärkt werden, um im globalen Wettbewerb künftig noch stärker mit einem hohen Datenschutzniveau werben zu können.
+Für den Datenschutz reicht die Versicherung nicht aus, dass keine Wanzen in Regierungsgebäuden angebracht werden. Für den Datenschutz brauchen die Menschen die Gewissheit, dass nicht jeder unbescholtene Bürger ins Visier von Überwachung gerät, einfach nur, weil es heute technisch möglich ist. Die Debatte darüber ist weiter notwendig. Beschwichtigen hilft hier nicht weiter.  Die aktuelle Debatte darf nicht im Sande verlaufen, sondern muss den Weg ebnen zu nachhaltigen Verbesserungen.
+

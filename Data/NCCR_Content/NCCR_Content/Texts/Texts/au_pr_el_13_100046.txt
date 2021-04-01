@@ -1,0 +1,46 @@
+Text-ID: at_pr_el_13_100046.txt
+
+Press Release from Party: NEOS
+
+country      = at
+partylabel   = neos
+partytype    = partei
+date         = 26.08.13
+
+Kanzlerduell endet 0:1 gegen die Jungen
+---------------------------------------
+
+Faymann und Spindelegger in allen Zukunftsthemen unglaubwürdig
+Wien (OTS) - Wenn sich zwei streiten, freut sich NEOS: Im ersten
+Wahlduell auf Puls4 haben Werner Faymann und Michael Spindelegger
+bereits ihre Koalitionsverhandlungen begonnen - haben dabei aber die
+Rechnung ohne die Wähler gemacht, die sie laut Experten nicht
+überzeugen konnten - und die ihnen auch keine Mehrheit mehr bescheren
+werden.
+Um den heißen Pensionsbrei redeten sich beide Diskutanten mehr oder
+weniger elegant vorbei, ohne die Wahrheit auszusprechen: Nach
+geltenden Gesetzen werden künftige Generationen starke
+Pensionseinbußen hinnehmen müssen, obwohl der Anteil, den die
+Steuerzahler jährlich zuschießen bis 2014 auf knapp 16 Mrd. Euro
+ansteigt und sich danach noch rascher erhöht.
+Für NEOS bedeutet verantwortungsvoller Umgang mit den nächsten
+Generationen auch eine schnelle Reformierung des Pensionssystems. Die
+ersten Maßnahmen beinhalten ein Auslaufen aller Privilegien und
+Ausnahmen sowie der Hacklerregelung und einen befristeten
+Solidarbeitrag auf alle Pensionen über 5.000 Euro.
+In Bildungsfragen beschränken sich die gemeinsamen Vorstellungen auf
+"kreative Bewegungseinheiten" und gemeinsame Schaukämpfe mit den
+Gewerkschaften. "NEOS hat im Rahmen von Konventen und Bürgerforen mit
+Eltern, Lehrer-, und Schülerinnen und Expert_innen längst alle
+Eckpunkte für eine machbare und integrative Bildungsinitiative
+ausgearbeitet: Parteien raus aus der Schule, Vielfalt und Autonomie
+rein. Dazu eine moderne Verwaltung und die Mittlere Reife als
+Bildungsstandard", so NEOS Spitzenkandidat Matthias Strolz.
+Für NEOS Spitzenkandidatin und LIF Vorsitzende Angelika Mlinar ist
+das Ergebnis des Kanzlerduells klar: "Nur eine Stimme für NEOS ist
+eine Stimme gegen diesen unerträglichen Stillstand, für den die
+mutlose und tatenarme Koalition seit vielen Jahrzehnten steht. Wir
+ernten viel Zuspruch in allen Bevölkerungsgruppen - und werden Rot
+und Schwarz die Suppe ordentlich versalzen!"
+
+

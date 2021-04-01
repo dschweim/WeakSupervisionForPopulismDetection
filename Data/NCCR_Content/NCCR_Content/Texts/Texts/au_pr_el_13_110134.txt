@@ -1,0 +1,21 @@
+Text-ID: at_pr_el_13_110134.txt
+
+Press Release from Party: Stronach
+
+country      = at
+partylabel   = teamstronach
+partytype    = partei
+date         = 17.09.13
+
+Team Stronach-Pressedienst: Franz Koloini nicht für TS-Bewegung tätig
+---------------------------------------------------------------------
+
+Klarstellung
+Wien/Klagenfurt (OTS) - Zu aktuellen Gerüchten rund um eine
+eventuelle Tätigkeit des ehemaligen Protokollchefs des Landes
+Kärnten, Franz Koloini, für das Team Stronach stellt der Pressedienst
+in einer kurzen Stellungnahme fest: "Franz Koloini steht in keinerlei
+Zusammenhang oder Geschäftsbeziehung mit dem Team Stronach Kärnten
+und ist hier auch in keiner Form erwünscht."
+
+

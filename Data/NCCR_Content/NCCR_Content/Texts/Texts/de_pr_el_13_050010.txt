@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_050010.txt
+
+Press Release from Party: Linke
+
+country      = de
+partylabel   = dielinke
+partytype    = all
+date         = 15.08.13
+
+Ägypten: Armee will Revolution in Blut ersticken
+------------------------------------------------
+
+"Armee und Polizei haben gestern in Ägypten ein Massaker verübt. Ich verurteile das gewalttätige Vorgehen gegen Demonstranten", sagt Christine Buchholz, Mitglied im Geschäftsführenden Vorstand der Partei DIE LINKE. Sie erklärt weiter:
+Die Räumung der von Anhängern des gestürzten Präsidenten Mursi besetzten Plätze zielt nicht nur auf die Zerschlagung der Muslimbruderschaft ab, sondern richtet sich gegen die Demokratie in Ägypten insgesamt. Die Verhängung des Ausnahmezustandes ist der Versuch der Armee, die Revolution in einen militärisch geführten Staatsstreich umzuwandeln. Der Ausnahmezustand bedroht auch die neu entstandene Arbeiterbewegung und die unabhängigen Gewerkschaften, die in unzähligen Streiks für höhere Löhne und gegen korrupte Manager kämpfen.
+Die ägyptische Revolution hat Millionen Menschen in der Hoffnung auf Brot, Freiheit und soziale Gerechtigkeit vereint. Polizei und Armee wollen diese Hoffnung zerstören. Weder ein Zurück zur Herrschaft des Militärs wie zu Mubaraks Zeiten, noch eine Regierung der Muslimbrüder können die Erwartungen der breiten Bevölkerungsmehrheit erfüllen. Allein die Fortsetzung des von Millionen getragenen demokratischen Umbruchs von unten bietet eine Perspektive für Ägypten.
+

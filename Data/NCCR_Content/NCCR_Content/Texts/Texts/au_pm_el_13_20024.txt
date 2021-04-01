@@ -1,0 +1,34 @@
+Text ID:
+au_pm_el_13_20024.txt
+
+Party Manifesto: Grüne (Austria) - National Elections 2013
+-------------------------------------
+
+Österreich erneuern: Informationsfreiheit - neutrales Netz - Bürgerinnenrechte 
+
+Es geht um Freiheit im Netz. Die Privatsphäre ist zu schützen. Ziel muss es daher sein, dass Datenpakete auch künftig „neutral“ übermittelt werden. Die InternetnutzerInnen können selbst frei entscheiden, welche Inhalte sie senden und empfangen bzw. welche Dienste und Anwendungen sie nutzen. Telekomanbieter sollen nicht in die Kommunikationen ihrer NutzerInnen eingreifen dürfen. Die Beeinflussung von Verfügbarkeit, Priorisierung oder Bandbreite weitergeleiteter Daten darf sich nicht nach Inhalten der Datenpakete oder der Art der Anwendungen richten. Ohne garantierte Netzneutralität würde möglicherweise der Inhalt oder der Absender den Weg eines Datenpakets beeinflussen. 
+
+Was wir konkret wollen: 
+
+> Netzneutralität gesetzlich verankern Die Bundesregierung setzt sich auf europäischer Ebene für die dauerhafte Gewährleistung der Netzneutralität durch eine gesetzliche Festschreibung auf europäischer Ebene ein. Das Prinzip der Netzneutralität ist im Telekommunikationsgesetz 2003 festzuschreiben. Mit der Durchsetzung in Österreich wird die Rundfunk und Telekom Regulierungs-GmbH (RTR -GmbH) betraut. 
+
+> Informationsfreiheit und Open Data Das Recht auf Auskunftserteilung an jede/n Interessierte/n ist grundrechtlich zu schützen. Ein Informationsfreiheitsgesetz sichert entsprechende Rechte und schafft das Amtsgeheimnis ab. Daten die der Staat generiert bzw. mit Steuergeld finanzierte Studien sind jedermann unter entsprechenden Lizenzen freizugänglich zu machen. 
+
+> Stopp der Vorratsdatenspeicherung Österreich setzt sich aktiv für die Beseitigung der Richtlinie zur Vorratsdatenspeicherung auf europäischer Ebene ein. 
+
+> Überwachungsstaat zurückdrängen Seit den Neunziger Jahren werden laufend neue Überwachungsmaßnahmen eingeführt. Viele dieser Maßnahmen sind schlicht nicht notwendig, anderen fehlt der Rechtsschutz. Das fördert nicht den Schutz der BürgerInnen sondern den Missbrauch. Wir fordern die Evaluierung sämtlicher Überwachungsmaßnahmen. Dort wo Überwachungsmaßnahmen tatsächlich notwendig sind, gehört der Rechtsschutz gestärkt. 
+
+> Explizite Zustimmungspflicht zur Datenspeicherung auch im Internet UserInnen müssen wissen, welche Daten warum und wie lange gespeichert werden. Gespeicherte Daten haben ein Ablaufdatum und dürfen nicht unbegrenzt gespeichert werden. NutzerInnen werden explizit um Erlaubnis gefragt, ob ihre Daten gespeichert werden dürfen (derzeit ist diese Information meist irgendwo in den AGBs versteckt). Facebook und andere soziale Netze haben in ihren Grundeinstellungen immer den größtmöglichen Schutz der Privatsphäre voreinzustellen, UserInnen sollen selbst entscheiden können, was sie preisgeben und was nicht. 
+
+> Pauschalabgabe schützt UrheberInnen und bringt Rechtssicherheit Anstelle der Rundfunkgebühr wird eine Haushaltsabgabe eingehoben, die teilweise zur Abgeltung der UrheberInnen verwendet wird. Die Nutzungsgewohnheiten vieler Menschen im Internet, die wissentlich oder unwissentlich gegen das Urheberrecht verstoßen, werden in rechtskonformes Handeln umgewandelt, der Tausch urheberrechtlich geschützter Werke für den nicht kommerziellen Gebrauch entkriminalisiert. 
+
+> Breitband-Offensive Bis 2020 werden alle Haushalte in Europa mit mindestens 30 Megabit pro Sekunde ausgestattet. Vor allem der Ausbau von Breitband-Internet in ländlichen Gebieten ist von enormer Bedeutung, um auch dort Arbeitsplätze zu sichern und neue zu schaffen. > Medienkompetenz stärken Medienkompetenz und Medienbildung müssen ein integraler Bestandteil des Schulsystems werden und in jedem Unterrichtsfach angemessene Berücksichtigung finden. 
+
+> Förderung von Open Source Software Open Source Software bezeichnet Software, deren Quelltext öffentlich zugänglich ist und je nach Lizenz frei kopiert, modifiziert und verändert werden kann. Die öffentliche Verwaltung soll schrittweise auf Nutzung von OpenSource Software und offener Dateiformate umgestellt werden. Mit öffentlichen Geldern entwickelte Software soll unter Open Source Bedingungen veröffentlicht werden. Softwarepatente sind innovationshemmend und deswegen nicht zielführend. 
+
+> Open Access Förderung von freiem Zugang zu wissenschaftlicher Literatur und Archiven. Schrittweise Öffnung der ORF TV-Thek: Neben den Sendungen, die – rechtlich bedingt nur eine Woche lang  – in der TV-Thek des ORF abrufbar sind, sollen schrittweise möglichst viele Sendeformate langfristig verfügbar sein. Das Archiv des ORF bietet Schätze, die für die Weiterbildung und auch eine breitere Öffentlichkeit höchst interessant sind. 
+
+> Internet für alle Wir sehen Internet als ein öffentliches Gut. Der Zugang zum Internet muss für alle garantiert werden können und gesetzlich festgeschrieben sein um demokratische Teilhabe zu ermöglichen. Der Zugang zu Informations- und Kommunikationstechniken darf nicht von sozialen Faktoren abhängig sein. 
+
+> Recht auf Anonymität Wie auch in der physischen Welt sollte das Recht auf Anonymität auch im Internet garantiert werden. Es ist notwendig, dass Menschen die Möglichkeit bekommen sich auch anonym im Internet zu bewegen und ihre Meinung kundtun können. Wir unterstützen auch die Schaffung von anonymen Zahlungsmethoden im Internet. 
+

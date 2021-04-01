@@ -1,0 +1,42 @@
+Text-ID: de_pr_el_13_021100.txt
+
+Press Release from Party: CDU
+
+country      = de
+partylabel   = cdu
+partytype    = fraktion
+date         = 22.08.13
+
+Meister: SPD-Pläne verteuern Wohnraum
+-------------------------------------
+
+NA
+Berlin (ots) - Die SPD setzt sich für die Wiederbelebung der 
+Vermögensteuer ein. Hierzu erklärt der stellvertretende Vorsitzende 
+der CDU/CSU-Bundestagsfraktion, Michael Meister:
+
+   "Mit der Wiederbelebung der Vermögensteuer trifft die SPD 
+Investoren und Mieter. Dadurch wird bezahlbarer Wohnraum vor allem in
+Ballungsgebieten weniger.
+
+   Die Wiederbelebung der Vermögensteuer wird nicht nur Arbeitsplätze
+gefährden und Bürokratie auslösen, sondern auch die 
+Investitionsbereitschaft absenken. Davon sind auch Mieter von 
+Wohnraum betroffen: Vermögen¬steuerpflichtige Wohnungsbauunternehmen 
+werden durch die Steuer erheblich in ihrer Ertragskraft geschwächt. 
+Sie werden daher versuchen, die Steuer über die Miete abzuwälzen. Wo 
+dies nicht gelingt, müssen Investitionen zurückgefahren werden - eine
+absurde Situation angesichts der Knappheit von günstigem Wohnraum in 
+einigen Regionen unseres Landes. Die SPD konterkariert damit das 
+Bemühen um günstigen Wohnraum."
+
+
+
+Pressekontakt:
+CDU/CSU - Bundestagsfraktion
+Pressestelle
+Telefon:  (030) 227-52360
+Fax:      (030) 227-56660
+Internet: http://www.cducsu.de
+Email: pressestelle@cducsu.d
+

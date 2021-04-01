@@ -1,0 +1,19 @@
+Text-ID: de_pr_el_13_030184.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 07.08.13
+
+RUPPERT: Fest der Versöhnung und der Freude
+-------------------------------------------
+
+NA
+BERLIN. Zum Ende des islamischen Fastenmonats Ramadan erklärt der Parlamentarische Geschäftsführer und Beauftragter für Kirchen- und Religionsgemeinschaften der FDP-Bundestagsfraktion Stefan RUPPERT:
+Im Namen der FDP-Bundestagfraktion gratuliere ich allen Menschen muslimischen Glaubens anlässlich des Ramadan-Festes und wünsche ein gutes und glückliches Ende des Fastenmonats.
+ Für die mehr als vier Millionen Muslime, die heute in unserem Land zu Hause sind - ob gläubig fromm, oder eher säkular -, ist der Ramadan-Monat eine Zeit der geistigen Übung, der Selbstprüfung und Besinnung auf das Wichtige und Wesentliche im Leben. Er ist gemeinsam mit dem Opferfest einer der höchsten muslimischen Feiertage. Die Fastenpflicht gehört zu den fünf Grundpfeilern des Islam, genauso jedoch der Einsatz für Schwächere und Bedürftige und die Werke der Mildtätigkeit. Gastfreundschaft und Herzlichkeit während des regelmäßigen abendlichen Fastenbrechens, welche auch viele deutsche Nachbarn genießen, runden das Profil dieses besonderen islamischen Festes ab. Es schafft Raum für viele wertvolle Begegnungen und verbindet so Kulturen und Menschen miteinander. Es ist eine Gelegenheit, eine neue Willkommenskultur und Dialogbereitschaft, die uns Liberalen ein großes Anliegen sind, voranzutreiben.
+ Ein frohes und gesegnetes Ramadanfest!
+601-ruppert-ramadan.pdf
+

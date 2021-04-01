@@ -1,0 +1,16 @@
+Text-ID: de_pr_el_13_030198.txt
+
+Press Release from Party: FDP
+
+country      = de
+partylabel   = fdp
+partytype    = all
+date         = 03.08.13
+
+MEINHARDT: Keine einheitliche Ganztagskäseglocke, sondern Masterplan Ganztagsbildung
+------------------------------------------------------------------------------------
+
+NA
+BERLIN. Zu den Ergebnissen der Bertelsmann-Stiftung für mehr Ganztagsschulen und den Äußerungen des Koalitionspartners erklärt der bildungspolitische Sprecher der FDP-Bundestagsfraktion Patrick MEINHARDT:Wir brauchen unbedingt mehr schulische Ganztagsangebote, ohne jedoch die Länder zu benachteiligen, die wie Sachsen schon längst viel weiter sind. Die meisten Landesregierungen und Landesparlamente sollten endlich eine Bildungsverpflichtung für sinnvolle Ganztagsangebote eingehen. Dabei geht es um passgenaue Angebote, die nur von den Schulen vor Ort kommen müssen. Deutschland braucht keine bundesweit einheitliche Ganztagskäseglocke, sondern einen Masterplan Ganztagsbildung. Es gibt Schulgemeinschaften, die durch den engen Kontakt mit Vereinen und den regionalen Betrieben schon längst optimale freiwillige Angebote haben. Gerade in Städten müssen wir mit einer guten auch sozialpädagogischen Personalausstattung ganz andere Aufgaben bewältigen, die sehr viel mehr mit Erziehung zu tun haben.  Die FDP-Bundestagsfraktion will, dass ein Bildungskonzept "Starke Fördervereine an Schulen" in der kommenden Legislaturperiode neu aufgelegt wird, mit dem wir treffsicher auch Schulsozialarbeit, die von Schulfördervereinen vor Ort getragen wird, finanzieren können.  Besonders abwegig ist, dass gerade der CDU-Landesvorsitzende von Baden-Württemberg auf einen bundesweiten Rechtsanspruch setzt. Gerade er muss wissen, dass die baden-württembergische grün-rote Landesregierung alle neuen Gemeinschaftsschulen zu gebundenen Ganztagsschulen macht. Zu glauben, dass wir uns als Bund vor den Karren einer Einheitsbildung spannen lassen und indirekt auf einmal neue Gemeinschaftsschulen mitfinanzieren, ist an Blauäugigkeit nicht zu überbieten .
+591-Meinhardt-Ganztagsschulen.pdf
+

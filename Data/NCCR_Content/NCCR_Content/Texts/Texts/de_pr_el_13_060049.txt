@@ -1,0 +1,22 @@
+Text-ID: de_pr_el_13_060049.txt
+
+Press Release from Party: SPD
+
+country      = de
+partylabel   = spd
+partytype    = all
+date         = 04.09.13
+
+Machnig und Kemfert stellen Programm zur Integration der erneuerbaren Energien in die Stromnetze vor
+----------------------------------------------------------------------------------------------------
+
+NA
+Zur Vorstellung eines 10-Punkte-Programms zur Integration der erneuerbaren Energien in die Stromnetze und der Forderung nach einem Flexibilitäts- und Speichergesetz erklären Prof. Dr. Claudia Kemfert, Energieexpertin in der Mannschaft für den Wahlsieg der Hessen-SPD, und Matthias Machnig, für Energie zuständiges Mitglied im SPD-Kompetenzteam:
+In der Energiepolitik der Bundesregierung herrschen Stillstand und Selbstblockade. Die Bilanz ist düster: steigende Emissionen, stockender Netzausbau, mangelnde Investitionsanreize, fehlende Konzepte für Energieeffizienz. Schwarz-Gelb hat unser Energiesystem teurer, unsicherer und klimaschädlicher gemacht. Vor allem die privaten Verbraucherinnen und Verbraucher und die kleinen und mittelständischen Unternehmen tragen die Lasten. Seit Beginn der laufenden Legislaturperiode hat sich die EEG-Umlage für Privathaushaltevervierfacht. Sie werden einseitig belastet. Notwendige private Investitionen werden durch Verunsicherung ausgebremst.
+Auch auf die Frage, wie sich mit einem wachsenden Anteil an erneuerbaren Energien eine sichere Stromversorgung organisieren lässt, ist die Bundesregierung bisher jede Antwort schuldig geblieben. Diese Frage ist aber zentral für das Gelingen der Energiewende. Denn die Stromversorgung der Zukunft wird wesentlich auf den fluktuierenden, in Erzeugung und Angebot stark schwankenden Energieträgern Wind und Sonne basieren.
+Was wir deshalb brauchen, ist ein Umbau und die Neuordnung des bestehenden Stromsystems. Dieses neue, integrierte Stromsystem muss sich an die Erneuerbaren Energien anpassen und nicht umgekehrt. Nur so können die positiven Markteffekte der erneuerbaren Energien ausgeschöpft werden. Alle Teilbereiche des Stromsystems  erneuerbare Energien, fossile Kraftwerke, Stromnetze, Stromverbraucher und Stromspeicher  müssen künftig enger verzahnt und besser aufeinander abgestimmt werden. Erst ein intelligentes Zusammenspiel aller dieser Elemente kann auch in Zukunft ein effizientes, versorgungssicheres und kostenminimierendes Gesamtsystem der Stromerzeugung und -versorgung in Deutschland gewährleisten.
+Dies zu organisieren, ist eine der vordringlichsten Aufgaben der nächsten Bundesregierung. Statt vager Appelle bedarf es dabei eines klaren Kompasses und einer klaren Richtung. Wir haben deshalb heute Vorschläge für eine bessere Systemintegration der erneuerbaren Energien vorgelegt, die Grundlage für ein Flexibilitäts- und Speichergesetz sein werden. Damit wollen wir die notwendigen Maßnahmen schnell in Gang setzen.
+Zu diesen Maßnahmen zählen unter anderen eine gleichmäßigere Stromerzeugung aus regenerativen Energien durch Verknüpfung unterschiedlicher erneuerbarer Energieträger (virtuelle Kraftwerke, Hybridkraftwerke) und die Öffnung der Regelenergiemärkte für kleinere Anbieter und vor allem für Erneuerbare Energien; eine Flexibilisierung konventioneller Kraftwerke; ein optimierter Ausbau der Stromnetze  also mit einer Auslegung nicht bis zur letzten Kilowattstunde; die Flexibilisierung der Stromnachfrage durch aktives Lastmanagement und mehr Energieeffizienz; sowie eine Innovationsoffensive Speicher.
+Selbstverständlich kann die Energiewende nicht nur eine Stromwende sein. Aber der Handlungsdruck in diesem Bereich ist enorm gestiegen. Der Mangel an Synchronisation zwischen dem Ausbau der erneuerbaren Energien und der Netzinfrastruktur erhöht die Ineffizienz des Stromsystems und damit die Risiken für die Versorgungssicherheit. Neue Kraftwerke und Speicher werden nicht gebaut, weil die Rahmenbedingungen für Investoren unsicher sind. Dies alles droht die Wettbewerbsfähigkeit der deutschen Industrie zu gefährden und überfordert zunehmend auch die Privathaushalte. Die Akzeptanz der Energiewende sinkt.
+Die SPD will die dringend notwenigen Aufgaben nicht weiter aussitzen sondern endlich lösen. Am 22. September entscheidet sich, welche Richtung Deutschland in der Energiepolitik einschlagen wird. 
+
