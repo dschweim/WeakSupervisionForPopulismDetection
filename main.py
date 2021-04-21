@@ -2,22 +2,29 @@ import pandas as pd
 
 from argparse import ArgumentParser
 
-def main (input_path,
-         import_NCCR):
-    if import_NCCR:
-        table_text = pd.read_csv(f'{input_path}\\Data\\NCCR_Content\\NCCR_Content\\Text_Table.txt', delimiter="\t", encoding="ISO-8859-1")
-
-        print(table_text)
-
-if __name__ == "__main__":
-    parser = ArgumentParser()
-    parser.add_argument("-i", "--input", type=str,
-                        help="path to project", metavar="path")
-    args = parser.parse_args()
-    input_path = args.input
-
-    main(input_path=input_path,
-         import_NCCR=True)
+from NCCR_Pred import PCCR_Dataset
 
 
+def main(generate_data):
+    # Initialize
+    df_nccr = PCCR_Dataset(data_path="C:/Users/dschw/Documents/GitHub/Thesis/Data",
+                           output_path="C:/Users/dschw/Documents/GitHub/Thesis/Output")
 
+    if generate_data:
+        # Generate Labelled NCCR
+        data_de = df_nccr.generate_labelled_NCCR_corpus()
+
+    else:
+        # Import labelled nccr
+        data_de = pd.read_csv("C:/Users/dschw/Documents/GitHub/Thesis/Output/labelled_nccr_corpus_DE.csv")
+
+    # todo: Temp. generate sub-corpus (one-example per cat)
+    data_de_sub = data_de.loc[(data_de['POPULIST_PeopleCent'] == 1) |
+                              (data_de['POPULIST_AntiElite'] == 1) |
+                              (data_de['POPULIST_Sovereign'] == 1)]
+
+    #data_prep = df_nccr.preprocess_corpus(data_de_sub)
+    # print(data_train_prep)
+
+
+main(generate_data=True)
