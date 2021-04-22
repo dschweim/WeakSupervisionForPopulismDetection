@@ -1,14 +1,11 @@
 import os
 import glob
 import spacy
-import de_core_news_sm
 
 import pandas as pd
-import numpy as np
 
 from sklearn.model_selection import train_test_split
-from spacy import displacy
-from collections import Counter
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 class PCCR_Dataset:
@@ -26,9 +23,10 @@ class PCCR_Dataset:
         self.data_path = data_path
         self.output_path = output_path
 
-    def generate_labelled_NCCR_corpus(self):
+    def generate_labelled_nccr_corpus(self):
         """
-        Generate labelled NCCR corpus by merging txt-fulltexts with their corresponding labels on text-level and save as csv
+        Generate labelled NCCR corpus by merging txt-fulltexts
+        with their corresponding labels on text-level and save as csv
         :return:
         :rtype:
         """
@@ -47,8 +45,11 @@ class PCCR_Dataset:
                                 'text': [tmp]})
             df = df.append(txt)
 
+        df.to_csv(f'{self.output_path}\\concatenated_texts.csv', index=True)
+
         # Import corpus with populism labels
-        table_text = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Text_Table.txt', delimiter="\t", encoding="ISO-8859-1")
+        table_text = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Text_Table.txt', delimiter="\t",
+                                 encoding="ISO-8859-1")
 
         # Filter on relevant columns
         table_text = table_text[['ID', 'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
@@ -76,7 +77,6 @@ class PCCR_Dataset:
 
         return df_combined_de
 
-
     def preprocess_corpus(self, corpus):
         """
         Preprocess text of corpus
@@ -86,35 +86,40 @@ class PCCR_Dataset:
         :rtype:  DataFrame
         """
 
-        # 1. Remove characters
-        # tbd regex
-        corpus_prep = corpus
+        ### CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
 
-        # 2. Tokenization
+        # # todo: Remove characters at beginning of texts using regex
 
-        # 3. Stemming
+        # Load corpus
+        #nlp = spacy.load("de_core_news_sm")
 
-        # 4. Tagging
+        # Pre-process corpus
+        #docs = list(nlp.pipe(corpus['text']))
+        #print(docs)
+        #corpus['doc'] = [nlp(text) for text in corpus.text]
+        #print(corpus.sample(3))
 
-
-        # # todo
-        # # Extract texts from corpus
-        # texts = [content for content in corpus["text"]]
-        #
-        # import random
-        # random.choices(texts, k=10)
-        #
-        # # Load corpus
-        # nlp = spacy.load("de_core_news_sm")
-        #
-        # doc = nlp(corpus[corpus.ID == "au_pm_el_02_1001.txt"])
-        #
-        # print(doc)
-        #
-        #
         # # Sentiment
         # return corpus_prep
 
+
+        # Calculate tf-idf scores
+        vectorizer = TfidfVectorizer()
+
+        # todo: separate handling of train/test
+        train_data = corpus.loc[corpus['POPULIST'] == 1]
+
+        train_tf_idf = vectorizer.fit_transform(train_data['text']).toarray()
+
+        data = pd.DataFrame()
+         # get the first vector out (for the first document)
+        for doc in range(len(train_tf_idf)):
+            # place tf-idf values in a pandas data frame
+            df = pd.DataFrame(train_tf_idf[doc].T, index=vectorizer.get_feature_names(), columns=["tfidf"])
+            data = data.append(df)
+
+        data = data.sort_values(by=["tfidf"], ascending=False)
+        print(data)
 
     def generate_train_test_split(self, corpus):
         """

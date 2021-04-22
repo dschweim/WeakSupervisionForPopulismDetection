@@ -14,6 +14,9 @@
       </list>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1qZDd8NzlhRS0OXvUHuxwTk8ubq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,7 +25,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../snorkel-tutorials-master/snorkel-tutorials-master/spam" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Team_Project_HWS2020/Experiments/baseline_multi.py" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.main">
@@ -114,28 +117,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>111</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>104</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling.py</url>
-          <line>109</line>
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling.py</url>
-          <line>104</line>
-          <option name="timeStamp" value="43" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="44" />
+          <line>121</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -148,7 +131,8 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="majority_model.score(L=L_test, Y=Y_test, tie_break_policy=&quot;random&quot;, metrics=[&quot;accuracy&quot;, &quot;precision&quot;, &quot;recall&quot;, &quot;f1&quot;])" language="Python" />
+        <watch expression="train_data_embeddings[0]" language="Python" />
+        <watch expression="len(train_tf_idf)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
