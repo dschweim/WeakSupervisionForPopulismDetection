@@ -3,9 +3,10 @@ import pandas as pd
 from argparse import ArgumentParser
 
 from NCCR_Pred import PCCR_Dataset
+from Labeling import snorkel_labeling
 
 
-def main(generate_data):
+def main(generate_data, run_labeling):
     # Initialize
     df_nccr = PCCR_Dataset(data_path="C:/Users/dschw/Documents/GitHub/Thesis/Data",
                            output_path="C:/Users/dschw/Documents/GitHub/Thesis/Output")
@@ -18,13 +19,10 @@ def main(generate_data):
         # Import labelled nccr
         data_de = pd.read_csv("C:/Users/dschw/Documents/GitHub/Thesis/Output/labelled_nccr_corpus_DE.csv")
 
-    # todo: Temp. generate sub-corpus (one-example per cat)
-    data_de_sub = data_de.loc[(data_de['POPULIST_PeopleCent'] == 1) |
-                              (data_de['POPULIST_AntiElite'] == 1) |
-                              (data_de['POPULIST_Sovereign'] == 1)]
+    if run_labeling:
+        # Filter on relevant columns for labeling
+        data_de_labeling_subcorpus = data_de[['text', 'POPULIST']]
+        train, test = df_nccr.generate_train_test_split(data_de_labeling_subcorpus)
+        snorkel_labeling(train, test)
 
-    #data_prep = df_nccr.preprocess_corpus(data_de_sub)
-    # print(data_train_prep)
-
-
-main(generate_data=True)
+main(generate_data=True, run_labeling=True)

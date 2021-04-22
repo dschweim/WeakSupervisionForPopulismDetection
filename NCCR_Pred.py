@@ -37,11 +37,6 @@ class PCCR_Dataset:
         os.chdir(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Texts\\Texts')
         files = [i for i in glob.glob("*.txt")]
 
-        print(len(files))
-
-        # Remove English files
-        #files = [x for x in files if not x.startswith('uk')]
-
         # Create empty dataframe for texts
         df = pd.DataFrame()
 
@@ -92,7 +87,6 @@ class PCCR_Dataset:
         """
 
         # 1. Remove characters
-
         # tbd regex
         corpus_prep = corpus
 
@@ -129,11 +123,6 @@ class PCCR_Dataset:
         :rtype:
         """
 
-        train, test = train_test_split(corpus, test_size=0.2, random_state=0)
+        train, test = train_test_split(corpus, test_size=0.2, random_state=42)
 
         return train, test
-
-
-    # missings = table_text[~table_text.ID.isin(files)]
-    # missings_list = [missings]
-    # print(missings_list)

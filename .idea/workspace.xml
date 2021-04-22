@@ -17,12 +17,13 @@
   <component name="ProjectId" id="1qZDd8NzlhRS0OXvUHuxwTk8ubq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Team_Project_HWS2020/Experiments/util.py" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../snorkel-tutorials-master/snorkel-tutorials-master/spam" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="Labeling_test" type="PythonConfigurationType" factoryName="Python">
@@ -94,6 +95,7 @@
       <item itemvalue="Python.main" />
     </list>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -107,68 +109,33 @@
     </task>
     <servers />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="700" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1617641977220">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="700" y="157" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1617641977220" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1618582648200">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1618582648200" />
-    <state width="936" height="304" key="GridCell.Tab.0.bottom" timestamp="1618993648450">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="936" height="304" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1618993648450" />
-    <state width="936" height="304" key="GridCell.Tab.0.center" timestamp="1618993648450">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="936" height="304" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1618993648450" />
-    <state width="936" height="304" key="GridCell.Tab.0.left" timestamp="1618993648450">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="936" height="304" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1618993648450" />
-    <state width="936" height="304" key="GridCell.Tab.0.right" timestamp="1618993648450">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="936" height="304" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1618993648450" />
-    <state width="1899" height="342" key="GridCell.Tab.1.bottom" timestamp="1617817863786">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="342" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1617817863786" />
-    <state width="1899" height="342" key="GridCell.Tab.1.center" timestamp="1617817863786">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="342" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1617817863786" />
-    <state width="1899" height="342" key="GridCell.Tab.1.left" timestamp="1617817863786">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="342" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1617817863786" />
-    <state width="1899" height="342" key="GridCell.Tab.1.right" timestamp="1617817863786">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1899" height="342" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1617817863786" />
-    <state width="488" height="528" key="XDebugger.FullValuePopup" timestamp="1617719265240">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="488" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1617719265240" />
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1617279534552">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="1103" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1617279534552" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>117</line>
+          <line>111</line>
           <option name="timeStamp" value="21" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>110</line>
+          <line>104</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling.py</url>
+          <line>104</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -181,7 +148,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="random.choices(texts, k=10)" language="Python" />
+        <watch expression="majority_model.score(L=L_test, Y=Y_test, tie_break_policy=&quot;random&quot;, metrics=[&quot;accuracy&quot;, &quot;precision&quot;, &quot;recall&quot;, &quot;f1&quot;])" language="Python" />
       </configuration>
     </watches-manager>
   </component>
