@@ -15,14 +15,14 @@ def main(generate_data, preprocess_data, run_labeling):
     # Either generate data or read data from disk
     if generate_data:
         # Generate Labelled NCCR
-        data_de = df_nccr.generate_labelled_nccr_corpus()
+        nccr_data_de = df_nccr.generate_labelled_nccr_corpus()
 
     else:
         # Import labelled nccr
-        data_de = pd.read_csv("C:/Users/dschw/Documents/GitHub/Thesis/Output/labelled_nccr_corpus_DE.csv")
+        nccr_data_de = pd.read_csv("C:/Users/dschw/Documents/GitHub/Thesis/Output/labelled_nccr_corpus_DE.csv")
 
     # Generate Train, Test Split
-    train, test = generate_train_test_split(data_de)
+    train, test = generate_train_test_split(nccr_data_de)
 
     if preprocess_data:
         # Pre-process data
@@ -39,14 +39,10 @@ def main(generate_data, preprocess_data, run_labeling):
 
     # Run Snorkel framework if set
     if run_labeling:
-        # Filter on relevant columns for labeling
-        train_sub = train_prep[['text_prep', 'POPULIST']]
-        test_sub = test_prep[['text_prep', 'POPULIST']]
-
-
 
         # Run Snorkel framework
-        snorkel_labeling(train_sub, test_sub)
+        snorkel_labeling(train_prep[['text_prep', 'POPULIST']],
+                         test_prep[['text_prep', 'POPULIST']])
 
 
-main(generate_data=True, preprocess_data=True, run_labeling=False)
+main(generate_data=False, preprocess_data=False, run_labeling=True)
