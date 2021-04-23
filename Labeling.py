@@ -4,8 +4,9 @@ import pandas as pd
 from snorkel.labeling import labeling_function, PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
-from sklearn.linear_model import LogisticRegression
+from snorkel.preprocess.nlp import SpacyPreprocessor
 
+from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
 
 def snorkel_labeling (train_data, test_data):
@@ -14,9 +15,9 @@ def snorkel_labeling (train_data, test_data):
     NONPOP = 0
     POP = 1
 
-    ## Define labeling functions
+    ## 1. Define labeling functions
 
-    # 1. Dictionary-based labeling
+    # a) Dictionary-based labeling
     @labeling_function()
     def lf_contains_keywords_schwarzbozl(x):
         keywords_schwarbozl = ["altparteien", "anpassung", "iwf",
@@ -58,6 +59,9 @@ def snorkel_labeling (train_data, test_data):
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if re.search(regex_roodujin, x.text, flags=re.IGNORECASE) else ABSTAIN
 
+    # todo: b) Spacy-based labeling
+    # Change language to German
+
 
     ## 2. Generate label matrix L
     lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex]
@@ -94,8 +98,6 @@ def snorkel_labeling (train_data, test_data):
     print(f"{'Label Model Accuracy:':<25} {label_model_scores_dict['accuracy']}")
     print(f"{'Label Model Precision:':<25} {label_model_scores_dict['precision']}")
     print(f"{'Label Model Recall:':<25} {label_model_scores_dict['recall']}")
-
-
 
 
     #todo: Classifier
