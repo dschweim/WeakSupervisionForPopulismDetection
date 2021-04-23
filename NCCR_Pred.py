@@ -1,12 +1,13 @@
 import os
 import glob
 import spacy
+import re
+import time
 
 import pandas as pd
+import numpy as np
 
-from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
-
 
 class PCCR_Dataset:
     def __init__(
@@ -31,6 +32,8 @@ class PCCR_Dataset:
         :rtype:
         """
 
+        start = time.time()
+
         # Get filenames of texts
         os.chdir(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Texts\\Texts')
         files = [i for i in glob.glob("*.txt")]
@@ -45,7 +48,7 @@ class PCCR_Dataset:
                                 'text': [tmp]})
             df = df.append(txt)
 
-        df.to_csv(f'{self.output_path}\\concatenated_texts.csv', index=True)
+        df.to_csv(f'{self.output_path}\\NCCR_concatenated_texts.csv', index=True)
 
         # Import corpus with populism labels
         table_text = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Text_Table.txt', delimiter="\t",
@@ -75,59 +78,101 @@ class PCCR_Dataset:
 
         # todo: check whether any ID occurs more than once
 
+        end = time.time()
+        print(end - start)
+        print('finished NCCR labelled corpus generation')
+
         return df_combined_de
 
-    def preprocess_corpus(self, corpus):
+    def preprocess_corpus(self, df: pd.DataFrame, is_train: bool):
         """
         Preprocess text of corpus
-        :param corpus: Dataset to preprocess
-        :type corpus:  DataFrame
+        :param df: Dataset to preprocess
+        :type df:  DataFrame
+        :param is_train: Indicates if df is train set
+        :type is_train:  boolean
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
         """
 
+        start = time.time()
+
+        if is_train:
+            label = 'TRAIN'
+        else:
+            label = 'TEST'
+
+        nlp = spacy.load("de_core_news_sm")
+
+        def preprocess_text(text):
+            # Remove standard text info at beginning of text
+            text = re.sub(r'((\n|.)*--)', '', text)
+
+            # Remove linebreaks and extra spaces
+            text = " ".join(text.split())
+
+            # Remove some special characters (*) todo: instead remove every non-word/space/punctuation
+            text = text.replace('*', '')
+
+            # Split text into sentences
+            # doc = nlp(text)
+            # text = [sentence.text for sentence in doc.sents]
+
+            return text
+
+        df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
+
+        # Save pre-processed corpus
+        df.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE_{label}.csv', index=True)
+
+        end = time.time()
+        print(end - start)
+        print ('finished dataset preprocessing for ' + label)
+
+        return df
+
+    def generate_tfidf_dict(self, df: pd.DataFrame):
+        """
+        Preprocess text of corpus
+        :param df: Trainset from which to construct dict
+        :type df:  DataFrame
+        :return: Returns preprocessed Dataset
+        :rtype:  DataFrame
+        """
+
+        start = time.time()
+        
+        # Define vectorizer
+        tfidf_vectorizer = TfidfVectorizer()
+
+        # Fit vectorizer
+        tfidf_vectorizer.fit(df['text'])
+
         ### CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
+        # Transform subcorpus labelled as POP
+        df_prep_pop = df.loc[df['POPULIST'] == 1]
 
-        # # todo: Remove characters at beginning of texts using regex
+        train_tf_idf_pop = tfidf_vectorizer.transform(df_prep_pop['text'])
 
-        # Load corpus
-        #nlp = spacy.load("de_core_news_sm")
+        feature_array = np.array(tfidf_vectorizer.get_feature_names())
+        tfidf_sorting = np.argsort(train_tf_idf_pop.toarray()).flatten()[::-1]
 
-        # Pre-process corpus
-        #docs = list(nlp.pipe(corpus['text']))
-        #print(docs)
-        #corpus['doc'] = [nlp(text) for text in corpus.text]
-        #print(corpus.sample(3))
+        n = 100
+        top_n = feature_array[tfidf_sorting][:n]
+        print(top_n)
 
-        # # Sentiment
-        # return corpus_prep
+        end = time.time()
+        print(end - start)
+        print('finished tf-idf dict generation')
+
+        #data = pd.DataFrame()
+        #  # get the first vector out (for the first document)
+        # for doc in range(len(train_tf_idf_pop)):
+        #     # place tf-idf values in a pandas data frame
+        #     df = pd.DataFrame(train_tf_idf_pop[doc].T, index=tfidf_vectorizer.get_feature_names(), columns=["tfidf"])
+        #     data = data.append(df)
+        #
+        # data = data.sort_values(by=["tfidf"], ascending=False)
+        # print(data)
 
 
-        # Calculate tf-idf scores
-        vectorizer = TfidfVectorizer()
-
-        # todo: separate handling of train/test
-        train_data = corpus.loc[corpus['POPULIST'] == 1]
-
-        train_tf_idf = vectorizer.fit_transform(train_data['text']).toarray()
-
-        data = pd.DataFrame()
-         # get the first vector out (for the first document)
-        for doc in range(len(train_tf_idf)):
-            # place tf-idf values in a pandas data frame
-            df = pd.DataFrame(train_tf_idf[doc].T, index=vectorizer.get_feature_names(), columns=["tfidf"])
-            data = data.append(df)
-
-        data = data.sort_values(by=["tfidf"], ascending=False)
-        print(data)
-
-    def generate_train_test_split(self, corpus):
-        """
-        Generate train test split
-        :return:
-        :rtype:
-        """
-
-        train, test = train_test_split(corpus, test_size=0.2, random_state=42)
-
-        return train, test
