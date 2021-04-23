@@ -3,10 +3,13 @@ import glob
 import spacy
 import re
 import time
+import spacy
+import nltk
 
 import pandas as pd
-import numpy as np
 
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 class PCCR_Dataset:
@@ -131,48 +134,69 @@ class PCCR_Dataset:
 
         return df
 
-    def generate_tfidf_dict(self, df: pd.DataFrame):
+    def generate_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: int):
         """
-        Preprocess text of corpus
+        Calculate tf-idf scores of docs and return top n words that
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
+        :param tfidf_threshold: Min value for words to be considered in dict
+        :type tfidf_threshold: int
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
         """
 
+        # todo: include threshold for tfidf value instead of n_words parameter
+
         start = time.time()
-        
+
+        # todo: temp Remove stopwords
+        #nltk.download('stopwords')
+        #nltk.download('punkt')
+        german_stop_words = stopwords.words('german')
+
+        def custom_tokenizer(text):
+
+            text_tok = word_tokenize(text) #Tokenize
+            text_tok_sw = [word for word in text_tok if not word in german_stop_words] #Remove stopwords
+            text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()] #Remove punctuation
+            return text_tok_sw_alphanum
+
+        #df['text_prep'] = df['text_prep'].apply(lambda x: word_tokenize(x))
+        #df['text_prep'] = df['text_prep'].apply(lambda x: [word for word in x if not word in german_stop_words])
+
         # Define vectorizer
-        tfidf_vectorizer = TfidfVectorizer()
+        vectorizer = TfidfVectorizer(tokenizer=custom_tokenizer)
 
-        # Fit vectorizer
-        tfidf_vectorizer.fit(df['text'])
+        # Fit vectorizer on whole corpus
+        vectorizer.fit(df['text_prep'])
 
-        ### CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
+        # CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
+        df_pop = df.loc[df['POPULIST'] == 1]
         # Transform subcorpus labelled as POP
-        df_prep_pop = df.loc[df['POPULIST'] == 1]
+        tfidf_pop_vector = vectorizer.transform(df_pop['text_prep']).toarray()
 
-        train_tf_idf_pop = tfidf_vectorizer.transform(df_prep_pop['text'])
+        # Map tf-idf scores to words in the vocab with separate column for each doc
+        wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
 
-        feature_array = np.array(tfidf_vectorizer.get_feature_names())
-        tfidf_sorting = np.argsort(train_tf_idf_pop.toarray()).flatten()[::-1]
+        #list = pd.DataFrame()
+        for i in range(len(tfidf_pop_vector)):
+            wordlist[i] = tfidf_pop_vector[i]
 
-        n = 100
-        top_n = feature_array[tfidf_sorting][:n]
-        print(top_n)
+        # Set words as index
+        wordlist.set_index('term')
+
+        # Calculate average tf-idf over all docs
+        wordlist['average_tfidf'] = wordlist.mean(axis=1)
+
+        # Sort by average tf-idf
+        wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
+
+        # Retrieve specified top n_words entries
+        tfidf_dict = wordlist.loc[wordlist['average_tfidf'] >= tfidf_threshold][['term', 'average_tfidf']]
 
         end = time.time()
         print(end - start)
         print('finished tf-idf dict generation')
 
-        #data = pd.DataFrame()
-        #  # get the first vector out (for the first document)
-        # for doc in range(len(train_tf_idf_pop)):
-        #     # place tf-idf values in a pandas data frame
-        #     df = pd.DataFrame(train_tf_idf_pop[doc].T, index=tfidf_vectorizer.get_feature_names(), columns=["tfidf"])
-        #     data = data.append(df)
-        #
-        # data = data.sort_values(by=["tfidf"], ascending=False)
-        # print(data)
-
+        return tfidf_dict
 

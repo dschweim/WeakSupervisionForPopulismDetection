@@ -9,7 +9,19 @@ from snorkel.preprocess.nlp import SpacyPreprocessor
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
 
-def snorkel_labeling (train_data, test_data):
+def snorkel_labeling (train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input: dict):
+    """
+    Calculate tf-idf scores of docs and return top n words that
+    :param train_data: Trainset
+    :type train_data:  DataFrame
+    :param test_data: Testset
+    :type test_data:  DataFrame
+    :param lf_input: Dictionary with further input for labeling functions
+    :type test_data:  dict
+    :return: Returns labelled Dataset
+    :rtype:  DataFrame
+    """
+
     # Define constants
     ABSTAIN = -1
     NONPOP = 0
@@ -59,12 +71,21 @@ def snorkel_labeling (train_data, test_data):
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if re.search(regex_roodujin, x.text, flags=re.IGNORECASE) else ABSTAIN
 
+    @labeling_function()
+    def lf_contains_keywords_nccr_tfidf(x):
+        regex_keywords_nccr_tfidf = lf_input['tfidf_keywords']
+
+        # Return a label of POP if keyword in text, otherwise ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf) else ABSTAIN
+
+
     # todo: b) Spacy-based labeling
     # Change language to German
 
 
     ## 2. Generate label matrix L
-    lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex]
+    lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
+           lf_contains_keywords_nccr_tfidf]
     applier = PandasLFApplier(lfs=lfs)
     L_train = applier.apply(df=train_data)
 
