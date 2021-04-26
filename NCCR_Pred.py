@@ -58,15 +58,15 @@ class PCCR_Dataset:
                                  encoding="ISO-8859-1")
 
         # Filter on relevant columns
-        table_text = table_text[['ID', 'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
-                                 'POPULIST_Advocative', 'POPULIST_Conflictive', 'ANTIPOPULIST', 'APOPULIST_PeopleCent',
-                                 'APOPULIST_AntiElite', 'APOPULIST_Sovereign', 'APOPULIST_Advocative',
-                                 'APOPULIST_Conflictive', 'POP_Total', 'POP_Unchall', 'POP_Emph',
-                                 'Main_Issue',
-                                 'Author', 'Date',
-                                 'Bemerkungen',
-                                 'Sample_Lang',
-                                 'Sample_Type']]
+        # table_text = table_text[['ID', 'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
+        #                          'POPULIST_Advocative', 'POPULIST_Conflictive', 'ANTIPOPULIST', 'APOPULIST_PeopleCent',
+        #                          'APOPULIST_AntiElite', 'APOPULIST_Sovereign', 'APOPULIST_Advocative',
+        #                          'APOPULIST_Conflictive', 'POP_Total', 'POP_Unchall', 'POP_Emph',
+        #                          'Main_Issue',
+        #                          'Author', 'Date',
+        #                          'Bemerkungen',
+        #                          'Sample_Lang',
+        #                          'Sample_Type']]
 
         # Join both dataframes
         df_combined = df.set_index('ID').join(table_text.set_index('ID'))
@@ -85,20 +85,14 @@ class PCCR_Dataset:
 
         df_combined_de = df_combined_de.drop(df_combined_de.index[[df_drop.index.values]])
 
-        # Remove remaining duplicates
-
+        # todo: Remove remaining duplicates
+        duplicates = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]
+        # todo: How to handle multiple keys after join
 
 
 
         # Save created German corpus
         df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
-
-        # todo: Remove duplicates from list
-        duplicates = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]
-
-
-        not_sample = df_combined_de.loc[df_combined_de['Bemerkungen'] == 'Does not belong to the sample / ']
-
 
 
         # Merge combined df with full_speaker, full_target, full_issue
@@ -120,8 +114,6 @@ class PCCR_Dataset:
 
         # Remove rows with "UK" ID
         table_text_combined_de = table_text_combined[~table_text_combined['ID'].astype(str).str.startswith('uk')]
-
-        # todo: How to handle multiple keys
 
         end = time.time()
         print(end - start)
@@ -151,7 +143,8 @@ class PCCR_Dataset:
 
         def preprocess_text(text):
             # Remove standard text info at beginning of text
-            text = re.sub(r'((\n|.)*--)', '', text)
+            #text = re.sub(r'((\n|.)*--)', '', text)
+            text = re.sub(r'^(\n|.)*--', '', text)
 
             # Remove linebreaks and extra spaces
             text = " ".join(text.split())
