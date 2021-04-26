@@ -1,2 +1,4 @@
 
 .idea/workspace.xml
+*.xml
+__pycache__/NCCR_Pred.cpython-38.pyc

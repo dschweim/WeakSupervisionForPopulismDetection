@@ -79,11 +79,20 @@ class PCCR_Dataset:
         # Save created German corpus
         df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
 
-        # todo: check whether any ID occurs more than once
-
         end = time.time()
         print(end - start)
         print('finished NCCR labelled corpus generation')
+
+        #todo: Join table_text with full_speaker, full_issue, full_target
+        full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
+        full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
+        full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
+
+        ## Merge text with full_speaker, full_target, full_issue
+        table_text_combined = table_text.set_index('ID').join(full_issue.set_index('ID'))
+
+
+
 
         return df_combined_de
 
@@ -145,24 +154,18 @@ class PCCR_Dataset:
         :rtype:  DataFrame
         """
 
-        # todo: include threshold for tfidf value instead of n_words parameter
-
         start = time.time()
 
-        # todo: temp Remove stopwords
         #nltk.download('stopwords')
         #nltk.download('punkt')
         german_stop_words = stopwords.words('german')
+        german_stop_words.append('fuer')
 
         def custom_tokenizer(text):
-
             text_tok = word_tokenize(text) #Tokenize
             text_tok_sw = [word for word in text_tok if not word in german_stop_words] #Remove stopwords
             text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()] #Remove punctuation
             return text_tok_sw_alphanum
-
-        #df['text_prep'] = df['text_prep'].apply(lambda x: word_tokenize(x))
-        #df['text_prep'] = df['text_prep'].apply(lambda x: [word for word in x if not word in german_stop_words])
 
         # Define vectorizer
         vectorizer = TfidfVectorizer(tokenizer=custom_tokenizer)

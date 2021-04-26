@@ -35,7 +35,7 @@ def main(generate_data, preprocess_data, run_labeling):
         test_prep = pd.read_csv("C:/Users/dschw/Documents/GitHub/Thesis/Output/labelled_nccr_corpus_DE_TEST.csv")
 
     # todo: Generate Dictionary based on tfidf
-    tfidf_dict = df_nccr.generate_tfidf_dict(train_prep, tfidf_threshold=0.005)
+    tfidf_dict = df_nccr.generate_tfidf_dict(train_prep, tfidf_threshold=0.01)
 
     # Run Snorkel framework if set
     if run_labeling:
@@ -55,4 +55,4 @@ def main(generate_data, preprocess_data, run_labeling):
                          lf_input=lf_dict)
 
 
-main(generate_data=False, preprocess_data=False, run_labeling=True)
+main(generate_data=True, preprocess_data=False, run_labeling=True)
