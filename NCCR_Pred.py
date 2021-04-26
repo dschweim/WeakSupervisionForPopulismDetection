@@ -71,32 +71,55 @@ class PCCR_Dataset:
         # Join both dataframes
         df_combined = df.set_index('ID').join(table_text.set_index('ID'))
 
-        # Save created corpus
-        df_combined.to_csv(f'{self.output_path}\\labelled_nccr_corpus.csv', index=True)
-
         # Filter on German files
         df_combined_de = df_combined[df_combined.Sample_Lang == 'Deutsch']
+
+        # Remove duplicates that do not belong to sample
+        # df_combined_de.reset_index(inplace=True)
+        # duplicates_list = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]['ID']
+        #
+        # drop = df_combined_de.loc[(df_combined_de['Bemerkungen'] == 'Does not belong to the sample') &
+        #                           df_combined_de['ID'].isin(duplicates_list)]
+        #
+        # df_combined_de_new = df_combined_de[~df_combined_de.index].isin(drop.index.values)
+        #
+        #
+        # # df_combined_de = df_combined_de.loc[df_combined_de['Bemerkungen'] != 'Does not belong to the sample / ']
+        #
+        # # Remove remaining duplicates
+
         # Save created German corpus
         df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
 
-        #todo: Join table_text with full_speaker, full_issue, full_target
+        # todo: Remove duplicates from list
+        duplicates = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]
+
+
+        not_sample = df_combined_de.loc[df_combined_de['Bemerkungen'] == 'Does not belong to the sample / ']
+
+
+
+        # Merge combined df with full_speaker, full_target, full_issue
         full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
         full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
 
-        ## Merge combined df with full_speaker, full_target, full_issue
-        table_text_combined = pd.merge(df_combined_de, full_speaker, on='ID', how='outer', indicator=False)
+        table_text_combined = pd.merge(df_combined_de, full_speaker, on='ID', how='outer')
         table_text_combined.rename(columns={"Unit_ID": "Unit_ID_SPK", "Spr_ID": "Spr_ID_SPK",
                                             "Wording": "Wording_SPK", "Fulltext": "Fulltext_SPK"}, inplace=True)
-        table_text_combined = pd.merge(table_text_combined, full_issue, on='ID', how='outer', indicator=False)
+        table_text_combined = pd.merge(table_text_combined, full_issue, on='ID', how='outer')
         table_text_combined.rename(columns={"Unit_ID": "Unit_ID_ISS", "Unit_ID01": "Unit_ID01_ISS",
                                             "Spr_ID": "Spr_ID_ISS", "Auto_Coding": "Auto_Coding_ISS",
                                             "Wording": "Wording_ISS", "Fulltext": "Fulltext_ISS"}, inplace=True)
         table_text_combined = pd.merge(table_text_combined, full_target, on='ID', how='outer', indicator=True)
-        #table_text_combined.rename(columns={"Unit_ID": "Unit_ID_SPKR", "Spr_ID": "Spr_ID_SPKR", "Wording": "Wording_SPKR", "Fulltext": "Fulltext_SPKR"}, inplace=True)
+        table_text_combined.rename(columns={"Unit_ID": "Unit_ID_TGT", "Unit_ID01": "Unit_ID01_TGT",
+                                            "Spr_ID": "Spr_ID_TGT", "Tgt_ID": "Tgt_ID_TGT",
+                                            "Wording": "Wording_TGT", "Fulltext": "Fulltext_TGT"}, inplace=True)
 
-        print (len(table_text_combined))
-        ## Remove rows with "UK" id
+        # Remove rows with "UK" ID
+        table_text_combined_de = table_text_combined[~table_text_combined['ID'].astype(str).str.startswith('uk')]
+
+        # todo: How to handle multiple keys
 
         end = time.time()
         print(end - start)

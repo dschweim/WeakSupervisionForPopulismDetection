@@ -114,23 +114,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>207</line>
+          <line>228</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>106</line>
-          <option name="timeStamp" value="103" />
+          <line>123</line>
+          <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>99</line>
-          <option name="timeStamp" value="104" />
+          <line>91</line>
+          <option name="timeStamp" value="113" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>97</line>
-          <option name="timeStamp" value="107" />
+          <line>83</line>
+          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -143,9 +143,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="table_text_combined.loc['au_pm_el_13_20012.txt']" language="Python" />
-        <watch expression="table_text_combined" language="Python" />
-        <watch expression="table_text_combined.loc[table_text_combined[&quot;_merge&quot;] == 'right_only']" language="Python" />
+        <watch expression="drop.index.values" language="Python" />
       </configuration>
     </watches-manager>
   </component>
