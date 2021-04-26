@@ -114,23 +114,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>228</line>
+          <line>221</line>
           <option name="timeStamp" value="101" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>123</line>
-          <option name="timeStamp" value="110" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>91</line>
-          <option name="timeStamp" value="113" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>83</line>
-          <option name="timeStamp" value="115" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -143,7 +128,10 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="drop.index.values" language="Python" />
+        <watch expression="df_drop.index.values" language="Python" />
+        <watch expression="[df_drop.index.values]" language="Python" />
+        <watch expression="len(duplicates)" language="Python" />
+        <watch expression="duplicates.loc[1482]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
