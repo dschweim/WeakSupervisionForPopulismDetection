@@ -74,19 +74,21 @@ class PCCR_Dataset:
         # Filter on German files
         df_combined_de = df_combined[df_combined.Sample_Lang == 'Deutsch']
 
+        # Find duplicates
+        df_combined_de.reset_index(inplace=True)
+        duplicates_list = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]['ID']
+
         # Remove duplicates that do not belong to sample
-        # df_combined_de.reset_index(inplace=True)
-        # duplicates_list = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]['ID']
-        #
-        # drop = df_combined_de.loc[(df_combined_de['Bemerkungen'] == 'Does not belong to the sample') &
-        #                           df_combined_de['ID'].isin(duplicates_list)]
-        #
-        # df_combined_de_new = df_combined_de[~df_combined_de.index].isin(drop.index.values)
-        #
-        #
-        # # df_combined_de = df_combined_de.loc[df_combined_de['Bemerkungen'] != 'Does not belong to the sample / ']
-        #
-        # # Remove remaining duplicates
+        df_drop = df_combined_de.loc[((df_combined_de['Bemerkungen'] == 'Does not belong to the sample') |
+                                      (df_combined_de['Bemerkungen'] == 'Does not belong to the sample / '))
+                                     & df_combined_de['ID'].isin(duplicates_list)]
+
+        df_combined_de = df_combined_de.drop(df_combined_de.index[[df_drop.index.values]])
+
+        # Remove remaining duplicates
+
+
+
 
         # Save created German corpus
         df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
