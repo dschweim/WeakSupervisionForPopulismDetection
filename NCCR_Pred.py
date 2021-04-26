@@ -79,20 +79,28 @@ class PCCR_Dataset:
         # Save created German corpus
         df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
 
-        end = time.time()
-        print(end - start)
-        print('finished NCCR labelled corpus generation')
-
         #todo: Join table_text with full_speaker, full_issue, full_target
         full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
         full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
 
-        ## Merge text with full_speaker, full_target, full_issue
-        table_text_combined = table_text.set_index('ID').join(full_issue.set_index('ID'))
+        ## Merge combined df with full_speaker, full_target, full_issue
+        table_text_combined = pd.merge(df_combined_de, full_speaker, on='ID', how='outer', indicator=False)
+        table_text_combined.rename(columns={"Unit_ID": "Unit_ID_SPK", "Spr_ID": "Spr_ID_SPK",
+                                            "Wording": "Wording_SPK", "Fulltext": "Fulltext_SPK"}, inplace=True)
+        table_text_combined = pd.merge(table_text_combined, full_issue, on='ID', how='outer', indicator=False)
+        table_text_combined.rename(columns={"Unit_ID": "Unit_ID_ISS", "Unit_ID01": "Unit_ID01_ISS",
+                                            "Spr_ID": "Spr_ID_ISS", "Auto_Coding": "Auto_Coding_ISS",
+                                            "Wording": "Wording_ISS", "Fulltext": "Fulltext_ISS"}, inplace=True)
+        table_text_combined = pd.merge(table_text_combined, full_target, on='ID', how='outer', indicator=True)
+        #table_text_combined.rename(columns={"Unit_ID": "Unit_ID_SPKR", "Spr_ID": "Spr_ID_SPKR", "Wording": "Wording_SPKR", "Fulltext": "Fulltext_SPKR"}, inplace=True)
 
+        print (len(table_text_combined))
+        ## Remove rows with "UK" id
 
-
+        end = time.time()
+        print(end - start)
+        print('finished NCCR labelled corpus generation')
 
         return df_combined_de
 
