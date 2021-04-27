@@ -78,14 +78,21 @@ def snorkel_labeling (train_data: pd.DataFrame, test_data: pd.DataFrame, lf_inpu
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf) else ABSTAIN
 
+    @labeling_function()
+    def lf_contains_keywords_nccr_tfidf_glob(x):
+        regex_keywords_nccr_tfidf_glob = lf_input['tfidf_keywords_global']
 
+        # Return a label of POP if keyword in text, otherwise ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf_glob) else ABSTAIN
+
+    # todo: Include country-spec keywords
     # todo: b) Spacy-based labeling
     # Change language to German
 
 
     ## 2. Generate label matrix L
     lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
-           lf_contains_keywords_nccr_tfidf]
+           lf_contains_keywords_nccr_tfidf, lf_contains_keywords_nccr_tfidf_glob]
     applier = PandasLFApplier(lfs=lfs)
     L_train = applier.apply(df=train_data)
 
