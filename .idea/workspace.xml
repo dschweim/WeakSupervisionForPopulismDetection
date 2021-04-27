@@ -22,7 +22,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Team_Project_HWS2020/Preprocessing/train_test_split.py" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.main">
@@ -111,13 +111,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Pred.py</url>
-          <line>221</line>
-          <option name="timeStamp" value="101" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -128,10 +121,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="df_drop.index.values" language="Python" />
-        <watch expression="[df_drop.index.values]" language="Python" />
-        <watch expression="len(duplicates)" language="Python" />
-        <watch expression="duplicates.loc[1482]" language="Python" />
+        <watch expression="len(tfidf_dict_global)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
