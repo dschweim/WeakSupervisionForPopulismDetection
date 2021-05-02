@@ -16,6 +16,7 @@ def main(generate_data, run_labeling, generate_train_test):
 
     else:
         # Import labelled nccr
+        # todo: adapt for combined corpus
         nccr_data_de = pd.read_csv("C:/Users/dschw/Documents/GitHub/Thesis/Output/labelled_nccr_corpus_DE.csv")
 
     # Run Snorkel framework if set
@@ -61,4 +62,4 @@ def main(generate_data, run_labeling, generate_train_test):
                          lf_input=lf_dict)
 
 
-main(generate_data=False, run_labeling=True, generate_train_test=False)
+main(generate_data=True, run_labeling=True, generate_train_test=True)

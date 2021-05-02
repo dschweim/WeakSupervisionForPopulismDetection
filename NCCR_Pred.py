@@ -54,17 +54,6 @@ class PCCR_Dataset:
         table_text = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Text_Table.txt', delimiter="\t",
                                  encoding="ISO-8859-1")
 
-        # Filter on relevant columns
-        # table_text = table_text[['ID', 'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
-        #                          'POPULIST_Advocative', 'POPULIST_Conflictive', 'ANTIPOPULIST', 'APOPULIST_PeopleCent',
-        #                          'APOPULIST_AntiElite', 'APOPULIST_Sovereign', 'APOPULIST_Advocative',
-        #                          'APOPULIST_Conflictive', 'POP_Total', 'POP_Unchall', 'POP_Emph',
-        #                          'Main_Issue',
-        #                          'Author', 'Date',
-        #                          'Bemerkungen',
-        #                          'Sample_Lang',
-        #                          'Sample_Type']]
-
         # Join both dataframes
         df_combined = df.set_index('ID').join(table_text.set_index('ID'))
 
@@ -88,31 +77,61 @@ class PCCR_Dataset:
         # Save created German corpus
         df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
 
+        ## Generate merged corpus
         # Merge combined df with full_speaker, full_target, full_issue
         full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
         full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
 
-        table_text_combined = pd.merge(df_combined_de, full_speaker, on='ID', how='outer')
-        table_text_combined.rename(columns={"Unit_ID": "Unit_ID_SPK", "Spr_ID": "Spr_ID_SPK",
-                                            "Wording": "Wording_SPK", "Fulltext": "Fulltext_SPK"}, inplace=True)
-        table_text_combined = pd.merge(table_text_combined, full_issue, on='ID', how='outer')
-        table_text_combined.rename(columns={"Unit_ID": "Unit_ID_ISS", "Unit_ID01": "Unit_ID01_ISS",
-                                            "Spr_ID": "Spr_ID_ISS", "Auto_Coding": "Auto_Coding_ISS",
-                                            "Wording": "Wording_ISS", "Fulltext": "Fulltext_ISS"}, inplace=True)
-        table_text_combined = pd.merge(table_text_combined, full_target, on='ID', how='outer', indicator=True)
-        table_text_combined.rename(columns={"Unit_ID": "Unit_ID_TGT", "Unit_ID01": "Unit_ID01_TGT",
-                                            "Spr_ID": "Spr_ID_TGT", "Tgt_ID": "Tgt_ID_TGT",
-                                            "Wording": "Wording_TGT", "Fulltext": "Fulltext_TGT"}, inplace=True)
+        # table_text_speaker = pd.merge(df_combined_de, full_speaker, on='ID', how='outer', indicator=True)
+        # table_text_speaker.rename(columns={"Unit_ID": "Unit_ID_SPK", "Spr_ID": "Spr_ID_SPK",
+        #                                     "Wording": "Wording_SPK", "Fulltext": "Fulltext_SPK"}, inplace=True)
+
+
+        table_text_issue = df_combined_de.set_index('ID').join(full_issue.set_index('ID'))
+        table_text_issue['Source'] = 'Issue'
+
+
+        table_text_target = df_combined_de.set_index('ID').join(full_target.set_index('ID'))
+        table_text_target['Source'] = 'Target'
+
+
+        table_text_combined = table_text_issue.append(table_text_target)
+
+        table_text_combined.reset_index(inplace=True)
 
         # Remove rows with "UK" ID
         table_text_combined_de = table_text_combined[~table_text_combined['ID'].astype(str).str.startswith('uk')]
+
+        # Filter on relevant columns
+        table_text_combined_de = table_text_combined_de[['ID',
+                                                          'POPULIST',
+                                                          'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
+                                                          'POPULIST_Advocative', 'POPULIST_Conflictive',
+                                                          'ANTIPOPULIST',
+                                                          'APOPULIST_PeopleCent', 'APOPULIST_AntiElite', 'APOPULIST_Sovereign',
+                                                          'APOPULIST_Advocative', 'APOPULIST_Conflictive',
+                                                          'Date', 'Sample_Type',
+                                                          'Wording', 'Fulltext',
+                                                          'text', 'Source']]
+
+        # Sort by ID
+        table_text_combined_de.sort_values(by='ID', inplace=True)
+
+        # Save created merged corpus
+        table_text_combined_de.to_csv(f'{self.output_path}\\combined_nccr_corpus_DE_wording_all.csv', index=True)
+
+        # Exclude examples without wording
+        table_text_combined_de.dropna(subset=['Wording'], inplace=True)
+
+        # Save created merged corpus
+        table_text_combined_de.to_csv(f'{self.output_path}\\combined_nccr_corpus_DE_wording_available.csv', index=True)
 
         end = time.time()
         print(end - start)
         print('finished NCCR labelled corpus generation')
 
-        return df_combined_de
+        return table_text_combined_de
 
     def preprocess_corpus(self, df: pd.DataFrame, is_train: bool):
         """

@@ -90,6 +90,9 @@ def snorkel_labeling (train_data: pd.DataFrame, test_data: pd.DataFrame, lf_inpu
     # Change language to German
 
 
+    # todo: include Preprocessor
+    # @Preprocessor
+
     ## 2. Generate label matrix L
     lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
            lf_contains_keywords_nccr_tfidf, lf_contains_keywords_nccr_tfidf_glob]
