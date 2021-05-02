@@ -8,3 +8,4 @@ __pycache__/NCCR_Pred.cpython-38.pyc
 *.pyc
 *.pyc
 .idea/workspace.xml
+*.csv
