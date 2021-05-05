@@ -358,7 +358,7 @@ class PCCR_Dataset:
         tfidf_dict_global = wordlist.loc[wordlist['tfidf'] >= tfidf_threshold]
 
         # Save dict to disk
-        tfidf_dict_global.to_csv(f'{self.output_path}\\ tfidf_dict_global.csv', index=True)
+        tfidf_dict_global.to_csv(f'{self.output_path}\\tfidf_dict_global.csv', index=True)
 
         end = time.time()
         print(end - start)

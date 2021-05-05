@@ -1,13 +1,22 @@
+# This main file contains function calls for all other python files
+# In order to avoid long runtime set parameters to false after the data output has been initially created
 import pandas as pd
+import sys
+from argparse import ArgumentParser
 from NCCR_Pred import PCCR_Dataset
 from Labeling import snorkel_labeling
 from util import generate_train_test_split
 
+sys.path.append("..")
 
-def main(generate_data, run_labeling, generate_train_test, generate_tfidf_dicts):
+
+def main(input_path, generate_data, run_labeling, generate_train_test, generate_tfidf_dicts):
+    # Set project path globally
+    path_to_project_folder = input_path
+
     # Initialize
-    df_nccr = PCCR_Dataset(data_path="C:/Users/dschw/Documents/GitHub/Thesis/Data",
-                           output_path="C:/Users/dschw/Documents/GitHub/Thesis/Output")
+    df_nccr = PCCR_Dataset(data_path=f'{path_to_project_folder}\\Data',
+                           output_path=f'{path_to_project_folder}\\Output')
 
     # Either generate data or read data from disk
     if generate_data:
@@ -17,10 +26,10 @@ def main(generate_data, run_labeling, generate_train_test, generate_tfidf_dicts)
     else:
         # Import corpora
         nccr_data_de_wording_all = pd.read_csv(
-            "C:/Users/dschw/Documents/GitHub/Thesis/Output/NCCR_combined_corpus_DE_wording_all.csv"
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_all.csv'
         )
-        nccr_data_de_wording_av = pd.read_csv (
-            "C:/Users/dschw/Documents/GitHub/Thesis/Output/NCCR_combined_corpus_DE_wording_available.csv"
+        nccr_data_de_wording_av = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available.csv'
         )
 
     # Run Snorkel framework if set
@@ -37,10 +46,10 @@ def main(generate_data, run_labeling, generate_train_test, generate_tfidf_dicts)
         else:
             # Import preprocessed data
             train_prep = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/NCCR_combined_corpus_DE_wording_available_TRAIN.csv"
+                f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_TRAIN.csv'
             )
             test_prep = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/NCCR_combined_corpus_DE_wording_available_TEST.csv"
+                f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_TEST.csv'
             )
 
         if generate_tfidf_dicts:
@@ -52,18 +61,17 @@ def main(generate_data, run_labeling, generate_train_test, generate_tfidf_dicts)
         else:
             # Import dictionaries
             tfidf_dict = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/tfidf_dict.csv"
+                f'{path_to_project_folder}\\Output\\tfidf_dict.csv'
             )
-
 
             tfidf_dict_country_au = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/tfidf_dict_per_country_au.csv"
+                f'{path_to_project_folder}\\Output\\tfidf_dict_per_country_au.csv'
             )
             tfidf_dict_country_ch = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/tfidf_dict_per_country_ch.csv"
+                f'{path_to_project_folder}\\Output\\tfidf_dict_per_country_ch.csv'
             )
             tfidf_dict_country_de = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/tfidf_dict_per_country_de.csv"
+                f'{path_to_project_folder}\\Output\\tfidf_dict_per_country_de.csv'
             )
 
             tfidf_dict_country = {}
@@ -72,10 +80,10 @@ def main(generate_data, run_labeling, generate_train_test, generate_tfidf_dicts)
                       'de': tfidf_dict_country_de}
             tfidf_dict_country.update(values)
 
-
             tfidf_dict_global = pd.read_csv(
-                "C:/Users/dschw/Documents/GitHub/Thesis/Output/tfidf_dict_global.csv"
+                f'{path_to_project_folder}\\Output\\tfidf_dict_global.csv'
             )
+
 
         # Generate overall dictionary as labeling function input
         lf_dict = {'tfidf_keywords': tfidf_dict.term.to_list(),
@@ -96,5 +104,15 @@ def main(generate_data, run_labeling, generate_train_test, generate_tfidf_dicts)
                          lf_input=lf_dict)
 
 
-main(generate_data=False, run_labeling=True,
-     generate_train_test=False, generate_tfidf_dicts=False)
+if __name__ == "__main__":
+    parser = ArgumentParser()
+    parser.add_argument("-i", "--input", type=str,
+                        help="path to project", metavar="path")
+    args = parser.parse_args()
+    input_path = args.input
+
+    main(input_path=input_path,
+         generate_data=False,
+         run_labeling=True,
+         generate_train_test=False,
+         generate_tfidf_dicts=True)
