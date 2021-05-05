@@ -22,7 +22,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Team_Project_HWS2020/Preprocessing/train_test_split.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.main">
@@ -111,6 +111,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>69</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -121,7 +128,12 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="len(tfidf_dict_global)" language="Python" />
+        <watch expression="tfidf_dict_per_country" language="Python" />
+        <watch expression="values = {'au': tfidf_dict_country_at}" language="Python" />
+        <watch expression="tfidf_dict_per_country.keys()" language="Python" />
+        <watch expression="tfidf_dict_per_country['au']" language="Python" />
+        <watch expression="tfidf_dict_per_country['au']" language="Python" />
+        <watch expression="tfidf_dict_per_country['au'].items()" language="Python" />
       </configuration>
     </watches-manager>
   </component>

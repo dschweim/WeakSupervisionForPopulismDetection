@@ -27,9 +27,12 @@ class PCCR_Dataset:
     def generate_labelled_nccr_corpus(self):
         """
         Generate labelled NCCR corpus by merging txt-fulltexts
-        with their corresponding labels on text-level and save as csv
-        :return:
-        :rtype:
+        with their corresponding labels on text-level and join with full_issue and
+        full_target
+        :return: Labelled NCCR Corpus with all rows
+        :rtype: DataFrame
+        :return: Labelled NCCR Corpus only with rows that contain Wording info
+        :rtype: DataFrame
         """
 
         start = time.time()
@@ -48,6 +51,7 @@ class PCCR_Dataset:
                                 'text': [tmp]})
             df = df.append(txt)
 
+        # Save concatenated texts
         df.to_csv(f'{self.output_path}\\NCCR_concatenated_texts.csv', index=True)
 
         # Import corpus with populism labels
@@ -75,29 +79,17 @@ class PCCR_Dataset:
         duplicates = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]
 
         # Save created German corpus
-        df_combined_de.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE.csv', index=True)
+        #df_combined_de.to_csv(f'{self.output_path}\\NCCR_labelled_corpus_DE.csv', index=True)
 
-        ## Generate merged corpus
-        # Merge combined df with full_speaker, full_target, full_issue
-        full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
+        # Merge combined df with full_target, full_issue
+        #full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
         full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
-
-        # table_text_speaker = pd.merge(df_combined_de, full_speaker, on='ID', how='outer', indicator=True)
-        # table_text_speaker.rename(columns={"Unit_ID": "Unit_ID_SPK", "Spr_ID": "Spr_ID_SPK",
-        #                                     "Wording": "Wording_SPK", "Fulltext": "Fulltext_SPK"}, inplace=True)
-
-
         table_text_issue = df_combined_de.set_index('ID').join(full_issue.set_index('ID'))
         table_text_issue['Source'] = 'Issue'
-
-
         table_text_target = df_combined_de.set_index('ID').join(full_target.set_index('ID'))
         table_text_target['Source'] = 'Target'
-
-
         table_text_combined = table_text_issue.append(table_text_target)
-
         table_text_combined.reset_index(inplace=True)
 
         # Remove rows with "UK" ID
@@ -111,7 +103,7 @@ class PCCR_Dataset:
                                                           'ANTIPOPULIST',
                                                           'APOPULIST_PeopleCent', 'APOPULIST_AntiElite', 'APOPULIST_Sovereign',
                                                           'APOPULIST_Advocative', 'APOPULIST_Conflictive',
-                                                          'Date', 'Sample_Type',
+                                                          'Date', 'Sample_Type', 'Sample_Country',
                                                           'Wording', 'Fulltext',
                                                           'text', 'Source']]
 
@@ -119,19 +111,19 @@ class PCCR_Dataset:
         table_text_combined_de.sort_values(by='ID', inplace=True)
 
         # Save created merged corpus
-        table_text_combined_de.to_csv(f'{self.output_path}\\combined_nccr_corpus_DE_wording_all.csv', index=True)
+        table_text_combined_de.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_all.csv', index=True)
 
         # Exclude examples without wording
-        table_text_combined_de.dropna(subset=['Wording'], inplace=True)
+        table_text_combined_de_av = table_text_combined_de.dropna(subset=['Wording'])
 
         # Save created merged corpus
-        table_text_combined_de.to_csv(f'{self.output_path}\\combined_nccr_corpus_DE_wording_available.csv', index=True)
+        table_text_combined_de_av.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available.csv', index=True)
 
         end = time.time()
         print(end - start)
         print('finished NCCR labelled corpus generation')
 
-        return table_text_combined_de
+        return table_text_combined_de, table_text_combined_de_av
 
     def preprocess_corpus(self, df: pd.DataFrame, is_train: bool):
         """
@@ -151,11 +143,8 @@ class PCCR_Dataset:
         else:
             label = 'TEST'
 
-        nlp = spacy.load("de_core_news_sm")
-
         def preprocess_text(text):
             # Remove standard text info at beginning of text
-            # text = re.sub(r'((\n|.)*--)', '', text)
             text = re.sub(r'^(\n|.)*--', '', text)
 
             # Remove linebreaks and extra spaces
@@ -164,16 +153,12 @@ class PCCR_Dataset:
             # Remove some special characters (*) todo: instead remove every non-word/space/punctuation
             text = text.replace('*', '')
 
-            # Split text into sentences
-            # doc = nlp(text)
-            # text = [sentence.text for sentence in doc.sents]
-
             return text
 
         df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
 
         # Save pre-processed corpus
-        df.to_csv(f'{self.output_path}\\labelled_nccr_corpus_DE_{label}.csv', index=True)
+        df.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
 
         end = time.time()
         print(end - start)
@@ -241,6 +226,9 @@ class PCCR_Dataset:
         # Retrieve specified top n_words entries
         tfidf_dict = wordlist.loc[wordlist['average_tfidf'] >= tfidf_threshold][['term', 'average_tfidf']]
 
+        # Save dict to disk
+        tfidf_dict.to_csv(f'{self.output_path}\\tfidf_dict.csv', index=True)
+
         end = time.time()
         print(end - start)
         print('finished tf-idf dict generation')
@@ -303,6 +291,14 @@ class PCCR_Dataset:
             # Append to country-specific dict to global dict
             tfidf_dict_per_country[country] = tfidf_dict
 
+        # Save dict to disk
+        tfidf_dict_per_country_au = tfidf_dict_per_country['au']
+        tfidf_dict_per_country_ch = tfidf_dict_per_country['cd']
+        tfidf_dict_per_country_de = tfidf_dict_per_country['de']
+        tfidf_dict_per_country_au.to_csv(f'{self.output_path}\\tfidf_dict_per_country_au.csv', index=True)
+        tfidf_dict_per_country_ch.to_csv(f'{self.output_path}\\tfidf_dict_per_country_ch.csv', index=True)
+        tfidf_dict_per_country_de.to_csv(f'{self.output_path}\\tfidf_dict_per_country_de.csv', index=True)
+
         end = time.time()
         print(end - start)
         print('finished tf-idf dict per country generation')
@@ -360,6 +356,9 @@ class PCCR_Dataset:
 
         # Retrieve specified top n_words entries
         tfidf_dict_global = wordlist.loc[wordlist['tfidf'] >= tfidf_threshold]
+
+        # Save dict to disk
+        tfidf_dict_global.to_csv(f'{self.output_path}\\ tfidf_dict_global.csv', index=True)
 
         end = time.time()
         print(end - start)
