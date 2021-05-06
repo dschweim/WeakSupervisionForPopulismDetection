@@ -143,6 +143,7 @@ class PCCR_Dataset:
         else:
             label = 'TEST'
 
+        # Textually preprocess text column
         def preprocess_text(text):
             # Remove standard text info at beginning of text
             text = re.sub(r'^(\n|.)*--', '', text)
@@ -155,7 +156,39 @@ class PCCR_Dataset:
 
             return text
 
+        # Apply preprocess_text funtion to whole text column
         df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
+
+        # Retrieve party from text column
+        def retrieve_party(text, sampletype):
+
+            # Press release
+            if sampletype == 'PressRelease':
+                grp_index = 3
+                party = re.search(r'(^(.|\n)*Press Release from Party: )(\w*)', text)
+
+            # Party Manifesto
+            elif sampletype == 'PartyMan':
+                grp_index = 3
+                party = re.search(r'(^(.|\n)*Party Manifesto: )(\w*\s\w*)', text)
+
+            # Past Party Manifesto
+            elif sampletype == 'Past_PartyMan':
+                grp_index = 3
+                party = re.search(r'(^(.|\n)*Party Manifesto, )(\w*)', text)
+
+            # Social Media
+            elif sampletype == 'SocialMedia':
+                grp_index = 6
+                party = re.search(r'(^(.|\n)*Full Name: )(.*, )(.* )(\()(.*)(\))(.*)', text)
+
+            if party is None:
+                return None
+            else:
+                return party.group(grp_index)
+
+        # Apply retrieve_party funtion to whole text column depending on sampletype
+        df['party'] = df.apply(lambda x: retrieve_party(x['text'], x['Sample_Type']), axis=1)
 
         # Save pre-processed corpus
         df.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)

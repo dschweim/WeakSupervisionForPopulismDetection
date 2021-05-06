@@ -3,9 +3,9 @@
 import pandas as pd
 import sys
 from argparse import ArgumentParser
-from NCCR_Pred import PCCR_Dataset
+from NCCR_Corpus import PCCR_Dataset
 from Labeling_Framework import snorkel_labeling
-from util import generate_train_test_split
+from util import generate_train_test_split, generate_train_dev_test_split
 
 sys.path.append("..")
 
@@ -42,6 +42,9 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
             # Pre-process data
             train_prep = df_nccr.preprocess_corpus(train, is_train=True)
             test_prep = df_nccr.preprocess_corpus(test, is_train=False)
+
+            # Generate Train, Dev, Test Split
+            #train, dev, test = generate_train_dev_test_split(nccr_data_de_wording_av)
 
         else:
             # Import preprocessed data
@@ -93,11 +96,10 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
 
         # Filter on relevant columns
-        #todo: use text instead of wording
-        train_prep_sub = train_prep[['Wording', 'POPULIST']]
-        test_prep_sub = test_prep[['Wording', 'POPULIST']]
-        train_prep_sub.rename({'Wording': 'text'}, axis=1, inplace=True)
-        test_prep_sub.rename({'Wording': 'text'}, axis=1, inplace=True)
+        train_prep_sub = train_prep[['text_prep', 'party', 'POPULIST']]
+        test_prep_sub = test_prep[['text_prep', 'party', 'POPULIST']]
+        train_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
+        test_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
 
         # Run Snorkel framework
         snorkel_labeling(train_data=train_prep_sub,
@@ -113,7 +115,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(input_path=input_path,
-         generate_data=False,
+         generate_data=True,
          run_labeling=True,
-         generate_train_test=False,
+         generate_train_test=True,
          generate_tfidf_dicts=False)
