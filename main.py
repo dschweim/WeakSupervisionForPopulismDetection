@@ -96,15 +96,15 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
 
         # Filter on relevant columns
-        train_prep_sub = train_prep[['text_prep', 'party', 'POPULIST']]
-        test_prep_sub = test_prep[['text_prep', 'party', 'POPULIST']]
+        train_prep_sub = train_prep[['text_prep', 'party', 'year', 'POPULIST']]
+        test_prep_sub = test_prep[['text_prep', 'party', 'year', 'POPULIST']]
         train_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
         test_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
 
         # Run Snorkel framework
         snorkel_labeling(train_data=train_prep_sub,
                          test_data=test_prep_sub,
-                         lf_input=lf_dict)
+                         lf_input_dict=lf_dict)
 
 
 if __name__ == "__main__":
@@ -115,7 +115,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(input_path=input_path,
-         generate_data=True,
+         generate_data=False,
          run_labeling=True,
-         generate_train_test=True,
+         generate_train_test=False,
          generate_tfidf_dicts=False)

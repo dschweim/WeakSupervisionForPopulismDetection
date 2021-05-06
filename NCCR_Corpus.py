@@ -143,7 +143,7 @@ class PCCR_Dataset:
         else:
             label = 'TEST'
 
-        # Textually preprocess text column
+        # Define function to preprocess text column
         def preprocess_text(text):
             # Remove standard text info at beginning of text
             text = re.sub(r'^(\n|.)*--', '', text)
@@ -156,10 +156,7 @@ class PCCR_Dataset:
 
             return text
 
-        # Apply preprocess_text funtion to whole text column
-        df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
-
-        # Retrieve party from text column
+        # Define function to retrieve party from text column
         def retrieve_party(text, sampletype):
 
             # Press release
@@ -187,8 +184,24 @@ class PCCR_Dataset:
             else:
                 return party.group(grp_index)
 
-        # Apply retrieve_party funtion to whole text column depending on sampletype
+        # Retrieve year from date column
+        def retrieve_year(date):
+            year = re.search(r'^\d\d.\d\d.(\d{4})', date)
+
+            if year is None:
+                return None
+            else:
+                return year.group(1)
+
+        # Apply preprocess_text function to whole text column
+        df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
+
+        # Apply retrieve_party function to whole text column depending on sampletype
         df['party'] = df.apply(lambda x: retrieve_party(x['text'], x['Sample_Type']), axis=1)
+
+        # Apply retrieve_year function to whole date column
+        df['Date'] = df['Date'].astype(str)
+        df['year'] = df['Date'].apply(lambda x: retrieve_year(x))
 
         # Save pre-processed corpus
         df.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
