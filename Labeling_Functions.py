@@ -7,14 +7,13 @@ from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
 from spacy_sentiws import spaCySentiWS
 
-
 # Define constants
 ABSTAIN = -1
 NONPOP = 0
 POP = 1
 
-def get_lfs (lf_input: dict):
 
+def get_lfs(lf_input: dict):
     # a) Dictionary-based labeling
     @labeling_function()
     def lf_contains_keywords_schwarzbozl(x):
@@ -74,75 +73,33 @@ def get_lfs (lf_input: dict):
     # todo: Include country-spec keywords
 
     # todo: b) Spacy-based labeling
-    # todo: include Preprocessor
-    # @Preprocessor
-    #
-    # is_using_gpu = spacy.prefer_gpu()
-    # if is_using_gpu:
-    #     torch.set_default_tensor_type("torch.cuda.FloatTensor")
-
-    # # Install pretrained transformer
-    # nlp = spacy.load("de_dep_news_trf")
-    # doc = nlp("Das ist ein Text")
-    #
-    # apple1 = nlp("Sie belügen das Volk")
-    # apple2 = nlp("Machen Sie Politik für das Volk und nicht gegen das Volk!")
-    # apple3 = nlp("wir stehen dem Anliegen, das Volk direkt entscheiden zu lassen, sehr offen gegenüber")
-    # print(apple1[3].similarity(apple2[3]))  # 0.73428553
-    # print(apple1[0].similarity(apple3[0]))
-
-    text = "Sie belügen das Volk"
-    # # todo: spacy preprocessing
-    import de_dep_news_trf
-    # nlp = de_dep_news_trf.load()
-    # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Downloads/SentiWS_v2.0')
-    # nlp.add_pipe('sentiws')
-    # doc = nlp(text)
-    # print([(w.text, w.pos_) for w in doc])
-    # for token in doc:
-    #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
-    # token_list = [token for token in doc]
-
     # Preprocessor for sentiment
     @preprocessor(memoize=True)
     def sentiment_preprocessor(x):
 
         return x
 
-    from germansentiment import SentimentModel
-
-    model = SentimentModel()
-
-    texts = [
-        "Sie belügen das Volk",
-        "Machen Sie Politik für das Volk und nicht gegen das Volk!",
-        "wir stehen dem Anliegen, das Volk direkt entscheiden zu lassen, sehr offen gegenüber"]
-
-    result = model.predict_sentiment(texts)
-    print(result)
-
     # c) Key Message-based Labeling:
     custom_spacy = SpacyPreprocessor(text_field="text", doc_field="doc", memoize=True)
 
     # LFS: Key Message 1 - Discrediting the Elite
     # negative personality and personal negative attributes of a target
-    @labeling_function(pre=sentiment_preprocessor)
+    @labeling_function()
     def lf_discrediting_elite(x):
-        if any([ent.label_ == "WORK_OF_ART" for ent in x.doc.ents]):
+
+        target = 'bundesregierung'
+        if target in x.text.lower():
             return POP
-        # if model.predict_sentiment(x):
-        #     return POP
-        # # Return a label of POP if keyword in text, otherwise ABSTAIN
-        # return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf_glob) else ABSTAIN
+        else:
+            return ABSTAIN
 
-
-    #2sentiment == NEG?
-
+        # 1. find target of ELITE
+        # 2. Attribute refers to ELITE
+        # 3. Negative attributes
 
     # LFS: Key Message 2- Blaming the Elite
-    #@labeling_function(pre=[spac])
-    #def km2_blaming_elite(x):
-
+    # @labeling_function(pre=[spac])
+    # def km2_blaming_elite(x):
 
     # Define list of lfs to use
     list_lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
