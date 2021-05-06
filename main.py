@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 from argparse import ArgumentParser
 from NCCR_Pred import PCCR_Dataset
-from Labeling import snorkel_labeling
+from Labeling_Framework import snorkel_labeling
 from util import generate_train_test_split
 
 sys.path.append("..")
@@ -21,7 +21,7 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
     # Either generate data or read data from disk
     if generate_data:
         # Generate Labelled NCCR
-        nccr_data_de_wording_av, nccr_data_de_wording_all = df_nccr.generate_labelled_nccr_corpus()
+        nccr_data_de_wording_all, nccr_data_de_wording_av = df_nccr.generate_labelled_nccr_corpus()
 
     else:
         # Import corpora
@@ -93,10 +93,11 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
 
         # Filter on relevant columns
-        train_prep_sub = train_prep[['text_prep', 'POPULIST']]
-        test_prep_sub = test_prep[['text_prep', 'POPULIST']]
-        train_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
-        test_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
+        #todo: use text instead of wording
+        train_prep_sub = train_prep[['Wording', 'POPULIST']]
+        test_prep_sub = test_prep[['Wording', 'POPULIST']]
+        train_prep_sub.rename({'Wording': 'text'}, axis=1, inplace=True)
+        test_prep_sub.rename({'Wording': 'text'}, axis=1, inplace=True)
 
         # Run Snorkel framework
         snorkel_labeling(train_data=train_prep_sub,
@@ -115,4 +116,4 @@ if __name__ == "__main__":
          generate_data=False,
          run_labeling=True,
          generate_train_test=False,
-         generate_tfidf_dicts=True)
+         generate_tfidf_dicts=False)
