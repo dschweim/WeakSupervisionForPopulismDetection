@@ -11,3 +11,6 @@ __pycache__/NCCR_Pred.cpython-38.pyc
 *.csv
 *.pyc
 *.xml
+*.pyc
+.idea/workspace.xml
+.idea/workspace.xml
