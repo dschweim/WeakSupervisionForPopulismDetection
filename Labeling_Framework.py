@@ -7,14 +7,15 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 from Labeling_Functions import get_lfs
 
-def snorkel_labeling (train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input: dict):
+
+def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input_dict: dict):
     """
     Calculate tf-idf scores of docs and return top n words that
     :param train_data: Trainset
     :type train_data:  DataFrame
     :param test_data: Testset
     :type test_data:  DataFrame
-    :param lf_input: Dictionary with further input for labeling functions
+    :param lf_input_dict: Dictionary with further input for labeling functions
     :type test_data:  dict
     :return: Returns labelled Dataset
     :rtype:  DataFrame
@@ -22,7 +23,7 @@ def snorkel_labeling (train_data: pd.DataFrame, test_data: pd.DataFrame, lf_inpu
 
     ## 1. Define labeling functions
     # Retrieve defined labeling functions
-    lfs = get_lfs(lf_input)
+    lfs = get_lfs(lf_input_dict)
 
     ## 2. Generate label matrix L
     applier = PandasLFApplier(lfs=lfs)
@@ -58,8 +59,7 @@ def snorkel_labeling (train_data: pd.DataFrame, test_data: pd.DataFrame, lf_inpu
     print(f"{'Label Model Precision:':<25} {label_model_scores_dict['precision']}")
     print(f"{'Label Model Recall:':<25} {label_model_scores_dict['recall']}")
 
-
-    #todo: Classifier
+    # todo: Classifier
     ## 4. Train classifier
     # Filter out unlabeled data points
     probs_train = label_model.predict_proba(L=L_train)
