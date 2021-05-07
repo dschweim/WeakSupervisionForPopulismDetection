@@ -57,9 +57,9 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
 
         if generate_tfidf_dicts:
             # Generate Dictionaries based on tfidf
-            tfidf_dict = df_nccr.generate_tfidf_dict(train_prep, tfidf_threshold=0.01)
-            tfidf_dict_country = df_nccr.generate_tfidf_dict_per_country(train_prep, tfidf_threshold=0.01)
-            tfidf_dict_global = df_nccr.generate_global_tfidf_dict(train_prep, tfidf_threshold=0.1)
+            tfidf_dict = df_nccr.generate_tfidf_dict(train_prep, tfidf_threshold=30)
+            tfidf_dict_country = df_nccr.generate_tfidf_dict_per_country(train_prep, tfidf_threshold=30)
+            tfidf_dict_global = df_nccr.generate_global_tfidf_dict(train_prep, tfidf_threshold=30)
 
         else:
             # Import dictionaries

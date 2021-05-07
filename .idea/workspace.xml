@@ -143,14 +143,14 @@
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
-          <line>15</line>
-          <option name="timeStamp" value="51" />
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>279</line>
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>98</line>
-          <option name="timeStamp" value="52" />
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>272</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -163,9 +163,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="train_prep.text.iloc[400]" language="Python" />
-        <watch expression="train" />
-        <watch expression="train_prep.loc[train_prep['Sample_Type']=='PressRelease'].iloc[0]" language="Python" />
+        <watch expression="wordlist[:10]" language="Python" />
       </configuration>
     </watches-manager>
   </component>

@@ -229,12 +229,12 @@ class PCCR_Dataset:
         text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove punctuation
         return text_tok_sw_alphanum
 
-    def generate_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: float):
+    def generate_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: int):
         """
         Calculate tf-idf scores of docs and return top n words with tfidf above threshold
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
-        :param tfidf_threshold: Min value for words to be considered in dict
+        :param tfidf_threshold: Number of words to be included
         :type tfidf_threshold: float
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
@@ -246,12 +246,12 @@ class PCCR_Dataset:
         vectorizer = TfidfVectorizer(tokenizer=self.__custom_tokenizer)
 
         # Fit vectorizer on whole corpus
-        vectorizer.fit(df['text_prep'])
+        vectorizer.fit(df['Wording'])
 
         # CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
         df_pop = df.loc[df['POPULIST'] == 1]
         # Transform subcorpus labelled as POP
-        tfidf_pop_vector = vectorizer.transform(df_pop['text_prep']).toarray()
+        tfidf_pop_vector = vectorizer.transform(df_pop['Wording']).toarray()
 
         # Map tf-idf scores to words in the vocab with separate column for each doc
         wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
@@ -270,7 +270,7 @@ class PCCR_Dataset:
         wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
 
         # Retrieve specified top n_words entries
-        tfidf_dict = wordlist.loc[wordlist['average_tfidf'] >= tfidf_threshold][['term', 'average_tfidf']]
+        tfidf_dict = wordlist[:tfidf_threshold][['term', 'average_tfidf']]
 
         # Save dict to disk
         tfidf_dict.to_csv(f'{self.output_path}\\tfidf_dict.csv', index=True)
@@ -281,12 +281,12 @@ class PCCR_Dataset:
 
         return tfidf_dict
 
-    def generate_tfidf_dict_per_country(self, df: pd.DataFrame, tfidf_threshold: float):
+    def generate_tfidf_dict_per_country(self, df: pd.DataFrame, tfidf_threshold: int):
         """
         Calculate tf-idf scores of docs per country and return top n words with tfidf above threshold
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
-        :param tfidf_threshold: Min value for words to be considered in dict
+        :param tfidf_threshold: Number of words to be included
         :type tfidf_threshold: float
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
@@ -307,13 +307,13 @@ class PCCR_Dataset:
         for country, df_country in df_country_grpd:
 
             # Fit vectorizer on current corpus
-            vectorizer.fit(df_country['text_prep'])
+            vectorizer.fit(df_country['Wording'])
 
             # CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
             df_country_pop = df_country.loc[df_country['POPULIST'] == 1]
 
             # Transform subcorpus labelled as POP
-            tfidf_pop_vector = vectorizer.transform(df_country_pop['text_prep']).toarray()
+            tfidf_pop_vector = vectorizer.transform(df_country_pop['Wording']).toarray()
 
             # Map tf-idf scores to words in the vocab with separate column for each doc
             wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
@@ -332,7 +332,7 @@ class PCCR_Dataset:
             wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
 
             # Retrieve specified top n_words entries
-            tfidf_dict = wordlist.loc[wordlist['average_tfidf'] >= tfidf_threshold][['term', 'average_tfidf']]
+            tfidf_dict = wordlist[:tfidf_threshold][['term', 'average_tfidf']]
 
             # Append to country-specific dict to global dict
             tfidf_dict_per_country[country] = tfidf_dict
@@ -351,12 +351,12 @@ class PCCR_Dataset:
 
         return tfidf_dict_per_country
 
-    def generate_global_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: float):
+    def generate_global_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: int):
         """
         Calculate tf-idf scores of docs and return top n words with tfidf above threshold
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
-        :param tfidf_threshold: Min value for words to be considered in dict
+        :param tfidf_threshold: Number of words to be included
         :type tfidf_threshold: float
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
@@ -372,19 +372,19 @@ class PCCR_Dataset:
         df_nonpop = df.loc[df['POPULIST'] != 1]
 
         # Concatenate content of corpus
-        content_pop = ' '.join(df_pop["text_prep"])
-        content_nonpop = ' '.join(df_nonpop["text_prep"])
+        content_pop = ' '.join(df_pop["Wording"])
+        content_nonpop = ' '.join(df_nonpop["Wording"])
 
         # Generate global dataframe with two docs 'POP' and 'NONPOP'
         df_global = pd.DataFrame({'ID': ['df_pop', 'df_nonpop'],
-                                'text_prep': [content_pop, content_nonpop]})
+                                'Wording_combined': [content_pop, content_nonpop]})
 
         # Fit vectorizer on POP and NONPOP corpus
-        vectorizer.fit(df_global['text_prep'])
+        vectorizer.fit(df_global['Wording_combined'])
 
         ## Calculate tf-idf scores of POP-corpus
         # Transform subcorpus labelled as POP
-        tfidf_pop_vector = vectorizer.transform(df_global.loc[df_global['ID'] == 'df_pop'].text_prep).toarray()
+        tfidf_pop_vector = vectorizer.transform(df_global.loc[df_global['ID'] == 'df_pop'].Wording_combined).toarray()
 
         # Map tf-idf scores to words in the vocab with separate column for each doc
         wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
@@ -401,7 +401,7 @@ class PCCR_Dataset:
         wordlist.sort_values(by='tfidf', ascending=False, inplace=True)
 
         # Retrieve specified top n_words entries
-        tfidf_dict_global = wordlist.loc[wordlist['tfidf'] >= tfidf_threshold]
+        tfidf_dict_global = wordlist[:tfidf_threshold]
 
         # Save dict to disk
         tfidf_dict_global.to_csv(f'{self.output_path}\\tfidf_dict_global.csv', index=True)
