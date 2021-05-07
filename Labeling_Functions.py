@@ -13,6 +13,7 @@ ABSTAIN = -1
 NONPOP = 0
 POP = 1
 
+test_mpd = pd.read_csv('C:/Users/dschw/Downloads/MPDataset_MPDS2020b.csv')
 
 def get_lfs_external_inputs():
     threshold = 5
@@ -105,7 +106,16 @@ def get_lfs(lf_input: dict):
         return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf_glob) else ABSTAIN
 
     # LF based on NCCR country-constructed keywords
-    # todo: include LFs
+    @labeling_function()
+    def lf_contains_keywords_nccr_tfidf_ctry(x):
+        if x.Sample_Country == 'au':
+            return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_at']) else ABSTAIN
+
+        elif x.Sample_Country == 'cd':
+            return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_ch']) else ABSTAIN
+
+        elif x.Sample_Country == 'de':
+            return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_de']) else ABSTAIN
 
     # b) External Knowledge-based Labeling
     ches_14, ches_17, ches_19 = get_lfs_external_inputs()
@@ -173,6 +183,6 @@ def get_lfs(lf_input: dict):
     # Define list of lfs to use
     list_lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
                 lf_contains_keywords_nccr_tfidf, lf_contains_keywords_nccr_tfidf_glob,
-                lf_discrediting_elite]
+                lf_contains_keywords_nccr_tfidf_ctry, lf_discrediting_elite]
 
     return list_lfs
