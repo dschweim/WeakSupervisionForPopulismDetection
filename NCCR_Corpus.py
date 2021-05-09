@@ -7,6 +7,7 @@ import pandas as pd
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
+from util import standardize_party_naming
 
 
 class PCCR_Dataset:
@@ -199,9 +200,13 @@ class PCCR_Dataset:
         # Apply retrieve_party function to whole text column depending on sampletype
         df['party'] = df.apply(lambda x: retrieve_party(x['text'], x['Sample_Type']), axis=1)
 
+        # Standardize party naming
+        df['party'] = df['party'].apply(lambda x: standardize_party_naming(x))
+
         # Apply retrieve_year function to whole date column
         df['Date'] = df['Date'].astype(str)
         df['year'] = df['Date'].apply(lambda x: retrieve_year(x))
+        df['year'] = df['year'].astype(int)
 
         # Save pre-processed corpus
         df.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
