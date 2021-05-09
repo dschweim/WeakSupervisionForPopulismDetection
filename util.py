@@ -56,9 +56,15 @@ def standardize_party_naming(party):
         party = party.replace('ü', 'u')
         party = party.replace('ä', 'a')
 
-        # Standardize naming of "Team Stronach"
+        # Standardize naming of specific parties
         if re.search(r'stronach', party):
             party = 'teamstronach'
+
+        if re.search(r'linke', party):
+            party = 'dielinke'
+
+        if re.search(r'grunen', party):
+            party = 'grune'
 
         return party
 
@@ -68,7 +74,7 @@ def get_lfs_external_inputs(data_path: str):
      Generate Lists of pop and nonpop parties for each CHES study
     :param data_path: Dictionary with further input for labeling functions
     :type data_path:  str
-    :return: Path to data folder
+    :return: dict_ches_14, dict_ches_17, dict_ches_19
     :rtype:  dict
     """
     # Generate binary-labelled POP dataframes for Austrian, German and Swiss parties
@@ -80,9 +86,9 @@ def get_lfs_external_inputs(data_path: str):
     ches_df_14 = pd.read_csv(f'{data_path}\\CHES\\2014_CHES_dataset_means.csv')
     ches_df_14 = ches_df_14.loc[ches_df_14.country.isin(rel_country_ids)]
     ches_df_14['antielite_salience'] = ches_df_14['antielite_salience'].apply(lambda x: 1 if x > 5 else 0)
-    ches_df_14 = ches_df_14[['party_name', 'antielite_salience']]
+    ches_df_14 = ches_df_14[['cname', 'party_name', 'antielite_salience']]
     # Rename "party_name" col
-    ches_df_14.rename(columns={"party_name": "party"}, inplace=True)
+    ches_df_14.rename(columns={"party_name": "party", "cname": "country"}, inplace=True)
 
     # Split entries for parties with two naming conventions to separate entries
     add_entries_14 = pd.DataFrame()
@@ -93,7 +99,8 @@ def get_lfs_external_inputs(data_path: str):
             # Make first party the name of current row
             ches_df_14.loc[index, 'party'] = match.group(1)
             # Construct new row with second name and copy values for other cols
-            entry = pd.DataFrame({'party': [match.group(2)],
+            entry = pd.DataFrame({'country': [row.country],
+                                  'party': [match.group(2)],
                                   'antielite_salience': [row.antielite_salience]
                                   })
             # Add row to df which will be appended at the end
@@ -105,12 +112,24 @@ def get_lfs_external_inputs(data_path: str):
     # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
     ches_df_14['party'] = ches_df_14['party'].apply(lambda x: standardize_party_naming(x))
 
-    ches_14_pop = \
-        ches_df_14.loc[(ches_df_14.antielite_salience == 1)]['party'].tolist()
-    ches_14_nonpop = \
-        ches_df_14.loc[(ches_df_14.antielite_salience == 0)]['party'].tolist()
-    ches_14 = {'pop': ches_14_pop,
-               'nonpop': ches_14_nonpop}
+    # Replace keys for countries
+    ches_df_14['country'].replace({"ger": "de", "aus": "au", "swi": "cd"}, inplace=True)
+
+    # Group by country
+    ches_df_14_grpd = ches_df_14.groupby('country')
+
+    dict_ches_14 = {}
+
+    # Generate party list per country
+    for index, row in ches_df_14_grpd:
+        # Pop parties
+        country_pop = row.loc[(row.antielite_salience == 1)]['party'].tolist()
+        country_nonpop = row.loc[(row.antielite_salience == 0)]['party'].tolist()
+
+        # Generate nested dict
+        dict_ches_14[index] = {}
+        dict_ches_14[index]['pop'] = country_pop
+        dict_ches_14[index]['nonpop'] = country_nonpop
 
 
     # CHES 17:
@@ -118,7 +137,7 @@ def get_lfs_external_inputs(data_path: str):
     ches_df_17 = ches_df_17.loc[ches_df_17.country.isin(rel_countries)]
     ches_df_17['people_vs_elite'] = ches_df_17['people_vs_elite'].apply(lambda x: 1 if x > 5 else 0)
     ches_df_17['antielite_salience'] = ches_df_17['antielite_salience'].apply(lambda x: 1 if x > 5 else 0)
-    ches_df_17 = ches_df_17[['party', 'people_vs_elite', 'antielite_salience']]
+    ches_df_17 = ches_df_17[['country', 'party', 'people_vs_elite', 'antielite_salience']]
 
     # Split entries for parties with two naming conventions to separate entries
     add_entries_17 = pd.DataFrame()
@@ -129,7 +148,8 @@ def get_lfs_external_inputs(data_path: str):
             # Make first party the name of current row
             ches_df_17.loc[index, 'party'] = match.group(1)
             # Construct new row with second name and copy values for other cols
-            entry = pd.DataFrame({'party': [match.group(2)],
+            entry = pd.DataFrame({'country': [row.country],
+                                  'party': [match.group(2)],
                                   'people_vs_elite': [row.people_vs_elite],
                                   'antielite_salience': [row.antielite_salience]
                                   })
@@ -142,21 +162,31 @@ def get_lfs_external_inputs(data_path: str):
     # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
     ches_df_17['party'] = ches_df_17['party'].apply(lambda x: standardize_party_naming(x))
 
-    # Generate list of pop and nonpop parties from CHES 17
-    ches_17_pop = \
-        ches_df_17.loc[(ches_df_17.people_vs_elite == 1) | (ches_df_17.antielite_salience == 1)]['party'].tolist()
-    ches_17_nonpop = \
-        ches_df_17.loc[(ches_df_17.people_vs_elite == 0) & (ches_df_17.antielite_salience == 0)]['party'].tolist()
-    ches_17 = {'pop': ches_17_pop,
-               'nonpop': ches_17_nonpop}
+    # Replace keys for countries
+    ches_df_17['country'].replace({"ger": "de", "aus": "au", "swi": "cd"}, inplace=True)
 
+    # Group by country
+    ches_df_17_grpd = ches_df_17.groupby('country')
+
+    dict_ches_17 = {}
+
+    # Generate party list per country
+    for index, row in ches_df_17_grpd:
+        # Pop parties
+        country_pop = row.loc[(row.people_vs_elite == 1) | (row.antielite_salience == 1)]['party'].tolist()
+        country_nonpop = row.loc[(row.people_vs_elite == 0) & (row.antielite_salience == 0)]['party'].tolist()
+
+        # Generate nested dict
+        dict_ches_17[index] = {}
+        dict_ches_17[index]['pop'] = country_pop
+        dict_ches_17[index]['nonpop'] = country_nonpop
 
     # CHES 19:
     ches_df_19 = pd.read_csv(f'{data_path}\\CHES\\CHES2019V3.csv')
     ches_df_19 = ches_df_19.loc[ches_df_19.country.isin(rel_country_ids)]
     ches_df_19['people_vs_elite'] = ches_df_19['people_vs_elite'].apply(lambda x: 1 if x > 5 else 0)
     ches_df_19['antielite_salience'] = ches_df_19['antielite_salience'].apply(lambda x: 1 if x > 5 else 0)
-    ches_df_19 = ches_df_19[['party', 'people_vs_elite', 'antielite_salience']]
+    ches_df_19 = ches_df_19[['country', 'party', 'people_vs_elite', 'antielite_salience']]
 
     # Split entries for parties with two naming conventions to separate entries
     add_entries_19 = pd.DataFrame()
@@ -167,7 +197,8 @@ def get_lfs_external_inputs(data_path: str):
             # Make first party the name of current row
             ches_df_19.loc[index, 'party'] = match.group(1)
             # Construct new row with second name and copy values for other cols
-            entry = pd.DataFrame({'party': [match.group(2)],
+            entry = pd.DataFrame({'country': [row.country],
+                                  'party': [match.group(2)],
                                   'people_vs_elite': [row.people_vs_elite],
                                   'antielite_salience': [row.antielite_salience]
                                   })
@@ -180,12 +211,23 @@ def get_lfs_external_inputs(data_path: str):
     # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
     ches_df_19['party'] = ches_df_19['party'].apply(lambda x: standardize_party_naming(x))
 
-    # Generate list of pop and nonpop parties from CHES 19
-    ches_19_pop = \
-        ches_df_19.loc[(ches_df_19.people_vs_elite == 1) | (ches_df_19.antielite_salience == 1)]['party'].tolist()
-    ches_19_nonpop = \
-        ches_df_19.loc[(ches_df_19.people_vs_elite == 0) & (ches_df_19.antielite_salience == 0)]['party'].tolist()
-    ches_19 = {'pop': ches_19_pop,
-               'nonpop': ches_19_nonpop}
+    # Replace country_ids with country names
+    ches_df_19['country'].replace({3: "de", 13: "au", 36: "cd"}, inplace=True)
 
-    return ches_14, ches_17, ches_19
+    # Group by country
+    ches_df_19_grpd = ches_df_19.groupby('country')
+
+    dict_ches_19 = {}
+
+    # Generate party list per country
+    for index, row in ches_df_19_grpd:
+        # Pop parties
+        country_pop = row.loc[(row.people_vs_elite == 1) | (row.antielite_salience == 1)]['party'].tolist()
+        country_nonpop = row.loc[(row.people_vs_elite == 0) & (row.antielite_salience == 0)]['party'].tolist()
+
+        # Generate nested dict
+        dict_ches_19[index] = {}
+        dict_ches_19[index]['pop'] = country_pop
+        dict_ches_19[index]['nonpop'] = country_nonpop
+
+    return dict_ches_14, dict_ches_17, dict_ches_19

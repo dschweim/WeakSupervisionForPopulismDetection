@@ -94,36 +94,35 @@ def get_lfs(lf_input: dict, data_path: str):
     # b) External Knowledge-based Labeling
     ches_14, ches_17, ches_19 = get_lfs_external_inputs(data_path=data_path)
 
+    # LF based on party position estimated in CHES
     @labeling_function()
     def lf_party_position_ches(x):
         if x.year < 2014:
             return ABSTAIN
 
         elif 2014 <= x.year < 2017:
-            if x.party in ches_14['pop']:
+            if x.party in ches_14[x.Sample_Country]['pop']:
                 return POP
-            elif x.party in ches_14['nonpop']:
+            elif x.party in ches_14[x.Sample_Country]['nonpop']:
                 return NONPOP
             else:
                 return ABSTAIN
 
         elif 2017 <= x.year < 2019:
-            if x.party in ches_17['pop']:
+            if x.party in ches_17[x.Sample_Country]['pop']:
                 return POP
-            elif x.party in ches_17['nonpop']:
+            elif x.party in ches_17[x.Sample_Country]['nonpop']:
                 return NONPOP
             else:
                 return ABSTAIN
 
         elif 2019 <= x.year:
-            if x.party in ches_19['pop']:
+            if x.party in ches_19[x.Sample_Country]['pop']:
                 return POP
-            elif x.party in ches_19['nonpop']:
+            elif x.party in ches_19[x.Sample_Country]['nonpop']:
                 return NONPOP
             else:
                 return ABSTAIN
-
-     # todo: make sure party refers to correct country
 
     # todo: c) Spacy-based labeling
     # Preprocessor for sentiment

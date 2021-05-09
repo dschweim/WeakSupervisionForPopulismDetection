@@ -116,7 +116,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(input_path=input_path,
-         generate_data=True,
+         generate_data=False,
          run_labeling=True,
          generate_train_test=True,
          generate_tfidf_dicts=False)
