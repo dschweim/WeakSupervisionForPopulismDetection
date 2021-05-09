@@ -104,7 +104,8 @@ def main(input_path, generate_data, run_labeling, generate_train_test, generate_
         # Run Snorkel framework
         snorkel_labeling(train_data=train_prep_sub,
                          test_data=test_prep_sub,
-                         lf_input_dict=lf_dict)
+                         lf_input_dict=lf_dict,
+                         data_path=f'{path_to_project_folder}\\Data')
 
 
 if __name__ == "__main__":
@@ -115,7 +116,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(input_path=input_path,
-         generate_data=False,
+         generate_data=True,
          run_labeling=True,
-         generate_train_test=False,
+         generate_train_test=True,
          generate_tfidf_dicts=False)
