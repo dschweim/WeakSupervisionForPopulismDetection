@@ -7,42 +7,16 @@ from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
 from spacy_sentiws import spaCySentiWS
+from util import get_lfs_external_inputs
 
 # Define constants
 ABSTAIN = -1
 NONPOP = 0
 POP = 1
 
-test_mpd = pd.read_csv('C:/Users/dschw/Downloads/MPDataset_MPDS2020b.csv')
 
-def get_lfs_external_inputs():
-    threshold = 5
+def get_lfs(lf_input: dict, data_path: str):
 
-    rel_countries = ['aus', 'ger', 'swi']
-    rel_country_ids = ['13', '3', '36']
-
-    ches_df_14 = pd.read_csv('C:/Users/dschw/Documents/GitHub/Thesis/Data/CHES/2014_CHES_dataset_means.csv')
-    ches_df_14 = ches_df_14.loc[ches_df_14.country.isin(rel_country_ids)]
-
-    ches_df_17 = pd.read_csv('C:/Users/dschw/Documents/GitHub/Thesis/Data/CHES/CHES_means_2017.csv')
-    ches_df_17 = ches_df_17.loc[ches_df_17.country.isin(rel_countries)]
-
-    ches_df_19 = pd.read_csv('C:/Users/dschw/Documents/GitHub/Thesis/Data/CHES/CHES2019V3.csv')
-    ches_df_19 = ches_df_19.loc[ches_df_19.country.isin(rel_country_ids)]
-    ches_df_19['people_vs_elite'] = ches_df_19['people_vs_elite'].apply(lambda x: [0 if y <= 5 else 1 for y in x])
-    ches_df_19['antielite_salience'] = ches_df_19['antielite_salience'].apply(lambda x: [0 if y <= 5 else 1 for y in x])
-    ches_df_19 = [['party', 'people_vs_elite', 'antielite_salience']]
-
-    ches_19 = {'pop': [],
-               'nonpop': []}
-
-    #todo: Preprocess to reduce columns & define threshold when to consider POP and when not
-    ## todo: return dictionary with list of parties that are populist/nonpopulist
-    # todo: make sure party name matches to format of data.party
-
-    return ches_14, ches_17, ches_19
-
-def get_lfs(lf_input: dict):
     # a) Dictionary-based labeling
 
     # LF based on Schwarzbözl keywords
@@ -118,7 +92,7 @@ def get_lfs(lf_input: dict):
             return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_de']) else ABSTAIN
 
     # b) External Knowledge-based Labeling
-    ches_14, ches_17, ches_19 = get_lfs_external_inputs()
+    ches_14, ches_17, ches_19 = get_lfs_external_inputs(data_path=data_path)
 
     @labeling_function()
     def lf_party_position_ches(x):
@@ -149,7 +123,7 @@ def get_lfs(lf_input: dict):
             else:
                 return ABSTAIN
 
-
+     # todo: make sure party refers to correct country
 
     # todo: c) Spacy-based labeling
     # Preprocessor for sentiment
@@ -183,6 +157,6 @@ def get_lfs(lf_input: dict):
     # Define list of lfs to use
     list_lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
                 lf_contains_keywords_nccr_tfidf, lf_contains_keywords_nccr_tfidf_glob,
-                lf_contains_keywords_nccr_tfidf_ctry, lf_discrediting_elite]
+                lf_contains_keywords_nccr_tfidf_ctry, lf_discrediting_elite, lf_party_position_ches]
 
     return list_lfs
