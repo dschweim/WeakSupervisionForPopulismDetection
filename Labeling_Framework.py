@@ -8,7 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from Labeling_Functions import get_lfs
 
 
-def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input_dict: dict):
+def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input_dict: dict, data_path: str):
     """
     Calculate tf-idf scores of docs and return top n words that
     :param train_data: Trainset
@@ -17,13 +17,15 @@ def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input
     :type test_data:  DataFrame
     :param lf_input_dict: Dictionary with further input for labeling functions
     :type test_data:  dict
+    :param data_path: Path to data folder
+    :type test_data:  str
     :return: Returns labelled Dataset
     :rtype:  DataFrame
     """
 
     ## 1. Define labeling functions
     # Retrieve defined labeling functions
-    lfs = get_lfs(lf_input_dict)
+    lfs = get_lfs(lf_input_dict, data_path)
 
     ## 2. Generate label matrix L
     applier = PandasLFApplier(lfs=lfs)
