@@ -4,11 +4,16 @@ from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer
+from snorkel.analysis import get_label_buckets
 
 from Labeling_Functions import get_lfs
 
 
-def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input_dict: dict, data_path: str):
+def snorkel_labeling(
+        train_data: pd.DataFrame,
+        test_data: pd.DataFrame,
+        lf_input_dict: dict,
+        data_path: str, output_path: str):
     """
     Calculate tf-idf scores of docs and return top n words that
     :param train_data: Trainset
@@ -23,6 +28,12 @@ def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input
     :rtype:  DataFrame
     """
 
+    ABSTAIN = -1
+    NONPOP = 0
+    POP = 1
+
+    # todo: Rename column POPULIST to label
+
     ## 1. Define labeling functions
     # Retrieve defined labeling functions
     lfs = get_lfs(lf_input_dict, data_path)
@@ -32,7 +43,15 @@ def snorkel_labeling(train_data: pd.DataFrame, test_data: pd.DataFrame, lf_input
     L_train = applier.apply(df=train_data)
 
     # Evaluate performance on training set
-    print(LFAnalysis(L=L_train, lfs=lfs).lf_summary())
+    print(LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y = train_data.POPULIST.values))
+    print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
+    #print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
+
+    analysis = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y = train_data.POPULIST.values)
+    analysis.to_csv(f'{output_path}\\Snorkel\\snorkel_LF_analysis.csv')
+
+    buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
+    train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
 
     ## 3. Generate label model
     # Baseline: Majority Model
