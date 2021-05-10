@@ -132,11 +132,11 @@ def get_lfs(lf_input: dict, data_path: str):
         return x
 
     # d) Key Message-based Labeling:
-    custom_spacy = SpacyPreprocessor(text_field="text", doc_field="doc", memoize=True)
+    spacy = SpacyPreprocessor(text_field="text", doc_field="doc", memoize=True)
 
     # LFS: Key Message 1 - Discrediting the Elite
     # negative personality and personal negative attributes of a target
-    @labeling_function()
+    @labeling_function(pre=[spacy])
     def lf_discrediting_elite(x):
 
         target = 'bundesregierung'
@@ -152,6 +152,13 @@ def get_lfs(lf_input: dict, data_path: str):
     # LFS: Key Message 2- Blaming the Elite
     # @labeling_function(pre=[spac])
     # def km2_blaming_elite(x):
+
+    #@labeling_function()
+    #def lf_find_people(x):
+
+
+
+
 
     # Define list of lfs to use
     list_lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
