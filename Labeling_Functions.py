@@ -1,13 +1,14 @@
 import re
 import spacy
 import torch
-import numpy
+import numpy as np
 import pandas as pd
 from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
 from spacy_sentiws import spaCySentiWS
 from util import get_lfs_external_inputs
+import Tensor2Attr
 
 # Define constants
 ABSTAIN = -1
@@ -17,6 +18,18 @@ POP = 1
 
 def get_lfs(lf_input: dict, data_path: str):
 
+    ## Preprocessors
+    spacy = SpacyPreprocessor(text_field="text", doc_field="doc",
+                              language="de_core_news_lg", memoize=True)
+
+    @preprocessor(memoize=True)
+    def custom_spacy_preprocessor(x):
+        nlp_trf = spacy.load("de_dep_news_trf")
+        nlp_trf.add_pipe('tensor2attr')
+        x.doc = nlp_trf(x.text)
+        return x
+
+    ## Labeling Functions
     # a) Dictionary-based labeling
 
     # LF based on Schwarzbözl keywords
@@ -124,23 +137,20 @@ def get_lfs(lf_input: dict, data_path: str):
             else:
                 return ABSTAIN
 
-    # todo: c) Spacy-based labeling
-    # Preprocessor for sentiment
-    @preprocessor(memoize=True)
-    def sentiment_preprocessor(x):
-
-        return x
-
-    # d) Key Message-based Labeling:
-    spacy = SpacyPreprocessor(text_field="text", doc_field="doc", memoize=True)
+    # c) Key Message-based Labeling:
 
     # LFS: Key Message 1 - Discrediting the Elite
     # negative personality and personal negative attributes of a target
     @labeling_function(pre=[spacy])
     def lf_discrediting_elite(x):
-
         target = 'bundesregierung'
         if target in x.text.lower():
+            # {"lower": target}, IS_ADJ: True and neg
+            for token in x.doc:
+
+                if token.head == target and token.pos_ == 'ADJ': #& is negative & refers to target
+                    print(token.text)
+
             return POP
         else:
             return ABSTAIN
@@ -150,11 +160,28 @@ def get_lfs(lf_input: dict, data_path: str):
         # 3. Negative attributes
 
     # LFS: Key Message 2- Blaming the Elite
-    # @labeling_function(pre=[spac])
-    # def km2_blaming_elite(x):
+    # identify people embedding
 
-    #@labeling_function()
-    #def lf_find_people(x):
+    @labeling_function(pre=[custom_spacy_preprocessor])
+    def lf_people_detector(x):
+        # Define elite keywords
+        key_word_Df = pd.DataFrame({'text': ["Bundesregierung"], 'party': None, 'Sample_Country': None,
+                                 'year': None, 'POPULIST': None})
+        key_word = custom_spacy_preprocessor(key_word_Df.loc[0]).doc[0]
+
+        # Calculate embedding-based similarity of key_word tokens for tokens with relevant POS tag
+        relevant_tags = ['PROPN', 'NOUN', 'PRON']
+
+        for sent in x.doc.sents:
+            for token in sent:
+                if token.pos_ in relevant_tags:
+                    sim = x.doc[token.i].similarity(key_word)
+                    if sim > 0.2:
+                        return POP
+                else:
+                    return ABSTAIN
+
+    ## SPACY PATTERN MATCHING FOR KEYWORDS
 
 
 
@@ -166,3 +193,7 @@ def get_lfs(lf_input: dict, data_path: str):
                 lf_contains_keywords_nccr_tfidf_ctry, lf_discrediting_elite, lf_party_position_ches]
 
     return list_lfs
+
+
+    #todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)
+
