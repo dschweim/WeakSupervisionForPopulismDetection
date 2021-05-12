@@ -33,7 +33,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LF based on Schwarzbözl keywords
     @labeling_function()
-    def lf_contains_keywords_schwarzbozl(x):
+    def lf_keywords_schwarzbozl(x):
         keywords_schwarbozl = ["altparteien", "anpassung", "iwf",
                                "politiker", "austerität", "offenbar",
                                "neoliberal", "briten", "oligarchen",
@@ -48,9 +48,23 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if any(keyword in x.text.lower() for keyword in keywords_schwarbozl) else ABSTAIN
 
+    #
+    def lf_keywordstems_schwarzbozl(x):
+        keywords_schwarbozl = ["altparteien", "anpassung", "iwf",
+                               "politiker", "austerität", "offenbar",
+                               "neoliberal", "briten", "oligarchen",
+                               "steinbrück", "darlehen", "steuergeld",
+                               "venezuela", "dschihadist", "steuerverschwendung",
+                               "bip", "entzogen", "erwerbslose",
+                               "lobby", "etabliert", "souveränität",
+                               "parlament", "fahrt", "rundfunkbeitrag",
+                               "verlangt", "konzern", "leistet",
+                               "verlust", "herhalten", "rente"]
+
+
     # LF based on Roodujin keywords
     @labeling_function()
-    def lf_contains_keywords_roodujin(x):
+    def lf_keywords_roodujin(x):
         keywords_roodujin = ["elit", "konsens", "undemokratisch", "referend", "korrupt",
                              "propagand", "politiker", "täusch", "betrüg", "betrug",
                              "verrat", "scham", "schäm", "skandal", "wahrheit", "unfair",
@@ -61,7 +75,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LF based on Roodujin keywords-regex search
     @labeling_function()
-    def lf_contains_keywords_roodujin_regex(x):
+    def lf_keywords_roodujin_regex(x):
         regex_keywords_roodujin = ["elit\S*", "konsens\S*", "undemokratisch\S*",
                                    "referend\S*", "korrupt\S*", "propagand\S*",
                                    "politiker\S*", "täusch\S*", "betrüg\S*",
@@ -77,7 +91,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LF based on NCCR-constructed keywords
     @labeling_function()
-    def lf_contains_keywords_nccr_tfidf(x):
+    def lf_keywords_nccr_tfidf(x):
         regex_keywords_nccr_tfidf = lf_input['tfidf_keywords']
 
         # Return a label of POP if keyword in text, otherwise ABSTAIN
@@ -85,7 +99,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LF based on NCCR global-constructed keywords
     @labeling_function()
-    def lf_contains_keywords_nccr_tfidf_glob(x):
+    def lf_keywords_nccr_tfidf_glob(x):
         regex_keywords_nccr_tfidf_glob = lf_input['tfidf_keywords_global']
 
         # Return a label of POP if keyword in text, otherwise ABSTAIN
@@ -93,7 +107,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LF based on NCCR country-constructed keywords
     @labeling_function()
-    def lf_contains_keywords_nccr_tfidf_country(x):
+    def lf_keywords_nccr_tfidf_country(x):
         if x.Sample_Country == 'au':
             return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_at']) else ABSTAIN
 
@@ -189,9 +203,9 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
 
     # Define list of lfs to use
-    list_lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
-                lf_contains_keywords_nccr_tfidf, lf_contains_keywords_nccr_tfidf_glob,
-                lf_contains_keywords_nccr_tfidf_country, lf_discrediting_elite, lf_party_position_ches]
+    list_lfs = [lf_keywords_schwarzbozl, lf_keywords_roodujin, lf_keywords_roodujin_regex,
+                lf_keywords_nccr_tfidf, lf_keywords_nccr_tfidf_glob,
+                lf_keywords_nccr_tfidf_country, lf_discrediting_elite, lf_party_position_ches]
 
     return list_lfs
 
