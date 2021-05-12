@@ -16,10 +16,9 @@ POP = 1
 
 
 def get_lfs(lf_input: dict, lf_input_ches: dict):
-
     ## Preprocessors
-    spacy = SpacyPreprocessor(text_field="text", doc_field="doc",
-                              language="de_core_news_lg", memoize=True)
+    de_spacy = SpacyPreprocessor(text_field="text", doc_field="doc",
+                                 language="de_core_news_lg", memoize=True)
 
     @preprocessor(memoize=True)
     def custom_spacy_preprocessor(x):
@@ -30,60 +29,63 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     ## Labeling Functions
     # a) Dictionary-based labeling
+    keywords_schwarzbozl = ["altparteien", "anpassung", "iwf",
+                            "politiker", "austerität", "offenbar",
+                            "neoliberal", "briten", "oligarchen",
+                            "steinbrück", "darlehen", "steuergeld",
+                            "venezuela", "dschihadist", "steuerverschwendung",
+                            "bip", "entzogen", "erwerbslose",
+                            "lobby", "etabliert", "souveränität",
+                            "parlament", "fahrt", "rundfunkbeitrag",
+                            "verlangt", "konzern", "leistet",
+                            "verlust", "herhalten", "rente"]
+
+    keywords_roodujin = ["elit", "konsens", "undemokratisch", "referend", "korrupt",
+                         "propagand", "politiker", "täusch", "betrüg", "betrug",
+                         "verrat", "scham", "schäm", "skandal", "wahrheit", "unfair",
+                         "unehrlich", "establishm", "herrsch", "lüge"]
+
+    regex_keywords_roodujin = ["elit\S*", "konsens\S*", "undemokratisch\S*",
+                               "referend\S*", "korrupt\S*", "propagand\S*",
+                               "politiker\S*", "täusch\S*", "betrüg\S*",
+                               "betrug\S*", "\S*verrat\S*", "scham\S*", "schäm\S*",
+                               "skandal\S*", "wahrheit\S*", "unfair\S*",
+                               "unehrlich\S*", "establishm\S*", "\S*herrsch\S*",
+                               "lüge\S*"]
 
     # LF based on Schwarzbözl keywords
     @labeling_function()
     def lf_keywords_schwarzbozl(x):
-        keywords_schwarbozl = ["altparteien", "anpassung", "iwf",
-                               "politiker", "austerität", "offenbar",
-                               "neoliberal", "briten", "oligarchen",
-                               "steinbrück", "darlehen", "steuergeld",
-                               "venezuela", "dschihadist", "steuerverschwendung",
-                               "bip", "entzogen", "erwerbslose",
-                               "lobby", "etabliert", "souveränität",
-                               "parlament", "fahrt", "rundfunkbeitrag",
-                               "verlangt", "konzern", "leistet",
-                               "verlust", "herhalten", "rente"]
-
         # Return a label of POP if keyword in text, otherwise ABSTAIN
-        return POP if any(keyword in x.text.lower() for keyword in keywords_schwarbozl) else ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in keywords_schwarzbozl) else ABSTAIN
 
-    #
-    def lf_keywordstems_schwarzbozl(x):
-        keywords_schwarbozl = ["altparteien", "anpassung", "iwf",
-                               "politiker", "austerität", "offenbar",
-                               "neoliberal", "briten", "oligarchen",
-                               "steinbrück", "darlehen", "steuergeld",
-                               "venezuela", "dschihadist", "steuerverschwendung",
-                               "bip", "entzogen", "erwerbslose",
-                               "lobby", "etabliert", "souveränität",
-                               "parlament", "fahrt", "rundfunkbeitrag",
-                               "verlangt", "konzern", "leistet",
-                               "verlust", "herhalten", "rente"]
+    # LF based on Schwarzbözl keywords lemma
+    nlp = spacy.load("de_core_news_lg")
+    lemmas_schwarzbozl = list(nlp.pipe(keywords_schwarzbozl))
 
+    for i in range(len(lemmas_schwarzbozl)):
+        lemmas_schwarzbozl[i] = lemmas_schwarzbozl[i].doc[0].lemma_
+
+    @labeling_function(pre=[de_spacy])
+    def lf_lemma_schwarzbozl(x):
+        lemmas_doc = []  # Concatenate lemmas per doc
+        for token in x.doc:
+            lemmas_doc.append(token.lemma_)
+        #lemmas_doc = [x.lower() for x in lemmas_doc]
+        if any(lemma in lemmas_doc for lemma in lemmas_schwarzbozl):
+            return POP
+        else:
+            return ABSTAIN
 
     # LF based on Roodujin keywords
     @labeling_function()
     def lf_keywords_roodujin(x):
-        keywords_roodujin = ["elit", "konsens", "undemokratisch", "referend", "korrupt",
-                             "propagand", "politiker", "täusch", "betrüg", "betrug",
-                             "verrat", "scham", "schäm", "skandal", "wahrheit", "unfair",
-                             "unehrlich", "establishm", "herrsch", "lüge"]
-
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if any(keyword in x.text.lower() for keyword in keywords_roodujin) else ABSTAIN
 
     # LF based on Roodujin keywords-regex search
     @labeling_function()
     def lf_keywords_roodujin_regex(x):
-        regex_keywords_roodujin = ["elit\S*", "konsens\S*", "undemokratisch\S*",
-                                   "referend\S*", "korrupt\S*", "propagand\S*",
-                                   "politiker\S*", "täusch\S*", "betrüg\S*",
-                                   "betrug\S*", "\S*verrat\S*", "scham\S*", "schäm\S*",
-                                   "skandal\S*", "wahrheit\S*", "unfair\S*",
-                                   "unehrlich\S*", "establishm\S*", "\S*herrsch\S*",
-                                   "lüge\S*"]
-
         regex_roodujin = '|'.join(regex_keywords_roodujin)
 
         # Return a label of POP if keyword in text, otherwise ABSTAIN
@@ -156,7 +158,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LFS: Key Message 1 - Discrediting the Elite
     # negative personality and personal negative attributes of a target
-    @labeling_function(pre=[spacy])
+    @labeling_function(pre=[de_spacy])
     def lf_discrediting_elite(x):
         target = 'bundesregierung'
         if target in x.text.lower():
@@ -181,7 +183,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     def lf_people_detector(x):
         # Define elite keywords
         key_word_Df = pd.DataFrame({'text': ["Bundesregierung"], 'party': None, 'Sample_Country': None,
-                                 'year': None, 'POPULIST': None})
+                                    'year': None, 'POPULIST': None})
         key_word = custom_spacy_preprocessor(key_word_Df.loc[0]).doc[0]
 
         # Calculate embedding-based similarity of key_word tokens for tokens with relevant POS tag
@@ -198,17 +200,12 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     ## SPACY PATTERN MATCHING FOR KEYWORDS
 
-
-
-
-
     # Define list of lfs to use
-    list_lfs = [lf_keywords_schwarzbozl, lf_keywords_roodujin, lf_keywords_roodujin_regex,
+    list_lfs = [lf_keywords_schwarzbozl, lf_lemma_schwarzbozl,
+                lf_keywords_roodujin, lf_keywords_roodujin_regex,
                 lf_keywords_nccr_tfidf, lf_keywords_nccr_tfidf_glob,
                 lf_keywords_nccr_tfidf_country, lf_discrediting_elite, lf_party_position_ches]
 
     return list_lfs
 
-
-    #todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)
-
+    # todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)
