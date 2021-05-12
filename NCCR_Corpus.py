@@ -79,9 +79,6 @@ class PCCR_Dataset:
         # todo: Remove remaining duplicates
         duplicates = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]
 
-        # Save created German corpus
-        #df_combined_de.to_csv(f'{self.output_path}\\NCCR_labelled_corpus_DE.csv', index=True)
-
         # Merge combined df with full_target, full_issue
         #full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
         full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
@@ -151,9 +148,6 @@ class PCCR_Dataset:
 
             # Remove linebreaks and extra spaces
             text = " ".join(text.split())
-
-            # Remove some special characters (*) todo: instead remove every non-word/space/punctuation
-            text = text.replace('*', '')
 
             return text
 
