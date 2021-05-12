@@ -7,7 +7,6 @@ from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
 from spacy_sentiws import spaCySentiWS
-from util import get_lfs_external_inputs
 import Tensor2Attr
 
 # Define constants
@@ -16,7 +15,7 @@ NONPOP = 0
 POP = 1
 
 
-def get_lfs(lf_input: dict, data_path: str):
+def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     ## Preprocessors
     spacy = SpacyPreprocessor(text_field="text", doc_field="doc",
@@ -94,7 +93,7 @@ def get_lfs(lf_input: dict, data_path: str):
 
     # LF based on NCCR country-constructed keywords
     @labeling_function()
-    def lf_contains_keywords_nccr_tfidf_ctry(x):
+    def lf_contains_keywords_nccr_tfidf_country(x):
         if x.Sample_Country == 'au':
             return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_at']) else ABSTAIN
 
@@ -105,9 +104,11 @@ def get_lfs(lf_input: dict, data_path: str):
             return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_de']) else ABSTAIN
 
     # b) External Knowledge-based Labeling
-    ches_14, ches_17, ches_19 = get_lfs_external_inputs(data_path=data_path)
-
     # LF based on party position estimated in CHES
+    ches_14 = lf_input_ches['ches_14']
+    ches_17 = lf_input_ches['ches_17']
+    ches_19 = lf_input_ches['ches_19']
+
     @labeling_function()
     def lf_party_position_ches(x):
         if x.year < 2014:
@@ -146,10 +147,10 @@ def get_lfs(lf_input: dict, data_path: str):
         target = 'bundesregierung'
         if target in x.text.lower():
             # {"lower": target}, IS_ADJ: True and neg
-            for token in x.doc:
-
-                if token.head == target and token.pos_ == 'ADJ': #& is negative & refers to target
-                    print(token.text)
+            # for token in x.doc:
+            #
+            #     if token.head == target and token.pos_ == 'ADJ': #& is negative & refers to target
+            #         print(token.text)
 
             return POP
         else:
@@ -190,7 +191,7 @@ def get_lfs(lf_input: dict, data_path: str):
     # Define list of lfs to use
     list_lfs = [lf_contains_keywords_schwarzbozl, lf_contains_keywords_roodujin, lf_contains_keywords_roodujin_regex,
                 lf_contains_keywords_nccr_tfidf, lf_contains_keywords_nccr_tfidf_glob,
-                lf_contains_keywords_nccr_tfidf_ctry, lf_discrediting_elite, lf_party_position_ches]
+                lf_contains_keywords_nccr_tfidf_country, lf_discrediting_elite, lf_party_position_ches]
 
     return list_lfs
 
