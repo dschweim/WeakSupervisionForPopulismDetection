@@ -83,6 +83,23 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if any(keyword in x.text.lower() for keyword in keywords_roodujin) else ABSTAIN
 
+    # LF based on Roodujin keywords lemma
+    lemmas_roodujin = list(nlp.pipe(keywords_roodujin))
+
+    for i in range(len(lemmas_roodujin)):
+        lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_
+
+    @labeling_function(pre=[de_spacy])
+    def lf_lemma_roodujin(x):
+        lemmas_doc = []  # Concatenate lemmas per doc
+        for token in x.doc:
+            lemmas_doc.append(token.lemma_)
+        # lemmas_doc = [x.lower() for x in lemmas_doc]
+        if any(lemma in lemmas_doc for lemma in lemmas_roodujin):
+            return POP
+        else:
+            return ABSTAIN
+
     # LF based on Roodujin keywords-regex search
     @labeling_function()
     def lf_keywords_roodujin_regex(x):
@@ -158,6 +175,9 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LFS: Key Message 1 - Discrediting the Elite
     # negative personality and personal negative attributes of a target
+
+    ## neg sent analysis
+    #SENTIMENT IS NEG
     @labeling_function(pre=[de_spacy])
     def lf_discrediting_elite(x):
         target = 'bundesregierung'
@@ -202,9 +222,11 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl, lf_lemma_schwarzbozl,
-                lf_keywords_roodujin, lf_keywords_roodujin_regex,
+                lf_keywords_roodujin, lf_lemma_roodujin, lf_keywords_roodujin_regex,
                 lf_keywords_nccr_tfidf, lf_keywords_nccr_tfidf_glob,
-                lf_keywords_nccr_tfidf_country, lf_discrediting_elite, lf_party_position_ches]
+                lf_keywords_nccr_tfidf_country,
+                lf_discrediting_elite,
+                lf_party_position_ches]
 
     return list_lfs
 
