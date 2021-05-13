@@ -8,6 +8,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming
 
+from spacy_sentiws import spaCySentiWS
+from textblob_de import TextBlobDE as TextBlob
+
 from Labeling_Functions import get_lfs
 
 
@@ -32,7 +35,99 @@ class Labeler:
         self.data_path = data_path
         self.output_path = output_path
 
-    def __prepare_labeling_input(self):
+    def run_labeling(self):
+        """
+        Generate labels on initialized dataframe using Snorkel
+        :return:
+        :rtype:
+        """
+
+        ABSTAIN = -1
+        NONPOP = 0
+        POP = 1
+
+        # todo: Rename column POPULIST to label
+
+        ## 1. Define labeling functions
+        # Generate dict with ches input
+        ches_14, ches_17, ches_19 = self.__prepare_labeling_input_ches()
+        lf_input_ches = {}
+        values = {'ches_14': ches_14,
+                  'ches_17': ches_17,
+                  'ches_19': ches_19}
+        lf_input_ches.update(values)
+
+        # Generate dict with ncr input
+        ncr = self.__prepare_labeling_input_ncr()
+
+        # Retrieve defined labeling functions
+        lfs = get_lfs(self.lf_input_dict, lf_input_ches)
+
+        # Define train & test data
+        train_data = self.train_data
+        test_data = self.test_data
+
+        ## 2. Generate label matrix L
+        applier = PandasLFApplier(lfs=lfs)
+        L_train = applier.apply(df=train_data)
+
+        # Evaluate performance on training set
+        print(LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values))
+        print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
+        # print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
+
+        analysis = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
+        analysis.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis.csv')
+
+        buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
+        train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
+
+        ## 3. Generate label model
+        # Baseline: Majority Model
+        majority_model = MajorityLabelVoter()
+        preds_train = majority_model.predict(L=L_train)
+
+        # Advanced: Label Model
+        label_model = LabelModel(cardinality=2, verbose=True)
+        label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
+
+        # Extract target label
+        Y_test = test_data['POPULIST']
+        L_test = applier.apply(df=test_data)
+
+        majority_scores_dict = majority_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
+                                                    metrics=["accuracy", "precision", "recall"])
+
+        print(f"{'Majority Vote Accuracy:':<25} {majority_scores_dict['accuracy']}")
+        print(f"{'Majority Vote Precision:':<25} {majority_scores_dict['precision']}")
+        print(f"{'Majority Vote Recall:':<25} {majority_scores_dict['recall']}")
+
+        label_model_scores_dict = label_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
+                                                    metrics=["accuracy", "precision", "recall"])
+
+        print(f"{'Label Model Accuracy:':<25} {label_model_scores_dict['accuracy']}")
+        print(f"{'Label Model Precision:':<25} {label_model_scores_dict['precision']}")
+        print(f"{'Label Model Recall:':<25} {label_model_scores_dict['recall']}")
+
+        # todo: Classifier
+        ## 4. Train classifier
+        # Filter out unlabeled data points
+        probs_train = label_model.predict_proba(L=L_train)
+        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(
+            X=train_data, y=probs_train, L=L_train
+        )
+
+        vectorizer = CountVectorizer(ngram_range=(1, 5))
+        X_train = vectorizer.fit_transform(df_train_filtered.text.tolist())
+        X_test = vectorizer.transform(test_data.text.tolist())
+
+        preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
+        sklearn_model = LogisticRegression(C=1e3, solver="liblinear")
+        sklearn_model.fit(X=X_train, y=preds_train_filtered)
+
+        print(f"Test Accuracy: {sklearn_model.score(X=X_test, y=Y_test) * 100:.1f}%")
+
+    def __prepare_labeling_input_ches(self):
         """
         Generate Lists of pop and nonpop parties for each CHES study
         :return: dict_ches_14, dict_ches_17, dict_ches_19
@@ -191,99 +286,20 @@ class Labeler:
 
         return dict_ches_14, dict_ches_17, dict_ches_19
 
-    def run_labeling(self):
+    def __prepare_labeling_input_ncr(self):
         """
-        Calculate tf-idf scores of docs and return top n words that
-        :param train_data: Trainset
-        :type train_data:  DataFrame
-        :param test_data: Testset
-        :type test_data:  DataFrame
-        :param lf_input_dict: Dictionary with further input for labeling functions
-        :type test_data:  dict
-        :param data_path: Path to data folder
-        :type test_data:  str
-        :return: Returns labelled Dataset
+        Generate dataframe for ncr sentiment analysis
+        :return: ncr
         :rtype:  DataFrame
         """
+        ncr = pd.read_csv(f'{self.data_path}\\NRC-Emotion-Lexicon\\NRC-Emotion-Lexicon\\NRC-Emotion-Lexicon-v0.92\\'
+                          f'NRC-Emotion-Lexicon-v0.92-In105Languages-Nov2017Translations.csv', sep=';')
 
-        ABSTAIN = -1
-        NONPOP = 0
-        POP = 1
+        # todo: generate sentiment from ncr
+        # Subselect relevant columns
+        ncr = ncr[['German (de)', 'Positive', 'Negative',
+                   'Anger', 'Anticipation', 'Disgust',
+                   'Fear', 'Joy', 'Sadness', 'Surprise',
+                   'Trust']]
 
-        # todo: Rename column POPULIST to label
-
-        ## 1. Define labeling functions
-        # Generate dict with ches input
-        ches_14, ches_17, ches_19 = self.__prepare_labeling_input()
-        lf_input_ches = {}
-        values = {'ches_14': ches_14,
-                  'ches_17': ches_17,
-                  'ches_19': ches_19}
-        lf_input_ches.update(values)
-
-        # Retrieve defined labeling functions
-        lfs = get_lfs(self.lf_input_dict, lf_input_ches)
-
-        # Define train & test data
-        train_data = self.train_data
-        test_data = self.test_data
-
-        ## 2. Generate label matrix L
-        applier = PandasLFApplier(lfs=lfs)
-        L_train = applier.apply(df=train_data)
-
-        # Evaluate performance on training set
-        print(LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values))
-        print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
-        # print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
-
-        analysis = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
-        analysis.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis.csv')
-
-        buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
-        train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
-
-        ## 3. Generate label model
-        # Baseline: Majority Model
-        majority_model = MajorityLabelVoter()
-        preds_train = majority_model.predict(L=L_train)
-
-        # Advanced: Label Model
-        label_model = LabelModel(cardinality=2, verbose=True)
-        label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
-
-        # Extract target label
-        Y_test = test_data['POPULIST']
-        L_test = applier.apply(df=test_data)
-
-        majority_scores_dict = majority_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
-                                                    metrics=["accuracy", "precision", "recall"])
-
-        print(f"{'Majority Vote Accuracy:':<25} {majority_scores_dict['accuracy']}")
-        print(f"{'Majority Vote Precision:':<25} {majority_scores_dict['precision']}")
-        print(f"{'Majority Vote Recall:':<25} {majority_scores_dict['recall']}")
-
-        label_model_scores_dict = label_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
-                                                    metrics=["accuracy", "precision", "recall"])
-
-        print(f"{'Label Model Accuracy:':<25} {label_model_scores_dict['accuracy']}")
-        print(f"{'Label Model Precision:':<25} {label_model_scores_dict['precision']}")
-        print(f"{'Label Model Recall:':<25} {label_model_scores_dict['recall']}")
-
-        # todo: Classifier
-        ## 4. Train classifier
-        # Filter out unlabeled data points
-        probs_train = label_model.predict_proba(L=L_train)
-        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(
-            X=train_data, y=probs_train, L=L_train
-        )
-
-        vectorizer = CountVectorizer(ngram_range=(1, 5))
-        X_train = vectorizer.fit_transform(df_train_filtered.text.tolist())
-        X_test = vectorizer.transform(test_data.text.tolist())
-
-        preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
-        sklearn_model = LogisticRegression(C=1e3, solver="liblinear")
-        sklearn_model.fit(X=X_train, y=preds_train_filtered)
-
-        print(f"Test Accuracy: {sklearn_model.score(X=X_test, y=Y_test) * 100:.1f}%")
+        return ncr

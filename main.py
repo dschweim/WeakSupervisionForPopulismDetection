@@ -10,12 +10,29 @@ from util import generate_train_test_split, generate_train_dev_test_split
 sys.path.append("..")
 
 
-def main(path_to_project_folder, generate_data, generate_train_test, generate_tfidf_dicts, generate_labeling):
+def main(path_to_project_folder: str,
+         generate_data: bool, generate_train_test: bool,
+         generate_tfidf_dicts: bool, generate_labeling: bool):
+    """
+    main function to run project and initialize classes
+    :param path_to_project_folder: Trainset
+    :type path_to_project_folder: str
+    :param generate_data: Indicator whether to generate data corpus in current run
+    :type generate_data: bool
+    :param generate_train_test:  Indicator whether to generate train test split in current run
+    :type generate_train_test:  bool
+    :param generate_tfidf_dicts: Indicator whether to generate tf-idf dictionaries in current run
+    :type generate_tfidf_dicts:  bool
+    :param generate_labeling: Indicator whether to generate labels from Snorkel in current run
+    :type generate_labeling:  bool
+    :return:
+    :rtype:
+    """
+
     # Initialize
     nccr_df = PCCR_Dataset(data_path=f'{path_to_project_folder}\\Data',
                            output_path=f'{path_to_project_folder}\\Output')
 
-    # Either generate data or read data from disk
     if generate_data:
         # Generate Labelled NCCR
         nccr_data_de_wording_all, nccr_data_de_wording_av = nccr_df.generate_labelled_nccr_corpus()
@@ -29,7 +46,6 @@ def main(path_to_project_folder, generate_data, generate_train_test, generate_tf
             f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available.csv'
         )
 
-    # Run Snorkel framework if set
     if generate_train_test:
         # Generate Train, Test Split
         train, test = generate_train_test_split(nccr_data_de_wording_av)
@@ -80,10 +96,13 @@ def main(path_to_project_folder, generate_data, generate_train_test, generate_tf
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
 
         # Filter on relevant columns
-        train_prep_sub = train_prep[['text_prep', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        test_prep_sub = test_prep[['text_prep', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        train_prep_sub = train_prep[['ID', 'text_prep', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        test_prep_sub = test_prep[['ID', 'text_prep', 'party', 'Sample_Country', 'year', 'POPULIST']]
         train_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
         test_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
+
+        #train_prep_sub.drop_duplicates(subset='ID', keep=False, inplace=True)
+        #test_prep_sub.drop_duplicates(subset='ID', keep=False, inplace=True)
 
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_prep_sub,

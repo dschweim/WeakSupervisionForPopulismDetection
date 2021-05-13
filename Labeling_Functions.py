@@ -6,6 +6,7 @@ import pandas as pd
 from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
+
 from spacy_sentiws import spaCySentiWS
 import Tensor2Attr
 
@@ -16,6 +17,15 @@ POP = 1
 
 
 def get_lfs(lf_input: dict, lf_input_ches: dict):
+    """
+    Generate dataframe for ncr sentiment analysis
+    :param lf_input: Dictionary with input for dictionary-based LFs
+    :type lf_input:  Dict
+    :param lf_input_ches: Dictionary with input for ches-based LFs
+    :type lf_input:  Dict
+    :return: List of labeling funtions
+    :rtype:  List
+    """
     ## Preprocessors
     de_spacy = SpacyPreprocessor(text_field="text", doc_field="doc",
                                  language="de_core_news_lg", memoize=True)
@@ -219,6 +229,20 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
                     return ABSTAIN
 
     ## SPACY PATTERN MATCHING FOR KEYWORDS
+
+
+
+
+    ## Sentiment based
+    nlp = spacy.load('de_core_news_lg')
+
+    sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
+    #nlp.add_pipe('sentiws')
+    nlp.add_pipe('spacytextblob')
+    doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
+    for token in doc:
+        print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
+
 
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl, lf_lemma_schwarzbozl,
