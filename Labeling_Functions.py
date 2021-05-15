@@ -6,6 +6,7 @@ import pandas as pd
 from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
+from spacy.pipeline.dep_parser import DEFAULT_PARSER_MODEL
 
 from spacy_sentiws import spaCySentiWS
 import Tensor2Attr
@@ -190,15 +191,18 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     #SENTIMENT IS NEG
     @labeling_function(pre=[de_spacy])
     def lf_discrediting_elite(x):
-        target = 'bundesregierung'
-        if target in x.text.lower():
+        for chunk in x.doc.noun_chunks:
+            print(chunk.text)
+
+        #target = 'bundesregierung'
+        #if target in x.text.lower():
             # {"lower": target}, IS_ADJ: True and neg
             # for token in x.doc:
             #
             #     if token.head == target and token.pos_ == 'ADJ': #& is negative & refers to target
             #         print(token.text)
 
-            return POP
+            #return POP
         else:
             return ABSTAIN
 
@@ -236,12 +240,20 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     ## Sentiment based
     nlp = spacy.load('de_core_news_lg')
 
-    sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
-    #nlp.add_pipe('sentiws')
-    nlp.add_pipe('spacytextblob')
-    doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
-    for token in doc:
-        print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
+    # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
+    # #nlp.add_pipe('sentiws')
+    # nlp.add_pipe('spacytextblob')
+    # doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
+    # for token in doc:
+    #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
+    #
+
+    from textblob_de import TextBlobDE
+    doc = 'Die Dummheit der Unterwerfung blüht in hübschen Farben. Das ist ein hässliches Auto'
+    blob = TextBlobDE(doc)
+    print(blob.tags)
+    for sentence in blob.sentences:
+        print(sentence.sentiment.polarity)
 
 
     # Define list of lfs to use
