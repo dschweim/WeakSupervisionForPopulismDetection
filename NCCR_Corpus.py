@@ -59,8 +59,8 @@ class PCCR_Dataset:
         table_text = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Text_Table.txt', delimiter="\t",
                                  encoding="ISO-8859-1")
 
-        # Join both dataframes
-        df_combined = df.set_index('ID').join(table_text.set_index('ID'))
+        # Join both dataframes (INNER JOIN)
+        df_combined = pd.merge(df, table_text, on='ID')
 
         # Filter on German files
         df_combined_de = df_combined[df_combined.Sample_Lang == 'Deutsch']
@@ -94,16 +94,16 @@ class PCCR_Dataset:
         table_text_combined_de = table_text_combined[~table_text_combined['ID'].astype(str).str.startswith('uk')]
 
         # Filter on relevant columns
-        table_text_combined_de = table_text_combined_de[['ID',
-                                                          'POPULIST',
-                                                          'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
-                                                          'POPULIST_Advocative', 'POPULIST_Conflictive',
-                                                          'ANTIPOPULIST',
-                                                          'APOPULIST_PeopleCent', 'APOPULIST_AntiElite', 'APOPULIST_Sovereign',
-                                                          'APOPULIST_Advocative', 'APOPULIST_Conflictive',
-                                                          'Date', 'Sample_Type', 'Sample_Country',
-                                                          'Wording', 'Fulltext',
-                                                          'text', 'Source']]
+        # table_text_combined_de = table_text_combined_de[['ID',
+        #                                                   'POPULIST',
+        #                                                   'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
+        #                                                   'POPULIST_Advocative', 'POPULIST_Conflictive',
+        #                                                   'ANTIPOPULIST',
+        #                                                   'APOPULIST_PeopleCent', 'APOPULIST_AntiElite', 'APOPULIST_Sovereign',
+        #                                                   'APOPULIST_Advocative', 'APOPULIST_Conflictive',
+        #                                                   'Date', 'Sample_Type', 'Sample_Country',
+        #                                                   'Wording', 'Fulltext',
+        #                                                   'text', 'Source']]
 
         # Sort by ID
         table_text_combined_de.sort_values(by='ID', inplace=True)
