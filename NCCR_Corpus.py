@@ -2,7 +2,6 @@ import os
 import glob
 import re
 import time
-import spacy
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -28,8 +27,7 @@ class PCCR_Dataset:
     def generate_labelled_nccr_corpus(self):
         """
         Generate labelled NCCR corpus by merging txt-fulltexts
-        with their corresponding labels on text-level and join with full_issue and
-        full_target
+        with their corresponding labels on text-level and join with full_target and target_table
         :return: Labelled NCCR Corpus with all rows
         :rtype: DataFrame
         :return: Labelled NCCR Corpus only with rows that contain Wording info
@@ -69,18 +67,38 @@ class PCCR_Dataset:
         df_combined_de.reset_index(inplace=True)
         duplicates_list = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]['ID']
 
-        # Remove duplicates that do not belong to sample
+        ## Remove duplicates
+        # Remove duplicates based on Bemerkung
         df_drop = df_combined_de.loc[((df_combined_de['Bemerkungen'] == 'Does not belong to the sample') |
-                                      (df_combined_de['Bemerkungen'] == 'Does not belong to the sample / '))
+                                      (df_combined_de['Bemerkungen'] == 'Does not belong to the sample / ') |
+                                      (df_combined_de['Bemerkungen'] == 'I already coded this Facebook-Post. / '))
                                      & df_combined_de['ID'].isin(duplicates_list)]
 
+        ## Manually check remaining duplicates
+        # Remove duplicate: wrong genre
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'de_pr_el_13_011004.txt') &
+                                                    (df_combined_de.Genre == 26)])
+
+        # Remove duplicate: missing infos
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'cd_pm_el_11_80016.txt') &
+                                                    (df_combined_de.Genre.isnull())])
+
+        # Remove duplicate: wrong main_issue
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'de_pr_el_13_090015.txt') &
+                                                    (df_combined_de.Main_Issue.values == '[\'2100\']')])
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'de_pr_el_13_061272.txt') &
+                                                    (df_combined_de.Main_Issue.values == '[\'2103\']')])
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'de_pr_el_13_051033.txt') &
+                                                    (df_combined_de.Main_Issue.values == '[\'0109\']')])
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'de_pr_el_13_021047.txt') &
+                                                    (df_combined_de.Main_Issue.values == '[\'0199\']')])
+        df_drop = df_drop.append(df_combined_de.loc[(df_combined_de.ID == 'de_pm_el_83_50001.txt') &
+                                                    (df_combined_de.Main_Issue.values == '[\'0100\', \'0200\']')])
+
+        # Drop duplicates
         df_combined_de = df_combined_de.drop(df_combined_de.index[[df_drop.index.values]])
 
-        # todo: Remove remaining duplicates
-        duplicates = df_combined_de[df_combined_de.duplicated(subset=['ID'], keep=False)]
-
         # Merge combined df with full_target, full_issue
-        #full_speaker = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Speaker.csv')
         full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
         table_text_issue = df_combined_de.set_index('ID').join(full_issue.set_index('ID'))
@@ -92,18 +110,6 @@ class PCCR_Dataset:
 
         # Remove rows with "UK" ID
         table_text_combined_de = table_text_combined[~table_text_combined['ID'].astype(str).str.startswith('uk')]
-
-        # Filter on relevant columns
-        # table_text_combined_de = table_text_combined_de[['ID',
-        #                                                   'POPULIST',
-        #                                                   'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign',
-        #                                                   'POPULIST_Advocative', 'POPULIST_Conflictive',
-        #                                                   'ANTIPOPULIST',
-        #                                                   'APOPULIST_PeopleCent', 'APOPULIST_AntiElite', 'APOPULIST_Sovereign',
-        #                                                   'APOPULIST_Advocative', 'APOPULIST_Conflictive',
-        #                                                   'Date', 'Sample_Type', 'Sample_Country',
-        #                                                   'Wording', 'Fulltext',
-        #                                                   'text', 'Source']]
 
         # Sort by ID
         table_text_combined_de.sort_values(by='ID', inplace=True)
