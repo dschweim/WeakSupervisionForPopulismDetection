@@ -98,36 +98,37 @@ class PCCR_Dataset:
         # Drop duplicates
         df_combined_de = df_combined_de.drop(df_combined_de.index[[df_drop.index.values]])
 
-        # Merge combined df with full_target, full_issue
-        full_issue = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Issue.csv')
+        ## Join combined_df with full_target and target_table (todo: target_table, full_issue, issue_table)
+        # Load dataframes
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
-        table_text_issue = df_combined_de.set_index('ID').join(full_issue.set_index('ID'))
-        table_text_issue['Source'] = 'Issue'
-        table_text_target = df_combined_de.set_index('ID').join(full_target.set_index('ID'))
-        table_text_target['Source'] = 'Target'
-        table_text_combined = table_text_issue.append(table_text_target)
-        table_text_combined.reset_index(inplace=True)
 
-        # Remove rows with "UK" ID
-        table_text_combined_de = table_text_combined[~table_text_combined['ID'].astype(str).str.startswith('uk')]
+        # Drop Duplicates
+        full_target.drop_duplicates(inplace=True)
+
+        # Join dfs
+        df_combined_de_x_target = pd.merge(df_combined_de, full_target, on='ID')
+
+        # Include source indicator column
+        df_combined_de_x_target['Source'] = 'Target'
 
         # Sort by ID
-        table_text_combined_de.sort_values(by='ID', inplace=True)
+        df_combined_de_x_target.sort_values(by='ID', inplace=True)
 
         # Save created merged corpus
-        table_text_combined_de.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_all.csv', index=True)
+        df_combined_de_x_target.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_all.csv', index=True)
 
         # Exclude examples without wording
-        table_text_combined_de_av = table_text_combined_de.dropna(subset=['Wording'])
+        df_combined_de_x_target_av = df_combined_de_x_target.dropna(subset=['Wording'])
 
         # Save created merged corpus
-        table_text_combined_de_av.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available.csv', index=True)
+        df_combined_de_x_target_av.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available.csv',
+                                          index=True)
 
         end = time.time()
         print(end - start)
         print('finished NCCR labelled corpus generation')
 
-        return table_text_combined_de, table_text_combined_de_av
+        return df_combined_de_x_target, df_combined_de_x_target_av
 
     def preprocess_corpus(self, df: pd.DataFrame, is_train: bool):
         """
