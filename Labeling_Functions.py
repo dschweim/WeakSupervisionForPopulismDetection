@@ -191,12 +191,13 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     #SENTIMENT IS NEG
     @labeling_function(pre=[de_spacy])
     def lf_discrediting_elite(x):
-        for chunk in x.doc.noun_chunks:
-            print(chunk.text)
+        #for chunk in x.doc.noun_chunks:
+            #print(chunk.text)
 
-        #target = 'bundesregierung'
-        #if target in x.text.lower():
-            # {"lower": target}, IS_ADJ: True and neg
+        target = 'bundesregierung'
+        if target in x.text.lower():
+            return POP
+            # {"lower": target}, IS_ADJ: True and nfeg
             # for token in x.doc:
             #
             #     if token.head == target and token.pos_ == 'ADJ': #& is negative & refers to target
