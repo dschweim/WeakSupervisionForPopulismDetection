@@ -300,26 +300,27 @@ class PCCR_Dataset:
                 for match_id, start, end in matches:
                     main_sent = doc[start:end].sent
 
-                    # todo: add previous & following sentence
-                    # check if main_sent is first sentence
+                    # check if main_sent is first sentence,  if so return empty list,
+                    # otherwise return previous sentence
                     if doc[start].sent.start - 1 < 0:
                         previous_sent = []
                     else:
                         previous_sent = doc[doc[start].sent.start - 1].sent
 
-                    # check if main_sent is last sentence
+                    # check if main_sent is last sentence, if so return empty list,
+                    # otherwise return following sentence
                     if doc[start].sent.end + 1 >= len(doc):
                         following_sent = []
                     else:
                         following_sent = doc[doc[start].sent.end + 1].sent
 
-                    sentences.append(main_sent)
+                    sentences.append([main_sent])
                     sentence_triples.append([previous_sent, main_sent, following_sent])
 
-                return sentence_triples
+                # todo: return both + make each triple
+                return sentences, sentence_triples
 
-        df['wording_sentence_triples'] = df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches']), axis=1)
-
+        df['wording_semtemce'], df['wording_sentence_triples'] = df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches']), axis=1)
 
         # todo: handle Columns with "Wording" Non-match:
         non = df[~df['wording_matches'].astype(bool)]
