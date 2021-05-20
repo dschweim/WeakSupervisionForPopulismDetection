@@ -9,6 +9,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer
 from util import standardize_party_naming
+pd.options.mode.chained_assignment = None
 
 
 class PCCR_Dataset:
@@ -256,6 +257,13 @@ class PCCR_Dataset:
 
     @staticmethod
     def __retrieve_segments(df: pd.DataFrame):
+        """
+        Tokenize text and remove stopwords + punctuation
+        :param df: Dataframe for retrieval of segments
+        :type df: DataFrame
+        :return: Returns Dataframe with Column for Segments
+        :rtype:  DataFrame
+        """
 
         # Load Spacy Model and include sentencizer
         nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
@@ -265,8 +273,8 @@ class PCCR_Dataset:
         # Generate spacy docs
         df['doc'] = list(nlp.pipe(df['text_prep']))
 
-        # Define function to find sentence that contains Wording content
-        def get_match(doc: spacy.tokens.doc.Doc, wording: str):
+        # Define function to find index of tokens that match Wording content
+        def get_matches(doc: spacy.tokens.doc.Doc, wording: str):
             # Define Spacy Matcher
             matcher = PhraseMatcher(nlp.vocab)
             # Add patterns from nlp-preprocessed Wording column
@@ -276,37 +284,55 @@ class PCCR_Dataset:
 
             return matches
 
-        df['wording_matches'] = df.apply(lambda x: get_match(x['doc'], x['Wording']), axis=1)
+        df['wording_matches'] = df.apply(lambda x: get_matches(x['doc'], x['Wording']), axis=1)
 
+        # Define function to retrieve sentences that correspond to matched tokens
         def collect_sentences(doc, matches):
-
+            # Skip for empty matches
             if matches is None:
                 return None
             else:
+                # Define empty lists
                 sentences = []
+                sentence_triples = []
+
+                # Retrieve main sentence + pre- and succeeding sentence of each match
                 for match_id, start, end in matches:
-                    sentence = doc[start:end].sent
+                    main_sent = doc[start:end].sent
 
-                    sentences = sentences.append(sentence)
+                    # todo: add previous & following sentence
+                    # check if main_sent is first sentence
+                    if doc[start].sent.start - 1 < 0:
+                        previous_sent = []
+                    else:
+                        previous_sent = doc[doc[start].sent.start - 1].sent
 
-                return sentences
+                    # check if main_sent is last sentence
+                    if doc[start].sent.end + 1 >= len(doc):
+                        following_sent = []
+                    else:
+                        following_sent = doc[doc[start].sent.end + 1].sent
 
-        df['wording_sentences'] = df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches']), axis=1)
+                    sentences.append(main_sent)
+                    sentence_triples.append([previous_sent, main_sent, following_sent])
+
+                return sentence_triples
+
+        df['wording_sentence_triples'] = df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches']), axis=1)
 
 
-        # todo: No match:
+        # todo: handle Columns with "Wording" Non-match:
         non = df[~df['wording_matches'].astype(bool)]
 
-        print(df['wording_matches'])
         return df
 
-    def generate_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: int):
+    def generate_tfidf_dict(self, df: pd.DataFrame, n_words: int):
         """
         Calculate tf-idf scores of docs and return top n words with tfidf above threshold
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
-        :param tfidf_threshold: Number of words to be included
-        :type tfidf_threshold: float
+        :param n_words: Number of words to be included
+        :type n_words: float
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
         """
@@ -341,7 +367,7 @@ class PCCR_Dataset:
         wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
 
         # Retrieve specified top n_words entries
-        tfidf_dict = wordlist[:tfidf_threshold][['term', 'average_tfidf']]
+        tfidf_dict = wordlist[:n_words][['term', 'average_tfidf']]
 
         # Save dict to disk
         tfidf_dict.to_csv(f'{self.output_path}\\tfidf_dict.csv', index=True)
@@ -352,13 +378,13 @@ class PCCR_Dataset:
 
         return tfidf_dict
 
-    def generate_tfidf_dict_per_country(self, df: pd.DataFrame, tfidf_threshold: int):
+    def generate_tfidf_dict_per_country(self, df: pd.DataFrame, n_words: int):
         """
         Calculate tf-idf scores of docs per country and return top n words with tfidf above threshold
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
-        :param tfidf_threshold: Number of words to be included
-        :type tfidf_threshold: float
+        :param n_words: Number of words to be included
+        :type n_words: float
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
         """
@@ -403,7 +429,7 @@ class PCCR_Dataset:
             wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
 
             # Retrieve specified top n_words entries
-            tfidf_dict = wordlist[:tfidf_threshold][['term', 'average_tfidf']]
+            tfidf_dict = wordlist[:n_words][['term', 'average_tfidf']]
 
             # Append to country-specific dict to global dict
             tfidf_dict_per_country[country] = tfidf_dict
@@ -422,13 +448,13 @@ class PCCR_Dataset:
 
         return tfidf_dict_per_country
 
-    def generate_global_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: int):
+    def generate_global_tfidf_dict(self, df: pd.DataFrame, n_words: int):
         """
         Calculate tf-idf scores of docs and return top n words with tfidf above threshold
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
-        :param tfidf_threshold: Number of words to be included
-        :type tfidf_threshold: float
+        :param n_words: Number of words to be included
+        :type n_words: float
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
         """
@@ -472,7 +498,7 @@ class PCCR_Dataset:
         wordlist.sort_values(by='tfidf', ascending=False, inplace=True)
 
         # Retrieve specified top n_words entries
-        tfidf_dict_global = wordlist[:tfidf_threshold]
+        tfidf_dict_global = wordlist[:n_words]
 
         # Save dict to disk
         tfidf_dict_global.to_csv(f'{self.output_path}\\tfidf_dict_global.csv', index=True)
