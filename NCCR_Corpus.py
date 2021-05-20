@@ -287,7 +287,7 @@ class PCCR_Dataset:
         df['wording_matches'] = df.apply(lambda x: get_matches(x['doc'], x['Wording']), axis=1)
 
         # Define function to retrieve sentences that correspond to matched tokens
-        def collect_sentences(doc, matches):
+        def collect_sentences(doc: spacy.tokens.doc.Doc, matches: list, triples: bool):
             # Skip for empty matches
             if matches is None:
                 return None
@@ -298,32 +298,43 @@ class PCCR_Dataset:
 
                 # Retrieve main sentence + pre- and succeeding sentence of each match
                 for match_id, start, end in matches:
+                    # Retrieve main sentence
                     main_sent = doc[start:end].sent
-
-                    # check if main_sent is first sentence,  if so return empty list,
-                    # otherwise return previous sentence
-                    if doc[start].sent.start - 1 < 0:
-                        previous_sent = []
-                    else:
-                        previous_sent = doc[doc[start].sent.start - 1].sent
-
-                    # check if main_sent is last sentence, if so return empty list,
-                    # otherwise return following sentence
-                    if doc[start].sent.end + 1 >= len(doc):
-                        following_sent = []
-                    else:
-                        following_sent = doc[doc[start].sent.end + 1].sent
-
+                    # Append to list
                     sentences.append([main_sent])
-                    sentence_triples.append([previous_sent, main_sent, following_sent])
 
-                # todo: return both + make each triple
-                return sentences, sentence_triples
+                    if triples:
+                        # check if main_sent is first sentence,  if so return empty list,
+                        # otherwise return previous sentence
+                        if doc[start].sent.start - 1 < 0:
+                            previous_sent = []
+                        else:
+                            previous_sent = doc[doc[start].sent.start - 1].sent
 
-        df['wording_semtemce'], df['wording_sentence_triples'] = df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches']), axis=1)
+                        # check if main_sent is last sentence, if so return empty list,
+                        # otherwise return following sentence
+                        if doc[start].sent.end + 1 >= len(doc):
+                            following_sent = []
+                        else:
+                            following_sent = doc[doc[start].sent.end + 1].sent
+
+                        # Append triples to list
+                        sentence_triples.append([previous_sent, main_sent, following_sent])
+
+                if triples:
+                    # todo: construct one long string instead of list from sentence triples
+                    return sentence_triples
+                else:
+                    return sentences
+
+        # Run function to retrieve main sentence and sentence triples
+        df['wording_sentence'] = \
+            df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=False), axis=1)
+        df['wording_sentence_triples'] = \
+            df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=True), axis=1)
 
         # todo: handle Columns with "Wording" Non-match:
-        non = df[~df['wording_matches'].astype(bool)]
+        #non = df[~df['wording_matches'].astype(bool)]
 
         return df
 
