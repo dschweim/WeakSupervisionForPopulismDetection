@@ -2,6 +2,8 @@ import os
 import glob
 import re
 import time
+import spacy
+from spacy.matcher import PhraseMatcher
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -111,16 +113,15 @@ class PCCR_Dataset:
         # Include source indicator column
         df_combined_de_x_target['Source'] = 'Target'
 
-        # Sort by ID
+        # Sort by ID & reset index
         df_combined_de_x_target.sort_values(by='ID', inplace=True)
-
-        # Save created merged corpus
-        df_combined_de_x_target.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_all.csv', index=True)
+        df_combined_de_x_target.reset_index(inplace=True)
 
         # Exclude examples without wording
         df_combined_de_x_target_av = df_combined_de_x_target.dropna(subset=['Wording'])
 
-        # Save created merged corpus
+        # Save created both corpus
+        df_combined_de_x_target.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_all.csv', index=True)
         df_combined_de_x_target_av.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available.csv',
                                           index=True)
 
@@ -157,6 +158,18 @@ class PCCR_Dataset:
             text = " ".join(text.split())
 
             return text
+
+        # Define function to preprocess wording column
+        def preprocess_wording(wording):
+            # Replace special characters #todo: simplify replacement
+            wording = wording.replace("ae", "ä").replace("ue", "ü").replace("oe", "ö").replace("Oe", "Ö") \
+                .replace("Ae", "Ä").replace("Ue", "Ü").replace("/", "").replace("Ausserdem", "Außerdem") \
+                .replace("ausserdem", "außerdem").replace("Massnahme", "Maßnahme").replace("<ORD:65430>", "")
+
+            # Remove linebreaks and extra spaces
+            wording = " ".join(wording.split())
+
+            return wording
 
         # Define function to retrieve party from text column
         def retrieve_party(text, sampletype):
@@ -197,6 +210,8 @@ class PCCR_Dataset:
 
         # Apply preprocess_text function to whole text column
         df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
+        # Apply preprocess_wording function to whole wording column
+        df['Wording'] = df['Wording'].apply(lambda x: preprocess_wording(x))
 
         # Apply retrieve_party function to whole text column depending on sampletype
         df['party'] = df.apply(lambda x: retrieve_party(x['text'], x['Sample_Type']), axis=1)
@@ -209,8 +224,11 @@ class PCCR_Dataset:
         df['year'] = df['Date'].apply(lambda x: retrieve_year(x))
         df['year'] = df['year'].astype(int)
 
+        # Generate additional column with segments of text that contain relevant content using Wording column
+        df_seg = self.__retrieve_segments(df)
+
         # Save pre-processed corpus
-        df.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
+        df_seg.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
 
         end = time.time()
         print(end - start)
@@ -218,7 +236,8 @@ class PCCR_Dataset:
 
         return df
 
-    def __custom_tokenizer(self, text):
+    @staticmethod
+    def __custom_tokenizer(text):
         """
         Tokenize text and remove stopwords + punctuation
         :param text: Text to tokenize
@@ -234,6 +253,52 @@ class PCCR_Dataset:
         text_tok_sw = [word for word in text_tok if not word in german_stop_words]  # Remove stopwords
         text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove punctuation
         return text_tok_sw_alphanum
+
+    @staticmethod
+    def __retrieve_segments(df: pd.DataFrame):
+
+        # Load Spacy Model and include sentencizer
+        nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
+                                                     'attribute_ruler', 'lemmatizer'])
+        nlp.add_pipe("sentencizer")
+
+        # Generate spacy docs
+        df['doc'] = list(nlp.pipe(df['text_prep']))
+
+        # Define function to find sentence that contains Wording content
+        def get_match(doc: spacy.tokens.doc.Doc, wording: str):
+            # Define Spacy Matcher
+            matcher = PhraseMatcher(nlp.vocab)
+            # Add patterns from nlp-preprocessed Wording column
+            matcher.add("WORDING", [nlp(wording)])
+            # Get matches
+            matches = matcher(doc)
+
+            return matches
+
+        df['wording_matches'] = df.apply(lambda x: get_match(x['doc'], x['Wording']), axis=1)
+
+        def collect_sentences(doc, matches):
+
+            if matches is None:
+                return None
+            else:
+                sentences = []
+                for match_id, start, end in matches:
+                    sentence = doc[start:end].sent
+
+                    sentences = sentences.append(sentence)
+
+                return sentences
+
+        df['wording_sentences'] = df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches']), axis=1)
+
+
+        # todo: No match:
+        non = df[~df['wording_matches'].astype(bool)]
+
+        print(df['wording_matches'])
+        return df
 
     def generate_tfidf_dict(self, df: pd.DataFrame, tfidf_threshold: int):
         """
@@ -383,7 +448,7 @@ class PCCR_Dataset:
 
         # Generate global dataframe with two docs 'POP' and 'NONPOP'
         df_global = pd.DataFrame({'ID': ['df_pop', 'df_nonpop'],
-                                'Wording_combined': [content_pop, content_nonpop]})
+                                  'Wording_combined': [content_pop, content_nonpop]})
 
         # Fit vectorizer on POP and NONPOP corpus
         vectorizer.fit(df_global['Wording_combined'])
