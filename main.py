@@ -6,6 +6,7 @@ from argparse import ArgumentParser
 from NCCR_Corpus import PCCR_Dataset
 from Labeling_Framework import Labeler
 from util import generate_train_test_split, generate_train_dev_test_split
+pd.options.mode.chained_assignment = None
 
 sys.path.append("..")
 
@@ -67,9 +68,9 @@ def main(path_to_project_folder: str,
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
-        tfidf_dict = nccr_df.generate_tfidf_dict(train_prep, tfidf_threshold=30)
-        tfidf_dict_country = nccr_df.generate_tfidf_dict_per_country(train_prep, tfidf_threshold=30)
-        tfidf_dict_global = nccr_df.generate_global_tfidf_dict(train_prep, tfidf_threshold=30)
+        tfidf_dict = nccr_df.generate_tfidf_dict(train_prep, n_words=30)
+        tfidf_dict_country = nccr_df.generate_tfidf_dict_per_country(train_prep, n_words=30)
+        tfidf_dict_global = nccr_df.generate_global_tfidf_dict(train_prep, n_words=30)
 
     else:
         # Import dictionaries
