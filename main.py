@@ -101,9 +101,6 @@ def main(path_to_project_folder: str,
         train_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
         test_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
 
-        #train_prep_sub.drop_duplicates(subset='ID', keep=False, inplace=True)
-        #test_prep_sub.drop_duplicates(subset='ID', keep=False, inplace=True)
-
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_prep_sub,
                                test_data=test_prep_sub,
@@ -123,7 +120,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=True,
-         generate_train_test=False,
-         generate_tfidf_dicts=False,
+         generate_data=False,
+         generate_train_test=True,
+         generate_tfidf_dicts=True,
          generate_labeling=True)
