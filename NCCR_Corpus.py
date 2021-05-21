@@ -258,7 +258,7 @@ class PCCR_Dataset:
     @staticmethod
     def __retrieve_segments(df: pd.DataFrame):
         """
-        Tokenize text and remove stopwords + punctuation
+        Retrieve segments from fulltext that correspond to content in Wording column
         :param df: Dataframe for retrieval of segments
         :type df: DataFrame
         :return: Returns Dataframe with Column for Segments
@@ -291,38 +291,38 @@ class PCCR_Dataset:
             # Skip for empty matches
             if matches is None:
                 return None
+                # todo: return doc
             else:
-                # Define empty lists
+                # Define empty list/string
                 sentences = []
-                sentence_triples = []
+                sentence_triples = ''
 
                 # Retrieve main sentence + pre- and succeeding sentence of each match
                 for match_id, start, end in matches:
                     # Retrieve main sentence
-                    main_sent = doc[start:end].sent
+                    main_sent = doc[start:end].sent.text
                     # Append to list
                     sentences.append([main_sent])
 
                     if triples:
-                        # check if main_sent is first sentence,  if so return empty list,
+                        # check if main_sent is first sentence,  if so return empty string,
                         # otherwise return previous sentence
                         if doc[start].sent.start - 1 < 0:
-                            previous_sent = []
+                            previous_sent = ''
                         else:
-                            previous_sent = doc[doc[start].sent.start - 1].sent
+                            previous_sent = doc[doc[start].sent.start - 1].sent.text + ' '
 
-                        # check if main_sent is last sentence, if so return empty list,
+                        # check if main_sent is last sentence, if so return empty string,
                         # otherwise return following sentence
                         if doc[start].sent.end + 1 >= len(doc):
-                            following_sent = []
+                            following_sent = ''
                         else:
-                            following_sent = doc[doc[start].sent.end + 1].sent
+                            following_sent = ' ' + doc[doc[start].sent.end + 1].sent.text
 
-                        # Append triples to list
-                        sentence_triples.append([previous_sent, main_sent, following_sent])
+                        # Append triples to string
+                        sentence_triples = sentence_triples + previous_sent + main_sent + following_sent
 
                 if triples:
-                    # todo: construct one long string instead of list from sentence triples
                     return sentence_triples
                 else:
                     return sentences
@@ -334,7 +334,7 @@ class PCCR_Dataset:
             df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=True), axis=1)
 
         # todo: handle Columns with "Wording" Non-match:
-        #non = df[~df['wording_matches'].astype(bool)]
+        non = df[~df['wording_matches'].astype(bool)]
 
         return df
 

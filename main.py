@@ -97,10 +97,10 @@ def main(path_to_project_folder: str,
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
 
         # Filter on relevant columns
-        train_prep_sub = train_prep[['ID', 'text_prep', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        test_prep_sub = test_prep[['ID', 'text_prep', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        train_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
-        test_prep_sub.rename({'text_prep': 'text'}, axis=1, inplace=True)
+        train_prep_sub = train_prep[['ID', 'wording_sentence_triples', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        test_prep_sub = test_prep[['ID', 'wording_sentence_triples', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        train_prep_sub.rename({'wording_sentence_triples': 'text'}, axis=1, inplace=True)
+        test_prep_sub.rename({'wording_sentence_triples': 'text'}, axis=1, inplace=True)
 
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_prep_sub,
