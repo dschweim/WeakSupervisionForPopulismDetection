@@ -95,8 +95,8 @@ def main(path_to_project_folder: str,
         # Generate Dictionaries based on chi-square test
         chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train_prep, n_words=30)
 
-    else:
-        chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\chisquare_dict_global.csv')
+    # else:
+    #     chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\chisquare_dict_global.csv')
 
     if generate_labeling:
         # Generate overall dictionary as labeling function input
@@ -132,7 +132,7 @@ if __name__ == "__main__":
 
     main(path_to_project_folder=input_path,
          generate_data=False,
-         generate_train_test=False,
+         generate_train_test=True,
          generate_tfidf_dicts=True,
-         generate_chisquare_dict=True,
+         generate_chisquare_dict=False,
          generate_labeling=True)

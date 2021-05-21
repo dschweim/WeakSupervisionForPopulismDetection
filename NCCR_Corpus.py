@@ -4,6 +4,7 @@ import re
 import time
 import spacy
 from spacy.matcher import PhraseMatcher
+from spacy.tokens import Doc
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -16,16 +17,21 @@ class PCCR_Dataset:
     def __init__(
             self,
             data_path: str,
-            output_path: str,
+            output_path: str
     ):
         """
-        Class to create the NCCR data
-        :param data_path:
-        :type data_path:
+        Class to create and pre-process the NCCR data
+        :param data_path: path to data input
+        :type data_path: str
+        :param data_path: path to data output
+        :type data_path: str
         """
 
         self.data_path = data_path
         self.output_path = output_path
+        self.nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
+                                                     'attribute_ruler', 'lemmatizer'])
+        self.nlp.add_pipe("sentencizer")
 
     def generate_labelled_nccr_corpus(self):
         """
@@ -101,7 +107,7 @@ class PCCR_Dataset:
         # Drop duplicates
         df_combined_de = df_combined_de.drop(df_combined_de.index[[df_drop.index.values]])
 
-        ## Join combined_df with full_target and target_table (todo: target_table, full_issue, issue_table)
+        ## Join combined_df with full_target and target_table
         # Load dataframes
         full_target = pd.read_csv(f'{self.data_path}\\NCCR_Content\\NCCR_Content\\Fulltext_Target.csv')
 
@@ -160,18 +166,6 @@ class PCCR_Dataset:
 
             return text
 
-        # Define function to preprocess wording column
-        def preprocess_wording(wording):
-            # Replace special characters #todo: simplify replacement
-            wording = wording.replace("ae", "ä").replace("ue", "ü").replace("oe", "ö").replace("Oe", "Ö") \
-                .replace("Ae", "Ä").replace("Ue", "Ü").replace("/", "").replace("Ausserdem", "Außerdem") \
-                .replace("ausserdem", "außerdem").replace("Massnahme", "Maßnahme").replace("<ORD:65430>", "")
-
-            # Remove linebreaks and extra spaces
-            wording = " ".join(wording.split())
-
-            return wording
-
         # Define function to retrieve party from text column
         def retrieve_party(text, sampletype):
 
@@ -211,8 +205,6 @@ class PCCR_Dataset:
 
         # Apply preprocess_text function to whole text column
         df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
-        # Apply preprocess_wording function to whole wording column
-        df['Wording'] = df['Wording'].apply(lambda x: preprocess_wording(x))
 
         # Apply retrieve_party function to whole text column depending on sampletype
         df['party'] = df.apply(lambda x: retrieve_party(x['text'], x['Sample_Type']), axis=1)
@@ -237,26 +229,7 @@ class PCCR_Dataset:
 
         return df
 
-    @staticmethod
-    def __custom_tokenizer(text):
-        """
-        Tokenize text and remove stopwords + punctuation
-        :param text: Text to tokenize
-        :type text: str
-        :return: Returns preprocessed Text
-        :rtype:  str
-        """
-
-        german_stop_words = stopwords.words('german')
-        german_stop_words.append('fuer')
-
-        text_tok = word_tokenize(text)  # Tokenize
-        text_tok_sw = [word for word in text_tok if not word in german_stop_words]  # Remove stopwords
-        text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove punctuation
-        return text_tok_sw_alphanum
-
-    @staticmethod
-    def __retrieve_segments(df: pd.DataFrame):
+    def __retrieve_segments(self, df: pd.DataFrame):
         """
         Retrieve segments from fulltext that correspond to content in Wording column
         :param df: Dataframe for retrieval of segments
@@ -265,33 +238,66 @@ class PCCR_Dataset:
         :rtype:  DataFrame
         """
 
-        # Load Spacy Model and include sentencizer
-        nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
-                                                     'attribute_ruler', 'lemmatizer'])
-        nlp.add_pipe("sentencizer")
+        # Set spacy model
+        nlp = self.nlp
+
+        # Apply temporary preprocessing function to whole text column
+        def standardize_text(text: str):
+            # Replace special characters
+            text = text.replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
+                .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss").replace("ç", "c")\
+                .replace("@", "").replace("/", "").replace("", "")
+
+            #text = text.lower()
+            text = " ".join(text.split())
+
+            return text
+
+        # Apply temporary preprocessing function to whole wording column
+        def standardize_wording(wording: str):
+            # # Replace special characters
+            wording = wording.replace("/", "").replace("@", "").replace("<ord:65430>", "")
+            #
+            # wording = wording.lower()
+            wording = " ".join(wording.split())
+
+            return wording
+
+        df['text_temp'] = df['text_prep'].apply(lambda x: standardize_text(x))
+        df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_wording(x))
 
         # Generate spacy docs
-        df['doc'] = list(nlp.pipe(df['text_prep']))
+        # df['doc'] = list(nlp.pipe(df['text_prep']))
+        df['doc_temp'] = list(nlp.pipe(df['text_temp']))
+        df['Wording_doc_temp'] = list(nlp.pipe(df['Wording_temp']))
+
+        # Define function to retrieve first n tokens of Wording
+        def get_sub_wording(wording: spacy.tokens.doc.Doc, n_tokens: int):
+            doc_sub = Doc(wording.vocab, words=[t.text for i, t in enumerate(wording) if i < n_tokens])
+            return doc_sub
 
         # Define function to find index of tokens that match Wording content
-        def get_matches(doc: spacy.tokens.doc.Doc, wording: str):
+        def get_matches(doc: spacy.tokens.doc.Doc, wording: spacy.tokens.doc.Doc):
             # Define Spacy Matcher
             matcher = PhraseMatcher(nlp.vocab)
             # Add patterns from nlp-preprocessed Wording column
-            matcher.add("WORDING", [nlp(wording)])
+            matcher.add("WORDING", [wording])
             # Get matches
             matches = matcher(doc)
 
             return matches
 
-        df['wording_matches'] = df.apply(lambda x: get_matches(x['doc'], x['Wording']), axis=1)
+        # Retrieve first n tokens of Wording
+        df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=5))
+
+        # Retrieve Wording-Text-matches
+        df['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
 
         # Define function to retrieve sentences that correspond to matched tokens
         def collect_sentences(doc: spacy.tokens.doc.Doc, matches: list, triples: bool):
             # Skip for empty matches
             if matches is None:
                 return None
-                # todo: return doc
             else:
                 # Define empty list/string
                 sentences = []
@@ -329,19 +335,39 @@ class PCCR_Dataset:
 
         # Run function to retrieve main sentence and sentence triples
         df['wording_sentence'] = \
-            df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=False), axis=1)
+            df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
         df['wording_segments'] = \
-            df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=True), axis=1)
+            df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
-        # todo: handle Columns with "Wording" Non-match:
+        # todo: temporarily retrieve subcorpus with missing match
         non = df[~df['wording_matches'].astype(bool)]
-        non = non[['ID', 'doc', 'Wording', 'wording_matches', 'wording_segments']]
-        non['wording_doc'] = list(nlp.pipe(non['Wording']))
-        non['doc_tokens'] = non['doc'].apply(lambda x: [token.text for token in x])
-        non['wording_tokens'] = non['wording_doc'].apply(lambda x: [token.text for token in x])
-        non.to_csv(f'C:\\Users\\dschw\\Documents\\GitHub\\Thesis\\Output\\temp\\non.csv', index=True)
+        non = non[['ID', 'doc_temp', 'Wording', 'wording_matches', 'wording_sentence', 'wording_segments', 'Wording_doc_temp']]
+        non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
+        non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
+
+        # Delete temp columns
+        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+
+        # Only keep rows with matches
+        df = df[df['wording_matches'].astype(bool)]
 
         return df
+
+    @staticmethod
+    def __custom_dict_tokenizer(text):
+        """
+        Tokenize text and remove stopwords + punctuation
+        :param text: Text to tokenize
+        :type text: str
+        :return: Returns preprocessed Text
+        :rtype:  str
+        """
+
+        german_stop_words = stopwords.words('german')  # Define stopwords
+        text_tok = word_tokenize(text)  # Tokenize
+        text_tok_sw = [word for word in text_tok if not word in german_stop_words]  # Remove stopwords
+        text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove punctuation
+        return text_tok_sw_alphanum
 
     def generate_tfidf_dict(self, df: pd.DataFrame, n_words: int):
         """
@@ -357,7 +383,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_tokenizer)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer)
 
         # Fit vectorizer on whole corpus
         vectorizer.fit(df['wording_segments'])
@@ -409,7 +435,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_tokenizer)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
@@ -479,7 +505,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_tokenizer)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -561,6 +587,6 @@ class PCCR_Dataset:
         # todo: finish chisquare dict
         chisquare_dict = []
 
-        chisquare_dict.to_csv(f'{self.output_path}\\chisquare_dict_global.csv', index=True)
+        #chisquare_dict.to_csv(f'{self.output_path}\\chisquare_dict_global.csv', index=True)
 
         return chisquare_dict
