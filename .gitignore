@@ -30,3 +30,4 @@ Data/SentiWS_v2.0/SentiWS_v2.0_Positive.txt
 Data/NRC-Emotion-Lexicon/NRC-Emotion-Lexicon/NRC-Emotion-Lexicon-v0.92/Older Versions/NRC-Emotion-Lexicon-v0.92-InManyLanguages.xlsx
 Data/NCCR_Content.zip
 Data/NRC-Emotion-Lexicon/NRC-Emotion-Lexicon/README.txt
+*.xml
