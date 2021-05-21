@@ -7,7 +7,7 @@ from spacy.matcher import PhraseMatcher
 import pandas as pd
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from util import standardize_party_naming
 pd.options.mode.chained_assignment = None
 
@@ -330,11 +330,16 @@ class PCCR_Dataset:
         # Run function to retrieve main sentence and sentence triples
         df['wording_sentence'] = \
             df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=False), axis=1)
-        df['wording_sentence_triples'] = \
+        df['wording_segments'] = \
             df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=True), axis=1)
 
         # todo: handle Columns with "Wording" Non-match:
         non = df[~df['wording_matches'].astype(bool)]
+        non = non[['ID', 'doc', 'Wording', 'wording_matches', 'wording_segments']]
+        non['wording_doc'] = list(nlp.pipe(non['Wording']))
+        non['doc_tokens'] = non['doc'].apply(lambda x: [token.text for token in x])
+        non['wording_tokens'] = non['wording_doc'].apply(lambda x: [token.text for token in x])
+        non.to_csv(f'C:\\Users\\dschw\\Documents\\GitHub\\Thesis\\Output\\temp\\non.csv', index=True)
 
         return df
 
@@ -355,12 +360,12 @@ class PCCR_Dataset:
         vectorizer = TfidfVectorizer(tokenizer=self.__custom_tokenizer)
 
         # Fit vectorizer on whole corpus
-        vectorizer.fit(df['Wording'])
+        vectorizer.fit(df['wording_segments'])
 
         # CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
         df_pop = df.loc[df['POPULIST'] == 1]
         # Transform subcorpus labelled as POP
-        tfidf_pop_vector = vectorizer.transform(df_pop['Wording']).toarray()
+        tfidf_pop_vector = vectorizer.transform(df_pop['wording_segments']).toarray()
 
         # Map tf-idf scores to words in the vocab with separate column for each doc
         wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
@@ -416,13 +421,13 @@ class PCCR_Dataset:
         for country, df_country in df_country_grpd:
 
             # Fit vectorizer on current corpus
-            vectorizer.fit(df_country['Wording'])
+            vectorizer.fit(df_country['wording_segments'])
 
             # CALCULATE TF-IDF SCORES OF POP CLASSIFIED DOCS
             df_country_pop = df_country.loc[df_country['POPULIST'] == 1]
 
             # Transform subcorpus labelled as POP
-            tfidf_pop_vector = vectorizer.transform(df_country_pop['Wording']).toarray()
+            tfidf_pop_vector = vectorizer.transform(df_country_pop['wording_segments']).toarray()
 
             # Map tf-idf scores to words in the vocab with separate column for each doc
             wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
@@ -481,8 +486,8 @@ class PCCR_Dataset:
         df_nonpop = df.loc[df['POPULIST'] != 1]
 
         # Concatenate content of corpus
-        content_pop = ' '.join(df_pop["Wording"])
-        content_nonpop = ' '.join(df_nonpop["Wording"])
+        content_pop = ' '.join(df_pop["wording_segments"])
+        content_nonpop = ' '.join(df_nonpop["wording_segments"])
 
         # Generate global dataframe with two docs 'POP' and 'NONPOP'
         df_global = pd.DataFrame({'ID': ['df_pop', 'df_nonpop'],
@@ -520,3 +525,42 @@ class PCCR_Dataset:
         print('finished tf-idf dict global generation')
 
         return tfidf_dict_global
+
+    # todo: dict
+    def generate_global_chisquare_dict(self, df: pd.DataFrame, n_words: int):
+
+        start = time.time()
+
+        # Define vectorizer
+        vectorizer = CountVectorizer()
+
+        # Generate two docs from corpus (POP and NON-POP)
+        df_pop = df.loc[df['POPULIST'] == 1]
+        df_nonpop = df.loc[df['POPULIST'] != 1]
+
+        # Concatenate content of corpus
+        content_pop = ' '.join(df_pop["wording_segments"])
+        content_nonpop = ' '.join(df_nonpop["wording_segments"])
+
+        # Generate global dataframe with two docs 'POP' and 'NONPOP'
+        df_global = pd.DataFrame({'ID': ['df_pop', 'df_nonpop'],
+                                  'Wording_combined': [content_pop, content_nonpop]})
+
+        # Fit vectorizer on POP and NONPOP corpus
+        vectorizer.fit(df_global['Wording_combined'])
+
+        # Retrieve word counts of overall corpus
+        count_full_vector = vectorizer.transform(df_global.Wording_combined).toarray()
+        # Retrieve word counts of POP subset
+        count_pop_vector = vectorizer.transform(df_global.loc[df_global['ID'] == 'df_pop'].Wording_combined).toarray()
+
+
+        # Map tf-idf scores to words in the vocab with separate column for each doc
+        wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
+
+        # todo: finish chisquare dict
+        chisquare_dict = []
+
+        chisquare_dict.to_csv(f'{self.output_path}\\chisquare_dict_global.csv', index=True)
+
+        return chisquare_dict

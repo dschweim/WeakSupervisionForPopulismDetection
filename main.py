@@ -13,7 +13,8 @@ sys.path.append("..")
 
 def main(path_to_project_folder: str,
          generate_data: bool, generate_train_test: bool,
-         generate_tfidf_dicts: bool, generate_labeling: bool):
+         generate_tfidf_dicts: bool, generate_chisquare_dict: bool,
+         generate_labeling: bool):
     """
     main function to run project and initialize classes
     :param path_to_project_folder: Trainset
@@ -24,6 +25,8 @@ def main(path_to_project_folder: str,
     :type generate_train_test:  bool
     :param generate_tfidf_dicts: Indicator whether to generate tf-idf dictionaries in current run
     :type generate_tfidf_dicts:  bool
+     :param generate_chisquare_dict: Indicator whether to generate chi-square dictionary in current run
+    :type generate_chisquare_dict:  bool
     :param generate_labeling: Indicator whether to generate labels from Snorkel in current run
     :type generate_labeling:  bool
     :return:
@@ -88,6 +91,13 @@ def main(path_to_project_folder: str,
 
         tfidf_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\tfidf_dict_global.csv')
 
+    if generate_chisquare_dict:
+        # Generate Dictionaries based on chi-square test
+        chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train_prep, n_words=30)
+
+    else:
+        chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\chisquare_dict_global.csv')
+
     if generate_labeling:
         # Generate overall dictionary as labeling function input
         lf_dict = {'tfidf_keywords': tfidf_dict.term.to_list(),
@@ -97,10 +107,10 @@ def main(path_to_project_folder: str,
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
 
         # Filter on relevant columns
-        train_prep_sub = train_prep[['ID', 'wording_sentence_triples', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        test_prep_sub = test_prep[['ID', 'wording_sentence_triples', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        train_prep_sub.rename({'wording_sentence_triples': 'text'}, axis=1, inplace=True)
-        test_prep_sub.rename({'wording_sentence_triples': 'text'}, axis=1, inplace=True)
+        train_prep_sub = train_prep[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        test_prep_sub = test_prep[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        train_prep_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
+        test_prep_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
 
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_prep_sub,
@@ -122,6 +132,7 @@ if __name__ == "__main__":
 
     main(path_to_project_folder=input_path,
          generate_data=False,
-         generate_train_test=True,
+         generate_train_test=False,
          generate_tfidf_dicts=True,
+         generate_chisquare_dict=True,
          generate_labeling=True)

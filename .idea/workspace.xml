@@ -138,11 +138,6 @@
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>272</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
           <line>94</line>
           <option name="timeStamp" value="89" />
@@ -159,8 +154,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>370</line>
-          <option name="timeStamp" value="145" />
+          <line>341</line>
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>558</line>
+          <option name="timeStamp" value="199" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>336</line>
+          <option name="timeStamp" value="200" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>93</line>
+          <option name="timeStamp" value="201" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -171,17 +181,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="lf_input_ches['ches_14']" language="Python" />
-        <watch expression="x.doc[13].lemma_" language="Python" />
-        <watch expression="x.doc" language="Python" />
-        <watch expression="test_prep_sub.sort_values(by=['ID'])" language="Python" />
-        <watch expression="len(train_prep_sub)" language="Python" />
-        <watch expression="train_prep[train_prep.duplicated(subset=['ID'], keep=False)]['ID']" language="Python" />
-        <watch expression="len(train_prep)" language="Python" />
-        <watch expression="x.doc" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
