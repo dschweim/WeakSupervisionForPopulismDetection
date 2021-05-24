@@ -218,7 +218,7 @@ class PCCR_Dataset:
         df['year'] = df['year'].astype(int)
 
         # Generate additional column with segments of text that contain relevant content using Wording column
-        df_seg = self.__retrieve_segments(df)
+        df_seg = self.__retrieve_segments(df, is_train)
 
         # Save pre-processed corpus
         df_seg.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
@@ -229,7 +229,7 @@ class PCCR_Dataset:
 
         return df
 
-    def __retrieve_segments(self, df: pd.DataFrame):
+    def __retrieve_segments(self, df: pd.DataFrame, is_train:bool):
         """
         Retrieve segments from fulltext that correspond to content in Wording column
         :param df: Dataframe for retrieval of segments
@@ -244,11 +244,7 @@ class PCCR_Dataset:
         # Apply temporary preprocessing function to whole text column
         def standardize_text(text: str):
             # Replace special characters
-            text = text.replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
-                .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss").replace("ç", "c")\
-                .replace("@", "").replace("/", "").replace("", "")
-
-            #text = text.lower()
+            text = text.replace("/", "")
             text = " ".join(text.split())
 
             return text
@@ -256,9 +252,15 @@ class PCCR_Dataset:
         # Apply temporary preprocessing function to whole wording column
         def standardize_wording(wording: str):
             # # Replace special characters
-            wording = wording.replace("/", "").replace("@", "").replace("<ord:65430>", "")
-            #
-            # wording = wording.lower()
+            wording = wording.replace("/", "")\
+                .replace("ae", "ä").replace("ue", "ü").replace("oe", "ö").replace("Ae", "Ä").replace("Oe", "Ö")\
+                .replace("Ue", "Ü").replace("ausserdem", "außerdem").replace("Ausserdem", "Außerdem")\
+                .replace("Massnahme", "Maßnahme").replace("verstossen", "verstoßen").replace("grösste", "größte")\
+                .replace("Grosse", "Große")\
+                .replace("Bundesaussenminister", "Bundesaußenminister").replace("Michäl", "Michael")\
+                .replace("Schröder", "Schroeder").replace("Qürdenker", "Querdenker").replace("Öttinger", "Oettinger")\
+                .replace("bedaürn", "bedauern").replace("Fraün", "Frauen").replace("undeskanzler", "Bundeskanzler")\
+                .replace("neürlihes", "natürliches").replace("osef", "Josef")
             wording = " ".join(wording.split())
 
             return wording
@@ -339,14 +341,27 @@ class PCCR_Dataset:
         df['wording_segments'] = \
             df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
+
+        # Replace non-matched content using manually retrieved table
+        # if is_train:
+        #     replace_table = pd.read_csv(f'{self.output_path}\\NCCR_Content\\manual_replacement\\')
+
+        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+
         # todo: temporarily retrieve subcorpus with missing match
         non = df[~df['wording_matches'].astype(bool)]
         non = non[['ID', 'doc_temp', 'Wording', 'wording_matches', 'wording_sentence', 'wording_segments', 'Wording_doc_temp']]
         non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
         non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
 
+        if is_train:
+            non.to_csv(f'{self.output_path}\\non_matched_TRAIN.csv', index=True)
+        else:
+            non.to_csv(f'{self.output_path}\\non_matched_TEST.csv', index=True)
+
+
         # Delete temp columns
-        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+
 
         # Only keep rows with matches
         df = df[df['wording_matches'].astype(bool)]
