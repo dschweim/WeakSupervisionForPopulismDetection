@@ -244,34 +244,31 @@ class PCCR_Dataset:
         # Apply temporary preprocessing function to whole text column
         def standardize_text(text: str):
             # Replace special characters
-            text = text.replace("/", "").replace("@", "").replace(r"\\x84", "").replace(r"\\x93", "")\
+            text = text.replace("/", "").replace("@", "").replace(r"\\x84", "").replace(r"\\x93", "") \
+                .replace(r"\x84", "").replace(r"\x93", "").replace(r"\x96", "") \
                 .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
                 .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke")\
                 .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
                 .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")\
-                .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e")\
-
-            text = " ".join(text.split())
+                .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e") \
+                .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
+                .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
+                .replace("ç", "c")
+            text = text.lower()  # Lowercase
+            text = " ".join(text.split())  # Remove additional whitespaces
 
             return text
 
         # Apply temporary preprocessing function to whole wording column
         def standardize_wording(wording: str):
-            # # Replace special characters
+            # Replace special characters
             wording = wording.replace("/", "").replace("<ORD:65412>", "").replace("<ORD:65430>", "") \
-                .replace("<ORD:65440>", "") .replace("<TAB>", "").replace("@", "")\
+                .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "").replace("@", "")\
                 .replace("F.D.P", "FDP")\
                 .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe")\
                 .replace("Ö", "Oe").replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")
-                # #.replace("ae", "ä").replace("ue", "ü").replace("oe", "ö").replace("Ae", "Ä").replace("Oe", "Ö")\
-                # .replace("Ue", "Ü").replace("ausserdem", "außerdem").replace("Ausserdem", "Außerdem")\
-                # .replace("Massnahme", "Maßnahme").replace("verstossen", "verstoßen").replace("grösste", "größte")\
-                # .replace("Grosse", "Große")\
-                # .replace("Bundesaussenminister", "Bundesaußenminister").replace("Michäl", "Michael")\
-                # .replace("Schröder", "Schroeder").replace("Qürdenker", "Querdenker").replace("Öttinger", "Oettinger")\
-                # .replace("bedaürn", "bedauern").replace("Fraün", "Frauen").replace("undeskanzler", "Bundeskanzler")\
-                # .replace("neürlihes", "natürliches").replace("osef", "Josef")
-            wording = " ".join(wording.split())
+            wording = wording.lower() # Lowercase
+            wording = " ".join(wording.split()) # Remove additional whitespaces
 
             return wording
 
@@ -300,7 +297,7 @@ class PCCR_Dataset:
             return matches
 
         # Retrieve first n tokens of Wording
-        df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=5))
+        #df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=5))
 
         # Retrieve Wording-Text-matches
         df['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
@@ -351,16 +348,8 @@ class PCCR_Dataset:
         df['wording_segments'] = \
             df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
-
-        # Replace non-matched content using manually retrieved table
-        # if is_train:
-        #     replace_table = pd.read_csv(f'{self.output_path}\\NCCR_Content\\manual_replacement\\')
-
-        #df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
-
         # todo: temporarily retrieve subcorpus with missing match
         non = df[~df['wording_matches'].astype(bool)]
-        #non = non[['ID', 'doc_temp', 'Wording', 'wording_matches', 'wording_sentence', 'wording_segments', 'Wording_doc_temp']]
         non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
         non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
 
@@ -369,12 +358,18 @@ class PCCR_Dataset:
         else:
             non.to_csv(f'{self.output_path}\\non_matched_TEST.csv', index=True)
 
-
         # Delete temp columns
-
+        #df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
 
         # Only keep rows with matches
-        df = df[df['wording_matches'].astype(bool)]
+        #df = df[df['wording_matches'].astype(bool)]
+
+        # todo: Replace non-matched content using manually retrieved table
+        # if is_train:
+        #     replace_table = pd.read_csv(f'{self.output_path}\\NCCR_Content\\manual_replacement\\')
+
+
+        print(len(df))
 
         return df
 
