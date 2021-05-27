@@ -346,11 +346,11 @@ class PCCR_Dataset:
         # if is_train:
         #     replace_table = pd.read_csv(f'{self.output_path}\\NCCR_Content\\manual_replacement\\')
 
-        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+        #df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
 
         # todo: temporarily retrieve subcorpus with missing match
         non = df[~df['wording_matches'].astype(bool)]
-        non = non[['ID', 'doc_temp', 'Wording', 'wording_matches', 'wording_sentence', 'wording_segments', 'Wording_doc_temp']]
+        #non = non[['ID', 'doc_temp', 'Wording', 'wording_matches', 'wording_sentence', 'wording_segments', 'Wording_doc_temp']]
         non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
         non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
 
@@ -378,10 +378,10 @@ class PCCR_Dataset:
         :rtype:  str
         """
 
-        german_stop_words = stopwords.words('german')  # Define stopwords
+        german_stop_words = stopwords.words('german') # Define stopwords
         text_tok = word_tokenize(text)  # Tokenize
         text_tok_sw = [word for word in text_tok if not word in german_stop_words]  # Remove stopwords
-        text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove punctuation
+        text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove non-alphanumeric characters
         return text_tok_sw_alphanum
 
     def generate_tfidf_dict(self, df: pd.DataFrame, n_words: int):
@@ -398,7 +398,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
 
         # Fit vectorizer on whole corpus
         vectorizer.fit(df['wording_segments'])
@@ -428,7 +428,7 @@ class PCCR_Dataset:
         tfidf_dict = wordlist[:n_words][['term', 'average_tfidf']]
 
         # Save dict to disk
-        tfidf_dict.to_csv(f'{self.output_path}\\tfidf_dict.csv', index=True)
+        tfidf_dict.to_csv(f'{self.output_path}\\Dicts\\tfidf_dict.csv', index=True)
 
         end = time.time()
         print(end - start)
@@ -450,7 +450,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
@@ -496,9 +496,9 @@ class PCCR_Dataset:
         tfidf_dict_per_country_au = tfidf_dict_per_country['au']
         tfidf_dict_per_country_ch = tfidf_dict_per_country['cd']
         tfidf_dict_per_country_de = tfidf_dict_per_country['de']
-        tfidf_dict_per_country_au.to_csv(f'{self.output_path}\\tfidf_dict_per_country_au.csv', index=True)
-        tfidf_dict_per_country_ch.to_csv(f'{self.output_path}\\tfidf_dict_per_country_ch.csv', index=True)
-        tfidf_dict_per_country_de.to_csv(f'{self.output_path}\\tfidf_dict_per_country_de.csv', index=True)
+        tfidf_dict_per_country_au.to_csv(f'{self.output_path}\\Dicts\\tfidf_dict_per_country_au.csv', index=True)
+        tfidf_dict_per_country_ch.to_csv(f'{self.output_path}\\Dicts\\tfidf_dict_per_country_ch.csv', index=True)
+        tfidf_dict_per_country_de.to_csv(f'{self.output_path}\\Dicts\\tfidf_dict_per_country_de.csv', index=True)
 
         end = time.time()
         print(end - start)
@@ -520,7 +520,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -559,7 +559,7 @@ class PCCR_Dataset:
         tfidf_dict_global = wordlist[:n_words]
 
         # Save dict to disk
-        tfidf_dict_global.to_csv(f'{self.output_path}\\tfidf_dict_global.csv', index=True)
+        tfidf_dict_global.to_csv(f'{self.output_path}\\Dicts\\tfidf_dict_global.csv', index=True)
 
         end = time.time()
         print(end - start)
@@ -573,7 +573,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer()
+        vectorizer = CountVectorizer(lowercase=False)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
