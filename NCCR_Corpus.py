@@ -244,7 +244,13 @@ class PCCR_Dataset:
         # Apply temporary preprocessing function to whole text column
         def standardize_text(text: str):
             # Replace special characters
-            text = text.replace("/", "")
+            text = text.replace("/", "").replace("@", "").replace(r"\\x84", "").replace(r"\\x93", "")\
+                .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
+                .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke")\
+                .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
+                .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")\
+                .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e")\
+
             text = " ".join(text.split())
 
             return text
@@ -252,15 +258,19 @@ class PCCR_Dataset:
         # Apply temporary preprocessing function to whole wording column
         def standardize_wording(wording: str):
             # # Replace special characters
-            wording = wording.replace("/", "")\
-                .replace("ae", "ä").replace("ue", "ü").replace("oe", "ö").replace("Ae", "Ä").replace("Oe", "Ö")\
-                .replace("Ue", "Ü").replace("ausserdem", "außerdem").replace("Ausserdem", "Außerdem")\
-                .replace("Massnahme", "Maßnahme").replace("verstossen", "verstoßen").replace("grösste", "größte")\
-                .replace("Grosse", "Große")\
-                .replace("Bundesaussenminister", "Bundesaußenminister").replace("Michäl", "Michael")\
-                .replace("Schröder", "Schroeder").replace("Qürdenker", "Querdenker").replace("Öttinger", "Oettinger")\
-                .replace("bedaürn", "bedauern").replace("Fraün", "Frauen").replace("undeskanzler", "Bundeskanzler")\
-                .replace("neürlihes", "natürliches").replace("osef", "Josef")
+            wording = wording.replace("/", "").replace("<ORD:65412>", "").replace("<ORD:65430>", "") \
+                .replace("<ORD:65440>", "") .replace("<TAB>", "").replace("@", "")\
+                .replace("F.D.P", "FDP")\
+                .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe")\
+                .replace("Ö", "Oe").replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")
+                # #.replace("ae", "ä").replace("ue", "ü").replace("oe", "ö").replace("Ae", "Ä").replace("Oe", "Ö")\
+                # .replace("Ue", "Ü").replace("ausserdem", "außerdem").replace("Ausserdem", "Außerdem")\
+                # .replace("Massnahme", "Maßnahme").replace("verstossen", "verstoßen").replace("grösste", "größte")\
+                # .replace("Grosse", "Große")\
+                # .replace("Bundesaussenminister", "Bundesaußenminister").replace("Michäl", "Michael")\
+                # .replace("Schröder", "Schroeder").replace("Qürdenker", "Querdenker").replace("Öttinger", "Oettinger")\
+                # .replace("bedaürn", "bedauern").replace("Fraün", "Frauen").replace("undeskanzler", "Bundeskanzler")\
+                # .replace("neürlihes", "natürliches").replace("osef", "Josef")
             wording = " ".join(wording.split())
 
             return wording
