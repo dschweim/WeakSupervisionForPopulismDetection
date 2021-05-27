@@ -131,7 +131,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=False,
+         generate_data=True,
          generate_train_test=True,
          generate_tfidf_dicts=True,
          generate_chisquare_dict=False,
