@@ -122,18 +122,18 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     # LF based on NCCR-constructed keywords
     @labeling_function()
     def lf_keywords_nccr_tfidf(x):
-        regex_keywords_nccr_tfidf = lf_input['tfidf_keywords']
+        keywords_nccr_tfidf = lf_input['tfidf_keywords']
 
         # Return a label of POP if keyword in text, otherwise ABSTAIN
-        return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf) else ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in keywords_nccr_tfidf) else ABSTAIN
 
     # LF based on NCCR global-constructed keywords
     @labeling_function()
     def lf_keywords_nccr_tfidf_glob(x):
-        regex_keywords_nccr_tfidf_glob = lf_input['tfidf_keywords_global']
+        keywords_nccr_tfidf_glob = lf_input['tfidf_keywords_global']
 
         # Return a label of POP if keyword in text, otherwise ABSTAIN
-        return POP if any(keyword in x.text.lower() for keyword in regex_keywords_nccr_tfidf_glob) else ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in keywords_nccr_tfidf_glob) else ABSTAIN
 
     # LF based on NCCR country-constructed keywords
     @labeling_function()
@@ -146,6 +146,14 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
         elif x.Sample_Country == 'de':
             return POP if any(keyword in x.text.lower() for keyword in lf_input['tfidf_keywords_de']) else ABSTAIN
+
+    # LF based on NCCR global-constructed keywords (chi2)
+    @labeling_function()
+    def lf_keywords_nccr_chi2_glob(x):
+        keywords_nccr_chi2_glob = lf_input['chi2_keywords_global']
+
+        # Return a label of POP if keyword in text, otherwise ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in keywords_nccr_chi2_glob) else ABSTAIN
 
     # b) External Knowledge-based Labeling
     # LF based on party position estimated in CHES
@@ -262,6 +270,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
                 lf_keywords_roodujin, lf_lemma_roodujin, lf_keywords_roodujin_regex,
                 lf_keywords_nccr_tfidf, lf_keywords_nccr_tfidf_glob,
                 lf_keywords_nccr_tfidf_country,
+                lf_keywords_nccr_chi2_glob,
                 lf_discrediting_elite,
                 lf_party_position_ches]
 
