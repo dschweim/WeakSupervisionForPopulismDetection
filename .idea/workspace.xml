@@ -113,16 +113,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
-          <line>133</line>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
-          <line>139</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/util.py</url>
           <line>184</line>
           <option name="timeStamp" value="90" />
@@ -131,16 +121,6 @@
           <url>file://$PROJECT_DIR$/util.py</url>
           <line>208</line>
           <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>609</line>
-          <option name="timeStamp" value="199" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>364</line>
-          <option name="timeStamp" value="214" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -153,9 +133,9 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="type(nlp)" language="Python" />
-        <watch expression="len(non)" language="Python" />
-        <watch expression="len(non)" language="Python" />
+        <watch expression="word.popcount" language="Python" />
+        <watch expression="len(chisquare_dict)" language="Python" />
+        <watch expression="chisquare_dict.term.to_list()" language="Python" />
       </configuration>
     </watches-manager>
   </component>
