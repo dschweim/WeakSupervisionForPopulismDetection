@@ -77,11 +77,11 @@ def main(path_to_project_folder: str,
 
     else:
         # Import dictionaries
-        tfidf_dict = pd.read_csv(f'{path_to_project_folder}\\Output\\tfidf_dict.csv')
+        tfidf_dict = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict.csv')
 
-        tfidf_dict_country_au = pd.read_csv(f'{path_to_project_folder}\\Output\\tfidf_dict_per_country_au.csv')
-        tfidf_dict_country_ch = pd.read_csv(f'{path_to_project_folder}\\Output\\tfidf_dict_per_country_ch.csv')
-        tfidf_dict_country_de = pd.read_csv(f'{path_to_project_folder}\\Output\\tfidf_dict_per_country_de.csv')
+        tfidf_dict_country_au = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_au.csv')
+        tfidf_dict_country_ch = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_ch.csv')
+        tfidf_dict_country_de = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_de.csv')
 
         tfidf_dict_country = {}
         values = {'au': tfidf_dict_country_au,
@@ -89,14 +89,15 @@ def main(path_to_project_folder: str,
                   'de': tfidf_dict_country_de}
         tfidf_dict_country.update(values)
 
-        tfidf_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\tfidf_dict_global.csv')
+        tfidf_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global.csv')
 
     if generate_chisquare_dict:
-        # Generate Dictionaries based on chi-square test
-        chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train_prep, n_words=30)
+        # Generate Dictionary based on chi-square test
+        chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train_prep, confidence=0.99, n_words=30)
 
-    # else:
-    #     chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\chisquare_dict_global.csv')
+    else:
+        # Import dictionary
+        chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_global.csv')
 
     if generate_labeling:
         # Generate overall dictionary as labeling function input
@@ -104,7 +105,8 @@ def main(path_to_project_folder: str,
                    'tfidf_keywords_at': tfidf_dict_country['au'].term.to_list(),
                    'tfidf_keywords_ch': tfidf_dict_country['cd'].term.to_list(),
                    'tfidf_keywords_de': tfidf_dict_country['de'].term.to_list(),
-                   'tfidf_keywords_global': tfidf_dict_global.term.to_list()}
+                   'tfidf_keywords_global': tfidf_dict_global.term.to_list(),
+                   'chi2_keywords_global': chisquare_dict_global.term.tolist()}
 
         # Filter on relevant columns
         train_prep_sub = train_prep[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
@@ -131,8 +133,8 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=True,
-         generate_train_test=True,
-         generate_tfidf_dicts=True,
-         generate_chisquare_dict=False,
+         generate_data=False,
+         generate_train_test=False,
+         generate_tfidf_dicts=False,
+         generate_chisquare_dict=True,
          generate_labeling=True)

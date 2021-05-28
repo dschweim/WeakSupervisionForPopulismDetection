@@ -3,6 +3,7 @@ import glob
 import re
 import time
 import spacy
+import numpy as np
 from spacy.matcher import PhraseMatcher
 from spacy.tokens import Doc
 import pandas as pd
@@ -10,6 +11,8 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from util import standardize_party_naming
+from scipy.stats import chi2_contingency
+from scipy.stats import chi2
 pd.options.mode.chained_assignment = None
 
 
@@ -362,7 +365,7 @@ class PCCR_Dataset:
         #df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
 
         # Only keep rows with matches
-        #df = df[df['wording_matches'].astype(bool)]
+        df = df[df['wording_matches'].astype(bool)]
 
         # todo: Replace non-matched content using manually retrieved table
         # if is_train:
@@ -572,13 +575,23 @@ class PCCR_Dataset:
 
         return tfidf_dict_global
 
-    # todo: dict
-    def generate_global_chisquare_dict(self, df: pd.DataFrame, n_words: int):
+    def generate_global_chisquare_dict(self, df: pd.DataFrame, confidence: float, n_words: int):
+        """
+        Calculate chi-square values of words and return top n words with value above critical value
+        :param df: Trainset from which to construct dict
+        :type df:  DataFrame
+        :param confidence: level of statistical confidence
+        :type confidence: float
+        :param n_words: Number of words to be included
+        :type n_words: float
+        :return: Returns preprocessed Dataset
+        :rtype:  DataFrame
+        """
 
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=False)
+        vectorizer = CountVectorizer(lowercase=False) #todo: remove stopwords or not?
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -595,18 +608,61 @@ class PCCR_Dataset:
         # Fit vectorizer on POP and NONPOP corpus
         vectorizer.fit(df_global['Wording_combined'])
 
-        # Retrieve word counts of overall corpus
-        count_full_vector = vectorizer.transform(df_global.Wording_combined).toarray()
-        # Retrieve word counts of POP subset
-        count_pop_vector = vectorizer.transform(df_global.loc[df_global['ID'] == 'df_pop'].Wording_combined).toarray()
+        # Retrieve word counts of POP and NONPOP subsets
+        count_vector = vectorizer.transform(df_global.Wording_combined).toarray()
 
+        # Retrieve word counts of POP subset (S)
+        count_pop_vector = count_vector[:][0]
+        # Retrieve word counts of NONPOP subset (R)
+        count_nonpop_vector = count_vector[:][1]
 
-        # Map tf-idf scores to words in the vocab with separate column for each doc
-        wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
+        # Retrieve total number of words for both corpora
+        words_pop = count_pop_vector.sum()
+        words_nonpop = count_nonpop_vector.sum()
 
-        # todo: finish chisquare dict
-        chisquare_dict = []
+        # Generate table with counts per word
+        count_table = pd.DataFrame({'term': vectorizer.get_feature_names(),
+                                    'popcount': count_pop_vector,
+                                    'nonpopcount': count_nonpop_vector})
 
-        #chisquare_dict.to_csv(f'{self.output_path}\\chisquare_dict_global.csv', index=True)
+        # Create empty dataframe for result
+        result_table = pd.DataFrame()
+
+        # for each word calculate chi-square statistics
+        for index, word in count_table.iterrows():
+            obs_freq_a = word.popcount
+            obs_freq_b = word.nonpopcount
+            obs_freq_c = words_pop - obs_freq_a
+            obs_freq_d = words_nonpop - obs_freq_a
+
+            # Define contingency table
+            obs = np.array([[obs_freq_a, obs_freq_b],
+                            [obs_freq_c, obs_freq_d]])
+
+            # Calculate chi2, p, dof and ex
+            chi2_word, p, dof, ex = chi2_contingency(obs)
+            # Extract critical value dependent on confidence and dof
+            critical = chi2.ppf(confidence, dof)
+
+            # keep words where chi2 higher than critical value
+            if chi2_word > critical:
+                chisquare_table = pd.DataFrame({'term': [word.term],
+                                                'chisquare': [chi2_word]})
+
+                # Append to result table
+                result_table = result_table.append(chisquare_table)
+
+        # Sort by chi_square
+        result_table.sort_values(by='chisquare', ascending=False, inplace=True)
+
+        # Retrieve specified top n_words entries
+        chisquare_dict = result_table[:n_words]
+
+        # Save dict to disk
+        chisquare_dict.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_global.csv', index=True)
+
+        end = time.time()
+        print(end - start)
+        print('finished chisquare dict global generation')
 
         return chisquare_dict
