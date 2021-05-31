@@ -239,9 +239,12 @@ class PCCR_Dataset:
         # Apply temporary preprocessing function to whole text column
         def standardize_text(text: str):
             # Replace special characters
-            text = text.replace("/", "").replace("@", "").replace(r"\\x84", "").replace(r"\\x93", "") \
+            text = text.replace("/", "").replace("@", "")\
+                .replace(r"\\x84", "").replace(r"\\x93", "") \
                 .replace(r"\x84", "").replace(r"\x93", "").replace(r"\x96", "") \
                 .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
+                .replace("<ORD:65412>", "").replace("<ORD:65430>", "") \
+                .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "") \
                 .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke")\
                 .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
                 .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")\
@@ -253,20 +256,8 @@ class PCCR_Dataset:
 
             return text
 
-        # Apply temporary preprocessing function to whole wording column
-        def standardize_wording(wording: str):
-            # Replace special characters
-            wording = wording.replace("/", "").replace("<ORD:65412>", "").replace("<ORD:65430>", "") \
-                .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "").replace("@", "")\
-                .replace("F.D.P", "FDP")\
-                .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe")\
-                .replace("Ö", "Oe").replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")
-            wording = " ".join(wording.split()) # Remove additional whitespaces
-
-            return wording
-
         df['text_temp'] = df['text_prep'].apply(lambda x: standardize_text(x))
-        df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_wording(x))
+        df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_text(x))
 
         # Generate spacy docs
         df['doc_temp'] = list(nlp.pipe(df['text_temp']))
@@ -343,6 +334,12 @@ class PCCR_Dataset:
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
+        # Todo: temp
+        non = df[~df['wording_matches'].astype(bool)]
+        non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
+        non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
+        non.to_csv(f'{self.output_path}\\non.csv', index=True)
+
         # Drop rows with more than 5 matches
         df = df.loc[df.match_count <= 5]
 
@@ -391,7 +388,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Fit vectorizer on whole corpus
         vectorizer.fit(df['wording_segments'])
@@ -443,7 +440,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
@@ -513,7 +510,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -576,7 +573,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=False) #todo: remove stopwords or not?
+        vectorizer = CountVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -677,7 +674,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=False)  # todo: remove stopwords or not?
+        vectorizer = CountVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
