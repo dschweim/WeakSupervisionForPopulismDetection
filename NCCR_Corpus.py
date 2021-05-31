@@ -573,7 +573,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+        vectorizer = CountVectorizer(lowercase=True)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -674,7 +674,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+        vectorizer = CountVectorizer(lowercase=True)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')

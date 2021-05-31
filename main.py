@@ -14,7 +14,6 @@ sys.path.append("..")
 def main(path_to_project_folder: str,
          generate_data: bool,
          preprocess_data: bool,
-         generate_train_test: bool,
          generate_tfidf_dicts: bool,
          generate_chisquare_dict: bool,
          generate_labeling: bool):
@@ -26,8 +25,6 @@ def main(path_to_project_folder: str,
     :type generate_data: bool
     :param preprocess_data: Indicator whether to preprocess data corpus in current run
     :type preprocess_data: bool
-    :param generate_train_test:  Indicator whether to generate train test split in current run
-    :type generate_train_test:  bool
     :param generate_tfidf_dicts: Indicator whether to generate tf-idf dictionaries in current run
     :type generate_tfidf_dicts:  bool
     :param generate_chisquare_dict: Indicator whether to generate chi-square dictionary in current run
@@ -52,29 +49,18 @@ def main(path_to_project_folder: str,
             f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available.csv')
 
     if preprocess_data:
+        # Preprocess corpus and generate train-test-split
         nccr_df_prep = nccr_df.preprocess_corpus(nccr_data_de_wording_av)
-    else:
-        nccr_df_prep = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep.csv')
-
-    if generate_train_test:
-        # Generate Train, Test Split
         train, test = generate_train_test_split(nccr_df_prep)
-
-        # Save train, test
-        train.to_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TRAIN.csv', index=True)
-        test.to_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TEST.csv', index=True)
 
         # Generate Train, Dev, Test Split
         # train, dev, test = generate_train_dev_test_split(nccr_data_de_wording_av)
+
     else:
-        # Import preprocessed data
-        train = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TRAIN.csv')
-        test = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TEST.csv')
+        # Import preprocessed corpus and generate train-test-split
+        nccr_df_prep = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep.csv')
+        train, test = generate_train_test_split(nccr_df_prep)
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
@@ -157,9 +143,8 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=True,
-         preprocess_data=True,
-         generate_train_test=True,
+         generate_data=False,
+         preprocess_data=False,
          generate_tfidf_dicts=True,
          generate_chisquare_dict=True,
          generate_labeling=True)
