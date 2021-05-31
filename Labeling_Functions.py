@@ -155,6 +155,19 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
         # Return a label of POP if keyword in text, otherwise ABSTAIN
         return POP if any(keyword in x.text.lower() for keyword in keywords_nccr_chi2_glob) else ABSTAIN
 
+    # LF based on NCCR country-constructed keywords (chi2)
+    @labeling_function()
+    def lf_keywords_nccr_chi2_country(x):
+        if x.Sample_Country == 'au':
+            return POP if any(keyword in x.text.lower() for keyword in lf_input['chi2_keywords_at']) else ABSTAIN
+
+        elif x.Sample_Country == 'cd':
+            return POP if any(keyword in x.text.lower() for keyword in lf_input['chi2_keywords_ch']) else ABSTAIN
+
+        elif x.Sample_Country == 'de':
+            return POP if any(keyword in x.text.lower() for keyword in lf_input['chi2_keywords_de']) else ABSTAIN
+
+
     # b) External Knowledge-based Labeling
     # LF based on party position estimated in CHES
     ches_14 = lf_input_ches['ches_14']
@@ -271,6 +284,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
                 lf_keywords_nccr_tfidf, lf_keywords_nccr_tfidf_glob,
                 lf_keywords_nccr_tfidf_country,
                 lf_keywords_nccr_chi2_glob,
+                lf_keywords_nccr_chi2_country,
                 lf_discrediting_elite,
                 lf_party_position_ches]
 
