@@ -12,8 +12,11 @@ sys.path.append("..")
 
 
 def main(path_to_project_folder: str,
-         generate_data: bool, generate_train_test: bool,
-         generate_tfidf_dicts: bool, generate_chisquare_dict: bool,
+         generate_data: bool,
+         preprocess_data: bool,
+         generate_train_test: bool,
+         generate_tfidf_dicts: bool,
+         generate_chisquare_dict: bool,
          generate_labeling: bool):
     """
     main function to run project and initialize classes
@@ -21,11 +24,13 @@ def main(path_to_project_folder: str,
     :type path_to_project_folder: str
     :param generate_data: Indicator whether to generate data corpus in current run
     :type generate_data: bool
+    :param preprocess_data: Indicator whether to preprocess data corpus in current run
+    :type preprocess_data: bool
     :param generate_train_test:  Indicator whether to generate train test split in current run
     :type generate_train_test:  bool
     :param generate_tfidf_dicts: Indicator whether to generate tf-idf dictionaries in current run
     :type generate_tfidf_dicts:  bool
-     :param generate_chisquare_dict: Indicator whether to generate chi-square dictionary in current run
+    :param generate_chisquare_dict: Indicator whether to generate chi-square dictionary in current run
     :type generate_chisquare_dict:  bool
     :param generate_labeling: Indicator whether to generate labels from Snorkel in current run
     :type generate_labeling:  bool
@@ -39,41 +44,43 @@ def main(path_to_project_folder: str,
 
     if generate_data:
         # Generate Labelled NCCR
-        nccr_data_de_wording_all, nccr_data_de_wording_av = nccr_df.generate_labelled_nccr_corpus()
+        nccr_data_de_wording_av = nccr_df.generate_labelled_nccr_corpus()
 
     else:
         # Import corpora
-        nccr_data_de_wording_all = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_all.csv'
-        )
         nccr_data_de_wording_av = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available.csv'
-        )
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available.csv')
+
+    if preprocess_data:
+        nccr_df_prep = nccr_df.preprocess_corpus(nccr_data_de_wording_av)
+    else:
+        nccr_df_prep = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep.csv')
 
     if generate_train_test:
         # Generate Train, Test Split
-        train, test = generate_train_test_split(nccr_data_de_wording_av)
-        # Pre-process data
-        train_prep = nccr_df.preprocess_corpus(train, is_train=True)
-        test_prep = nccr_df.preprocess_corpus(test, is_train=False)
+        train, test = generate_train_test_split(nccr_df_prep)
+
+        # Save train, test
+        train.to_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TRAIN.csv', index=True)
+        test.to_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TEST.csv', index=True)
 
         # Generate Train, Dev, Test Split
         # train, dev, test = generate_train_dev_test_split(nccr_data_de_wording_av)
-
     else:
         # Import preprocessed data
-        train_prep = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_TRAIN.csv'
-        )
-        test_prep = pd.read_csv(
-            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_TEST.csv'
-        )
+        train = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TRAIN.csv')
+        test = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep_TEST.csv')
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
-        tfidf_dict = nccr_df.generate_tfidf_dict(train_prep, n_words=30)
-        tfidf_dict_country = nccr_df.generate_tfidf_dict_per_country(train_prep, n_words=30)
-        tfidf_dict_global = nccr_df.generate_global_tfidf_dict(train_prep, n_words=30)
+        tfidf_dict = nccr_df.generate_tfidf_dict(train, n_words=30)
+        tfidf_dict_country = nccr_df.generate_tfidf_dict_per_country(train, n_words=30)
+        tfidf_dict_global = nccr_df.generate_global_tfidf_dict(train, n_words=30)
 
     else:
         # Import dictionaries
@@ -93,11 +100,25 @@ def main(path_to_project_folder: str,
 
     if generate_chisquare_dict:
         # Generate Dictionary based on chi-square test
-        chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train_prep, confidence=0.99, n_words=30)
+        chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train, confidence=0.99, n_words=30)
+        chisquare_dict_country = nccr_df.generate_chisquare_dict_per_country(train, confidence=0.99, n_words=30)
 
     else:
         # Import dictionary
         chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_global.csv')
+
+        chisquare_dict_country_au = \
+            pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_per_country_au.csv')
+        chisquare_dict_country_ch = \
+            pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_per_country_ch.csv')
+        chisquare_dict_country_de = \
+            pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_per_country_de.csv')
+
+        chisquare_dict_country = {}
+        values = {'au': chisquare_dict_country_au,
+                  'cd': chisquare_dict_country_ch,
+                  'de': chisquare_dict_country_de}
+        chisquare_dict_country.update(values)
 
     if generate_labeling:
         # Generate overall dictionary as labeling function input
@@ -106,17 +127,20 @@ def main(path_to_project_folder: str,
                    'tfidf_keywords_ch': tfidf_dict_country['cd'].term.to_list(),
                    'tfidf_keywords_de': tfidf_dict_country['de'].term.to_list(),
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list(),
-                   'chi2_keywords_global': chisquare_dict_global.term.tolist()}
+                   'chi2_keywords_global': chisquare_dict_global.term.tolist(),
+                   'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
+                   'chi2_keywords_ch': chisquare_dict_country['cd'].term.to_list(),
+                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list()}
 
         # Filter on relevant columns
-        train_prep_sub = train_prep[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        test_prep_sub = test_prep[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        train_prep_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
-        test_prep_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
+        train_sub = train[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        train_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
+        test_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
 
         # Initialize Labeler
-        nccr_labeler = Labeler(train_data=train_prep_sub,
-                               test_data=test_prep_sub,
+        nccr_labeler = Labeler(train_data=train_sub,
+                               test_data=test_sub,
                                lf_input_dict=lf_dict,
                                data_path=f'{path_to_project_folder}\\Data',
                                output_path=f'{path_to_project_folder}\\Output')
@@ -133,8 +157,9 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=False,
-         generate_train_test=False,
-         generate_tfidf_dicts=False,
+         generate_data=True,
+         preprocess_data=True,
+         generate_train_test=True,
+         generate_tfidf_dicts=True,
          generate_chisquare_dict=True,
          generate_labeling=True)

@@ -130,8 +130,7 @@ class PCCR_Dataset:
         # Exclude examples without wording
         df_combined_de_x_target_av = df_combined_de_x_target.dropna(subset=['Wording'])
 
-        # Save created both corpus
-        df_combined_de_x_target.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_all.csv', index=True)
+        # Save created corpus
         df_combined_de_x_target_av.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available.csv',
                                           index=True)
 
@@ -139,25 +138,18 @@ class PCCR_Dataset:
         print(end - start)
         print('finished NCCR labelled corpus generation')
 
-        return df_combined_de_x_target, df_combined_de_x_target_av
+        return df_combined_de_x_target_av
 
-    def preprocess_corpus(self, df: pd.DataFrame, is_train: bool):
+    def preprocess_corpus(self, df: pd.DataFrame):
         """
         Preprocess text of corpus
         :param df: Dataset to preprocess
         :type df:  DataFrame
-        :param is_train: Indicates if df is train set
-        :type is_train:  boolean
         :return: Returns preprocessed Dataset
         :rtype:  DataFrame
         """
 
         start = time.time()
-
-        if is_train:
-            label = 'TRAIN'
-        else:
-            label = 'TEST'
 
         # Define function to preprocess text column
         def preprocess_text(text):
@@ -221,18 +213,18 @@ class PCCR_Dataset:
         df['year'] = df['year'].astype(int)
 
         # Generate additional column with segments of text that contain relevant content using Wording column
-        df_seg = self.__retrieve_segments(df, is_train)
+        df_seg = self.__retrieve_segments(df)
 
         # Save pre-processed corpus
-        df_seg.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_{label}.csv', index=True)
+        df_seg.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_prep.csv', index=True)
 
         end = time.time()
         print(end - start)
-        print('finished dataset preprocessing for ' + label)
+        print('finished dataset preprocessing')
 
         return df
 
-    def __retrieve_segments(self, df: pd.DataFrame, is_train:bool):
+    def __retrieve_segments(self, df: pd.DataFrame):
         """
         Retrieve segments from fulltext that correspond to content in Wording column
         :param df: Dataframe for retrieval of segments
@@ -356,10 +348,7 @@ class PCCR_Dataset:
         non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
         non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
 
-        if is_train:
-            non.to_csv(f'{self.output_path}\\non_matched_TRAIN.csv', index=True)
-        else:
-            non.to_csv(f'{self.output_path}\\non_matched_TEST.csv', index=True)
+        non.to_csv(f'{self.output_path}\\non_matched.csv', index=True)
 
         # Delete temp columns
         #df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
@@ -368,7 +357,6 @@ class PCCR_Dataset:
         df = df[df['wording_matches'].astype(bool)]
 
         # todo: Replace non-matched content using manually retrieved table
-        # if is_train:
         #     replace_table = pd.read_csv(f'{self.output_path}\\NCCR_Content\\manual_replacement\\')
 
 
@@ -394,7 +382,7 @@ class PCCR_Dataset:
 
     def generate_tfidf_dict(self, df: pd.DataFrame, n_words: int):
         """
-        Calculate tf-idf scores of docs and return top n words with tfidf above threshold
+        Calculate tf-idf scores of docs and return top n words
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
         :param n_words: Number of words to be included
@@ -446,7 +434,7 @@ class PCCR_Dataset:
 
     def generate_tfidf_dict_per_country(self, df: pd.DataFrame, n_words: int):
         """
-        Calculate tf-idf scores of docs per country and return top n words with tfidf above threshold
+        Calculate tf-idf scores of docs per country and return top n words
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
         :param n_words: Number of words to be included
@@ -516,7 +504,7 @@ class PCCR_Dataset:
 
     def generate_global_tfidf_dict(self, df: pd.DataFrame, n_words: int):
         """
-        Calculate tf-idf scores of docs and return top n words with tfidf above threshold
+        Calculate tf-idf scores of docs and return top n words
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
         :param n_words: Number of words to be included
@@ -625,6 +613,9 @@ class PCCR_Dataset:
                                     'popcount': count_pop_vector,
                                     'nonpopcount': count_nonpop_vector})
 
+        # Only consider words with count of at least 5
+        count_table = count_table.loc[(count_table['popcount'] >= 5) & (count_table['nonpopcount'] >= 5)]
+
         # Create empty dataframe for result
         result_table = pd.DataFrame()
 
@@ -644,13 +635,19 @@ class PCCR_Dataset:
             # Extract critical value dependent on confidence and dof
             critical = chi2.ppf(confidence, dof)
 
-            # keep words where chi2 higher than critical value
+            # keep words where chi2 higher than critical value and correspond to pop corpus
             if chi2_word > critical:
-                chisquare_table = pd.DataFrame({'term': [word.term],
-                                                'chisquare': [chi2_word]})
+                # Check whether word is dependent on pop corpus
+                ratio_pop = obs_freq_a / obs_freq_b
+                ratio_nonpop = (obs_freq_a + obs_freq_c) / (obs_freq_a + obs_freq_d)
 
-                # Append to result table
-                result_table = result_table.append(chisquare_table)
+                # If it is dependent on pop corpus, add to results
+                if ratio_pop > ratio_nonpop:
+                    chisquare_table = pd.DataFrame({'term': [word.term],
+                                                    'chisquare': [chi2_word]})
+
+                    # Append to result table
+                    result_table = result_table.append(chisquare_table)
 
         # Sort by chi_square
         result_table.sort_values(by='chisquare', ascending=False, inplace=True)
@@ -666,3 +663,121 @@ class PCCR_Dataset:
         print('finished chisquare dict global generation')
 
         return chisquare_dict
+
+    def generate_chisquare_dict_per_country(self, df: pd.DataFrame, confidence: float, n_words: int):
+        """
+        Calculate chi-square values of words per country and return top n words with value above critical value
+        :param df: Trainset from which to construct dict
+        :type df:  DataFrame
+        :param confidence: level of statistical confidence
+        :type confidence: float
+        :param n_words: Number of words to be included
+        :type n_words: float
+        :return: Returns preprocessed Dataset
+        :rtype:  DataFrame
+        """
+
+        start = time.time()
+
+        # Define vectorizer
+        vectorizer = CountVectorizer(lowercase=False)  # todo: remove stopwords or not?
+
+        # Group data by country
+        df_country_grpd = df.groupby('Sample_Country')
+
+        # Initialize dict
+        chisquare_dict_per_country = {}
+
+        # Calculate tfidf dictionary per country
+        for country, df_country in df_country_grpd:
+
+            # Generate two docs from corpus (POP and NON-POP)
+            df_pop = df_country.loc[df_country['POPULIST'] == 1]
+            df_nonpop = df_country.loc[df_country['POPULIST'] != 1]
+
+            # Concatenate content of corpus
+            content_pop = ' '.join(df_pop["wording_segments"])
+            content_nonpop = ' '.join(df_nonpop["wording_segments"])
+
+            # Generate global dataframe with two docs 'POP' and 'NONPOP'
+            df_global = pd.DataFrame({'ID': ['df_pop', 'df_nonpop'],
+                                      'Wording_combined': [content_pop, content_nonpop]})
+
+            # Fit vectorizer on POP and NONPOP corpus
+            vectorizer.fit(df_global['Wording_combined'])
+
+            # Retrieve word counts of POP and NONPOP subsets
+            count_vector = vectorizer.transform(df_global.Wording_combined).toarray()
+
+            # Retrieve word counts of POP subset (S)
+            count_pop_vector = count_vector[:][0]
+            # Retrieve word counts of NONPOP subset (R)
+            count_nonpop_vector = count_vector[:][1]
+
+            # Retrieve total number of words for both corpora
+            words_pop = count_pop_vector.sum()
+            words_nonpop = count_nonpop_vector.sum()
+
+            # Generate table with counts per word
+            count_table = pd.DataFrame({'term': vectorizer.get_feature_names(),
+                                        'popcount': count_pop_vector,
+                                        'nonpopcount': count_nonpop_vector})
+
+            # Only consider words with count of at least 5
+            count_table = count_table.loc[(count_table['popcount'] >= 5) & (count_table['nonpopcount'] >= 5)]
+
+            # Create empty dataframe for result
+            result_table_country = pd.DataFrame()
+
+            # for each word calculate chi-square statistics
+            for index, word in count_table.iterrows():
+                obs_freq_a = word.popcount
+                obs_freq_b = word.nonpopcount
+                obs_freq_c = words_pop - obs_freq_a
+                obs_freq_d = words_nonpop - obs_freq_a
+
+                # Define contingency table
+                obs = np.array([[obs_freq_a, obs_freq_b],
+                                [obs_freq_c, obs_freq_d]])
+
+                # Calculate chi2, p, dof and ex
+                chi2_word, p, dof, ex = chi2_contingency(obs)
+                # Extract critical value dependent on confidence and dof
+                critical = chi2.ppf(confidence, dof)
+
+                # keep words where chi2 higher than critical value and correspond to pop corpus
+                if chi2_word > critical:
+                    # Check whether word is dependent on pop corpus
+                    ratio_pop = obs_freq_a / obs_freq_b
+                    ratio_nonpop = (obs_freq_a + obs_freq_c) / (obs_freq_a + obs_freq_d)
+
+                    # If it is dependent on pop corpus, add to results
+                    if ratio_pop > ratio_nonpop:
+                        chisquare_table = pd.DataFrame({'term': [word.term],
+                                                        'chisquare': [chi2_word]})
+
+                        # Append to result table
+                        result_table_country = result_table_country.append(chisquare_table)
+
+            # Sort by chi-square
+            result_table_country.sort_values(by='chisquare', ascending=False, inplace=True)
+
+            # Retrieve specified top n_words entries
+            chisquare_dict = result_table_country[:n_words]
+
+            # Append to country-specific dict to global dict
+            chisquare_dict_per_country[country] = chisquare_dict
+
+        # Save dict to disk
+        chisquare_dict_per_country_au = chisquare_dict_per_country['au']
+        chisquare_dict_per_country_ch = chisquare_dict_per_country['cd']
+        chisquare_dict_per_country_de = chisquare_dict_per_country['de']
+        chisquare_dict_per_country_au.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_au.csv', index=True)
+        chisquare_dict_per_country_ch.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_ch.csv', index=True)
+        chisquare_dict_per_country_de.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_de.csv', index=True)
+
+        end = time.time()
+        print(end - start)
+        print('finished chisquare dict per country generation')
+
+        return chisquare_dict_per_country
