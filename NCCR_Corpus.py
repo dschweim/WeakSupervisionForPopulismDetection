@@ -249,7 +249,6 @@ class PCCR_Dataset:
                 .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
                 .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
                 .replace("ç", "c")
-            text = text.lower()  # Lowercase
             text = " ".join(text.split())  # Remove additional whitespaces
 
             return text
@@ -262,7 +261,6 @@ class PCCR_Dataset:
                 .replace("F.D.P", "FDP")\
                 .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe")\
                 .replace("Ö", "Oe").replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")
-            wording = wording.lower() # Lowercase
             wording = " ".join(wording.split()) # Remove additional whitespaces
 
             return wording
@@ -271,7 +269,6 @@ class PCCR_Dataset:
         df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_wording(x))
 
         # Generate spacy docs
-        df['doc'] = list(nlp.pipe(df['text_prep']))
         df['doc_temp'] = list(nlp.pipe(df['text_temp']))
         df['Wording_doc_temp'] = list(nlp.pipe(df['Wording_temp']))
 
@@ -339,9 +336,9 @@ class PCCR_Dataset:
 
         # Run function to retrieve main sentence and sentence triples
         df['wording_sentence'] = \
-            df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=False), axis=1)
+            df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
         df['wording_segments'] = \
-            df.apply(lambda x: collect_sentences(x['doc'], x['wording_matches'], triples=True), axis=1)
+            df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
@@ -359,8 +356,8 @@ class PCCR_Dataset:
         # todo: Replace non-matched content using manually retrieved table
         # replace_table = pd.read_csv(f'{self.output_path}\\manual_segmentation\\')
 
-        # Delete temp columns
-        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+        # todo: temp Delete temp columns
+        df.drop(columns=['text', 'text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
 
         return df
 
