@@ -396,17 +396,12 @@ class PCCR_Dataset:
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
-
-
-
-
         # Retrieve corpus with no match for manual fixing
         df_none = df.loc[df.match_count == 0]
         df_none['doc_tokens'] = df_none['doc_temp'].apply(lambda x: [token.text for token in x])
         df_none['wording_tokens'] = df_none['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
         df_none.drop(columns=['level_0'], inplace=True)
         df_none.rename(columns={'index': "ID_non"}, inplace=True)
-
         df_none.to_csv(f'{self.output_path}\\df_none_match.csv', index=False)
 
         # Replace Wording for corpus with no match using manual_replacement_table
@@ -416,7 +411,7 @@ class PCCR_Dataset:
         df_none = df_none.loc[df_none.ID_non.isin(replace_table.ID_non)]
 
         # Replace Wording with Wording_fixed
-        df_none['Wording'] = replace_table.Wording_fixed
+        df_none = df_none.assign(Wording=replace_table['Wording_fixed'])
 
         # Generate spacy doc
         df_none['Wording_doc_temp'] = list(nlp.pipe(df_none['Wording']))
@@ -432,19 +427,18 @@ class PCCR_Dataset:
         # Set indicator for manually retrieved match
         df_none['match_count'] = -1
 
-
-
         # Only keep rows with 1 match
         df = df.loc[df.match_count == 1]
 
-        # Add manually fixed matches todo: where(-1)
+        # Add manually fixed matches
         df = df.append(df_none)
 
         # Drop redundant columns
         df.drop(columns=['level_0', 'index'], inplace=True)
-
         # Delete temp columns
-        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+        df.drop(columns=
+                ['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp', 'ID_non', 'doc_tokens', 'wording_tokens'],
+                inplace=True)
 
         return df
 
