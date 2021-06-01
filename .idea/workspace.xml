@@ -133,9 +133,13 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="word.popcount" language="Python" />
-        <watch expression="len(chisquare_dict)" language="Python" />
-        <watch expression="chisquare_dict.term.to_list()" language="Python" />
+        <watch expression="df['Wording_temp']" language="Python" />
+        <watch expression="df_none['Wording_temp']" language="Python" />
+        <watch expression="df_none(Wording=replace_table['Wording_fixed'])" language="Python" />
+        <watch expression="df_none['Wording']" language="Python" />
+        <watch expression="replace_table.Wording_fixed" language="Python" />
+        <watch expression="replace_table.Wording_fixed.values" language="Python" />
+        <watch expression="df_none['Wording'] = replace_table.Wording_fixed.values" language="Python" />
       </configuration>
     </watches-manager>
   </component>
