@@ -4,7 +4,7 @@ import re
 import time
 import spacy
 import numpy as np
-from spacy.matcher import PhraseMatcher
+from spacy.matcher import PhraseMatcher, Matcher
 from spacy.tokens import Doc
 import pandas as pd
 from nltk.corpus import stopwords
@@ -216,7 +216,7 @@ class PCCR_Dataset:
         df_seg = self.__retrieve_segments(df)
 
         # Save pre-processed corpus
-        df_seg.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_prep.csv', index=True)
+        df_seg.to_csv(f'{self.output_path}\\NCCR_combined_corpus_DE_wording_available_prep.csv', index=False)
 
         end = time.time()
         print(end - start)
@@ -236,32 +236,83 @@ class PCCR_Dataset:
         # Set spacy model
         nlp = self.nlp
 
-        # Apply temporary preprocessing function to whole text column
+        # Define temporary preprocessing function for textual content
         def standardize_text(text: str):
             # Replace special characters
-            text = text.replace("/", "").replace("@", "")\
+            text = text.replace("/", "").replace("@", "").replace("#", "")\
                 .replace(r"\\x84", "").replace(r"\\x93", "") \
                 .replace(r"\x84", "").replace(r"\x93", "").replace(r"\x96", "") \
                 .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
-                .replace("<ORD:65412>", "").replace("<ORD:65430>", "") \
+                .replace("<ORD:65427>", "").replace("Elite", "Elite").replace(r"\"Begabung\"", "Begabung")\
+                .replace("Begabung", "Begabung").replace("funktioniert", "funktioniert")\
+                .replace("Nächstenliebe", "Nächstenliebe").replace("Wir", "Wir")\
+                .replace("Arbeiterparteien", "Arbeiterparteien")\
+                .replace("", "")\
+                .replace("<ORD:65412>", "").replace("<ORD:65430>", "") .replace("<quot>", r"\"") \
                 .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "") \
-                .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke")\
+                .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke") \
                 .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
                 .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")\
                 .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e") \
                 .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
                 .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
-                .replace("ç", "c")
+                .replace("ç", "c").replace(r"\\", "")
             text = " ".join(text.split())  # Remove additional whitespaces
 
             return text
 
-        df['text_temp'] = df['text_prep'].apply(lambda x: standardize_text(x))
-        df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_text(x))
+        # Define tokens to fix in Wording
+        replacement_dict = {"Parteienfamilie": [{'LOWER': 'parteienfamili'}],
+                            "Volkspartei": [{'LOWER': 'volksparte'}],
+                            "Spindelegger": [{'LOWER': 'spindelegge'}],
+                            "Kanzler": [{'LOWER': 'anzler'}],
+                            "sozialistischen": [{'LOWER': 'ozialistischen'}],
+                            "Ein": [{'LOWER': '.ein'}],
+                            "Josef": [{'LOWER': 'osef'}],
+                            "das": [{'LOWER': 'as'}],
+                            "dass": [{'LOWER': 'ass'}],
+                            "Nun": [{'LOWER': 'un'}],
+                            "Anstatt": [{'LOWER': 'nstatt'}],
+                            "Ich": [{'LOWER': r'\"ich'}],
+                            "Danke": [{'LOWER': r'\"danke'}],
+                            "LINKE": [{'LOWER': "link"}],
+                            "FDP-Bundestagsfraktion": [{'LOWER': "fdp-"}],
+                            "CDUCSU-Fraktion": [{'LOWER': "cducsu-"}],
+                            "Den": [{'LOWER': "n"}],
+                            "hat": [{'LOWER': "h"}],
+                            "ist": [{'LOWER': "i"}],
+                            "Der": [{'LOWER': "r"}],
+                            "Die": [{'LOWER': "e"}],
+                            "Laender": [{'LOWER': "l"}],
+                            "Die": [{'LOWER': "-die"}],
+                            "Viel": [{'LOWER': "-viel"}],
+                            "einerseits": [{'LOWER': "einerseit"}],
+                            "Eine": [{'LOWER': "-eine"}]
+                            }
 
-        # Generate spacy docs
-        df['doc_temp'] = list(nlp.pipe(df['text_temp']))
-        df['Wording_doc_temp'] = list(nlp.pipe(df['Wording_temp']))
+        # Define function to correct redundant characters and typos in Wording column
+        def fix_wording(wording: spacy.tokens.doc.Doc, replacement, pattern):
+
+            # Define Matcher
+            token_matcher = Matcher(nlp.vocab)
+            token_matcher.add("REPLACE", [pattern])
+
+            # If no match, return wording as is
+            if not token_matcher(wording):
+                return wording
+            # If match, replace match by corresponding replacement token
+            else:
+                text = ''
+                buffer_start = 0
+                for _, match_start, _ in token_matcher(wording):
+                    if match_start > buffer_start: # Add skipped token
+                        text += wording[buffer_start: match_start].text + wording[match_start - 1].whitespace_
+                    text += replacement + wording[
+                        match_start].whitespace_  # Replace token, with trailing whitespace if available
+                    buffer_start = match_start + 1
+                text += wording[buffer_start:].text
+
+                return nlp.make_doc(text)
 
         # Define function to retrieve first n tokens of Wording
         def get_sub_wording(wording: spacy.tokens.doc.Doc, n_tokens: int):
@@ -278,12 +329,6 @@ class PCCR_Dataset:
             matches = matcher(doc)
 
             return matches
-
-        # Retrieve first n tokens of Wording
-        df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=5))
-
-        # Retrieve Wording-Text-matches
-        df['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
 
         # Define function to retrieve sentences that correspond to matched tokens
         def collect_sentences(doc: spacy.tokens.doc.Doc, matches: list, triples: bool):
@@ -325,6 +370,24 @@ class PCCR_Dataset:
                 else:
                     return sentences
 
+        # Apply temporary textual preprocessing function to text and wording column
+        df['text_temp'] = df['text_prep'].apply(lambda x: standardize_text(x))
+        df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_text(x))
+
+        # Generate spacy docs
+        df['doc_temp'] = list(nlp.pipe(df['text_temp']))
+        df['Wording_doc_temp'] = list(nlp.pipe(df['Wording_temp']))
+
+        # Replace each token in dict with it's corresponding corrected replacement
+        for key in replacement_dict:
+            df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: fix_wording(x, key, replacement_dict[key]))
+
+        # Retrieve first n tokens of Wording
+        df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=5))
+
+        # Retrieve Wording-Text-matches
+        df['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+
         # Run function to retrieve main sentence and sentence triples
         df['wording_sentence'] = \
             df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
@@ -334,27 +397,37 @@ class PCCR_Dataset:
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
-        # Todo: temp
-        non = df[~df['wording_matches'].astype(bool)]
-        non['doc_tokens'] = non['doc_temp'].apply(lambda x: [token.text for token in x])
-        non['wording_tokens'] = non['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
-        non.to_csv(f'{self.output_path}\\non.csv', index=True)
+        # Retrieve corpus with no match for manual fixing
+        df_none = df.loc[df.match_count == 0]
+        df_none['doc_tokens'] = df_none['doc_temp'].apply(lambda x: [token.text for token in x])
+        df_none['wording_tokens'] = df_none['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
+        df_none.drop(columns=['level_0', 'index'], inplace=True)
+        df_none.to_csv(f'{self.output_path}\\df_none_match.csv', index=False)
 
-        # Drop rows with more than 5 matches
-        df = df.loc[df.match_count <= 5]
+        # # Replace Wording for corpus with no match using manual_segmentation_table
+        # replace_table = pd.read_csv(f'{self.output_path}\\manual_segmentation\\none_match_replace_table.csv')
+        # df_none
+        #
+        # # Generate spacy doc
+        # df_none['Wording_fixed_doc'] = list(nlp.pipe(df['Wording_fixed']))
+        #
+        # # Retrieve Wording-Text-matches
+        # df_none['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_fixed_doc']), axis=1)
+        #
+        # # Set indicator for manually retrieved match
+        # df_none['match_count'] = -1
 
-        # Retrieve corpus with no match and 2,3,4,5 matches for manual fixing
-        df_manual = df.loc[df.match_count != 1]
-        df_manual.to_csv(f'{self.output_path}\\df_manual_fixing.csv', index=True)
 
-        # Only keep rows with 1 matches
+        # Only keep rows with 1 match
         df = df.loc[df.match_count == 1]
 
-        # todo: Replace non-matched content using manually retrieved table
-        # replace_table = pd.read_csv(f'{self.output_path}\\manual_segmentation\\')
+        # Add manually fixed matches
 
-        # todo: temp Delete temp columns
-        df.drop(columns=['text', 'text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
+        # Drop redundant columns
+        df.drop(columns=['level_0', 'index'], inplace=True)
+
+        # Delete temp columns
+        df.drop(columns=['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp'], inplace=True)
 
         return df
 
@@ -388,7 +461,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
 
         # Fit vectorizer on whole corpus
         vectorizer.fit(df['wording_segments'])
@@ -440,7 +513,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
@@ -510,7 +583,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -573,7 +646,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=True)
+        vectorizer = CountVectorizer(lowercase=False)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -674,7 +747,7 @@ class PCCR_Dataset:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=True)
+        vectorizer = CountVectorizer(lowercase=False)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')

@@ -144,7 +144,7 @@ if __name__ == "__main__":
 
     main(path_to_project_folder=input_path,
          generate_data=False,
-         preprocess_data=False,
+         preprocess_data=True,
          generate_tfidf_dicts=True,
          generate_chisquare_dict=True,
          generate_labeling=True)
