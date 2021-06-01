@@ -33,3 +33,4 @@ Data/NRC-Emotion-Lexicon/NRC-Emotion-Lexicon/README.txt
 *.xml
 *.xml~
 *.xml
+.idea/workspace.xml
