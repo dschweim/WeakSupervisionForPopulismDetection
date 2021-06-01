@@ -239,20 +239,20 @@ class PCCR_Dataset:
         # Define temporary preprocessing function for textual content
         def standardize_text(text: str):
             # Replace special characters
-            text = text.replace("/", "").replace("@", "").replace("#", "")\
+            text = text.replace("/", "").replace("@", "").replace("#", "") \
                 .replace(r"\\x84", "").replace(r"\\x93", "") \
                 .replace(r"\x84", "").replace(r"\x93", "").replace(r"\x96", "") \
                 .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
-                .replace("<ORD:65427>", "").replace("Elite", "Elite").replace(r"\"Begabung\"", "Begabung")\
-                .replace("Begabung", "Begabung").replace("funktioniert", "funktioniert")\
-                .replace("Nächstenliebe", "Nächstenliebe").replace("Wir", "Wir")\
-                .replace("Arbeiterparteien", "Arbeiterparteien")\
-                .replace("", "")\
-                .replace("<ORD:65412>", "").replace("<ORD:65430>", "") .replace("<quot>", r"\"") \
+                .replace("<ORD:65427>", "").replace("Elite", "Elite").replace(r"\"Begabung\"", "Begabung") \
+                .replace("Begabung", "Begabung").replace("funktioniert", "funktioniert") \
+                .replace("Nächstenliebe", "Nächstenliebe").replace("Wir", "Wir") \
+                .replace("Arbeiterparteien", "Arbeiterparteien") \
+                .replace("", "") \
+                .replace("<ORD:65412>", "").replace("<ORD:65430>", "").replace("<quot>", r"\"") \
                 .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "") \
                 .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke") \
                 .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
-                .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss")\
+                .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss") \
                 .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e") \
                 .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
                 .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
@@ -282,7 +282,6 @@ class PCCR_Dataset:
                             "hat": [{'LOWER': "h"}],
                             "ist": [{'LOWER': "i"}],
                             "Der": [{'LOWER': "r"}],
-                            "Die": [{'LOWER': "e"}],
                             "Laender": [{'LOWER': "l"}],
                             "Die": [{'LOWER': "-die"}],
                             "Viel": [{'LOWER': "-viel"}],
@@ -397,31 +396,49 @@ class PCCR_Dataset:
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
+
+
+
+
         # Retrieve corpus with no match for manual fixing
         df_none = df.loc[df.match_count == 0]
         df_none['doc_tokens'] = df_none['doc_temp'].apply(lambda x: [token.text for token in x])
         df_none['wording_tokens'] = df_none['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
-        df_none.drop(columns=['level_0', 'index'], inplace=True)
+        df_none.drop(columns=['level_0'], inplace=True)
+        df_none.rename(columns={'index': "ID_non"}, inplace=True)
+
         df_none.to_csv(f'{self.output_path}\\df_none_match.csv', index=False)
 
-        # # Replace Wording for corpus with no match using manual_segmentation_table
-        # replace_table = pd.read_csv(f'{self.output_path}\\manual_segmentation\\none_match_replace_table.csv')
-        # df_none
-        #
-        # # Generate spacy doc
-        # df_none['Wording_fixed_doc'] = list(nlp.pipe(df['Wording_fixed']))
-        #
-        # # Retrieve Wording-Text-matches
-        # df_none['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_fixed_doc']), axis=1)
-        #
-        # # Set indicator for manually retrieved match
-        # df_none['match_count'] = -1
+        # Replace Wording for corpus with no match using manual_replacement_table
+        replace_table = pd.read_csv(f'{self.output_path}\\manual_replacement\\none_match_replace_table.csv')
+
+        # Only keep rows for which replacement is available
+        df_none = df_none.loc[df_none.ID_non.isin(replace_table.ID_non)]
+
+        # Replace Wording with Wording_fixed
+        df_none['Wording'] = replace_table.Wording_fixed
+
+        # Generate spacy doc
+        df_none['Wording_doc_temp'] = list(nlp.pipe(df_none['Wording']))
+
+        # Retrieve Wording-Text-matches
+        df_none['wording_matches'] = df_none.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+
+        # Run function to retrieve main sentence and sentence triples
+        df_none['wording_sentence'] = \
+            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+        df_none['wording_segments'] = \
+            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
+        # Set indicator for manually retrieved match
+        df_none['match_count'] = -1
+
 
 
         # Only keep rows with 1 match
         df = df.loc[df.match_count == 1]
 
-        # Add manually fixed matches
+        # Add manually fixed matches todo: where(-1)
+        df = df.append(df_none)
 
         # Drop redundant columns
         df.drop(columns=['level_0', 'index'], inplace=True)
