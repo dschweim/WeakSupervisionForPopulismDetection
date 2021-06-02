@@ -124,6 +124,9 @@ def main(path_to_project_folder: str,
         train_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
         test_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
 
+        print('TRAIN EXAMPLES: ' + str(len(train)))
+        print('TEST EXAMPLES: ' + str(len(test)))
+
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_sub,
                                test_data=test_sub,

@@ -122,6 +122,21 @@
           <line>208</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>418</line>
+          <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>411</line>
+          <option name="timeStamp" value="136" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>438</line>
+          <option name="timeStamp" value="137" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -138,8 +153,13 @@
         <watch expression="df_none(Wording=replace_table['Wording_fixed'])" language="Python" />
         <watch expression="df_none['Wording']" language="Python" />
         <watch expression="replace_table.Wording_fixed" language="Python" />
+        <watch expression="df_none['Wording'] = replace_table['Wording_fixed'].values" language="Python" />
+        <watch expression="df_none" language="Python" />
+        <watch expression="len(df_none)" language="Python" />
+        <watch expression="len(replace_table)" language="Python" />
         <watch expression="replace_table.Wording_fixed.values" language="Python" />
         <watch expression="df_none['Wording'] = replace_table.Wording_fixed.values" language="Python" />
+        <watch expression="replace_table.ID_non" language="Python" />
       </configuration>
     </watches-manager>
   </component>
