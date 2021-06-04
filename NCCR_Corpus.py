@@ -313,11 +313,6 @@ class PCCR_Dataset:
 
                 return nlp.make_doc(text)
 
-        # Define function to retrieve first n tokens of Wording
-        def get_sub_wording(wording: spacy.tokens.doc.Doc, n_tokens: int):
-            doc_sub = Doc(wording.vocab, words=[t.text for i, t in enumerate(wording) if i < n_tokens])
-            return doc_sub
-
         # Define function to find index of tokens that match Wording content
         def get_matches(doc: spacy.tokens.doc.Doc, wording: spacy.tokens.doc.Doc):
             # Define Spacy Matcher
@@ -369,6 +364,11 @@ class PCCR_Dataset:
                 else:
                     return sentences
 
+        # Define function to retrieve first n tokens of Wording
+        def get_sub_wording(wording: spacy.tokens.doc.Doc, n_tokens: int):
+            doc_sub = Doc(wording.vocab, words=[t.text for i, t in enumerate(wording) if i < n_tokens])
+            return doc_sub
+
         # Apply temporary textual preprocessing function to text and wording column
         df['text_temp'] = df['text_prep'].apply(lambda x: standardize_text(x))
         df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_text(x))
@@ -380,9 +380,6 @@ class PCCR_Dataset:
         # Replace each token in dict with it's corresponding corrected replacement
         for key in replacement_dict:
             df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: fix_wording(x, key, replacement_dict[key]))
-
-        # Retrieve first n tokens of Wording
-        df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=5))
 
         # Retrieve Wording-Text-matches
         df['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
@@ -398,23 +395,12 @@ class PCCR_Dataset:
 
         # Retrieve corpus with no match for manual fixing
         df_none = df.loc[df.match_count == 0]
-        df_none['doc_tokens'] = df_none['doc_temp'].apply(lambda x: [token.text for token in x])
-        df_none['wording_tokens'] = df_none['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
-        df_none.drop(columns=['level_0', 'index'], inplace=True)
-        df_none.reset_index(inplace=True)
-        df_none.to_csv(f'{self.output_path}\\df_none_match.csv')
 
-        # Replace Wording for corpus with no match using manual_replacement_table
-        replace_table = pd.read_csv(f'{self.output_path}\\manual_replacement\\none_match_replace_table.csv')
+        # todo: Drop examples where Wording is longer than 3 sentences
 
-        # Only keep rows for which replacement is available
-        df_none = df_none.loc[df_none.index.isin(replace_table.ID_non)]
 
-        # Replace Wording with Wording_fixed
-        df_none['Wording'] = replace_table['Wording_fixed'].values
-
-        # Generate spacy doc
-        df_none['Wording_doc_temp'] = list(nlp.pipe(df_none['Wording']))
+        # Try to retrieve match using n first tokens of Wording
+        df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=10))
 
         # Retrieve Wording-Text-matches
         df_none['wording_matches'] = df_none.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
@@ -425,13 +411,46 @@ class PCCR_Dataset:
         df_none['wording_segments'] = \
             df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
-        # todo: temp get match count
+        # Calculate number of matches
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
-        # Set indicator for manually retrieved match
-        #df_none['match_count'] = -1
 
+        # Generate additional columns
+        df_none['doc_tokens'] = df_none['doc_temp'].apply(lambda x: [token.text for token in x])
+        df_none['wording_tokens'] = df_none['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
+
+        # Save corpus
+        df_none.drop(columns=['level_0', 'index'], inplace=True)
+        df_none.reset_index(inplace=True)
+        df_none.to_csv(f'{self.output_path}\\df_none_match.csv')
+
+        ## MANUAL REPLACEMENT NONE_MATCH
         # Only keep rows with 1 match for main corpus
         df = df.loc[df.match_count == 1]
+
+        # Replace Wording for corpus with no match using manual_replacement_table
+        replace_table_non = pd.read_csv(f'{self.output_path}\\manual_replacement\\none_match_replace_table.csv')
+
+        # Only keep rows for which replacement is available
+        df_none = df_none.loc[df_none.index.isin(replace_table_non.ID_non)]
+
+        # Replace Wording with Wording_fixed
+        df_none['Wording'] = replace_table_non['Wording_fixed'].values
+
+        # Generate spacy doc
+        df_none['Wording_doc_temp'] = list(nlp.pipe(df_none['Wording_doc_temp']))
+
+        # Retrieve Wording-Text-matches
+        df_none['wording_matches'] = df_none.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+
+        # Run function to retrieve main sentence and sentence triples
+        df_none['wording_sentence'] = \
+            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+        df_none['wording_segments'] = \
+            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
+
+        # Set indicator for manually retrieved match
+        df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
+        #df_none['match_count'] = -1
 
         # Add manually fixed matches to main corpus
         df = df.append(df_none)
