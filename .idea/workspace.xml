@@ -122,6 +122,26 @@
           <line>208</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>456</line>
+          <option name="timeStamp" value="106" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>428</line>
+          <option name="timeStamp" value="107" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>427</line>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>168</line>
+          <option name="timeStamp" value="113" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -133,19 +153,11 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="df['Wording_temp']" language="Python" />
-        <watch expression="df_none['Wording_temp']" language="Python" />
-        <watch expression="df_none(Wording=replace_table['Wording_fixed'])" language="Python" />
-        <watch expression="df_none['Wording']" language="Python" />
-        <watch expression="replace_table.Wording_fixed" language="Python" />
-        <watch expression="df_none['Wording'] = replace_table['Wording_fixed'].values" language="Python" />
-        <watch expression="df_none" language="Python" />
-        <watch expression="df_none['wording_matches'].apply(lambda x: len(x))" language="Python" />
-        <watch expression="len(df_none)" language="Python" />
-        <watch expression="len(replace_table)" language="Python" />
-        <watch expression="replace_table.Wording_fixed.values" language="Python" />
-        <watch expression="df_none['Wording'] = replace_table.Wording_fixed.values" language="Python" />
-        <watch expression="replace_table.ID_non" language="Python" />
+        <watch expression="import docutils.utils.smartquotes&#10;&#10;[sent.text for sent in docutils.utils.smartquotes.stupefyEntities()]" language="Python" />
+        <watch expression="import docutils.utils.smartquotes&#10;&#10;[sent.text for sent in docutils.utils.smartquotes.stupefyEntities()]" language="Python" />
+        <watch expression="len(list(df_none['Wording_doc_temp'].iloc[0].sents))" language="Python" />
+        <watch expression="list(df_none.Wording_doc_temp.iloc[4].sents)" language="Python" />
+        <watch expression="df_none.Wording_doc_temp.iloc[5]" language="Python" />
       </configuration>
     </watches-manager>
   </component>

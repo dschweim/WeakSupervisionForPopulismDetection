@@ -32,7 +32,7 @@ class PCCR_Dataset:
 
         self.data_path = data_path
         self.output_path = output_path
-        self.nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
+        self.nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer',
                                                           'attribute_ruler', 'lemmatizer'])
         self.nlp.add_pipe("sentencizer")
 
@@ -151,65 +151,18 @@ class PCCR_Dataset:
 
         start = time.time()
 
-        # Define function to preprocess text column
-        def preprocess_text(text):
-            # Remove standard text info at beginning of text
-            text = re.sub(r'^(\n|.)*--', '', text)
-
-            # Remove linebreaks and extra spaces
-            text = " ".join(text.split())
-
-            return text
-
-        # Define function to retrieve party from text column
-        def retrieve_party(text, sampletype):
-
-            # Press release
-            if sampletype == 'PressRelease':
-                grp_index = 3
-                party = re.search(r'(^(.|\n)*Press Release from Party: )(\w*)', text)
-
-            # Party Manifesto
-            elif sampletype == 'PartyMan':
-                grp_index = 3
-                party = re.search(r'(^(.|\n)*Party Manifesto: )(\w*\s\w*)', text)
-
-            # Past Party Manifesto
-            elif sampletype == 'Past_PartyMan':
-                grp_index = 3
-                party = re.search(r'(^(.|\n)*Party Manifesto, )(\w*)', text)
-
-            # Social Media
-            elif sampletype == 'SocialMedia':
-                grp_index = 6
-                party = re.search(r'(^(.|\n)*Full Name: )(.*, )(.* )(\()(.*)(\))(.*)', text)
-
-            if party is None:
-                return None
-            else:
-                return party.group(grp_index)
-
-        # Retrieve year from date column
-        def retrieve_year(date):
-            year = re.search(r'^\d\d.\d\d.(\d{4})', date)
-
-            if year is None:
-                return None
-            else:
-                return year.group(1)
-
         # Apply preprocess_text function to whole text column
-        df['text_prep'] = df['text'].apply(lambda x: preprocess_text(x))
+        df['text_prep'] = df['text'].apply(lambda x: self.__remove_intro(x))
 
         # Apply retrieve_party function to whole text column depending on sampletype
-        df['party'] = df.apply(lambda x: retrieve_party(x['text'], x['Sample_Type']), axis=1)
+        df['party'] = df.apply(lambda x: self.__retrieve_party(x['text'], x['Sample_Type']), axis=1)
 
         # Standardize party naming
         df['party'] = df['party'].apply(lambda x: standardize_party_naming(x))
 
         # Apply retrieve_year function to whole date column
         df['Date'] = df['Date'].astype(str)
-        df['year'] = df['Date'].apply(lambda x: retrieve_year(x))
+        df['year'] = df['Date'].apply(lambda x: self.__retrieve_year(x))
         df['year'] = df['year'].astype(int)
 
         # Generate additional column with segments of text that contain relevant content using Wording column
@@ -223,6 +176,80 @@ class PCCR_Dataset:
         print('finished dataset preprocessing')
 
         return df_seg
+
+    @staticmethod
+    def __remove_intro(text: str):
+        """
+        Retrieve standard intro from text
+        :param text: String of text
+        :type date: str
+        :return: Returns subtext without intro
+        :rtype:  str
+        """
+        # Define function to preprocess text column
+
+        # Remove standard text info at beginning of text
+        text = re.sub(r'^(\n|.)*--', '', text)
+
+        # Remove linebreaks and extra spaces
+        text = " ".join(text.split())
+
+        return text
+
+    @staticmethod
+    def __retrieve_year(date: str):
+        """
+        Retrieve year from date
+        :param date: String of date
+        :type date: str
+        :return: Returns year of date
+        :rtype:  str
+        """
+
+        # Retrieve year from date column
+        year = re.search(r'^\d\d.\d\d.(\d{4})', date)
+
+        if year is None:
+            return None
+        else:
+            return year.group(1)
+
+    @staticmethod
+    def __retrieve_party(text: str, sampletype: str):
+        """
+        Retrieve party from text
+        :param text: String of text
+        :type text: str
+        :param sampletype: Indicator of sample type
+        :type sampletype: str
+        :return: Returns party name
+        :rtype:  str
+        """
+
+        # Press release
+        if sampletype == 'PressRelease':
+            grp_index = 3
+            party = re.search(r'(^(.|\n)*Press Release from Party: )(\w*)', text)
+
+        # Party Manifesto
+        elif sampletype == 'PartyMan':
+            grp_index = 3
+            party = re.search(r'(^(.|\n)*Party Manifesto: )(\w*\s\w*)', text)
+
+        # Past Party Manifesto
+        elif sampletype == 'Past_PartyMan':
+            grp_index = 3
+            party = re.search(r'(^(.|\n)*Party Manifesto, )(\w*)', text)
+
+        # Social Media
+        elif sampletype == 'SocialMedia':
+            grp_index = 6
+            party = re.search(r'(^(.|\n)*Full Name: )(.*, )(.* )(\()(.*)(\))(.*)', text)
+
+        if party is None:
+            return None
+        else:
+            return party.group(grp_index)
 
     def __retrieve_segments(self, df: pd.DataFrame):
         """
@@ -396,10 +423,12 @@ class PCCR_Dataset:
         # Retrieve corpus with no match for manual fixing
         df_none = df.loc[df.match_count == 0]
 
-        # todo: Drop examples where Wording is longer than 3 sentences
+        # todo: Retrieve examples where Wording is longer than 3 sentences
 
+        df_none['Wording_doc_temp_2'] = list(nlp.pipe(df_none['Wording_prep']))
+        df_none['Wording_sent_count'] = df_none['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
-        # Try to retrieve match using n first tokens of Wording
+        # Retry to retrieve match using only n first tokens of Wording
         df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=10))
 
         # Retrieve Wording-Text-matches

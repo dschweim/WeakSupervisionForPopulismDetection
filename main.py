@@ -148,6 +148,6 @@ if __name__ == "__main__":
     main(path_to_project_folder=input_path,
          generate_data=False,
          preprocess_data=True,  # runs for approx 3-5 min
-         generate_tfidf_dicts=True,
-         generate_chisquare_dict=True,
+         generate_tfidf_dicts=False,
+         generate_chisquare_dict=False,
          generate_labeling=True)
