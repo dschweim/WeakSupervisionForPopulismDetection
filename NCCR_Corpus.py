@@ -13,6 +13,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from util import standardize_party_naming
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
+
 pd.options.mode.chained_assignment = None
 
 
@@ -260,33 +261,13 @@ class PCCR_Dataset:
         :rtype:  DataFrame
         """
 
-        # Set spacy model
-        nlp = self.nlp
+        # Apply temporary textual preprocessing function to text and wording column
+        df['text_temp'] = df['text_prep'].apply(lambda x: self.__standardize_text(x))
+        df['Wording_temp'] = df['Wording'].apply(lambda x: self.__standardize_text(x))
 
-        # Define temporary preprocessing function for textual content
-        def standardize_text(text: str):
-            # Replace special characters
-            text = text.replace("/", "").replace("@", "").replace("#", "") \
-                .replace(r"\\x84", "").replace(r"\\x93", "") \
-                .replace(r"\x84", "").replace(r"\x93", "").replace(r"\x96", "") \
-                .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
-                .replace("<ORD:65427>", "").replace("Elite", "Elite").replace(r"\"Begabung\"", "Begabung") \
-                .replace("Begabung", "Begabung").replace("funktioniert", "funktioniert") \
-                .replace("Nächstenliebe", "Nächstenliebe").replace("Wir", "Wir") \
-                .replace("Arbeiterparteien", "Arbeiterparteien") \
-                .replace("", "") \
-                .replace("<ORD:65412>", "").replace("<ORD:65430>", "").replace("<quot>", r"\"") \
-                .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "") \
-                .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke") \
-                .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
-                .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss") \
-                .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e") \
-                .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
-                .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
-                .replace("ç", "c").replace(r"\\", "")
-            text = " ".join(text.split())  # Remove additional whitespaces
-
-            return text
+        # Generate spacy docs
+        df['doc_temp'] = list(self.nlp.pipe(df['text_temp']))
+        df['Wording_doc_temp'] = list(self.nlp.pipe(df['Wording_temp']))
 
         # Define tokens to fix in Wording
         replacement_dict = {"Parteienfamilie": [{'LOWER': 'parteienfamili'}],
@@ -316,106 +297,19 @@ class PCCR_Dataset:
                             "Eine": [{'LOWER': "-eine"}]
                             }
 
-        # Define function to correct redundant characters and typos in Wording column
-        def fix_wording(wording: spacy.tokens.doc.Doc, replacement, pattern):
-
-            # Define Matcher
-            token_matcher = Matcher(nlp.vocab)
-            token_matcher.add("REPLACE", [pattern])
-
-            # If no match, return wording as is
-            if not token_matcher(wording):
-                return wording
-            # If match, replace match by corresponding replacement token
-            else:
-                text = ''
-                buffer_start = 0
-                for _, match_start, _ in token_matcher(wording):
-                    if match_start > buffer_start: # Add skipped token
-                        text += wording[buffer_start: match_start].text + wording[match_start - 1].whitespace_
-                    text += replacement + wording[
-                        match_start].whitespace_  # Replace token, with trailing whitespace if available
-                    buffer_start = match_start + 1
-                text += wording[buffer_start:].text
-
-                return nlp.make_doc(text)
-
-        # Define function to find index of tokens that match Wording content
-        def get_matches(doc: spacy.tokens.doc.Doc, wording: spacy.tokens.doc.Doc):
-            # Define Spacy Matcher
-            matcher = PhraseMatcher(nlp.vocab)
-            # Add patterns from nlp-preprocessed Wording column
-            matcher.add("WORDING", [wording])
-            # Get matches
-            matches = matcher(doc)
-
-            return matches
-
-        # Define function to retrieve sentences that correspond to matched tokens
-        def collect_sentences(doc: spacy.tokens.doc.Doc, matches: list, triples: bool):
-            # Skip for empty matches
-            if matches is None:
-                return None
-            else:
-                # Define empty list/string
-                sentences = []
-                sentence_triples = ''
-
-                # Retrieve main sentence + pre- and succeeding sentence of each match
-                for match_id, start, end in matches:
-                    # Retrieve main sentence
-                    main_sent = doc[start:end].sent.text
-                    # Append to list
-                    sentences.append([main_sent])
-
-                    if triples:
-                        # check if main_sent is first sentence,  if so return empty string,
-                        # otherwise return previous sentence
-                        if doc[start].sent.start - 1 < 0:
-                            previous_sent = ''
-                        else:
-                            previous_sent = doc[doc[start].sent.start - 1].sent.text + ' '
-
-                        # check if main_sent is last sentence, if so return empty string,
-                        # otherwise return following sentence
-                        if doc[start].sent.end + 1 >= len(doc):
-                            following_sent = ''
-                        else:
-                            following_sent = ' ' + doc[doc[start].sent.end + 1].sent.text
-
-                        # Append triples to string
-                        sentence_triples = sentence_triples + previous_sent + main_sent + following_sent
-
-                if triples:
-                    return sentence_triples
-                else:
-                    return sentences
-
-        # Define function to retrieve first n tokens of Wording
-        def get_sub_wording(wording: spacy.tokens.doc.Doc, n_tokens: int):
-            doc_sub = Doc(wording.vocab, words=[t.text for i, t in enumerate(wording) if i < n_tokens])
-            return doc_sub
-
-        # Apply temporary textual preprocessing function to text and wording column
-        df['text_temp'] = df['text_prep'].apply(lambda x: standardize_text(x))
-        df['Wording_temp'] = df['Wording'].apply(lambda x: standardize_text(x))
-
-        # Generate spacy docs
-        df['doc_temp'] = list(nlp.pipe(df['text_temp']))
-        df['Wording_doc_temp'] = list(nlp.pipe(df['Wording_temp']))
-
         # Replace each token in dict with it's corresponding corrected replacement
         for key in replacement_dict:
-            df['Wording_doc_temp'] = df['Wording_doc_temp'].apply(lambda x: fix_wording(x, key, replacement_dict[key]))
+            df['Wording_doc_temp'] = \
+                df['Wording_doc_temp'].apply(lambda x: self.__fix_wording(x, key, replacement_dict[key]))
 
         # Retrieve Wording-Text-matches
-        df['wording_matches'] = df.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+        df['wording_matches'] = df.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
 
         # Run function to retrieve main sentence and sentence triples
         df['wording_sentence'] = \
-            df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+            df.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
         df['wording_segments'] = \
-            df.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
+            df.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
@@ -424,21 +318,20 @@ class PCCR_Dataset:
         df_none = df.loc[df.match_count == 0]
 
         # todo: Retrieve examples where Wording is longer than 3 sentences
-
-        df_none['Wording_doc_temp_2'] = list(nlp.pipe(df_none['Wording_prep']))
+        df_none['Wording_doc_temp_2'] = list(self.nlp.pipe(df_none['Wording_prep']))
         df_none['Wording_sent_count'] = df_none['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
         # Retry to retrieve match using only n first tokens of Wording
-        df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(lambda x: get_sub_wording(x, n_tokens=10))
+        df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(lambda x: self.__get_sub_wording(x, n_tokens=10))
 
         # Retrieve Wording-Text-matches
-        df_none['wording_matches'] = df_none.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+        df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
 
         # Run function to retrieve main sentence and sentence triples
         df_none['wording_sentence'] = \
-            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
         df_none['wording_segments'] = \
-            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
         # Calculate number of matches
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
@@ -466,20 +359,20 @@ class PCCR_Dataset:
         df_none['Wording'] = replace_table_non['Wording_fixed'].values
 
         # Generate spacy doc
-        df_none['Wording_doc_temp'] = list(nlp.pipe(df_none['Wording_doc_temp']))
+        df_none['Wording_doc_temp'] = list(self.nlp.pipe(df_none['Wording_doc_temp']))
 
         # Retrieve Wording-Text-matches
-        df_none['wording_matches'] = df_none.apply(lambda x: get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+        df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
 
         # Run function to retrieve main sentence and sentence triples
         df_none['wording_sentence'] = \
-            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
         df_none['wording_segments'] = \
-            df_none.apply(lambda x: collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
         # Set indicator for manually retrieved match
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
-        #df_none['match_count'] = -1
+        # df_none['match_count'] = -1
 
         # Add manually fixed matches to main corpus
         df = df.append(df_none)
@@ -495,7 +388,161 @@ class PCCR_Dataset:
         return df
 
     @staticmethod
-    def __custom_dict_tokenizer(text):
+    def __standardize_text(text: str):
+        """
+        Temporary preprocessing for textual content
+        :param text: Text to standardize
+        :type text: str
+        :return: Returns standardized text
+        :rtype:  str
+        """
+
+        # Replace special characters
+        text = text.replace("/", "").replace("@", "").replace("#", "") \
+            .replace(r"\\x84", "").replace(r"\\x93", "") \
+            .replace(r"\x84", "").replace(r"\x93", "").replace(r"\x96", "") \
+            .replace(r"\\x96", "").replace("t.coIXcqTPZHsM+", "") \
+            .replace("<ORD:65427>", "").replace("Elite", "Elite").replace(r"\"Begabung\"", "Begabung") \
+            .replace("Begabung", "Begabung").replace("funktioniert", "funktioniert") \
+            .replace("Nächstenliebe", "Nächstenliebe").replace("Wir", "Wir") \
+            .replace("Arbeiterparteien", "Arbeiterparteien") \
+            .replace("", "") \
+            .replace("<ORD:65412>", "").replace("<ORD:65430>", "").replace("<quot>", r"\"") \
+            .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "") \
+            .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke") \
+            .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
+            .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss") \
+            .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e") \
+            .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
+            .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
+            .replace("ç", "c").replace(r"\\", "")
+        text = " ".join(text.split())  # Remove additional whitespaces
+
+        return text
+
+    def __fix_wording(self, wording: spacy.tokens.doc.Doc, replacement, pattern):
+        """
+        correct redundant characters and typos in wording column
+        :param wording: Wording content to correct
+        :type wording: spacy.tokens.doc.Doc
+        :param replacement: token to use for replacement
+        :type replacement: str
+        :param pattern: pattern to use for Matching
+        :type pattern: list
+        :return: Returns corrected wording content as doc
+        :rtype:  spacy.tokens.doc.Doc
+        """
+
+        # Define Matcher
+        token_matcher = Matcher(self.nlp.vocab)
+        token_matcher.add("REPLACE", [pattern])
+
+        # If no match, return wording as is
+        if not token_matcher(wording):
+            return wording
+        # If match, replace match by corresponding replacement token
+        else:
+            text = ''
+            buffer_start = 0
+            for _, match_start, _ in token_matcher(wording):
+                if match_start > buffer_start:  # Add skipped token
+                    text += wording[buffer_start: match_start].text + wording[match_start - 1].whitespace_
+                text += replacement + wording[
+                    match_start].whitespace_  # Replace token, with trailing whitespace if available
+                buffer_start = match_start + 1
+            text += wording[buffer_start:].text
+
+            return self.nlp.make_doc(text)
+
+    def __get_matches(self, doc: spacy.tokens.doc.Doc, wording: spacy.tokens.doc.Doc):
+        """
+        Find index of tokens that match Wording content
+        :param doc: text in which to look for matches
+        :type doc: spacy.tokens.doc.Doc
+        :param wording: Wording content to look for
+        :type wording: str
+        :return: returns list of matches
+        :rtype:  list
+        """
+
+        # Define Spacy Matcher
+        matcher = PhraseMatcher(self.nlp.vocab)
+        # Add patterns from nlp-preprocessed Wording column
+        matcher.add("WORDING", [wording])
+        # Get matches
+        matches = matcher(doc)
+
+        return matches
+
+    @staticmethod
+    def __collect_sentences(doc: spacy.tokens.doc.Doc, matches: list, triples: bool):
+        """
+        Retrieve sentences that correspond to matched tokens
+        :param doc: text from which to retrieve matches
+        :type doc: spacy.tokens.doc.Doc
+        :param matches: list with index of matches
+        :type matches: list
+        :param triples: indicator whether to retrieve sentences or triples of sentences
+        :type triples: bool
+        :return: returns sentences or sentence triples
+        :rtype:
+        """
+
+        # Skip for empty matches
+        if matches is None:
+            return None
+        else:
+            # Define empty list/string
+            sentences = []
+            sentence_triples = ''
+
+            # Retrieve main sentence + pre- and succeeding sentence of each match
+            for match_id, start, end in matches:
+                # Retrieve main sentence
+                main_sent = doc[start:end].sent.text
+                # Append to list
+                sentences.append([main_sent])
+
+                if triples:
+                    # check if main_sent is first sentence,  if so return empty string,
+                    # otherwise return previous sentence
+                    if doc[start].sent.start - 1 < 0:
+                        previous_sent = ''
+                    else:
+                        previous_sent = doc[doc[start].sent.start - 1].sent.text + ' '
+
+                    # check if main_sent is last sentence, if so return empty string,
+                    # otherwise return following sentence
+                    if doc[start].sent.end + 1 >= len(doc):
+                        following_sent = ''
+                    else:
+                        following_sent = ' ' + doc[doc[start].sent.end + 1].sent.text
+
+                    # Append triples to string
+                    sentence_triples = sentence_triples + previous_sent + main_sent + following_sent
+
+            if triples:
+                return sentence_triples
+            else:
+                return sentences
+
+    @staticmethod
+    def __get_sub_wording(wording: spacy.tokens.doc.Doc, n_tokens: int):
+        """
+        Retireve first n tokens of Wording
+        :param wording: Full Wording content
+        :type wording: spacy.tokens.doc.Doc
+        :param n_tokens: Number of tokens to retrieve
+        :type n_tokens: int
+        :return: Returns sub wording as doc
+        :rtype:  spacy.tokens.doc.Doc
+        """
+
+        doc_sub = Doc(wording.vocab, words=[t.text for i, t in enumerate(wording) if i < n_tokens])
+        return doc_sub
+
+    @staticmethod
+    def __custom_dict_tokenizer(text: str):
         """
         Tokenize text and remove stopwords + punctuation
         :param text: Text to tokenize
@@ -504,7 +551,7 @@ class PCCR_Dataset:
         :rtype:  str
         """
 
-        german_stop_words = stopwords.words('german') # Define stopwords
+        german_stop_words = stopwords.words('german')  # Define stopwords
         text_tok = word_tokenize(text)  # Tokenize
         text_tok_sw = [word for word in text_tok if not word in german_stop_words]  # Remove stopwords
         text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove non-alphanumeric characters
@@ -902,9 +949,12 @@ class PCCR_Dataset:
         chisquare_dict_per_country_au = chisquare_dict_per_country['au']
         chisquare_dict_per_country_ch = chisquare_dict_per_country['cd']
         chisquare_dict_per_country_de = chisquare_dict_per_country['de']
-        chisquare_dict_per_country_au.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_au.csv', index=True)
-        chisquare_dict_per_country_ch.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_ch.csv', index=True)
-        chisquare_dict_per_country_de.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_de.csv', index=True)
+        chisquare_dict_per_country_au.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_au.csv',
+                                             index=True)
+        chisquare_dict_per_country_ch.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_ch.csv',
+                                             index=True)
+        chisquare_dict_per_country_de.to_csv(f'{self.output_path}\\Dicts\\chisquare_dict_per_country_de.csv',
+                                             index=True)
 
         end = time.time()
         print(end - start)
