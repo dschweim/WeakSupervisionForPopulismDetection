@@ -33,7 +33,7 @@ class PCCR_Dataset:
 
         self.data_path = data_path
         self.output_path = output_path
-        self.nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer',
+        self.nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
                                                           'attribute_ruler', 'lemmatizer'])
         self.nlp.add_pipe("sentencizer")
 
@@ -314,12 +314,14 @@ class PCCR_Dataset:
         # Calculate number of matches
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
+        # Retrieve count of sentences in Wording
+        df['Wording_doc_temp'] = df['Wording_doc_temp'].astype(str)
+        df['Wording_doc_temp'] = list(self.nlp.pipe(df['Wording_doc_temp']))
+        df['Wording_sent_count'] = df['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
+
+        ## NO MATCH
         # Retrieve corpus with no match for manual fixing
         df_none = df.loc[df.match_count == 0]
-
-        # todo: Retrieve examples where Wording is longer than 3 sentences
-        df_none['Wording_doc_temp_2'] = list(self.nlp.pipe(df_none['Wording_prep']))
-        df_none['Wording_sent_count'] = df_none['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
         # Retry to retrieve match using only n first tokens of Wording
         df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(lambda x: self.__get_sub_wording(x, n_tokens=10))
@@ -359,7 +361,7 @@ class PCCR_Dataset:
         df_none['Wording'] = replace_table_non['Wording_fixed'].values
 
         # Generate spacy doc
-        df_none['Wording_doc_temp'] = list(self.nlp.pipe(df_none['Wording_doc_temp']))
+        df_none['Wording_doc_temp'] = list(self.nlp.pipe(df_none['Wording']))
 
         # Retrieve Wording-Text-matches
         df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
@@ -385,6 +387,7 @@ class PCCR_Dataset:
                 inplace=True)
 
         print('GENERATED CORPUS: ' + str(len(df)) + ' EXAMPLES')
+
         return df
 
     @staticmethod
@@ -485,7 +488,7 @@ class PCCR_Dataset:
         :param triples: indicator whether to retrieve sentences or triples of sentences
         :type triples: bool
         :return: returns sentences or sentence triples
-        :rtype:
+        :rtype: list
         """
 
         # Skip for empty matches

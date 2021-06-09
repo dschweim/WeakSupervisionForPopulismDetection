@@ -124,28 +124,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>349</line>
-          <option name="timeStamp" value="106" />
+          <line>390</line>
+          <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>526</line>
-          <option name="timeStamp" value="119" />
+          <line>323</line>
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>524</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>523</line>
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>525</line>
-          <option name="timeStamp" value="122" />
+          <line>351</line>
+          <option name="timeStamp" value="134" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -158,11 +148,11 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="import docutils.utils.smartquotes&#10;&#10;[sent.text for sent in docutils.utils.smartquotes.stupefyEntities()]" language="Python" />
-        <watch expression="import docutils.utils.smartquotes&#10;&#10;[sent.text for sent in docutils.utils.smartquotes.stupefyEntities()]" language="Python" />
-        <watch expression="len(list(df_none['Wording_doc_temp'].iloc[0].sents))" language="Python" />
-        <watch expression="list(df_none.Wording_doc_temp.iloc[4].sents)" language="Python" />
-        <watch expression="df_none.Wording_doc_temp.iloc[5]" language="Python" />
+        <watch expression="len(df.Wording_sent_count)" language="Python" />
+        <watch expression="len(df.loc[df.Wording_sent_count &lt;3])" language="Python" />
+        <watch expression="df.iloc[4].text_prep" language="Python" />
+        <watch expression="df.iloc[4].wording_segments" language="Python" />
+        <watch expression="type(train_sub.iloc[0].wording_segments)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
