@@ -71,18 +71,29 @@ def main(path_to_project_folder: str,
     else:
         # Import dictionaries
         tfidf_dict = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict.csv')
+        # Convert terms to string
+        tfidf_dict.term = tfidf_dict.term.astype(str)
 
+        # Import dictionaries
         tfidf_dict_country_au = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_au.csv')
         tfidf_dict_country_ch = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_ch.csv')
         tfidf_dict_country_de = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_de.csv')
+        # Convert terms to string
+        tfidf_dict_country_au.term = tfidf_dict_country_au.term.astype(str)
+        tfidf_dict_country_ch.term = tfidf_dict_country_ch.term.astype(str)
+        tfidf_dict_country_de.term = tfidf_dict_country_de.term.astype(str)
 
+        # Combine in country-dict
         tfidf_dict_country = {}
         values = {'au': tfidf_dict_country_au,
                   'cd': tfidf_dict_country_ch,
                   'de': tfidf_dict_country_de}
         tfidf_dict_country.update(values)
 
+        # Import dictionaries
         tfidf_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global.csv')
+        # Convert terms to string
+        tfidf_dict_global.term = tfidf_dict_global.term.astype(str)
 
     if generate_chisquare_dict:
         # Generate Dictionary based on chi-square test
@@ -92,6 +103,8 @@ def main(path_to_project_folder: str,
     else:
         # Import dictionary
         chisquare_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_global.csv')
+        # Convert terms to string
+        chisquare_dict_global.term = chisquare_dict_global.term.astype(str)
 
         chisquare_dict_country_au = \
             pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_per_country_au.csv')
@@ -100,6 +113,12 @@ def main(path_to_project_folder: str,
         chisquare_dict_country_de = \
             pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\chisquare_dict_per_country_de.csv')
 
+        # Convert terms to string
+        chisquare_dict_country_au.term = chisquare_dict_country_au.term.astype(str)
+        chisquare_dict_country_ch.term = chisquare_dict_country_ch.term.astype(str)
+        chisquare_dict_country_de.term =  chisquare_dict_country_de.term.astype(str)
+
+        # Combine in country-dict
         chisquare_dict_country = {}
         values = {'au': chisquare_dict_country_au,
                   'cd': chisquare_dict_country_ch,
@@ -147,7 +166,7 @@ if __name__ == "__main__":
 
     main(path_to_project_folder=input_path,
          generate_data=False,
-         preprocess_data=True,  # runs for approx 3-5 min
-         generate_tfidf_dicts=True,
-         generate_chisquare_dict=True,
+         preprocess_data=False,  # runs for approx 3-5 min
+         generate_tfidf_dicts=False,
+         generate_chisquare_dict=False,
          generate_labeling=True)
