@@ -1,0 +1,16 @@
+# regex_keywords_roodujin = ["elit\S*", "konsens\S*", "undemokratisch\S*",
+#                            "referend\S*", "korrupt\S*", "propagand\S*",
+#                            "politiker\S*", "täusch\S*", "betrueg\S*",
+#                            "betrug\S*", "\S*verrat\S*", "scham\S*", "schäm\S*",
+#                            "skandal\S*", "wahrheit\S*", "unfair\S*",
+#                            "unehrlich\S*", "establishm\S*", "\S*herrsch\S*",
+#                            "lüge\S*"]
+
+
+# # LF based on Roodujin keywords-regex search
+# @labeling_function()
+# def lf_keywords_roodujin_regex(x):
+#     regex_roodujin = '|'.join(regex_keywords_roodujin)
+#
+#     # Return a label of POP if keyword in text, otherwise ABSTAIN
+#     return POP if re.search(regex_roodujin, x.text, flags=re.IGNORECASE) else ABSTAIN
