@@ -13,6 +13,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from util import standardize_party_naming
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
+from time import sleep
+from tqdm import tqdm
 
 pd.options.mode.chained_assignment = None
 
@@ -33,9 +35,11 @@ class PCCR_Dataset:
 
         self.data_path = data_path
         self.output_path = output_path
-        self.nlp = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
+        self.nlp_sent = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
                                                           'attribute_ruler', 'lemmatizer'])
-        self.nlp.add_pipe("sentencizer")
+        self.nlp_sent.add_pipe("sentencizer")
+
+        self.nlp_full = spacy.load("de_core_news_lg")
 
     def generate_labelled_nccr_corpus(self):
         """
@@ -266,8 +270,8 @@ class PCCR_Dataset:
         df['Wording_temp'] = df['Wording'].apply(lambda x: self.__standardize_text(x))
 
         # Generate spacy docs
-        df['doc_temp'] = list(self.nlp.pipe(df['text_temp']))
-        df['Wording_doc_temp'] = list(self.nlp.pipe(df['Wording_temp']))
+        df['doc_temp'] = list(self.nlp_sent.pipe(df['text_temp']))
+        df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_temp']))
 
         # Define tokens to fix in Wording
         replacement_dict = {"Parteienfamilie": [{'LOWER': 'parteienfamili'}],
@@ -316,7 +320,7 @@ class PCCR_Dataset:
 
         # Retrieve count of sentences in Wording
         df['Wording_doc_temp'] = df['Wording_doc_temp'].astype(str)
-        df['Wording_doc_temp'] = list(self.nlp.pipe(df['Wording_doc_temp']))
+        df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_doc_temp']))
         df['Wording_sent_count'] = df['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
         ## NO MATCH
@@ -361,7 +365,7 @@ class PCCR_Dataset:
         df_none['Wording'] = replace_table_non['Wording_fixed'].values
 
         # Generate spacy doc
-        df_none['Wording_doc_temp'] = list(self.nlp.pipe(df_none['Wording']))
+        df_none['Wording_doc_temp'] = list(self.nlp_sent.pipe(df_none['Wording']))
 
         # Retrieve Wording-Text-matches
         df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
@@ -376,15 +380,15 @@ class PCCR_Dataset:
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
         # df_none['match_count'] = -1
 
-        # Add manually fixed matches to main corpus
-        df = df.append(df_none)
-
-        # Drop redundant columns
-        df.drop(columns=['level_0', 'index'], inplace=True)
-        # Delete temp columns
-        df.drop(columns=
-                ['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp', 'doc_tokens', 'wording_tokens'],
-                inplace=True)
+        # todo: Add manually fixed matches to main corpus
+        # df = df.append(df_none)
+        #
+        # # Drop redundant columns
+        # df.drop(columns=['level_0', 'index'], inplace=True)
+        # # Delete temp columns
+        # df.drop(columns=
+        #         ['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp', 'doc_tokens', 'wording_tokens'],
+        #         inplace=True)
 
         print('GENERATED CORPUS: ' + str(len(df)) + ' EXAMPLES')
 
@@ -437,7 +441,7 @@ class PCCR_Dataset:
         """
 
         # Define Matcher
-        token_matcher = Matcher(self.nlp.vocab)
+        token_matcher = Matcher(self.nlp_sent.vocab)
         token_matcher.add("REPLACE", [pattern])
 
         # If no match, return wording as is
@@ -455,7 +459,7 @@ class PCCR_Dataset:
                 buffer_start = match_start + 1
             text += wording[buffer_start:].text
 
-            return self.nlp.make_doc(text)
+            return self.nlp_sent.make_doc(text)
 
     def __get_matches(self, doc: spacy.tokens.doc.Doc, wording: spacy.tokens.doc.Doc):
         """
@@ -469,7 +473,7 @@ class PCCR_Dataset:
         """
 
         # Define Spacy Matcher
-        matcher = PhraseMatcher(self.nlp.vocab)
+        matcher = PhraseMatcher(self.nlp_sent.vocab)
         # Add patterns from nlp-preprocessed Wording column
         matcher.add("WORDING", [wording])
         # Get matches
@@ -567,7 +571,7 @@ class PCCR_Dataset:
         :type df:  DataFrame
         :param n_words: Number of words to be included
         :type n_words: float
-        :return: Returns preprocessed Dataset
+        :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
 
@@ -619,7 +623,7 @@ class PCCR_Dataset:
         :type df:  DataFrame
         :param n_words: Number of words to be included
         :type n_words: float
-        :return: Returns preprocessed Dataset
+        :return: RReturns df of dictionary words
         :rtype:  DataFrame
         """
 
@@ -689,7 +693,7 @@ class PCCR_Dataset:
         :type df:  DataFrame
         :param n_words: Number of words to be included
         :type n_words: float
-        :return: Returns preprocessed Dataset
+        :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
 
@@ -752,7 +756,7 @@ class PCCR_Dataset:
         :type confidence: float
         :param n_words: Number of words to be included
         :type n_words: float
-        :return: Returns preprocessed Dataset
+        :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
 
@@ -853,7 +857,7 @@ class PCCR_Dataset:
         :type confidence: float
         :param n_words: Number of words to be included
         :type n_words: float
-        :return: Returns preprocessed Dataset
+        :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
 
@@ -964,3 +968,81 @@ class PCCR_Dataset:
         print('finished chisquare dict per country generation')
 
         return chisquare_dict_per_country
+
+    def generate_tfidf_dict_antielite(self, df: pd.DataFrame, preprocessed: bool):
+        """
+        Calculate tf-idf scores of docs and return top words
+        :param df: Trainset from which to construct dict
+        :type df:  DataFrame
+        :return: Returns df of dictionary words
+        :rtype:  DataFrame
+        """
+
+        start = time.time()
+
+        # Define vectorizer
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+
+        # Fit vectorizer on whole corpus
+        vectorizer.fit(df['wording_segments'])
+
+        # CALCULATE TF-IDF SCORES OF ANTI_ELITE CLASSIFIED DOCS
+        df_ae = df.loc[(df['POPULIST_AntiElite'] == 1) &
+                       (df['POPULIST_PeopleCent'] == 0) &
+                       (df['POPULIST_Sovereign'] == 0)]
+
+        # Transform subcorpus labelled as POP
+        tfidf_ae_vector = vectorizer.transform(df_ae['wording_segments']).toarray()
+
+        # Map tf-idf scores to words in the vocab with separate column for each doc
+        wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
+
+        for i in range(len(tfidf_ae_vector)):
+            wordlist[i] = tfidf_ae_vector[i]
+
+            # Set words as index
+        wordlist.set_index('term')
+
+        # Calculate average tf-idf over all docs
+        wordlist['average_tfidf'] = wordlist.mean(axis=1)
+
+        # Sort by average tf-idf
+        wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
+
+        # Retrieve specified top n_words entries
+        tfidf_ae_dict = wordlist[:30][['term', 'average_tfidf']]
+
+        # Find POS tags that correspond to the keywords
+        df['doc_wording_segments'] = list(self.nlp_full.pipe(df['wording_segments']))
+
+        result_tags = {}
+
+        # Iterate over docs in df
+        for index, row in df.iterrows():
+            # Iterate over tokens in doc
+            for token in row.doc_wording_segments:
+                # Check if token is in dict
+                if token.text.lower() in tfidf_ae_dict.term.values:
+                    # Check if token is already contained in result_tags dict
+                    if token.text in result_tags:
+                        # Check if token.pos_ is already a known pos tag for the token
+                        if token.pos_ in result_tags[token.text]:
+                            pass
+                        # Else, append current token.pos_ as new value
+                        else:
+                            result_tags[token.text].append(token.pos_)
+
+                    # Elseif token is not contained in dict, create new key,value-pair
+                    else:
+                        value = {token.text: [token.pos_]}
+                        result_tags.update(value)
+
+        # Save dict to disk
+        tfidf_ae_dict.to_csv(f'{self.output_path}\\Dicts\\tfidf_antielite_dict.csv', index=True)
+
+        end = time.time()
+        print(end - start)
+        print('finished tf-idf antielite dict generation')
+
+        return tfidf_ae_dict
+
