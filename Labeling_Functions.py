@@ -40,6 +40,8 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     ## Labeling Functions
     # a) Dictionary-based labeling
+
+    # Define Schwarzbözl dict
     keywords_schwarzbozl = ["altparteien", "anpassung", "iwf",
                             "politiker", "austerität", "offenbar",
                             "neoliberal", "briten", "oligarchen",
@@ -51,18 +53,11 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
                             "verlangt", "konzern", "leistet",
                             "verlust", "herhalten", "rente"]
 
-    keywords_roodujin = ["elit", "konsens", "undemokratisch", "referend", "korrupt",
+    # Define Rooduijn dict
+    keywords_rooduijn = ["elit", "konsens", "undemokratisch", "referend", "korrupt",
                          "propagand", "politiker", "täusch", "betrüg", "betrug",
                          "verrat", "scham", "schäm", "skandal", "wahrheit", "unfair",
                          "unehrlich", "establishm", "herrsch", "lüge"]
-
-    regex_keywords_roodujin = ["elit\S*", "konsens\S*", "undemokratisch\S*",
-                               "referend\S*", "korrupt\S*", "propagand\S*",
-                               "politiker\S*", "täusch\S*", "betrüg\S*",
-                               "betrug\S*", "\S*verrat\S*", "scham\S*", "schäm\S*",
-                               "skandal\S*", "wahrheit\S*", "unfair\S*",
-                               "unehrlich\S*", "establishm\S*", "\S*herrsch\S*",
-                               "lüge\S*"]
 
     # LF based on Schwarzbözl keywords
     @labeling_function()
@@ -90,18 +85,18 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     # LF based on Roodujin keywords
     @labeling_function()
-    def lf_keywords_roodujin(x):
+    def lf_keywords_rooduijn(x):
         # Return a label of POP if keyword in text, otherwise ABSTAIN
-        return POP if any(keyword in x.text.lower() for keyword in keywords_roodujin) else ABSTAIN
+        return POP if any(keyword in x.text.lower() for keyword in keywords_rooduijn) else ABSTAIN
 
     # LF based on Roodujin keywords lemma
-    lemmas_roodujin = list(nlp.pipe(keywords_roodujin))
+    lemmas_roodujin = list(nlp.pipe(keywords_rooduijn))
 
     for i in range(len(lemmas_roodujin)):
         lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_
 
     @labeling_function(pre=[de_spacy])
-    def lf_lemma_roodujin(x):
+    def lf_lemma_rooduijn(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
             lemmas_doc.append(token.lemma_)
@@ -110,14 +105,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
             return POP
         else:
             return ABSTAIN
-
-    # LF based on Roodujin keywords-regex search
-    @labeling_function()
-    def lf_keywords_roodujin_regex(x):
-        regex_roodujin = '|'.join(regex_keywords_roodujin)
-
-        # Return a label of POP if keyword in text, otherwise ABSTAIN
-        return POP if re.search(regex_roodujin, x.text, flags=re.IGNORECASE) else ABSTAIN
 
     # LF based on NCCR-constructed keywords
     @labeling_function()
@@ -229,8 +216,16 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
             return ABSTAIN
 
         # 1. find target of ELITE
+
         # 2. Attribute refers to ELITE
         # 3. Negative attributes
+
+
+    ## Anti-Elite
+    #keywords_elite
+    # @labeling_function(pre=[de_spacy])
+    # def lf_anti_elite(x):
+
 
     # LFS: Key Message 2- Blaming the Elite
     # identify people embedding
@@ -279,9 +274,12 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
 
     # Define list of lfs to use
-    list_lfs = [lf_keywords_schwarzbozl, lf_lemma_schwarzbozl,
-                lf_keywords_roodujin, lf_lemma_roodujin, lf_keywords_roodujin_regex,
-                lf_keywords_nccr_tfidf, lf_keywords_nccr_tfidf_glob,
+    list_lfs = [lf_keywords_schwarzbozl,
+                lf_lemma_schwarzbozl,
+                lf_keywords_rooduijn,
+                lf_lemma_rooduijn,
+                lf_keywords_nccr_tfidf,
+                lf_keywords_nccr_tfidf_glob,
                 lf_keywords_nccr_tfidf_country,
                 lf_keywords_nccr_chi2_glob,
                 lf_keywords_nccr_chi2_country,
