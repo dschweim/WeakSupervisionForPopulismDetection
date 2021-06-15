@@ -3,7 +3,8 @@
 import pandas as pd
 import sys
 from argparse import ArgumentParser
-from NCCR_Corpus import PCCR_Dataset
+from NCCR_Corpus_Generator import NCCR_Dataset
+from Dict_Generator import Dict_Generator
 from Labeling_Framework import Labeler
 from util import generate_train_test_split, generate_train_dev_test_split
 pd.options.mode.chained_assignment = None
@@ -36,8 +37,11 @@ def main(path_to_project_folder: str,
     """
 
     # Initialize
-    nccr_df = PCCR_Dataset(data_path=f'{path_to_project_folder}\\Data',
+    nccr_df = NCCR_Dataset(data_path=f'{path_to_project_folder}\\Data',
                            output_path=f'{path_to_project_folder}\\Output')
+
+    nccr_dicts = Dict_Generator(data_path=f'{path_to_project_folder}\\Data',
+                                output_path=f'{path_to_project_folder}\\Output\\Dicts')
 
     if generate_data:
         # Generate Labelled NCCR
@@ -65,11 +69,11 @@ def main(path_to_project_folder: str,
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
-        tfidf_dict = nccr_df.generate_tfidf_dict(train, n_words=30)
-        tfidf_dict_country = nccr_df.generate_tfidf_dict_per_country(train, n_words=30)
-        tfidf_dict_global = nccr_df.generate_global_tfidf_dict(train, n_words=30)
+        tfidf_dict = nccr_dicts.generate_tfidf_dict(train, n_words=30)
+        tfidf_dict_country = nccr_dicts.generate_tfidf_dict_per_country(train, n_words=30)
+        tfidf_dict_global = nccr_dicts.generate_global_tfidf_dict(train, n_words=30)
 
-        tfidf_dict_antielite = nccr_df.generate_tfidf_dict_antielite(train, preprocessed=preprocess_data)
+        tfidf_dict_antielite = nccr_dicts.generate_tfidf_dict_antielite(train, preprocessed=preprocess_data)
 
     else:
         # Import dictionaries
@@ -100,8 +104,8 @@ def main(path_to_project_folder: str,
 
     if generate_chisquare_dict:
         # Generate Dictionary based on chi-square test
-        chisquare_dict_global = nccr_df.generate_global_chisquare_dict(train, confidence=0.99, n_words=30)
-        chisquare_dict_country = nccr_df.generate_chisquare_dict_per_country(train, confidence=0.99, n_words=30)
+        chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.99, n_words=30)
+        chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99, n_words=30)
 
     else:
         # Import dictionary
@@ -119,7 +123,7 @@ def main(path_to_project_folder: str,
         # Convert terms to string
         chisquare_dict_country_au.term = chisquare_dict_country_au.term.astype(str)
         chisquare_dict_country_ch.term = chisquare_dict_country_ch.term.astype(str)
-        chisquare_dict_country_de.term =  chisquare_dict_country_de.term.astype(str)
+        chisquare_dict_country_de.term = chisquare_dict_country_de.term.astype(str)
 
         # Combine in country-dict
         chisquare_dict_country = {}
@@ -179,5 +183,5 @@ if __name__ == "__main__":
          generate_data=False,
          preprocess_data=False,  # runs for approx 3-5 min
          generate_tfidf_dicts=True,
-         generate_chisquare_dict=False,
+         generate_chisquare_dict=True,
          generate_labeling=True)

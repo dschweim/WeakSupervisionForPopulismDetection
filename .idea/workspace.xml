@@ -123,23 +123,23 @@
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>392</line>
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>382</line>
           <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>325</line>
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>315</line>
           <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>353</line>
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>343</line>
           <option name="timeStamp" value="134" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>272</line>
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>262</line>
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -156,11 +156,6 @@
           <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
           <line>224</line>
           <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>1040</line>
-          <option name="timeStamp" value="160" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
