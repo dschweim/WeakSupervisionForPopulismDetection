@@ -124,18 +124,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>390</line>
+          <line>392</line>
           <option name="timeStamp" value="126" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>323</line>
+          <line>325</line>
           <option name="timeStamp" value="127" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
-          <line>351</line>
+          <line>353</line>
           <option name="timeStamp" value="134" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>272</line>
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
+          <line>96</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
+          <line>224</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus.py</url>
+          <line>1040</line>
+          <option name="timeStamp" value="160" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -148,11 +173,18 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="len(df.Wording_sent_count)" language="Python" />
-        <watch expression="len(df.loc[df.Wording_sent_count &lt;3])" language="Python" />
-        <watch expression="df.iloc[4].text_prep" language="Python" />
-        <watch expression="df.iloc[4].wording_segments" language="Python" />
-        <watch expression="type(train_sub.iloc[0].wording_segments)" language="Python" />
+        <watch expression="result_tags" language="Python" />
+        <watch expression="type(token.text)" language="Python" />
+        <watch expression="token.text.lower()" language="Python" />
+        <watch expression="token.text" language="Python" />
+        <watch expression="type(token.tag_)" language="Python" />
+        <watch expression="result_tags[token.text]" language="Python" />
+        <watch expression="result_tags[token.text].append(token.tag_)" language="Python" />
+        <watch expression="result_tags[token.text]" language="Python" />
+        <watch expression="df_ae.loc[3288].wording_segments" language="Python" />
+        <watch expression="df['doc_wording_segments']" language="Python" />
+        <watch expression="df.loc[df.index==3288]" language="Python" />
+        <watch expression="text.wording_segments.values" language="Python" />
       </configuration>
     </watches-manager>
   </component>
