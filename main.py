@@ -51,22 +51,25 @@ def main(path_to_project_folder: str,
     if preprocess_data:
         # Preprocess corpus and generate train-test-split
         nccr_df_prep = nccr_df.preprocess_corpus(nccr_data_de_wording_av)
-        train, test = generate_train_test_split(nccr_df_prep)
+        #train, test = generate_train_test_split(nccr_df_prep)
 
         # Generate Train, Dev, Test Split
-        # train, dev, test = generate_train_dev_test_split(nccr_data_de_wording_av)
+        train, dev, test = generate_train_dev_test_split(nccr_df_prep)
 
     else:
         # Import preprocessed corpus and generate train-test-split
         nccr_df_prep = pd.read_csv(
             f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep.csv')
-        train, test = generate_train_test_split(nccr_df_prep)
+        train, dev, test = generate_train_dev_test_split(nccr_df_prep)
+        #train, test = generate_train_test_split(nccr_df_prep)
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
         tfidf_dict = nccr_df.generate_tfidf_dict(train, n_words=30)
         tfidf_dict_country = nccr_df.generate_tfidf_dict_per_country(train, n_words=30)
         tfidf_dict_global = nccr_df.generate_global_tfidf_dict(train, n_words=30)
+
+        tfidf_dict_antielite = nccr_df.generate_tfidf_dict_antielite(train, preprocessed=preprocess_data)
 
     else:
         # Import dictionaries
@@ -135,13 +138,20 @@ def main(path_to_project_folder: str,
                    'chi2_keywords_global': chisquare_dict_global.term.tolist(),
                    'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
                    'chi2_keywords_ch': chisquare_dict_country['cd'].term.to_list(),
-                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list()}
+                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list(),
+                   'tfidf_keywords_antielite': tfidf_dict_antielite.term.to_list()
+                   }
 
         # Filter on relevant columns
-        train_sub = train[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
-        test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST']]
+        train_sub = train[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
+                           'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
+        test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
+                         'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
+        dev_sub = dev[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
+                       'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         train_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
         test_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
+        dev_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
 
         print('TRAIN EXAMPLES: ' + str(len(train)))
         print('TEST EXAMPLES: ' + str(len(test)))
@@ -149,6 +159,7 @@ def main(path_to_project_folder: str,
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_sub,
                                test_data=test_sub,
+                               dev_data = dev_sub,
                                lf_input_dict=lf_dict,
                                data_path=f'{path_to_project_folder}\\Data',
                                output_path=f'{path_to_project_folder}\\Output')
@@ -167,6 +178,6 @@ if __name__ == "__main__":
     main(path_to_project_folder=input_path,
          generate_data=False,
          preprocess_data=False,  # runs for approx 3-5 min
-         generate_tfidf_dicts=False,
+         generate_tfidf_dicts=True,
          generate_chisquare_dict=False,
          generate_labeling=True)
