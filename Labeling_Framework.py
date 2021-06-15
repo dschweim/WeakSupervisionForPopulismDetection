@@ -19,6 +19,7 @@ class Labeler:
             self,
             train_data: pd.DataFrame,
             test_data: pd.DataFrame,
+            dev_data: pd.DataFrame,
             lf_input_dict: dict,
             data_path: str,
             output_path: str
@@ -31,6 +32,7 @@ class Labeler:
 
         self.train_data = train_data
         self.test_data = test_data
+        self.dev_data = dev_data
         self.lf_input_dict = lf_input_dict
         self.data_path = data_path
         self.output_path = output_path
@@ -66,6 +68,11 @@ class Labeler:
         # Define train & test data
         train_data = self.train_data
         test_data = self.test_data
+        dev_data = self.dev_data
+
+        anti_elite_sample = train_data.loc[train_data.POPULIST_AntiElite == 1]
+
+        #L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
 
         ## 2. Generate label matrix L
         applier = PandasLFApplier(lfs=lfs)
@@ -79,8 +86,17 @@ class Labeler:
         analysis = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
         analysis.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis.csv')
 
+        # Error analysis
+        error_table = train_data.iloc[L_train[:, 1] == POP].sample(10, random_state=1)
         buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
         train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
+
+        #buckets = get_label_buckets(Y_gold, Y_pred)
+        #buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
+
+        comparison_table = pd.DataFrame({'label': train_data.POPULIST,
+                                         'lf_tfidf_global': L_train[:, 5]})
+
 
         ## 3. Generate label model
         # Baseline: Majority Model
