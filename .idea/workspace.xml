@@ -157,6 +157,16 @@
           <line>224</line>
           <option name="timeStamp" value="153" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
+          <line>474</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
+          <line>485</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -166,21 +176,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="result_tags" language="Python" />
-        <watch expression="type(token.text)" language="Python" />
-        <watch expression="token.text.lower()" language="Python" />
-        <watch expression="token.text" language="Python" />
-        <watch expression="type(token.tag_)" language="Python" />
-        <watch expression="result_tags[token.text]" language="Python" />
-        <watch expression="result_tags[token.text].append(token.tag_)" language="Python" />
-        <watch expression="result_tags[token.text]" language="Python" />
-        <watch expression="df_ae.loc[3288].wording_segments" language="Python" />
-        <watch expression="df['doc_wording_segments']" language="Python" />
-        <watch expression="df.loc[df.index==3288]" language="Python" />
-        <watch expression="text.wording_segments.values" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

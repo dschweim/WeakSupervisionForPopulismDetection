@@ -73,7 +73,7 @@ def main(path_to_project_folder: str,
         tfidf_dict_country = nccr_dicts.generate_tfidf_dict_per_country(train, n_words=30)
         tfidf_dict_global = nccr_dicts.generate_global_tfidf_dict(train, n_words=30)
 
-        tfidf_dict_antielite = nccr_dicts.generate_tfidf_dict_antielite(train, preprocessed=preprocess_data)
+        tfidf_dict_antielite = nccr_dicts.generate_chisquare_dict_antielite(train, preprocessed=preprocess_data)
 
     else:
         # Import dictionaries

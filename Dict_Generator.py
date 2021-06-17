@@ -1,7 +1,9 @@
 import spacy
 import time
+import textacy
 import pandas as pd
 import numpy as np
+from spacy.matcher import Matcher
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
@@ -449,7 +451,7 @@ class Dict_Generator:
 
         return chisquare_dict_per_country
 
-    def generate_tfidf_dict_antielite(self, df: pd.DataFrame, preprocessed: bool):
+    def generate_chisquare_dict_antielite(self, df: pd.DataFrame, preprocessed: bool):
         """
         Calculate tf-idf scores of docs and return top words
         :param df: Trainset from which to construct dict
@@ -460,65 +462,35 @@ class Dict_Generator:
 
         start = time.time()
 
-        # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+        # Generate spacy docs from corpus
+        # df['doc'] = list(self.nlp_sent.pipe(df['wording_segment']))
+        #
+        # #  Generate two docs from corpus (POP_AE and NON-POP + NON_AE)
+        # df_ae = df.loc[(df['POPULIST_AntiElite'] == 1) &
+        #                (df['POPULIST_PeopleCent'] == 0) &
+        #                (df['POPULIST_Sovereign'] == 0)]
+        #
+        # df_rest = df.loc[]
 
-        # Fit vectorizer on whole corpus
-        vectorizer.fit(df['wording_segments'])
+        text = df.iloc[0]
+        doc = self.nlp_full(text.wording_segments)
 
-        # CALCULATE TF-IDF SCORES OF ANTI_ELITE CLASSIFIED DOCS
-        df_ae = df.loc[(df['POPULIST_AntiElite'] == 1) &
-                       (df['POPULIST_PeopleCent'] == 0) &
-                       (df['POPULIST_Sovereign'] == 0)]
+        tuples_list = []
 
-        # Transform subcorpus labelled as POP
-        tfidf_ae_vector = vectorizer.transform(df_ae['wording_segments']).toarray()
+        tuples = textacy.extract.subject_verb_object_triples(doc)
+        if tuples:
+            tuples_to_list = list(tuples)
+            tuples_list.append(tuples_to_list)
 
-        # Map tf-idf scores to words in the vocab with separate column for each doc
-        wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
-
-        for i in range(len(tfidf_ae_vector)):
-            wordlist[i] = tfidf_ae_vector[i]
-
-            # Set words as index
-        wordlist.set_index('term')
-
-        # Calculate average tf-idf over all docs
-        wordlist['average_tfidf'] = wordlist.mean(axis=1)
-
-        # Sort by average tf-idf
-        wordlist.sort_values(by='average_tfidf', ascending=False, inplace=True)
-
-        # Retrieve specified top n_words entries
-        tfidf_ae_dict = wordlist[:30][['term', 'average_tfidf']]
-
-        # Find POS tags that correspond to the keywords
-        df['doc_wording_segments'] = list(self.nlp_full.pipe(df['wording_segments']))
 
         result_tags = {}
 
-        # Iterate over docs in df
-        for index, row in df.iterrows():
-            # Iterate over tokens in doc
-            for token in row.doc_wording_segments:
-                # Check if token is in dict
-                if token.text.lower() in tfidf_ae_dict.term.values:
-                    # Check if token is already contained in result_tags dict
-                    if token.text in result_tags:
-                        # Check if token.pos_ is already a known pos tag for the token
-                        if token.pos_ in result_tags[token.text]:
-                            pass
-                        # Else, append current token.pos_ as new value
-                        else:
-                            result_tags[token.text].append(token.pos_)
+        # Extract triples of type {subj, obj,
 
-                    # Elseif token is not contained in dict, create new key,value-pair
-                    else:
-                        value = {token.text: [token.pos_]}
-                        result_tags.update(value)
+        tfidf_ae_dict = []
 
         # Save dict to disk
-        tfidf_ae_dict.to_csv(f'{self.output_path}\\tfidf_antielite_dict.csv', index=True)
+        #tfidf_ae_dict.to_csv(f'{self.output_path}\\tfidf_antielite_dict.csv', index=True)
 
         end = time.time()
         print(end - start)
