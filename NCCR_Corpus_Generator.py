@@ -28,7 +28,7 @@ class NCCR_Dataset:
         self.data_path = data_path
         self.output_path = output_path
         self.nlp_sent = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
-                                                          'attribute_ruler', 'lemmatizer'])
+                                                               'attribute_ruler', 'lemmatizer'])
         self.nlp_sent.add_pipe("sentencizer")
 
     def generate_labelled_nccr_corpus(self):
@@ -263,39 +263,51 @@ class NCCR_Dataset:
         df['doc_temp'] = list(self.nlp_sent.pipe(df['text_temp']))
         df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_temp']))
 
-        ## FIX WORDING
-        # Define tokens to fix in Wording
-        replacement_dict = {"Parteienfamilie": [{'LOWER': 'parteienfamili'}],
-                            "Volkspartei": [{'LOWER': 'volksparte'}],
-                            "Spindelegger": [{'LOWER': 'spindelegge'}],
-                            "Kanzler": [{'LOWER': 'anzler'}],
-                            "sozialistischen": [{'LOWER': 'ozialistischen'}],
-                            "Ein": [{'LOWER': '.ein'}],
-                            "Josef": [{'LOWER': 'osef'}],
-                            "das": [{'LOWER': 'as'}],
-                            "dass": [{'LOWER': 'ass'}],
-                            "Nun": [{'LOWER': 'un'}],
-                            "Anstatt": [{'LOWER': 'nstatt'}],
-                            "Ich": [{'LOWER': r'\"ich'}],
-                            "Danke": [{'LOWER': r'\"danke'}],
-                            "LINKE": [{'LOWER': "link"}],
-                            "FDP-Bundestagsfraktion": [{'LOWER': "fdp-"}],
-                            "CDUCSU-Fraktion": [{'LOWER': "cducsu-"}],
-                            "Den": [{'LOWER': "n"}],
-                            "hat": [{'LOWER': "h"}],
-                            "ist": [{'LOWER': "i"}],
-                            "Der": [{'LOWER': "r"}],
-                            "Laender": [{'LOWER': "l"}],
-                            "Die": [{'LOWER': "-die"}],
-                            "Viel": [{'LOWER': "-viel"}],
-                            "einerseits": [{'LOWER': "einerseit"}],
-                            "Eine": [{'LOWER': "-eine"}]
-                            }
+        ## FIX SPELLING
+        # Define tokens to fix in Wording and Text
+        replacement_dict = {"Parteienfamilie": [{'LOWER': 'parteienfamili'}], "Volkspartei": [{'LOWER': 'volksparte'}],
+                            "Spindelegger": [{'LOWER': 'spindelegge'}], "Kanzler": [{'LOWER': 'anzler'}],
+                            "sozialistischen": [{'LOWER': 'ozialistischen'}], "Ein": [{'LOWER': '.ein'}],
+                            "Josef": [{'LOWER': 'osef'}], "das": [{'LOWER': 'as'}], "Nun": [{'LOWER': 'un'}],
+                            "Anstatt": [{'LOWER': 'nstatt'}], "Ich": [{'LOWER': r'\"ich'}],
+                            "Danke": [{'LOWER': r'\"danke'}], "LINKE": [{'LOWER': "link"}],
+                            "FDP-Bundestagsfraktion": [{'LOWER': "fdp-"}], "CDUCSU-Fraktion": [{'LOWER': "cducsu-"}],
+                            "Den": [{'LOWER': "n"}], "hat": [{'LOWER': "h"}], "ist": [{'LOWER': "i"}],
+                            "Der": [{'LOWER': "r"}], "Laender": [{'LOWER': "l"}], "Die": [{'LOWER': "-die"}],
+                            "Viel": [{'LOWER': "-viel"}], "einerseits": [{'LOWER': "einerseit"}],
+                            "Eine": [{'LOWER': "-eine"}],
+                            'mussten': [{'TEXT': "mußten"}], 'veranlasst': [{'TEXT': "veranlaßt"}],
+                            'Einfluss': [{'TEXT': "Einfluß"}], 'müsste': [{'TEXT': "müßte"}],
+                            'Abrissbirne': [{'TEXT': "Abrißbirne"}], 'Datenmissbrauch': [{'TEXT': "Datenmißbrauch"}],
+                            'Hasspredigers': [{'TEXT': "Haßpredigers"}], 'missbraucht': [{'TEXT': "mißbraucht"}],
+                            'verantwortungsbewusste': [{'TEXT': "verantwortungsbewußte"}],
+                            'Schlussstrich': [{'TEXT': "Schlußstrich"}], 'veranlassten': [{'TEXT': "veranlaßten"}],
+                            'Genuss': [{'TEXT': "Genuß"}], 'Verlässlichkeit': [{'TEXT': "Verläßlichkeit"}],
+                            'Verlaesslichkeit': [{'TEXT': "Verlaeßlichkeit"}], 'dass': [{'TEXT': "daß"}],
+                            'passt': [{'TEXT': "paßt"}], 'musste': [{'TEXT': "mußte"}],
+                            'Asylmissbrauch': [{'TEXT': "Asylmißbrauch"}], 'missbrauchen': [{'TEXT': "mißbrauchen"}],
+                            'Misslage': [{'TEXT': "Mißlage"}], 'Dass': [{'TEXT': "Daß"}],
+                            'Kindesmissbrauch': [{'TEXT': "Kindesmißbrauch"}],
+                            'Ausschlusskriterium': [{'TEXT': "Ausschlußkriterium"}], 'lässt': [{'TEXT': "läßt"}],
+                            'laesst': [{'TEXT': "laeßt"}], 'Biss': [{'TEXT': "Biß"}],
+                            'Missbrauch': [{'TEXT': "Mißbrauch"}], 'unmissverständlich': [{'TEXT': "unmißverständlich"}],
+                            'unmissverstaendlich': [{'TEXT': "unmißverstaendlich"}], 'Schloss': [{'TEXT': "Schloß"}],
+                            'befasste': [{'TEXT': "befaßte"}], 'Ausschluss': [{'TEXT': "Ausschluß"}],
+                            'Bewusstsein': [{'TEXT': "Bewußtsein"}], 'Schluss': [{'TEXT': "Schluß"}],
+                            'machtbewussten': [{'TEXT': "machtbewußten"}],
+                            'Ernährungsbewusstsein': [{'TEXT': "Ernährungsbewußtsein"}], 'Ausschuss': [{'TEXT': "Ausschuß"}],
+                            'Abfluss': [{'TEXT': "Abfluß"}], 'verhasst': [{'TEXT': "verhaßt"}],
+                            'müsst': [{'TEXT': "müßt"}], 'muesst': [{'TEXT': "mueßt"}],
+                            'Parteiausschlussverfahren': [{'TEXT': "Parteiausschlußverfahren"}],
+                            'Unermessliche': [{'TEXT': "Unermeßliche"}], 'Hassprediger': [{'TEXT': "Haßprediger"}],
+                            'muss': [{'TEXT': "muß"}], 'Einschluss': [{'TEXT': "Einschluß"}]}
 
         # Replace each token in dict with it's corresponding corrected replacement
         for key in replacement_dict:
             df['Wording_doc_temp'] = \
-                df['Wording_doc_temp'].apply(lambda x: self.__fix_wording(x, key, replacement_dict[key]))
+                df['Wording_doc_temp'].apply(lambda x: self.__fix_spelling(x, key, replacement_dict[key]))
+            df['doc_temp'] = \
+                df['doc_temp'].apply(lambda x: self.__fix_spelling(x, key, replacement_dict[key]))
 
         ## FIX UMLAUTS
         # Define umlauts
@@ -304,7 +316,9 @@ class NCCR_Dataset:
                         "ö": [{"TEXT": {"REGEX": "ö"}}],
                         "Ö": [{"TEXT": {"REGEX": "Ö"}}],
                         "ü": [{"TEXT": {"REGEX": "ü"}}],
-                        "Ü": [{"TEXT": {"REGEX": "Ü"}}]}
+                        "Ü": [{"TEXT": {"REGEX": "Ü"}}],
+                        "ß": [{"TEXT": {"REGEX": "ß"}}]}
+
         # Create empty list for tokens to replace
         replacement_list_out = []
 
@@ -339,8 +353,8 @@ class NCCR_Dataset:
         # Create similar list of tokens with alternative spelling
         replacement_list_in = replacement_list_out.copy()
         for index, token in enumerate(replacement_list_in):
-            token_fixed = token.replace("ä", "ae").replace("Ä", "Ae").replace("ö", "oe")\
-                .replace("Ö", "Oe").replace("ü", "ue").replace("Ü", "Ue")
+            token_fixed = token.replace("ä", "ae").replace("Ä", "Ae").replace("ö", "oe") \
+                .replace("Ö", "Oe").replace("ü", "ue").replace("Ü", "Ue").replace("ß", "ss")
             replacement_list_in[index] = token_fixed
 
         # Generate dictionary for replacement
@@ -377,19 +391,34 @@ class NCCR_Dataset:
         # Retrieve count of sentences in Wording
         df['Wording_sent_count'] = df['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
+        # Drop examples where sent_count > 3
+        df = df.loc[df.Wording_sent_count <= 3]
+
+        # Where Wording_sent_count is 2 or 3, replace Wording segment with Wording and set match_count to -1
+        df.loc[df.Wording_sent_count == 2, 'wording_segments'] =\
+            df.loc[df.Wording_sent_count == 2].Wording_doc_temp.astype(str)
+        df.loc[df.Wording_sent_count == 2, 'match_count'] = -1
+
+        df.loc[df.Wording_sent_count == 3, 'wording_segments'] =\
+            df.loc[df.Wording_sent_count == 3].Wording_doc_temp.astype(str)
+        df.loc[df.Wording_sent_count == 3, 'match_count'] = -1
+
         ## NO MATCH
         # Retrieve corpus with no match for manual fixing
         df_none = df.loc[df.match_count == 0]
 
         # Retry to retrieve match using only n first tokens of Wording
-        df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(lambda x: self.__get_sub_wording(x, n_tokens=10))
+        df_none['Wording_doc_temp'] = df_none['Wording_doc_temp'].apply(
+            lambda x: self.__get_sub_wording(x, n_tokens=10))
 
         # Retrieve Wording-Text-matches
-        df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+        df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']),
+                                                   axis=1)
 
         # Run function to retrieve main sentence and sentence triples
         df_none['wording_sentence'] = \
-            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False),
+                          axis=1)
         df_none['wording_segments'] = \
             df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
@@ -406,8 +435,8 @@ class NCCR_Dataset:
         df_none.to_csv(f'{self.output_path}\\df_none_match.csv')
 
         ## MANUAL REPLACEMENT NONE_MATCH
-        # Only keep rows with 1 match for main corpus
-        df = df.loc[df.match_count == 1]
+        # Only keep rows with 1 and -1 match for main corpus
+        df = df.loc[(df.match_count == 1) | (df.match_count == -1)]
 
         # Replace Wording for corpus with no match using manual_replacement_table
         replace_table_non = pd.read_csv(f'{self.output_path}\\manual_replacement\\none_match_replace_table.csv')
@@ -422,15 +451,17 @@ class NCCR_Dataset:
         df_none['Wording_doc_temp'] = list(self.nlp_sent.pipe(df_none['Wording']))
 
         # Retrieve Wording-Text-matches
-        df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
+        df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']),
+                                                   axis=1)
 
         # Run function to retrieve main sentence and sentence triples
         df_none['wording_sentence'] = \
-            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False),
+                          axis=1)
         df_none['wording_segments'] = \
             df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
-        # Set indicator for manually retrieved match
+        # todo: Set indicator for manually retrieved match
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
         # df_none['match_count'] = -1
 
@@ -479,22 +510,34 @@ class NCCR_Dataset:
 
         return text
 
-    def __standardize_umlauts(self, text: str, replacement, token):
+    @staticmethod
+    def __standardize_umlauts(text: str, replacement: str, token: str):
+        """
+        correct redundant characters and typos in wording column
+        :param text: textual content to correct
+        :type text: str
+        :param replacement: token to use as replacement
+        :type replacement: str
+        :param token: token to be replaced
+        :type token: str
+        :return: Returns corrected textual content as str
+        :rtype: str
+        """
+
         text = text.replace(token, replacement)
 
         return text
 
-
-    def __fix_wording(self, wording: spacy.tokens.doc.Doc, replacement: str, pattern: list):
+    def __fix_spelling(self, doc: spacy.tokens.doc.Doc, replacement: str, pattern: list):
         """
-        correct redundant characters and typos in wording column
-        :param wording: Wording content to correct
-        :type wording: spacy.tokens.doc.Doc
+        correct redundant characters, typos and wrong spelling in doc
+        :param doc: Wording content to correct
+        :type doc: spacy.tokens.doc.Doc
         :param replacement: token to use for replacement
         :type replacement: str
         :param pattern: pattern to use for Matching
         :type pattern: list
-        :return: Returns corrected wording content as doc
+        :return: Returns corrected content as doc
         :rtype:  spacy.tokens.doc.Doc
         """
 
@@ -503,19 +546,19 @@ class NCCR_Dataset:
         token_matcher.add("REPLACE", [pattern])
 
         # If no match, return wording as is
-        if not token_matcher(wording):
-            return wording
+        if not token_matcher(doc):
+            return doc
         # If match, replace match by corresponding replacement token
         else:
             text = ''
             buffer_start = 0
-            for _, match_start, _ in token_matcher(wording):
+            for _, match_start, _ in token_matcher(doc):
                 if match_start > buffer_start:  # Add skipped token
-                    text += wording[buffer_start: match_start].text + wording[match_start - 1].whitespace_
-                text += replacement + wording[
+                    text += doc[buffer_start: match_start].text + doc[match_start - 1].whitespace_
+                text += replacement + doc[
                     match_start].whitespace_  # Replace token, with trailing whitespace if available
                 buffer_start = match_start + 1
-            text += wording[buffer_start:].text
+            text += doc[buffer_start:].text
 
             return self.nlp_sent.make_doc(text)
 
@@ -605,4 +648,3 @@ class NCCR_Dataset:
 
         doc_sub = Doc(wording.vocab, words=[t.text for i, t in enumerate(wording) if i < n_tokens])
         return doc_sub
-

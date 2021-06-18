@@ -123,26 +123,6 @@
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>382</line>
-          <option name="timeStamp" value="126" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>315</line>
-          <option name="timeStamp" value="127" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>343</line>
-          <option name="timeStamp" value="134" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>262</line>
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
           <line>94</line>
           <option name="timeStamp" value="150" />
@@ -167,6 +147,11 @@
           <line>485</line>
           <option name="timeStamp" value="172" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>438</line>
+          <option name="timeStamp" value="229" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -176,5 +161,11 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="len(df)" language="Python" />
+        <watch expression="len(df_none)" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
