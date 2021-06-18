@@ -304,8 +304,7 @@ class NCCR_Dataset:
                         "ö": [{"TEXT": {"REGEX": "ö"}}],
                         "Ö": [{"TEXT": {"REGEX": "Ö"}}],
                         "ü": [{"TEXT": {"REGEX": "ü"}}],
-                        "Ü": [{"TEXT": {"REGEX": "Ü"}}],
-                        "ß": [{"TEXT": {"REGEX": "ß"}}]}
+                        "Ü": [{"TEXT": {"REGEX": "Ü"}}]}
         # Create empty list for tokens to replace
         replacement_list_out = []
 
@@ -337,14 +336,12 @@ class NCCR_Dataset:
             # Add list of unique tokens to replacement list
             replacement_list_out.extend(list(set(current_replacement_list)))
 
-        # Create similar list of tokens with alternative spelling and define as matching patterns
+        # Create similar list of tokens with alternative spelling
         replacement_list_in = replacement_list_out.copy()
         for index, token in enumerate(replacement_list_in):
             token_fixed = token.replace("ä", "ae").replace("Ä", "Ae").replace("ö", "oe")\
-                .replace("Ö", "Oe").replace("ü", "ue").replace("Ü", "Ue").replace("ß", "ss")
-
-            token_pattern = [{"TEXT": {"REGEX": token_fixed}}]
-            replacement_list_in[index] = token_pattern
+                .replace("Ö", "Oe").replace("ü", "ue").replace("Ü", "Ue")
+            replacement_list_in[index] = token_fixed
 
         # Generate dictionary for replacement
         keys = replacement_list_out
@@ -352,11 +349,18 @@ class NCCR_Dataset:
         umlauts_token_dict = dict(zip(keys, values))
 
         # Replace tokens with umlauts according to umlauts_token_dict in Text and Wording
+        df['doc_temp'] = df['doc_temp'].astype(str)
+        df['Wording_doc_temp'] = df['Wording_doc_temp'].astype(str)
+
         for key in umlauts_token_dict:
-            df['Wording_doc_temp'] = \
-                df['Wording_doc_temp'].apply(lambda x: self.__fix_wording(x, key, umlauts_token_dict[key]))
             df['doc_temp'] = \
-                df['doc_temp'].apply(lambda x: self.__fix_wording(x, key, umlauts_token_dict[key]))
+                df['doc_temp'].apply(lambda x: self.__standardize_umlauts(x, key, umlauts_token_dict[key]))
+            df['Wording_doc_temp'] = \
+                df['Wording_doc_temp'].apply(lambda x: self.__standardize_umlauts(x, key, umlauts_token_dict[key]))
+
+        # Generate spacy docs
+        df['doc_temp'] = list(self.nlp_sent.pipe(df['doc_temp']))
+        df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_doc_temp']))
 
         # Retrieve Wording-Text-matches
         df['wording_matches'] = df.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
@@ -371,8 +375,6 @@ class NCCR_Dataset:
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
         # Retrieve count of sentences in Wording
-        df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_doc_temp']))
-        df['Wording_doc_temp'] = df['Wording_doc_temp'].astype(str)
         df['Wording_sent_count'] = df['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
         ## NO MATCH
@@ -476,6 +478,12 @@ class NCCR_Dataset:
         text = " ".join(text.split())  # Remove additional whitespaces
 
         return text
+
+    def __standardize_umlauts(self, text: str, replacement, token):
+        text = text.replace(token, replacement)
+
+        return text
+
 
     def __fix_wording(self, wording: spacy.tokens.doc.Doc, replacement: str, pattern: list):
         """
