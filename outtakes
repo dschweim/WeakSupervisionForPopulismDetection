@@ -73,3 +73,40 @@
                     else:
                         value = {token.text: [token.pos_]}
                         result_tags.update(value)
+
+
+
+         # Generate lists of potential umlaut replacements
+        replacement_list = []
+
+        umlauts_dict = {"ä": [{"TEXT": {"REGEX": "ae"}}],
+                        "Ä": [{"TEXT": {"REGEX": "Ae"}}],
+                        "ö": [{"TEXT": {"REGEX": "oe"}}],
+                        "Ö": [{"TEXT": {"REGEX": "Oe"}}],
+                        "ü": [{"TEXT": {"REGEX": "ue"}}],
+                        "Ü": [{"TEXT": {"REGEX": "Ue"}}],
+                        "ß": [{"TEXT": {"REGEX": "ss"}}]}
+# Replace each specified umlaut
+        for key in umlauts_dict:
+
+            replacement = key
+            pattern = umlauts_dict[key]
+            pattern_token = pattern[0]['TEXT']['REGEX']
+
+            token_matcher = Matcher(self.nlp_sent.vocab)
+            token_matcher.add("REPLACE", [pattern])
+
+            key_replacement_list = []
+
+            for index, row in df.iterrows():
+                matches = token_matcher(row.Wording_doc_temp)  # print the matched results and extract out the results
+                for match_id, start, end in matches:
+                    # Get the string representation
+                    token = row.Wording_doc_temp[start:end].text
+                    token_fixed = re.sub(pattern_token, replacement, token)
+
+                    # Add token to replacement list
+                    key_replacement_list.append(token_fixed)
+
+            replacement_list.append(key_replacement_list)
+

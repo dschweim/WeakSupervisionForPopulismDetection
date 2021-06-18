@@ -263,6 +263,7 @@ class NCCR_Dataset:
         df['doc_temp'] = list(self.nlp_sent.pipe(df['text_temp']))
         df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_temp']))
 
+        ## FIX WORDING
         # Define tokens to fix in Wording
         replacement_dict = {"Parteienfamilie": [{'LOWER': 'parteienfamili'}],
                             "Volkspartei": [{'LOWER': 'volksparte'}],
@@ -296,6 +297,67 @@ class NCCR_Dataset:
             df['Wording_doc_temp'] = \
                 df['Wording_doc_temp'].apply(lambda x: self.__fix_wording(x, key, replacement_dict[key]))
 
+        ## FIX UMLAUTS
+        # Define umlauts
+        umlauts_dict = {"ä": [{"TEXT": {"REGEX": "ä"}}],
+                        "Ä": [{"TEXT": {"REGEX": "Ä"}}],
+                        "ö": [{"TEXT": {"REGEX": "ö"}}],
+                        "Ö": [{"TEXT": {"REGEX": "Ö"}}],
+                        "ü": [{"TEXT": {"REGEX": "ü"}}],
+                        "Ü": [{"TEXT": {"REGEX": "Ü"}}],
+                        "ß": [{"TEXT": {"REGEX": "ß"}}]}
+        # Create empty list for tokens to replace
+        replacement_list_out = []
+
+        # Iterate over umlauts dict
+        for key in umlauts_dict:
+
+            # Define current matching pattern
+            pattern = umlauts_dict[key]
+
+            # Define Matcher and add current pattern
+            token_matcher = Matcher(self.nlp_sent.vocab)
+            token_matcher.add("REPLACE", [pattern])
+
+            # Create empty list for tokens in current iteration
+            current_replacement_list = []
+
+            # Iterate over docs
+            for index, row in df.iterrows():
+                # Get matches of tokens which contain current umlaut
+                matches = token_matcher(row.doc_temp)
+
+                # For each match, do:
+                for match_id, start, end in matches:
+                    # Get the token text
+                    token = row.doc_temp[start:end].text
+                    # Add token to replacement list
+                    current_replacement_list.append(token)
+
+            # Add list of unique tokens to replacement list
+            replacement_list_out.extend(list(set(current_replacement_list)))
+
+        # Create similar list of tokens with alternative spelling and define as matching patterns
+        replacement_list_in = replacement_list_out.copy()
+        for index, token in enumerate(replacement_list_in):
+            token_fixed = token.replace("ä", "ae").replace("Ä", "Ae").replace("ö", "oe")\
+                .replace("Ö", "Oe").replace("ü", "ue").replace("Ü", "Ue").replace("ß", "ss")
+
+            token_pattern = [{"TEXT": {"REGEX": token_fixed}}]
+            replacement_list_in[index] = token_pattern
+
+        # Generate dictionary for replacement
+        keys = replacement_list_out
+        values = replacement_list_in
+        umlauts_token_dict = dict(zip(keys, values))
+
+        # Replace tokens with umlauts according to umlauts_token_dict in Text and Wording
+        for key in umlauts_token_dict:
+            df['Wording_doc_temp'] = \
+                df['Wording_doc_temp'].apply(lambda x: self.__fix_wording(x, key, umlauts_token_dict[key]))
+            df['doc_temp'] = \
+                df['doc_temp'].apply(lambda x: self.__fix_wording(x, key, umlauts_token_dict[key]))
+
         # Retrieve Wording-Text-matches
         df['wording_matches'] = df.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']), axis=1)
 
@@ -309,8 +371,8 @@ class NCCR_Dataset:
         df['match_count'] = df['wording_matches'].apply(lambda x: len(x))
 
         # Retrieve count of sentences in Wording
-        df['Wording_doc_temp'] = df['Wording_doc_temp'].astype(str)
         df['Wording_doc_temp'] = list(self.nlp_sent.pipe(df['Wording_doc_temp']))
+        df['Wording_doc_temp'] = df['Wording_doc_temp'].astype(str)
         df['Wording_sent_count'] = df['Wording_doc_temp'].apply(lambda x: len(list(x.sents)))
 
         ## NO MATCH
@@ -370,15 +432,15 @@ class NCCR_Dataset:
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
         # df_none['match_count'] = -1
 
-        # todo: Add manually fixed matches to main corpus
-        # df = df.append(df_none)
-        #
-        # # Drop redundant columns
-        # df.drop(columns=['level_0', 'index'], inplace=True)
-        # # Delete temp columns
-        # df.drop(columns=
-        #         ['text_temp', 'doc_temp', 'Wording_temp', 'Wording_doc_temp', 'doc_tokens', 'wording_tokens'],
-        #         inplace=True)
+        # Add manually fixed matches to main corpus
+        df = df.append(df_none)
+
+        # Drop redundant columns
+        df.drop(columns=['level_0', 'index'], inplace=True)
+        # Delete temp columns
+        df.drop(columns=
+                ['text_temp', 'Wording_temp', 'doc_temp', 'Wording_doc_temp', 'doc_tokens', 'wording_tokens'],
+                inplace=True)
 
         print('GENERATED CORPUS: ' + str(len(df)) + ' EXAMPLES')
 
@@ -407,9 +469,7 @@ class NCCR_Dataset:
             .replace("<ORD:65412>", "").replace("<ORD:65430>", "").replace("<quot>", r"\"") \
             .replace("<ORD:65440>", "").replace("<ORD:65451>", "").replace("<TAB>", "") \
             .replace("F.D.P.", "FDP").replace(".dieLinke", "dieLinke") \
-            .replace("ä", "ae").replace("ü", "ue").replace("ö", "oe").replace("Ö", "Oe") \
-            .replace("Ä", "Ae").replace("Ü", "Ue").replace("ß", "ss") \
-            .replace("é", "e").replace("è", "e").replace("É", "e").replace("È", "e") \
+            .replace("é", "e").replace("è", "e").replace("É", "E").replace("È", "E") \
             .replace("à", "a").replace("á", "a").replace("Á", "A").replace("À", "A") \
             .replace("ò", "o").replace("ó", "o").replace("Ó", "O").replace("Ò", "O") \
             .replace("ç", "c").replace(r"\\", "")
@@ -417,7 +477,7 @@ class NCCR_Dataset:
 
         return text
 
-    def __fix_wording(self, wording: spacy.tokens.doc.Doc, replacement, pattern):
+    def __fix_wording(self, wording: spacy.tokens.doc.Doc, replacement: str, pattern: list):
         """
         correct redundant characters and typos in wording column
         :param wording: Wording content to correct
