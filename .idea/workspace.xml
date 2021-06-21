@@ -149,8 +149,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>445</line>
-          <option name="timeStamp" value="229" />
+          <line>478</line>
+          <option name="timeStamp" value="233" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>458</line>
+          <option name="timeStamp" value="234" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -161,17 +166,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="len(replacement_list_out)" language="Python" />
-        <watch expression="len(df_none)" language="Python" />
-        <watch expression="len(replacement_list_in)" language="Python" />
-        <watch expression="df.Wording_doc_temp" language="Python" />
-        <watch expression="len(df_none)" language="Python" />
-        <watch expression="df.wording_segments" language="Python" />
-        <watch expression="umlauts_token_dict.items()" language="Python" />
-        <watch expression="len(df_none)" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

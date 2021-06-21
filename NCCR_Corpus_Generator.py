@@ -456,13 +456,10 @@ class NCCR_Dataset:
         replace_table_non = pd.read_csv(f'{self.output_path}\\manual_replacement\\none_match_replace_table.csv')
 
         # Only keep rows for which replacement is available
-        df_none = df_none.loc[df_none.index.isin(replace_table_non.ID_non)]
-
-        # Replace Wording with Wording_fixed
-        df_none['Wording'] = replace_table_non['Wording_fixed'].values
+        df_none = pd.merge(df_none, replace_table_non, left_on='index', right_on='ID_non')
 
         # Generate spacy doc
-        df_none['Wording_doc_temp'] = list(self.nlp_sent.pipe(df_none['Wording']))
+        df_none['Wording_doc_temp'] = list(self.nlp_sent.pipe(df_none['Wording_fixed']))
 
         # Retrieve Wording-Text-matches
         df_none['wording_matches'] = df_none.apply(lambda x: self.__get_matches(x['doc_temp'], x['Wording_doc_temp']),
@@ -485,8 +482,8 @@ class NCCR_Dataset:
         df.drop(columns=['level_0', 'index'], inplace=True)
         # Delete temp columns
         df.drop(columns=
-                ['text_temp', 'Wording_temp', 'doc_temp', 'Wording_doc_temp', 'doc_tokens', 'wording_tokens'],
-                inplace=True)
+                ['text_temp', 'Wording_temp', 'doc_temp', 'Wording_doc_temp', 'doc_tokens', 'wording_tokens',
+                 'Wording_fixed'], inplace=True)
 
         print('GENERATED CORPUS: ' + str(len(df)) + ' EXAMPLES')
 
