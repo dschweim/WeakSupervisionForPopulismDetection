@@ -149,13 +149,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>478</line>
-          <option name="timeStamp" value="233" />
+          <line>493</line>
+          <option name="timeStamp" value="237" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>458</line>
-          <option name="timeStamp" value="234" />
+          <line>169</line>
+          <option name="timeStamp" value="239" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>388</line>
+          <option name="timeStamp" value="244" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
+          <line>389</line>
+          <option name="timeStamp" value="245" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -166,5 +176,14 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="df_seg[df_seg.duplicated(subset=['ID', 'Unit_ID01'], keep=False)]" language="Python" />
+        <watch expression="type(df.loc[df.ID=='au_pr_el_13_010316.txt'].iloc[0].Spr_ID.values)" language="Python" />
+        <watch expression="df.Unit_ID01" language="Python" />
+        <watch expression="df.ID" language="Python" />
+        <watch expression="len(df_combined_de_x_target)" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

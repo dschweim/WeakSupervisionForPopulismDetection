@@ -115,6 +115,12 @@ class NCCR_Dataset:
         # Join dfs
         df_combined_de_x_target = pd.merge(df_combined_de, full_target, on='ID')
 
+        # Remove duplicate: wrong speaker
+        df_drop = df_combined_de_x_target.loc[(df_combined_de_x_target.ID == 'au_pr_el_13_010316.txt') &
+                                              (df_combined_de_x_target.Spr_ID == 11801)]
+
+        df_combined_de_x_target = df_combined_de_x_target.drop(df_combined_de_x_target.index[[df_drop.index.values]])
+
         # Include source indicator column
         df_combined_de_x_target['Source'] = 'Target'
 
