@@ -425,6 +425,10 @@ class NCCR_Dataset:
         # Calculate number of matches
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
 
+        # Split dataset between subwording retrieved matches and remaining none_matches
+        df_none_submatched = df_none.loc[df_none.match_count == 1]
+        df_none = df_none.loc[df_none.match_count == 0]
+
         # Generate additional columns
         df_none['doc_tokens'] = df_none['doc_temp'].apply(lambda x: [token.text for token in x])
         df_none['wording_tokens'] = df_none['Wording_doc_temp'].apply(lambda x: [token.text for token in x])
@@ -437,6 +441,9 @@ class NCCR_Dataset:
         ## MANUAL REPLACEMENT NONE_MATCH
         # Only keep rows with 1 and -1 match for main corpus
         df = df.loc[(df.match_count == 1) | (df.match_count == -1)]
+
+        # Add subwording-based matches to corpus
+        df = df.append(df_none_submatched)
 
         # Replace Wording for corpus with no match using manual_replacement_table
         replace_table_non = pd.read_csv(f'{self.output_path}\\manual_replacement\\none_match_replace_table.csv')
