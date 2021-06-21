@@ -180,8 +180,8 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=False,
-         preprocess_data=True,  # runs for approx 3-5 min
+         generate_data=True,
+         preprocess_data=True,  # runs for approx 20 min
          generate_tfidf_dicts=True,
          generate_chisquare_dict=True,
          generate_labeling=True)

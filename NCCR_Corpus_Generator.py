@@ -300,7 +300,14 @@ class NCCR_Dataset:
                             'müsst': [{'TEXT': "müßt"}], 'muesst': [{'TEXT': "mueßt"}],
                             'Parteiausschlussverfahren': [{'TEXT': "Parteiausschlußverfahren"}],
                             'Unermessliche': [{'TEXT': "Unermeßliche"}], 'Hassprediger': [{'TEXT': "Haßprediger"}],
-                            'muss': [{'TEXT': "muß"}], 'Einschluss': [{'TEXT': "Einschluß"}]}
+                            'muss': [{'TEXT': "muß"}], 'bedauert': [{'TEXT': "bedäurt"}],
+                            'Steuern': [{'TEXT': "Steürn"}], 'Steuerzahler': [{'TEXT': "Steürzahler"}],
+                            'Steuerzahlergedenktag': [{'TEXT': "Steürzahlergedenktag"}],
+                            'Steuer-': [{'TEXT': "Steür-"}],  'Steuersystem': [{'TEXT': "Steürsystem"}],
+                            'Steuerlast': [{'TEXT': "Steürlast"}], 'Steuereinnahmen': [{'TEXT': "Steüreinnahmen"}],
+                            'Lohnsteuerpflichtigen': [{'TEXT': "Lohnsteürpflichtigen"}],
+                            'anlässlich': [{'TEXT': "anläßlich"}],
+                            'Vermögenssteuer': [{'TEXT': "  'Vermögenssteür"}], 'Einschluss': [{'TEXT': "Einschluß"}]}
 
         # Replace each token in dict with it's corresponding corrected replacement
         for key in replacement_dict:
@@ -468,9 +475,8 @@ class NCCR_Dataset:
         df_none['wording_segments'] = \
             df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
-        # todo: Set indicator for manually retrieved match
+        # Calculate match_count for manually verified examples
         df_none['match_count'] = df_none['wording_matches'].apply(lambda x: len(x))
-        # df_none['match_count'] = -1
 
         # Add manually fixed matches to main corpus
         df = df.append(df_none)
