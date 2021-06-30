@@ -110,3 +110,83 @@
 
             replacement_list.append(key_replacement_list)
 
+
+
+
+% DICT RETRIVAL
+
+       # if head.pos_ == 'VERB':
+
+                    # check if AUX exists
+                    # Get object
+
+
+
+            root_verbs = []
+            root_nouns = []
+            root_others = []
+
+            # # Iterate over tokens to access ROOTs
+            # for token in segment:
+            #
+            #     if token.dep_ == 'ROOT':
+            #         # if ROOT is VERB
+            #         if token.pos_ == 'VERB':
+            #
+            #             # get corresponding sb, or if available, oc
+            #             root_verbs.append((token.lemma_.lower(), token.pos_, token.dep_))
+            #
+            #             #[child for child in token.children])
+            #
+            #         # if ROOT is AUXILIARY
+            #         elif token.pos_ == 'AUX':
+            #
+            #             # get corresponding VERB
+            #             childs = [child for child in token.children]
+            #
+            #             print(childs)
+            #
+            #             # get corresponding SUBJECT
+            #
+            #             # get corresponding OBJECT
+            #
+            #             # get corresponding NEGATION
+            #
+            #             root_verbs.append((token.lemma_.lower(), token.pos_, token.dep_))
+            #
+            #         # if ROOT is ADVERB
+            #         elif token.pos_ == 'ADV':
+            #             root_verbs.append((token.lemma_.lower(), token.pos_, token.dep_))
+            #
+            #         # if ROOT is NOUN
+            #         elif token.pos_ in ['NOUN', 'PROPN']:
+            #             root_nouns.append((token.lemma_.lower(), token.pos_, token.dep_))
+            #
+            #         else:
+            #             root_others.append((token.lemma_.lower(), token.pos_, token.dep_))
+            #             print(token.pos_)
+            #             print(token.sent)
+            #
+            #     lemmas.append((token.lemma_.lower(), token.pos_, token.dep_))
+            #     #
+                # # subject would be
+                # if token.dep_ in SUBJECTS or token.pos_ in ['NOUN', 'PRONOUN']:
+                #     subject = token.lemma_
+                #
+                # # iobj for indirect object
+                # if token.dep_ == "iobj":
+                #     indirect_object = token.orth_
+                # # dobj for direct object
+                # if token.dep_ == "dobj":
+                #     direct_object = token.orth_
+                #
+                # #print(subject, indirect_object, direct_object)
+                #
+                # # Extract triples of type {subj, obj, in list   "sb", "nsubj", "neg", "dobj",
+                # if token.dep_ in ("ROOT", "sb"):
+                #     print(token.text, token.dep_, token.head.text, token.head.pos_,
+                #           [child for child in token.children])
+                #
+                #     triples_dict.append([(token.lemma_.lower(), token.pos_, token.dep_)])
+
+
