@@ -73,8 +73,6 @@ def main(path_to_project_folder: str,
         tfidf_dict_country = nccr_dicts.generate_tfidf_dict_per_country(train, n_words=30)
         tfidf_dict_global = nccr_dicts.generate_global_tfidf_dict(train, n_words=30)
 
-        tfidf_dict_antielite = nccr_dicts.generate_chisquare_dict_antielite(train, preprocessed=preprocess_data)
-
     else:
         # Import dictionaries
         tfidf_dict = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict.csv')
@@ -106,6 +104,8 @@ def main(path_to_project_folder: str,
         # Generate Dictionary based on chi-square test
         chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.99, n_words=30)
         chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99, n_words=30)
+
+        chisquare_dict_antielite = nccr_dicts.generate_chisquare_dict_antielite(train, preprocessed=preprocess_data)
 
     else:
         # Import dictionary
@@ -142,8 +142,7 @@ def main(path_to_project_folder: str,
                    'chi2_keywords_global': chisquare_dict_global.term.tolist(),
                    'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
                    'chi2_keywords_ch': chisquare_dict_country['cd'].term.to_list(),
-                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list(),
-                   'tfidf_keywords_antielite': tfidf_dict_antielite.term.to_list()
+                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list()
                    }
 
         # Filter on relevant columns
@@ -182,6 +181,6 @@ if __name__ == "__main__":
     main(path_to_project_folder=input_path,
          generate_data=False,
          preprocess_data=False,  # runs for approx 15 min
-         generate_tfidf_dicts=True,
+         generate_tfidf_dicts=False,
          generate_chisquare_dict=True,
          generate_labeling=True)
