@@ -14,6 +14,12 @@
       </list>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Dict_Generator.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../ProgramData/Anaconda3/Lib/site-packages/pandas/core/series.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/main.py" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/util.py" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1qZDd8NzlhRS0OXvUHuxwTk8ubq" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -22,10 +28,31 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Team_Project_HWS2020" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/BERT_Classifier.py" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="BERT_Classifier" type="PythonConfigurationType" factoryName="Python">
+      <module name="Thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\ProgramData\Anaconda3\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BERT_Classifier.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Labeling_test" type="PythonConfigurationType" factoryName="Python">
       <module name="Thesis" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,6 +119,7 @@
     <list>
       <item itemvalue="Python.Labeling_test" />
       <item itemvalue="Python.NCCR_Pred" />
+      <item itemvalue="Python.BERT_Classifier" />
       <item itemvalue="Python.main" />
     </list>
   </component>
@@ -113,24 +141,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/util.py</url>
-          <line>184</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/util.py</url>
-          <line>208</line>
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>94</line>
+          <line>95</line>
           <option name="timeStamp" value="150" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>96</line>
-          <option name="timeStamp" value="152" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
@@ -138,34 +151,39 @@
           <option name="timeStamp" value="153" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>474</line>
-          <option name="timeStamp" value="171" />
+          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
+          <line>140</line>
+          <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>485</line>
-          <option name="timeStamp" value="172" />
+          <line>532</line>
+          <option name="timeStamp" value="254" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>493</line>
-          <option name="timeStamp" value="237" />
+          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="255" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>169</line>
-          <option name="timeStamp" value="239" />
+          <url>file://$PROJECT_DIR$/BERT_Classifier.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>388</line>
-          <option name="timeStamp" value="244" />
+          <url>file://$PROJECT_DIR$/BERT_Classifier.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/NCCR_Corpus_Generator.py</url>
-          <line>389</line>
-          <option name="timeStamp" value="245" />
+          <url>file://$PROJECT_DIR$/BERT_Classifier.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="258" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
+          <line>133</line>
+          <option name="timeStamp" value="259" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -178,11 +196,12 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="df_seg[df_seg.duplicated(subset=['ID', 'Unit_ID01'], keep=False)]" language="Python" />
-        <watch expression="type(df.loc[df.ID=='au_pr_el_13_010316.txt'].iloc[0].Spr_ID.values)" language="Python" />
-        <watch expression="df.Unit_ID01" language="Python" />
-        <watch expression="df.ID" language="Python" />
-        <watch expression="len(df_combined_de_x_target)" language="Python" />
+        <watch expression="ae_triples_df.loc[ae_triples_df['count'] &gt; 3]" language="Python" />
+        <watch expression="ae_triples_df.count" language="Python" />
+        <watch expression="ae_triples_df.sort_values(by='count', ascending=False)" language="Python" />
+        <watch expression="[head.children]" language="Python" />
+        <watch expression="train_data" language="Python" />
+        <watch expression="train_data[['text', 'POPULIST']]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
