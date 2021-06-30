@@ -484,6 +484,9 @@ class NCCR_Dataset:
         # Add manually fixed matches to main corpus
         df = df.append(df_none)
 
+        # Only keep rows with 1 and -1 match for main corpus
+        df = df.loc[(df.match_count == 1) | (df.match_count == -1)]
+
         # Drop redundant columns
         df.drop(columns=['level_0', 'index'], inplace=True)
         # Delete temp columns
@@ -540,6 +543,7 @@ class NCCR_Dataset:
         :rtype: str
         """
 
+        # Todo: chck wether subwording replaced (e.g. Ruß + Russlandreisen -> Rußlandreisen (ID: de_pr_el_13_060133.txt)
         text = text.replace(token, replacement)
 
         return text
