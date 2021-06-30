@@ -1,14 +1,16 @@
 import spacy
 import time
-import textacy
+import itertools
 import pandas as pd
 import numpy as np
-from spacy.matcher import Matcher
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
+from collections import Counter
+
+from util import extract_parsed_lemmas
 
 
 class Dict_Generator:
@@ -462,32 +464,73 @@ class Dict_Generator:
 
         start = time.time()
 
-        # Generate spacy docs from corpus
-        # df['doc'] = list(self.nlp_sent.pipe(df['wording_segment']))
-        #
-        # #  Generate two docs from corpus (POP_AE and NON-POP + NON_AE)
-        # df_ae = df.loc[(df['POPULIST_AntiElite'] == 1) &
-        #                (df['POPULIST_PeopleCent'] == 0) &
-        #                (df['POPULIST_Sovereign'] == 0)]
-        #
-        # df_rest = df.loc[]
+        # Generate spacy docs from corpus if necessary
+        if not preprocessed:
+            df['wording_segments_doc'] = list(self.nlp_full.pipe(df['wording_segments']))
 
-        text = df.iloc[0]
-        doc = self.nlp_full(text.wording_segments)
+        # Generate two docs from corpus (POP and NONPOP) #todo: check whether split correct
+        df_pop = df.loc[(df['POPULIST'] == 1)]
+        df_rest = df[~df.index.isin(df_pop.index)]
 
-        tuples_list = []
+        # Generate dict for both corpora separately
+        #full_dict_ae = df_pop['wording_segments_doc'].apply(lambda x: self.__extract_dep_triples(x, True))
+        #lemma_ae = df_pop['wording_segments_doc'].apply(lambda x:  extract_parsed_lemmas(x))
+        #flat_dict_ae = df_pop['wording_segments_doc'].apply(lambda x: self.__extract_dep_triples(x, False))
 
-        tuples = textacy.extract.subject_verb_object_triples(doc)
-        if tuples:
-            tuples_to_list = list(tuples)
-            tuples_list.append(tuples_to_list)
+        flat_dict_ae = df_pop['wording_segments_doc'].apply(lambda x: self.__extract_dep_tuples(x))
 
 
-        result_tags = {}
+        #dict_rest = df_rest['wording_segments_doc'].apply(lambda x: self.__extract_dep_triples(x, True))
 
-        # Extract triples of type {subj, obj,
 
-        tfidf_ae_dict = []
+        # Generate triples (subj, obj, neg + verb, pred) of full corpus AE and NOT AE
+        def generate_corpus_triples(series):
+
+            corpus_triples = []
+
+            for index, value in series.items():
+
+                # Iterate over dicts (i.e. number of sentences)
+                for elem in value:
+                    # Skip None values
+                    if isinstance(elem, dict):
+                        current_val = list(elem.values())
+
+                        subjs = ', '.join(current_val[0])
+                        preds = ', '.join(current_val[1])
+                        negs = ', '.join(current_val[2])
+                        verbs = ', '.join(current_val[3])
+
+                        # objs = ', '.join(current_val[4])
+
+                        current_triple = (subjs, preds, negs, verbs)
+
+                        corpus_triples.append(current_triple)
+
+            # Generate df
+            triples_df = pd.DataFrame({'triple': Counter(corpus_triples).keys(),  # get unique values of triples
+                                       'count': Counter(corpus_triples).values()})  # get the elements' frequency
+
+            return triples_df #return without duplicates +  get count
+
+        ae_triples_df = generate_corpus_triples(flat_dict_ae)
+
+        # Concatenate content of corpus
+        content_ae = ' '.join(df_pop["wording_segments"])
+        content_rest = ' '.join(df_rest["wording_segments"])
+
+        # Append empty counts
+        ae_triples_df["count_ae"] = np.nan
+        ae_triples_df["count_rest"] = np.nan
+
+        # # Count number of times, each triple occurs in corpus ae/rest respectively
+        # for index, row in ae_triples_df.iterrows:
+        #     content_ae = str.count(row.triple)
+
+
+
+        # Append triples with high enough chisquare to dict
+        chisquare_ae_dict = {}
 
         # Save dict to disk
         #tfidf_ae_dict.to_csv(f'{self.output_path}\\tfidf_antielite_dict.csv', index=True)
@@ -496,5 +539,277 @@ class Dict_Generator:
         print(end - start)
         print('finished tf-idf antielite dict generation')
 
-        return tfidf_ae_dict
+        return chisquare_ae_dict
+
+    # todo:Extract tuples from sentence (subjects, pred)
+    def __extract_dep_tuples(self, segment):
+
+        tuples_dict_list = []
+
+        # Get HEAD tokens
+        heads = [token for token in segment if token.head == token]
+
+        # Iterate over heads
+        for head in heads:
+
+            lemmas = []
+            subj_list = []
+            pred_list = []
+            obj_list = []
+            neg_list = []
+
+            current_sent = head.sent
+
+            # Case 1: head is verb
+            for token in current_sent:
+                lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))
+
+            if head.pos_ == 'VERB':
+
+                # Add head to verb list
+                pred_list.append(head.lemma_.lower())
+
+                for child in head.children:
+
+                    # Extract additional Verb components and auxiliaries and predicates
+                    # if child.pos_ in ['VERB']:
+                    #     pred_list.append(child.lemma_.lower())
+
+                    if child.dep_ == 'pd':
+                        pred_list.append(child.lemma_.lower())
+
+                    # Check if sentence contains negation
+                    if child.dep_ == 'neg':
+                        neg_list.append(child.lemma_.lower())
+
+                    # Extract subjects
+                    if (child.dep_ == 'sb') & (child.pos_ not in ['AUX', 'VERB']):
+                        subj_list.append(child.lemma_.lower())
+
+                    # Extract objects
+                    if (child.dep_ in ['oa', 'oc', 'da', 'og', 'op', 'ag']) & (child.pos_ not in ['AUX', 'VERB']):
+                        obj_list.append(child.lemma_.lower())
+
+            ## OTHER CASES OF ROOT
+            elif head.pos_ == 'AUX':
+
+                for child in head.children:
+
+                    # Extract additional Verb components and auxiliaries and predicates
+                    if child.pos_ in ['VERB']:
+                        pred_list.append(child.lemma_.lower())
+
+                    if child.dep_ == 'pd':
+                        pred_list.append(child.lemma_.lower())
+
+                    # Check if sentence contains negation
+                    if child.dep_ == 'neg':
+                        neg_list.append(child.lemma_.lower())
+
+                    # Extract subjects
+                    if (child.dep_ == 'sb') & (child.pos_ not in ['AUX', 'VERB']):
+                        subj_list.append(child.lemma_.lower())
+
+                    # Extract objects
+                    if (child.dep_ in ['oa', 'da', 'og', 'ag']) & (child.pos_ not in ['AUX', 'VERB']):
+                        obj_list.append(child.lemma_.lower())
+
+            elif head.pos_ == 'NOUN':
+
+                # Add head to subject list
+                subj_list.append(head.lemma_.lower())
+
+                for child in head.children:
+                    # Extract additional Verb components and auxiliaries and predicates
+                    if child.pos_ in ['VERB']:
+                        pred_list.append(child.lemma_.lower())
+
+                    if child.dep_ == 'pd':
+                        pred_list.append(child.lemma_.lower())
+
+                    # Check if sentence contains negation
+                    if child.dep_ == 'neg':
+                        neg_list.append(child.lemma_.lower())
+
+                    # Extract subjects
+                    if (child.dep_ == 'sb') & (child.pos_ not in ['AUX', 'VERB']):
+                        subj_list.append(child.lemma_.lower())
+
+                    # Extract objects
+                    if (child.dep_ in ['oa', 'da', 'og', 'ag']) & (child.pos_ not in ['AUX', 'VERB']):
+                        obj_list.append(child.lemma_.lower())
+
+            # if lists are empty, return None
+            if (not subj_list) & (not pred_list) & (not obj_list) & (not neg_list):
+                tuples_dict = None
+
+            else:
+                tuples_dict = {'subjects': subj_list,
+                                'predicates': pred_list,
+                               'negations': neg_list,
+                               'objects': obj_list}
+
+            # Generate list with dict for each head
+            tuples_dict_list.append(tuples_dict)
+
+        # if lists are empty, return None
+        if (not subj_list) & (not pred_list) & (not obj_list) & (not neg_list):
+            return []
+        # else
+        else:
+            return tuples_dict_list
+
+
+
+
+    def __extract_dep_triples(self, segment, fulldetail: bool):
+        """
+        Function to retrieve triples from segment
+        :param segment:
+        :return:
+        """
+
+        SUBJECTS = ['sb']
+        OBJECTS = ['oa', 'oc', 'og', 'op', 'da', 'ag']
+        PREDICATES = ['pd']
+        VERBCOMPONENTS = ['svp']  # separable verb prefix
+        NEGATIONS = ['ng']
+
+        triples_dict_list = []
+
+        # Get HEAD tokens
+        heads = [token for token in segment if token.head == token]
+
+        # Iterate over heads
+        for head in heads:
+
+            obj_list = []
+            subj_list = []
+            pred_list = []
+            verb_list = []
+            neg_list = []
+
+            current_sent = head.sent
+
+            # Case 1: head is verb-type (verb, aux)
+            if (head.pos_ == 'VERB') or (head.pos_ == 'AUX'):
+
+                # Add head to verb list
+                if fulldetail:
+                    verb_list.append((head.lemma_.lower(), head.pos_, head.dep_))
+                else:
+                    verb_list.append(head.lemma_.lower())
+
+                for child in head.children:
+                    # Extract additional Verb components and auxiliaries
+                    if child.dep_ in VERBCOMPONENTS:
+                        if fulldetail:
+                            verb_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            verb_list.append(child.lemma_.lower())
+
+                    if child.pos_ in ['AUX', 'VERB']:
+                        if fulldetail:
+                            verb_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            verb_list.append(child.lemma_.lower())
+
+                    # Check if sentence contains negation
+                    if child.dep_ in NEGATIONS:
+                        if fulldetail:
+                            neg_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            neg_list.append(child.lemma_.lower())
+
+                    # Extract objects
+                    if (child.dep_ in OBJECTS) & (child.pos_ not in ['AUX', 'VERB']):
+                        if fulldetail:
+                            obj_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            obj_list.append(child.lemma_.lower())
+
+                    # Extract subjects
+                    if (child.dep_ in SUBJECTS) & (child.pos_ not in ['AUX', 'VERB']):
+                        if fulldetail:
+                            subj_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            subj_list.append(child.lemma_.lower())
+
+                    # Extract predicates
+                    if child.dep_ in PREDICATES:
+                        if fulldetail:
+                            pred_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            pred_list.append(child.lemma_.lower())
+
+            # Case 2: head is noun
+            if head.pos_ == 'NOUN':
+                # Add head to subject list #todo: is subject or object???
+                if fulldetail:
+                    subj_list.append((head.lemma_.lower(), head.pos_, head.dep_))
+                else:
+                    subj_list.append(head.lemma_.lower())
+
+                for child in head.children:
+
+                    # Extract additional Verb components and auxiliaries
+                    if child.dep_ in VERBCOMPONENTS:
+                        if fulldetail:
+                            verb_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            verb_list.append(child.lemma_.lower())
+                    if child.pos_ == 'AUX':
+                        if fulldetail:
+                            verb_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            verb_list.append(child.lemma_.lower())
+                    # Check if sentence contains negation
+                    if child.dep_ in NEGATIONS:
+                        if fulldetail:
+                            neg_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            neg_list.append(child.lemma_.lower())
+
+                    # Extract objects
+                    if (child.dep_ in OBJECTS) & (child.pos_ not in ['AUX', 'VERB']):
+                        if fulldetail:
+                            obj_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            obj_list.append(child.lemma_.lower())
+
+                    # Extract subjects
+                    if (child.dep_ in SUBJECTS) & (child.pos_ not in ['AUX', 'VERB']):
+                        if fulldetail:
+                            subj_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            subj_list.append(child.lemma_.lower())
+
+                    # Extract predicates
+                    if child.dep_ in PREDICATES:
+                        if fulldetail:
+                            pred_list.append((child.lemma_.lower(), child.pos_, child.dep_))
+                        else:
+                            pred_list.append(child.lemma_.lower())
+
+            # if lists are empty, return None
+            if (not obj_list) & (not subj_list) & (not verb_list) & (not neg_list) & (not pred_list):
+                triples_dict = None
+
+            else:
+                triples_dict = {'subjects': subj_list,
+                                'negations': neg_list,
+                                'verbs': verb_list,
+                                'predicates': pred_list,
+                                'objects': obj_list}
+
+            # Generate list with dict for each head
+            triples_dict_list.append(triples_dict)
+
+        # if lists are empty, return None
+        if (not obj_list) & (not subj_list) & (not verb_list) & (not neg_list) & (not pred_list):
+            return []
+        # else
+        else:
+            return triples_dict_list
+
 
