@@ -4,9 +4,10 @@ from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataf
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming
+from sklearn.ensemble import RandomForestClassifier
 
 from spacy_sentiws import spaCySentiWS
 from textblob_de import TextBlobDE as TextBlob
@@ -94,7 +95,9 @@ class Labeler:
         #buckets = get_label_buckets(Y_gold, Y_pred)
         #buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
 
-        comparison_table = pd.DataFrame({'label': train_data.POPULIST,
+        comparison_table = pd.DataFrame({'ID': train_data.ID,
+                                        'text': train_data.text,
+                                        'label': train_data.POPULIST,
                                          'lf_tfidf_global': L_train[:, 5]})
 
 
@@ -134,10 +137,14 @@ class Labeler:
         )
 
         vectorizer = CountVectorizer(ngram_range=(1, 5))
+        #vectorizer = TfidfVectorizer()
         X_train = vectorizer.fit_transform(df_train_filtered.text.tolist())
         X_test = vectorizer.transform(test_data.text.tolist())
 
         preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
+
+
+        #sklearn_model = RandomForestClassifier()
         sklearn_model = LogisticRegression(C=1e3, solver="liblinear")
         sklearn_model.fit(X=X_train, y=preds_train_filtered)
 
