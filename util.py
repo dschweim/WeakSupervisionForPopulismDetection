@@ -1,6 +1,7 @@
 from sklearn.model_selection import train_test_split
 import numpy as np
 import re
+import torch
 
 
 def generate_train_test_split(df):
@@ -66,3 +67,35 @@ def standardize_party_naming(party):
             party = 'grune'
 
         return party
+
+
+def extract_parsed_lemmas(segment):
+    """
+    Retrieve lemma, pos tag, dependence tag, and corresponding head token for each token in segment
+    :param segment: parsed segment
+    :type segment: spacy.tokens.doc.Doc
+    :return: list of tokens and their parsed info
+    :rtype:  list
+    """
+
+    # Get HEAD tokens
+    heads = [token for token in segment if token.head == token]
+
+    # Define list for lemmas and tags
+    lemma_list = []
+
+    # Iterate over heads
+    for head in heads:
+
+        lemmas = []
+        current_sent = head.sent
+
+        # Iterate over tokens per sentence
+        for token in current_sent:
+            lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))
+
+        lemma_list.append(lemmas)
+    return lemma_list
+
+
+
