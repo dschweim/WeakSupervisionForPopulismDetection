@@ -15,7 +15,8 @@ class NCCR_Dataset:
     def __init__(
             self,
             data_path: str,
-            output_path: str
+            output_path: str,
+            spacy_model: str
     ):
         """
         Class to create and pre-process the NCCR data
@@ -23,11 +24,13 @@ class NCCR_Dataset:
         :type data_path: str
         :param data_path: path to data output
         :type data_path: str
+        :param spacy_model: used trained Spacy pipeline
+        :type: str
         """
 
         self.data_path = data_path
         self.output_path = output_path
-        self.nlp_sent = spacy.load("de_core_news_lg", exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
+        self.nlp_sent = spacy.load(spacy_model, exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
                                                                'attribute_ruler', 'lemmatizer'])
         self.nlp_sent.add_pipe("sentencizer")
 

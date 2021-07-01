@@ -13,6 +13,7 @@ sys.path.append("..")
 
 
 def main(path_to_project_folder: str,
+         spacy_model: str,
          generate_data: bool,
          preprocess_data: bool,
          generate_tfidf_dicts: bool,
@@ -22,6 +23,8 @@ def main(path_to_project_folder: str,
     main function to run project and initialize classes
     :param path_to_project_folder: Trainset
     :type path_to_project_folder: str
+    :param spacy_model: used trained Spacy pipeline
+    :type: str
     :param generate_data: Indicator whether to generate data corpus in current run
     :type generate_data: bool
     :param preprocess_data: Indicator whether to preprocess data corpus in current run
@@ -38,10 +41,12 @@ def main(path_to_project_folder: str,
 
     # Initialize
     nccr_df = NCCR_Dataset(data_path=f'{path_to_project_folder}\\Data',
-                           output_path=f'{path_to_project_folder}\\Output')
+                           output_path=f'{path_to_project_folder}\\Output',
+                           spacy_model=spacy_model)
 
     nccr_dicts = Dict_Generator(data_path=f'{path_to_project_folder}\\Data',
-                                output_path=f'{path_to_project_folder}\\Output\\Dicts')
+                                output_path=f'{path_to_project_folder}\\Output\\Dicts',
+                                spacy_model=spacy_model)
 
     if generate_data:
         # Generate Labelled NCCR
@@ -157,6 +162,7 @@ def main(path_to_project_folder: str,
         dev_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
 
         print('TRAIN EXAMPLES: ' + str(len(train)))
+        print('DEV EXAMPLES: ' + str(len(dev)))
         print('TEST EXAMPLES: ' + str(len(test)))
 
         # Initialize Labeler
@@ -179,8 +185,9 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         generate_data=False,
-         preprocess_data=False,  # runs for approx 15 min
-         generate_tfidf_dicts=False,
+         spacy_model='de_dep_news_trf',
+         generate_data=True,
+         preprocess_data=True,  # runs for approx 15 min
+         generate_tfidf_dicts=True,
          generate_chisquare_dict=True,
          generate_labeling=True)
