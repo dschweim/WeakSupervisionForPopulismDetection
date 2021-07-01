@@ -30,8 +30,9 @@ class NCCR_Dataset:
 
         self.data_path = data_path
         self.output_path = output_path
-        self.nlp_sent = spacy.load(spacy_model, exclude=['tok2vec', 'tagger', 'morphologizer', 'parser',
-                                                               'attribute_ruler', 'lemmatizer'])
+        self.spacy_model = spacy_model
+        self.nlp_sent = spacy.load(spacy_model, exclude=['tagger', 'morphologizer', 'parser',
+                                                         'attribute_ruler', 'lemmatizer'])
         self.nlp_sent.add_pipe("sentencizer")
 
     def generate_labelled_nccr_corpus(self):
@@ -154,6 +155,7 @@ class NCCR_Dataset:
         """
 
         start = time.time()
+        print('started preprocessing corpus with ' + str(self.spacy_model) + ' model')
 
         # Apply preprocess_text function to whole text column
         df['text_prep'] = df['text'].apply(lambda x: self.__remove_intro(x))
@@ -177,7 +179,7 @@ class NCCR_Dataset:
 
         end = time.time()
         print(end - start)
-        print('finished dataset preprocessing')
+        print('finished preprocessing corpus')
 
         return df_seg
 

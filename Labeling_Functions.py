@@ -1,15 +1,8 @@
-import re
 import spacy
-import torch
-import numpy as np
 import pandas as pd
 from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
-from spacy.pipeline.dep_parser import DEFAULT_PARSER_MODEL
-
-from spacy_sentiws import spaCySentiWS
-import Tensor2Attr
 
 # Define constants
 ABSTAIN = -1

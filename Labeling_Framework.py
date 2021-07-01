@@ -7,10 +7,6 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming
-from sklearn.ensemble import RandomForestClassifier
-
-from spacy_sentiws import spaCySentiWS
-from textblob_de import TextBlobDE as TextBlob
 
 from Labeling_Functions import get_lfs
 

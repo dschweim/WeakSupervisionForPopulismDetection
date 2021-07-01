@@ -1,6 +1,5 @@
 import spacy
 import time
-import itertools
 import pandas as pd
 import numpy as np
 from nltk.corpus import stopwords
@@ -9,9 +8,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
 from collections import Counter
-
-from util import extract_parsed_lemmas
-
 
 class Dict_Generator:
     def __init__(
@@ -32,6 +28,7 @@ class Dict_Generator:
 
         self.data_path = data_path
         self.output_path = output_path
+        self.spacy_model = spacy_model
         self.nlp_full = spacy.load(spacy_model)
 
     @staticmethod
