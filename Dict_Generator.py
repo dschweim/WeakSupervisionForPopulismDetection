@@ -17,7 +17,8 @@ class Dict_Generator:
     def __init__(
             self,
             data_path: str,
-            output_path: str
+            output_path: str,
+            spacy_model: str
     ):
         """
         Class to create dictionaries from labelled data
@@ -25,12 +26,13 @@ class Dict_Generator:
         :type data_path: str
         :param data_path: path to data output
         :type data_path: str
+        :param spacy_model: used trained Spacy pipeline
+        :type: str
         """
 
         self.data_path = data_path
         self.output_path = output_path
-        self.nlp_full = spacy.load("de_core_news_lg")
-
+        self.nlp_full = spacy.load(spacy_model)
 
     @staticmethod
     def __custom_dict_tokenizer(text: str):
@@ -579,15 +581,15 @@ class Dict_Generator:
                         pred_list.append(child.lemma_.lower())
 
                     # Check if sentence contains negation
-                    if child.dep_ == 'neg':
+                    elif child.dep_ == 'neg':
                         neg_list.append(child.lemma_.lower())
 
                     # Extract subjects
-                    if (child.dep_ == 'sb') & (child.pos_ not in ['AUX', 'VERB']):
+                    elif (child.dep_ == 'sb') & (child.pos_ not in ['AUX', 'VERB']):
                         subj_list.append(child.lemma_.lower())
 
                     # Extract objects
-                    if (child.dep_ in ['oa', 'oc', 'da', 'og', 'op', 'ag']) & (child.pos_ not in ['AUX', 'VERB']):
+                    elif (child.dep_ in ['oa', 'oc', 'da', 'og', 'op', 'ag']) & (child.pos_ not in ['AUX', 'VERB']):
                         obj_list.append(child.lemma_.lower())
 
             ## OTHER CASES OF ROOT
