@@ -110,7 +110,7 @@ def main(path_to_project_folder: str,
         chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.99, n_words=30)
         chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99, n_words=30)
 
-        chisquare_dict_antielite = nccr_dicts.generate_chisquare_dict_antielite(train, preprocessed=preprocess_data)
+        chisquare_dict_antielite = nccr_dicts.generate_chisquare_dep_dict(train, preprocessed=preprocess_data)
 
     else:
         # Import dictionary

@@ -117,9 +117,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.BERT_Classifier" />
       <item itemvalue="Python.Labeling_test" />
       <item itemvalue="Python.NCCR_Pred" />
-      <item itemvalue="Python.BERT_Classifier" />
       <item itemvalue="Python.main" />
     </list>
   </component>
@@ -156,11 +156,6 @@
           <option name="timeStamp" value="253" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>532</line>
-          <option name="timeStamp" value="254" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
           <line>105</line>
           <option name="timeStamp" value="255" />
@@ -185,6 +180,21 @@
           <line>133</line>
           <option name="timeStamp" value="259" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
+          <line>493</line>
+          <option name="timeStamp" value="289" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/util.py</url>
+          <line>120</line>
+          <option name="timeStamp" value="290" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/util.py</url>
+          <line>173</line>
+          <option name="timeStamp" value="294" />
+        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -196,12 +206,8 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="ae_triples_df.loc[ae_triples_df['count'] &gt; 3]" language="Python" />
-        <watch expression="ae_triples_df.count" language="Python" />
-        <watch expression="ae_triples_df.sort_values(by='count', ascending=False)" language="Python" />
-        <watch expression="[head.children]" language="Python" />
-        <watch expression="train_data" language="Python" />
-        <watch expression="train_data[['text', 'POPULIST']]" language="Python" />
+        <watch expression="type(svo_triples_pop)" language="Python" />
+        <watch expression="lemma_ae.loc[1052]" language="Python" />
       </configuration>
     </watches-manager>
   </component>
