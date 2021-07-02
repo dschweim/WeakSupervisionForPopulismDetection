@@ -209,13 +209,13 @@ def get_all_svo_tuples(svo_dict_series: pd.Series,
                 neg = ', '.join(current_val[4])  # negation
 
                 # Generate requested tuple and append to global list
-                if get_subj & get_verb & get_verbprefix & get_obj: # svo + prefix
+                if get_subj & get_verb & get_verbprefix & get_obj:  # svo + prefix
                     current_tuple = (subj, verb, verb_prefix, obj, neg)
-                elif get_subj & get_verb & (not get_verbprefix) & get_obj: # svo +neg
+                elif get_subj & get_verb & (not get_verbprefix) & get_obj:  # svo +neg
                     current_tuple = (subj, verb, obj, neg)
-                elif get_subj & get_verb & (not get_verbprefix) & (not get_obj): # sv +neg
+                elif get_subj & get_verb & (not get_verbprefix) & (not get_obj):  # sv +neg
                     current_tuple = (subj, verb, neg)
-                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj: # vo +neg
+                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj:  # vo +neg
                     current_tuple = (verb, obj, neg)
                 elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj:  # so
                     current_tuple = (verb, obj)
@@ -225,7 +225,7 @@ def get_all_svo_tuples(svo_dict_series: pd.Series,
                     current_tuple = (obj)
                 elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj):  # v + neg
                     current_tuple = (verb, neg)
-                else: # not implemented
+                else:  # not implemented
                     raise Exception('This svo combination is not supported')
 
                 corpus_triples.append(current_tuple)
