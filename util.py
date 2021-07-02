@@ -99,9 +99,9 @@ def extract_parsed_lemmas(segment):
     return lemma_list
 
 
-def extract_dep_triples(segment):
+def extract_dep_tuples(segment):
     """
-    Retrieve svo-triple dict of type (subj, verb, verb_prefix, object, negation) for each verb in Segment
+    Retrieve tuples dict of type (subj, verb, verb_prefix, object, negation) for each verb in Segment
     :param segment: parsed segment
     :type segment: spacy.tokens.doc.Doc
     :return: list of triple dicts
@@ -176,14 +176,20 @@ def extract_dep_triples(segment):
     return triples_dict_list
 
 
-def get_all_svo_quadruples(svo_dict_series: pd.Series):
+def get_all_svo_tuples(svo_dict_series: pd.Series,
+                       get_subj: bool,
+                       get_verb: bool,
+                       get_verbprefix: bool,
+                       get_obj: bool):
     """
-    Extract all distinct svo(+verbprefix) quadruples globally in corpus and count their occurrences
+    Extract all distinct svo(+verbprefix) tuples globally in corpus and count their occurrences
+    :param get_verbprefix:
     :param svo_dict_series: series of svo-triple dicts per segment
     :type svo_dict_series: pd.Series
     :return: df of svo-quadruples and their count
     :rtype: pd.DataFrame
     """
+    #todo. define
 
     corpus_triples = []
 
@@ -195,163 +201,33 @@ def get_all_svo_quadruples(svo_dict_series: pd.Series):
             if isinstance(elem, dict):
                 current_val = list(elem.values())
 
-                # Extract components
+                # Extract requested components + negation in any case
                 subj = ', '.join(current_val[0]) # subject
                 verb = ', '.join(current_val[1]) # verb
                 verb_prefix = ', '.join(current_val[2])  # verb_prefix
                 obj = ', '.join(current_val[3])  # object
                 neg = ', '.join(current_val[4])  # negation
 
-                # Generate triple and append to global list
-                current_tuple = (subj, verb, verb_prefix, obj, neg)
-                corpus_triples.append(current_tuple)
+                # Generate requested tuple and append to global list
+                if get_subj & get_verb & get_verbprefix & get_obj: # svo + prefix
+                    current_tuple = (subj, verb, verb_prefix, obj, neg)
+                elif get_subj & get_verb & (not get_verbprefix) & get_obj: # svo +neg
+                    current_tuple = (subj, verb, obj, neg)
+                elif get_subj & get_verb & (not get_verbprefix) & (not get_obj): # sv +neg
+                    current_tuple = (subj, verb, neg)
+                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj: # vo +neg
+                    current_tuple = (verb, obj, neg)
+                elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj:  # so
+                    current_tuple = (verb, obj)
+                elif get_subj & (not get_verb) & (not get_verbprefix) & (not get_obj):  # s
+                    current_tuple = (subj)
+                elif (not get_subj) & (not get_verb) & (not get_verbprefix) & get_obj:  # o
+                    current_tuple = (obj)
+                elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj):  # v + neg
+                    current_tuple = (verb, neg)
+                else: # not implemented
+                    raise Exception('This svo combination is not supported')
 
-    # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of quadruples
-                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
-
-    return tuples_df
-
-
-def get_all_svo_triples(svo_dict_series: pd.Series):
-    """
-    Extract all distinct svo-triples globally in corpus and count their occurrences
-    :param svo_dict_series: series of svo-triple dicts per segment
-    :type svo_dict_series: pd.Series
-    :return: df of svo-triples and their count
-    :rtype: pd.DataFrame
-    """
-
-    corpus_triples = []
-
-    for index, value in svo_dict_series.items():
-
-        # Iterate over dicts (i.e. number of sentences)
-        for elem in value:
-            # Skip None values
-            if isinstance(elem, dict):
-                current_val = list(elem.values())
-
-                # Extract components
-                subj = ', '.join(current_val[0])  # subject
-                verb = ', '.join(current_val[1])  # verb
-                # verb_prefix = ', '.join(current_val[2])
-                obj = ', '.join(current_val[3])  # object
-                neg = ', '.join(current_val[4])  # negation
-
-                # Generate triple and append to global list
-                current_tuple = (subj, verb, obj, neg)
-                corpus_triples.append(current_tuple)
-
-    # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of triples
-                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
-
-    return tuples_df
-
-
-def get_all_sv_doubles(svo_dict_series: pd.Series):
-    """
-    Extract all distinct svo-doubles globally in corpus and count their occurrences
-    :param svo_dict_series: series of svo-triple dicts per segment
-    :type svo_dict_series: pd.Series
-    :return: df of svo-tuples and their count
-    :rtype: pd.DataFrame
-    """
-
-    corpus_triples = []
-
-    for index, value in svo_dict_series.items():
-
-        # Iterate over dicts (i.e. number of sentences)
-        for elem in value:
-            # Skip None values
-            if isinstance(elem, dict):
-                current_val = list(elem.values())
-
-                # Extract components
-                subj = ', '.join(current_val[0])  # subject
-                verb = ', '.join(current_val[1])  # verb
-                # verb_prefix = ', '.join(current_val[2])
-                # obj = ', '.join(current_val[3])
-                neg = ', '.join(current_val[4])  # negation
-
-                # Generate triple and append to global list
-                current_tuple = (subj, verb, neg)
-                corpus_triples.append(current_tuple)
-
-    # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of tuples
-                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
-
-    return tuples_df
-
-
-def get_all_vo_doubles(svo_dict_series: pd.Series):
-    """
-    Extract all distinct vo-doubles globally in corpus and count their occurrences
-    :param svo_dict_series: series of svo-triple dicts per segment
-    :type svo_dict_series: pd.Series
-    :return: df of svo-tuples and their count
-    :rtype: pd.DataFrame
-    """
-
-    corpus_triples = []
-
-    for index, value in svo_dict_series.items():
-
-        # Iterate over dicts (i.e. number of sentences)
-        for elem in value:
-            # Skip None values
-            if isinstance(elem, dict):
-                current_val = list(elem.values())
-
-                # Extract components
-                # subj = ', '.join(current_val[0])  # subject
-                verb = ', '.join(current_val[1])  # verb
-                # verb_prefix = ', '.join(current_val[2])
-                obj = ', '.join(current_val[3])
-                neg = ', '.join(current_val[4])  # negation
-
-                # Generate triple and append to global list
-                current_tuple = (verb, obj, neg)
-                corpus_triples.append(current_tuple)
-
-    # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of tuples
-                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
-
-    return tuples_df
-
-
-def get_all_so_doubles(svo_dict_series: pd.Series):
-    """
-    Extract all distinct so-doubles globally in corpus and count their occurrences
-    :param svo_dict_series: series of svo-triple dicts per segment
-    :type svo_dict_series: pd.Series
-    :return: df of svo-tuples and their count
-    :rtype: pd.DataFrame
-    """
-
-    corpus_triples = []
-
-    for index, value in svo_dict_series.items():
-
-        # Iterate over dicts (i.e. number of sentences)
-        for elem in value:
-            # Skip None values
-            if isinstance(elem, dict):
-                current_val = list(elem.values())
-
-                # Extract components
-                subj = ', '.join(current_val[0])  # subject
-                # verb = ', '.join(current_val[1])  # verb
-                # verb_prefix = ', '.join(current_val[2])
-                obj = ', '.join(current_val[3])
-                neg = ', '.join(current_val[4])  # negation
-
-                # Generate triple and append to global list
-                current_tuple = (subj, obj, neg)
                 corpus_triples.append(current_tuple)
 
     # Generate df

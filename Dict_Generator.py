@@ -7,8 +7,7 @@ from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
-from util import extract_parsed_lemmas, extract_dep_triples, get_all_svo_quadruples, get_all_svo_triples
-from util import get_all_sv_doubles, get_all_vo_doubles, get_all_so_doubles
+from util import extract_parsed_lemmas, extract_dep_tuples, get_all_svo_tuples
 
 class Dict_Generator:
     def __init__(
@@ -474,12 +473,16 @@ class Dict_Generator:
         df_nonpop = df[~df.index.isin(df_pop.index)]
 
         # Extract svo-triples per Segment for both corpora separately
-        svo_triples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_triples(x))
-        svo_triples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_triples(x))
+        svo_triples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
+        svo_triples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
         # Generate list of all distinct svo-triples and sort by their number of occurrences
-        svo_triples_pop_list = get_all_svo_triples(svo_triples_pop).sort_values(by='count', ascending=False)
-        svo_triples_nonpop_list = get_all_svo_triples(svo_triples_nonpop).sort_values(by='count', ascending=False)
+        svo_triples_pop_list = \
+            get_all_svo_tuples(svo_triples_pop, get_subj=False, get_verb=True, get_verbprefix=False, get_obj=False)\
+            .sort_values(by='count', ascending=False)
+        svo_triples_nonpop_list = \
+            get_all_svo_tuples(svo_triples_nonpop, get_subj=False, get_verb=True, get_verbprefix=False, get_obj=False)\
+            .sort_values(by='count', ascending=False)
 
         # Rename columns
         svo_triples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)
@@ -496,7 +499,6 @@ class Dict_Generator:
         svo_triples_grpd.reset_index(inplace=True)
 
         # todo: Generate dicts chisquare
-
         lemma_ae = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
 
 
