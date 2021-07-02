@@ -7,7 +7,8 @@ from nltk.tokenize import word_tokenize
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
-from util import extract_parsed_lemmas, extract_dep_triples, get_all_svo_triples
+from util import extract_parsed_lemmas, extract_dep_triples, get_all_svo_quadruples, get_all_svo_triples
+from util import get_all_sv_doubles, get_all_vo_doubles, get_all_so_doubles
 
 class Dict_Generator:
     def __init__(
@@ -452,7 +453,7 @@ class Dict_Generator:
 
         return chisquare_dict_per_country
 
-    def generate_chisquare_dep_dict(self, df: pd.DataFrame, preprocessed: bool):
+    def generate_chisquare_dep_dicts(self, df: pd.DataFrame, preprocessed: bool):
         """
         Calculate
         :param df: Trainset from which to construct dict
@@ -480,15 +481,25 @@ class Dict_Generator:
         svo_triples_pop_list = get_all_svo_triples(svo_triples_pop).sort_values(by='count', ascending=False)
         svo_triples_nonpop_list = get_all_svo_triples(svo_triples_nonpop).sort_values(by='count', ascending=False)
 
+        # Rename columns
+        svo_triples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)
+        svo_triples_nonpop_list.rename({'count': 'count_nonpop'}, axis=1, inplace=True)
+
+        # Append both dfs
+        svo_triples_list = svo_triples_pop_list.append(svo_triples_nonpop_list)
+
+        # Group df by tuple and aggregate counts
+        svo_triples_grpd = svo_triples_list.groupby(by="tuple", dropna=False).agg({'count_pop': 'sum', 'count_nonpop': 'sum'})
+
+        # Get total counts (POP + NONPOP) per tuple and reset index
+        svo_triples_grpd['count_total'] = svo_triples_grpd.count_pop + svo_triples_grpd.count_nonpop
+        svo_triples_grpd.reset_index(inplace=True)
+
+        # todo: Generate dicts chisquare
+
         lemma_ae = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
 
-        # Append empty counts
-        #ae_triples_df["count_ae"] = np.nan
-        #ae_triples_df["count_rest"] = np.nan
 
-        # # Count number of times, each triple occurs in corpus ae/rest respectively
-        # for index, row in ae_triples_df.iterrows:
-        #     content_ae = str.count(row.triple)
 
         # Append triples with high enough chisquare to dict
         chisquare_ae_dict = {}
@@ -502,5 +513,4 @@ class Dict_Generator:
 
         return chisquare_ae_dict
 
-    # Generates individual triple for each dict entry
 

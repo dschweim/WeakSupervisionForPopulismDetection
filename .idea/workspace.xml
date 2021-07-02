@@ -182,18 +182,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>493</line>
-          <option name="timeStamp" value="289" />
+          <line>503</line>
+          <option name="timeStamp" value="299" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/util.py</url>
-          <line>120</line>
-          <option name="timeStamp" value="290" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/util.py</url>
-          <line>173</line>
-          <option name="timeStamp" value="294" />
+          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
+          <line>468</line>
+          <option name="timeStamp" value="300" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -208,6 +203,7 @@
       <configuration name="PythonConfigurationType">
         <watch expression="type(svo_triples_pop)" language="Python" />
         <watch expression="lemma_ae.loc[1052]" language="Python" />
+        <watch expression="child.text" language="Python" />
       </configuration>
     </watches-manager>
   </component>
