@@ -230,15 +230,13 @@ class Dict_Generator:
 
         return tfidf_dict_global
 
-    def generate_global_chisquare_dict(self, df: pd.DataFrame, confidence: float, n_words: int):
+    def generate_global_chisquare_dict(self, df: pd.DataFrame, confidence: float):
         """
         Calculate chi-square values of words and return top n words with value above critical value
         :param df: Trainset from which to construct dict
         :type df:  DataFrame
         :param confidence: level of statistical confidence
         :type confidence: float
-        :param n_words: Number of words to be included
-        :type n_words: float
         :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
@@ -271,7 +269,7 @@ class Dict_Generator:
         # Retrieve word counts of NONPOP subset (R)
         count_nonpop_vector = count_vector[:][1]
 
-        # Retrieve total number of words for both corpora
+        # Retrieve total number of words for both corpora #todo: maybe only for >5?
         words_pop = count_pop_vector.sum()
         words_nonpop = count_nonpop_vector.sum()
 
@@ -320,7 +318,7 @@ class Dict_Generator:
         result_table.sort_values(by='chisquare', ascending=False, inplace=True)
 
         # Retrieve specified top n_words entries
-        chisquare_dict = result_table[:n_words]
+        chisquare_dict = result_table #todo: why need n words?
 
         # Save dict to disk
         chisquare_dict.to_csv(f'{self.output_path}\\chisquare_dict_global.csv', index=True)
@@ -331,7 +329,7 @@ class Dict_Generator:
 
         return chisquare_dict
 
-    def generate_chisquare_dict_per_country(self, df: pd.DataFrame, confidence: float, n_words: int):
+    def generate_chisquare_dict_per_country(self, df: pd.DataFrame, confidence: float):
         """
         Calculate chi-square values of words per country and return top n words with value above critical value
         :param df: Trainset from which to construct dict
@@ -430,7 +428,7 @@ class Dict_Generator:
             result_table_country.sort_values(by='chisquare', ascending=False, inplace=True)
 
             # Retrieve specified top n_words entries
-            chisquare_dict = result_table_country[:n_words]
+            chisquare_dict = result_table_country
 
             # Append to country-specific dict to global dict
             chisquare_dict_per_country[country] = chisquare_dict
@@ -462,6 +460,8 @@ class Dict_Generator:
         """
         #todo: definition
 
+        ## todo: iterate over get_combinations combinations to retrieve multiple dicts
+
         start = time.time()
 
         # Generate spacy docs from corpus if necessary
@@ -473,39 +473,88 @@ class Dict_Generator:
         df_nonpop = df[~df.index.isin(df_pop.index)]
 
         # Extract svo-triples per Segment for both corpora separately
-        svo_triples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
-        svo_triples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
+        svo_tuples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
+        svo_tuples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
         # Generate list of all distinct svo-triples and sort by their number of occurrences
         get_components = {'subj': True,
-                          'verb': True,
+                          'verb': False,
                           'verbprefix': False,
                           'obj': False,
                           'neg': False}
-        svo_triples_pop_list = get_all_svo_tuples(svo_triples_pop, get_components).sort_values(by='count', ascending=False)
-        svo_triples_nonpop_list = get_all_svo_tuples(svo_triples_nonpop, get_components).sort_values(by='count', ascending=False)
+        svo_tuples_pop_list = get_all_svo_tuples(svo_tuples_pop, get_components).sort_values(by='count', ascending=False)
+        svo_tuples_nonpop_list = get_all_svo_tuples(svo_tuples_nonpop, get_components).sort_values(by='count', ascending=False)
 
         # Rename columns
-        svo_triples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)
-        svo_triples_nonpop_list.rename({'count': 'count_nonpop'}, axis=1, inplace=True)
+        svo_tuples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)
+        svo_tuples_nonpop_list.rename({'count': 'count_nonpop'}, axis=1, inplace=True)
 
         # Append both dfs
-        svo_triples_list = svo_triples_pop_list.append(svo_triples_nonpop_list)
+        svo_tuples_list = svo_tuples_pop_list.append(svo_tuples_nonpop_list)
 
         # Group df by tuple and aggregate counts
-        svo_triples_grpd = svo_triples_list.groupby(by="tuple", dropna=False).agg({'count_pop': 'sum', 'count_nonpop': 'sum'})
+        svo_tuples_grpd = svo_tuples_list.groupby(by="tuple", dropna=False).agg({'count_pop': 'sum', 'count_nonpop': 'sum'})
 
         # Get total counts (POP + NONPOP) per tuple and reset index
-        svo_triples_grpd['count_total'] = svo_triples_grpd.count_pop + svo_triples_grpd.count_nonpop
-        svo_triples_grpd.reset_index(inplace=True)
+        svo_tuples_grpd['count_total'] = svo_tuples_grpd.count_pop + svo_tuples_grpd.count_nonpop
+        svo_tuples_grpd.reset_index(inplace=True)
+
+        # Retrieve total number of tuples for both corpora
+        tuples_pop = svo_tuples_grpd.count_pop.sum()
+        tuples_nonpop = svo_tuples_grpd.count_nonpop.sum()
+
+        # Only consider words with count of at least 5 #todo: remove at word count as well?
+        # todo: remove ( ) tuple (empty tuple)
+        svo_tuples_grpd = svo_tuples_grpd.loc[(svo_tuples_grpd['count_pop'] >= 5) & (svo_tuples_grpd['count_nonpop'] >= 5)]
+
+        # Create empty dataframes for result
+        chisquare_tuples_pop = pd.DataFrame()
+        chisquare_tuples_nonpop = pd.DataFrame()
+
+        #todo: confidence
+        confidence = 0.75
+
+
+        # for each word calculate chi-square statistics
+        for index, tuple in svo_tuples_grpd.iterrows():
+            obs_freq_a = tuple.count_pop
+            obs_freq_b = tuple.count_nonpop
+            obs_freq_c = tuples_pop - obs_freq_a
+            obs_freq_d = tuples_nonpop - obs_freq_a
+
+            # Define contingency table
+            obs = np.array([[obs_freq_a, obs_freq_b],
+                            [obs_freq_c, obs_freq_d]])
+
+            # Calculate chi2, p, dof and ex
+            chi2_word, p, dof, ex = chi2_contingency(obs)
+            # Extract critical value dependent on confidence and dof
+            critical = chi2.ppf(confidence, dof)
+
+            # keep words where chi2 higher than critical value and correspond to pop corpus
+            if chi2_word > critical:
+                # Check whether word is dependent on pop corpus
+                ratio_pop = obs_freq_a / obs_freq_b
+                ratio_nonpop = (obs_freq_a + obs_freq_c) / (obs_freq_a + obs_freq_d)
+
+                # If it is dependent on pop corpus, add to pop dict , otherwhise to nonpop dict
+                chisquare_table = pd.DataFrame({'tuple': [tuple.tuple],
+                                                'chisquare': [chi2_word]})
+                if ratio_pop > ratio_nonpop:
+                    # Append to result pop dict
+                    chisquare_tuples_pop = chisquare_tuples_pop.append(chisquare_table)
+
+                else:
+                    # Append to result nonpop dict
+                    chisquare_tuples_nonpop = chisquare_tuples_nonpop.append(chisquare_table)
+
+        # Sort by chi_square
+        chisquare_tuples_pop.sort_values(by='chisquare', ascending=False, inplace=True)
+        chisquare_tuples_nonpop.sort_values(by='chisquare', ascending=False, inplace=True)
 
         # todo: Generate dicts chisquare
         lemma_ae = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
 
-
-
-        # Append triples with high enough chisquare to dict
-        chisquare_ae_dict = {}
 
         # Save dict to disk
         #tfidf_ae_dict.to_csv(f'{self.output_path}\\tfidf_antielite_dict.csv', index=True)
@@ -514,6 +563,6 @@ class Dict_Generator:
         print(end - start)
         print('finished tf-idf antielite dict generation')
 
-        return chisquare_ae_dict
+        return chisquare_tuples_pop, chisquare_tuples_nonpop
 
 

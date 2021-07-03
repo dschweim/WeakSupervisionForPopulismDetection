@@ -107,8 +107,8 @@ def main(path_to_project_folder: str,
 
     if generate_chisquare_dict:
         # Generate Dictionary based on chi-square test
-        chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.99, n_words=30)
-        chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99, n_words=30)
+        chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.9995)
+        chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.9995)
 
         chisquare_dict_antielite = nccr_dicts.generate_chisquare_dep_dicts(train, preprocessed=preprocess_data)
 
