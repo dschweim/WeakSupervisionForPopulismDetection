@@ -477,12 +477,13 @@ class Dict_Generator:
         svo_triples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
         # Generate list of all distinct svo-triples and sort by their number of occurrences
-        svo_triples_pop_list = \
-            get_all_svo_tuples(svo_triples_pop, get_subj=False, get_verb=True, get_verbprefix=False, get_obj=False)\
-            .sort_values(by='count', ascending=False)
-        svo_triples_nonpop_list = \
-            get_all_svo_tuples(svo_triples_nonpop, get_subj=False, get_verb=True, get_verbprefix=False, get_obj=False)\
-            .sort_values(by='count', ascending=False)
+        get_components = {'subj': True,
+                          'verb': True,
+                          'verbprefix': False,
+                          'obj': False,
+                          'neg': False}
+        svo_triples_pop_list = get_all_svo_tuples(svo_triples_pop, get_components).sort_values(by='count', ascending=False)
+        svo_triples_nonpop_list = get_all_svo_tuples(svo_triples_nonpop, get_components).sort_values(by='count', ascending=False)
 
         # Rename columns
         svo_triples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)

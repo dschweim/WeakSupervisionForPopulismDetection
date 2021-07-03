@@ -176,23 +176,29 @@ def extract_dep_tuples(segment):
     return triples_dict_list
 
 
-def get_all_svo_tuples(svo_dict_series: pd.Series,
-                       get_subj: bool,
-                       get_verb: bool,
-                       get_verbprefix: bool,
-                       get_obj: bool):
+def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
+
     """
-    Extract all distinct svo(+verbprefix) tuples globally in corpus and count their occurrences
-    :param get_verbprefix:
+    Extract all distinct svo(+verbprefix)(+neg) tuples globally in corpus and count their occurrences
+    :param get_components: dictionary that indicates which components to return s, v, o, verbprefix, neg
+    :type get_components: dict
     :param svo_dict_series: series of svo-triple dicts per segment
     :type svo_dict_series: pd.Series
-    :return: df of svo-quadruples and their count
+    :return: df of requested tuples and their count
     :rtype: pd.DataFrame
     """
-    #todo. define
 
+    # Define empty list for tuples
     corpus_triples = []
 
+    # Extract boolean indicator per component from dict
+    get_subj = get_components['subj']
+    get_verb = get_components['verb']
+    get_verbprefix = get_components['verbprefix']
+    get_obj = get_components['obj']
+    get_neg = get_components['neg']
+
+    # Iterate over series
     for index, value in svo_dict_series.items():
 
         # Iterate over dicts (i.e. number of sentences)
@@ -209,22 +215,40 @@ def get_all_svo_tuples(svo_dict_series: pd.Series,
                 neg = ', '.join(current_val[4])  # negation
 
                 # Generate requested tuple and append to global list
-                if get_subj & get_verb & get_verbprefix & get_obj:  # svo + prefix
+                if get_subj & get_verb & get_verbprefix & get_obj & get_neg:  # svo + prefix + neg
                     current_tuple = (subj, verb, verb_prefix, obj, neg)
-                elif get_subj & get_verb & (not get_verbprefix) & get_obj:  # svo +neg
+                elif get_subj & get_verb & get_verbprefix & get_obj & (not get_neg):  # svo + prefix
+                    current_tuple = (subj, verb, verb_prefix, obj)
+
+                elif get_subj & get_verb & (not get_verbprefix) & get_obj & get_neg:  # svo + neg
                     current_tuple = (subj, verb, obj, neg)
-                elif get_subj & get_verb & (not get_verbprefix) & (not get_obj):  # sv +neg
+                elif get_subj & get_verb & (not get_verbprefix) & get_obj & (not get_neg):  # svo
+                    current_tuple = (subj, verb, obj)
+
+                elif get_subj & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # sv +neg
                     current_tuple = (subj, verb, neg)
-                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj:  # vo +neg
+                elif get_subj & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # sv
+                    current_tuple = (subj, verb)
+
+                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & get_neg:  # vo +neg
                     current_tuple = (verb, obj, neg)
-                elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj:  # so
+                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & get_neg:  # vo
                     current_tuple = (verb, obj)
+
+                elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj:  # so
+                    current_tuple = (subj, obj)
+
+                elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # v + neg
+                    current_tuple = (verb, neg)
+                elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # v
+                    current_tuple = (verb)
+
                 elif get_subj & (not get_verb) & (not get_verbprefix) & (not get_obj):  # s
                     current_tuple = (subj)
+
                 elif (not get_subj) & (not get_verb) & (not get_verbprefix) & get_obj:  # o
                     current_tuple = (obj)
-                elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj):  # v + neg
-                    current_tuple = (verb, neg)
+
                 else:  # not implemented
                     raise Exception('This svo combination is not supported')
 

@@ -182,7 +182,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>501</line>
+          <line>502</line>
           <option name="timeStamp" value="299" />
         </line-breakpoint>
       </breakpoints>
@@ -199,6 +199,7 @@
         <watch expression="type(svo_triples_pop)" language="Python" />
         <watch expression="lemma_ae.loc[1052]" language="Python" />
         <watch expression="child.text" language="Python" />
+        <watch expression="get_components['subj']" language="Python" />
       </configuration>
     </watches-manager>
   </component>
