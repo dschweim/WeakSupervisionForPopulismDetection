@@ -11,8 +11,7 @@ class BT_Dataset:
     def __init__(
             self,
             data_path: str,
-            output_path: str,
-            spacy_model: str
+            output_path: str
     ):
         """
         Class to create and pre-process the Bundestag opendata
@@ -20,16 +19,10 @@ class BT_Dataset:
         :type data_path: str
         :param data_path: path to data output
         :type data_path: str
-        :param spacy_model: used trained Spacy pipeline
-        :type: str
         """
 
         self.data_path = data_path
         self.output_path = output_path
-        self.spacy_model = spacy_model
-        self.nlp_sent = spacy.load(spacy_model, exclude=['tagger', 'morphologizer', 'parser',
-                                                         'attribute_ruler', 'lemmatizer'])
-        self.nlp_sent.add_pipe("sentencizer")
 
     def generate_bt_corpus(self):
         start = time.time()
@@ -178,10 +171,8 @@ class BT_Dataset:
                     # Append result to global corpus
                     df = df.append(df_speech)
 
-
-        # Drop rows without text
-        df.replace("", float("NaN"), inplace=True)
-        # df.dropna(subset=["text"], inplace=True)
+        # Drop rows without speaker_id
+        df.dropna(subset=["spr_id"], inplace=True)
 
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
@@ -191,8 +182,3 @@ class BT_Dataset:
         print('finished BT corpus generation')
 
 
-nccr_df = BT_Dataset(data_path='C:\\Users\\dschw\\Documents\\GitHub\\Thesis\\Data',
-                     output_path='C:\\Users\\dschw\\Documents\\GitHub\\Thesis\\Output',
-                     spacy_model='de_core_news_lg')
-
-nccr_df.generate_bt_corpus()
