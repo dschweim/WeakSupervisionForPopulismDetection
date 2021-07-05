@@ -78,6 +78,7 @@ class BT_Dataset:
                     spr_role_full = None
                     spr_role_short = None
 
+                    # If speaker is described by p node, extract values
                     if spr.tag == 'p':
                         for child in spr.getchildren():
                             if child.tag == 'redner':
@@ -93,11 +94,19 @@ class BT_Dataset:
                                             spr_lastname = ggchild.text
                                         elif ggchild.tag == 'fraktion':
                                             spr_party = ggchild.text
+                                        elif ggchild.tag == 'rolle':
+                                            for gggchild in ggchild.getchildren():
+                                                if gggchild.tag == 'rolle_lang':
+                                                    spr_role_full = gggchild.text
+                                                elif gggchild.tag == 'rolle_kurz':
+                                                    spr_role_short = gggchild.text
 
+                        # Generate joined name attribute
+                        spr_name = ' '.join(filter(None, (spr_title, spr_firstname, spr_lastname)))
+
+                    # If speaker is described by name node, extract text
                     elif spr.tag == 'name':
                         spr_name = spr.text
-
-                    # todo: Generate joined name attribute + try to extract party
 
                     # Get count for xpath
                     n = str(index + 1)
@@ -105,13 +114,15 @@ class BT_Dataset:
                     # Extract text nodes that belong to current subspeech
                     spr_text_j1 = subspeech.xpath('parent::*/p[@klasse=\'J_1\'][' + n + ']')[0].text
                     spr_text_p_list = subspeech.xpath(
-                        'parent::*/p[@klasse=\'J_1\'][' + n + ']/following-sibling::p[not (@klasse=\'J_1\') and not (@klasse=\'T\') and count(preceding-sibling::p[@klasse=\'J_1\'])=' + n + ']')
+                        'parent::*/p[@klasse=\'J_1\'][' + n + ']/following-sibling::p[not (@klasse=\'J_1\')'
+                                                              ' and not (@klasse=\'T\') and count(preceding-sibling::p'
+                                                              '[@klasse=\'J_1\'])=' + n + ']')
 
                     # Replace list items with their text content
-                    for index, node in enumerate(spr_text_p_list):
-                        spr_text_p_list[index] = node.text
+                    for i, node in enumerate(spr_text_p_list):
+                        spr_text_p_list[i] = node.text
 
-                    # Remove NaN
+                    # Remove NaN from list
                     spr_text_p_list = [val for val in spr_text_p_list if val]
 
                     # Concatenate text contents
@@ -126,14 +137,12 @@ class BT_Dataset:
                     else:
                         spr_text = spr_text_j1 + ' \n ' + spr_text_p
 
+                    # Generate df for current subspeech
                     df_speech = pd.DataFrame({'text_id': [speech_id],
                                               'text_subid': [subspeech_id],
                                               'text_date': [speech_date],
                                               'text_source': [file],
                                               'spr_id': [spr_id],
-                                              'spr_title': [spr_title],
-                                              'spr_firstname': [spr_firstname],
-                                              'spr_lastname': [spr_lastname],
                                               'spr_name': [spr_name],
                                               'spr_party': [spr_party],
                                               'spr_role_full': [spr_role_full],
@@ -141,11 +150,12 @@ class BT_Dataset:
                                               'spr_text': [spr_text]
                                               })
 
+                    # Append result to global corpus
                     df = df.append(df_speech)
 
 
         # Drop rows without text
-        # df.replace("", float("NaN"), inplace=True)
+        df.replace("", float("NaN"), inplace=True)
         # df.dropna(subset=["text"], inplace=True)
 
         # Save concatenated texts
