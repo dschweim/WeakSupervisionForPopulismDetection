@@ -6,6 +6,7 @@ from argparse import ArgumentParser
 from NCCR_Corpus_Generator import NCCR_Dataset
 from Dict_Generator import Dict_Generator
 from Labeling_Framework import Labeler
+from BT_Corpus_Generator import BT_Dataset
 from util import generate_train_test_split, generate_train_dev_test_split
 pd.options.mode.chained_assignment = None
 
@@ -14,27 +15,30 @@ sys.path.append("..")
 
 def main(path_to_project_folder: str,
          spacy_model: str,
-         generate_data: bool,
-         preprocess_data: bool,
+         generate_nccr_data: bool,
+         preprocess_nccr_data: bool,
          generate_tfidf_dicts: bool,
          generate_chisquare_dict: bool,
-         generate_labeling: bool):
+         generate_labeling: bool,
+         generate_bt_data: bool):
     """
     main function to run project and initialize classes
     :param path_to_project_folder: Trainset
     :type path_to_project_folder: str
     :param spacy_model: used trained Spacy pipeline
     :type: str
-    :param generate_data: Indicator whether to generate data corpus in current run
-    :type generate_data: bool
-    :param preprocess_data: Indicator whether to preprocess data corpus in current run
-    :type preprocess_data: bool
+    :param generate_nccr_data: Indicator whether to generate data corpus in current run
+    :type generate_nccr_data: bool
+    :param preprocess_nccr_data: Indicator whether to preprocess data corpus in current run
+    :type preprocess_nccr_data: bool
     :param generate_tfidf_dicts: Indicator whether to generate tf-idf dictionaries in current run
     :type generate_tfidf_dicts:  bool
     :param generate_chisquare_dict: Indicator whether to generate chi-square dictionary in current run
     :type generate_chisquare_dict:  bool
     :param generate_labeling: Indicator whether to generate labels from Snorkel in current run
     :type generate_labeling:  bool
+     :param generate_bt_data: Indicator whether to generate bundestag data corpus in current run
+    :type generate_bt_data: bool
     :return:
     :rtype:
     """
@@ -48,7 +52,7 @@ def main(path_to_project_folder: str,
                                 output_path=f'{path_to_project_folder}\\Output\\Dicts',
                                 spacy_model=spacy_model)
 
-    if generate_data:
+    if generate_nccr_data:
         # Generate Labelled NCCR
         nccr_data_de_wording_av = nccr_df.generate_labelled_nccr_corpus()
 
@@ -57,7 +61,7 @@ def main(path_to_project_folder: str,
         nccr_data_de_wording_av = pd.read_csv(
             f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available.csv')
 
-    if preprocess_data:
+    if preprocess_nccr_data:
         # Preprocess corpus and generate train-test-split
         nccr_df_prep = nccr_df.preprocess_corpus(nccr_data_de_wording_av)
         #train, test = generate_train_test_split(nccr_df_prep)
@@ -107,10 +111,11 @@ def main(path_to_project_folder: str,
 
     if generate_chisquare_dict:
         # Generate Dictionary based on chi-square test
-        chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.9995)
-        chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.9995)
+        chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.99)
+        chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99)
 
-        chisquare_dict_antielite = nccr_dicts.generate_chisquare_dep_dicts(train, preprocessed=preprocess_data)
+        chisquare_dicts_pop, chisquare_dicts_nonpop = \
+            nccr_dicts.generate_chisquare_dep_dicts(train, preprocessed=preprocess_nccr_data, confidence=0.75)
 
     else:
         # Import dictionary
@@ -147,7 +152,9 @@ def main(path_to_project_folder: str,
                    'chi2_keywords_global': chisquare_dict_global.term.tolist(),
                    'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
                    'chi2_keywords_ch': chisquare_dict_country['cd'].term.to_list(),
-                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list()
+                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list(),
+                   'chi2_dicts_pop': chisquare_dicts_pop,
+                   'chi2_dicts_nonpop': chisquare_dicts_nonpop
                    }
 
         # Filter on relevant columns
@@ -176,6 +183,15 @@ def main(path_to_project_folder: str,
         # Run Snorkel Labeling
         nccr_labeler.run_labeling()
 
+    if generate_bt_data:
+        bt_df = BT_Dataset(data_path=f'{path_to_project_folder}\\Data',
+                           output_path=f'{path_to_project_folder}\\Output')
+
+        bt_df.generate_bt_corpus()
+
+    else:
+        bt_df = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus.csv')
+
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -186,8 +202,9 @@ if __name__ == "__main__":
 
     main(path_to_project_folder=input_path,
          spacy_model='de_core_news_lg',  #de_dep_news_trf
-         generate_data=False,
-         preprocess_data=False,  # runs for approx 15 min
-         generate_tfidf_dicts=True,
-         generate_chisquare_dict=True,
-         generate_labeling=True)
+         generate_nccr_data=False,
+         preprocess_nccr_data=False,  # runs for approx 15 min
+         generate_tfidf_dicts=False,
+         generate_chisquare_dict=False,
+         generate_labeling=False,
+         generate_bt_data=True)
