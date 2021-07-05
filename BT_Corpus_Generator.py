@@ -4,7 +4,7 @@ import time
 import os
 import glob
 import xml.etree.ElementTree as ET
-
+from lxml import etree
 pd.options.mode.chained_assignment = None
 
 
@@ -43,82 +43,110 @@ class BT_Dataset:
 
         # Read every xml file in dir and extract content
         for file in xml_files:
-            tree = ET.parse(file)
+            tree = etree.parse(file)
             root = tree.getroot()
 
-            # Get date
-            text_date = root.find('.//kopfdaten/veranstaltungsdaten/datum').attrib.get('date')
+            # Get date of file
+            speech_date = root.find('.//kopfdaten/veranstaltungsdaten/datum').attrib.get('date')
 
-            # Extract speeches
+            # Iterate over speeches
             for speech in root.findall('.//rede'):
 
-                # Extract speech_id
-                text_id = speech.attrib.get('id')
-                text_speech = ''
+                # Get id of speech
+                speech_id = speech.attrib.get('id')
 
-                # Iterate over paragraphs
-                for p in speech.findall('.//p'):
+                # Reset value
+                subspeech_id = None
 
-                    # Extract speaker information
-                    if p.attrib.get('klasse') == 'redner':
-                        for child in p.getchildren():
+                # Iterate over J_1s (subspeeches)
+                for index, subspeech in enumerate(speech.xpath('p[@klasse=\'J_1\']')):
+
+                    # Set index of current subspech
+                    subspeech_id = str(index)
+
+                    # Extract speaker element
+                    spr = subspeech.xpath('(preceding-sibling::*)[last()]')[0]
+
+                    # Reset values
+                    spr_text = ''
+                    spr_id = None
+                    spr_title = None
+                    spr_firstname = None
+                    spr_lastname = None
+                    spr_name = None
+                    spr_party = None
+                    spr_role_full = None
+                    spr_role_short = None
+
+                    if spr.tag == 'p':
+                        for child in spr.getchildren():
                             if child.tag == 'redner':
-
-                                spr_title = None
-                                spr_firstname = None
-                                spr_lastname = None
-                                spr_party = None
-                                spr_role_full = None
-                                spr_role_short = None
-
                                 spr_id = child.attrib.get('id')
-                                for grandchild in child.getchildren():
-                                    if grandchild.tag == 'name':
-                                        for ggchild in grandchild.getchildren():
-                                            if ggchild.tag == 'titel':
-                                                spr_title = ggchild.text
-                                            elif ggchild.tag == 'vorname':
-                                                spr_firstname = ggchild.text
-                                            elif ggchild.tag == 'nachname':
-                                                spr_lastname = ggchild.text
-                                            elif ggchild.tag == 'fraktion':
-                                                spr_party = ggchild.text
-                                            elif ggchild.tag == 'rolle_lang':
-                                                spr_role_full = ggchild.text
-                                            elif ggchild.tag == 'rolle_kurz':
-                                                spr_role_short = ggchild.text
 
-                    # Extract text content
-                    elif p.attrib.get('klasse') in ['J', 'J_1', 'O', 'Z']:
-                        if p.text is not None:
-                            text = p.text
-                        else:
-                            text = ''
+                                for gchild in child.getchildren():
+                                    for ggchild in gchild.getchildren():
+                                        if ggchild.tag == 'titel':
+                                            spr_title = ggchild.text
+                                        elif ggchild.tag == 'vorname':
+                                            spr_firstname = ggchild.text
+                                        elif ggchild.tag == 'nachname':
+                                            spr_lastname = ggchild.text
+                                        elif ggchild.tag == 'fraktion':
+                                            spr_party = ggchild.text
 
-                        if text_speech == '':
-                            text_speech = text
+                    elif spr.tag == 'name':
+                        spr_name = spr.text
 
-                        else:
-                            text_speech = text_speech + ' \n ' + text
+                    # todo: Generate joined name attribute + try to extract party
 
-                df_speech = pd.DataFrame({'text_id': [text_id],
-                                          'text_date': [text_date],
-                                          'source_file': [file],
-                                          'spr_id': [spr_id],
-                                          'spr_title': [spr_title],
-                                          'spr_firstname': [spr_firstname],
-                                          'spr_lastname': [spr_lastname],
-                                          'spr_party': [spr_party],
-                                          'spr_role_full': [spr_role_full],
-                                          'spr_role_short': [spr_role_short],
-                                          'text': [text_speech]
-                                          })
+                    # Get count for xpath
+                    n = str(index + 1)
 
-                df = df.append(df_speech)
+                    # Extract text nodes that belong to current subspeech
+                    spr_text_j1 = subspeech.xpath('parent::*/p[@klasse=\'J_1\'][' + n + ']')[0].text
+                    spr_text_p_list = subspeech.xpath(
+                        'parent::*/p[@klasse=\'J_1\'][' + n + ']/following-sibling::p[not (@klasse=\'J_1\') and not (@klasse=\'T\') and count(preceding-sibling::p[@klasse=\'J_1\'])=' + n + ']')
+
+                    # Replace list items with their text content
+                    for index, node in enumerate(spr_text_p_list):
+                        spr_text_p_list[index] = node.text
+
+                    # Remove NaN
+                    spr_text_p_list = [val for val in spr_text_p_list if val]
+
+                    # Concatenate text contents
+                    if spr_text_p_list is not None:
+                        spr_text_p = ' \n '.join(spr_text_p_list)
+                    else:
+                        spr_text_p = ''
+
+                    # Join J_1 text and following siblings of type p
+                    if spr_text_p == '':
+                        spr_text = spr_text_j1
+                    else:
+                        spr_text = spr_text_j1 + ' \n ' + spr_text_p
+
+                    df_speech = pd.DataFrame({'text_id': [speech_id],
+                                              'text_subid': [subspeech_id],
+                                              'text_date': [speech_date],
+                                              'text_source': [file],
+                                              'spr_id': [spr_id],
+                                              'spr_title': [spr_title],
+                                              'spr_firstname': [spr_firstname],
+                                              'spr_lastname': [spr_lastname],
+                                              'spr_name': [spr_name],
+                                              'spr_party': [spr_party],
+                                              'spr_role_full': [spr_role_full],
+                                              'spr_role_short': [spr_role_short],
+                                              'spr_text': [spr_text]
+                                              })
+
+                    df = df.append(df_speech)
+
 
         # Drop rows without text
-        df.replace("", float("NaN"), inplace=True)
-        df.dropna(subset=["text"], inplace=True)
+        # df.replace("", float("NaN"), inplace=True)
+        # df.dropna(subset=["text"], inplace=True)
 
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
