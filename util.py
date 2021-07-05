@@ -232,10 +232,10 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
 
                 elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & get_neg:  # vo +neg
                     current_tuple = (verb, obj, neg)
-                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & get_neg:  # vo
+                elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & (not get_neg):  # vo
                     current_tuple = (verb, obj)
 
-                elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj:  # so
+                elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj & (not get_neg):  # so
                     current_tuple = (subj, obj)
 
                 elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # v + neg
@@ -243,10 +243,10 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                 elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # v
                     current_tuple = (verb)
 
-                elif get_subj & (not get_verb) & (not get_verbprefix) & (not get_obj):  # s
+                elif get_subj & (not get_verb) & (not get_verbprefix) & (not get_obj) & (not get_neg):  # s
                     current_tuple = (subj)
 
-                elif (not get_subj) & (not get_verb) & (not get_verbprefix) & get_obj:  # o
+                elif (not get_subj) & (not get_verb) & (not get_verbprefix) & get_obj & (not get_neg):  # o
                     current_tuple = (obj)
 
                 else:  # not implemented
@@ -260,3 +260,85 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
 
     return tuples_df
 
+
+def get_svo_tuples(svo_list: list, get_components: dict):
+
+    """
+    Extract all distinct svo(+verbprefix)(+neg) tuples globally in corpus and count their occurrences
+    :param svo_list:
+    :param get_components: dictionary that indicates which components to return s, v, o, verbprefix, neg
+    :type get_components: dict
+    :param svo_dict_series: series of svo-triple dicts per segment
+    :type svo_dict_series: pd.Series
+    :return: df of requested tuples and their count
+    :rtype: pd.DataFrame
+    """
+
+    # Define empty list for tuples
+    corpus_triples = []
+
+    # Extract boolean indicator per component from dict
+    get_subj = get_components['subj']
+    get_verb = get_components['verb']
+    get_verbprefix = get_components['verbprefix']
+    get_obj = get_components['obj']
+    get_neg = get_components['neg']
+
+    # Iterate over dicts (i.e. number of sentences)
+    for elem in svo_list:
+        # Skip None values
+        if isinstance(elem, dict):
+            current_val = list(elem.values())
+
+            # Extract requested components + negation in any case
+            subj = ', '.join(current_val[0])  # subject
+            verb = ', '.join(current_val[1])  # verb
+            verb_prefix = ', '.join(current_val[2])  # verb_prefix
+            obj = ', '.join(current_val[3])  # object
+            neg = ', '.join(current_val[4])  # negation
+
+            # Generate requested tuple and append to global list
+            if get_subj & get_verb & get_verbprefix & get_obj & get_neg:  # svo + prefix + neg
+                current_tuple = (subj, verb, verb_prefix, obj, neg)
+            elif get_subj & get_verb & get_verbprefix & get_obj & (not get_neg):  # svo + prefix
+                current_tuple = (subj, verb, verb_prefix, obj)
+
+            elif get_subj & get_verb & (not get_verbprefix) & get_obj & get_neg:  # svo + neg
+                current_tuple = (subj, verb, obj, neg)
+            elif get_subj & get_verb & (not get_verbprefix) & get_obj & (not get_neg):  # svo
+                current_tuple = (subj, verb, obj)
+
+            elif get_subj & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # sv +neg
+                current_tuple = (subj, verb, neg)
+            elif get_subj & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # sv
+                current_tuple = (subj, verb)
+
+            elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & get_neg:  # vo +neg
+                current_tuple = (verb, obj, neg)
+            elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & (not get_neg):  # vo
+                current_tuple = (verb, obj)
+
+            elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj & (not get_neg):  # so
+                current_tuple = (subj, obj)
+
+            elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # v + neg
+                current_tuple = (verb, neg)
+            elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # v
+                current_tuple = (verb)
+
+            elif get_subj & (not get_verb) & (not get_verbprefix) & (not get_obj) & (not get_neg):  # s
+                current_tuple = (subj)
+
+            elif (not get_subj) & (not get_verb) & (not get_verbprefix) & get_obj & (not get_neg):  # o
+                current_tuple = (obj)
+
+            else:  # not implemented
+                raise Exception('This svo combination is not supported')
+
+            corpus_triples.append(current_tuple)
+
+    # Generate df
+    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of tuples
+                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
+
+    return tuples_df
