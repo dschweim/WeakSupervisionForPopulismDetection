@@ -3,7 +3,6 @@ import spacy
 import time
 import os
 import glob
-import xml.etree.ElementTree as ET
 from lxml import etree
 pd.options.mode.chained_assignment = None
 
@@ -46,8 +45,20 @@ class BT_Dataset:
             tree = etree.parse(file)
             root = tree.getroot()
 
-            # Get date of file
+            # Get header data of file
             speech_date = root.find('.//kopfdaten/veranstaltungsdaten/datum').attrib.get('date')
+
+            speech_location = root.find('.//kopfdaten/veranstaltungsdaten/ort')
+            if speech_location is not None:
+                speech_location = speech_location.text
+
+            speech_elec_period = root.find('.//kopfdaten/plenarprotokoll-nummer/wahlperiode')
+            if speech_elec_period is not None:
+                speech_elec_period =  speech_elec_period.text
+
+            speech_session_nr = root.find('.//kopfdaten/plenarprotokoll-nummer/sitzungsnr')
+            if speech_session_nr is not None:
+                speech_session_nr = speech_session_nr.text
 
             # Iterate over speeches
             for speech in root.findall('.//rede'):
@@ -72,11 +83,14 @@ class BT_Dataset:
                     spr_id = None
                     spr_title = None
                     spr_firstname = None
+                    spr_name_affix = None
                     spr_lastname = None
+                    spr_location_affix = None
                     spr_name = None
                     spr_party = None
                     spr_role_full = None
                     spr_role_short = None
+                    spr_state = None
 
                     # If speaker is described by p node, extract values
                     if spr.tag == 'p':
@@ -90,8 +104,12 @@ class BT_Dataset:
                                             spr_title = ggchild.text
                                         elif ggchild.tag == 'vorname':
                                             spr_firstname = ggchild.text
+                                        elif ggchild.tag == 'namenszusatz':
+                                            spr_name_affix = ggchild.text
                                         elif ggchild.tag == 'nachname':
                                             spr_lastname = ggchild.text
+                                        elif ggchild.tag == 'ortszusatz':
+                                            spr_location_affix = ggchild.text
                                         elif ggchild.tag == 'fraktion':
                                             spr_party = ggchild.text
                                         elif ggchild.tag == 'rolle':
@@ -100,9 +118,11 @@ class BT_Dataset:
                                                     spr_role_full = gggchild.text
                                                 elif gggchild.tag == 'rolle_kurz':
                                                     spr_role_short = gggchild.text
+                                        elif ggchild.tag == 'bdland':
+                                            spr_state = ggchild.text
 
                         # Generate joined name attribute
-                        spr_name = ' '.join(filter(None, (spr_title, spr_firstname, spr_lastname)))
+                        spr_name = ' '.join(filter(None, (spr_title, spr_firstname, spr_name_affix, spr_lastname)))
 
                     # If speaker is described by name node, extract text
                     elif spr.tag == 'name':
@@ -141,12 +161,17 @@ class BT_Dataset:
                     df_speech = pd.DataFrame({'text_id': [speech_id],
                                               'text_subid': [subspeech_id],
                                               'text_date': [speech_date],
+                                              'text_election_period': [speech_elec_period],
+                                              'text_session_nr': [speech_session_nr],
+                                              'text_location': [speech_location],
                                               'text_source': [file],
                                               'spr_id': [spr_id],
                                               'spr_name': [spr_name],
                                               'spr_party': [spr_party],
+                                              'spr_location_affix': [spr_location_affix],
                                               'spr_role_full': [spr_role_full],
                                               'spr_role_short': [spr_role_short],
+                                              'spr_state': [spr_state],
                                               'spr_text': [spr_text]
                                               })
 
@@ -160,6 +185,10 @@ class BT_Dataset:
 
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
+
+        end = time.time()
+        print(end - start)
+        print('finished BT corpus generation')
 
 
 nccr_df = BT_Dataset(data_path='C:\\Users\\dschw\\Documents\\GitHub\\Thesis\\Data',
