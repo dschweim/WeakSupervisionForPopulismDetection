@@ -475,28 +475,21 @@ class Dict_Generator:
         svo_tuples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
         svo_tuples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
-        # Iterate over tuple combinations todo: include prefix to verb
-        # combinations = [{'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}, # svo + prefix + neg
-        #                 {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': False},  # svo + prefix
-        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
-        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # svo
-        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # sv + neg
-        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # sv
-        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # vo + neg
-        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # vo
-        #                 {'subj': True, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False},  # so
-        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # v + neg
-        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # v
-        #                 {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False},  # s
-        #                 {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
-        #                 ]
-
-        combinations = [{'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True}, #v + neg
+        #Iterate over tuple combinations todo: include prefix to verb
+        combinations = [{'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}, # svo + prefix + neg
+                        {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': False},  # svo + prefix
+                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
+                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # svo
+                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # sv + neg
+                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # sv
+                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # vo + neg
+                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # vo
+                        {'subj': True, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False},  # so
+                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # v + neg
                         {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # v
                         {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False},  # s
                         {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
                         ]
-
 
         global_pop_dict = dict()
         global_nonpop_dict = dict()
@@ -581,15 +574,24 @@ class Dict_Generator:
             else:
                 global_nonpop_dict[str(combination)] = None
 
-        # todo: Generate dicts chisquare
+        # todo: temp only for debugging
         lemma_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
+        lemma_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
 
         # Save dict to disk
-        #tfidf_ae_dict.to_csv(f'{self.output_path}\\tfidf_antielite_dict.csv', index=True)
+        for combination in combinations:
+            if global_pop_dict[str(combination)] is not None:
+                global_pop_dict_com = global_pop_dict[str(combination)]
+                pd.DataFrame(global_pop_dict_com).to_csv(f'{self.output_path}\\chisquare_dep_pop_{str(combination.values())}.csv', index=True)
+
+        for combination in combinations:
+            if global_nonpop_dict[str(combination)] is not None:
+                global_nonpop_dict_com = global_nonpop_dict[str(combination)]
+                pd.DataFrame(global_nonpop_dict_com).to_csv(f'{self.output_path}\\chisquare_dep_nonpop_{str(combination.values())}.csv', index=True)
 
         end = time.time()
         print(end - start)
-        print('finished tf-idf antielite dict generation')
+        print('finished dependency-based dicts generation for pop- & nonpop-dimensions')
 
         return global_pop_dict, global_nonpop_dict
 

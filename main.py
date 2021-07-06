@@ -2,6 +2,7 @@
 # In order to avoid long runtime set parameters to false after the data output has been initially created
 import pandas as pd
 import sys
+import re
 from argparse import ArgumentParser
 from NCCR_Corpus_Generator import NCCR_Dataset
 from Dict_Generator import Dict_Generator
@@ -9,6 +10,7 @@ from Labeling_Framework import Labeler
 from BT_Corpus_Generator import BT_Dataset
 from util import generate_train_test_split, generate_train_dev_test_split
 pd.options.mode.chained_assignment = None
+import os
 
 sys.path.append("..")
 
@@ -18,7 +20,7 @@ def main(path_to_project_folder: str,
          generate_nccr_data: bool,
          preprocess_nccr_data: bool,
          generate_tfidf_dicts: bool,
-         generate_chisquare_dict: bool,
+         generate_chisquare_dicts: bool,
          generate_labeling: bool,
          generate_bt_data: bool):
     """
@@ -33,8 +35,8 @@ def main(path_to_project_folder: str,
     :type preprocess_nccr_data: bool
     :param generate_tfidf_dicts: Indicator whether to generate tf-idf dictionaries in current run
     :type generate_tfidf_dicts:  bool
-    :param generate_chisquare_dict: Indicator whether to generate chi-square dictionary in current run
-    :type generate_chisquare_dict:  bool
+    :param generate_chisquare_dicts: Indicator whether to generate chi-square dictionary in current run
+    :type generate_chisquare_dicts:  bool
     :param generate_labeling: Indicator whether to generate labels from Snorkel in current run
     :type generate_labeling:  bool
      :param generate_bt_data: Indicator whether to generate bundestag data corpus in current run
@@ -109,7 +111,7 @@ def main(path_to_project_folder: str,
         # Convert terms to string
         tfidf_dict_global.term = tfidf_dict_global.term.astype(str)
 
-    if generate_chisquare_dict:
+    if generate_chisquare_dicts:
         # Generate Dictionary based on chi-square test
         chisquare_dict_global = nccr_dicts.generate_global_chisquare_dict(train, confidence=0.99)
         chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99)
@@ -141,6 +143,60 @@ def main(path_to_project_folder: str,
                   'cd': chisquare_dict_country_ch,
                   'de': chisquare_dict_country_de}
         chisquare_dict_country.update(values)
+
+        # Read and combine pop and nonpop dependency-based dicts #todo
+        path = f'{path_to_project_folder}\\Output\\Dicts'
+        pop_files = []
+        nonpop_files = []
+        for i in os.listdir(path):
+            if os.path.isfile(os.path.join(path, i)) and 'chisquare_dep_pop_dict_values' in i:
+                pop_files.append(i)
+            if os.path.isfile(os.path.join(path, i)) and 'chisquare_dep_nonpop_dict_values' in i:
+                nonpop_files.append(i)
+
+        # {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}
+        chisquare_dicts_pop = {}
+        chisquare_dicts_nonpop = {}
+
+        for file in pop_files:
+            # Extract parameters from filename
+            subj = True if (re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(1) == 'True') else False
+            verb = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(2) == ' True' else False
+            verbprefix = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(3) == ' True' else False
+            obj = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(4) == ' True' else False
+            neg = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(5) == ' True' else False
+
+            # Generate filekey
+            current_key = {'subj': subj,
+                           'verb': verb,
+                           'verbprefix': verbprefix,
+                           'obj': obj,
+                           'neg': neg}
+
+            # Read file, extract tuples and append key-array-pair to dict
+            current_file = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\{file}')
+            tuples = current_file.iloc[:, 1].values
+            chisquare_dicts_pop[str(current_key)] = tuples
+
+        for file in nonpop_files:
+            # Extract parameters from filename
+            subj = True if (re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(1) == 'True') else False
+            verb = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(2) == ' True' else False
+            verbprefix = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(3) == ' True' else False
+            obj = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(4) == ' True' else False
+            neg = True if re.search(r"\[(.*),(.*),(.*),(.*),(.*)\]", file).group(5) == ' True' else False
+
+            # Generate filekey
+            current_key = {'subj': subj,
+                           'verb': verb,
+                           'verbprefix': verbprefix,
+                           'obj': obj,
+                           'neg': neg}
+
+            # Read file, extract tuples and append key-array-pair to dict
+            current_file = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\{file}')
+            tuples = current_file.iloc[:, 1].values
+            chisquare_dicts_nonpop[str(current_key)] = tuples
 
     if generate_labeling:
         # Generate overall dictionary as labeling function input
@@ -178,7 +234,8 @@ def main(path_to_project_folder: str,
                                dev_data = dev_sub,
                                lf_input_dict=lf_dict,
                                data_path=f'{path_to_project_folder}\\Data',
-                               output_path=f'{path_to_project_folder}\\Output')
+                               output_path=f'{path_to_project_folder}\\Output',
+                               spacy_model=spacy_model)
 
         # Run Snorkel Labeling
         nccr_labeler.run_labeling()
@@ -202,11 +259,12 @@ if __name__ == "__main__":
 
     main(path_to_project_folder=input_path,
          spacy_model='de_core_news_lg',  #de_dep_news_trf
+
          generate_nccr_data=False,
-         preprocess_nccr_data=False,# runs for approx 15 min
+         preprocess_nccr_data=False,  # runs for approx 45 min
          generate_bt_data=False,
 
          generate_tfidf_dicts=False,
-         generate_chisquare_dict=True,
-         generate_labeling=False,
-        )
+         generate_chisquare_dicts=False,
+         generate_labeling=True,
+         )
