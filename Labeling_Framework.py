@@ -19,12 +19,25 @@ class Labeler:
             dev_data: pd.DataFrame,
             lf_input_dict: dict,
             data_path: str,
-            output_path: str
+            output_path: str,
+            spacy_model: str
     ):
         """
         Class to create the labels
-        :param data_path:
-        :type data_path:
+        :param train_data: training set
+        :type train_data: pd.DataFrame
+        :param test_data: test set
+        :type test_data: pd.DataFrame
+        :param dev_data: test set
+        :type dev_data: pd.DataFrame
+        :param lf_input_dict: dict that contains input for LFs
+        :type lf_input_dict: dict
+        :param data_path: path to data input
+        :type data_path: str
+        :param output_path: path to data output
+        :type output_path: str
+        :param spacy_model: used trained Spacy pipeline
+        :type: str
         """
 
         self.train_data = train_data
@@ -33,6 +46,7 @@ class Labeler:
         self.lf_input_dict = lf_input_dict
         self.data_path = data_path
         self.output_path = output_path
+        self.spacy_model = spacy_model
 
     def run_labeling(self):
         """
@@ -44,8 +58,6 @@ class Labeler:
         ABSTAIN = -1
         NONPOP = 0
         POP = 1
-
-        # todo: Rename column POPULIST to label
 
         ## 1. Define labeling functions
         # Generate dict with ches input
@@ -60,7 +72,7 @@ class Labeler:
         ncr = self.__prepare_labeling_input_ncr()
 
         # Retrieve defined labeling functions
-        lfs = get_lfs(self.lf_input_dict, lf_input_ches)
+        lfs = get_lfs(self.lf_input_dict, lf_input_ches, self.spacy_model)
 
         # Define train & test data
         train_data = self.train_data
@@ -124,7 +136,6 @@ class Labeler:
         print(f"{'Label Model Precision:':<25} {label_model_scores_dict['precision']}")
         print(f"{'Label Model Recall:':<25} {label_model_scores_dict['recall']}")
 
-        # todo: Classifier
         ## 4. Train classifier
         # Filter out unlabeled data points
         probs_train = label_model.predict_proba(L=L_train)

@@ -13,27 +13,30 @@ NONPOP = 0
 POP = 1
 
 
-def get_lfs(lf_input: dict, lf_input_ches: dict):
+def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     """
     Generate dataframe for ncr sentiment analysis
     :param lf_input: Dictionary with input for dictionary-based LFs
     :type lf_input:  Dict
     :param lf_input_ches: Dictionary with input for ches-based LFs
     :type lf_input:  Dict
+    :param spacy_model: used trained Spacy pipeline
+    :type: str
     :return: List of labeling funtions
     :rtype:  List
     """
     ## Preprocessors
-    de_spacy = SpacyPreprocessor(text_field="text", doc_field="doc",
-                                 language="de_core_news_lg", memoize=True)
+    spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=True)
 
     @preprocessor(memoize=True)
     def custom_spacy_preprocessor(x):
         #nlp_trf = spacy.load("de_dep_news_trf")
         #nlp_trf.add_pipe('tensor2attr')
-        nlp_trf = spacy.load("de_core_news_lg")
-        x.doc = nlp_trf(x.text)
+
+        nlp_full = spacy.load(spacy_model)
+        x.doc = nlp_full(x.text)
         x.tuples = extract_dep_tuples(x.doc)
+
         return x
 
     ## Labeling Functions
@@ -64,13 +67,13 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
         return POP if any(keyword in x.text.lower() for keyword in keywords_schwarzbozl) else ABSTAIN
 
     # LF based on Schwarzbözl keywords lemma
-    nlp = spacy.load("de_core_news_lg")
+    nlp = spacy.load(spacy_model)
     lemmas_schwarzbozl = list(nlp.pipe(keywords_schwarzbozl))
 
     for i in range(len(lemmas_schwarzbozl)):
         lemmas_schwarzbozl[i] = lemmas_schwarzbozl[i].doc[0].lemma_
 
-    @labeling_function(pre=[de_spacy])
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_lemma_schwarzbozl(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
@@ -93,7 +96,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     for i in range(len(lemmas_roodujin)):
         lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_
 
-    @labeling_function(pre=[de_spacy])
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_lemma_rooduijn(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
@@ -191,21 +194,29 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
     # c) DEP-based Labeling:
 
     tuples_pop = \
-        lf_input['chi2_dicts_pop']['{\'subj\': True, \'verb\': True, \'verbprefix\': False, \'obj\': True, \'neg\': False}']
+        lf_input['chi2_dicts_pop']['{\'subj\': True, \'verb\': False, \'verbprefix\': False, \'obj\': False, \'neg\': False}']
 
-    get_components = {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False}
+
 
     @labeling_function(pre=[custom_spacy_preprocessor])
     def lf_dep_dict_pop_svo(x):
 
-        # Extract tuples from x
+        # Extract tuples from x #todo: put this into preprocessor
+        get_components = {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False}
         segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
 
-        if np.any(np.isin(tuples_pop, segment_tuples)):
-            print('yes')
-            return POP
-        else:
-            return ABSTAIN
+        while True:
+            try:
+                if np.any(np.isin(tuples_pop, segment_tuples)):
+                    # print('yes')
+                    return POP
+                else:
+                    return ABSTAIN
+            except MemoryError:
+                return ABSTAIN
+                continue
+
+
         #     return POP
         # else:
         #     return ABSTAIN
