@@ -35,4 +35,4 @@ The following Python files are included in this repo:
 - `Dict_Generator.py`
 - `Labeling_Framework.py`
 - `Labeling_Functions.py`
-- `NCCR_Coprus_Generator.py`: Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *NCCR_Content* files.
+- `NCCR_Corpus_Generator.py`: Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *NCCR_Content* files.
