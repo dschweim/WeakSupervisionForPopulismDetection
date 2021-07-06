@@ -205,22 +205,11 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         get_components = {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False}
         segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
 
-        while True:
-            try:
-                if np.any(np.isin(tuples_pop, segment_tuples)):
-                    # print('yes')
-                    return POP
-                else:
-                    return ABSTAIN
-            except MemoryError:
-                return ABSTAIN
-                continue
-
-
-        #     return POP
-        # else:
-        #     return ABSTAIN
-
+        if np.any(np.isin(tuples_pop, segment_tuples)):
+            # print('yes')
+            return POP
+        else:
+            return ABSTAIN
 
 
     # ## Sentiment based
