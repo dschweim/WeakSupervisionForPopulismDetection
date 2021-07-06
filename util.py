@@ -189,7 +189,7 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
     """
 
     # Define empty list for tuples
-    corpus_triples = []
+    corpus_tuples = pd.DataFrame()
 
     # Extract boolean indicator per component from dict
     get_subj = get_components['subj']
@@ -252,11 +252,21 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                 else:  # not implemented
                     raise Exception('This svo combination is not supported')
 
-                corpus_triples.append(current_tuple)
+                tuple = pd.DataFrame({'tuple': [current_tuple],
+                                       'source': [index]})
+                corpus_tuples = corpus_tuples.append(tuple)
 
-    # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of tuples
-                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
+    # todo: temp Generate df
+    # tuples_df = pd.DataFrame({'tuple': Counter(corpus_tuples.tuple).keys(),  # get unique values of tuples
+    #                           'count': Counter(corpus_tuples.tuple).values()})  # get the elements' frequency
+
+    tuples_df = corpus_tuples.groupby('tuple', as_index=False).agg({'tuple': ['first', 'count'],
+                                                                    'source': lambda x: list(x)})
+
+    tuples_df.columns = tuples_df.columns.droplevel(0)
+    tuples_df.rename(columns={tuples_df.columns[0]: 'tuple',
+                              tuples_df.columns[1]: 'count',
+                              tuples_df.columns[2]: 'source'}, inplace=True)
 
     return tuples_df
 

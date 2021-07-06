@@ -203,8 +203,10 @@ if __name__ == "__main__":
     main(path_to_project_folder=input_path,
          spacy_model='de_core_news_lg',  #de_dep_news_trf
          generate_nccr_data=False,
-         preprocess_nccr_data=False,  # runs for approx 15 min
+         preprocess_nccr_data=False,# runs for approx 15 min
+         generate_bt_data=False,
+
          generate_tfidf_dicts=False,
-         generate_chisquare_dict=False,
+         generate_chisquare_dict=True,
          generate_labeling=False,
-         generate_bt_data=True)
+        )

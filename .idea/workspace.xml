@@ -182,18 +182,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>556</line>
-          <option name="timeStamp" value="299" />
+          <line>571</line>
+          <option name="timeStamp" value="438" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>552</line>
-          <option name="timeStamp" value="317" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>553</line>
-          <option name="timeStamp" value="318" />
+          <line>503</line>
+          <option name="timeStamp" value="439" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

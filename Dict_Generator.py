@@ -491,12 +491,7 @@ class Dict_Generator:
         #                 {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
         #                 ]
 
-        # todo: include prefix to verb
-        combinations = [
-                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
-                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # sv + neg
-                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # vo + neg
-                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # v + neg
+        combinations = [{'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True}, #v + neg
                         {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # v
                         {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False},  # s
                         {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
