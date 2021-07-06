@@ -18,9 +18,10 @@ The folder *data* contains all necessary input sources in the respective subfold
 
 ### Notebooks
 The folder *Notebooks* contains Jupyter Notebooks that were primarily used for experimentation, but also to generate xx
-- 'Data_Exploration.ipynb': Contains the code used to explore the NCCR and BT data and calculate simple dataset statistics
-- 'Manual_Segment_Extraction.ipynb': Contains the code used to manually fix non-matched Wording Content to retrieve corresponding Segments from Text.
-- 'Spay_Exploration.ipynb': Contains the code used to explore spacy models and word embedding similarities
+- `settings_template.json`
+- `Data_Exploration.ipynb`: Contains the code used to explore the NCCR and BT data and calculate simple dataset statistics
+- `Manual_Segment_Extraction.ipynb`: Contains the code used to manually fix non-matched Wording Content to retrieve corresponding Segments from Text.
+- `Spay_Exploration.ipynb`: Contains the code used to explore spacy models and word embedding similarities
 
 ### Output
 The folder *Output* contains the results from each Code file:
@@ -30,9 +31,9 @@ The folder *Output* contains the results from each Code file:
 All files can be run from within the 'main.py' file. To this end, corresponding indicators have to be set to true.
 The following Python files are included in this repo:
 
-- 'BERT_Classifier.py'
-- 'BT_Corpus_Generator.py': Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *BT_OpenData* files.
-- 'Dict_Generator.py'
-- 'Labeling_Framework.py'
-- 'Labeling_Functions.py'
-- 'NCCR_Coprus_Generator.py': Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *NCCR_Content* files.
+- `BERT_Classifier.py`
+- `BT_Corpus_Generator.py`: Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *BT_OpenData* files.
+- `Dict_Generator.py`
+- `Labeling_Framework.py`
+- `Labeling_Functions.py`
+- `NCCR_Coprus_Generator.py`: Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *NCCR_Content* files.
