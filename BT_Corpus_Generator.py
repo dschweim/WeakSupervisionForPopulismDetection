@@ -1,5 +1,4 @@
 import pandas as pd
-import spacy
 import time
 import os
 import glob
@@ -172,7 +171,7 @@ class BT_Dataset:
                     df = df.append(df_speech)
 
         # Drop rows without speaker_id
-        df.dropna(subset=["spr_id"], inplace=True)
+        #df.dropna(subset=["spr_id"], inplace=True)
 
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
