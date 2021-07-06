@@ -3,7 +3,7 @@
 This repository contains the data and code to replicate the result of the above mentioned Master Thesis.
 
 ## Setup
-*--i path_to_file\settings_baseline_multi.json*
+*--i path_to_file*
 
 ## Replication Material
 
@@ -18,7 +18,6 @@ The folder *data* contains all necessary input sources in the respective subfold
 
 ### Notebooks
 The folder *Notebooks* contains Jupyter Notebooks that were primarily used for experimentation, but also to generate xx
-- `settings_template.json`
 - `Data_Exploration.ipynb`: Contains the code used to explore the NCCR and BT data and calculate simple dataset statistics
 - `Manual_Segment_Extraction.ipynb`: Contains the code used to manually fix non-matched Wording Content to retrieve corresponding Segments from Text.
 - `Spay_Exploration.ipynb`: Contains the code used to explore spacy models and word embedding similarities
