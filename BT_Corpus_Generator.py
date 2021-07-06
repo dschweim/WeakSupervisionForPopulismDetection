@@ -170,7 +170,7 @@ class BT_Dataset:
                     # Append result to global corpus
                     df = df.append(df_speech)
 
-        # Drop rows without speaker_id
+        # todo: Drop rows without speaker_id
         #df.dropna(subset=["spr_id"], inplace=True)
 
         # Save concatenated texts

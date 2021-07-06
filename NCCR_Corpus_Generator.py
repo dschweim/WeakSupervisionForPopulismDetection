@@ -548,7 +548,6 @@ class NCCR_Dataset:
         :rtype: str
         """
 
-        # Todo: chck wether subwording replaced (e.g. Ruß + Russlandreisen -> Rußlandreisen (ID: de_pr_el_13_060133.txt)
         text = text.replace(token, replacement)
 
         return text
