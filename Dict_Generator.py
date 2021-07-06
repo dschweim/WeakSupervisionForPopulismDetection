@@ -336,8 +336,6 @@ class Dict_Generator:
         :type df:  DataFrame
         :param confidence: level of statistical confidence
         :type confidence: float
-        :param n_words: Number of words to be included
-        :type n_words: float
         :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
@@ -450,17 +448,18 @@ class Dict_Generator:
 
         return chisquare_dict_per_country
 
-    def generate_chisquare_dep_dicts(self, df: pd.DataFrame, preprocessed: bool):
+    def generate_chisquare_dep_dicts(self, df: pd.DataFrame, preprocessed: bool, confidence: float):
         """
         Calculate
-        :param df: Trainset from which to construct dict
+        :param df: corpus from which to construct dict
         :type df:  DataFrame
+        :param preprocessed: Indicator whether corpus has been preprocessed in current run with Spacy pipe
+        :type preprocessed:  bool
+        :param confidence: level of statistical confidence
+        :type confidence: float
         :return: Returns df of dictionary words
         :rtype:  DataFrame
         """
-        #todo: definition
-
-        ## todo: iterate over get_combinations combinations to retrieve multiple dicts
 
         start = time.time()
 
@@ -476,85 +475,119 @@ class Dict_Generator:
         svo_tuples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
         svo_tuples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
-        # Generate list of all distinct svo-triples and sort by their number of occurrences
-        get_components = {'subj': True,
-                          'verb': False,
-                          'verbprefix': False,
-                          'obj': False,
-                          'neg': False}
-        svo_tuples_pop_list = get_all_svo_tuples(svo_tuples_pop, get_components).sort_values(by='count', ascending=False)
-        svo_tuples_nonpop_list = get_all_svo_tuples(svo_tuples_nonpop, get_components).sort_values(by='count', ascending=False)
+        # Iterate over tuple combinations todo: include prefix to verb
+        # combinations = [{'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}, # svo + prefix + neg
+        #                 {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': False},  # svo + prefix
+        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
+        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # svo
+        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # sv + neg
+        #                 {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # sv
+        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # vo + neg
+        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # vo
+        #                 {'subj': True, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False},  # so
+        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # v + neg
+        #                 {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # v
+        #                 {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False},  # s
+        #                 {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
+        #                 ]
 
-        # Rename columns
-        svo_tuples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)
-        svo_tuples_nonpop_list.rename({'count': 'count_nonpop'}, axis=1, inplace=True)
-
-        # Append both dfs
-        svo_tuples_list = svo_tuples_pop_list.append(svo_tuples_nonpop_list)
-
-        # Group df by tuple and aggregate counts
-        svo_tuples_grpd = svo_tuples_list.groupby(by="tuple", dropna=False).agg({'count_pop': 'sum', 'count_nonpop': 'sum'})
-
-        # Get total counts (POP + NONPOP) per tuple and reset index
-        svo_tuples_grpd['count_total'] = svo_tuples_grpd.count_pop + svo_tuples_grpd.count_nonpop
-        svo_tuples_grpd.reset_index(inplace=True)
-
-        # Retrieve total number of tuples for both corpora
-        tuples_pop = svo_tuples_grpd.count_pop.sum()
-        tuples_nonpop = svo_tuples_grpd.count_nonpop.sum()
-
-        # Only consider words with count of at least 5 #todo: remove at word count as well?
-        # todo: remove ( ) tuple (empty tuple)
-        svo_tuples_grpd = svo_tuples_grpd.loc[(svo_tuples_grpd['count_pop'] >= 5) & (svo_tuples_grpd['count_nonpop'] >= 5)]
-
-        # Create empty dataframes for result
-        chisquare_tuples_pop = pd.DataFrame()
-        chisquare_tuples_nonpop = pd.DataFrame()
-
-        #todo: confidence
-        confidence = 0.75
+        # todo: include prefix to verb
+        combinations = [
+                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
+                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # sv + neg
+                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # vo + neg
+                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # v + neg
+                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # v
+                        {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False},  # s
+                        {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
+                        ]
 
 
-        # for each word calculate chi-square statistics
-        for index, tuple in svo_tuples_grpd.iterrows():
-            obs_freq_a = tuple.count_pop
-            obs_freq_b = tuple.count_nonpop
-            obs_freq_c = tuples_pop - obs_freq_a
-            obs_freq_d = tuples_nonpop - obs_freq_a
+        global_pop_dict = dict()
+        global_nonpop_dict = dict()
 
-            # Define contingency table
-            obs = np.array([[obs_freq_a, obs_freq_b],
-                            [obs_freq_c, obs_freq_d]])
+        for combination in combinations:
 
-            # Calculate chi2, p, dof and ex
-            chi2_word, p, dof, ex = chi2_contingency(obs)
-            # Extract critical value dependent on confidence and dof
-            critical = chi2.ppf(confidence, dof)
+            get_components = combination
 
-            # keep words where chi2 higher than critical value and correspond to pop corpus
-            if chi2_word > critical:
-                # Check whether word is dependent on pop corpus
-                ratio_pop = obs_freq_a / obs_freq_b
-                ratio_nonpop = (obs_freq_a + obs_freq_c) / (obs_freq_a + obs_freq_d)
+            # Generate list of all distinct svo-triples and sort by their number of occurrences
+            svo_tuples_pop_list = get_all_svo_tuples(svo_tuples_pop, get_components).sort_values(by='count', ascending=False)
+            svo_tuples_nonpop_list = get_all_svo_tuples(svo_tuples_nonpop, get_components).sort_values(by='count', ascending=False)
 
-                # If it is dependent on pop corpus, add to pop dict , otherwhise to nonpop dict
-                chisquare_table = pd.DataFrame({'tuple': [tuple.tuple],
-                                                'chisquare': [chi2_word]})
-                if ratio_pop > ratio_nonpop:
-                    # Append to result pop dict
-                    chisquare_tuples_pop = chisquare_tuples_pop.append(chisquare_table)
+            # Rename columns
+            svo_tuples_pop_list.rename({'count': 'count_pop'}, axis=1, inplace=True)
+            svo_tuples_nonpop_list.rename({'count': 'count_nonpop'}, axis=1, inplace=True)
 
-                else:
-                    # Append to result nonpop dict
-                    chisquare_tuples_nonpop = chisquare_tuples_nonpop.append(chisquare_table)
+            # Append both dfs
+            svo_tuples_list = svo_tuples_pop_list.append(svo_tuples_nonpop_list)
 
-        # Sort by chi_square
-        chisquare_tuples_pop.sort_values(by='chisquare', ascending=False, inplace=True)
-        chisquare_tuples_nonpop.sort_values(by='chisquare', ascending=False, inplace=True)
+            # Group df by tuple and aggregate counts
+            svo_tuples_grpd = svo_tuples_list.groupby(by="tuple", dropna=False).agg({'count_pop': 'sum', 'count_nonpop': 'sum'})
+
+            # Get total counts (POP + NONPOP) per tuple and reset index
+            svo_tuples_grpd['count_total'] = svo_tuples_grpd.count_pop + svo_tuples_grpd.count_nonpop
+            svo_tuples_grpd.reset_index(inplace=True)
+
+            # Retrieve total number of tuples for both corpora
+            tuples_pop = svo_tuples_grpd.count_pop.sum()
+            tuples_nonpop = svo_tuples_grpd.count_nonpop.sum()
+
+            # Only consider words with count of at least 5 #todo: remove at word count as well?
+            # todo: remove ( ) tuple (empty tuple)
+            svo_tuples_grpd = svo_tuples_grpd.loc[(svo_tuples_grpd['count_pop'] >= 5) & (svo_tuples_grpd['count_nonpop'] >= 5)]
+
+            # Create empty dataframes for result
+            chisquare_tuples_pop = pd.DataFrame()
+            chisquare_tuples_nonpop = pd.DataFrame()
+
+            # for each word calculate chi-square statistics
+            for index, tuple in svo_tuples_grpd.iterrows():
+                obs_freq_a = tuple.count_pop
+                obs_freq_b = tuple.count_nonpop
+                obs_freq_c = tuples_pop - obs_freq_a
+                obs_freq_d = tuples_nonpop - obs_freq_a
+
+                # Define contingency table
+                obs = np.array([[obs_freq_a, obs_freq_b],
+                                [obs_freq_c, obs_freq_d]])
+
+                # Calculate chi2, p, dof and ex
+                chi2_word, p, dof, ex = chi2_contingency(obs)
+                # Extract critical value dependent on confidence and dof
+                critical = chi2.ppf(confidence, dof)
+
+                # keep words where chi2 higher than critical value and correspond to pop corpus
+                if chi2_word > critical:
+                    # Check whether word is dependent on pop corpus
+                    ratio_pop = obs_freq_a / obs_freq_b
+                    ratio_nonpop = (obs_freq_a + obs_freq_c) / (obs_freq_a + obs_freq_d)
+
+                    # If it is dependent on pop corpus, add to pop dict , otherwhise to nonpop dict
+                    chisquare_table = pd.DataFrame({'tuple': [tuple.tuple],
+                                                    'chisquare': [chi2_word]})
+                    if ratio_pop > ratio_nonpop:
+                        # Append to result pop dict
+                        chisquare_tuples_pop = chisquare_tuples_pop.append(chisquare_table)
+
+                    else:
+                        # Append to result nonpop dict
+                        chisquare_tuples_nonpop = chisquare_tuples_nonpop.append(chisquare_table)
+
+            # Sort by chi_square
+            if len(chisquare_tuples_pop) > 0:
+                chisquare_tuples_pop.sort_values(by='chisquare', ascending=False, inplace=True)
+                global_pop_dict[str(combination)] = chisquare_tuples_pop.tuple.values
+            else:
+                global_pop_dict[str(combination)] = None
+
+            if len(chisquare_tuples_nonpop) > 0:
+                chisquare_tuples_nonpop.sort_values(by='chisquare', ascending=False, inplace=True)
+                global_nonpop_dict[str(combination)] = chisquare_tuples_nonpop.tuple.values
+            else:
+                global_nonpop_dict[str(combination)] = None
 
         # todo: Generate dicts chisquare
-        lemma_ae = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
-
+        lemma_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
 
         # Save dict to disk
         #tfidf_ae_dict.to_csv(f'{self.output_path}\\tfidf_antielite_dict.csv', index=True)
@@ -563,6 +596,6 @@ class Dict_Generator:
         print(end - start)
         print('finished tf-idf antielite dict generation')
 
-        return chisquare_tuples_pop, chisquare_tuples_nonpop
+        return global_pop_dict, global_nonpop_dict
 
 
