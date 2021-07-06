@@ -3,6 +3,9 @@ import pandas as pd
 from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
+import numpy as np
+import Tensor2Attr
+from util import extract_dep_tuples, get_all_svo_tuples, get_svo_tuples
 
 # Define constants
 ABSTAIN = -1
@@ -26,9 +29,11 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
 
     @preprocessor(memoize=True)
     def custom_spacy_preprocessor(x):
-        nlp_trf = spacy.load("de_dep_news_trf")
-        nlp_trf.add_pipe('tensor2attr')
+        #nlp_trf = spacy.load("de_dep_news_trf")
+        #nlp_trf.add_pipe('tensor2attr')
+        nlp_trf = spacy.load("de_core_news_lg")
         x.doc = nlp_trf(x.text)
+        x.tuples = extract_dep_tuples(x.doc)
         return x
 
     ## Labeling Functions
@@ -183,87 +188,47 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
             else:
                 return ABSTAIN
 
-    # c) Key Message-based Labeling:
+    # c) DEP-based Labeling:
 
-    # LFS: Key Message 1 - Discrediting the Elite
-    # negative personality and personal negative attributes of a target
+    tuples_pop = \
+        lf_input['chi2_dicts_pop']['{\'subj\': True, \'verb\': True, \'verbprefix\': False, \'obj\': True, \'neg\': False}']
 
-    ## neg sent analysis
-    #SENTIMENT IS NEG
-    @labeling_function(pre=[de_spacy])
-    def lf_discrediting_elite(x):
-        #for chunk in x.doc.noun_chunks:
-            #print(chunk.text)
-
-        target = 'bundesregierung'
-        if target in x.text.lower():
-            return POP
-            # {"lower": target}, IS_ADJ: True and nfeg
-            # for token in x.doc:
-            #
-            #     if token.head == target and token.pos_ == 'ADJ': #& is negative & refers to target
-            #         print(token.text)
-
-            #return POP
-        else:
-            return ABSTAIN
-
-        # 1. find target of ELITE
-
-        # 2. Attribute refers to ELITE
-        # 3. Negative attributes
-
-
-    ## Anti-Elite
-    #keywords_elite
-    # @labeling_function(pre=[de_spacy])
-    # def lf_anti_elite(x):
-
-
-    # LFS: Key Message 2- Blaming the Elite
-    # identify people embedding
+    get_components = {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False}
 
     @labeling_function(pre=[custom_spacy_preprocessor])
-    def lf_people_detector(x):
-        # Define elite keywords
-        key_word_Df = pd.DataFrame({'text': ["Bundesregierung"], 'party': None, 'Sample_Country': None,
-                                    'year': None, 'POPULIST': None})
-        key_word = custom_spacy_preprocessor(key_word_Df.loc[0]).doc[0]
+    def lf_dep_dict_pop_svo(x):
 
-        # Calculate embedding-based similarity of key_word tokens for tokens with relevant POS tag
-        relevant_tags = ['PROPN', 'NOUN', 'PRON']
+        # Extract tuples from x
+        segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
 
-        for sent in x.doc.sents:
-            for token in sent:
-                if token.pos_ in relevant_tags:
-                    sim = x.doc[token.i].similarity(key_word)
-                    if sim > 0.2:
-                        return POP
-                else:
-                    return ABSTAIN
-
-    ## SPACY PATTERN MATCHING FOR KEYWORDS
+        if np.any(np.isin(tuples_pop, segment_tuples)):
+            print('yes')
+            return POP
+        else:
+            return ABSTAIN
+        #     return POP
+        # else:
+        #     return ABSTAIN
 
 
 
-
-    ## Sentiment based
-    nlp = spacy.load('de_core_news_lg')
-
-    # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
-    # #nlp.add_pipe('sentiws')
-    # nlp.add_pipe('spacytextblob')
-    # doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
-    # for token in doc:
-    #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
+    # ## Sentiment based
+    # nlp = spacy.load('de_core_news_lg')
     #
+    # # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
+    # # #nlp.add_pipe('sentiws')
+    # # nlp.add_pipe('spacytextblob')
+    # # doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
+    # # for token in doc:
+    # #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
+    # #
 
-    from textblob_de import TextBlobDE
-    doc = 'Die Dummheit der Unterwerfung blüht in hübschen Farben. Das ist ein hässliches Auto'
-    blob = TextBlobDE(doc)
-    print(blob.tags)
-    for sentence in blob.sentences:
-        print(sentence.sentiment.polarity)
+    # from textblob_de import TextBlobDE
+    # doc = 'Die Dummheit der Unterwerfung blüht in hübschen Farben. Das ist ein hässliches Auto'
+    # blob = TextBlobDE(doc)
+    # print(blob.tags)
+    # for sentence in blob.sentences:
+    #     print(sentence.sentiment.polarity)
 
 
     # Define list of lfs to use
@@ -276,8 +241,8 @@ def get_lfs(lf_input: dict, lf_input_ches: dict):
                 lf_keywords_nccr_tfidf_country,
                 lf_keywords_nccr_chi2_glob,
                 lf_keywords_nccr_chi2_country,
-                lf_discrediting_elite,
-                lf_party_position_ches]
+                lf_party_position_ches,
+                lf_dep_dict_pop_svo]
 
     return list_lfs
 
