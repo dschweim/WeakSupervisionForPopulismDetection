@@ -18,6 +18,9 @@ The folder *data* contains all necessary input sources in the respective subfold
 
 ### Notebooks
 The folder *Notebooks* contains Jupyter Notebooks that were primarily used for experimentation, but also to generate xx
+- 'Data_Exploration.ipynb': Contains the code used to explore the NCCR and BT data and calculate simple dataset statistics
+- 'Manual_Segment_Extraction.ipynb': Contains the code used to manually fix non-matched Wording Content to retrieve corresponding Segments from Text.
+- 'Spay_Exploration.ipynb': Contains the code used to explore spacy models and word embedding similarities
 
 ### Output
 The folder *Output* contains the results from each Code file:
