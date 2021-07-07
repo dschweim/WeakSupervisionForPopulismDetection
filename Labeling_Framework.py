@@ -165,7 +165,7 @@ class Labeler:
         """
         # Generate binary-labelled POP dataframes for Austrian, German and Swiss parties
         rel_countries = ['aus', 'ger', 'swi']
-        rel_country_ids = ['13', '3', '36']
+        rel_country_ids = [13, 3, 36]
 
         # CHES 14:
         ches_df_14 = pd.read_csv(f'{self.data_path}\\CHES\\2014_CHES_dataset_means.csv')
