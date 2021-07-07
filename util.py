@@ -285,7 +285,7 @@ def get_svo_tuples(svo_list: list, get_components: dict):
     """
 
     # Define empty list for tuples
-    corpus_triples = []
+    corpus_tuples = []
 
     # Extract boolean indicator per component from dict
     get_subj = get_components['subj']
@@ -345,10 +345,10 @@ def get_svo_tuples(svo_list: list, get_components: dict):
             else:  # not implemented
                 raise Exception('This svo combination is not supported')
 
-            corpus_triples.append(current_tuple)
+            corpus_tuples.append(current_tuple)
 
     # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_triples).keys(),  # get unique values of tuples
-                              'count': Counter(corpus_triples).values()})  # get the elements' frequency
+    tuples_df = pd.DataFrame({'tuple': Counter(corpus_tuples).keys(),  # get unique values of tuples
+                              'count': Counter(corpus_tuples).values()})  # get the elements' frequency
 
     return tuples_df
