@@ -1,12 +1,13 @@
 import pandas as pd
 import re
+import spacy
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
-from util import standardize_party_naming
+from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples
 
 from Labeling_Functions import get_lfs
 
@@ -78,8 +79,6 @@ class Labeler:
         train_data = self.train_data
         test_data = self.test_data
         dev_data = self.dev_data
-
-        anti_elite_sample = train_data.loc[train_data.POPULIST_AntiElite == 1]
 
         #L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
 
