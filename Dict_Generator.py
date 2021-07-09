@@ -463,9 +463,8 @@ class Dict_Generator:
 
         start = time.time()
 
-        # Generate spacy docs from corpus if necessary
-        if not preprocessed:
-            df['wording_segments_doc'] = list(self.nlp_full.pipe(df['wording_segments']))
+        # Generate spacy docs from corpus
+        df['wording_segments_doc'] = list(self.nlp_full.pipe(df['wording_segments']))
 
         # Generate two docs from corpus (POP and NONPOP)
         df_pop = df.loc[(df['POPULIST'] == 1)]
@@ -497,6 +496,8 @@ class Dict_Generator:
         for combination in combinations:
 
             get_components = combination
+            # Get number of components set to true
+            n_components = sum(get_components.values())
 
             # Generate list of all distinct svo-triples and sort by their number of occurrences
             svo_tuples_pop_list = get_all_svo_tuples(svo_tuples_pop, get_components).sort_values(by='count', ascending=False)
