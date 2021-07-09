@@ -22,7 +22,8 @@ def main(path_to_project_folder: str,
          generate_tfidf_dicts: bool,
          generate_chisquare_dicts: bool,
          generate_labeling: bool,
-         generate_bt_data: bool):
+         generate_bt_data: bool,
+         preprocess_bt_data: bool):
     """
     main function to run project and initialize classes
     :param path_to_project_folder: Trainset
@@ -41,6 +42,8 @@ def main(path_to_project_folder: str,
     :type generate_labeling:  bool
      :param generate_bt_data: Indicator whether to generate bundestag data corpus in current run
     :type generate_bt_data: bool
+    :param preprocess_bt_data: Indicator whether to preprocess bundestag data corpus in current run
+    :type preprocess_bt_data: bool
     :return:
     :rtype:
     """
@@ -54,6 +57,9 @@ def main(path_to_project_folder: str,
                                 output_path=f'{path_to_project_folder}\\Output\\Dicts',
                                 spacy_model=spacy_model)
 
+    bt_df = BT_Dataset(data_path=f'{path_to_project_folder}\\Data',
+                       output_path=f'{path_to_project_folder}\\Output')
+
     if generate_nccr_data:
         # Generate Labelled NCCR
         nccr_data_de_wording_av = nccr_df.generate_labelled_nccr_corpus()
@@ -66,17 +72,17 @@ def main(path_to_project_folder: str,
     if preprocess_nccr_data:
         # Preprocess corpus and generate train-test-split
         nccr_df_prep = nccr_df.preprocess_corpus(nccr_data_de_wording_av)
-        #train, test = generate_train_test_split(nccr_df_prep)
+        train, test = generate_train_test_split(nccr_df_prep)
 
         # Generate Train, Dev, Test Split
-        train, dev, test = generate_train_dev_test_split(nccr_df_prep)
+        #train, dev, test = generate_train_dev_test_split(nccr_df_prep)
 
     else:
         # Import preprocessed corpus and generate train-test-split
         nccr_df_prep = pd.read_csv(
             f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep.csv')
-        train, dev, test = generate_train_dev_test_split(nccr_df_prep)
-        #train, test = generate_train_test_split(nccr_df_prep)
+        #train, dev, test = generate_train_dev_test_split(nccr_df_prep)
+        train, test = generate_train_test_split(nccr_df_prep)
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
@@ -218,20 +224,15 @@ def main(path_to_project_folder: str,
                            'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
                          'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
-        dev_sub = dev[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
-                       'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         train_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
         test_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
-        dev_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
 
         print('TRAIN EXAMPLES: ' + str(len(train)))
-        print('DEV EXAMPLES: ' + str(len(dev)))
         print('TEST EXAMPLES: ' + str(len(test)))
 
         # Initialize Labeler
         nccr_labeler = Labeler(train_data=train_sub,
                                test_data=test_sub,
-                               dev_data = dev_sub,
                                lf_input_dict=lf_dict,
                                data_path=f'{path_to_project_folder}\\Data',
                                output_path=f'{path_to_project_folder}\\Output',
@@ -241,13 +242,18 @@ def main(path_to_project_folder: str,
         nccr_labeler.run_labeling()
 
     if generate_bt_data:
-        bt_df = BT_Dataset(data_path=f'{path_to_project_folder}\\Data',
-                           output_path=f'{path_to_project_folder}\\Output')
-
-        bt_df.generate_bt_corpus()
+        bt_corpus = bt_df.generate_bt_corpus()
 
     else:
-        bt_df = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus.csv')
+        bt_corpus = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus.csv')
+
+    if preprocess_bt_data:
+        bt_corpus_prep = bt_df.preprocess_bt_corpus(bt_corpus)
+
+    else:
+        bt_corpus_prep = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus_prep.csv')
+
+        #todo: Generate train/test split for bt
 
 
 if __name__ == "__main__":
@@ -261,10 +267,11 @@ if __name__ == "__main__":
          spacy_model='de_core_news_lg',  #de_dep_news_trf
 
          generate_nccr_data=False,
-         preprocess_nccr_data=False,  # runs for approx 45 min
+         preprocess_nccr_data=False,  # runs for approx 20min
          generate_bt_data=False,
+         preprocess_bt_data=True,
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=True,
+         generate_labeling=False,
          )
