@@ -17,7 +17,6 @@ class Labeler:
             self,
             train_data: pd.DataFrame,
             test_data: pd.DataFrame,
-            dev_data: pd.DataFrame,
             lf_input_dict: dict,
             data_path: str,
             output_path: str,
@@ -29,8 +28,6 @@ class Labeler:
         :type train_data: pd.DataFrame
         :param test_data: test set
         :type test_data: pd.DataFrame
-        :param dev_data: test set
-        :type dev_data: pd.DataFrame
         :param lf_input_dict: dict that contains input for LFs
         :type lf_input_dict: dict
         :param data_path: path to data input
@@ -43,7 +40,6 @@ class Labeler:
 
         self.train_data = train_data
         self.test_data = test_data
-        self.dev_data = dev_data
         self.lf_input_dict = lf_input_dict
         self.data_path = data_path
         self.output_path = output_path
@@ -78,7 +74,6 @@ class Labeler:
         # Define train & test data
         train_data = self.train_data
         test_data = self.test_data
-        dev_data = self.dev_data
 
         #L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
 
