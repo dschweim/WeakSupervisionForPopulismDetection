@@ -7,7 +7,7 @@ from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
-from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples
+from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
 
 from Labeling_Functions import get_lfs
 

@@ -5,7 +5,7 @@ from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
 import numpy as np
 import Tensor2Attr
-from util import extract_dep_tuples, get_all_svo_tuples, get_svo_tuples
+from util import extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
 
 # Define constants
 ABSTAIN = -1
@@ -194,16 +194,21 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     # c) DEP-based Labeling:
 
     tuples_pop = \
-        lf_input['chi2_dicts_pop']['{\'subj\': True, \'verb\': False, \'verbprefix\': False, \'obj\': False, \'neg\': False}']
+        lf_input['chi2_dicts_pop']['{\'subj\': True, \'verb\': True, \'verbprefix\': False, \'obj\': False, \'neg\': False}']
 
+
+    ## todo: Transform to array
+    b = np.array([tuples_pop]).T
 
 
     @labeling_function(pre=[custom_spacy_preprocessor])
     def lf_dep_dict_pop_svo(x):
 
         # Extract tuples from x #todo: put this into preprocessor
-        get_components = {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False}
-        segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
+        get_components = {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False}
+        #segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
+
+        segment_tuples = get_svo_tuples_segment(x.tuples, get_components)
 
         if np.any(np.isin(tuples_pop, segment_tuples)):
             # print('yes')
