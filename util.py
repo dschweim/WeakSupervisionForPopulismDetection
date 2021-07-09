@@ -73,6 +73,23 @@ def standardize_party_naming(party):
         return party
 
 
+def retrieve_year(date: str):
+    """
+    Retrieve year from date
+    :param date: String of date
+    :type date: str
+    :return: Returns year of date
+    :rtype:  str
+    """
+
+    # Retrieve year from date column
+    year = re.search(r'^\d\d.\d\d.(\d{4})', date)
+
+    if year is None:
+        return None
+    else:
+        return year.group(1)
+
 def extract_parsed_lemmas(segment):
     """
     Retrieve lemma, pos tag, dependence tag, and corresponding head token for each token in segment

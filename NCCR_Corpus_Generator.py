@@ -6,7 +6,7 @@ import spacy
 from spacy.matcher import PhraseMatcher, Matcher
 from spacy.tokens import Doc
 import pandas as pd
-from util import standardize_party_naming
+from util import standardize_party_naming, retrieve_year
 
 pd.options.mode.chained_assignment = None
 
@@ -168,7 +168,7 @@ class NCCR_Dataset:
 
         # Apply retrieve_year function to whole date column
         df['Date'] = df['Date'].astype(str)
-        df['year'] = df['Date'].apply(lambda x: self.__retrieve_year(x))
+        df['year'] = df['Date'].apply(lambda x: retrieve_year(x))
         df['year'] = df['year'].astype(int)
 
         # Generate additional column with segments of text that contain relevant content using Wording column
@@ -201,24 +201,6 @@ class NCCR_Dataset:
         text = " ".join(text.split())
 
         return text
-
-    @staticmethod
-    def __retrieve_year(date: str):
-        """
-        Retrieve year from date
-        :param date: String of date
-        :type date: str
-        :return: Returns year of date
-        :rtype:  str
-        """
-
-        # Retrieve year from date column
-        year = re.search(r'^\d\d.\d\d.(\d{4})', date)
-
-        if year is None:
-            return None
-        else:
-            return year.group(1)
 
     @staticmethod
     def __retrieve_party(text: str, sampletype: str):

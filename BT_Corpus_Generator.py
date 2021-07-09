@@ -3,6 +3,7 @@ import time
 import os
 import glob
 from lxml import etree
+from util import retrieve_year
 pd.options.mode.chained_assignment = None
 
 
@@ -185,7 +186,9 @@ class BT_Dataset:
         df_prep = df.dropna(subset=["spr_id"])
 
         # Extract year from date
-        # df_prep['year'] =
+        df_prep['text_date'] = df_prep['text_date'].astype(str)
+        df_prep['year'] = df_prep['text_date'].apply(lambda x: retrieve_year(x))
+        df_prep['year'] = df_prep['year'].astype(int)
 
         # Save to disk
         df_prep.to_csv(f'{self.output_path}\\BT_corpus_prep.csv', index=True)
