@@ -170,8 +170,7 @@ class BT_Dataset:
                     # Append result to global corpus
                     df = df.append(df_speech)
 
-        # todo: Drop rows without speaker_id
-        #df.dropna(subset=["spr_id"], inplace=True)
+
 
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
@@ -180,4 +179,15 @@ class BT_Dataset:
         print(end - start)
         print('finished BT corpus generation')
 
+    def preprocess_bt_corpus(self, df):
 
+        # Drop rows without speaker_id
+        df_prep = df.dropna(subset=["spr_id"])
+
+        # Extract year from date
+        # df_prep['year'] =
+
+        # Save to disk
+        df_prep.to_csv(f'{self.output_path}\\BT_corpus_prep.csv', index=True)
+
+        return df_prep
