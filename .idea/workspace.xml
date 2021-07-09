@@ -40,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager" selected="Python.main">
     <configuration name="BERT_Classifier" type="PythonConfigurationType" factoryName="Python">
@@ -109,22 +109,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>95</line>
-          <option name="timeStamp" value="150" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
-          <line>224</line>
-          <option name="timeStamp" value="153" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>140</line>
-          <option name="timeStamp" value="253" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>105</line>
+          <line>104</line>
           <option name="timeStamp" value="255" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -143,44 +128,19 @@
           <option name="timeStamp" value="258" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>133</line>
-          <option name="timeStamp" value="259" />
+          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
+          <line>210</line>
+          <option name="timeStamp" value="477" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>571</line>
-          <option name="timeStamp" value="438" />
+          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
+          <line>195</line>
+          <option name="timeStamp" value="478" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Dict_Generator.py</url>
-          <line>503</line>
-          <option name="timeStamp" value="439" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>63</line>
-          <option name="timeStamp" value="440" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>167</line>
-          <option name="timeStamp" value="442" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>166</line>
-          <option name="timeStamp" value="443" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>194</line>
-          <option name="timeStamp" value="444" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>219</line>
-          <option name="timeStamp" value="445" />
+          <url>file://$PROJECT_DIR$/util.py</url>
+          <line>262</line>
+          <option name="timeStamp" value="492" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -193,10 +153,13 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="type(svo_triples_pop)" language="Python" />
-        <watch expression="lemma_ae.loc[1052]" language="Python" />
-        <watch expression="child.text" language="Python" />
-        <watch expression="get_components['subj']" language="Python" />
+        <watch expression="np.array(list(Counter(corpus_tuples.tuple).keys()))" language="Python" />
+        <watch expression="np.append(tuples, counts,axis=1)" language="Python" />
+        <watch expression="np.reshape(counts, (3462,1))" language="Python" />
+        <watch expression="np.array((segment_tuples))" language="Python" />
+        <watch expression="Counter(corpus_tuples).keys()" language="Python" />
+        <watch expression="Counter(corpus_tuples).keys().values()" language="Python" />
+        <watch expression="np.array(corpus_tuples).flatten()" language="Python" />
       </configuration>
     </watches-manager>
   </component>
