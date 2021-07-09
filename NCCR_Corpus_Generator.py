@@ -244,8 +244,8 @@ class NCCR_Dataset:
 
         # Past Party Manifesto
         elif sampletype == 'Past_PartyMan':
-            grp_index = 3
-            party = re.search(r'(^(.|\n)*Party Manifesto, )(\w*)', text)
+            grp_index = 4
+            party = re.search(r'(^(.|\n)*Party Manifesto(,|:) )(\w*)', text)
 
         # Social Media
         elif sampletype == 'SocialMedia':
