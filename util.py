@@ -14,7 +14,7 @@ def generate_train_test_split(df):
     :rtype: DataFrame, DataFrame
     """
 
-    train, test = train_test_split(df, test_size=0.2, random_state=42)
+    train, test = train_test_split(df, test_size=0.2, random_state=42, shuffle=True, stratify=df.POPULIST)
 
     return train, test
 
@@ -65,6 +65,9 @@ def standardize_party_naming(party):
             party = 'dielinke'
 
         if re.search(r'grunen', party):
+            party = 'grune'
+
+        if re.search(r'gruene', party):
             party = 'grune'
 
         return party
@@ -271,17 +274,15 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
     return tuples_df
 
 
-def get_svo_tuples(svo_list: list, get_components: dict):
+def get_svo_tuples_segment(svo_list: list, get_components: dict):
 
     """
-    Extract all distinct svo(+verbprefix)(+neg) tuples globally in corpus and count their occurrences
+    Extract all svo(+verbprefix)(+neg) tuples in current segment
     :param svo_list:
     :param get_components: dictionary that indicates which components to return s, v, o, verbprefix, neg
     :type get_components: dict
-    :param svo_dict_series: series of svo-triple dicts per segment
-    :type svo_dict_series: pd.Series
-    :return: df of requested tuples and their count
-    :rtype: pd.DataFrame
+    :return: array of tuples in current segment
+    :rtype: np.array
     """
 
     # Define empty list for tuples
@@ -347,8 +348,7 @@ def get_svo_tuples(svo_list: list, get_components: dict):
 
             corpus_tuples.append(current_tuple)
 
-    # Generate df
-    tuples_df = pd.DataFrame({'tuple': Counter(corpus_tuples).keys(),  # get unique values of tuples
-                              'count': Counter(corpus_tuples).values()})  # get the elements' frequency
+    # Extract tuples and tranform to array
+    segment_tuples = np.array(list(Counter(corpus_tuples).keys()))
 
-    return tuples_df
+    return segment_tuples
