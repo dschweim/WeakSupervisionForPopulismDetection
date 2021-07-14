@@ -3,7 +3,7 @@ import time
 import os
 import glob
 from lxml import etree
-from util import retrieve_year
+from util import retrieve_year, standardize_party_naming
 pd.options.mode.chained_assignment = None
 
 
@@ -171,8 +171,6 @@ class BT_Dataset:
                     # Append result to global corpus
                     df = df.append(df_speech)
 
-
-
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
 
@@ -189,6 +187,17 @@ class BT_Dataset:
         df_prep['text_date'] = df_prep['text_date'].astype(str)
         df_prep['year'] = df_prep['text_date'].apply(lambda x: retrieve_year(x))
         df_prep['year'] = df_prep['year'].astype(int)
+
+        # Replace false party name
+        df_prep['spr_party'] = df_prep['spr_party'].astype(str)
+        df_prep['spr_party'].replace({"Bremen": "SPD",
+                                      "Fraktionslos": None,
+                                      "fraktionslos": None,
+                                      "nan": None}, inplace=True)
+
+        # Standardize party naming
+        df_prep['spr_party'] = df_prep['spr_party'].apply(lambda x: standardize_party_naming(x))
+
 
         # Save to disk
         df_prep.to_csv(f'{self.output_path}\\BT_corpus_prep.csv', index=True)
