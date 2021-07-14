@@ -70,6 +70,12 @@ def standardize_party_naming(party):
         if re.search(r'gruene', party):
             party = 'grune'
 
+        if re.search(r'cdu', party):
+            party = 'cdu/csu'
+
+        if re.search(r'csu', party):
+            party = 'cdu/csu'
+
         return party
 
 
