@@ -5,6 +5,7 @@ from snorkel.preprocess.nlp import SpacyPreprocessor
 from snorkel.preprocess import preprocessor
 import numpy as np
 import Tensor2Attr
+from spacy.matcher import DependencyMatcher
 from util import extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
 
 # Define constants
@@ -200,21 +201,52 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     ## todo: Transform to array
     b = np.array([tuples_pop]).T
 
+    #
+    # @labeling_function(pre=[custom_spacy_preprocessor])
+    # def lf_dep_dict_pop_svo(x):
+    #
+    #     # Extract tuples from x #todo: put this into preprocessor
+    #     get_components = {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False}
+    #     #segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
+    #
+    #     segment_tuples = get_svo_tuples_segment(x.tuples, get_components)
+    #
+    #     if np.any(np.isin(tuples_pop, segment_tuples)):
+    #         # print('yes')
+    #         return POP
+    #     else:
+    #         return ABSTAIN
+
+    # Match patterns with help of spacy dependency matcher
+    # Define dependency matcher
+    nlp_full = spacy.load(spacy_model)
+    dep_matcher = DependencyMatcher(vocab=nlp_full.vocab)
+
+    # Define verb as anchor pattern
+    dep_pattern = [
+    {
+        'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': 'VERB'},
+        'LEMMA': {'IN': ['haben']}
+    },
+    {
+        'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+        'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['Bundesregierung']},'DEP': 'subj'}}
+    ]
+
+    dep_matcher.add('svo_verb', patterns=[dep_pattern])
 
     @labeling_function(pre=[custom_spacy_preprocessor])
     def lf_dep_dict_pop_svo(x):
 
-        # Extract tuples from x #todo: put this into preprocessor
-        get_components = {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False}
-        #segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
+        # Try to find any dep match in texts
+        dep_matches = dep_matcher(x.doc)
 
-        segment_tuples = get_svo_tuples_segment(x.tuples, get_components)
-
-        if np.any(np.isin(tuples_pop, segment_tuples)):
-            # print('yes')
+        # If length of result >0
+        if dep_matches:
+            print('test')
             return POP
         else:
-            return ABSTAIN
+            return NONPOP
 
 
     # ## Sentiment based

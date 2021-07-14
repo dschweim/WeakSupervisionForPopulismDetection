@@ -8,8 +8,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
-
 from Labeling_Functions import get_lfs
+from DEP_Matcher_Test import test_dep_matcher
 
 
 class Labeler:
@@ -56,6 +56,19 @@ class Labeler:
         NONPOP = 0
         POP = 1
 
+        # Define train & test data
+        train_data = self.train_data
+        test_data = self.test_data
+
+        # todo: Pre-process corpora with Dependency Matcher
+        #nlp_full = spacy.load(self.spacy_model)
+        #train_data['doc'] = list(nlp_full.pipe(train_data['wording_segments'])) #todo: necessary?
+        #train_data['doc'].apply(lambda x: test_dep_matcher(x))
+
+        #todo: input whole corpus in test_dep_matcher -> Retrieve corpus with additional columns for each
+        # DEP MATCHER indicating whether match exists or not (need seperate matchers to generate separate LFs)
+
+
         ## 1. Define labeling functions
         # Generate dict with ches input
         ches_14, ches_17, ches_19 = self.__prepare_labeling_input_ches()
@@ -70,10 +83,6 @@ class Labeler:
 
         # Retrieve defined labeling functions
         lfs = get_lfs(self.lf_input_dict, lf_input_ches, self.spacy_model)
-
-        # Define train & test data
-        train_data = self.train_data
-        test_data = self.test_data
 
         #L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
 
@@ -190,6 +199,8 @@ class Labeler:
 
         # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
         ches_df_14['party'] = ches_df_14['party'].apply(lambda x: standardize_party_naming(x))
+        # Keep cdu/csu only once
+        ches_df_14.drop_duplicates(keep='first', inplace=True)
 
         # Replace keys for countries
         ches_df_14['country'].replace({"ger": "de", "aus": "au", "swi": "cd"}, inplace=True)
@@ -239,6 +250,8 @@ class Labeler:
 
         # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
         ches_df_17['party'] = ches_df_17['party'].apply(lambda x: standardize_party_naming(x))
+        # Keep cdu/csu only once
+        ches_df_17.drop_duplicates(keep='first', inplace=True)
 
         # Replace keys for countries
         ches_df_17['country'].replace({"ger": "de", "aus": "au", "swi": "cd"}, inplace=True)
@@ -288,6 +301,8 @@ class Labeler:
 
         # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
         ches_df_19['party'] = ches_df_19['party'].apply(lambda x: standardize_party_naming(x))
+        # Keep cdu/csu only once
+        ches_df_19.drop_duplicates(keep='first', inplace=True)
 
         # Replace country_ids with country names
         ches_df_19['country'].replace({3: "de", 13: "au", 36: "cd"}, inplace=True)
