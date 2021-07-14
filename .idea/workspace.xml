@@ -137,11 +137,6 @@
           <line>195</line>
           <option name="timeStamp" value="478" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/util.py</url>
-          <line>279</line>
-          <option name="timeStamp" value="492" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -151,16 +146,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="np.array(list(Counter(corpus_tuples.tuple).keys()))" language="Python" />
-        <watch expression="np.append(tuples, counts,axis=1)" language="Python" />
-        <watch expression="np.reshape(counts, (3462,1))" language="Python" />
-        <watch expression="np.array((segment_tuples))" language="Python" />
-        <watch expression="Counter(corpus_tuples).keys()" language="Python" />
-        <watch expression="Counter(corpus_tuples).keys().values()" language="Python" />
-        <watch expression="np.array(corpus_tuples).flatten()" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
