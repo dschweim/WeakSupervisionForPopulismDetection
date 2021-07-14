@@ -3,15 +3,15 @@
 import pandas as pd
 import sys
 import re
+import os
 from argparse import ArgumentParser
 from NCCR_Corpus_Generator import NCCR_Dataset
 from Dict_Generator import Dict_Generator
 from Labeling_Framework import Labeler
 from BT_Corpus_Generator import BT_Dataset
 from util import generate_train_test_split, generate_train_dev_test_split
-pd.options.mode.chained_assignment = None
-import os
 
+pd.options.mode.chained_assignment = None
 sys.path.append("..")
 
 
@@ -75,13 +75,13 @@ def main(path_to_project_folder: str,
         train, test = generate_train_test_split(nccr_df_prep)
 
         # Generate Train, Dev, Test Split
-        #train, dev, test = generate_train_dev_test_split(nccr_df_prep)
+        # train, dev, test = generate_train_dev_test_split(nccr_df_prep)
 
     else:
         # Import preprocessed corpus and generate train-test-split
         nccr_df_prep = pd.read_csv(
             f'{path_to_project_folder}\\Output\\NCCR_combined_corpus_DE_wording_available_prep.csv')
-        #train, dev, test = generate_train_dev_test_split(nccr_df_prep)
+        # train, dev, test = generate_train_dev_test_split(nccr_df_prep)
         train, test = generate_train_test_split(nccr_df_prep)
 
     if generate_tfidf_dicts:
@@ -253,7 +253,7 @@ def main(path_to_project_folder: str,
     else:
         bt_corpus_prep = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus_prep.csv')
 
-        #todo: Generate train/test split for bt
+        # todo: Generate train/test split for bt
 
 
 if __name__ == "__main__":
@@ -264,7 +264,7 @@ if __name__ == "__main__":
     input_path = args.input
 
     main(path_to_project_folder=input_path,
-         spacy_model='de_core_news_lg',  #de_dep_news_trf
+         spacy_model='de_core_news_lg',  # de_dep_news_trf
 
          generate_nccr_data=False,
          preprocess_nccr_data=False,  # runs for approx 20min
@@ -273,5 +273,5 @@ if __name__ == "__main__":
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=False,
+         generate_labeling=True,
          )
