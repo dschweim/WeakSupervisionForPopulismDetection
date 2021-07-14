@@ -198,7 +198,6 @@ class BT_Dataset:
         # Standardize party naming
         df_prep['spr_party'] = df_prep['spr_party'].apply(lambda x: standardize_party_naming(x))
 
-
         # Save to disk
         df_prep.to_csv(f'{self.output_path}\\BT_corpus_prep.csv', index=True)
 
