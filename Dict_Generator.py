@@ -475,19 +475,7 @@ class Dict_Generator:
         svo_tuples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
         #Iterate over tuple combinations todo: include prefix to verb
-        combinations = [{'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}, # svo + prefix + neg
-                        {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': False},  # svo + prefix
-                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
-                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # svo
-                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # sv + neg
-                        {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # sv
-                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # vo + neg
-                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': False},  # vo
-                        {'subj': True, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False},  # so
-                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': True},  # v + neg
-                        {'subj': False, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False},  # v
-                        {'subj': True, 'verb': False, 'verbprefix': False, 'obj': False, 'neg': False},  # s
-                        {'subj': False, 'verb': False, 'verbprefix': False, 'obj': True, 'neg': False}  # o
+        combinations = [ # svo + prefix + neg
                         ]
 
         global_pop_dict = dict()
@@ -496,8 +484,6 @@ class Dict_Generator:
         for combination in combinations:
 
             get_components = combination
-            # Get number of components set to true
-            n_components = sum(get_components.values())
 
             # Generate list of all distinct svo-triples and sort by their number of occurrences
             svo_tuples_pop_list = get_all_svo_tuples(svo_tuples_pop, get_components).sort_values(by='count', ascending=False)

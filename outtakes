@@ -197,3 +197,80 @@
                 for token in current_sent: ##
                     lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text)) ##
 
+___ DEP
+
+def extract_dep_tuples(segment):
+    """
+    Retrieve tuples dict of type (subj, verb, verb_prefix, object, negation) for each verb in Segment
+    :param segment: parsed segment
+    :type segment: spacy.tokens.doc.Doc
+    :return: list of triple dicts
+    :rtype:  list
+    """
+
+    # Define individual components
+    VERBCOMPONENTS = ['svp']
+    SUBJECTS = ['sb', 'sbp']
+    OBJECTS = ['oa', 'og', 'da', 'pd'] # oc,?
+    NEGATIONS = ['ng']
+
+    # Generate empty dict list
+    triples_dict_list = []
+
+    # Extract fullverb tokens
+    verbs = [token for token in segment if token.pos_ in ['VERB', 'AUX']]
+
+    # Iterate over fullverbs
+    for verb in verbs:
+
+        # todo: only to debug
+        lemmas = [] ##
+        current_sent = verb.sent  ##
+        for token in current_sent:  ##
+            lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))  ##
+
+        # Create empty list for components
+        verb_list = []
+        verb_comp_list = []
+        subj_list = []
+        obj_list = []
+        neg_list = []
+
+        # Extract current fullverb
+        verb_list.append(verb.lemma_.lower())
+
+        # Iterate over verb dependents
+        for child in verb.children:
+
+            # Extract separable verb prefix
+            if child.dep_ in VERBCOMPONENTS:
+                verb_comp_list.append(child.lemma_.lower())
+
+            # Extract subject
+            if child.dep_ in SUBJECTS:
+                subj_list.append(child.lemma_.lower())
+
+            # Extract object
+            elif child.dep_ in OBJECTS:
+                obj_list.append(child.lemma_.lower())
+
+            # Extract negation
+            elif child.dep_ in NEGATIONS:
+                neg_list.append(child.lemma_.lower())
+
+        # if lists are empty, return None
+        if (not verb_list) & (not verb_comp_list) & (not subj_list) & (not obj_list) & (not neg_list):
+            triples_dict = None
+
+        # Else, return content
+        else:
+            triples_dict = {'subject': subj_list,
+                            'verb': verb_list,
+                            'verb_prefix': verb_comp_list,
+                            'object': obj_list,
+                            'negation': neg_list}
+
+        # Generate list with dict for each verb in Segment
+        triples_dict_list.append(triples_dict)
+
+    return triples_dict_list

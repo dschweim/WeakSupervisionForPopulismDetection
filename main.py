@@ -269,9 +269,9 @@ if __name__ == "__main__":
          generate_nccr_data=False,
          preprocess_nccr_data=False,  # runs for approx 20min
          generate_bt_data=False,  # runs for approx 15min
-         preprocess_bt_data=True,
+         preprocess_bt_data=False,
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=False,
+         generate_labeling=True,
          )
