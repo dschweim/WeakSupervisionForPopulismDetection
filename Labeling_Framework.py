@@ -61,9 +61,9 @@ class Labeler:
         test_data = self.test_data
 
         # todo: Pre-process corpora with Dependency Matcher
-        #nlp_full = spacy.load(self.spacy_model)
-        #train_data['doc'] = list(nlp_full.pipe(train_data['wording_segments'])) #todo: necessary?
-        #train_data['doc'].apply(lambda x: test_dep_matcher(x))
+        nlp_full = spacy.load(self.spacy_model)
+        train_data['doc'] = list(nlp_full.pipe(train_data['text'])) #todo: necessary?
+        train_data['doc'].apply(lambda x: test_dep_matcher(x))
 
         #todo: input whole corpus in test_dep_matcher -> Retrieve corpus with additional columns for each
         # DEP MATCHER indicating whether match exists or not (need seperate matchers to generate separate LFs)
