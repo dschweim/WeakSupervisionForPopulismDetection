@@ -2,11 +2,7 @@ import spacy
 import pandas as pd
 from snorkel.labeling import labeling_function
 from snorkel.preprocess.nlp import SpacyPreprocessor
-from snorkel.preprocess import preprocessor
-import numpy as np
-import Tensor2Attr
-from spacy.matcher import DependencyMatcher
-from util import extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
+
 
 # Define constants
 ABSTAIN = -1
@@ -27,18 +23,18 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     :rtype:  List
     """
     ## Preprocessors
-    spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=True)
+    spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=False)
 
-    @preprocessor(memoize=True)
-    def custom_spacy_preprocessor(x):
-        #nlp_trf = spacy.load("de_dep_news_trf")
-        #nlp_trf.add_pipe('tensor2attr')
-
-        nlp_full = spacy.load(spacy_model)
-        x.doc = nlp_full(x.text)
-        x.tuples = extract_dep_tuples(x.doc)
-
-        return x
+    # @preprocessor(memoize=True)
+    # def custom_spacy_preprocessor(x):
+    #     #nlp_trf = spacy.load("de_dep_news_trf")
+    #     #nlp_trf.add_pipe('tensor2attr')
+    #
+    #     nlp_full = spacy.load(spacy_model)
+    #     x.doc = nlp_full(x.text)
+    #     x.tuples = extract_dep_tuples(x.doc)
+    #
+    #     return x
 
     ## Labeling Functions
     # a) Dictionary-based labeling
@@ -193,60 +189,9 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 return ABSTAIN
 
     # c) DEP-based Labeling:
-
-    tuples_pop = \
-        lf_input['chi2_dicts_pop']['{\'subj\': True, \'verb\': True, \'verbprefix\': False, \'obj\': False, \'neg\': False}']
-
-
-    ## todo: Transform to array
-    b = np.array([tuples_pop]).T
-
-    #
-    # @labeling_function(pre=[custom_spacy_preprocessor])
-    # def lf_dep_dict_pop_svo(x):
-    #
-    #     # Extract tuples from x #todo: put this into preprocessor
-    #     get_components = {'subj': True, 'verb': True, 'verbprefix': False, 'obj': False, 'neg': False}
-    #     #segment_tuples = get_svo_tuples(x.tuples, get_components).tuple.values
-    #
-    #     segment_tuples = get_svo_tuples_segment(x.tuples, get_components)
-    #
-    #     if np.any(np.isin(tuples_pop, segment_tuples)):
-    #         # print('yes')
-    #         return POP
-    #     else:
-    #         return ABSTAIN
-
-    # Match patterns with help of spacy dependency matcher
-    # Define dependency matcher
-    # nlp_full = spacy.load(spacy_model)
-    # dep_matcher = DependencyMatcher(vocab=nlp_full.vocab)
-    #
-    # # Define verb as anchor pattern
-    # dep_pattern = [
-    # {
-    #     'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': 'VERB'},
-    #     'LEMMA': {'IN': ['haben']}
-    # },
-    # {
-    #     'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-    #     'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['Bundesregierung']},'DEP': 'subj'}}
-    # ]
-    #
-    # dep_matcher.add('svo_verb', patterns=[dep_pattern])
-    #
-    # @labeling_function(pre=[custom_spacy_preprocessor])
-    # def lf_dep_dict_pop_svo(x):
-    #
-    #     # Try to find any dep match in texts
-    #     dep_matches = dep_matcher(x.doc)
-    #
-    #     # If length of result >0
-    #     if dep_matches:
-    #         print('test')
-    #         return POP
-    #     else:
-    #         return NONPOP
+    @labeling_function()
+    def lf_dep_pop_sv(x):
+        return POP if x.sv_pop == 1 else ABSTAIN
 
 
     # ## Sentiment based
@@ -278,9 +223,10 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 lf_keywords_nccr_tfidf_country,
                 lf_keywords_nccr_chi2_glob,
                 lf_keywords_nccr_chi2_country,
-                lf_party_position_ches,
-                lf_dep_dict_pop_svo]
+                lf_dep_pop_sv,
+                lf_party_position_ches]
 
     return list_lfs
+
 
     # todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)

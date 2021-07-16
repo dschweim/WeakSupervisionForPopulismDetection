@@ -9,6 +9,7 @@ from scipy.stats import chi2_contingency
 from scipy.stats import chi2
 from util import extract_parsed_lemmas, extract_dep_tuples, get_all_svo_tuples
 
+
 class Dict_Generator:
     def __init__(
             self,
@@ -522,7 +523,6 @@ class Dict_Generator:
             tuples_nonpop = svo_tuples_grpd.count_nonpop.sum()
 
             # Only consider words with count of at least 5 #todo: remove at word count as well?
-            # todo: remove ( ) tuple (empty tuple)
             svo_tuples_grpd = svo_tuples_grpd.loc[(svo_tuples_grpd['count_pop'] >= 5) & (svo_tuples_grpd['count_nonpop'] >= 5)]
 
             # Create empty dataframes for result

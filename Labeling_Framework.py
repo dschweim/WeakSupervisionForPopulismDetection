@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import spacy
+from spacy.matcher import DependencyMatcher
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
@@ -9,8 +10,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
 from Labeling_Functions import get_lfs
-from DEP_Matcher_Test import test_dep_matcher
-
+from Dep_Match_Preprocessor import Dep_Preprocessor
 
 class Labeler:
     def __init__(
@@ -60,16 +60,15 @@ class Labeler:
         train_data = self.train_data
         test_data = self.test_data
 
-        # todo: Pre-process corpora with Dependency Matcher
-        nlp_full = spacy.load(self.spacy_model)
-        train_data['doc'] = list(nlp_full.pipe(train_data['text'])) #todo: necessary?
-        train_data['doc'].apply(lambda x: test_dep_matcher(x))
-
         #todo: input whole corpus in test_dep_matcher -> Retrieve corpus with additional columns for each
         # DEP MATCHER indicating whether match exists or not (need seperate matchers to generate separate LFs)
 
+        spacy_dep_prep = Dep_Preprocessor(train_data=train_data,
+                                          test_data=test_data,
+                                          spacy_model=self.spacy_model)
 
-        ## 1. Define labeling functions
+        spacy_dep_prep.setup_dep_matcher()
+
         # Generate dict with ches input
         ches_14, ches_17, ches_19 = self.__prepare_labeling_input_ches()
         lf_input_ches = {}
@@ -110,7 +109,6 @@ class Labeler:
                                         'text': train_data.text,
                                         'label': train_data.POPULIST,
                                          'lf_tfidf_global': L_train[:, 5]})
-
 
         ## 3. Generate label model
         # Baseline: Majority Model

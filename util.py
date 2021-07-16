@@ -241,8 +241,8 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                 neg = ', '.join(current_val[4])  # negation
 
                 # Generate requested tuple and append to global list
-                if get_subj & get_verb & get_verbprefix & get_obj & get_neg:  # svo + prefix + neg
-                    current_tuple = (subj, verb, verb_prefix, obj, neg)
+                if get_subj & get_verb & get_verbprefix & get_obj & get_neg:
+                    current_tuple = (subj, verb, verb_prefix, obj, neg) # svo + prefix + neg
                 elif get_subj & get_verb & get_verbprefix & get_obj & (not get_neg):  # svo + prefix
                     current_tuple = (subj, verb, verb_prefix, obj)
 
@@ -278,14 +278,13 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                 else:  # not implemented
                     raise Exception('This svo combination is not supported')
 
-                tuple = pd.DataFrame({'tuple': [current_tuple],
-                                       'source': [index]})
-                corpus_tuples = corpus_tuples.append(tuple)
+                # ignore tuples with empty components
+                if all(current_tuple):
+                    tuple = pd.DataFrame({'tuple': [current_tuple],
+                                           'source': [index]})
+                    corpus_tuples = corpus_tuples.append(tuple)
 
-    # todo: temp Generate df
-    # tuples_df = pd.DataFrame({'tuple': Counter(corpus_tuples.tuple).keys(),  # get unique values of tuples
-    #                           'count': Counter(corpus_tuples.tuple).values()})  # get the elements' frequency
-
+    # Generate df
     tuples_df = corpus_tuples.groupby('tuple', as_index=False).agg({'tuple': ['first', 'count'],
                                                                     'source': lambda x: list(x)})
 
