@@ -2,6 +2,7 @@ import spacy
 from snorkel.labeling import labeling_function
 from snorkel.preprocess import preprocessor
 from snorkel.preprocess.nlp import SpacyPreprocessor
+from spacy.language import Language
 from spacy.matcher import DependencyMatcher
 
 # Define constants
@@ -23,16 +24,27 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     :rtype:  List
     """
     ## Preprocessors
-    spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=True)
+    #spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=True)
 
-    # @preprocessor(memoize=True)
-    # def custom_spacy_preprocessor(x):
-    #
-    #     nlp_full = spacy.load(spacy_model)
-    #     x.doc = nlp_full(x.text)
-    #     x.tuples = extract_dep_tuples(x.doc)
-    #
-    #     return x
+    # Create custom component that converts lemmas to lower case
+    @Language.component('lower_case_lemmas')
+    def lower_case_lemmas(doc):
+        for token in doc:
+            token.lemma_ = token.lemma_.lower()
+        return doc
+
+    # Add custom component to pipe
+    nlp_label = spacy.load(spacy_model, exclude=['ner', 'attribute_ruler'])
+    nlp_label.add_pipe("lower_case_lemmas", last=True)
+
+    # Define custom spacy preprocessor
+    @preprocessor(memoize=True)
+    def spacy_preprocessor(x):
+        x.doc = nlp_label(x.text)
+        for token in x.doc:
+            print(token)
+            print(token.lemma_)
+        return x
 
     ## Labeling Functions
     # a) Dictionary-based labeling
@@ -66,13 +78,13 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     lemmas_schwarzbozl = list(nlp.pipe(keywords_schwarzbozl))
 
     for i in range(len(lemmas_schwarzbozl)):
-        lemmas_schwarzbozl[i] = lemmas_schwarzbozl[i].doc[0].lemma_.lower()
+        lemmas_schwarzbozl[i] = lemmas_schwarzbozl[i].doc[0].lemma_
 
     @labeling_function(pre=[spacy_preprocessor])
     def lf_lemma_schwarzbozl(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
-            lemmas_doc.append(token.lemma_.lower())
+            lemmas_doc.append(token.lemma_)
         if any(lemma in lemmas_doc for lemma in lemmas_schwarzbozl):
             return POP
         else:
@@ -88,13 +100,13 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     lemmas_roodujin = list(nlp.pipe(keywords_rooduijn))
 
     for i in range(len(lemmas_roodujin)):
-        lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_.lower()
+        lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_
 
     @labeling_function(pre=[spacy_preprocessor])
     def lf_lemma_rooduijn(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
-            lemmas_doc.append(token.lemma_.lower())
+            lemmas_doc.append(token.lemma_)
         # lemmas_doc = [x.lower() for x in lemmas_doc]
         if any(lemma in lemmas_doc for lemma in lemmas_roodujin):
             return POP
@@ -187,8 +199,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     # c) DEP-based Labeling:
     # Match patterns with help of spacy dependency matcher
     # Define dependency matcher
-    nlp_full = spacy.load(spacy_model)
-    dep_matcher = DependencyMatcher(vocab=nlp_full.vocab)
+    dep_matcher = DependencyMatcher(vocab=nlp_label.vocab)
 
     VERBS = ['VERB', 'AUX']
     VERBCOMPONENTS = ['svp']
@@ -362,7 +373,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['haben']}
+                'LEMMA': 'haben'
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
@@ -373,7 +384,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['haben']}
+                'LEMMA': 'haben'
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
@@ -471,7 +482,11 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
+
+        # todo: for debugging only
+        # for token in x.doc:
+        #     print(token.text, token.dep_, token.pos_, token.lemma_)
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -484,7 +499,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -497,7 +512,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -510,7 +525,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -523,7 +538,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -536,7 +551,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -549,7 +564,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return NONPOP
         if dep_matches:
@@ -562,7 +577,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return NONPOP
         if dep_matches:
@@ -575,7 +590,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return NONPOP
         if dep_matches:
@@ -588,7 +603,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return NONPOP
         if dep_matches:
@@ -601,7 +616,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return NONPOP
         if dep_matches:
@@ -614,7 +629,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
 
         # If match and pattern name equals current lfs pattern, return NONPOP
         if dep_matches:
