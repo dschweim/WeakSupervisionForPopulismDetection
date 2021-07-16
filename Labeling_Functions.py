@@ -41,9 +41,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     @preprocessor(memoize=True)
     def spacy_preprocessor(x):
         x.doc = nlp_label(x.text)
-        for token in x.doc:
-            print(token)
-            print(token.lemma_)
         return x
 
     ## Labeling Functions
