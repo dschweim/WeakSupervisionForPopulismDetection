@@ -10,7 +10,6 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
 from Labeling_Functions import get_lfs
-from Dep_Match_Preprocessor import Dep_Preprocessor
 
 class Labeler:
     def __init__(
@@ -59,15 +58,6 @@ class Labeler:
         # Define train & test data
         train_data = self.train_data
         test_data = self.test_data
-
-        #todo: input whole corpus in test_dep_matcher -> Retrieve corpus with additional columns for each
-        # DEP MATCHER indicating whether match exists or not (need seperate matchers to generate separate LFs)
-
-        spacy_dep_prep = Dep_Preprocessor(train_data=train_data,
-                                          test_data=test_data,
-                                          spacy_model=self.spacy_model)
-
-        spacy_dep_prep.setup_dep_matcher()
 
         # Generate dict with ches input
         ches_14, ches_17, ches_19 = self.__prepare_labeling_input_ches()

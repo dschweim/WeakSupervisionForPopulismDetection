@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="736a070f-e652-4065-9aa2-d8f38d4ea763" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -124,7 +127,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/util.py</url>
-          <line>298</line>
+          <line>299</line>
           <option name="timeStamp" value="499" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -133,14 +136,9 @@
           <option name="timeStamp" value="513" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>83</line>
-          <option name="timeStamp" value="519" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>80</line>
-          <option name="timeStamp" value="524" />
+          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
+          <line>473</line>
+          <option name="timeStamp" value="545" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -151,5 +149,13 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="dep_matches[0]" language="Python" />
+        <watch expression="nlp_full.vocab[dep_matches[0]]" language="Python" />
+        <watch expression="nlp_full = spacy.load(spacy_model)" language="Python" />
+        <watch expression="token.lemma_" language="Python" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

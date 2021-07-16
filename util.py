@@ -135,6 +135,7 @@ def extract_dep_tuples(segment):
     """
 
     # Define individual components
+    VERBS = ['VERB', 'AUX']
     VERBCOMPONENTS = ['svp']
     SUBJECTS = ['sb', 'sbp']
     OBJECTS = ['oa', 'og', 'da', 'pd'] # oc,?
@@ -144,7 +145,7 @@ def extract_dep_tuples(segment):
     triples_dict_list = []
 
     # Extract fullverb tokens
-    verbs = [token for token in segment if token.pos_ in ['VERB', 'AUX']]
+    verbs = [token for token in segment if token.pos_ in VERBS]
 
     # Iterate over fullverbs
     for verb in verbs:

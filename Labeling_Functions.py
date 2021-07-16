@@ -1,8 +1,8 @@
 import spacy
-import pandas as pd
 from snorkel.labeling import labeling_function
+from snorkel.preprocess import preprocessor
 from snorkel.preprocess.nlp import SpacyPreprocessor
-
+from spacy.matcher import DependencyMatcher
 
 # Define constants
 ABSTAIN = -1
@@ -23,12 +23,10 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     :rtype:  List
     """
     ## Preprocessors
-    spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=False)
+    spacy_preprocessor = SpacyPreprocessor(text_field="text", doc_field="doc", language=spacy_model, memoize=True)
 
     # @preprocessor(memoize=True)
     # def custom_spacy_preprocessor(x):
-    #     #nlp_trf = spacy.load("de_dep_news_trf")
-    #     #nlp_trf.add_pipe('tensor2attr')
     #
     #     nlp_full = spacy.load(spacy_model)
     #     x.doc = nlp_full(x.text)
@@ -68,14 +66,13 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     lemmas_schwarzbozl = list(nlp.pipe(keywords_schwarzbozl))
 
     for i in range(len(lemmas_schwarzbozl)):
-        lemmas_schwarzbozl[i] = lemmas_schwarzbozl[i].doc[0].lemma_
+        lemmas_schwarzbozl[i] = lemmas_schwarzbozl[i].doc[0].lemma_.lower()
 
     @labeling_function(pre=[spacy_preprocessor])
     def lf_lemma_schwarzbozl(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
-            lemmas_doc.append(token.lemma_)
-        #lemmas_doc = [x.lower() for x in lemmas_doc]
+            lemmas_doc.append(token.lemma_.lower())
         if any(lemma in lemmas_doc for lemma in lemmas_schwarzbozl):
             return POP
         else:
@@ -91,13 +88,13 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     lemmas_roodujin = list(nlp.pipe(keywords_rooduijn))
 
     for i in range(len(lemmas_roodujin)):
-        lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_
+        lemmas_roodujin[i] = lemmas_roodujin[i].doc[0].lemma_.lower()
 
     @labeling_function(pre=[spacy_preprocessor])
     def lf_lemma_rooduijn(x):
         lemmas_doc = []  # Concatenate lemmas per doc
         for token in x.doc:
-            lemmas_doc.append(token.lemma_)
+            lemmas_doc.append(token.lemma_.lower())
         # lemmas_doc = [x.lower() for x in lemmas_doc]
         if any(lemma in lemmas_doc for lemma in lemmas_roodujin):
             return POP
@@ -152,7 +149,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         elif x.Sample_Country == 'de':
             return POP if any(keyword in x.text.lower() for keyword in lf_input['chi2_keywords_de']) else ABSTAIN
 
-
     # b) External Knowledge-based Labeling
     # LF based on party position estimated in CHES
     ches_14 = lf_input_ches['ches_14']
@@ -189,10 +185,442 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 return ABSTAIN
 
     # c) DEP-based Labeling:
-    @labeling_function()
-    def lf_dep_pop_sv(x):
-        return POP if x.sv_pop == 1 else ABSTAIN
+    # Match patterns with help of spacy dependency matcher
+    # Define dependency matcher
+    nlp_full = spacy.load(spacy_model)
+    dep_matcher = DependencyMatcher(vocab=nlp_full.vocab)
 
+    VERBS = ['VERB', 'AUX']
+    VERBCOMPONENTS = ['svp']
+    SUBJECTS = ['sb', 'sbp']
+    OBJECTS = ['oa', 'og', 'da', 'pd']  # oc,?
+    NEGATIONS = ['ng']
+
+    # DEFINE POP PATTERNS (Verb as anchor pattern)
+    pop_patterns_sv = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['haben']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['bundesregierung']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['können']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['ich']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['können']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['man']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['haben']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['regierung']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['haben']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['grüne']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ]
+    ]
+
+    pop_patterns_vo = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': 'stellen'
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
+                                                      'DEP': {'IN': OBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': 'erweisen'
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
+                                                      'DEP': {'IN': OBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': 'haben'
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'recht',
+                                                      'DEP': {'IN': OBJECTS}}
+            }
+        ]
+    ]
+
+    pop_patterns_vneg = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': 'werden'
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'negation', 'RIGHT_ATTRS': {'LEMMA': 'nicht',
+                                                        'DEP': {'IN': NEGATIONS}}
+            }
+        ]
+
+    ]
+
+    pop_patterns_v = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['erhalten', 'sein', 'lässt', 'erhöhen', 'schützen', 'leben', 'beenden', 'richten',
+                                 'verkaufen', 'entstehen', 'kommen', 'werden', 'zustimmen', 'heißen', 'erfüllen',
+                                 'bestätigen', 'führen', 'lernen', 'verpflichten', 'soll', 'befürworten',
+                                 'bezeichnen', 'geben', 'sollen', 'treffen', 'stimmen', 'sparen', 'abbauen',
+                                 'bekommen', 'sichern', 'kommentieren', 'bedienen', 'erlauben', 'beginnen', 'umsetzen',
+                                 'korrigieren']}
+            }
+        ]
+
+    ]
+
+    pop_patterns_s = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['bundesregierung', 'regierung', 'politiker',
+                                                                        'prozent', 'npd', 'banken', 'linke', 'zahl',
+                                                                        'million', 'staat', 'mensch', 'fpö', 'stnderat',
+                                                                        'von', 'sozialdemokrat', 'arbeitslosigkeit',
+                                                                        'eu', 'dies', 'unternehmen', 'ziel']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ]
+
+    ]
+
+    pop_patterns_o = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['politik', 'möglichkeit', 'geld', 'recht',
+                                                                       'prozent', 'mensch', 'arbeit', 'schutz',
+                                                                       'aufklärung', 'voraussetzung', 'ich', 'ausbau',
+                                                                       'bürger', 'debatte', 'rolle']},
+                                                      'DEP': {'IN': OBJECTS}}
+            }
+        ]
+
+    ]
+
+    # DEFINE NONPOP PATTERNS (Verb as anchor pattern)
+    nonpop_patterns_sv = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['haben']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['spö']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['haben']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['övp']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ]
+    ]
+
+    nonpop_patterns_vo = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['zeigen', 'setzen']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
+                                                      'DEP': {'IN': OBJECTS}}
+            }
+        ]
+    ]
+
+    nonpop_patterns_vneg = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['können', 'wollen']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'negation', 'RIGHT_ATTRS': {'LEMMA': 'nicht',
+                                                        'DEP': {'IN': NEGATIONS}}
+            }
+        ]
+    ]
+
+    nonpop_patterns_v = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['muss', 'halten', 'haben', 'betonen', 'bringen', 'habe', 'zeigen',  'leisten',
+                                 'finanzieren', 'fordern', 'handeln', 'erreichen', 'sprechen', 'kritisieren',
+                                 'einsetzen', 'nutzen', 'verlangen',  'legen', 'vorlegen', 'fahren', 'folgen',
+                                 'blockieren']}
+            }
+        ]
+    ]
+
+    nonpop_patterns_s = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['övp', 'spö', 'spd', 'spindelegger', 'faymann',
+                                                                        'österreich', 'vorsitzende', 'was', 'svp',
+                                                                        'bzö', 'bundesrat']}, 'DEP': {'IN': SUBJECTS}}
+            }
+        ]
+
+    ]
+
+    nonpop_patterns_o = [
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['vorschlag', 'alle', 'wichtig']},
+                                                      'DEP': {'IN': OBJECTS}}
+            }
+        ]
+
+    ]
+
+    dep_matcher.add('pop_sv', patterns=pop_patterns_sv)
+    dep_matcher.add('pop_vo', patterns=pop_patterns_vo)
+    dep_matcher.add('pop_vneg', patterns=pop_patterns_vneg)
+    dep_matcher.add('pop_v', patterns=pop_patterns_v)
+    dep_matcher.add('pop_s', patterns=pop_patterns_s)
+    dep_matcher.add('pop_o', patterns=pop_patterns_o)
+
+    dep_matcher.add('nonpop_sv', patterns=nonpop_patterns_sv)
+    dep_matcher.add('nonpop_vo', patterns=nonpop_patterns_vo)
+    dep_matcher.add('nonpop_vneg', patterns=nonpop_patterns_vneg)
+    dep_matcher.add('nonpop_v', patterns=nonpop_patterns_v)
+    dep_matcher.add('nonpop_s', patterns=nonpop_patterns_s)
+    dep_matcher.add('nonpop_o', patterns=nonpop_patterns_o)
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_sv(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_sv' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_vo(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_vo' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_vneg(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_vneg' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_v(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_v' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_s(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_s' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_o(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_o' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_sv(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_sv' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_vo(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_vo' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_vneg(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_vneg' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_v(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_v' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_s(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_s' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_o(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_full.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_o' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
 
     # ## Sentiment based
     # nlp = spacy.load('de_core_news_lg')
@@ -212,7 +640,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     # for sentence in blob.sentences:
     #     print(sentence.sentiment.polarity)
 
-
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl,
                 lf_lemma_schwarzbozl,
@@ -223,10 +650,23 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 lf_keywords_nccr_tfidf_country,
                 lf_keywords_nccr_chi2_glob,
                 lf_keywords_nccr_chi2_country,
+
                 lf_dep_pop_sv,
+                lf_dep_pop_vo,
+                lf_dep_pop_vneg,
+                lf_dep_pop_v,
+                lf_dep_pop_s,
+                lf_dep_pop_o,
+
+                lf_dep_nonpop_sv,
+                lf_dep_nonpop_vo,
+                lf_dep_nonpop_vneg,
+                lf_dep_nonpop_v,
+                lf_dep_nonpop_s,
+                lf_dep_nonpop_o,
+
                 lf_party_position_ches]
 
     return list_lfs
-
 
     # todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)
