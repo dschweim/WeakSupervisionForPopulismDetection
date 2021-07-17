@@ -1,7 +1,5 @@
 import pandas as pd
 import re
-import spacy
-from spacy.matcher import DependencyMatcher
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
@@ -10,6 +8,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
 from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
 from Labeling_Functions import get_lfs
+
 
 class Labeler:
     def __init__(
@@ -96,7 +95,7 @@ class Labeler:
         #buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
 
         comparison_table = pd.DataFrame({'ID': train_data.ID,
-                                        'text': train_data.text,
+                                        'content': train_data.content,
                                         'label': train_data.POPULIST,
                                          'lf_tfidf_global': L_train[:, 5]})
 
@@ -136,8 +135,8 @@ class Labeler:
 
         vectorizer = CountVectorizer(ngram_range=(1, 5))
         #vectorizer = TfidfVectorizer()
-        X_train = vectorizer.fit_transform(df_train_filtered.text.tolist())
-        X_test = vectorizer.transform(test_data.text.tolist())
+        X_train = vectorizer.fit_transform(df_train_filtered.content.tolist())
+        X_test = vectorizer.transform(test_data.content.tolist())
 
         preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
 
@@ -147,6 +146,8 @@ class Labeler:
         sklearn_model.fit(X=X_train, y=preds_train_filtered)
 
         print(f"Test Accuracy: {sklearn_model.score(X=X_test, y=Y_test) * 100:.1f}%")
+
+
 
     def __prepare_labeling_input_ches(self):
         """

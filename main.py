@@ -224,8 +224,8 @@ def main(path_to_project_folder: str,
                            'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
                          'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
-        train_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
-        test_sub.rename({'wording_segments': 'text'}, axis=1, inplace=True)
+        train_sub.rename({'wording_segments': 'content'}, axis=1, inplace=True)
+        test_sub.rename({'wording_segments': 'content'}, axis=1, inplace=True)
 
         print('TRAIN EXAMPLES: ' + str(len(train)))
         print('TEST EXAMPLES: ' + str(len(test)))
@@ -254,6 +254,15 @@ def main(path_to_project_folder: str,
         bt_corpus_prep = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus_prep.csv')
 
         # todo: Generate train/test split for bt
+
+    #todo: try to extract additonal labeling fcts from Key messages
+
+    # Import corpus with populism labels
+    data_path = f'{path_to_project_folder}\\Data'
+    target_table = pd.read_csv(f'{data_path}\\NCCR_Content\\NCCR_Content\\Target_Table.txt', delimiter="\t", encoding="ISO-8859-1")
+
+    train_x_target = target_table
+
 
 
 if __name__ == "__main__":
