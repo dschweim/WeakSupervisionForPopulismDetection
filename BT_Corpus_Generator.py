@@ -47,7 +47,7 @@ class BT_Dataset:
 
             speech_elec_period = root.find('.//kopfdaten/plenarprotokoll-nummer/wahlperiode')
             if speech_elec_period is not None:
-                speech_elec_period =  speech_elec_period.text
+                speech_elec_period = speech_elec_period.text
 
             speech_session_nr = root.find('.//kopfdaten/plenarprotokoll-nummer/sitzungsnr')
             if speech_session_nr is not None:
