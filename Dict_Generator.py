@@ -62,7 +62,7 @@ class Dict_Generator:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Fit vectorizer on whole corpus
         vectorizer.fit(df['wording_segments'])
@@ -114,7 +114,7 @@ class Dict_Generator:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
@@ -184,7 +184,7 @@ class Dict_Generator:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=False)
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -245,7 +245,7 @@ class Dict_Generator:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=False)
+        vectorizer = CountVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Generate two docs from corpus (POP and NON-POP)
         df_pop = df.loc[df['POPULIST'] == 1]
@@ -344,7 +344,7 @@ class Dict_Generator:
         start = time.time()
 
         # Define vectorizer
-        vectorizer = CountVectorizer(lowercase=False)
+        vectorizer = CountVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
 
         # Group data by country
         df_country_grpd = df.groupby('Sample_Country')
