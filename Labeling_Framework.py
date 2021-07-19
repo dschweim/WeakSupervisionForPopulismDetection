@@ -7,7 +7,6 @@ from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
-from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import RandomizedSearchCV
@@ -158,12 +157,12 @@ class Labeler:
         labeled_df_train = pd.DataFrame()
         labeled_df_train['content'] = df_train_filtered['content']
         labeled_df_train['label'] = preds_train_filtered
-        labeled_df_train.to_csv(f'{self.output_path}\\labeled_df_train.csv')
+        labeled_df_train.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_train.csv')
 
         labeled_df_test = pd.DataFrame()
         labeled_df_test['content'] = test_data['content']
         labeled_df_test['label'] = test_data['POPULIST']
-        labeled_df_test.to_csv(f'{self.output_path}\\labeled_df_test.csv')
+        labeled_df_test.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_test.csv')
 
         if classifier == BERT:
             ## Run BERT classifier:
