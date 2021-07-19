@@ -249,11 +249,15 @@ def main(path_to_project_folder: str,
 
         base_models = [LOGREG, SVC, RF]
         base_features = [COUNT, TFIDF]
+        transformer_models = [BERT]
 
         # Run Snorkel Labeling
-        for model in base_models:
-            for feature in base_features:
-                nccr_labeler.run_labeling(classifier=model, feature=feature)
+        # for model in base_models:
+        #     for feature in base_features:
+        #         nccr_labeler.run_labeling(classifier=model, feature=feature)
+        #
+        for model in transformer_models:
+            nccr_labeler.run_labeling(classifier=model, feature=None)
 
     if generate_bt_data:
         bt_corpus = bt_df.generate_bt_corpus()

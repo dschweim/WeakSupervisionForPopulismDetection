@@ -15,7 +15,7 @@ from sklearn.model_selection import RandomizedSearchCV
 
 from util import standardize_party_naming
 from Labeling_Functions import get_lfs
-
+from BERT_Classifier import run_transformer
 
 class Labeler:
     def __init__(
@@ -52,7 +52,12 @@ class Labeler:
 
     def run_labeling(self, classifier, feature):
         """
-        Generate labels on initialized dataframe using Snorkel
+        Generate labels on initialized dataframe using Snorkel label model and run classifier as end model,
+        then print and store results
+        :param classifier: end model to run on labeled corpus
+        :type classifier: str
+        :param feature: vectorization used for text in end model
+        :type feature: str
         :return:
         :rtype:
         """
@@ -151,12 +156,22 @@ class Labeler:
         preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
 
         if classifier == BERT:
-            ## Run BERT classifier:
-            print('tbd')
-            #BERT_Clasifier(X_train=df_train_filtered.content.tolist(),Y_train=preds_train_filtered,
-            # X_test=test_data.content.tolist(), Y_test=test_data.POPULIST, model_name='bert-base-german-cased')
-        else:
+            #todo: temp
+            df_train_filtered = df_train_filtered.head(10)
+            preds_train_filtered = preds_train_filtered[:10]
 
+
+            ## Run BERT classifier:
+            Y_pred = run_transformer(X=df_train_filtered.content.tolist(), y=preds_train_filtered,
+                                     X_test=test_data.content.tolist(),
+                                     model_name='bert-base-german-cased')
+
+            print(f"Model Test Accuracy: {accuracy_score(Y_test, Y_pred)}")
+            print(f"Model Test Precision: {precision_score(Y_test, Y_pred)}")
+            print(f"Model Test Recall: {recall_score(Y_test, Y_pred)}")
+            print(f"Model Test F1: {f1_score(Y_test, Y_pred, average='binary')}")
+
+        else:
             if feature == COUNT:
                 vectorizer = CountVectorizer(ngram_range=(1, 5))
             elif feature == TFIDF:
@@ -238,12 +253,17 @@ class Labeler:
                                        'f1': [f1_score(Y_test, Y_pred, average='binary')],
                                        'timestamp': [timestamp]
                                        })
+            results_df = results_df.set_index(['model', 'vectorization'])
 
             # If results file exists, append results to file
-            if os.path.isfile(f'{self.output_path}\\Results\\results.csv'): #todo: only keep newest run
-                prev_results = pd.read_csv(f'{self.output_path}\\Results\\results.csv')
+            if os.path.isfile(f'{self.output_path}\\Results\\results.csv'): #todo:
+                prev_results = pd.read_csv(f'{self.output_path}\\Results\\results.csv',
+                                           index_col=['model', 'vectorization'])
 
                 results_df = results_df.append(prev_results)
+
+                # only keep newest run
+                results_df = results_df[~results_df.index.duplicated()].sort_index()
 
             results_df.to_csv(f'{self.output_path}\\Results\\results.csv')
 
