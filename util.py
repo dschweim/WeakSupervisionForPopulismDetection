@@ -1,8 +1,11 @@
-from sklearn.model_selection import train_test_split
+import os
 import numpy as np
 import re
 import pandas as pd
+from datetime import datetime
+from sklearn.model_selection import train_test_split
 from collections import Counter
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
 
 def generate_train_test_split(df):
@@ -96,6 +99,7 @@ def retrieve_year(date: str):
     else:
         return year.group(1)
 
+
 def extract_parsed_lemmas(segment):
     """
     Retrieve lemma, pos tag, dependence tag, and corresponding head token for each token in segment
@@ -138,7 +142,7 @@ def extract_dep_tuples(segment):
     VERBS = ['VERB', 'AUX']
     VERBCOMPONENTS = ['svp']
     SUBJECTS = ['sb', 'sbp']
-    OBJECTS = ['oa', 'og', 'da', 'pd'] # oc,?
+    OBJECTS = ['oa', 'og', 'da', 'pd']  # oc,?
     NEGATIONS = ['ng']
 
     # Generate empty dict list
@@ -151,7 +155,7 @@ def extract_dep_tuples(segment):
     for verb in verbs:
 
         # todo: only to debug
-        lemmas = [] ##
+        lemmas = []  ##
         current_sent = verb.sent  ##
         for token in current_sent:  ##
             lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))  ##
@@ -204,7 +208,6 @@ def extract_dep_tuples(segment):
 
 
 def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
-
     """
     Extract all distinct svo(+verbprefix)(+neg) tuples globally in corpus and count their occurrences
     :param get_components: dictionary that indicates which components to return s, v, o, verbprefix, neg
@@ -235,15 +238,15 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                 current_val = list(elem.values())
 
                 # Extract requested components + negation in any case
-                subj = ', '.join(current_val[0]) # subject
-                verb = ', '.join(current_val[1]) # verb
+                subj = ', '.join(current_val[0])  # subject
+                verb = ', '.join(current_val[1])  # verb
                 verb_prefix = ', '.join(current_val[2])  # verb_prefix
                 obj = ', '.join(current_val[3])  # object
                 neg = ', '.join(current_val[4])  # negation
 
                 # Generate requested tuple and append to global list
                 if get_subj & get_verb & get_verbprefix & get_obj & get_neg:
-                    current_tuple = (subj, verb, verb_prefix, obj, neg) # svo + prefix + neg
+                    current_tuple = (subj, verb, verb_prefix, obj, neg)  # svo + prefix + neg
                 elif get_subj & get_verb & get_verbprefix & get_obj & (not get_neg):  # svo + prefix
                     current_tuple = (subj, verb, verb_prefix, obj)
 
@@ -282,7 +285,7 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                 # ignore tuples with empty components
                 if all(current_tuple):
                     tuple = pd.DataFrame({'tuple': [current_tuple],
-                                           'source': [index]})
+                                          'source': [index]})
                     corpus_tuples = corpus_tuples.append(tuple)
 
     # Generate df
@@ -298,7 +301,6 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
 
 
 def get_svo_tuples_segment(svo_list: list, get_components: dict):
-
     """
     Extract all svo(+verbprefix)(+neg) tuples in current segment
     :param svo_list:
@@ -375,3 +377,56 @@ def get_svo_tuples_segment(svo_list: list, get_components: dict):
     segment_tuples = np.array(list(Counter(corpus_tuples).keys()))
 
     return segment_tuples
+
+
+def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, Y_pred, hyperparameters):
+    """
+    Print results in console and store them in csv (merging with previous results)
+    :param output_path: path to data output
+    :type output_path: str
+    :param classifier: model used in current run
+    :type classifier: str
+    :param feature: vectorization used in current run
+    :type feature: str
+    :param Y_test: ground truth labels of test set
+    :type Y_test: list
+    :param Y_pred: predicted labels of test set
+    :type Y_pred: list
+    :param hyperparameters: tuned hyperparameters retrieved from model
+    :type hyperparameters: dict
+    :return:
+    :rtype:
+    """
+
+    print('---------------------------------------')
+    print(f"Model: {classifier}, Feature: {feature}")
+    print(f"Model Test Accuracy: {accuracy_score(Y_test, Y_pred)}")
+    print(f"Model Test Precision: {precision_score(Y_test, Y_pred)}")
+    print(f"Model Test Recall: {recall_score(Y_test, Y_pred)}")
+    print(f"Model Test F1: {f1_score(Y_test, Y_pred, average='binary')}")
+
+    # Save results
+    timestamp = datetime.now().strftime("%d-%m-%Y %H-%M-%S")
+
+    results_df = pd.DataFrame({'model': [classifier],
+                               'vectorization': [feature],
+                               'hyperparameters': [hyperparameters],
+                               'accuracy': [accuracy_score(Y_test, Y_pred)],
+                               'precision': [precision_score(Y_test, Y_pred)],
+                               'recall': [recall_score(Y_test, Y_pred)],
+                               'f1': [f1_score(Y_test, Y_pred, average='binary')],
+                               'timestamp': [timestamp]
+                               })
+    results_df = results_df.set_index(['model', 'vectorization'])
+
+    # If results file exists, append results to file
+    if os.path.isfile(f'{output_path}\\Results\\results.csv'):
+        prev_results = pd.read_csv(f'{output_path}\\Results\\results.csv',
+                                   index_col=['model', 'vectorization'])
+
+        results_df = results_df.append(prev_results)
+
+        # only keep newest run
+        results_df = results_df[~results_df.index.duplicated()].sort_index()
+
+    results_df.to_csv(f'{output_path}\\Results\\results.csv')

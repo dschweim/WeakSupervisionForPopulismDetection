@@ -1,7 +1,6 @@
-import os
 import pandas as pd
 import re
-from datetime import datetime
+
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
@@ -13,7 +12,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import RandomizedSearchCV
 
-from util import standardize_party_naming
+from util import standardize_party_naming, output_and_store_endmodel_results
 from Labeling_Functions import get_lfs
 from BERT_Classifier import run_transformer
 
@@ -166,10 +165,10 @@ class Labeler:
                                      X_test=test_data.content.tolist(),
                                      model_name='bert-base-german-cased')
 
-            print(f"Model Test Accuracy: {accuracy_score(Y_test, Y_pred)}")
-            print(f"Model Test Precision: {precision_score(Y_test, Y_pred)}")
-            print(f"Model Test Recall: {recall_score(Y_test, Y_pred)}")
-            print(f"Model Test F1: {f1_score(Y_test, Y_pred, average='binary')}")
+            # Print and save results
+            output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
+                                              Y_test=Y_test, Y_pred=Y_pred, hyperparameters='none')
+            #todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
 
         else:
             if feature == COUNT:
@@ -229,43 +228,15 @@ class Labeler:
             rs = RandomizedSearchCV(estimator=sklearn_model, param_distributions=parameters, scoring="f1", cv=5,
                                     n_jobs=-2, verbose=1, n_iter=100, refit=True)
 
+            # Fit model
             rs.fit(X=X_train, y=preds_train_filtered)
 
+            # Predict test data
             Y_pred = rs.best_estimator_.predict(X_test)
 
-            # Print results
-            print('---------------------------------------')
-            print(f"Model: {classifier}, Feature: {feature}")
-            print(f"Model Test Accuracy: {accuracy_score(Y_test, Y_pred)}")
-            print(f"Model Test Precision: {precision_score(Y_test, Y_pred)}")
-            print(f"Model Test Recall: {recall_score(Y_test, Y_pred)}")
-            print(f"Model Test F1: {f1_score(Y_test, Y_pred, average='binary')}")
-
-            # Save results
-            timestamp = datetime.now().strftime("%d-%m-%Y %H-%M-%S")
-
-            results_df = pd.DataFrame({'model': [classifier],
-                                       'vectorization': [feature],
-                                       'hyperparameters': [rs.best_params_],
-                                       'accuracy': [accuracy_score(Y_test, Y_pred)],
-                                       'precision': [ precision_score(Y_test, Y_pred)],
-                                       'recall': [recall_score(Y_test, Y_pred)],
-                                       'f1': [f1_score(Y_test, Y_pred, average='binary')],
-                                       'timestamp': [timestamp]
-                                       })
-            results_df = results_df.set_index(['model', 'vectorization'])
-
-            # If results file exists, append results to file
-            if os.path.isfile(f'{self.output_path}\\Results\\results.csv'): #todo:
-                prev_results = pd.read_csv(f'{self.output_path}\\Results\\results.csv',
-                                           index_col=['model', 'vectorization'])
-
-                results_df = results_df.append(prev_results)
-
-                # only keep newest run
-                results_df = results_df[~results_df.index.duplicated()].sort_index()
-
-            results_df.to_csv(f'{self.output_path}\\Results\\results.csv')
+            # Print and save results
+            output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
+                                              Y_test=Y_test, Y_pred=Y_pred, hyperparameters=rs.best_params_)
 
     def __prepare_labeling_input_ches(self):
         """
