@@ -23,7 +23,6 @@ class Dataset(torch.utils.data.Dataset):
 
 def run_transformer(X, y, X_test, model_name):
 
-    y = y.tolist()
     # Instantiate Tokenizer
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
@@ -63,22 +62,9 @@ def run_transformer(X, y, X_test, model_name):
     test_dataset = Dataset(X_test_tokenized)
 
     # Make prediction
-    y_pred = trainer.predict(test_dataset)
-    #raw_pred, _, _ = test_trainer.predict(test_dataset)
+    raw_pred = trainer.predict(test_dataset)
 
     # Preprocess raw predictions
-    #y_pred = np.argmax(raw_pred, axis=1)
+    y_pred = raw_pred[0].argmax(-1)
 
     return y_pred
-
-# Import preprocessed corpus and generate train-test-split
-#
-# train.rename({'POPULIST': 'label'}, axis=1, inplace=True)
-# test.rename({'POPULIST': 'label'}, axis=1, inplace=True)
-#
-# train['label'] = train['label'].astype(int)
-# test['label'] = test['label'].astype(int)
-#
-# train= train.head(10)
-# test = test.head(3)
-#

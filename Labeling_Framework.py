@@ -154,14 +154,20 @@ class Labeler:
         # Transform probs to preds
         preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
 
+        # Save labeled df to disk
+        labeled_df_train = pd.DataFrame()
+        labeled_df_train['content'] = df_train_filtered['content']
+        labeled_df_train['label'] = preds_train_filtered
+        labeled_df_train.to_csv(f'{self.output_path}\\labeled_df_train.csv')
+
+        labeled_df_test = pd.DataFrame()
+        labeled_df_test['content'] = test_data['content']
+        labeled_df_test['label'] = test_data['POPULIST']
+        labeled_df_test.to_csv(f'{self.output_path}\\labeled_df_test.csv')
+
         if classifier == BERT:
-            #todo: temp
-            df_train_filtered = df_train_filtered.head(10)
-            preds_train_filtered = preds_train_filtered[:10]
-
-
             ## Run BERT classifier:
-            Y_pred = run_transformer(X=df_train_filtered.content.tolist(), y=preds_train_filtered,
+            Y_pred = run_transformer(X=df_train_filtered.content.tolist(), y=preds_train_filtered.tolist(),
                                      X_test=test_data.content.tolist(),
                                      model_name='bert-base-german-cased')
 
