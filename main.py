@@ -238,8 +238,22 @@ def main(path_to_project_folder: str,
                                output_path=f'{path_to_project_folder}\\Output',
                                spacy_model=spacy_model)
 
+        # Define constants
+        COUNT = 'Count-Vectorization'
+        TFIDF = 'TFIDF-Vectorization'
+
+        BERT = 'BERT'
+        LOGREG = 'LogisticRegression'
+        SVC = 'SupportVectorClassifier'
+        RF = 'RandomForest'
+
+        base_models = [LOGREG, SVC, RF]
+        base_features = [COUNT, TFIDF]
+
         # Run Snorkel Labeling
-        nccr_labeler.run_labeling()
+        for model in base_models:
+            for feature in base_features:
+                nccr_labeler.run_labeling(classifier=model, feature=feature)
 
     if generate_bt_data:
         bt_corpus = bt_df.generate_bt_corpus()
@@ -262,7 +276,6 @@ def main(path_to_project_folder: str,
     target_table = pd.read_csv(f'{data_path}\\NCCR_Content\\NCCR_Content\\Target_Table.txt', delimiter="\t", encoding="ISO-8859-1")
 
     train_x_target = target_table
-
 
 
 if __name__ == "__main__":

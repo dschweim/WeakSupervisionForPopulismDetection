@@ -1,12 +1,19 @@
+import os
 import pandas as pd
 import re
+from datetime import datetime
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
 from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from snorkel.analysis import get_label_buckets
-from util import standardize_party_naming, extract_dep_tuples, get_all_svo_tuples, get_svo_tuples_segment
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import LinearSVC
+from sklearn.model_selection import RandomizedSearchCV
+
+from util import standardize_party_naming
 from Labeling_Functions import get_lfs
 
 
@@ -43,12 +50,21 @@ class Labeler:
         self.output_path = output_path
         self.spacy_model = spacy_model
 
-    def run_labeling(self):
+    def run_labeling(self, classifier, feature):
         """
         Generate labels on initialized dataframe using Snorkel
         :return:
         :rtype:
         """
+
+        # Define constants
+        COUNT = 'Count-Vectorization'
+        TFIDF = 'TFIDF-Vectorization'
+
+        BERT = 'BERT'
+        LOGREG = 'LogisticRegression'
+        SVC = 'SupportVectorClassifier'
+        RF = 'RandomForest'
 
         ABSTAIN = -1
         NONPOP = 0
@@ -129,25 +145,107 @@ class Labeler:
         ## 4. Train classifier
         # Filter out unlabeled data points
         probs_train = label_model.predict_proba(L=L_train)
-        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(
-            X=train_data, y=probs_train, L=L_train
-        )
+        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
 
-        vectorizer = CountVectorizer(ngram_range=(1, 5))
-        #vectorizer = TfidfVectorizer()
-        X_train = vectorizer.fit_transform(df_train_filtered.content.tolist())
-        X_test = vectorizer.transform(test_data.content.tolist())
-
+        # Transform probs to preds
         preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
 
+        if classifier == BERT:
+            ## Run BERT classifier:
+            print('tbd')
+            #BERT_Clasifier(X_train=df_train_filtered.content.tolist(),Y_train=preds_train_filtered,
+            # X_test=test_data.content.tolist(), Y_test=test_data.POPULIST, model_name='bert-base-german-cased')
+        else:
 
-        #sklearn_model = RandomForestClassifier()
-        sklearn_model = LogisticRegression(C=1e3, solver="liblinear")
-        sklearn_model.fit(X=X_train, y=preds_train_filtered)
+            if feature == COUNT:
+                vectorizer = CountVectorizer(ngram_range=(1, 5))
+            elif feature == TFIDF:
+                vectorizer = TfidfVectorizer()
+            else:
+                # Other vectorizations are not implemented
+                raise AssertionError
 
-        print(f"Test Accuracy: {sklearn_model.score(X=X_test, y=Y_test) * 100:.1f}%")
+            X_train = vectorizer.fit_transform(df_train_filtered.content.tolist())
+            X_test = vectorizer.transform(test_data.content.tolist())
 
+            if classifier == LOGREG:
+                # Set model
+                sklearn_model = LogisticRegression()
 
+                # Set parameter ranges
+                parameters = {
+                    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                    'class_weight': ['balanced'],
+                    'max_iter': [800],
+                    'n_jobs': [-2]
+                }
+
+            # 'solver' = ['liblinear']
+            elif classifier == SVC:
+                # Set model
+                sklearn_model = LinearSVC(max_iter=1000)
+
+                # Set parameter ranges
+                parameters = {
+                    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                    'class_weight': ['balanced']
+                }
+
+            elif classifier == RF:
+                # Set model
+                sklearn_model = RandomForestClassifier()
+
+                # Set parameter ranges
+                parameters = {
+                    'n_estimators': [100],
+                    'max_features': ['sqrt', 'log2', None],
+                    'max_depth': [2, 4, 7, 10],
+                    'min_samples_split': [2, 5, 10, 20],
+                    'min_samples_leaf': [1, 2, 4, 8],
+                    'class_weight': ['balanced_subsample'],
+                    'n_jobs': [-2]
+                }
+
+            else:
+                # Other models are not implemented
+                raise AssertionError
+
+            # Define grid search and fit model
+            rs = RandomizedSearchCV(estimator=sklearn_model, param_distributions=parameters, scoring="f1", cv=5,
+                                    n_jobs=-2, verbose=1, n_iter=100, refit=True)
+
+            rs.fit(X=X_train, y=preds_train_filtered)
+
+            Y_pred = rs.best_estimator_.predict(X_test)
+
+            # Print results
+            print('---------------------------------------')
+            print(f"Model: {classifier}, Feature: {feature}")
+            print(f"Model Test Accuracy: {accuracy_score(Y_test, Y_pred)}")
+            print(f"Model Test Precision: {precision_score(Y_test, Y_pred)}")
+            print(f"Model Test Recall: {recall_score(Y_test, Y_pred)}")
+            print(f"Model Test F1: {f1_score(Y_test, Y_pred, average='binary')}")
+
+            # Save results
+            timestamp = datetime.now().strftime("%d-%m-%Y %H-%M-%S")
+
+            results_df = pd.DataFrame({'model': [classifier],
+                                       'vectorization': [feature],
+                                       'hyperparameters': [rs.best_params_],
+                                       'accuracy': [accuracy_score(Y_test, Y_pred)],
+                                       'precision': [ precision_score(Y_test, Y_pred)],
+                                       'recall': [recall_score(Y_test, Y_pred)],
+                                       'f1': [f1_score(Y_test, Y_pred, average='binary')],
+                                       'timestamp': [timestamp]
+                                       })
+
+            # If results file exists, append results to file
+            if os.path.isfile(f'{self.output_path}\\Results\\results.csv'): #todo: only keep newest run
+                prev_results = pd.read_csv(f'{self.output_path}\\Results\\results.csv')
+
+                results_df = results_df.append(prev_results)
+
+            results_df.to_csv(f'{self.output_path}\\Results\\results.csv')
 
     def __prepare_labeling_input_ches(self):
         """
