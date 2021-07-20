@@ -246,12 +246,19 @@ def main(path_to_project_folder: str,
         LOGREG = 'LogisticRegression'
         SVC = 'SupportVectorClassifier'
         RF = 'RandomForest'
+        DUMMY = 'DummyClassifier'
 
         base_models = [LOGREG, SVC, RF]
         base_features = [COUNT, TFIDF]
+
         transformer_models = [BERT]
 
-        # Run Snorkel Labeling
+        dummy_models = [DUMMY]
+
+         # Run Snorkel Labeling
+        for model in dummy_models:
+            nccr_labeler.run_labeling(classifier=model, feature=None)
+
         for model in base_models:
             for feature in base_features:
                 nccr_labeler.run_labeling(classifier=model, feature=feature)
