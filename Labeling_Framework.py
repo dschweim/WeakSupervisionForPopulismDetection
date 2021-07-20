@@ -10,6 +10,7 @@ from snorkel.analysis import get_label_buckets
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.dummy import DummyClassifier
 
 from util import standardize_party_naming, output_and_store_endmodel_results
 from Labeling_Functions import get_lfs
@@ -68,6 +69,7 @@ class Labeler:
         LOGREG = 'LogisticRegression'
         SVC = 'SupportVectorClassifier'
         RF = 'RandomForest'
+        DUMMY = 'DummyClassifier'
 
         ABSTAIN = -1
         NONPOP = 0
@@ -174,6 +176,19 @@ class Labeler:
             output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
                                               Y_test=Y_test, Y_pred=Y_pred, hyperparameters='none')
             #todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
+
+        elif classifier == DUMMY:
+            # Define model
+            sklearn_model = DummyClassifier(strategy='stratified', random_state=42)
+
+            # Fit model
+            clf = sklearn_model.fit(X=df_train_filtered.content.tolist(), y=preds_train_filtered)
+            # Predict test data
+            Y_pred = clf.predict(test_data.content.tolist())
+
+            # Print and save results
+            output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
+                                              Y_test=Y_test, Y_pred=Y_pred, hyperparameters={})
 
         else:
             if feature == COUNT:
