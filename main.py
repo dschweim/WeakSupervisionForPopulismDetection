@@ -281,9 +281,7 @@ def main(path_to_project_folder: str,
     else:
         bt_corpus_prep = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus_prep.csv')
 
-        # todo: Generate train/test split for bt
-
-    #todo: try to extract additonal labeling fcts from Key messages
+        # todo: Run Snorkel framework to label bt_corpus_prep
 
     # Import corpus with populism labels
     data_path = f'{path_to_project_folder}\\Data'
@@ -307,7 +305,7 @@ if __name__ == "__main__":
          generate_bt_data=False,  # runs for approx 40min
          preprocess_bt_data=False,
 
-         generate_tfidf_dicts=True,
-         generate_chisquare_dicts=True,
-         generate_labeling=True,
+         generate_tfidf_dicts=False,
+         generate_chisquare_dicts=False,
+         generate_labeling=True
          )
