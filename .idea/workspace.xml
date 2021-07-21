@@ -120,26 +120,6 @@
           <line>596</line>
           <option name="timeStamp" value="513" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
-          <line>486</line>
-          <option name="timeStamp" value="565" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Functions.py</url>
-          <line>482</line>
-          <option name="timeStamp" value="566" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>175</line>
-          <option name="timeStamp" value="631" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>167</line>
-          <option name="timeStamp" value="634" />
-        </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
@@ -149,18 +129,5 @@
         </breakpoint>
       </default-breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="nlp_label.vocab[dep_matches[0][0]].text" language="Python" />
-        <watch expression="target_table.loc[target_table.ID == 'au_pr_el_13_041096.txt']" language="Python" />
-        <watch expression="nccr_df_prep.loc[nccr_df_prep.ID == 'au_pr_el_13_041096.txt'].wording_segments" language="Python" />
-        <watch expression="list(target_table)" language="Python" />
-        <watch expression="target_table.loc[target_table['POP_Denouncing'] == 1]" language="Python" />
-        <watch expression="nccr_df_prep.loc[nccr_df_prep.ID == 'au_pm_el_02_20002.txt'].wording_segments.values" language="Python" />
-        <watch expression="target_table.loc[target_table.ID == 'au_pm_el_02_20002.txt']" language="Python" />
-        <watch expression="timestamp = datetime.now().strftime(&quot;%d-%m-%Y %H-%M-%S&quot;)" language="Python" />
-        <watch expression="test_data" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>
