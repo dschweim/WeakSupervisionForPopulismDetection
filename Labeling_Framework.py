@@ -1,5 +1,7 @@
 import pandas as pd
 import re
+import spacy
+import numpy as np
 
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
 from snorkel.labeling.model import LabelModel, MajorityLabelVoter
@@ -11,13 +13,15 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.dummy import DummyClassifier
-import warnings
+from spacy.language import Language
 
+import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 from util import standardize_party_naming, output_and_store_endmodel_results
 from Labeling_Functions import get_lfs
 from BERT_Classifier import run_transformer
+from DEP_Matching import DEP_Matcher
 
 
 class Labeler:
@@ -66,20 +70,17 @@ class Labeler:
         """
 
         # Define constants
+        # Features
         COUNT = 'Count-Vectorization'
         TFIDF = 'TFIDF-Vectorization'
+        OCCURENCE = 'Occurence-Baseline'
 
+        # Models
         BERT = 'BERT'
         LOGREG = 'LogisticRegression'
         SVC = 'SupportVectorClassifier'
         RF = 'RandomForest'
         DUMMY = 'DummyClassifier'
-
-        base_models = [LOGREG, SVC, RF]
-        dummy_models = [DUMMY]
-        transformer_models = [BERT]
-
-        base_vectorizations = [COUNT, TFIDF]
 
         ABSTAIN = -1
         NONPOP = 0
@@ -188,35 +189,60 @@ class Labeler:
         X_test = test_data.content.tolist()
         Y_test = Y_test
 
+        # Set models and feature vectors
+        #base_models = [LOGREG, SVC, RF]
+        base_models = [SVC]
+        dummy_models = [DUMMY]
+        transformer_models = [BERT]
+
+        base_vectorizations = [OCCURENCE, COUNT, TFIDF]
+
         # Run dummy models
         for model in dummy_models:
-            Y_pred, hyperparameters = self.run_classification(classifier=model, feature=None,
-                                                              X_train=X_train, Y_train=Y_train,
-                                                              X_test=X_test, Y_test=Y_test)
+            Y_pred, hyperparameters = self.run_classification(classifier=model, X_train_vec=X_train,
+                                                              Y_train=Y_train, X_test_vec=X_test)
 
             # Print and save results
-            output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature=None,
+            output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
                                               Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
                                               hyperparameters=hyperparameters)
 
         # Run base models
         for model in base_models:
             for vectorization in base_vectorizations:
-                Y_pred, hyperparameters = self.run_classification(classifier=model, feature=vectorization,
-                                                                  X_train=X_train, Y_train=Y_train,
-                                                                  X_test=X_test, Y_test=Y_test)
+
+                if vectorization == OCCURENCE:
+                    X_train_vec = self.__generate_occurence_vectors(df_train_filtered.content)
+                    X_test_vec = self.__generate_occurence_vectors(test_data.content)
+
+                elif vectorization == COUNT:
+                    vectorizer = CountVectorizer(ngram_range=(1, 5))
+                    X_train_vec = vectorizer.fit_transform(X_train)
+                    X_test_vec = vectorizer.transform(X_test)
+
+                elif vectorization == TFIDF:
+                    vectorizer = TfidfVectorizer()
+                    X_train_vec = vectorizer.fit_transform(X_train)
+                    X_test_vec = vectorizer.transform(X_test)
+
+                else:
+                    # Other vectorizations are not implemented
+                    raise AssertionError
+
+                Y_pred, hyperparameters = self.run_classification(classifier=model, X_train_vec=X_train_vec,
+                                                                  Y_train=Y_train, X_test_vec=X_test_vec)
 
                 # Print and save results
                 output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature=vectorization,
                                                   Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
                                                   hyperparameters=hyperparameters)
 
-        # # Run transformer models
+        # # todo Run transformer models
         # for model in transformer_models:
         #     Y_pred, hyperparameters = self.run_classification(classifier=model, feature=None)
         #
         #     # Print and save results
-        #     output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature=None,
+        #     output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
         #                                       Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
         #                                       hyperparameters=hyperparameters)
 
@@ -404,21 +430,17 @@ class Labeler:
         return ncr
 
     @staticmethod
-    def run_classification(classifier, feature, X_train, Y_train, X_test, Y_test):
+    def run_classification(classifier, X_train_vec, Y_train, X_test_vec):
         """
         Run classifier on labeled data and perform hyperparameter tuning
         :param classifier: model to use
         :type classifier: str
-        :param feature: vectorization to use
-        :type feature: str
-        :param X_train: train content
-        :type X_train: list
+        :param X_train_vec: vectorized train content
+        :type X_train_vec:
         :param Y_train: train labels
         :type Y_train: list
-        :param X_test: test content
-        :type X_test:: list
-        :param Y_test: test labels
-        :type Y_test: list
+        :param X_test_vec: vectorized test content
+        :type X_test_vec: list
         :return: Y_pred
         :rtype:  list
         :return: hyperparameters
@@ -426,9 +448,12 @@ class Labeler:
         """
 
         # Define constants
+        # Features
         COUNT = 'Count-Vectorization'
         TFIDF = 'TFIDF-Vectorization'
+        OCCURENCE = 'Occurence-Baseline'
 
+        # Models
         BERT = 'BERT'
         LOGREG = 'LogisticRegression'
         SVC = 'SupportVectorClassifier'
@@ -437,8 +462,8 @@ class Labeler:
 
         if classifier == BERT:
             ## Run BERT classifier:
-            Y_pred = run_transformer(X=X_train, y=Y_train,
-                                     X_test=X_test,
+            Y_pred = run_transformer(X=X_train_vec, y=Y_train,
+                                     X_test=X_test_vec,
                                      model_name='bert-base-german-cased')
 
             # Set hyperparams  # todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
@@ -449,26 +474,15 @@ class Labeler:
             sklearn_model = DummyClassifier(strategy='stratified', random_state=42)
 
             # Fit model
-            clf = sklearn_model.fit(X=X_train, y=Y_train)
+            clf = sklearn_model.fit(X=X_train_vec, y=Y_train)
 
             # Predict test data
-            Y_pred = clf.predict(X_test)
+            Y_pred = clf.predict(X_test_vec)
 
             # Set hyperparams
             hyperparameters = {}
 
         else:
-            if feature == COUNT:
-                vectorizer = CountVectorizer(ngram_range=(1, 5))
-            elif feature == TFIDF:
-                vectorizer = TfidfVectorizer()
-            else:
-                # Other vectorizations are not implemented
-                raise AssertionError
-
-            X_train_vec = vectorizer.fit_transform(X_train)
-            X_test_vec = vectorizer.transform(X_test)
-
             if classifier == LOGREG:
                 # Set model
                 sklearn_model = LogisticRegression()
@@ -481,10 +495,9 @@ class Labeler:
                     'n_jobs': [-2]
                 }
 
-            # 'solver' = ['liblinear']
             elif classifier == SVC:
                 # Set model
-                sklearn_model = LinearSVC(max_iter=1000)
+                sklearn_model = LinearSVC(max_iter=1000, dual=False)
 
                 # Set parameter ranges
                 parameters = {
@@ -503,7 +516,7 @@ class Labeler:
                     'max_depth': [2, 4, 7, 10],
                     'min_samples_split': [2, 5, 10, 20],
                     'min_samples_leaf': [1, 2, 4, 8],
-                    'class_weight': ['balanced_subsample'],
+                    'class_weight': ['balanced'],
                     'n_jobs': [-2]
                 }
 
@@ -525,3 +538,64 @@ class Labeler:
             hyperparameters = rs.best_params_
 
         return Y_pred, hyperparameters
+
+    def __generate_occurence_vectors(self, df):
+        """
+        Generate feature representation that counts matches per pattern
+        :param df: content to transform
+        :type df: Series
+        :return: X_vec
+        :rtype: np.array
+        """
+
+        # Define spacy model
+        spacy_model = self.spacy_model
+
+        # Create custom component that converts lemmas to lower case
+        @Language.component('lower_case_lemmas')
+        def lower_case_lemmas(doc):
+            for token in doc:
+                token.lemma_ = token.lemma_.lower()
+            return doc
+
+        # Add custom component to pipe
+        nlp_label = spacy.load(spacy_model, exclude=['ner', 'attribute_ruler'])
+        nlp_label.add_pipe("lower_case_lemmas", last=True)
+
+        # Initialize DependencyMatcher
+        dep_matcher = DEP_Matcher(vocab=nlp_label.vocab).add_patterns()
+
+        # Preprocess series
+        df_docs = pd.Series(list(nlp_label.pipe(df)))
+
+        # Set vec to None
+        X_vec = None
+
+        # For element in Series, check matches
+        for index, doc in df_docs.items():
+            # Get matches and the names of the patterns that caused the match
+            dep_matches = dep_matcher(doc)
+            matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
+
+            # Get number of matches per pattern
+            feature_array = np.array([
+                matched_patterns.count('pop_sv'),
+                matched_patterns.count('pop_vo'),
+                matched_patterns.count('pop_v'),
+                matched_patterns.count('pop_s'),
+                matched_patterns.count('pop_o'),
+
+                matched_patterns.count('nonpop_sv'),
+                matched_patterns.count('nonpop_vo'),
+                matched_patterns.count('nonpop_v'),
+                matched_patterns.count('nonpop_s'),
+                matched_patterns.count('nonpop_o'),
+            ])
+
+            # Generate array or append to array
+            if X_vec is None:
+                X_vec = feature_array
+            else:
+                X_vec = np.vstack([X_vec, feature_array])
+
+        return X_vec
