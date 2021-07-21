@@ -405,6 +405,25 @@ class Labeler:
 
     @staticmethod
     def run_classification(classifier, feature, X_train, Y_train, X_test, Y_test):
+        """
+        Run classifier on labeled data and perform hyperparameter tuning
+        :param classifier: model to use
+        :type classifier: str
+        :param feature: vectorization to use
+        :type feature: str
+        :param X_train: train content
+        :type X_train: list
+        :param Y_train: train labels
+        :type Y_train: list
+        :param X_test: test content
+        :type X_test:: list
+        :param Y_test: test labels
+        :type Y_test: list
+        :return: Y_pred
+        :rtype:  list
+        :return: hyperparameters
+        :rtype:  dict
+        """
 
         # Define constants
         COUNT = 'Count-Vectorization'
