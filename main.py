@@ -89,6 +89,7 @@ def main(path_to_project_folder: str,
         tfidf_dict_av = nccr_dicts.generate_tfidf_av_dict(train, n_words=30)
         tfidf_dict_av_country = nccr_dicts.generate_tfidf_av_dict_per_country(train, n_words=30)
         tfidf_dict_global = nccr_dicts.generate_global_tfidf_dict(train, n_words=30)
+        tfidf_dict_global_country = nccr_dicts.generate_global_tfidf_dict_per_country(train, n_words=30)
 
     else:
         # Import dictionaries
@@ -116,6 +117,25 @@ def main(path_to_project_folder: str,
         tfidf_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global.csv')
         # Convert terms to string
         tfidf_dict_global.term = tfidf_dict_global.term.astype(str)
+
+        # Import dictionaries
+        tfidf_dict_global_country_au = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global_per_country_au.csv')
+        tfidf_dict_global_country_ch = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global_per_country_ch.csv')
+        tfidf_dict_global_country_de = pd.read_csv(
+            f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global_per_country_de.csv')
+        # Convert terms to string
+        tfidf_dict_global_country_au.term = tfidf_dict_global_country_au.term.astype(str)
+        tfidf_dict_global_country_ch.term = tfidf_dict_global_country_ch.term.astype(str)
+        tfidf_dict_global_country_de.term = tfidf_dict_global_country_de.term.astype(str)
+
+        # Combine in country-dict
+        tfidf_dict_global_country = {}
+        values = {'au': tfidf_dict_global_country_au,
+                  'cd': tfidf_dict_global_country_ch,
+                  'de': tfidf_dict_global_country_de}
+        tfidf_dict_global_country.update(values)
 
     if generate_chisquare_dicts:
         # Generate Dictionary based on chi-square test
@@ -211,6 +231,9 @@ def main(path_to_project_folder: str,
                    'tfidf_keywords_av_ch': tfidf_dict_av_country['cd'].term.to_list(),
                    'tfidf_keywords_av_de': tfidf_dict_av_country['de'].term.to_list(),
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list(),
+                   'tfidf_keywords_global_at': tfidf_dict_global_country['au'].term.to_list(),
+                   'tfidf_keywords_global_ch': tfidf_dict_global_country['cd'].term.to_list(),
+                   'tfidf_keywords_global_de': tfidf_dict_global_country['de'].term.to_list(),
                    'chi2_keywords_global': chisquare_dict_global.term.tolist(),
                    'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
                    'chi2_keywords_ch': chisquare_dict_country['cd'].term.to_list(),
@@ -223,7 +246,7 @@ def main(path_to_project_folder: str,
         train_sub = train[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'Sample_Type',
                            'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         dev_sub = dev[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'Sample_Type',
-                           'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
+                       'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'Sample_Type',
                          'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         train_sub.rename({'wording_segments': 'content'}, axis=1, inplace=True)

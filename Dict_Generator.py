@@ -233,10 +233,85 @@ class Dict_Generator:
 
         return tfidf_dict_global
 
-    # todo:
-    # def generate_global_tfidf_dict_per_country(self, df: pd.DataFrame, n_words: int):
-    #
-    #     return None
+    def generate_global_tfidf_dict_per_country(self, df: pd.DataFrame, n_words: int):
+
+        """
+        Calculate tf-idf scores of docs per country and return top n words
+        :param df: Trainset from which to construct dict
+        :type df:  DataFrame
+        :param n_words: Number of words to be included
+        :type n_words: float
+        :return: Returns df of dictionary words
+        :rtype:  DataFrame
+        """
+
+        start = time.time()
+
+        # Define vectorizer
+        vectorizer = TfidfVectorizer(tokenizer=self.__custom_dict_tokenizer, lowercase=True)
+
+        # Group data by country
+        df_country_grpd = df.groupby('Sample_Country')
+
+        # Initialize dict
+        tfidf_dict_per_country_global = {}
+
+        # Calculate tfidf dictionary per country
+        for country, df_country in df_country_grpd:
+
+            # Generate two docs from corpus (POP and NON-POP)
+            df_country_pop = df_country.loc[df_country['POPULIST'] == 1]
+            df_country_nonpop = df_country.loc[df_country['POPULIST'] != 1]
+
+            # Concatenate content of corpus
+            country_content_pop = ' '.join(df_country_pop["wording_segments"])
+            country_content_nonpop = ' '.join(df_country_nonpop["wording_segments"])
+
+            # Generate global dataframe with two docs 'POP' and 'NONPOP'
+            df_country_global = pd.DataFrame({'ID': ['df_pop', 'df_nonpop'],
+                                              'Wording_combined': [country_content_pop, country_content_nonpop]})
+
+            # Fit vectorizer on current POP and NONPOP corpus
+            vectorizer.fit(df_country_global['Wording_combined'])
+
+            ## Calculate tf-idf scores of POP-corpus
+            # Transform subcorpus labelled as POP
+            tfidf_pop_vector = vectorizer.transform(
+                df_country_global.loc[df_country_global['ID'] == 'df_pop'].Wording_combined).toarray()
+
+            # Map tf-idf scores to words in the vocab with separate column for each doc
+            wordlist = pd.DataFrame({'term': vectorizer.get_feature_names()})
+
+            # list = pd.DataFrame()
+            for i in range(len(tfidf_pop_vector)):
+                wordlist[i] = tfidf_pop_vector[i]
+
+            # Set words as index
+            wordlist.set_index('term')
+
+            # Sort by tf-idf
+            wordlist.rename(columns={0: "tfidf"}, inplace=True)
+            wordlist.sort_values(by='tfidf', ascending=False, inplace=True)
+
+            # Retrieve specified top n_words entries
+            tfidf_dict_global_country = wordlist[:n_words]
+
+            # Append to country-specific dict to global dict
+            tfidf_dict_per_country_global[country] = tfidf_dict_global_country
+
+        # Save dict to disk
+        tfidf_dict_per_country_au = tfidf_dict_per_country_global['au']
+        tfidf_dict_per_country_ch = tfidf_dict_per_country_global['cd']
+        tfidf_dict_per_country_de = tfidf_dict_per_country_global['de']
+        tfidf_dict_per_country_au.to_csv(f'{self.output_path}\\tfidf_dict_global_per_country_au.csv', index=True)
+        tfidf_dict_per_country_ch.to_csv(f'{self.output_path}\\tfidf_dict_global_per_country_ch.csv', index=True)
+        tfidf_dict_per_country_de.to_csv(f'{self.output_path}\\tfidf_dict_global_per_country_de.csv', index=True)
+
+        end = time.time()
+        print(end - start)
+        print('finished tf-idf dict global per country generation')
+
+        return tfidf_dict_per_country_global
 
     def generate_global_chisquare_dict(self, df: pd.DataFrame, confidence: float):
         """

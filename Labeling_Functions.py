@@ -127,7 +127,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         # Return a label of POP if keyword in content, otherwise ABSTAIN
         return POP if any(keyword in x.content.lower() for keyword in keywords_nccr_tfidf_glob) else ABSTAIN
 
-    # LF based on NCCR country-constructed keywords
+    # LF based on NCCR country-constructed keywords (av)
     @labeling_function()
     def lf_keywords_nccr_tfidf_av_country(x):
         if x.Sample_Country == 'au':
@@ -138,6 +138,21 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
         elif x.Sample_Country == 'de':
             return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_de']) else ABSTAIN
+
+    # LF based on NCCR country-constructed keywords (global)
+    @labeling_function()
+    def lf_keywords_nccr_tfidf_global_country(x):
+        if x.Sample_Country == 'au':
+            return POP if any(
+                keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_global_at']) else ABSTAIN
+
+        elif x.Sample_Country == 'cd':
+            return POP if any(
+                keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_global_ch']) else ABSTAIN
+
+        elif x.Sample_Country == 'de':
+            return POP if any(
+                keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_global_de']) else ABSTAIN
 
     # LF based on NCCR global-constructed keywords (chi2)
     @labeling_function()
@@ -524,24 +539,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         else:
             return ABSTAIN
 
-    # ## Sentiment based
-    # nlp = spacy.load('de_core_news_lg')
-    #
-    # # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
-    # # #nlp.add_pipe('sentiws')
-    # # nlp.add_pipe('spacytextblob')
-    # # doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
-    # # for token in doc:
-    # #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
-    # #
-
-    # from textblob_de import TextBlobDE
-    # doc = 'Die Dummheit der Unterwerfung blüht in hübschen Farben. Das ist ein hässliches Auto'
-    # blob = TextBlobDE(doc)
-    # print(blob.tags)
-    # for sentence in blob.sentences:
-    #     print(sentence.sentiment.polarity)
-
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl,
                 lf_lemma_schwarzbozl,
@@ -550,6 +547,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 lf_keywords_nccr_tfidf_av,
                 lf_keywords_nccr_tfidf_glob,
                 lf_keywords_nccr_tfidf_av_country,
+                lf_keywords_nccr_tfidf_global_country,
                 lf_keywords_nccr_chi2_glob,
                 lf_keywords_nccr_chi2_country,
 
@@ -569,3 +567,20 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     return list_lfs
 
     # todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)
+ # ## Sentiment based
+    # nlp = spacy.load('de_core_news_lg')
+    #
+    # # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
+    # # #nlp.add_pipe('sentiws')
+    # # nlp.add_pipe('spacytextblob')
+    # # doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
+    # # for token in doc:
+    # #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
+    # #
+
+    # from textblob_de import TextBlobDE
+    # doc = 'Die Dummheit der Unterwerfung blüht in hübschen Farben. Das ist ein hässliches Auto'
+    # blob = TextBlobDE(doc)
+    # print(blob.tags)
+    # for sentence in blob.sentences:
+    #     print(sentence.sentiment.polarity)
