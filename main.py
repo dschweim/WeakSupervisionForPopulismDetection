@@ -220,10 +220,10 @@ def main(path_to_project_folder: str,
                    }
 
         # Filter on relevant columns
-        train_sub = train[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
-                           'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
-        test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'POPULIST',
-                         'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
+        train_sub = train[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'Sample_Type',
+                           'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
+        test_sub = test[['ID', 'wording_segments', 'party', 'Sample_Country', 'year', 'Sample_Type',
+                         'POPULIST', 'POPULIST_PeopleCent', 'POPULIST_AntiElite', 'POPULIST_Sovereign']]
         train_sub.rename({'wording_segments': 'content'}, axis=1, inplace=True)
         test_sub.rename({'wording_segments': 'content'}, axis=1, inplace=True)
 
@@ -255,7 +255,7 @@ def main(path_to_project_folder: str,
 
         dummy_models = [DUMMY]
 
-         # Run Snorkel Labeling
+        # Run Snorkel Labeling
         for model in dummy_models:
             nccr_labeler.run_labeling(classifier=model, feature=None)
 
@@ -300,11 +300,11 @@ if __name__ == "__main__":
          spacy_model='de_core_news_lg',  # de_dep_news_trf
 
          generate_nccr_data=False,
-         preprocess_nccr_data=False,  # runs for approx 20min
-         generate_bt_data=False,  # runs for approx 15min
+         preprocess_nccr_data=False,  # runs for approx 15min
+         generate_bt_data=False,  # runs for approx 40min
          preprocess_bt_data=False,
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=True,
+         generate_labeling=False,
          )

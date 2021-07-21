@@ -122,7 +122,7 @@ class Labeler:
 
         ## 3. Generate label model
         # Baseline: Majority Model
-        majority_model = MajorityLabelVoter()
+        majority_model = MajorityLabelVoter(cardinality=2)
         preds_train = majority_model.predict(L=L_train)
 
         # Advanced: Label Model
@@ -174,7 +174,8 @@ class Labeler:
 
             # Print and save results
             output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
-                                              Y_test=Y_test, Y_pred=Y_pred, hyperparameters='none')
+                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+                                              hyperparameters='none')
             #todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
 
         elif classifier == DUMMY:
@@ -188,7 +189,8 @@ class Labeler:
 
             # Print and save results
             output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
-                                              Y_test=Y_test, Y_pred=Y_pred, hyperparameters={})
+                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+                                              hyperparameters={})
 
         else:
             if feature == COUNT:
@@ -256,7 +258,8 @@ class Labeler:
 
             # Print and save results
             output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
-                                              Y_test=Y_test, Y_pred=Y_pred, hyperparameters=rs.best_params_)
+                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+                                              hyperparameters=rs.best_params_)
 
     def __prepare_labeling_input_ches(self):
         """

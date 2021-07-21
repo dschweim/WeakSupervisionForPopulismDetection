@@ -379,7 +379,7 @@ def get_svo_tuples_segment(svo_list: list, get_components: dict):
     return segment_tuples
 
 
-def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, Y_pred, hyperparameters):
+def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, Y_pred, X_test, hyperparameters):
     """
     Print results in console and store them in csv (merging with previous results)
     :param output_path: path to data output
@@ -389,9 +389,11 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
     :param feature: vectorization used in current run
     :type feature: str
     :param Y_test: ground truth labels of test set
-    :type Y_test: list
+    :type Y_test: pd.Series
     :param Y_pred: predicted labels of test set
-    :type Y_pred: list
+    :type Y_pred: np.ndarray
+    :param X_test: test set
+    :type Y_pred: pd.DataFrame
     :param hyperparameters: tuned hyperparameters retrieved from model
     :type hyperparameters: dict
     :return:
@@ -430,3 +432,16 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
         results_df = results_df[~results_df.index.duplicated()].sort_index()
 
     results_df.to_csv(f'{output_path}\\Results\\results.csv')
+
+    # Save individual predictions and corresponding information
+    model_preds = pd.DataFrame({'Content': X_test.content,
+                                'POPULIST_PeopleCent': X_test.POPULIST_PeopleCent,
+                                'POPULIST_AntiElite': X_test.POPULIST_AntiElite,
+                                'POPULIST_Sovereign': X_test.POPULIST_Sovereign,
+                                'Country': X_test.Sample_Country,
+                                'Category': X_test.Sample_Type,
+                                'Y_test': Y_test.astype(int),
+                                'Y_pred': Y_pred})
+
+    model_preds.to_csv(f'{output_path}\\Results\\{classifier}_{feature}_preds.csv')
+

@@ -6,9 +6,11 @@ import spacy
 from spacy.matcher import PhraseMatcher, Matcher
 from spacy.tokens import Doc
 import pandas as pd
+
 from util import standardize_party_naming, retrieve_year
 
 pd.options.mode.chained_assignment = None
+spacy.util.fix_random_seed(0)
 
 
 class NCCR_Dataset:
@@ -27,7 +29,6 @@ class NCCR_Dataset:
         :param spacy_model: used trained Spacy pipeline
         :type: str
         """
-
         self.data_path = data_path
         self.output_path = output_path
         self.spacy_model = spacy_model
