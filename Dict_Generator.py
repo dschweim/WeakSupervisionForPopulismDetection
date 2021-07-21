@@ -8,6 +8,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from scipy.stats import chi2_contingency
 from scipy.stats import chi2
 from util import extract_parsed_lemmas, extract_dep_tuples, get_all_svo_tuples
+import warnings
+warnings.filterwarnings("ignore", category=UserWarning)
 
 
 class Dict_Generator:
@@ -48,7 +50,7 @@ class Dict_Generator:
         text_tok_sw_alphanum = [word for word in text_tok_sw if word.isalnum()]  # Remove non-alphanumeric characters
         return text_tok_sw_alphanum
 
-    def generate_tfidf_dict(self, df: pd.DataFrame, n_words: int):
+    def generate_tfidf_av_dict(self, df: pd.DataFrame, n_words: int):
         """
         Calculate tf-idf scores of docs and return top n words
         :param df: Trainset from which to construct dict
@@ -92,15 +94,15 @@ class Dict_Generator:
         tfidf_dict = wordlist[:n_words][['term', 'average_tfidf']]
 
         # Save dict to disk
-        tfidf_dict.to_csv(f'{self.output_path}\\tfidf_dict.csv', index=True)
+        tfidf_dict.to_csv(f'{self.output_path}\\tfidf_dict_av.csv', index=True)
 
         end = time.time()
         print(end - start)
-        print('finished tf-idf dict generation')
+        print('finished tf-idf dict av generation')
 
         return tfidf_dict
 
-    def generate_tfidf_dict_per_country(self, df: pd.DataFrame, n_words: int):
+    def generate_tfidf_av_dict_per_country(self, df: pd.DataFrame, n_words: int):
         """
         Calculate tf-idf scores of docs per country and return top n words
         :param df: Trainset from which to construct dict
@@ -160,13 +162,13 @@ class Dict_Generator:
         tfidf_dict_per_country_au = tfidf_dict_per_country['au']
         tfidf_dict_per_country_ch = tfidf_dict_per_country['cd']
         tfidf_dict_per_country_de = tfidf_dict_per_country['de']
-        tfidf_dict_per_country_au.to_csv(f'{self.output_path}\\tfidf_dict_per_country_au.csv', index=True)
-        tfidf_dict_per_country_ch.to_csv(f'{self.output_path}\\tfidf_dict_per_country_ch.csv', index=True)
-        tfidf_dict_per_country_de.to_csv(f'{self.output_path}\\tfidf_dict_per_country_de.csv', index=True)
+        tfidf_dict_per_country_au.to_csv(f'{self.output_path}\\tfidf_dict_av_per_country_au.csv', index=True)
+        tfidf_dict_per_country_ch.to_csv(f'{self.output_path}\\tfidf_dict_av_per_country_ch.csv', index=True)
+        tfidf_dict_per_country_de.to_csv(f'{self.output_path}\\tfidf_dict_av_per_country_de.csv', index=True)
 
         end = time.time()
         print(end - start)
-        print('finished tf-idf dict per country generation')
+        print('finished tf-idf dict av per country generation')
 
         return tfidf_dict_per_country
 
@@ -230,6 +232,11 @@ class Dict_Generator:
         print('finished tf-idf dict global generation')
 
         return tfidf_dict_global
+
+    # todo:
+    # def generate_global_tfidf_dict_per_country(self, df: pd.DataFrame, n_words: int):
+    #
+    #     return None
 
     def generate_global_chisquare_dict(self, df: pd.DataFrame, confidence: float):
         """
@@ -317,9 +324,7 @@ class Dict_Generator:
 
         # Sort by chi_square
         result_table.sort_values(by='chisquare', ascending=False, inplace=True)
-
-        # Retrieve specified top n_words entries
-        chisquare_dict = result_table #todo: why need n words?
+        chisquare_dict = result_table
 
         # Save dict to disk
         chisquare_dict.to_csv(f'{self.output_path}\\chisquare_dict_global.csv', index=True)
@@ -445,7 +450,7 @@ class Dict_Generator:
 
         end = time.time()
         print(end - start)
-        print('finished chisquare dict per country generation')
+        print('finished chisquare dict global per country generation')
 
         return chisquare_dict_per_country
 
@@ -475,7 +480,7 @@ class Dict_Generator:
         svo_tuples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
         svo_tuples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
 
-        #Iterate over tuple combinations todo: include prefix to verb
+        #Iterate over tuple combinations
         combinations = [{'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}, # svo + prefix + neg
                         {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': False},  # svo + prefix
                         {'subj': True, 'verb': True, 'verbprefix': False, 'obj': True, 'neg': True},  # svo + neg
@@ -572,7 +577,7 @@ class Dict_Generator:
             else:
                 global_nonpop_dict[str(combination)] = None
 
-        # todo: temp only for debugging
+        # only for debugging
         lemma_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
         lemma_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_parsed_lemmas(x))
 
@@ -580,12 +585,16 @@ class Dict_Generator:
         for combination in combinations:
             if global_pop_dict[str(combination)] is not None:
                 global_pop_dict_com = global_pop_dict[str(combination)]
-                pd.DataFrame(global_pop_dict_com).to_csv(f'{self.output_path}\\chisquare_dep_pop_{str(combination.values())}.csv', index=True)
+                pd.DataFrame(global_pop_dict_com).to_csv(
+                    f'{self.output_path}\\chisquare_dep_pop_{str(combination.values())}_{confidence}.csv',
+                    index=True)
 
         for combination in combinations:
             if global_nonpop_dict[str(combination)] is not None:
                 global_nonpop_dict_com = global_nonpop_dict[str(combination)]
-                pd.DataFrame(global_nonpop_dict_com).to_csv(f'{self.output_path}\\chisquare_dep_nonpop_{str(combination.values())}.csv', index=True)
+                pd.DataFrame(global_nonpop_dict_com).to_csv(
+                    f'{self.output_path}\\chisquare_dep_nonpop_{str(combination.values())}_{confidence}.csv',
+                    index=True)
 
         end = time.time()
         print(end - start)

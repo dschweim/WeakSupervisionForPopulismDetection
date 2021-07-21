@@ -113,8 +113,8 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
     # LF based on NCCR-constructed keywords
     @labeling_function()
-    def lf_keywords_nccr_tfidf(x):
-        keywords_nccr_tfidf = lf_input['tfidf_keywords']
+    def lf_keywords_nccr_tfidf_av(x):
+        keywords_nccr_tfidf = lf_input['tfidf_keywords_av']
 
         # Return a label of POP if keyword in content, otherwise ABSTAIN
         return POP if any(keyword in x.content.lower() for keyword in keywords_nccr_tfidf) else ABSTAIN
@@ -129,15 +129,15 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
     # LF based on NCCR country-constructed keywords
     @labeling_function()
-    def lf_keywords_nccr_tfidf_country(x):
+    def lf_keywords_nccr_tfidf_av_country(x):
         if x.Sample_Country == 'au':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_at']) else ABSTAIN
+            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_at']) else ABSTAIN
 
         elif x.Sample_Country == 'cd':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_ch']) else ABSTAIN
+            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_ch']) else ABSTAIN
 
         elif x.Sample_Country == 'de':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_de']) else ABSTAIN
+            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_de']) else ABSTAIN
 
     # LF based on NCCR global-constructed keywords (chi2)
     @labeling_function()
@@ -547,9 +547,9 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 lf_lemma_schwarzbozl,
                 lf_keywords_rooduijn,
                 lf_lemma_rooduijn,
-                lf_keywords_nccr_tfidf,
+                lf_keywords_nccr_tfidf_av,
                 lf_keywords_nccr_tfidf_glob,
-                lf_keywords_nccr_tfidf_country,
+                lf_keywords_nccr_tfidf_av_country,
                 lf_keywords_nccr_chi2_glob,
                 lf_keywords_nccr_chi2_country,
 

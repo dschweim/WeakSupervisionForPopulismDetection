@@ -86,31 +86,31 @@ def main(path_to_project_folder: str,
 
     if generate_tfidf_dicts:
         # Generate Dictionaries based on tfidf
-        tfidf_dict = nccr_dicts.generate_tfidf_dict(train, n_words=30)
-        tfidf_dict_country = nccr_dicts.generate_tfidf_dict_per_country(train, n_words=30)
+        tfidf_dict_av = nccr_dicts.generate_tfidf_av_dict(train, n_words=30)
+        tfidf_dict_av_country = nccr_dicts.generate_tfidf_av_dict_per_country(train, n_words=30)
         tfidf_dict_global = nccr_dicts.generate_global_tfidf_dict(train, n_words=30)
 
     else:
         # Import dictionaries
-        tfidf_dict = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict.csv')
+        tfidf_dict_av = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_av.csv')
         # Convert terms to string
-        tfidf_dict.term = tfidf_dict.term.astype(str)
+        tfidf_dict_av.term = tfidf_dict_av.term.astype(str)
 
         # Import dictionaries
-        tfidf_dict_country_au = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_au.csv')
-        tfidf_dict_country_ch = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_ch.csv')
-        tfidf_dict_country_de = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_per_country_de.csv')
+        tfidf_dict_av_country_au = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_av_per_country_au.csv')
+        tfidf_dict_av_country_ch = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_av_per_country_ch.csv')
+        tfidf_dict_av_country_de = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_av_per_country_de.csv')
         # Convert terms to string
-        tfidf_dict_country_au.term = tfidf_dict_country_au.term.astype(str)
-        tfidf_dict_country_ch.term = tfidf_dict_country_ch.term.astype(str)
-        tfidf_dict_country_de.term = tfidf_dict_country_de.term.astype(str)
+        tfidf_dict_av_country_au.term = tfidf_dict_av_country_au.term.astype(str)
+        tfidf_dict_av_country_ch.term = tfidf_dict_av_country_ch.term.astype(str)
+        tfidf_dict_av_country_de.term = tfidf_dict_av_country_de.term.astype(str)
 
         # Combine in country-dict
-        tfidf_dict_country = {}
-        values = {'au': tfidf_dict_country_au,
-                  'cd': tfidf_dict_country_ch,
-                  'de': tfidf_dict_country_de}
-        tfidf_dict_country.update(values)
+        tfidf_dict_av_country = {}
+        values = {'au': tfidf_dict_av_country_au,
+                  'cd': tfidf_dict_av_country_ch,
+                  'de': tfidf_dict_av_country_de}
+        tfidf_dict_av_country.update(values)
 
         # Import dictionaries
         tfidf_dict_global = pd.read_csv(f'{path_to_project_folder}\\Output\\Dicts\\tfidf_dict_global.csv')
@@ -206,10 +206,10 @@ def main(path_to_project_folder: str,
 
     if generate_labeling:
         # Generate overall dictionary as labeling function input
-        lf_dict = {'tfidf_keywords': tfidf_dict.term.to_list(),
-                   'tfidf_keywords_at': tfidf_dict_country['au'].term.to_list(),
-                   'tfidf_keywords_ch': tfidf_dict_country['cd'].term.to_list(),
-                   'tfidf_keywords_de': tfidf_dict_country['de'].term.to_list(),
+        lf_dict = {'tfidf_keywords_av': tfidf_dict_av.term.to_list(),
+                   'tfidf_keywords_av_at': tfidf_dict_av_country['au'].term.to_list(),
+                   'tfidf_keywords_av_ch': tfidf_dict_av_country['cd'].term.to_list(),
+                   'tfidf_keywords_av_de': tfidf_dict_av_country['de'].term.to_list(),
                    'tfidf_keywords_global': tfidf_dict_global.term.to_list(),
                    'chi2_keywords_global': chisquare_dict_global.term.tolist(),
                    'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
@@ -284,7 +284,7 @@ if __name__ == "__main__":
          generate_bt_data=False,  # runs for approx 40min
          preprocess_bt_data=False,
 
-         generate_tfidf_dicts=False,
-         generate_chisquare_dicts=False,
+         generate_tfidf_dicts=True,
+         generate_chisquare_dicts=True,
          generate_labeling=True,
          )
