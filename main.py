@@ -123,7 +123,7 @@ def main(path_to_project_folder: str,
         chisquare_dict_country = nccr_dicts.generate_chisquare_dict_per_country(train, confidence=0.99)
 
         chisquare_dicts_pop, chisquare_dicts_nonpop = \
-            nccr_dicts.generate_chisquare_dep_dicts(train, preprocessed=preprocess_nccr_data, confidence=0.75)
+            nccr_dicts.generate_chisquare_dep_dicts(train, preprocessed=preprocess_nccr_data, confidence=0.9)
 
     else:
         # Import dictionary
@@ -243,33 +243,8 @@ def main(path_to_project_folder: str,
                                output_path=f'{path_to_project_folder}\\Output',
                                spacy_model=spacy_model)
 
-        # Define constants
-        COUNT = 'Count-Vectorization'
-        TFIDF = 'TFIDF-Vectorization'
-
-        BERT = 'BERT'
-        LOGREG = 'LogisticRegression'
-        SVC = 'SupportVectorClassifier'
-        RF = 'RandomForest'
-        DUMMY = 'DummyClassifier'
-
-        base_models = [LOGREG, SVC, RF]
-        base_features = [COUNT, TFIDF]
-
-        transformer_models = [BERT]
-
-        dummy_models = [DUMMY]
-
         # Run Snorkel Labeling
-        for model in dummy_models:
-            nccr_labeler.run_labeling(classifier=model, feature=None)
-
-        for model in base_models:
-            for feature in base_features:
-                nccr_labeler.run_labeling(classifier=model, feature=feature)
-
-        # for model in transformer_models:
-        #     nccr_labeler.run_labeling(classifier=model, feature=None)
+        nccr_labeler.run_labeling()
 
     if generate_bt_data:
         bt_corpus = bt_df.generate_bt_corpus()
@@ -309,7 +284,7 @@ if __name__ == "__main__":
          generate_bt_data=False,  # runs for approx 40min
          preprocess_bt_data=False,
 
-         generate_tfidf_dicts=True,
-         generate_chisquare_dicts=True,
+         generate_tfidf_dicts=False,
+         generate_chisquare_dicts=False,
          generate_labeling=True,
          )

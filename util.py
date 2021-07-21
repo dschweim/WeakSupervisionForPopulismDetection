@@ -140,11 +140,11 @@ def extract_dep_tuples(segment):
     # Iterate over fullverbs
     for verb in verbs:
 
-        # todo: only to debug
-        lemmas = []  ##
-        current_sent = verb.sent  ##
-        for token in current_sent:  ##
-            lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))  ##
+        # # only for debugging
+        # lemmas = []  ##
+        # current_sent = verb.sent  ##
+        # for token in current_sent:  ##
+        #     lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))  ##
 
         # Create empty list for components
         verb_list = []
@@ -165,7 +165,7 @@ def extract_dep_tuples(segment):
 
             # Extract subject
             if child.dep_ in SUBJECTS:
-                subj_list.append(child.lemma_.lower())
+                subj_list.append(child.text.lower())
 
             # Extract object
             elif child.dep_ in OBJECTS:
@@ -290,85 +290,6 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                                   'source': [None]})
 
     return tuples_df
-
-
-def get_svo_tuples_segment(svo_list: list, get_components: dict):
-    """
-    Extract all svo(+verbprefix)(+neg) tuples in current segment
-    :param svo_list:
-    :param get_components: dictionary that indicates which components to return s, v, o, verbprefix, neg
-    :type get_components: dict
-    :return: array of tuples in current segment
-    :rtype: np.array
-    """
-
-    # Define empty list for tuples
-    corpus_tuples = []
-
-    # Extract boolean indicator per component from dict
-    get_subj = get_components['subj']
-    get_verb = get_components['verb']
-    get_verbprefix = get_components['verbprefix']
-    get_obj = get_components['obj']
-    get_neg = get_components['neg']
-
-    # Iterate over dicts (i.e. number of sentences)
-    for elem in svo_list:
-        # Skip None values
-        if isinstance(elem, dict):
-            current_val = list(elem.values())
-
-            # Extract requested components + negation in any case
-            subj = ', '.join(current_val[0])  # subject
-            verb = ', '.join(current_val[1])  # verb
-            verb_prefix = ', '.join(current_val[2])  # verb_prefix
-            obj = ', '.join(current_val[3])  # object
-            neg = ', '.join(current_val[4])  # negation
-
-            # Generate requested tuple and append to global list
-            if get_subj & get_verb & get_verbprefix & get_obj & get_neg:  # svo + prefix + neg
-                current_tuple = (subj, verb, verb_prefix, obj, neg)
-            elif get_subj & get_verb & get_verbprefix & get_obj & (not get_neg):  # svo + prefix
-                current_tuple = (subj, verb, verb_prefix, obj)
-
-            elif get_subj & get_verb & (not get_verbprefix) & get_obj & get_neg:  # svo + neg
-                current_tuple = (subj, verb, obj, neg)
-            elif get_subj & get_verb & (not get_verbprefix) & get_obj & (not get_neg):  # svo
-                current_tuple = (subj, verb, obj)
-
-            elif get_subj & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # sv +neg
-                current_tuple = (subj, verb, neg)
-            elif get_subj & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # sv
-                current_tuple = (subj, verb)
-
-            elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & get_neg:  # vo +neg
-                current_tuple = (verb, obj, neg)
-            elif (not get_subj) & get_verb & (not get_verbprefix) & get_obj & (not get_neg):  # vo
-                current_tuple = (verb, obj)
-
-            elif get_subj & (not get_verb) & (not get_verbprefix) & get_obj & (not get_neg):  # so
-                current_tuple = (subj, obj)
-
-            elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & get_neg:  # v + neg
-                current_tuple = (verb, neg)
-            elif (not get_subj) & get_verb & (not get_verbprefix) & (not get_obj) & (not get_neg):  # v
-                current_tuple = (verb)
-
-            elif get_subj & (not get_verb) & (not get_verbprefix) & (not get_obj) & (not get_neg):  # s
-                current_tuple = (subj)
-
-            elif (not get_subj) & (not get_verb) & (not get_verbprefix) & get_obj & (not get_neg):  # o
-                current_tuple = (obj)
-
-            else:  # not implemented
-                raise Exception('This svo combination is not supported')
-
-            corpus_tuples.append(current_tuple)
-
-    # Extract tuples and tranform to array
-    segment_tuples = np.array(list(Counter(corpus_tuples).keys()))
-
-    return segment_tuples
 
 
 def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, Y_pred, X_test, hyperparameters):

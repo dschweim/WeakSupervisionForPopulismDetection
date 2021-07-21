@@ -23,8 +23,9 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     :return: List of labeling funtions
     :rtype:  List
     """
+
     ## Preprocessors
-    #spacy_preprocessor = SpacyPreprocessor(text_field="content", doc_field="doc", language=spacy_model, memoize=True)
+    # spacy_preprocessor = SpacyPreprocessor(text_field="content", doc_field="doc", language=spacy_model, memoize=True)
 
     # Create custom component that converts lemmas to lower case
     @Language.component('lower_case_lemmas')
@@ -213,7 +214,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['bundesregierung']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['bundesregierung']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
         ],
@@ -224,7 +225,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['ich']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['wir']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
 
@@ -232,33 +233,44 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                'LEMMA': {'IN': ['haben']}
+            },
+            {
+                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['regierung']},
+                                                       'DEP': {'IN': SUBJECTS}}
+            }
+        ],
+        [
+            {
+                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
                 'LEMMA': {'IN': ['können']}
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['man']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['man']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
         ],
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['haben']}
+                'LEMMA': {'IN': ['wollen']}
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['regierung']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['wir']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
         ],
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['haben']}
+                'LEMMA': {'IN': ['stehen']}
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['grüne']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['wir']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
         ]
@@ -275,56 +287,15 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
                                                       'DEP': {'IN': OBJECTS}}
             }
-        ],
-        [
-            {
-                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': 'erweisen'
-            },
-            {
-                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
-                                                      'DEP': {'IN': OBJECTS}}
-            }
-        ],
-        [
-            {
-                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': 'haben'
-            },
-            {
-                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'recht',
-                                                      'DEP': {'IN': OBJECTS}}
-            }
         ]
-    ]
-
-    pop_patterns_vneg = [
-        [
-            {
-                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': 'werden'
-            },
-            {
-                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'negation', 'RIGHT_ATTRS': {'LEMMA': 'nicht',
-                                                        'DEP': {'IN': NEGATIONS}}
-            }
-        ]
-
     ]
 
     pop_patterns_v = [
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['erhalten', 'sein', 'lässt', 'erhöhen', 'schützen', 'leben', 'beenden', 'richten',
-                                 'verkaufen', 'entstehen', 'kommen', 'werden', 'zustimmen', 'heißen', 'erfüllen',
-                                 'bestätigen', 'führen', 'lernen', 'verpflichten', 'soll', 'befürworten',
-                                 'bezeichnen', 'geben', 'sollen', 'treffen', 'stimmen', 'sparen', 'abbauen',
-                                 'bekommen', 'sichern', 'kommentieren', 'bedienen', 'erlauben', 'beginnen', 'umsetzen',
-                                 'korrigieren']}
+                'LEMMA': {'IN': ['leben', 'schützen', 'erhöhen', 'richten', 'erhalten', 'sollen', 'verkaufen', 'lässt',
+                                 'erfüllen', 'bezeichnen', 'kosten', 'bestätigen', 'sein', 'heißen', 'umsetzen']}
             }
         ]
 
@@ -337,11 +308,10 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['bundesregierung', 'regierung', 'politiker',
-                                                                        'prozent', 'npd', 'banken', 'linke', 'zahl',
-                                                                        'million', 'staat', 'mensch', 'fpö', 'stnderat',
-                                                                        'von', 'sozialdemokrat', 'arbeitslosigkeit',
-                                                                        'eu', 'dies', 'unternehmen', 'ziel']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['bundesregierung', 'regierung', 'politiker',
+                                                                        'die', 'npd', 'linke', 'bürger', 'menschen',
+                                                                        'unternehmen', 'millionen', 'staat', 'welche',
+                                                                        'wir', 'von']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
         ]
@@ -355,10 +325,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['politik', 'möglichkeit', 'geld', 'recht',
-                                                                       'prozent', 'mensch', 'arbeit', 'schutz',
-                                                                       'aufklärung', 'voraussetzung', 'ich', 'ausbau',
-                                                                       'bürger', 'debatte', 'rolle']},
+                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['staat', 'möglichkeit', 'politik', 'möglich']},
                                                       'DEP': {'IN': OBJECTS}}
             }
         ]
@@ -374,7 +341,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['spö']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['spö']},
                                                        'DEP': {'IN': SUBJECTS}}
             }
         ],
@@ -385,22 +352,8 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['övp']},
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['övp']},
                                                        'DEP': {'IN': SUBJECTS}}
-            }
-        ]
-    ]
-
-    nonpop_patterns_vo = [
-        [
-            {
-                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['zeigen', 'setzen']}
-            },
-            {
-                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
-                                                      'DEP': {'IN': OBJECTS}}
             }
         ]
     ]
@@ -409,7 +362,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['können', 'wollen']}
+                'LEMMA': {'IN': ['können']}
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
@@ -423,10 +376,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         [
             {
                 'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
-                'LEMMA': {'IN': ['muss', 'halten', 'haben', 'betonen', 'bringen', 'habe', 'zeigen',  'leisten',
-                                 'finanzieren', 'fordern', 'handeln', 'erreichen', 'sprechen', 'kritisieren',
-                                 'einsetzen', 'nutzen', 'verlangen',  'legen', 'vorlegen', 'fahren', 'folgen',
-                                 'blockieren']}
+                'LEMMA': {'IN': ['muss', 'halten', 'habe', 'zeigen', 'leisten', 'einsetzen', 'haben', 'sprechen']}
             }
         ]
     ]
@@ -438,23 +388,9 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             },
             {
                 'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['övp', 'spö', 'spd', 'spindelegger', 'faymann',
-                                                                        'österreich', 'vorsitzende', 'was', 'svp',
-                                                                        'bzö', 'bundesrat']}, 'DEP': {'IN': SUBJECTS}}
-            }
-        ]
-
-    ]
-
-    nonpop_patterns_o = [
-        [
-            {
-                'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}}
-            },
-            {
-                'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
-                'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': {'IN': ['vorschlag', 'alle', 'wichtig']},
-                                                      'DEP': {'IN': OBJECTS}}
+                'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['spö', 'övp', 'spd', 'spindelegger', 'er',
+                                                                        'österreich', 'faymann', 'ich', 'was']},
+                                                       'DEP': {'IN': SUBJECTS}}
             }
         ]
 
@@ -462,17 +398,14 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
     dep_matcher.add('pop_sv', patterns=pop_patterns_sv)
     dep_matcher.add('pop_vo', patterns=pop_patterns_vo)
-    dep_matcher.add('pop_vneg', patterns=pop_patterns_vneg)
     dep_matcher.add('pop_v', patterns=pop_patterns_v)
     dep_matcher.add('pop_s', patterns=pop_patterns_s)
     dep_matcher.add('pop_o', patterns=pop_patterns_o)
 
     dep_matcher.add('nonpop_sv', patterns=nonpop_patterns_sv)
-    dep_matcher.add('nonpop_vo', patterns=nonpop_patterns_vo)
     dep_matcher.add('nonpop_vneg', patterns=nonpop_patterns_vneg)
     dep_matcher.add('nonpop_v', patterns=nonpop_patterns_v)
     dep_matcher.add('nonpop_s', patterns=nonpop_patterns_s)
-    dep_matcher.add('nonpop_o', patterns=nonpop_patterns_o)
 
     @labeling_function(pre=[spacy_preprocessor])
     def lf_dep_pop_sv(x):
@@ -480,10 +413,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         # Get matches and the names of the patterns that caused the match
         dep_matches = dep_matcher(x.doc)
         matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
-
-        # todo: for debugging only
-        # for token in x.doc:
-        #     print(token.text, token.dep_, token.pos_, token.lemma_)
 
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
@@ -501,19 +430,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         # If match and pattern name equals current lfs pattern, return POP
         if dep_matches:
             return POP if any(patt == 'pop_vo' for patt in matched_patterns) else ABSTAIN
-        else:
-            return ABSTAIN
-
-    @labeling_function(pre=[spacy_preprocessor])
-    def lf_dep_pop_vneg(x):
-
-        # Get matches and the names of the patterns that caused the match
-        dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
-
-        # If match and pattern name equals current lfs pattern, return POP
-        if dep_matches:
-            return POP if any(patt == 'pop_vneg' for patt in matched_patterns) else ABSTAIN
         else:
             return ABSTAIN
 
@@ -570,19 +486,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             return ABSTAIN
 
     @labeling_function(pre=[spacy_preprocessor])
-    def lf_dep_nonpop_vo(x):
-
-        # Get matches and the names of the patterns that caused the match
-        dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
-
-        # If match and pattern name equals current lfs pattern, return NONPOP
-        if dep_matches:
-            return NONPOP if any(patt == 'nonpop_vo' for patt in matched_patterns) else ABSTAIN
-        else:
-            return ABSTAIN
-
-    @labeling_function(pre=[spacy_preprocessor])
     def lf_dep_nonpop_vneg(x):
 
         # Get matches and the names of the patterns that caused the match
@@ -621,19 +524,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         else:
             return ABSTAIN
 
-    @labeling_function(pre=[spacy_preprocessor])
-    def lf_dep_nonpop_o(x):
-
-        # Get matches and the names of the patterns that caused the match
-        dep_matches = dep_matcher(x.doc)
-        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
-
-        # If match and pattern name equals current lfs pattern, return NONPOP
-        if dep_matches:
-            return NONPOP if any(patt == 'nonpop_o' for patt in matched_patterns) else ABSTAIN
-        else:
-            return ABSTAIN
-
     # ## Sentiment based
     # nlp = spacy.load('de_core_news_lg')
     #
@@ -665,17 +555,14 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
                 lf_dep_pop_sv,
                 lf_dep_pop_vo,
-                lf_dep_pop_vneg,
                 lf_dep_pop_v,
                 lf_dep_pop_s,
                 lf_dep_pop_o,
 
                 lf_dep_nonpop_sv,
-                lf_dep_nonpop_vo,
                 lf_dep_nonpop_vneg,
                 lf_dep_nonpop_v,
                 lf_dep_nonpop_s,
-                lf_dep_nonpop_o,
 
                 lf_party_position_ches]
 

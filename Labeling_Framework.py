@@ -11,15 +11,20 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.dummy import DummyClassifier
+import warnings
+
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 from util import standardize_party_naming, output_and_store_endmodel_results
 from Labeling_Functions import get_lfs
 from BERT_Classifier import run_transformer
 
+
 class Labeler:
     def __init__(
             self,
             train_data: pd.DataFrame,
+            dev_data: pd.DataFrame,
             test_data: pd.DataFrame,
             lf_input_dict: dict,
             data_path: str,
@@ -30,6 +35,8 @@ class Labeler:
         Class to create the labels
         :param train_data: training set
         :type train_data: pd.DataFrame
+        :param dev_data: dev set
+        :type dev_data: pd.DataFrame
         :param test_data: test set
         :type test_data: pd.DataFrame
         :param lf_input_dict: dict that contains input for LFs
@@ -43,20 +50,17 @@ class Labeler:
         """
 
         self.train_data = train_data
+        self.dev_data = dev_data
         self.test_data = test_data
         self.lf_input_dict = lf_input_dict
         self.data_path = data_path
         self.output_path = output_path
         self.spacy_model = spacy_model
 
-    def run_labeling(self, classifier, feature):
+    def run_labeling(self):
         """
         Generate labels on initialized dataframe using Snorkel label model and run classifier as end model,
         then print and store results
-        :param classifier: end model to run on labeled corpus
-        :type classifier: str
-        :param feature: vectorization used for text in end model
-        :type feature: str
         :return:
         :rtype:
         """
@@ -71,12 +75,19 @@ class Labeler:
         RF = 'RandomForest'
         DUMMY = 'DummyClassifier'
 
+        base_models = [LOGREG, SVC, RF]
+        dummy_models = [DUMMY]
+        transformer_models = [BERT]
+
+        base_vectorizations = [COUNT, TFIDF]
+
         ABSTAIN = -1
         NONPOP = 0
         POP = 1
 
         # Define train & test data
         train_data = self.train_data
+        dev_data = self.dev_data
         test_data = self.test_data
 
         # Generate dict with ches input
@@ -93,31 +104,36 @@ class Labeler:
         # Retrieve defined labeling functions
         lfs = get_lfs(self.lf_input_dict, lf_input_ches, self.spacy_model)
 
-        #L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
+        # L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
 
         ## 2. Generate label matrix L
         applier = PandasLFApplier(lfs=lfs)
         L_train = applier.apply(df=train_data)
+        L_dev = applier.apply(df=dev_data)
 
         # Evaluate performance on training set
         print(LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values))
+        print(LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values))
         print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
-        # print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
+        print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
 
-        analysis = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
-        analysis.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis.csv')
+        analysis_train = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
+        analysis_train.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_train.csv')
+
+        analysis_dev = LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values)
+        analysis_dev.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_dev.csv')
 
         # Error analysis
         error_table = train_data.iloc[L_train[:, 1] == POP].sample(10, random_state=1)
         buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
         train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
 
-        #buckets = get_label_buckets(Y_gold, Y_pred)
-        #buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
+        # buckets = get_label_buckets(Y_gold, Y_pred)
+        # buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
 
         comparison_table = pd.DataFrame({'ID': train_data.ID,
-                                        'content': train_data.content,
-                                        'label': train_data.POPULIST,
+                                         'content': train_data.content,
+                                         'label': train_data.POPULIST,
                                          'lf_tfidf_global': L_train[:, 5]})
 
         ## 3. Generate label model
@@ -166,100 +182,43 @@ class Labeler:
         labeled_df_test['label'] = test_data['POPULIST']
         labeled_df_test.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_test.csv')
 
-        if classifier == BERT:
-            ## Run BERT classifier:
-            Y_pred = run_transformer(X=df_train_filtered.content.tolist(), y=preds_train_filtered.tolist(),
-                                     X_test=test_data.content.tolist(),
-                                     model_name='bert-base-german-cased')
+        # Run different models
+        X_train = df_train_filtered.content.tolist()
+        Y_train = preds_train_filtered.tolist()
+        X_test = test_data.content.tolist()
+        Y_test = Y_test
+
+        # Run dummy models
+        for model in dummy_models:
+            Y_pred, hyperparameters = self.run_classification(classifier=model, feature=None,
+                                                              X_train=X_train, Y_train=Y_train,
+                                                              X_test=X_test, Y_test=Y_test)
 
             # Print and save results
-            output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
+            output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature=None,
                                               Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
-                                              hyperparameters='none')
-            #todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
+                                              hyperparameters=hyperparameters)
 
-        elif classifier == DUMMY:
-            # Define model
-            sklearn_model = DummyClassifier(strategy='stratified', random_state=42)
+        # Run base models
+        for model in base_models:
+            for vectorization in base_vectorizations:
+                Y_pred, hyperparameters = self.run_classification(classifier=model, feature=vectorization,
+                                                                  X_train=X_train, Y_train=Y_train,
+                                                                  X_test=X_test, Y_test=Y_test)
 
-            # Fit model
-            clf = sklearn_model.fit(X=df_train_filtered.content.tolist(), y=preds_train_filtered)
-            # Predict test data
-            Y_pred = clf.predict(test_data.content.tolist())
+                # Print and save results
+                output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature=vectorization,
+                                                  Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+                                                  hyperparameters=hyperparameters)
 
-            # Print and save results
-            output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
-                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
-                                              hyperparameters={})
-
-        else:
-            if feature == COUNT:
-                vectorizer = CountVectorizer(ngram_range=(1, 5))
-            elif feature == TFIDF:
-                vectorizer = TfidfVectorizer()
-            else:
-                # Other vectorizations are not implemented
-                raise AssertionError
-
-            X_train = vectorizer.fit_transform(df_train_filtered.content.tolist())
-            X_test = vectorizer.transform(test_data.content.tolist())
-
-            if classifier == LOGREG:
-                # Set model
-                sklearn_model = LogisticRegression()
-
-                # Set parameter ranges
-                parameters = {
-                    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                    'class_weight': ['balanced'],
-                    'max_iter': [800],
-                    'n_jobs': [-2]
-                }
-
-            # 'solver' = ['liblinear']
-            elif classifier == SVC:
-                # Set model
-                sklearn_model = LinearSVC(max_iter=1000)
-
-                # Set parameter ranges
-                parameters = {
-                    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                    'class_weight': ['balanced']
-                }
-
-            elif classifier == RF:
-                # Set model
-                sklearn_model = RandomForestClassifier()
-
-                # Set parameter ranges
-                parameters = {
-                    'n_estimators': [100],
-                    'max_features': ['sqrt', 'log2', None],
-                    'max_depth': [2, 4, 7, 10],
-                    'min_samples_split': [2, 5, 10, 20],
-                    'min_samples_leaf': [1, 2, 4, 8],
-                    'class_weight': ['balanced_subsample'],
-                    'n_jobs': [-2]
-                }
-
-            else:
-                # Other models are not implemented
-                raise AssertionError
-
-            # Define grid search and fit model
-            rs = RandomizedSearchCV(estimator=sklearn_model, param_distributions=parameters, scoring="f1", cv=5,
-                                    n_jobs=-2, verbose=1, n_iter=100, refit=True)
-
-            # Fit model
-            rs.fit(X=X_train, y=preds_train_filtered)
-
-            # Predict test data
-            Y_pred = rs.best_estimator_.predict(X_test)
-
-            # Print and save results
-            output_and_store_endmodel_results(output_path=self.output_path, classifier=classifier, feature=feature,
-                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
-                                              hyperparameters=rs.best_params_)
+        # # Run transformer models
+        # for model in transformer_models:
+        #     Y_pred, hyperparameters = self.run_classification(classifier=model, feature=None)
+        #
+        #     # Print and save results
+        #     output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature=None,
+        #                                       Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+        #                                       hyperparameters=hyperparameters)
 
     def __prepare_labeling_input_ches(self):
         """
@@ -443,3 +402,107 @@ class Labeler:
                    'Trust']]
 
         return ncr
+
+    @staticmethod
+    def run_classification(classifier, feature, X_train, Y_train, X_test, Y_test):
+
+        # Define constants
+        COUNT = 'Count-Vectorization'
+        TFIDF = 'TFIDF-Vectorization'
+
+        BERT = 'BERT'
+        LOGREG = 'LogisticRegression'
+        SVC = 'SupportVectorClassifier'
+        RF = 'RandomForest'
+        DUMMY = 'DummyClassifier'
+
+        if classifier == BERT:
+            ## Run BERT classifier:
+            Y_pred = run_transformer(X=X_train, y=Y_train,
+                                     X_test=X_test,
+                                     model_name='bert-base-german-cased')
+
+            # Set hyperparams  # todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
+            hyperparameters = {}
+
+        elif classifier == DUMMY:
+            # Define model
+            sklearn_model = DummyClassifier(strategy='stratified', random_state=42)
+
+            # Fit model
+            clf = sklearn_model.fit(X=X_train, y=Y_train)
+
+            # Predict test data
+            Y_pred = clf.predict(X_test)
+
+            # Set hyperparams
+            hyperparameters = {}
+
+        else:
+            if feature == COUNT:
+                vectorizer = CountVectorizer(ngram_range=(1, 5))
+            elif feature == TFIDF:
+                vectorizer = TfidfVectorizer()
+            else:
+                # Other vectorizations are not implemented
+                raise AssertionError
+
+            X_train_vec = vectorizer.fit_transform(X_train)
+            X_test_vec = vectorizer.transform(X_test)
+
+            if classifier == LOGREG:
+                # Set model
+                sklearn_model = LogisticRegression()
+
+                # Set parameter ranges
+                parameters = {
+                    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                    'class_weight': ['balanced'],
+                    'max_iter': [800],
+                    'n_jobs': [-2]
+                }
+
+            # 'solver' = ['liblinear']
+            elif classifier == SVC:
+                # Set model
+                sklearn_model = LinearSVC(max_iter=1000)
+
+                # Set parameter ranges
+                parameters = {
+                    'C': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                    'class_weight': ['balanced']
+                }
+
+            elif classifier == RF:
+                # Set model
+                sklearn_model = RandomForestClassifier()
+
+                # Set parameter ranges
+                parameters = {
+                    'n_estimators': [100],
+                    'max_features': ['sqrt', 'log2', None],
+                    'max_depth': [2, 4, 7, 10],
+                    'min_samples_split': [2, 5, 10, 20],
+                    'min_samples_leaf': [1, 2, 4, 8],
+                    'class_weight': ['balanced_subsample'],
+                    'n_jobs': [-2]
+                }
+
+            else:
+                # Other models are not implemented
+                raise AssertionError
+
+            # Define grid search and fit model
+            rs = RandomizedSearchCV(estimator=sklearn_model, param_distributions=parameters, scoring="f1", cv=5,
+                                    n_jobs=-2, verbose=1, n_iter=100, refit=True)
+
+            # Fit model
+            rs.fit(X=X_train_vec, y=Y_train)
+
+            # Predict test data
+            Y_pred = rs.best_estimator_.predict(X_test_vec)
+
+            # Set best hyperparams
+            hyperparameters = rs.best_params_
+
+        return Y_pred, hyperparameters
