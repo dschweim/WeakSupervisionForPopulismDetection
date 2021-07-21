@@ -8,20 +8,6 @@ from collections import Counter
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
 
-def generate_train_test_split(df):
-    """
-    Generate train test split
-    :param df: Dataset to split
-    :type df: DataFrame
-    :return: Returns two datasets
-    :rtype: DataFrame, DataFrame
-    """
-
-    train, test = train_test_split(df, test_size=0.2, random_state=42, shuffle=True, stratify=df.POPULIST)
-
-    return train, test
-
-
 def generate_train_dev_test_split(df):
     """
     Generate train dev test split
@@ -32,8 +18,8 @@ def generate_train_dev_test_split(df):
     """
 
     # Split into 60% train, 20% dev and 20% test
-    train, dev, test = np.split(df.sample(frac=1, random_state=42),
-                                [int(.6 * len(df)), int(.8 * len(df))])
+    rest, test = train_test_split(df, test_size=0.2, random_state=42, shuffle=True, stratify=df.POPULIST)
+    train, dev = train_test_split(rest, test_size=0.1, random_state=42, shuffle=True, stratify=rest.POPULIST)
 
     return train, dev, test
 
@@ -289,13 +275,19 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
                     corpus_tuples = corpus_tuples.append(tuple)
 
     # Generate df
-    tuples_df = corpus_tuples.groupby('tuple', as_index=False).agg({'tuple': ['first', 'count'],
-                                                                    'source': lambda x: list(x)})
+    if not corpus_tuples.empty:
+        tuples_df = corpus_tuples.groupby('tuple', as_index=False).agg({'tuple': ['first', 'count'],
+                                                                        'source': lambda x: list(x)})
 
-    tuples_df.columns = tuples_df.columns.droplevel(0)
-    tuples_df.rename(columns={tuples_df.columns[0]: 'tuple',
-                              tuples_df.columns[1]: 'count',
-                              tuples_df.columns[2]: 'source'}, inplace=True)
+        tuples_df.columns = tuples_df.columns.droplevel(0)
+        tuples_df.rename(columns={tuples_df.columns[0]: 'tuple',
+                                  tuples_df.columns[1]: 'count',
+                                  tuples_df.columns[2]: 'source'}, inplace=True)
+
+    else:
+        tuples_df = pd.DataFrame({'tuple': [None],
+                                  'count': [None],
+                                  'source': [None]})
 
     return tuples_df
 
@@ -444,4 +436,3 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
                                 'Y_pred': Y_pred})
 
     model_preds.to_csv(f'{output_path}\\Results\\{classifier}_{feature}_preds.csv')
-

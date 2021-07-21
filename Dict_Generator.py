@@ -495,10 +495,7 @@ class Dict_Generator:
         global_nonpop_dict = dict()
 
         for combination in combinations:
-
             get_components = combination
-            # Get number of components set to true
-            n_components = sum(get_components.values())
 
             # Generate list of all distinct svo-triples and sort by their number of occurrences
             svo_tuples_pop_list = get_all_svo_tuples(svo_tuples_pop, get_components).sort_values(by='count', ascending=False)
