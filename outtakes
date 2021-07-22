@@ -188,12 +188,3 @@
                 #           [child for child in token.children])
                 #
                 #     triples_dict.append([(token.lemma_.lower(), token.pos_, token.dep_)])
-
-
-
-# todo: only for debugging
-                lemmas = []
-                current_sent = verb.sent ##
-                for token in current_sent: ##
-                    lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text)) ##
-
