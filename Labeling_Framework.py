@@ -14,6 +14,7 @@ from sklearn.svm import LinearSVC
 from sklearn.model_selection import RandomizedSearchCV
 from sklearn.dummy import DummyClassifier
 from spacy.language import Language
+from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -185,13 +186,12 @@ class Labeler:
 
         # Run different models
         X_train = df_train_filtered.content.tolist()
-        Y_train = preds_train_filtered.tolist()
+        Y_train = list(preds_train_filtered)
         X_test = test_data.content.tolist()
         Y_test = Y_test
 
         # Set models and feature vectors
-        #base_models = [LOGREG, SVC, RF]
-        base_models = [SVC]
+        base_models = [LOGREG, SVC, RF]
         dummy_models = [DUMMY]
         transformer_models = [BERT]
 
@@ -215,10 +215,26 @@ class Labeler:
                     X_train_vec = self.__generate_occurence_vectors(df_train_filtered.content)
                     X_test_vec = self.__generate_occurence_vectors(test_data.content)
 
+                    if model == SVC:
+                        # Scale features
+                        scaler = MinMaxScaler()
+                        scaler.fit(X_train_vec)
+
+                        X_train_vec = scaler.transform(X_train_vec)
+                        X_test_vec = scaler.transform(X_test_vec)
+
                 elif vectorization == COUNT:
                     vectorizer = CountVectorizer(ngram_range=(1, 5))
                     X_train_vec = vectorizer.fit_transform(X_train)
                     X_test_vec = vectorizer.transform(X_test)
+
+                    if model == SVC:
+                        # Scale features
+                        scaler = MaxAbsScaler()
+                        scaler.fit(X_train_vec)
+
+                        X_train_vec = scaler.transform(X_train_vec)
+                        X_test_vec = scaler.transform(X_test_vec)
 
                 elif vectorization == TFIDF:
                     vectorizer = TfidfVectorizer()
@@ -497,7 +513,7 @@ class Labeler:
 
             elif classifier == SVC:
                 # Set model
-                sklearn_model = LinearSVC(max_iter=1000, dual=False)
+                sklearn_model = LinearSVC(max_iter=10000, dual=False)
 
                 # Set parameter ranges
                 parameters = {
@@ -579,14 +595,30 @@ class Labeler:
 
             # Get number of matches per pattern
             feature_array = np.array([
+                matched_patterns.count('pop_svoprefneg'),
+                matched_patterns.count('pop_svopref'),
+                matched_patterns.count('pop_svoneg'),
+                matched_patterns.count('pop_svo'),
+                matched_patterns.count('pop_svneg'),
                 matched_patterns.count('pop_sv'),
+                matched_patterns.count('pop_voneg'),
                 matched_patterns.count('pop_vo'),
+                matched_patterns.count('pop_so'),
+                matched_patterns.count('pop_vneg'),
                 matched_patterns.count('pop_v'),
                 matched_patterns.count('pop_s'),
                 matched_patterns.count('pop_o'),
 
+                matched_patterns.count('nonpop_svoprefneg'),
+                matched_patterns.count('nonpop_svopref'),
+                matched_patterns.count('nonpop_svoneg'),
+                matched_patterns.count('nonpop_svo'),
+                matched_patterns.count('nonpop_svneg'),
                 matched_patterns.count('nonpop_sv'),
+                matched_patterns.count('nonpop_voneg'),
                 matched_patterns.count('nonpop_vo'),
+                matched_patterns.count('nonpop_so'),
+                matched_patterns.count('nonpop_vneg'),
                 matched_patterns.count('nonpop_v'),
                 matched_patterns.count('nonpop_s'),
                 matched_patterns.count('nonpop_o'),
