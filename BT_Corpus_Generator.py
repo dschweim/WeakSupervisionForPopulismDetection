@@ -72,7 +72,6 @@ class BT_Dataset:
                     spr = subspeech.xpath('(preceding-sibling::*)[last()]')[0]
 
                     # Reset values
-                    spr_text = ''
                     spr_id = None
                     spr_title = None
                     spr_firstname = None
@@ -124,52 +123,49 @@ class BT_Dataset:
                     # Get count for xpath
                     n = str(index + 1)
 
-                    # Extract text nodes that belong to current subspeech
-                    spr_text_j1 = subspeech.xpath('parent::*/p[@klasse=\'J_1\'][' + n + ']')[0].text
+                    # Extract relevant text nodes that belong to current subspeech
+                    spr_text_j1 = subspeech.xpath('parent::*/p[@klasse=\'J_1\'][' + n + ']')[0]
                     spr_text_p_list = subspeech.xpath(
                         'parent::*/p[@klasse=\'J_1\'][' + n + ']/following-sibling::p[not (@klasse=\'J_1\')'
-                                                              ' and not (@klasse=\'T\') and count(preceding-sibling::p'
+                                                              'and not (@klasse=\'T\') '
+                                                              'and not (@klasse=\'T_NaS\') '
+                                                              'and not (@klasse=\'T_Drs\') '
+                                                              'and not (@klasse=\'T_fett\') '
+                                                              'and count(preceding-sibling::p'
                                                               '[@klasse=\'J_1\'])=' + n + ']')
 
+                    # Append J_1 element at beginning of list
+                    spr_text_p_list.insert(0, spr_text_j1)
+
                     # Replace list items with their text content
-                    for i, node in enumerate(spr_text_p_list):
-                        spr_text_p_list[i] = node.text
+                    spr_text_list = [node.text for node in spr_text_p_list]
 
                     # Remove NaN from list
-                    spr_text_p_list = [val for val in spr_text_p_list if val]
+                    spr_text_list = [val for val in spr_text_list if val]
 
-                    # Concatenate text contents
-                    if spr_text_p_list is not None:
-                        spr_text_p = ' \n '.join(spr_text_p_list)
-                    else:
-                        spr_text_p = ''
+                    # Generate speech for each paragraph
+                    for i, paragraph in enumerate(spr_text_list):
+                        # Generate df for current paragraph
+                        df_paragraph = pd.DataFrame({'text_id': [speech_id],
+                                                     'text_subid': [subspeech_id],
+                                                     'text_date': [speech_date],
+                                                     'text_election_period': [speech_elec_period],
+                                                     'text_session_nr': [speech_session_nr],
+                                                     'text_location': [speech_location],
+                                                     'text_source': [file],
+                                                     'spr_id': [spr_id],
+                                                     'spr_name': [spr_name],
+                                                     'spr_party': [spr_party],
+                                                     'spr_location_affix': [spr_location_affix],
+                                                     'spr_role_full': [spr_role_full],
+                                                     'spr_role_short': [spr_role_short],
+                                                     'spr_state': [spr_state],
+                                                     'paragraph': [paragraph],
+                                                     'paragraph_id': [i]
+                                                     })
 
-                    # Join J_1 text and following siblings of type p
-                    if spr_text_p == '':
-                        spr_text = spr_text_j1
-                    else:
-                        spr_text = spr_text_j1 + ' \n ' + spr_text_p
-
-                    # Generate df for current subspeech
-                    df_speech = pd.DataFrame({'text_id': [speech_id],
-                                              'text_subid': [subspeech_id],
-                                              'text_date': [speech_date],
-                                              'text_election_period': [speech_elec_period],
-                                              'text_session_nr': [speech_session_nr],
-                                              'text_location': [speech_location],
-                                              'text_source': [file],
-                                              'spr_id': [spr_id],
-                                              'spr_name': [spr_name],
-                                              'spr_party': [spr_party],
-                                              'spr_location_affix': [spr_location_affix],
-                                              'spr_role_full': [spr_role_full],
-                                              'spr_role_short': [spr_role_short],
-                                              'spr_state': [spr_state],
-                                              'spr_text': [spr_text]
-                                              })
-
-                    # Append result to global corpus
-                    df = df.append(df_speech)
+                        # Append result to global corpus
+                        df = df.append(df_paragraph)
 
         # Save concatenated texts
         df.to_csv(f'{self.output_path}\\BT_corpus.csv', index=True)
