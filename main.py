@@ -170,7 +170,7 @@ def main(path_to_project_folder: str,
                   'de': chisquare_dict_country_de}
         chisquare_dict_country.update(values)
 
-        # Read and combine pop and nonpop dependency-based dicts #todo
+        # Read and combine pop and nonpop dependency-based dicts
         path = f'{path_to_project_folder}\\Output\\Dicts'
         pop_files = []
         nonpop_files = []
