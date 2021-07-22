@@ -352,7 +352,7 @@ class Dict_Generator:
         # Retrieve word counts of NONPOP subset (R)
         count_nonpop_vector = count_vector[:][1]
 
-        # Retrieve total number of words for both corpora #todo: maybe only for >5?
+        # Retrieve total number of words for both corpora
         words_pop = count_pop_vector.sum()
         words_nonpop = count_nonpop_vector.sum()
 
@@ -599,7 +599,7 @@ class Dict_Generator:
             tuples_pop = svo_tuples_grpd.count_pop.sum()
             tuples_nonpop = svo_tuples_grpd.count_nonpop.sum()
 
-            # Only consider words with count of at least 5 #todo: remove at word count as well?
+            # Only consider words with count of at least 5
             svo_tuples_grpd = svo_tuples_grpd.loc[(svo_tuples_grpd['count_pop'] >= 5) & (svo_tuples_grpd['count_nonpop'] >= 5)]
 
             # Create empty dataframes for result
