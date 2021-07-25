@@ -283,12 +283,6 @@ def main(path_to_project_folder: str,
 
         # todo: Run Snorkel framework to label bt_corpus_prep
 
-    # Import corpus with populism labels
-    data_path = f'{path_to_project_folder}\\Data'
-    target_table = pd.read_csv(f'{data_path}\\NCCR_Content\\NCCR_Content\\Target_Table.txt', delimiter="\t", encoding="ISO-8859-1")
-
-    train_x_target = target_table
-
 
 if __name__ == "__main__":
     parser = ArgumentParser()
@@ -302,10 +296,10 @@ if __name__ == "__main__":
 
          generate_nccr_data=False,
          preprocess_nccr_data=False,  # runs for approx 15min
-         generate_bt_data=False,  # runs for approx 40min
+         generate_bt_data=False,  # runs for multiple hours
          preprocess_bt_data=False,
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=True
+         generate_labeling=False
          )
