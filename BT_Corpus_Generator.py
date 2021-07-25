@@ -179,6 +179,21 @@ class BT_Dataset:
         # Drop rows without speaker_id
         df_prep = df.dropna(subset=["spr_id"])
 
+        # Calculate length of paragraph
+        df_prep['paragraph_length'] = df_prep['paragraph'].apply(lambda x: len(x))
+        # Remove examples with length below 50 characters
+        df_prep = df_prep.loc[df_prep['paragraph_length'] > 50]
+
+        # Calculate number of deliminators
+        df_prep['paragraph_length'] = df_prep['paragraph'].apply(
+            lambda x: x.count('.') + x.count('?') + x.count('!') + x.count(';')
+        )
+        # Remove examples with no deliminator
+        df_prep = df_prep.loc[df_prep['paragraph_length'] > 0]
+
+        # Drop additional paragraph length column
+        df_prep.drop(columns=['paragraph_length'], inplace=True)
+
         # Extract year from date
         df_prep['text_date'] = df_prep['text_date'].astype(str)
         df_prep['year'] = df_prep['text_date'].apply(lambda x: retrieve_year(x))
