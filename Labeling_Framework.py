@@ -15,6 +15,7 @@ from sklearn.model_selection import RandomizedSearchCV
 from sklearn.dummy import DummyClassifier
 from spacy.language import Language
 from sklearn.preprocessing import MinMaxScaler, StandardScaler, MaxAbsScaler
+from spacy.matcher import PhraseMatcher
 
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -75,6 +76,7 @@ class Labeler:
         COUNT = 'Count-Vectorization'
         TFIDF = 'TFIDF-Vectorization'
         OCCURENCE = 'Occurence-Baseline'
+        OCCURENCE_EMO = 'Occurence-Emotion-Baseline'
 
         # Models
         BERT = 'BERT'
@@ -99,9 +101,6 @@ class Labeler:
                   'ches_17': ches_17,
                   'ches_19': ches_19}
         lf_input_ches.update(values)
-
-        # Generate dict with ncr input
-        ncr = self.__prepare_labeling_input_ncr()
 
         # Retrieve defined labeling functions
         lfs = get_lfs(self.lf_input_dict, lf_input_ches, self.spacy_model)
@@ -195,7 +194,7 @@ class Labeler:
         dummy_models = [DUMMY]
         transformer_models = [BERT]
 
-        base_vectorizations = [OCCURENCE, COUNT, TFIDF]
+        base_vectorizations = [OCCURENCE, OCCURENCE_EMO, COUNT, TFIDF]
 
         # Run dummy models
         for model in dummy_models:
@@ -212,8 +211,20 @@ class Labeler:
             for vectorization in base_vectorizations:
 
                 if vectorization == OCCURENCE:
-                    X_train_vec = self.__generate_occurence_vectors(df_train_filtered.content)
-                    X_test_vec = self.__generate_occurence_vectors(test_data.content)
+                    X_train_vec = self.__generate_occurence_vectors(df_train_filtered.content, use_ncr=False)
+                    X_test_vec = self.__generate_occurence_vectors(test_data.content, use_ncr=False)
+
+                    if model == SVC:
+                        # Scale features
+                        scaler = MinMaxScaler()
+                        scaler.fit(X_train_vec)
+
+                        X_train_vec = scaler.transform(X_train_vec)
+                        X_test_vec = scaler.transform(X_test_vec)
+
+                elif vectorization == OCCURENCE_EMO:
+                    X_train_vec = self.__generate_occurence_vectors(df_train_filtered.content, use_ncr=True)
+                    X_test_vec = self.__generate_occurence_vectors(test_data.content, use_ncr=True)
 
                     if model == SVC:
                         # Scale features
@@ -301,6 +312,7 @@ class Labeler:
 
         # Standardize party naming: lowercase, remove Umlaute, remove empty spaces, etc
         ches_df_14['party'] = ches_df_14['party'].apply(lambda x: standardize_party_naming(x))
+
         # Keep cdu/csu only once
         ches_df_14.drop_duplicates(keep='first', inplace=True)
 
@@ -429,19 +441,21 @@ class Labeler:
 
     def __prepare_labeling_input_ncr(self):
         """
-        Generate dataframe for ncr sentiment analysis
+        Generate dataframe for ncr sentiment and emotion analysis
         :return: ncr
         :rtype:  DataFrame
         """
         ncr = pd.read_csv(f'{self.data_path}\\NRC-Emotion-Lexicon\\NRC-Emotion-Lexicon\\NRC-Emotion-Lexicon-v0.92\\'
                           f'NRC-Emotion-Lexicon-v0.92-In105Languages-Nov2017Translations.csv', sep=';')
 
-        # todo: generate sentiment from ncr
         # Subselect relevant columns
         ncr = ncr[['German (de)', 'Positive', 'Negative',
                    'Anger', 'Anticipation', 'Disgust',
                    'Fear', 'Joy', 'Sadness', 'Surprise',
                    'Trust']]
+
+        # Drop columns without translation
+        ncr = ncr.loc[ncr['German (de)'] != 'NO TRANSLATION']
 
         return ncr
 
@@ -468,6 +482,7 @@ class Labeler:
         COUNT = 'Count-Vectorization'
         TFIDF = 'TFIDF-Vectorization'
         OCCURENCE = 'Occurence-Baseline'
+        OCCURENCE_EMO = 'Occurence-Emotion-Baseline'
 
         # Models
         BERT = 'BERT'
@@ -555,7 +570,7 @@ class Labeler:
 
         return Y_pred, hyperparameters
 
-    def __generate_occurence_vectors(self, df):
+    def __generate_occurence_vectors(self, df: pd.DataFrame, use_ncr: bool):
         """
         Generate feature representation that counts matches per pattern
         :param df: content to transform
@@ -563,6 +578,9 @@ class Labeler:
         :return: X_vec
         :rtype: np.array
         """
+
+        # Generate dict with ncr input
+        ncr = self.__prepare_labeling_input_ncr()
 
         # Define spacy model
         spacy_model = self.spacy_model
@@ -580,6 +598,23 @@ class Labeler:
 
         # Initialize DependencyMatcher
         dep_matcher = DEP_Matcher(vocab=nlp_label.vocab).add_patterns()
+
+        # Define Sentiment and Emotion Lists
+        pos_tokens_T = ncr.loc[ncr.Positive == 1]['German (de)'].tolist()  # Pos
+        neg_tokens_T = ncr.loc[ncr.Negative == 1]['German (de)'].tolist()  # Neg
+        anger_tokens_T = ncr.loc[ncr.Anger == 1]['German (de)'].tolist()  # Anger
+        fear_tokens_T = ncr.loc[ncr.Fear == 1]['German (de)'].tolist()  # Fear
+        joy_tokens_T = ncr.loc[ncr.Joy == 1]['German (de)'].tolist()  # Joy
+
+        # Initialize NCR Matcher
+        ncr_matcher = PhraseMatcher(nlp_label.vocab)
+
+        # Add patterns to NCR Matcher
+        ncr_matcher.add("pos", [nlp_label(token) for token in pos_tokens_T])
+        ncr_matcher.add("neg", [nlp_label(token) for token in neg_tokens_T])
+        ncr_matcher.add("anger", [nlp_label(token) for token in anger_tokens_T])
+        ncr_matcher.add("fear", [nlp_label(token) for token in fear_tokens_T])
+        ncr_matcher.add("joy", [nlp_label(token) for token in joy_tokens_T])
 
         # Preprocess series
         df_docs = pd.Series(list(nlp_label.pipe(df)))
@@ -623,6 +658,23 @@ class Labeler:
                 matched_patterns.count('nonpop_s'),
                 matched_patterns.count('nonpop_o'),
             ])
+
+            if use_ncr:
+                # Get matches and the names of the patterns that caused the match
+                ncr_matches = ncr_matcher(doc)
+                matched_ncr_patterns = [nlp_label.vocab[i[0]].text for i in ncr_matches]
+
+                # Get number of matches per pattern
+                ncr_array = np.array([
+                    matched_ncr_patterns.count('pos'),
+                    matched_ncr_patterns.count('neg'),
+                    matched_ncr_patterns.count('anger'),
+                    matched_ncr_patterns.count('fear'),
+                    matched_ncr_patterns.count('joy')
+                ])
+
+                # Append additional features to array
+                feature_array = np.append(feature_array, ncr_array)
 
             # Generate array or append to array
             if X_vec is None:

@@ -301,5 +301,5 @@ if __name__ == "__main__":
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=False
+         generate_labeling=True
          )

@@ -358,20 +358,3 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     return list_lfs
 
     # todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)
- # ## Sentiment based
-    # nlp = spacy.load('de_core_news_lg')
-    #
-    # # sentiws = spaCySentiWS(sentiws_path='C:/Users/dschw/Documents/GitHub/Thesis/Data/SentiWS_v2.0')
-    # # #nlp.add_pipe('sentiws')
-    # # nlp.add_pipe('spacytextblob')
-    # # doc = nlp('Die Dummheit der Unterwerfung blüht in hübschen Farben.')
-    # # for token in doc:
-    # #     print('{}, {}, {}'.format(token.text, token._.sentiws, token.pos_))
-    # #
-
-    # from textblob_de import TextBlobDE
-    # doc = 'Die Dummheit der Unterwerfung blüht in hübschen Farben. Das ist ein hässliches Auto'
-    # blob = TextBlobDE(doc)
-    # print(blob.tags)
-    # for sentence in blob.sentences:
-    #     print(sentence.sentiment.polarity)
