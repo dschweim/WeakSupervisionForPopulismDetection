@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:lang="de" id="de0d7a2873734566afc3e42db9e9f35b-0" class="displacy" width="575" height="223.5" direction="ltr" style="max-width: none; height: 223.5px; color: #000000; background: #ffffff; font-family: computer modern; direction: ltr">
+<text class="displacy-token" fill="currentColor" text-anchor="middle" y="133.5">
+    <tspan class="displacy-word" fill="currentColor" x="50">Der Mann</tspan>
+    <tspan class="displacy-tag" dy="2em" fill="currentColor" x="50">NOUN</tspan>
+</text>
+
+<text class="displacy-token" fill="currentColor" text-anchor="middle" y="133.5">
+    <tspan class="displacy-word" fill="currentColor" x="225">streichelt</tspan>
+    <tspan class="displacy-tag" dy="2em" fill="currentColor" x="225">VERB</tspan>
+</text>
+
+<text class="displacy-token" fill="currentColor" text-anchor="middle" y="133.5">
+    <tspan class="displacy-word" fill="currentColor" x="400">den Hund.</tspan>
+    <tspan class="displacy-tag" dy="2em" fill="currentColor" x="400">NOUN</tspan>
+</text>
+
+<g class="displacy-arrow">
+    <path class="displacy-arc" id="arrow-de0d7a2873734566afc3e42db9e9f35b-0-0" stroke-width="1px" d="M70,88.5 C70,1.0 225.0,1.0 225.0,88.5" fill="none" stroke="currentColor"/>
+    <text dy="1.25em" style="font-size: 0.8em; letter-spacing: 1px">
+        <textPath xlink:href="#arrow-de0d7a2873734566afc3e42db9e9f35b-0-0" class="displacy-label" startOffset="50%" side="left" fill="currentColor" text-anchor="middle">sb</textPath>
+    </text>
+    <path class="displacy-arrowhead" d="M70,90.5 L67,83.5 73,83.5" fill="currentColor"/>
+</g>
+
+<g class="displacy-arrow">
+    <path class="displacy-arc" id="arrow-de0d7a2873734566afc3e42db9e9f35b-0-1" stroke-width="1px" d="M245,88.5 C245,1.0 400.0,1.0 400.0,88.5" fill="none" stroke="currentColor"/>
+    <text dy="1.25em" style="font-size: 0.8em; letter-spacing: 1px">
+        <textPath xlink:href="#arrow-de0d7a2873734566afc3e42db9e9f35b-0-1" class="displacy-label" startOffset="50%" side="left" fill="currentColor" text-anchor="middle">oa</textPath>
+    </text>
+    <path class="displacy-arrowhead" d="M400.0,90.5 L403.0,83.5 397.0,83.5" fill="currentColor"/>
+</g>
+</svg>
