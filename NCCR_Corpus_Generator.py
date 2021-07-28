@@ -461,8 +461,7 @@ class NCCR_Dataset:
 
         # Run function to retrieve main sentence and sentence triples
         df_none['wording_sentence'] = \
-            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False),
-                          axis=1)
+            df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=False), axis=1)
         df_none['wording_segments'] = \
             df_none.apply(lambda x: self.__collect_sentences(x['doc_temp'], x['wording_matches'], triples=True), axis=1)
 
