@@ -552,8 +552,8 @@ class Dict_Generator:
         df_nonpop = df[~df.index.isin(df_pop.index)]
 
         # Extract svo-triples per Segment for both corpora separately
-        svo_tuples_pop = df_pop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
-        svo_tuples_nonpop = df_nonpop['wording_segments_doc'].apply(lambda x: extract_dep_tuples(x))
+        svo_tuples_pop = df_pop.apply(lambda x: extract_dep_tuples(x['wording_segments_doc'], x['ID']), axis=1)
+        svo_tuples_nonpop = df_nonpop.apply(lambda x: extract_dep_tuples(x['wording_segments_doc'], x['ID']), axis=1)
 
         #Iterate over tuple combinations
         combinations = [{'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}, # svo + prefix + neg
