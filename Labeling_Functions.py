@@ -181,30 +181,47 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     ches_19 = lf_input_ches['ches_19']
 
     @labeling_function()
-    def lf_party_position_ches(x):
+    def lf_party_position_ches_pop(x):
         if x.year < 2014:
             return ABSTAIN
 
         elif 2014 <= x.year < 2017:
             if x.party in ches_14[x.Sample_Country]['pop']:
                 return POP
-            elif x.party in ches_14[x.Sample_Country]['nonpop']:
-                return NONPOP
             else:
                 return ABSTAIN
 
         elif 2017 <= x.year < 2019:
             if x.party in ches_17[x.Sample_Country]['pop']:
                 return POP
-            elif x.party in ches_17[x.Sample_Country]['nonpop']:
-                return NONPOP
             else:
                 return ABSTAIN
 
         elif 2019 <= x.year:
             if x.party in ches_19[x.Sample_Country]['pop']:
                 return POP
-            elif x.party in ches_19[x.Sample_Country]['nonpop']:
+            else:
+                return ABSTAIN
+
+    @labeling_function()
+    def lf_party_position_ches_nonpop(x):
+        if x.year < 2014:
+            return ABSTAIN
+
+        elif 2014 <= x.year < 2017:
+            if x.party in ches_14[x.Sample_Country]['nonpop']:
+                return NONPOP
+            else:
+                return ABSTAIN
+
+        elif 2017 <= x.year < 2019:
+            if x.party in ches_17[x.Sample_Country]['nonpop']:
+                return NONPOP
+            else:
+                return ABSTAIN
+
+        elif 2019 <= x.year:
+            if x.party in ches_19[x.Sample_Country]['nonpop']:
                 return NONPOP
             else:
                 return ABSTAIN
@@ -353,7 +370,8 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 lf_dep_nonpop_v,
                 lf_dep_nonpop_s,
 
-                lf_party_position_ches]
+                lf_party_position_ches_pop,
+                lf_party_position_ches_nonpop]
 
     return list_lfs
 
