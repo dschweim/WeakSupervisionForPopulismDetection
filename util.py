@@ -115,7 +115,7 @@ def extract_parsed_lemmas(segment):
     return lemma_list
 
 
-def extract_dep_tuples(segment):
+def extract_dep_tuples(segment, id):
     """
     Retrieve tuples dict of type (subj, verb, verb_prefix, object, negation) for each verb in Segment
     :param segment: parsed segment
@@ -134,17 +134,17 @@ def extract_dep_tuples(segment):
     # Generate empty dict list
     triples_dict_list = []
 
-    # Extract fullverb tokens
+    # Extract verb & aux tokens
     verbs = [token for token in segment if token.pos_ in VERBS]
 
-    # Iterate over fullverbs
+    # Iterate over verbs
     for verb in verbs:
 
         # # only for debugging
-        # lemmas = []  ##
-        # current_sent = verb.sent  ##
-        # for token in current_sent:  ##
-        #     lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))  ##
+        lemmas = []  ##
+        current_sent = verb.sent  ##
+        for token in current_sent:  ##
+            lemmas.append((token.lemma_.lower(), token.pos_, token.dep_, token.head.text))  ##
 
         # Create empty list for components
         verb_list = []
@@ -153,7 +153,7 @@ def extract_dep_tuples(segment):
         obj_list = []
         neg_list = []
 
-        # Extract current fullverb
+        # Extract current verb
         verb_list.append(verb.lemma_.lower())
 
         # Iterate over verb dependents
@@ -174,6 +174,11 @@ def extract_dep_tuples(segment):
             # Extract negation
             elif child.dep_ in NEGATIONS:
                 neg_list.append(child.lemma_.lower())
+
+            # Extract oc object for tuples without object
+            elif child.dep_ == 'oc':
+                if not obj_list:
+                    obj_list.append(child.lemma_.lower())
 
         # if lists are empty, return None
         if (not verb_list) & (not verb_comp_list) & (not subj_list) & (not obj_list) & (not neg_list):

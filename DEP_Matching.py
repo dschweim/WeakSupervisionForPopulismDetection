@@ -107,6 +107,39 @@ class DEP_Matcher:
                     'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'sich',
                                                           'DEP': {'IN': OBJECTS}}
                 }
+            ],
+            [
+                {
+                    'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                    'LEMMA': 'können'
+                },
+                {
+                    'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                    'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'werden',
+                                                          'DEP': 'oc'}
+                }
+            ],
+            [
+                {
+                    'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                    'LEMMA': 'sein'
+                },
+                {
+                    'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                    'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'bleiben',
+                                                          'DEP': 'oc'}
+                }
+            ],
+            [
+                {
+                    'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}},
+                    'LEMMA': 'werden'
+                },
+                {
+                    'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                    'RIGHT_ID': 'object', 'RIGHT_ATTRS': {'LEMMA': 'umsetzen',
+                                                          'DEP': 'oc'}
+                }
             ]
         ]
 
@@ -132,8 +165,7 @@ class DEP_Matcher:
                     'RIGHT_ID': 'subject', 'RIGHT_ATTRS': {'LOWER': {'IN': ['bundesregierung', 'regierung', 'politiker',
                                                                             'die', 'npd', 'linke', 'bürger', 'menschen',
                                                                             'unternehmen', 'millionen', 'staat',
-                                                                            'welche',
-                                                                            'wir', 'von']},
+                                                                            'welche', 'wir', 'von']},
                                                            'DEP': {'IN': SUBJECTS}}
                 }
             ]
@@ -148,8 +180,19 @@ class DEP_Matcher:
                 {
                     'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
                     'RIGHT_ID': 'object',
-                    'RIGHT_ATTRS': {'LEMMA': {'IN': ['staat', 'möglichkeit', 'politik', 'möglich']},
+                    'RIGHT_ATTRS': {'LEMMA': {'IN': ['staat', 'möglichkeit', 'politik']},
                                     'DEP': {'IN': OBJECTS}}
+                }
+            ],
+            [
+                {
+                    'RIGHT_ID': 'anchor_verb', 'RIGHT_ATTRS': {'POS': {'IN': VERBS}}
+                },
+                {
+                    'LEFT_ID': 'anchor_verb', 'REL_OP': '>',
+                    'RIGHT_ID': 'object',
+                    'RIGHT_ATTRS': {'LEMMA': {'IN': ['tragen', 'schaden']},
+                                    'DEP':'oc'}
                 }
             ]
 

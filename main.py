@@ -180,7 +180,6 @@ def main(path_to_project_folder: str,
             if os.path.isfile(os.path.join(path, i)) and 'chisquare_dep_nonpop_dict_values' in i:
                 nonpop_files.append(i)
 
-        # {'subj': True, 'verb': True, 'verbprefix': True, 'obj': True, 'neg': True}
         chisquare_dicts_pop = {}
         chisquare_dicts_nonpop = {}
 
