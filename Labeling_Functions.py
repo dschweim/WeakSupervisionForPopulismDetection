@@ -42,10 +42,16 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
     @preprocessor(memoize=True)
     def spacy_preprocessor(x):
         x.doc = nlp_label(x.content)
+
+        # Extract all lower lemmas in doc into list
+        lemmas_doc = []
+        for token in x.doc:
+            lemmas_doc.append(token.lemma_)
+        x.doc_lemmas = lemmas_doc
         return x
 
     ## Labeling Functions
-    # a) Dictionary-based labeling
+    # a) Literature Dict-based labeling
 
     # Define Schwarzbözl dict
     keywords_schwarzbozl = ["altparteien", "anpassung", "iwf",
@@ -111,70 +117,73 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         else:
             return ABSTAIN
 
+    # b) Custom Dictionary-based labeling
+
     # LF based on NCCR-constructed keywords
-    @labeling_function()
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_keywords_nccr_tfidf_av(x):
         keywords_nccr_tfidf = lf_input['tfidf_keywords_av']
 
         # Return a label of POP if keyword in content, otherwise ABSTAIN
-        return POP if any(keyword in x.content.lower() for keyword in keywords_nccr_tfidf) else ABSTAIN
+        return POP if any(keyword in x.doc_lemmas for keyword in keywords_nccr_tfidf) else ABSTAIN
 
     # LF based on NCCR global-constructed keywords
-    @labeling_function()
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_keywords_nccr_tfidf_glob(x):
         keywords_nccr_tfidf_glob = lf_input['tfidf_keywords_global']
 
         # Return a label of POP if keyword in content, otherwise ABSTAIN
-        return POP if any(keyword in x.content.lower() for keyword in keywords_nccr_tfidf_glob) else ABSTAIN
+        return POP if any(keyword in x.doc_lemmas for keyword in keywords_nccr_tfidf_glob) else ABSTAIN
 
     # LF based on NCCR country-constructed keywords (av)
-    @labeling_function()
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_keywords_nccr_tfidf_av_country(x):
         if x.Sample_Country == 'au':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_at']) else ABSTAIN
+            return POP if any(keyword in x.doc_lemmas for keyword in lf_input['tfidf_keywords_av_at']) else ABSTAIN
 
         elif x.Sample_Country == 'cd':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_ch']) else ABSTAIN
+            return POP if any(keyword in x.doc_lemmas for keyword in lf_input['tfidf_keywords_av_ch']) else ABSTAIN
 
         elif x.Sample_Country == 'de':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_av_de']) else ABSTAIN
+            return POP if any(keyword in x.doc_lemmas for keyword in lf_input['tfidf_keywords_av_de']) else ABSTAIN
 
     # LF based on NCCR country-constructed keywords (global)
-    @labeling_function()
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_keywords_nccr_tfidf_global_country(x):
         if x.Sample_Country == 'au':
             return POP if any(
-                keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_global_at']) else ABSTAIN
+                keyword in x.doc_lemmas for keyword in lf_input['tfidf_keywords_global_at']) else ABSTAIN
 
         elif x.Sample_Country == 'cd':
             return POP if any(
-                keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_global_ch']) else ABSTAIN
+                keyword in x.doc_lemmas for keyword in lf_input['tfidf_keywords_global_ch']) else ABSTAIN
 
         elif x.Sample_Country == 'de':
             return POP if any(
-                keyword in x.content.lower() for keyword in lf_input['tfidf_keywords_global_de']) else ABSTAIN
+                keyword in x.doc_lemmas for keyword in lf_input['tfidf_keywords_global_de']) else ABSTAIN
 
     # LF based on NCCR global-constructed keywords (chi2)
-    @labeling_function()
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_keywords_nccr_chi2_glob(x):
         keywords_nccr_chi2_glob = lf_input['chi2_keywords_global']
 
         # Return a label of POP if keyword in content, otherwise ABSTAIN
-        return POP if any(keyword in x.content.lower() for keyword in keywords_nccr_chi2_glob) else ABSTAIN
+        return POP if any(keyword in x.doc_lemmas for keyword in keywords_nccr_chi2_glob) else ABSTAIN
 
     # LF based on NCCR country-constructed keywords (chi2)
-    @labeling_function()
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_keywords_nccr_chi2_country(x):
         if x.Sample_Country == 'au':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['chi2_keywords_at']) else ABSTAIN
+            return POP if any(keyword in x.doc_lemmas for keyword in lf_input['chi2_keywords_at']) else ABSTAIN
 
         elif x.Sample_Country == 'cd':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['chi2_keywords_ch']) else ABSTAIN
+            return POP if any(keyword in x.doc_lemmas for keyword in lf_input['chi2_keywords_ch']) else ABSTAIN
 
         elif x.Sample_Country == 'de':
-            return POP if any(keyword in x.content.lower() for keyword in lf_input['chi2_keywords_de']) else ABSTAIN
+            return POP if any(keyword in x.doc_lemmas for keyword in lf_input['chi2_keywords_de']) else ABSTAIN
 
-    # b) External Knowledge-based Labeling
+    # c) External Knowledge-based Labeling
+
     # LF based on party position estimated in CHES
     ches_14 = lf_input_ches['ches_14']
     ches_17 = lf_input_ches['ches_17']
@@ -226,7 +235,8 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             else:
                 return ABSTAIN
 
-    # c) DEP-based Labeling:
+    # d) DEP-based Labeling:
+
     # Initialize Dependency Matcher
     dep_matcher = DEP_Matcher(vocab=nlp_label.vocab).add_patterns()
 
