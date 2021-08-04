@@ -119,8 +119,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="preds_train_filtered.tolist()" language="Python" />
-        <watch expression="vectorizer.fit_transform(X_train)" language="Python" />
+        <watch expression="df.loc[df.ID == 'de_pr_el_13_030206.txt'].party" language="Python" />
       </configuration>
     </watches-manager>
   </component>
