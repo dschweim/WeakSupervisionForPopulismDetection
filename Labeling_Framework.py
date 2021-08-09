@@ -4,7 +4,7 @@ import spacy
 import numpy as np
 
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
-from snorkel.labeling.model import LabelModel, MajorityLabelVoter
+from snorkel.labeling.model import LabelModel, MajorityLabelVoter, MajorityClassVoter
 from snorkel.utils import probs_to_preds
 from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
@@ -138,9 +138,14 @@ class Labeler:
                                          'lf_tfidf_global': L_train[:, 5]})
 
         ## 3. Generate label model
-        # Baseline: Majority Model
-        majority_model = MajorityLabelVoter(cardinality=2)
-        preds_train = majority_model.predict(L=L_train)
+        # Baseline: Majority Label Model
+        majority_label_model = MajorityLabelVoter(cardinality=2)
+        majority_label_model.predict(L=L_train)
+
+        # Baseline: Majority Class Model
+        majority_class_model = MajorityClassVoter(cardinality=2)
+        majority_class_model.fit(balance=np.array([0.8, 0.2]))
+        majority_class_model.predict_proba(L=L_train)
 
         # Advanced: Label Model
         label_model = LabelModel(cardinality=2, verbose=True)
@@ -150,12 +155,19 @@ class Labeler:
         Y_test = test_data['POPULIST']
         L_test = applier.apply(df=test_data)
 
-        majority_scores_dict = majority_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
+        majority_label_scores_dict = majority_label_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
                                                     metrics=["accuracy", "precision", "recall"])
 
-        print(f"{'Majority Vote Accuracy:':<25} {majority_scores_dict['accuracy']}")
-        print(f"{'Majority Vote Precision:':<25} {majority_scores_dict['precision']}")
-        print(f"{'Majority Vote Recall:':<25} {majority_scores_dict['recall']}")
+        print(f"{'Majority Label Vote Accuracy:':<25} {majority_label_scores_dict['accuracy']}")
+        print(f"{'Majority Label Vote Precision:':<25} {majority_label_scores_dict['precision']}")
+        print(f"{'Majority Label Vote  Recall:':<25} {majority_label_scores_dict['recall']}")
+
+        majority_class_scores_dict = majority_class_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
+                                                                metrics=["accuracy", "precision", "recall"])
+
+        print(f"{'Majority Class Vote Accuracy:':<25} {majority_class_scores_dict['accuracy']}")
+        print(f"{'Majority Class Vote Precision:':<25} {majority_class_scores_dict['precision']}")
+        print(f"{'Majority Class Vote  Recall:':<25} {majority_class_scores_dict['recall']}")
 
         label_model_scores_dict = label_model.score(L=L_test, Y=Y_test, tie_break_policy="random",
                                                     metrics=["accuracy", "precision", "recall"])
