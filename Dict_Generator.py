@@ -574,6 +574,9 @@ class Dict_Generator:
         global_pop_dict = dict()
         global_nonpop_dict = dict()
 
+        # Create empty list for chi2 scores
+        chi2_word_scores = []
+
         for combination in combinations:
             get_components = combination
 
@@ -622,8 +625,13 @@ class Dict_Generator:
                 # Extract critical value dependent on confidence and dof
                 critical = chi2.ppf(confidence, dof)
 
+
                 # keep words where chi2 higher than critical value and correspond to pop corpus
                 if chi2_word > critical:
+
+                    # Append all chi2_word scores to a list
+                    chi2_word_scores.append(chi2_word)
+
                     # Check whether word is dependent on pop corpus
                     ratio_pop = obs_freq_a / obs_freq_b
                     ratio_nonpop = (obs_freq_a + obs_freq_c) / (obs_freq_a + obs_freq_d)

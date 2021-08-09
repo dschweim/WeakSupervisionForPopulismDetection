@@ -165,7 +165,7 @@ def extract_dep_tuples(segment, id):
 
             # Extract subject
             if child.dep_ in SUBJECTS:
-                subj_list.append(child.text.lower())
+                subj_list.append(child.lemma_.lower())
 
             # Extract object
             elif child.dep_ in OBJECTS:
