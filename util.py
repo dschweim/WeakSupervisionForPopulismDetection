@@ -297,6 +297,44 @@ def get_all_svo_tuples(svo_dict_series: pd.Series, get_components: dict):
     return tuples_df
 
 
+def output_and_store_labelmodel_results(output_path, model, scores_dict):
+    """
+    Print results in console and store them in csv (merging with previous results)
+    :param output_path: path to data output
+    :type output_path: str
+    :param model: model used in current run
+    :type model: str
+    :param scores_dict: dit of performance metrics
+    :type scores_dict: dict
+    :return:
+    :rtype:
+    """
+
+    # Save results
+    timestamp = datetime.now().strftime("%d-%m-%Y %H-%M-%S")
+
+    results_df = pd.DataFrame({'model': [model],
+                               'accuracy': [scores_dict['accuracy']],
+                               'precision': [scores_dict['precision']],
+                               'recall': [scores_dict['recall']],
+                               'f1': [scores_dict['f1']],
+                               'timestamp': [timestamp]
+                               })
+    results_df = results_df.set_index(['model'])
+
+    # If results file exists, append results to file
+    if os.path.isfile(f'{output_path}\\Results\\Label_Model\\results.csv'):
+        prev_results = pd.read_csv(f'{output_path}\\Results\\Label_Model\\results.csv',
+                                   index_col=['model'])
+
+        results_df = results_df.append(prev_results)
+
+        # only keep newest run
+        results_df = results_df[~results_df.index.duplicated()].sort_index()
+
+    results_df.to_csv(f'{output_path}\\Results\\Label_Model\\results.csv')
+
+
 def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, Y_pred, X_test, hyperparameters):
     """
     Print results in console and store them in csv (merging with previous results)
@@ -311,7 +349,7 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
     :param Y_pred: predicted labels of test set
     :type Y_pred: np.ndarray
     :param X_test: test set
-    :type Y_pred: pd.DataFrame
+    :type X_test: pd.DataFrame
     :param hyperparameters: tuned hyperparameters retrieved from model
     :type hyperparameters: dict
     :return:
@@ -340,8 +378,8 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
     results_df = results_df.set_index(['model', 'vectorization'])
 
     # If results file exists, append results to file
-    if os.path.isfile(f'{output_path}\\Results\\results.csv'):
-        prev_results = pd.read_csv(f'{output_path}\\Results\\results.csv',
+    if os.path.isfile(f'{output_path}\\Results\\End_Model\\results.csv'):
+        prev_results = pd.read_csv(f'{output_path}\\Results\\End_Model\\results.csv',
                                    index_col=['model', 'vectorization'])
 
         results_df = results_df.append(prev_results)
@@ -349,7 +387,7 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
         # only keep newest run
         results_df = results_df[~results_df.index.duplicated()].sort_index()
 
-    results_df.to_csv(f'{output_path}\\Results\\results.csv')
+    results_df.to_csv(f'{output_path}\\Results\\End_Model\\results.csv')
 
     # Save individual predictions and corresponding information
     model_preds = pd.DataFrame({'Content': X_test.content,
@@ -361,4 +399,4 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
                                 'Y_test': Y_test.astype(int),
                                 'Y_pred': Y_pred})
 
-    model_preds.to_csv(f'{output_path}\\Results\\{classifier}_{feature}_preds.csv')
+    model_preds.to_csv(f'{output_path}\\Results\\End_Model\\{classifier}_{feature}_preds.csv')
