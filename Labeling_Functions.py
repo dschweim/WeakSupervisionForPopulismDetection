@@ -386,6 +386,19 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             return ABSTAIN
 
     @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_pop_vneg(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return POP
+        if dep_matches:
+            return POP if any(patt == 'pop_vneg' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_dep_pop_v(x):
 
         # Get matches and the names of the patterns that caused the match
@@ -438,6 +451,19 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
             return ABSTAIN
 
     @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_vo(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_vo' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
+    @labeling_function(pre=[spacy_preprocessor])
     def lf_dep_nonpop_vneg(x):
 
         # Get matches and the names of the patterns that caused the match
@@ -476,6 +502,19 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         else:
             return ABSTAIN
 
+    @labeling_function(pre=[spacy_preprocessor])
+    def lf_dep_nonpop_o(x):
+
+        # Get matches and the names of the patterns that caused the match
+        dep_matches = dep_matcher(x.doc)
+        matched_patterns = [nlp_label.vocab[i[0]].text for i in dep_matches]
+
+        # If match and pattern name equals current lfs pattern, return NONPOP
+        if dep_matches:
+            return NONPOP if any(patt == 'nonpop_o' for patt in matched_patterns) else ABSTAIN
+        else:
+            return ABSTAIN
+
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl,
                 lf_keywords_rooduijn,
@@ -499,14 +538,17 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
 
                 lf_dep_pop_sv,
                 lf_dep_pop_vo,
+                lf_dep_pop_vneg,
                 lf_dep_pop_v,
                 lf_dep_pop_s,
                 lf_dep_pop_o,
 
                 lf_dep_nonpop_sv,
+                lf_dep_nonpop_vo,
                 lf_dep_nonpop_vneg,
                 lf_dep_nonpop_v,
                 lf_dep_nonpop_s,
+                lf_dep_nonpop_o,
 
                 lf_party_position_ches_pop,
                 lf_party_position_ches_nonpop]
