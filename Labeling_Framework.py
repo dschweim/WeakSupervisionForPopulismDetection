@@ -1,6 +1,7 @@
 import pandas as pd
 import re
 import spacy
+import itertools
 import numpy as np
 
 from snorkel.labeling import PandasLFApplier, LFAnalysis, filter_unlabeled_dataframe
@@ -213,12 +214,26 @@ class Labeler:
             label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
 
         ## 4. Train classifier
-        # Filter out unlabeled data points
-        probs_train = label_model.predict_proba(L=L_train)
-        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
 
-        # Transform probs to preds
-        preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
+        # Improvement Option 1)  Adjust Threshold
+        probs_train = (label_model.predict_proba(L=L_train)[:, 1] >= 0.9999850006894022).astype(int)
+        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
+        preds_train_filtered = probs_train_filtered # Transform probs to preds
+
+        # # Improvement Option 2) Merge LFs to assign label only if all pop LFs labeled pop
+        # L_train = np.delete(L_train, [22,23,24,25,26,27,29], 1)  # drop lfs that are not pop
+        # probs_train = np.zeros((len(L_train), 1), dtype=int)  # create array of zeros
+        # # get 1, if min 12 of 23 LFs returned pop
+        # for i in range(L_train.shape[0]):
+        #     if np.sum(L_train[i]) > 11:
+        #         probs_train[i] = 1
+        # df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
+        # preds_train_filtered = list(itertools.chain.from_iterable(probs_train_filtered.tolist()))
+
+        # # default
+        # probs_train = label_model.predict_proba(L=L_train)
+        # df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
+        # preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
 
         # Save labeled df to disk
         labeled_df_train = pd.DataFrame()
@@ -236,8 +251,6 @@ class Labeler:
         Y_train = list(preds_train_filtered)
         X_test = test_data.content.tolist()
         Y_test = test_data['POPULIST']
-
-
 
         # Run dummy models
         for model in dummy_models:
