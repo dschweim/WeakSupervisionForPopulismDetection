@@ -308,9 +308,6 @@ def main(path_to_project_folder: str,
         bt_corpus_prep['Sample_Country'] = 'de'
         test.rename({'wording_segments': 'content'}, axis=1, inplace=True)
 
-        # todo: Temp generate subset
-        bt_corpus_prep = bt_corpus_prep.head(1000)
-
         print('TRAIN EXAMPLES: ' + str(len(bt_corpus_prep)))
         print('TEST EXAMPLES: ' + str(len(test)))
 
@@ -344,6 +341,6 @@ if __name__ == "__main__":
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=False,
-         run_labeling_bt=True
+         generate_labeling=True,
+         run_labeling_bt=False
          )
