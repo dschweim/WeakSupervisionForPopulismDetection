@@ -119,7 +119,13 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="df.loc[df.ID == 'de_pr_el_13_030206.txt'].party" language="Python" />
+        <watch expression="dev_sub = dev_data.sort_values(by=['year'])" language="Python" />
+        <watch expression="dev_sub['year'] = dev_sub['year'].astype(int)" language="Python" />
+        <watch expression="dev_sub.loc[dev_sub.year &gt; 2013]" language="Python" />
+        <watch expression="dev_sub_sub" language="Python" />
+        <watch expression="dev_sub_sub = dev_sub_sub[dev_sub_sub['party'].notnull()]" language="Python" />
+        <watch expression="dev_sub_sub" language="Python" />
+        <watch expression="len(dev_data)" language="Python" />
       </configuration>
     </watches-manager>
   </component>
