@@ -107,84 +107,110 @@ class Labeler:
 
         # L_gold_dev = load_gold_labels(session, annotator_name='gold', split=1)
 
-        ## 2. Generate label matrix L
-        applier = PandasLFApplier(lfs=lfs)
-        L_train = applier.apply(df=train_data)
-        L_dev = applier.apply(df=dev_data)
+        if dev_data is not None:
 
-        # Evaluate performance on training set and dev set
-        print(LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values))
-        print(LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values))
-        print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
-        print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
+            # Set models and feature vectors
+            base_models = [LOGREG, SVC, RF]
+            dummy_models = [DUMMY]
+            transformer_models = [BERT]
 
-        analysis_train = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
-        analysis_train.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_train.csv')
+            base_vectorizations = [OCCURENCE, OCCURENCE_EMO, COUNT, TFIDF]
 
-        analysis_dev = LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values)
-        analysis_dev.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_dev.csv')
+            ## 2. Generate label matrix L
+            applier = PandasLFApplier(lfs=lfs)
+            L_train = applier.apply(df=train_data)
+            L_dev = applier.apply(df=dev_data)
 
-        # Error analysis
-        #error_table = train_data.iloc[L_train[:, 1] == POP].sample(10, random_state=1)
-        #buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
-        #train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
-        # buckets = get_label_buckets(Y_gold, Y_pred)
-        # buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
-        # comparison_table = pd.DataFrame({'ID': train_data.ID,
-        #                                  'content': train_data.content,
-        #                                  'label': train_data.POPULIST,
-        #                                  'lf_tfidf_global': L_train[:, 5]})
+            # Evaluate performance on training set and dev set
+            print(LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values))
+            print(LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values))
+            print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
+            print(f"Dev set coverage: {100 * LFAnalysis(L_dev).label_coverage(): 0.1f}%")
 
-        ## 3. Generate label model
-        # Baseline: Majority Label Model
-        majority_label_model = MajorityLabelVoter(cardinality=2)
-        majority_label_preds_dev = majority_label_model.predict(L=L_dev,  tie_break_policy="random")
+            analysis_train = LFAnalysis(L=L_train, lfs=lfs).lf_summary(Y=train_data.POPULIST.values)
+            analysis_train.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_train.csv')
 
-        # Baseline: Majority Class Model
-        majority_class_model = MajorityClassVoter(cardinality=2)
-        majority_class_model.fit(balance=np.array([0.8, 0.2]))
-        majority_class_model.predict_proba(L=L_train)
-        majority_class_preds_dev = majority_class_model.predict(L=L_dev, tie_break_policy="random")
+            analysis_dev = LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values)
+            analysis_dev.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_dev.csv')
 
-        # Advanced: Label Model
-        label_model = LabelModel(cardinality=2, verbose=True)
-        label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
-        label_model_preds_dev = label_model.predict(L=L_dev,  tie_break_policy="random")
+            # Error analysis
+            #error_table = train_data.iloc[L_train[:, 1] == POP].sample(10, random_state=1)
+            #buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
+            #train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
+            # buckets = get_label_buckets(Y_gold, Y_pred)
+            # buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
+            # comparison_table = pd.DataFrame({'ID': train_data.ID,
+            #                                  'content': train_data.content,
+            #                                  'label': train_data.POPULIST,
+            #                                  'lf_tfidf_global': L_train[:, 5]})
 
-        # Extract target label
-        Y_dev = dev_data['POPULIST']
-        X_dev = dev_data
+            ## 3. Generate label model
+            # Baseline: Majority Label Model
+            majority_label_model = MajorityLabelVoter(cardinality=2)
+            majority_label_preds_dev = majority_label_model.predict(L=L_dev,  tie_break_policy="random")
 
-        # Evaluate label models on Dev Set
-        majority_label_scores_dict = majority_label_model.score(L=L_dev, Y=Y_dev, tie_break_policy="random",
-                                                                metrics=["accuracy", "precision", "recall", "f1"])
-        output_and_store_labelmodel_results(output_path=self.output_path, model='Majority Vote Model',
-                                            scores_dict=majority_label_scores_dict)
+            # Baseline: Majority Class Model
+            majority_class_model = MajorityClassVoter(cardinality=2)
+            majority_class_model.fit(balance=np.array([0.8, 0.2]))
+            majority_class_model.predict_proba(L=L_train)
+            majority_class_preds_dev = majority_class_model.predict(L=L_dev, tie_break_policy="random")
 
-        print(f"{'Majority Label Accuracy (DEV):':<25} {majority_label_scores_dict['accuracy']}")
-        print(f"{'Majority Label Precision (DEV):':<25} {majority_label_scores_dict['precision']}")
-        print(f"{'Majority Label Recall (DEV):':<25} {majority_label_scores_dict['recall']}")
-        print(f"{'Majority Label F1 (DEV):':<25} {majority_label_scores_dict['f1']}")
+            # Advanced: Label Model
+            label_model = LabelModel(cardinality=2, verbose=True)
+            label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
+            label_model_preds_dev = label_model.predict(L=L_dev,  tie_break_policy="random")
 
-        majority_class_scores_dict = majority_class_model.score(L=L_dev, Y=Y_dev, tie_break_policy="random",
-                                                                metrics=["accuracy", "precision", "recall", "f1"])
-        output_and_store_labelmodel_results(output_path=self.output_path, model='Majority Class Model',
-                                            scores_dict=majority_class_scores_dict)
+            # Extract target label
+            Y_dev = dev_data['POPULIST']
+            X_dev = dev_data
 
-        print(f"{'Majority Class Accuracy (DEV)}':<25} {majority_class_scores_dict['accuracy']}")
-        print(f"{'Majority Class Precision (DEV):':<25} {majority_class_scores_dict['precision']}")
-        print(f"{'Majority Class Recall (DEV):':<25} {majority_class_scores_dict['recall']}")
-        print(f"{'Majority Class F1 (DEV):':<25} {majority_class_scores_dict['f1']}")
+            # Evaluate label models on Dev Set
+            majority_label_scores_dict = majority_label_model.score(L=L_dev, Y=Y_dev, tie_break_policy="random",
+                                                                    metrics=["accuracy", "precision", "recall", "f1"])
+            output_and_store_labelmodel_results(output_path=self.output_path, model='Majority Vote Model',
+                                                scores_dict=majority_label_scores_dict)
 
-        label_model_scores_dict = label_model.score(L=L_dev, Y=Y_dev, tie_break_policy="random",
-                                                    metrics=["accuracy", "precision", "recall", "f1"])
-        output_and_store_labelmodel_results(output_path=self.output_path, model='Label Model',
-                                            scores_dict=label_model_scores_dict)
+            print(f"{'Majority Label Accuracy (DEV):':<25} {majority_label_scores_dict['accuracy']}")
+            print(f"{'Majority Label Precision (DEV):':<25} {majority_label_scores_dict['precision']}")
+            print(f"{'Majority Label Recall (DEV):':<25} {majority_label_scores_dict['recall']}")
+            print(f"{'Majority Label F1 (DEV):':<25} {majority_label_scores_dict['f1']}")
 
-        print(f"{'Label Model Accuracy (DEV):':<25} {label_model_scores_dict['accuracy']}")
-        print(f"{'Label Model Precision (DEV):':<25} {label_model_scores_dict['precision']}")
-        print(f"{'Label Model Recall (DEV):':<25} {label_model_scores_dict['recall']}")
-        print(f"{'Label Model F1 (DEV):':<25} {label_model_scores_dict['f1']}")
+            majority_class_scores_dict = majority_class_model.score(L=L_dev, Y=Y_dev, tie_break_policy="random",
+                                                                    metrics=["accuracy", "precision", "recall", "f1"])
+            output_and_store_labelmodel_results(output_path=self.output_path, model='Majority Class Model',
+                                                scores_dict=majority_class_scores_dict)
+
+            print(f"{'Majority Class Accuracy (DEV)}':<25} {majority_class_scores_dict['accuracy']}")
+            print(f"{'Majority Class Precision (DEV):':<25} {majority_class_scores_dict['precision']}")
+            print(f"{'Majority Class Recall (DEV):':<25} {majority_class_scores_dict['recall']}")
+            print(f"{'Majority Class F1 (DEV):':<25} {majority_class_scores_dict['f1']}")
+
+            label_model_scores_dict = label_model.score(L=L_dev, Y=Y_dev, tie_break_policy="random",
+                                                        metrics=["accuracy", "precision", "recall", "f1"])
+            output_and_store_labelmodel_results(output_path=self.output_path, model='Label Model',
+                                                scores_dict=label_model_scores_dict)
+
+            print(f"{'Label Model Accuracy (DEV):':<25} {label_model_scores_dict['accuracy']}")
+            print(f"{'Label Model Precision (DEV):':<25} {label_model_scores_dict['precision']}")
+            print(f"{'Label Model Recall (DEV):':<25} {label_model_scores_dict['recall']}")
+            print(f"{'Label Model F1 (DEV):':<25} {label_model_scores_dict['f1']}")
+
+        else:
+            # Set models and feature vectors
+            base_models = [RF]
+            dummy_models = [DUMMY]
+            transformer_models = [BERT]
+            base_vectorizations = [OCCURENCE]
+
+            ## 2. Generate label matrix L
+            applier = PandasLFApplier(lfs=lfs)
+            L_train = applier.apply(df=train_data)
+            print(f"Training set coverage: {100 * LFAnalysis(L_train).label_coverage(): 0.1f}%")
+
+            ## 3. Generate label model
+            # Advanced: Label Model
+            label_model = LabelModel(cardinality=2, verbose=True)
+            label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
 
         ## 4. Train classifier
         # Filter out unlabeled data points
@@ -211,12 +237,7 @@ class Labeler:
         X_test = test_data.content.tolist()
         Y_test = test_data['POPULIST']
 
-        # Set models and feature vectors
-        base_models = [LOGREG, SVC, RF]
-        dummy_models = [DUMMY]
-        transformer_models = [BERT]
 
-        base_vectorizations = [OCCURENCE, OCCURENCE_EMO, COUNT, TFIDF]
 
         # Run dummy models
         for model in dummy_models:

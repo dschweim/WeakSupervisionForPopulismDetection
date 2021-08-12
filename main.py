@@ -23,7 +23,8 @@ def main(path_to_project_folder: str,
          generate_chisquare_dicts: bool,
          generate_labeling: bool,
          generate_bt_data: bool,
-         preprocess_bt_data: bool):
+         preprocess_bt_data: bool,
+         run_labeling_bt: bool):
     """
     main function to run project and initialize classes
     :param path_to_project_folder: Trainset
@@ -44,6 +45,8 @@ def main(path_to_project_folder: str,
     :type generate_bt_data: bool
     :param preprocess_bt_data: Indicator whether to preprocess bundestag data corpus in current run
     :type preprocess_bt_data: bool
+    :param run_labeling_bt: Indicator whether to generate labels for bundestag corpus in current run
+    :type run_labeling_bt: bool
     :return:
     :rtype:
     """
@@ -280,7 +283,48 @@ def main(path_to_project_folder: str,
     else:
         bt_corpus_prep = pd.read_csv(f'{path_to_project_folder}\\Output\\BT_corpus_prep.csv')
 
-        # todo: Run Snorkel framework to label bt_corpus_prep
+    # Run Snorkel framework to label bt_corpus_prep
+    if run_labeling_bt:
+
+        # Generate overall dictionary as labeling function input
+        lf_dict = {'tfidf_keywords_av': tfidf_dict_av.term.to_list(),
+                   'tfidf_keywords_av_at': tfidf_dict_av_country['au'].term.to_list(),
+                   'tfidf_keywords_av_ch': tfidf_dict_av_country['cd'].term.to_list(),
+                   'tfidf_keywords_av_de': tfidf_dict_av_country['de'].term.to_list(),
+                   'tfidf_keywords_global': tfidf_dict_global.term.to_list(),
+                   'tfidf_keywords_global_at': tfidf_dict_global_country['au'].term.to_list(),
+                   'tfidf_keywords_global_ch': tfidf_dict_global_country['cd'].term.to_list(),
+                   'tfidf_keywords_global_de': tfidf_dict_global_country['de'].term.to_list(),
+                   'chi2_keywords_global': chisquare_dict_global.term.tolist(),
+                   'chi2_keywords_at': chisquare_dict_country['au'].term.to_list(),
+                   'chi2_keywords_ch': chisquare_dict_country['cd'].term.to_list(),
+                   'chi2_keywords_de': chisquare_dict_country['de'].term.to_list(),
+                   'chi2_dicts_pop': chisquare_dicts_pop,
+                   'chi2_dicts_nonpop': chisquare_dicts_nonpop
+                   }
+
+        # Rename columns
+        bt_corpus_prep.rename({'paragraph': 'content', 'spr_party': 'party'}, axis=1, inplace=True)
+        bt_corpus_prep['Sample_Country'] = 'de'
+        test.rename({'wording_segments': 'content'}, axis=1, inplace=True)
+
+        # todo: Temp generate subset
+        bt_corpus_prep = bt_corpus_prep.head(1000)
+
+        print('TRAIN EXAMPLES: ' + str(len(bt_corpus_prep)))
+        print('TEST EXAMPLES: ' + str(len(test)))
+
+        # Initialize Labeler
+        bt_labeler = Labeler(train_data=bt_corpus_prep,
+                             dev_data=None,
+                             test_data=test,
+                             lf_input_dict=lf_dict,
+                             data_path=f'{path_to_project_folder}\\Data',
+                             output_path=f'{path_to_project_folder}\\Output\\BT',
+                             spacy_model=spacy_model)
+
+        # Run Snorkel Labeling
+        bt_labeler.run_labeling()
 
 
 if __name__ == "__main__":
@@ -300,5 +344,6 @@ if __name__ == "__main__":
 
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
-         generate_labeling=True
+         generate_labeling=False,
+         run_labeling_bt=True
          )
