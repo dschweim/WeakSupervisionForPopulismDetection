@@ -515,6 +515,7 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         else:
             return ABSTAIN
 
+
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl,
                 lf_keywords_rooduijn,
