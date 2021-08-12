@@ -515,7 +515,6 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
         else:
             return ABSTAIN
 
-
     # Define list of lfs to use
     list_lfs = [lf_keywords_schwarzbozl,
                 lf_keywords_rooduijn,
@@ -555,5 +554,3 @@ def get_lfs(lf_input: dict, lf_input_ches: dict, spacy_model: str):
                 lf_party_position_ches_nonpop]
 
     return list_lfs
-
-    # todo: transformation functions (e.g. https://www.snorkel.org/use-cases/02-spam-data-augmentation-tutorial)

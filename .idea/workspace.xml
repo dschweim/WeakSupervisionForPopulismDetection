@@ -112,18 +112,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>218</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>236</line>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>237</line>
-          <option name="timeStamp" value="34" />
+          <line>230</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -146,6 +136,8 @@
         <watch expression="test.Sample_Country" language="Python" />
         <watch expression="test_prob[:, 1]" language="Python" />
         <watch expression="np.delete(L_train, 22, 1)" language="Python" />
+        <watch expression="preds_train_filtered" language="Python" />
+        <watch expression="list(itertools.chain.from_iterable(test))" language="Python" />
       </configuration>
     </watches-manager>
   </component>
