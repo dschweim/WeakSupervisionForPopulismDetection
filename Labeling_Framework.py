@@ -258,7 +258,9 @@ class Labeler:
             df_dev_filtered, probs_dev_filtered = filter_unlabeled_dataframe(X=dev_data, y=probs_dev, L=L_dev)
             preds_dev_filtered = probs_to_preds(probs=probs_dev_filtered)
 
-            #todo: save probs
+            # Save probs
+            pd.DataFrame(probs_train_filtered).to_csv(f'{self.output_path}\\Snorkel\\probs_train_filtered.csv')
+            pd.DataFrame(probs_dev_filtered).to_csv(f'{self.output_path}\\Snorkel\\probs_dev_filtered.csv')
 
         # Save labeled df to disk
         labeled_df_train = pd.DataFrame()
