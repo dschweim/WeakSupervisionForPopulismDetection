@@ -220,15 +220,15 @@ class Labeler:
         # Define threshold strategy for label retrieval
         if self.label_threshold == 'prob':
             # Improvement Option 1)  Adjust Threshold
-            probs_train = (label_model.predict_proba(L=L_train)[:, 1] >= 0.9999850006894022).astype(int)
+            probs_train = (label_model.predict_proba(L=L_train)[:, 1] >= 0.9997031956354656).astype(int)
             df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
             preds_train_filtered = probs_train_filtered # Transform probs to preds
 
-            probs_dev = (label_model.predict_proba(L=L_dev)[:, 1] >= 0.9999850006894022).astype(int)
+            probs_dev = (label_model.predict_proba(L=L_dev)[:, 1] >= 0.9997031956354656).astype(int)
             df_dev_filtered, probs_dev_filtered = filter_unlabeled_dataframe(X=dev_data, y=probs_dev, L=L_dev)
             preds_dev_filtered = probs_dev_filtered  # Transform probs to preds
 
-        elif self.label_threshold == 'signal':
+        elif self.label_threshold == 'qty':
             # Improvement Option 2) Merge LFs to assign label only if all pop LFs labeled pop
             L_train = np.delete(L_train, [22,23,24,25,26,27,29], 1)  # drop lfs that are not pop
             probs_train = np.zeros((len(L_train), 1), dtype=int)  # create array of zeros
