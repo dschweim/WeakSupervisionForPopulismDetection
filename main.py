@@ -266,7 +266,8 @@ def main(path_to_project_folder: str,
                                lf_input_dict=lf_dict,
                                data_path=f'{path_to_project_folder}\\Data',
                                output_path=f'{path_to_project_folder}\\Output',
-                               spacy_model=spacy_model)
+                               spacy_model=spacy_model,
+                               label_threshold='None')
 
         # Run Snorkel Labeling
         nccr_labeler.run_labeling()
@@ -318,7 +319,8 @@ def main(path_to_project_folder: str,
                              lf_input_dict=lf_dict,
                              data_path=f'{path_to_project_folder}\\Data',
                              output_path=f'{path_to_project_folder}\\Output\\BT',
-                             spacy_model=spacy_model)
+                             spacy_model=spacy_model,
+                             label_threshold='None')
 
         # Run Snorkel Labeling
         bt_labeler.run_labeling()

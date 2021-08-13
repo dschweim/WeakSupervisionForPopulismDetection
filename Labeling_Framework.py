@@ -36,7 +36,8 @@ class Labeler:
             lf_input_dict: dict,
             data_path: str,
             output_path: str,
-            spacy_model: str
+            spacy_model: str,
+            label_threshold: str
     ):
         """
         Class to create the labels
@@ -54,6 +55,8 @@ class Labeler:
         :type output_path: str
         :param spacy_model: used trained Spacy pipeline
         :type: str
+        :param label_threshold: Threshold strategy for label model
+        :type: str
         """
 
         self.train_data = train_data
@@ -63,6 +66,7 @@ class Labeler:
         self.data_path = data_path
         self.output_path = output_path
         self.spacy_model = spacy_model
+        self.label_threshold = label_threshold
 
     def run_labeling(self):
         """
@@ -213,39 +217,66 @@ class Labeler:
             label_model = LabelModel(cardinality=2, verbose=True)
             label_model.fit(L_train=L_train, n_epochs=500, log_freq=100, seed=123)
 
-        ## 4. Train classifier
+        # Define threshold strategy for label retrieval
+        if self.label_threshold == 'prob':
+            # Improvement Option 1)  Adjust Threshold
+            probs_train = (label_model.predict_proba(L=L_train)[:, 1] >= 0.9999850006894022).astype(int)
+            df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
+            preds_train_filtered = probs_train_filtered # Transform probs to preds
 
-        # Improvement Option 1)  Adjust Threshold
-        probs_train = (label_model.predict_proba(L=L_train)[:, 1] >= 0.9999850006894022).astype(int)
-        df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
-        preds_train_filtered = probs_train_filtered # Transform probs to preds
+            probs_dev = (label_model.predict_proba(L=L_dev)[:, 1] >= 0.9999850006894022).astype(int)
+            df_dev_filtered, probs_dev_filtered = filter_unlabeled_dataframe(X=dev_data, y=probs_dev, L=L_dev)
+            preds_dev_filtered = probs_dev_filtered  # Transform probs to preds
 
-        # # Improvement Option 2) Merge LFs to assign label only if all pop LFs labeled pop
-        # L_train = np.delete(L_train, [22,23,24,25,26,27,29], 1)  # drop lfs that are not pop
-        # probs_train = np.zeros((len(L_train), 1), dtype=int)  # create array of zeros
-        # # get 1, if min 12 of 23 LFs returned pop
-        # for i in range(L_train.shape[0]):
-        #     if np.sum(L_train[i]) > 11:
-        #         probs_train[i] = 1
-        # df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
-        # preds_train_filtered = list(itertools.chain.from_iterable(probs_train_filtered.tolist()))
+        elif self.label_threshold == 'signal':
+            # Improvement Option 2) Merge LFs to assign label only if all pop LFs labeled pop
+            L_train = np.delete(L_train, [22,23,24,25,26,27,29], 1)  # drop lfs that are not pop
+            probs_train = np.zeros((len(L_train), 1), dtype=int)  # create array of zeros
+            # get 1, if min 12 of 23 LFs returned pop
+            for i in range(L_train.shape[0]):
+                if np.sum(L_train[i]) > 11:
+                    probs_train[i] = 1
+            df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
+            preds_train_filtered = list(itertools.chain.from_iterable(probs_train_filtered.tolist()))
 
-        # # default
-        # probs_train = label_model.predict_proba(L=L_train)
-        # df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
-        # preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
+            L_dev = np.delete(L_dev, [22, 23, 24, 25, 26, 27, 29], 1)  # drop lfs that are not pop
+            probs_dev = np.zeros((len(L_dev), 1), dtype=int)  # create array of zeros
+            # get 1, if min 12 of 23 LFs returned pop
+            for i in range(L_dev.shape[0]):
+                if np.sum(L_dev[i]) > 11:
+                    probs_dev[i] = 1
+            df_dev_filtered, probs_dev_filtered = filter_unlabeled_dataframe(X=dev_data, y=probs_dev, L=L_dev)
+            preds_dev_filtered = list(itertools.chain.from_iterable(probs_dev_filtered.tolist()))
+
+        elif self.label_threshold == 'None':
+            # Default setup
+            probs_train = label_model.predict_proba(L=L_train)
+            df_train_filtered, probs_train_filtered = filter_unlabeled_dataframe(X=train_data, y=probs_train, L=L_train)
+            preds_train_filtered = probs_to_preds(probs=probs_train_filtered)
+
+            probs_dev = label_model.predict_proba(L=L_dev)
+            df_dev_filtered, probs_dev_filtered = filter_unlabeled_dataframe(X=dev_data, y=probs_dev, L=L_dev)
+            preds_dev_filtered = probs_to_preds(probs=probs_dev_filtered)
+
+            #todo: save probs
 
         # Save labeled df to disk
         labeled_df_train = pd.DataFrame()
         labeled_df_train['content'] = df_train_filtered['content']
         labeled_df_train['label'] = preds_train_filtered
-        labeled_df_train.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_train.csv')
+        labeled_df_train.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_train_threshold_{self.label_threshold}.csv')
+
+        labeled_df_dev = pd.DataFrame()
+        labeled_df_dev['content'] = dev_data['content']
+        labeled_df_dev['label'] = preds_dev_filtered
+        labeled_df_dev.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_dev_threshold_{self.label_threshold}.csv')
 
         labeled_df_test = pd.DataFrame()
         labeled_df_test['content'] = test_data['content']
         labeled_df_test['label'] = test_data['POPULIST']
         labeled_df_test.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_test.csv')
 
+        ## 4. Train classifier
         # Run different models
         X_train = df_train_filtered.content.tolist()
         Y_train = list(preds_train_filtered)
