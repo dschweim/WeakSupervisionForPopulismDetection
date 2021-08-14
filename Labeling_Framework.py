@@ -37,6 +37,7 @@ class Labeler:
             data_path: str,
             output_path: str,
             spacy_model: str,
+            classify_weakly: bool,
             label_threshold: str
     ):
         """
@@ -55,6 +56,8 @@ class Labeler:
         :type output_path: str
         :param spacy_model: used trained Spacy pipeline
         :type: str
+        :param classify_weakly: boolean indicator whether to use weak labels for classification
+        :type: bool
         :param label_threshold: Threshold strategy for label model
         :type: str
         """
@@ -66,7 +69,9 @@ class Labeler:
         self.data_path = data_path
         self.output_path = output_path
         self.spacy_model = spacy_model
+        self.classify_weakly = classify_weakly
         self.label_threshold = label_threshold
+
 
     def run_labeling(self):
         """
@@ -281,7 +286,10 @@ class Labeler:
         ## 4. Train classifier
         # Run different models
         X_train = df_train_filtered.content.tolist()
-        Y_train = list(preds_train_filtered)
+        if self.classify_weakly:
+            Y_train = list(preds_train_filtered)
+        else:
+            Y_train = df_train_filtered['POPULIST']
         X_test = test_data.content.tolist()
         Y_test = test_data['POPULIST']
 
