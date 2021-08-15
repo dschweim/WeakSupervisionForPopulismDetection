@@ -112,8 +112,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>230</line>
-          <option name="timeStamp" value="37" />
+          <line>277</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -126,18 +126,7 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="dev_sub = dev_data.sort_values(by=['year'])" language="Python" />
-        <watch expression="dev_sub['year'] = dev_sub['year'].astype(int)" language="Python" />
-        <watch expression="dev_sub.loc[dev_sub.year &gt; 2013]" language="Python" />
-        <watch expression="dev_sub_sub" language="Python" />
-        <watch expression="dev_sub_sub = dev_sub_sub[dev_sub_sub['party'].notnull()]" language="Python" />
-        <watch expression="dev_sub_sub" language="Python" />
-        <watch expression="len(dev_data)" language="Python" />
-        <watch expression="test.Sample_Country" language="Python" />
-        <watch expression="test_prob[:, 1]" language="Python" />
-        <watch expression="np.delete(L_train, 22, 1)" language="Python" />
-        <watch expression="preds_train_filtered" language="Python" />
-        <watch expression="list(itertools.chain.from_iterable(test))" language="Python" />
+        <watch expression="df_train_filtered.content" language="Python" />
       </configuration>
     </watches-manager>
   </component>

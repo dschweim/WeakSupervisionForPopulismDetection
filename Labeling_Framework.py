@@ -269,6 +269,11 @@ class Labeler:
 
         labeled_df_test = pd.DataFrame()
         labeled_df_test['content'] = test_data['content']
+        labeled_df_test['POPULIST_PeopleCent'] = test_data['POPULIST_PeopleCent']
+        labeled_df_test['POPULIST_AntiElite'] = test_data['POPULIST_AntiElite']
+        labeled_df_test['POPULIST_Sovereign'] = test_data['POPULIST_Sovereign']
+        labeled_df_test['Sample_Country'] = test_data['Sample_Country']
+        labeled_df_test['Sample_Type'] = test_data['Sample_Type']
         labeled_df_test['label'] = test_data['POPULIST']
         labeled_df_test.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_test.csv')
 
@@ -350,14 +355,12 @@ class Labeler:
                                                   Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
                                                   hyperparameters=hyperparameters)
 
-        # todo. reduce amount:
-        df_train_filtered = df_train_filtered.head(2)
-        Y_train = Y_train.head(2)
-
         # Run transformer models
         for model in transformer_models:
-            Y_pred, hyperparameters = self.run_classification(classifier=model, X_train_vec=df_train_filtered.content,
-                                                              Y_train=Y_train, X_test_vec=test_data.content)
+            Y_pred, hyperparameters = self.run_classification(classifier=model,
+                                                              X_train_vec=df_train_filtered.content.tolist(),
+                                                              Y_train=Y_train.tolist(),
+                                                              X_test_vec=test_data.content.tolist())
 
             # Print and save results
             output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
