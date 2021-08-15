@@ -267,6 +267,12 @@ class Labeler:
         labeled_df_dev['label'] = preds_dev_filtered
         labeled_df_dev.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_dev_threshold_{self.label_threshold}.csv')
 
+        # Save labeled df to disk
+        labeled_df_train = pd.DataFrame()
+        labeled_df_train['content'] = df_train_filtered['content']
+        labeled_df_train['label'] = df_train_filtered['POPULIST']
+        labeled_df_train.to_csv(f'{self.output_path}\\Snorkel\\labeled_df_train_original_labels.csv')
+
         labeled_df_test = pd.DataFrame()
         labeled_df_test['content'] = test_data['content']
         labeled_df_test['POPULIST_PeopleCent'] = test_data['POPULIST_PeopleCent']
