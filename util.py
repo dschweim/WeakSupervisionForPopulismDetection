@@ -390,13 +390,26 @@ def output_and_store_endmodel_results(output_path, classifier, feature, Y_test, 
     results_df.to_csv(f'{output_path}\\Results\\End_Model\\results.csv')
 
     # Save individual predictions and corresponding information
-    model_preds = pd.DataFrame({'Content': X_test.content,
-                                'POPULIST_PeopleCent': X_test.POPULIST_PeopleCent,
-                                'POPULIST_AntiElite': X_test.POPULIST_AntiElite,
-                                'POPULIST_Sovereign': X_test.POPULIST_Sovereign,
-                                'Country': X_test.Sample_Country,
-                                'Category': X_test.Sample_Type,
-                                'Y_test': Y_test.astype(int),
-                                'Y_pred': Y_pred})
+    if classifier == 'BERT':
+        # Save individual predictions and corresponding information
+        model_preds = pd.DataFrame({'Content': X_test.content,
+                                    'POPULIST_PeopleCent': X_test.POPULIST_PeopleCent,
+                                    'POPULIST_AntiElite': X_test.POPULIST_AntiElite,
+                                    'POPULIST_Sovereign': X_test.POPULIST_Sovereign,
+                                    'Country': X_test.Sample_Country,
+                                    'Category': X_test.Sample_Type,
+                                    'Y_test': Y_test,
+                                    'Y_pred': Y_pred})
+
+    else:
+        # Save individual predictions and corresponding information
+        model_preds = pd.DataFrame({'Content': X_test.content,
+                                    'POPULIST_PeopleCent': X_test.POPULIST_PeopleCent,
+                                    'POPULIST_AntiElite': X_test.POPULIST_AntiElite,
+                                    'POPULIST_Sovereign': X_test.POPULIST_Sovereign,
+                                    'Country': X_test.Sample_Country,
+                                    'Category': X_test.Sample_Type,
+                                    'Y_test': Y_test.astype(int),
+                                    'Y_pred': Y_pred})
 
     model_preds.to_csv(f'{output_path}\\Results\\End_Model\\{classifier}_{feature}_preds.csv')
