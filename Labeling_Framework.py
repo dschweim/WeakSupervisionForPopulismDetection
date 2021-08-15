@@ -143,17 +143,6 @@ class Labeler:
             analysis_dev = LFAnalysis(L=L_dev, lfs=lfs).lf_summary(Y=dev_data.POPULIST.values)
             analysis_dev.to_csv(f'{self.output_path}\\Snorkel\\snorkel_LF_analysis_dev.csv')
 
-            # Error analysis
-            #error_table = train_data.iloc[L_train[:, 1] == POP].sample(10, random_state=1)
-            #buckets = get_label_buckets(L_train[:, 0], L_train[:, 1])
-            #train_data.iloc[buckets[(ABSTAIN, POP)]].sample(10, random_state=1)
-            # buckets = get_label_buckets(Y_gold, Y_pred)
-            # buckets = get_label_buckets(train_data.POPULIST, L_train[:5])
-            # comparison_table = pd.DataFrame({'ID': train_data.ID,
-            #                                  'content': train_data.content,
-            #                                  'label': train_data.POPULIST,
-            #                                  'lf_tfidf_global': L_train[:, 5]})
-
             ## 3. Generate label model
             # Baseline: Majority Label Model
             majority_label_model = MajorityLabelVoter(cardinality=2)
@@ -361,14 +350,19 @@ class Labeler:
                                                   Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
                                                   hyperparameters=hyperparameters)
 
-        # # todo Run transformer models
-        # for model in transformer_models:
-        #     Y_pred, hyperparameters = self.run_classification(classifier=model, feature=None)
-        #
-        #     # Print and save results
-        #     output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
-        #                                       Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
-        #                                       hyperparameters=hyperparameters)
+        # todo. reduce amount:
+        df_train_filtered = df_train_filtered.head(2)
+        Y_train = Y_train.head(2)
+
+        # Run transformer models
+        for model in transformer_models:
+            Y_pred, hyperparameters = self.run_classification(classifier=model, X_train_vec=df_train_filtered.content,
+                                                              Y_train=Y_train, X_test_vec=test_data.content)
+
+            # Print and save results
+            output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
+                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+                                              hyperparameters=hyperparameters)
 
     def __prepare_labeling_input_ches(self):
         """
@@ -589,13 +583,10 @@ class Labeler:
         DUMMY = 'DummyClassifier'
 
         if classifier == BERT:
-            ## Run BERT classifier:
-            Y_pred = run_transformer(X=X_train_vec, y=Y_train,
-                                     X_test=X_test_vec,
-                                     model_name='bert-base-german-cased')
-
-            # Set hyperparams  # todo: hyperparameters: str({"learning_rate": trainer.args.learning_rate}),
-            hyperparameters = {}
+            # Run BERT classifier:
+            Y_pred, hyperparameters = run_transformer(X=X_train_vec, y=Y_train,
+                                                      X_test=X_test_vec,
+                                                      model_name='bert-base-german-cased')
 
         elif classifier == DUMMY:
             # Define model
