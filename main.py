@@ -268,7 +268,7 @@ def main(path_to_project_folder: str,
                                output_path=f'{path_to_project_folder}\\Output',
                                spacy_model=spacy_model,
                                classify_weakly=False,
-                               label_threshold='prob')
+                               label_threshold='None')
 
         # Run Snorkel Labeling
         nccr_labeler.run_labeling()
