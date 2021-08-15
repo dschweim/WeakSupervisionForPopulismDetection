@@ -38,7 +38,7 @@ def run_transformer(X, y, X_test, model_name):
     val_dataset = Dataset(X_val_tokenized, y_val)
 
     # Instantiate model
-    tranformer_model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
+    transformer_model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
 
     # Create Trainer Object
     # Use GPU, if available
@@ -47,11 +47,11 @@ def run_transformer(X, y, X_test, model_name):
     # Define Trainer
     training_args = TrainingArguments("test_trainer")
     trainer = Trainer(
-        model=tranformer_model, args=training_args, train_dataset=train_dataset, eval_dataset=val_dataset
+        model=transformer_model, args=training_args, train_dataset=train_dataset, eval_dataset=val_dataset
     )
 
     # Train pre-trained model
-    tranformer_model.to(device)
+    transformer_model.to(device)
     trainer.train()
 
     # ----- 3. Predict -----#
@@ -67,4 +67,7 @@ def run_transformer(X, y, X_test, model_name):
     # Preprocess raw predictions
     y_pred = raw_pred[0].argmax(-1)
 
-    return y_pred
+    # Get best hyperparam setting
+    hyperparameters = {"learning_rate": trainer.args.learning_rate}
+
+    return y_pred, hyperparameters
