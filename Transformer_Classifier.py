@@ -67,7 +67,10 @@ def run_transformer(X, y, X_test, model_name):
     # Preprocess raw predictions
     y_pred = raw_pred[0].argmax(-1)
 
-    # Get best hyperparam setting
-    hyperparameters = {"learning_rate": trainer.args.learning_rate}
+    # Get hyperparams
+    hyperparameters = {
+        "batch_size": trainer.args.per_device_train_batch_size,
+        "learning_rate": trainer.args.learning_rate,
+        "num_epochs": trainer.args.num_train_epochs}
 
     return y_pred, hyperparameters
