@@ -23,7 +23,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 from util import standardize_party_naming, output_and_store_endmodel_results, output_and_store_labelmodel_results
 from Labeling_Functions import get_lfs
-from BERT_Classifier import run_transformer
+from Transformer_Classifier import run_transformer
 from DEP_Matching import DEP_Matcher
 
 
@@ -90,6 +90,7 @@ class Labeler:
 
         # Models
         BERT = 'BERT'
+        GELECTRA = 'GELECTRA'
         LOGREG = 'LogisticRegression'
         SVC = 'SupportVectorClassifier'
         RF = 'RandomForest'
@@ -122,7 +123,7 @@ class Labeler:
             # Set models and feature vectors
             base_models = [LOGREG, SVC, RF]
             dummy_models = [DUMMY]
-            transformer_models = [BERT]
+            transformer_models = [BERT, GELECTRA]
 
             base_vectorizations = [OCCURENCE, OCCURENCE_EMO, COUNT, TFIDF]
 
@@ -198,7 +199,7 @@ class Labeler:
             # Set models and feature vectors
             base_models = [RF]
             dummy_models = [DUMMY]
-            transformer_models = [BERT]
+            transformer_models = [BERT, GELECTRA]
             base_vectorizations = [OCCURENCE]
 
             ## 2. Generate label matrix L
@@ -289,7 +290,8 @@ class Labeler:
         if self.classify_weakly:
             Y_train = list(preds_train_filtered)
         else:
-            Y_train = df_train_filtered['POPULIST']
+            Y_train = df_train_filtered['POPULIST'].astype(int).to_list()
+
         X_test = test_data.content.tolist()
         Y_test = test_data['POPULIST']
 
@@ -361,17 +363,18 @@ class Labeler:
                                                   Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
                                                   hyperparameters=hyperparameters)
 
-        # Run transformer models
-        for model in transformer_models:
-            Y_pred, hyperparameters = self.run_classification(classifier=model,
-                                                              X_train_vec=df_train_filtered.content.tolist(),
-                                                              Y_train=Y_train.tolist(),
-                                                              X_test_vec=test_data.content.tolist())
-
-            # Print and save results
-            output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
-                                              Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
-                                              hyperparameters=hyperparameters)
+        # Run transformer models (handled separately in Notebook to run with GPU)
+        # for model in transformer_models:
+        #     X_train_vec = X_train
+        #     Y_pred, hyperparameters = self.run_classification(classifier=model,
+        #                                                       X_train_vec=df_train_filtered.content.tolist(),
+        #                                                       Y_train=Y_train,
+        #                                                       X_test_vec=test_data.content.tolist())
+        #
+        #     # Print and save results
+        #     output_and_store_endmodel_results(output_path=self.output_path, classifier=model, feature='-',
+        #                                       Y_test=Y_test, Y_pred=Y_pred, X_test=test_data,
+        #                                       hyperparameters=hyperparameters)
 
     def __prepare_labeling_input_ches(self):
         """
@@ -586,6 +589,7 @@ class Labeler:
 
         # Models
         BERT = 'BERT'
+        GELECTRA = 'GELECTRA'
         LOGREG = 'LogisticRegression'
         SVC = 'SupportVectorClassifier'
         RF = 'RandomForest'
@@ -596,6 +600,12 @@ class Labeler:
             Y_pred, hyperparameters = run_transformer(X=X_train_vec, y=Y_train,
                                                       X_test=X_test_vec,
                                                       model_name='bert-base-german-cased')
+
+        if classifier == GELECTRA:
+            # Run ELECTRA classifier:
+            Y_pred, hyperparameters = run_transformer(X=X_train_vec, y=Y_train,
+                                                      X_test=X_test_vec,
+                                                      model_name='deepset/gelectra-base')
 
         elif classifier == DUMMY:
             # Define model

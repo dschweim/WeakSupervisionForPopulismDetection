@@ -267,7 +267,7 @@ def main(path_to_project_folder: str,
                                data_path=f'{path_to_project_folder}\\Data',
                                output_path=f'{path_to_project_folder}\\Output',
                                spacy_model=spacy_model,
-                               classify_weakly=True,
+                               classify_weakly=False,
                                label_threshold='None')
 
         # Run Snorkel Labeling
@@ -322,7 +322,7 @@ def main(path_to_project_folder: str,
                              output_path=f'{path_to_project_folder}\\Output\\BT',
                              spacy_model=spacy_model,
                              classify_weakly=True,
-                             label_threshold='None')
+                             label_threshold='prob')
 
         # Run Snorkel Labeling
         bt_labeler.run_labeling()
@@ -346,5 +346,5 @@ if __name__ == "__main__":
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
          generate_labeling=True,
-         run_labeling_bt=False
+         run_labeling_bt=False # runs for approx 90min
          )
