@@ -267,7 +267,7 @@ def main(path_to_project_folder: str,
                                data_path=f'{path_to_project_folder}\\Data',
                                output_path=f'{path_to_project_folder}\\Output',
                                spacy_model=spacy_model,
-                               classify_weakly=False,
+                               classify_weakly=True,
                                label_threshold='None')
 
         # Run Snorkel Labeling
