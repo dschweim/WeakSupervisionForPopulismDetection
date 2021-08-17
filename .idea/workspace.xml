@@ -109,13 +109,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Labeling_Framework.py</url>
-          <line>277</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -126,7 +119,12 @@
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="df_train_filtered.content" language="Python" />
+        <watch expression="x[:,1]" language="Python" />
+        <watch expression="df_train_filtered" language="Python" />
+        <watch expression="y" language="Python" />
+        <watch expression="(x[:,1] == 1.00).sum()" language="Python" />
+        <watch expression="label_model.predict_proba(L=L_train)" language="Python" />
+        <watch expression="probs_train" language="Python" />
       </configuration>
     </watches-manager>
   </component>
