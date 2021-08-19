@@ -346,5 +346,5 @@ if __name__ == "__main__":
          generate_tfidf_dicts=False,
          generate_chisquare_dicts=False,
          generate_labeling=False,
-         run_labeling_bt=True # runs for approx 90min
+         run_labeling_bt=True  # runs for approx 90min
          )
