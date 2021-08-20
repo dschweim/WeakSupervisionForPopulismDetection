@@ -72,7 +72,6 @@ class Labeler:
         self.classify_weakly = classify_weakly
         self.label_threshold = label_threshold
 
-
     def run_labeling(self):
         """
         Generate labels on initialized dataframe using Snorkel label model and run classifier as end model,
