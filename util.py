@@ -4,7 +4,6 @@ import re
 import pandas as pd
 from datetime import datetime
 from sklearn.model_selection import train_test_split
-from collections import Counter
 from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
 
