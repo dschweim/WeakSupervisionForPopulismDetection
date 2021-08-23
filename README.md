@@ -3,6 +3,7 @@
 This folder contains all experimental results, as well as the data and code for replicating the result of the above mentioned Master Thesis.
 
 ## Setup
+To run the code following code, please make sure to include the path that leads to the folder of this project as input parameter parameter:
 *--i path_to_file*
 
 ## Replication Material
