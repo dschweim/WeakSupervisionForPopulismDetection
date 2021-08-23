@@ -22,13 +22,13 @@ The folder *Experiments* Contains full results of all conducted experiments in t
 - *Label_Model_Performances*: Results obtained with label models under different setups.
 
 ### Notebooks
-The folder *Notebooks* contains Jupyter Notebooks that were primarily used for experimentation, but also to generate xx
+The folder *Notebooks* contains Jupyter Notebooks that were primarily used for experimentation and analysis:
 - `Data_Exploration.ipynb`: Contains the code used to explore the NCCR and BT data and calculate simple dataset statistics.
-- `Figure_Generator.ipynb`
-- `Interpretation and Error Analysis End Models.ipynb`
-- `Interpretation and Error Analysis Label Models.ipynb`
+- `Figure_Generator.ipynb`: Used to generate plots and stats for the report.
+- `Interpretation and Error Analysis End Models.ipynb`: Used to generate plots and stats for the individual end models.
+- `Interpretation and Error Analysis Label Models.ipynb`: Used to generate plots and stats for the individual label models.
 - `Manual_Segment_Extraction.ipynb`: Contains the code used to manually fix non-matched Wording Content to retrieve corresponding segments from text.
-- `Run_Transformer.ipynb`
+- `Run_Transformer.ipynb`: Used to run the Transformer-based models on GPU-environment in Colab.
 
 ### Output
 The folder *Output* contains the results from each Code file:
