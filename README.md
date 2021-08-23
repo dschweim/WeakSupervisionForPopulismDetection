@@ -8,12 +8,11 @@ To run the code following code, please make sure to include the path that leads 
 
 ## Replication Material
 
-
 ### Data
 The folder *Data* contains all necessary input sources in the respective subfolder:
 - *BT_OpenData*: Bundestag plenary minutes of the 19th legislative period in xml-format, downloaded from [bundestag.de](https://www.bundestag.de/services/opendata).
 - *CHES*: Chapel Hill Expert Survey (CHES) files for 2014, 2017, and 2019 in csv-format, downloaded from [chesdata.eu](https://www.chesdata.eu/our-surveys).
-- *NCCR_Content*: 
+- *NCCR_Content*: Data from content analysis by the National Centre of Competence in Research (NCCR) in txt- and xml-format, downloaded from [drive.switch.ch](https://drive.switch.ch/index.php/s/ZEaSw5xAkA28nTO).
 - *NRC-Emotion-Lexicon*: NRC Word-Emotion Association Lexicon in csv-format including instructions, published papers, and further information documents, downloaded from [saifmohammad.com](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm).
 
 ### Experiments
@@ -41,9 +40,11 @@ The folder *runs* contains caches of the employed Transformer models.
 All files can be run from within the 'main.py' file. To this end, corresponding indicators have to be set to true.
 The following Python files are included in this repo:
 
-- `Transformer_Classifier.py`
-- `BT_Corpus_Generator.py`: Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *BT_OpenData* files.
-- `Dict_Generator.py`
-- `Labeling_Framework.py`
-- `Labeling_Functions.py`
-- `NCCR_Corpus_Generator.py`: Code for generating a suitable corpus in csv-format of the Bundestag plenary minutes using the *NCCR_Content* files.
+- `BT_Corpus_Generator.py`: Class used for generating and preprocessing a corpus in csv-format of the Bundestag plenary minutes using the *BT_OpenData* files.
+- `DEP_Matching.py`: Class used to define the Dependency Matcher along with the key dependency patterns
+- `Dict_Generator.py`: Class for generating keyword and keypattern dictionaries
+- `Labeling_Framework.py`: Class that incorporates the weak supervision framework based on Snorkel
+- `Labeling_Functions.py`: Class used to instantiate the used set of labeling functions based on Snorkel as input for the `Labeling_Framework.py`
+- `NCCR_Corpus_Generator.py`: Class used for generating and preprocessing a corpus in csv-format using the *NCCR_Content* files.
+- `Transformer_Classifier.py`:
+- `util.py`: contains functions used within oder classes
