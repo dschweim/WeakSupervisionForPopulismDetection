@@ -31,7 +31,12 @@ The folder *Notebooks* contains Jupyter Notebooks that were primarily used for e
 - `Run_Transformer.ipynb`: Used to run the Transformer-based models in a GPU-environment with Colab.
 
 ### Output
-The folder *Output* contains the results from each Code file:
+The folder *Output* contains the outputs generated when running individual code files in the main folder or its respective subfolders:
+- *BT*: contains the weakly-labeled Bundestag corpus.
+- *Dicts*: generated keyword and keypattern dictionaries.
+- *Dicts*: manually-generated table used to manually fix non-matched Wording Content to retrieve corresponding segments from text.
+- *Results*: label model and end model performance scores and predictions.
+- *Snorkel*: labeled datasets along with Snorkel summary statistics.
 
 ### runs
 The folder *runs* contains caches of the employed Transformer models.
@@ -41,10 +46,10 @@ All files can be run from within the 'main.py' file. To this end, corresponding 
 The following Python files are included in this repo:
 
 - `BT_Corpus_Generator.py`: Class used for generating and preprocessing a corpus in csv-format of the Bundestag plenary minutes using the *BT_OpenData* files.
-- `DEP_Matching.py`: Class used to define the Dependency Matcher along with the key dependency patterns
-- `Dict_Generator.py`: Class for generating keyword and keypattern dictionaries
-- `Labeling_Framework.py`: Class that incorporates the weak supervision framework based on Snorkel
-- `Labeling_Functions.py`: Class used to instantiate the used set of labeling functions based on Snorkel as input for the `Labeling_Framework.py`
+- `DEP_Matching.py`: Class used to define the Dependency Matcher along with the key dependency patterns.
+- `Dict_Generator.py`: Class for generating keyword and keypattern dictionaries.
+- `Labeling_Framework.py`: Class that incorporates the weak supervision framework based on Snorkel.
+- `Labeling_Functions.py`: Class used to instantiate the used set of labeling functions based on Snorkel as input for the `Labeling_Framework.py`.
 - `NCCR_Corpus_Generator.py`: Class used for generating and preprocessing a corpus in csv-format using the *NCCR_Content* files.
 - `Transformer_Classifier.py`: Implementation of Transformer-based classifiers to be used as end models.
-- `util.py`: contains functions used within oder classes
+- `util.py`: contains functions used within oder classes.
