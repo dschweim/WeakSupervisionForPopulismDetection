@@ -24,11 +24,11 @@ The folder *Experiments* Contains full results of all conducted experiments in t
 ### Notebooks
 The folder *Notebooks* contains Jupyter Notebooks that were primarily used for experimentation and analysis:
 - `Data_Exploration.ipynb`: Contains the code used to explore the NCCR and BT data and calculate simple dataset statistics.
-- `Figure_Generator.ipynb`: Used to generate plots and stats for the report.
+- `Figure_Generator.ipynb`: Used to generate further plots and stats for the report.
 - `Interpretation and Error Analysis End Models.ipynb`: Used to generate plots and stats for the individual end models.
 - `Interpretation and Error Analysis Label Models.ipynb`: Used to generate plots and stats for the individual label models.
 - `Manual_Segment_Extraction.ipynb`: Contains the code used to manually fix non-matched Wording Content to retrieve corresponding segments from text.
-- `Run_Transformer.ipynb`: Used to run the Transformer-based models on GPU-environment in Colab.
+- `Run_Transformer.ipynb`: Used to run the Transformer-based models in a GPU-environment with Colab.
 
 ### Output
 The folder *Output* contains the results from each Code file:
@@ -46,5 +46,5 @@ The following Python files are included in this repo:
 - `Labeling_Framework.py`: Class that incorporates the weak supervision framework based on Snorkel
 - `Labeling_Functions.py`: Class used to instantiate the used set of labeling functions based on Snorkel as input for the `Labeling_Framework.py`
 - `NCCR_Corpus_Generator.py`: Class used for generating and preprocessing a corpus in csv-format using the *NCCR_Content* files.
-- `Transformer_Classifier.py`:
+- `Transformer_Classifier.py`: Implementation of Transformer-based classifiers to be used as end models.
 - `util.py`: contains functions used within oder classes
